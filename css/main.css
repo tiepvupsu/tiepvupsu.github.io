@@ -426,7 +426,8 @@ a:visited { color: #205caa; }
 }
 
 .PageNavigation {
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: bold;
   display: block;
   width: auto;
   overflow: hidden;
