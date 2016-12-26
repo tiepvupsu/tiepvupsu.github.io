@@ -7,14 +7,7 @@ date:   2016-05-31 11:00:00
 mathjax: true
 ---
 
-<!-- 
-<svg width="800" height="200">
-	<rect width="800" height="200" style="fill:rgb(98,51,20)" />
-	<rect width="20" height="50" x="20" y="100" style="fill:rgb(189,106,53)" />
-	<rect width="20" height="50" x="760" y="30" style="fill:rgb(77,175,75)" />
-	<rect width="10" height="10" x="400" y="60" style="fill:rgb(225,229,224)" />
-</svg>
- -->
+
 
 <div class="imgcap">
 <img src="/assets/rl/preview.jpeg">
@@ -54,3 +47,201 @@ p = 1.0 / (1.0 + np.exp(-logp)) # sigmoid function (gives probability of going u
 <img src="/assets/rl/sl.png">
 </div>
 
+
+# Learning to rank with scikit-learn: the pairwise transform
+[Source](http://fa.bianp.net/blog/2012/learning-to-rank-with-scikit-learn-the-pairwise-transform/)
+
+This tutorial introduces the concept of pairwise preference used in most [ranking problem](https://en.wikipedia.org/wiki/Learning_to_rank).
+
+In the ranking setting, training data consits of lists of items with some order specified between items in each list. this order is typically induced by giving a numerical of ordinal score or a binary judgment (e.g., "relevan" or "not relevant") for each item, so that for any two samples a and b, either a < b, a > b or a and b are not comparable. 
+
+For example in the case of a search engine, our dataset consists of results that belong to different queries and we would like to only compare the relevance of results coming from the same query. 
+
+This order relation is usually domain-specific. For instance, in information retrieval, the set of comparable sample is referred to as a "query id". The goal behind this is to compare only documents that belong to the same query. 
+
+
+```python
+import itertools
+import numpy as np
+from scipy import stats
+import pylab as pl
+from sklearn import svm, linear_model, cross_validation
+```
+
+## Start 
+
+To start with, we'll create a dataset in which the target values consists of three graded measurements $Y = \{0, 1, 2\}$ and the input data is a collection of 30 samples, each one with two features.
+
+The set of comparable elements (queries in information retrieval) will consist of two equally sized blocks, $X = X_1 \cup X_2$, where each block is generated using a normal distribution with different mean and covariance. In the figure, we represent $X_1$ with round markers and $X_2$ with triangular markers.
+
+
+```python
+np.random.seed(0)
+theta = np.deg2rad(60)
+w = np.array([np.sin(theta), np.cos(theta)])
+K = 20
+X = np.random.randn(K, 2)
+y = [0] * K
+for i in range(1, 3):
+    X = np.concatenate((X, np.random.randn(K, 2) + i * 4 * w))
+    y = np.concatenate((y, [i] * K))
+
+# slightly displace data corresponding to our second partition
+X[::2] -= np.array([3, 7]) 
+# blocks = np.array([0, 1] * (X.shape[0] / 2)) # for python 2
+blocks = np.array([0, 1] * (X.shape[0] // 2))
+
+# split into train and test set
+cv = cross_validation.StratifiedShuffleSplit(y, test_size=.5)
+# train, test = iter(cv).next() # for python 2
+train, test = iter(cv).__next__()
+X_train, y_train, b_train = X[train], y[train], blocks[train]
+X_test, y_test, b_test = X[test], y[test], blocks[test]
+
+# plot the result
+idx = (b_train == 0)
+pl.scatter(X_train[idx, 0], X_train[idx, 1], c=y_train[idx], 
+    marker='^', cmap=pl.cm.Blues, s=100)
+pl.scatter(X_train[~idx, 0], X_train[~idx, 1], c=y_train[~idx],
+    marker='o', cmap=pl.cm.Blues, s=100)
+pl.arrow(0, 0, 8 * w[0], 8 * w[1], fc='gray', ec='gray', 
+    head_width=0.5, head_length=0.5)
+pl.text(0, 1, '$w$', fontsize=20)
+pl.arrow(-3, -8, 8 * w[0], 8 * w[1], fc='gray', ec='gray', 
+    head_width=0.5, head_length=0.5)
+pl.text(-2.6, -7, '$w$', fontsize=20)
+pl.axis('equal')
+pl.show()
+```
+
+
+![png](output_3_0.png)
+
+
+In the plot we see that for both blocks, there is a common vector $w$ such that the projection onto $w$ gives a list with the correct ordering.
+
+However, because linear considers that ouput labels live in a metric space it will consider that all pairs are comparable. Thus if we fit this model to the problem above it will fit both blocks at the same time, yielding a result that is clearly not optimal. In the folloing plot we estimate $\hat{w}$ using an $l_2$-regularizaed linear model.
+
+
+```python
+ridge = linear_model.Ridge(1.)
+print('fit: training...'),
+ridge.fit(X_train, y_train)
+print('done')
+coef = ridge.coef_ / np.linalg.norm(ridge.coef_)
+pl.scatter(X_train[idx, 0], X_train[idx, 1], c=y_train[idx], 
+    marker='^', cmap=pl.cm.Blues, s=100)
+pl.scatter(X_train[~idx, 0], X_train[~idx, 1], c=y_train[~idx],
+    marker='o', cmap=pl.cm.Blues, s=100)
+pl.arrow(0, 0, 7 * coef[0], 7 * coef[1], fc='gray', ec='gray', 
+    head_width=0.5, head_length=0.5)
+pl.text(2, 0, '$\hat{w}$', fontsize=20)
+pl.axis('equal')
+pl.title('Estimation by Ridge regression')
+pl.show()
+```
+
+    fit: training...
+    done
+
+
+
+![png](output_5_1.png)
+
+
+
+```python
+for i in range(2):
+    tau, _ = stats.kendalltau(
+        ridge.predict(X_test[b_test == i]), y_test[b_test == i])
+    print('Kendall correlation coefficient for block %s: %.5f' % (i, tau))
+```
+
+    Kendall correlation coefficient for block 0: 0.71122
+    Kendall correlation coefficient for block 1: 0.84387
+
+
+# The pairwise transform
+ 
+If we consider linear ranking functions, the ranking problem can be transformed into a two-class classification problem. For this, we form the difference of all comparable elements such that our data is transformed into $(x_k', y_k') = (x_i - x_j, sign(y_i - y_j))$ for all comparable pairs. 
+
+This way we transformed our ranking problem into a two-class classification problem. The following plot shows this transormed dataset, and color reflects the difference in labels, and our task if to separate positive samples from negative ones. The hyperplane $\{x^Tw = 0\}$ separates these two classes.
+
+
+```python
+# form all pairwise combinations
+comb = itertools.combinations(range(X_train.shape[0]), 2)
+k = 0
+Xp, yp, diff = [], [], []
+for (i, j) in comb:
+    if y_train[i] == y_train[j] \
+        or blocks[train][i] != blocks[train][j]:
+        # skip if same target or different group
+        continue
+    Xp.append(X_train[i] - X_train[j])
+    diff.append(y_train[i] - y_train[j])
+    yp.append(np.sign(diff[-1]))
+    # output balanced classes
+    if yp[-1] != (-1) ** k:
+        yp[-1] *= -1
+        Xp[-1] *= -1
+        diff[-1] *= -1
+    k += 1
+Xp, yp, diff = map(np.asanyarray, (Xp, yp, diff))
+pl.scatter(Xp[:, 0], Xp[:, 1], c=diff, s=60, marker='o', cmap=pl.cm.Blues)
+x_space = np.linspace(-10, 10)
+pl.plot(x_space * w[1], - x_space * w[0], color='gray')
+pl.text(3, -4, '$\{x^T w = 0\}$', fontsize=17)
+pl.axis('equal')
+pl.show()
+```
+
+
+![png](output_8_0.png)
+
+
+
+```python
+
+```
+
+
+```python
+clf = svm.SVC(kernel='linear', C=.1)
+clf.fit(Xp, yp)
+coef = clf.coef_.ravel() / np.linalg.norm(clf.coef_)
+pl.scatter(X_train[idx, 0], X_train[idx, 1], c=y_train[idx],
+    marker='^', cmap=pl.cm.Blues, s=100)
+pl.scatter(X_train[~idx, 0], X_train[~idx, 1], c=y_train[~idx],
+    marker='o', cmap=pl.cm.Blues, s=100)
+pl.arrow(0, 0, 7 * coef[0], 7 * coef[1], fc='gray', ec='gray',
+    head_width=0.5, head_length=0.5)
+pl.arrow(-3, -8, 7 * coef[0], 7 * coef[1], fc='gray', ec='gray',
+    head_width=0.5, head_length=0.5)
+pl.text(1, .7, '$\hat{w}$', fontsize=20)
+pl.text(-2.6, -7, '$\hat{w}$', fontsize=20)
+pl.axis('equal')
+pl.show()
+
+```
+
+
+![png](output_10_0.png)
+
+
+
+```python
+for i in range(2):
+    tau, _ = stats.kendalltau(
+        np.dot(X_test[b_test == i], coef), y_test[b_test == i])
+    print('Kendall correlation coefficient for block %s: %.5f' % (i, tau))
+```
+
+    Kendall correlation coefficient for block 0: 0.83627
+    Kendall correlation coefficient for block 1: 0.84387
+
+
+
+```python
+
+```
