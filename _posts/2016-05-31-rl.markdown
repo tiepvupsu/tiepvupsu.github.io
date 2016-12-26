@@ -118,9 +118,9 @@ pl.show()
 ![png](output_3_0.png)
 
 
-In the plot we see that for both blocks, there is a common vector $w$ such that the projection onto $w$ gives a list with the correct ordering.
+In the plot we see that for both blocks, there is a common vector $w$ such that the projection onto \\(w\\) gives a list with the correct ordering.
 
-However, because linear considers that ouput labels live in a metric space it will consider that all pairs are comparable. Thus if we fit this model to the problem above it will fit both blocks at the same time, yielding a result that is clearly not optimal. In the folloing plot we estimate $\hat{w}$ using an $l_2$-regularizaed linear model.
+However, because linear considers that ouput labels live in a metric space it will consider that all pairs are comparable. Thus if we fit this model to the problem above it will fit both blocks at the same time, yielding a result that is clearly not optimal. In the folloing plot we estimate \\(\hat{w}\\) using an \\(l_2\\)-regularizaed linear model.
 
 
 ```python
