@@ -43,6 +43,10 @@ p = 1.0 / (1.0 + np.exp(-logp)) # sigmoid function (gives probability of going u
 
 
 \\( a^2 + b^2 = c^ 2\\)
+
+\\[ \frac{1}{2} + \frac{1}{4} + ... = 1 \\]
+
+\\[ \frac{1}{2} + \frac{1}{4} + ... = 1 \\]
 **Supervised Learning**. Before we dive into the Policy Gradients solution I'd like to remind you briefly about supervised learning because, as we'll see, RL is very similar. Refer to the diagram below. In ordinary supervised learning we would feed an image to the network and get some probabilities, e.g. for two classes UP and DOWN. I'm showing log probabilities (-1.2, -0.36) for UP and DOWN instead of the raw probabilities (30% and 70% in this case) because we always optimize the log probability of the correct label (this makes math nicer, and is equivalent to optimizing the raw probability because log is monotonic). Now, in supervised learning we would have access to a label. For example, we might be told that the correct thing to do right now is to go UP (label 0). In an implementation we would enter gradient of 1.0 on the log probability of UP and run backprop to compute the gradient vector \\(\nabla_{W} \log p(y=UP \mid x) \\). This gradient would tell us how we should change every one of our million parameters to make the network slightly more likely to predict UP. For example, one of the million parameters in the network might have a gradient of -2.1, which means that if we were to increase that parameter by a small positive amount (e.g. `0.001`), the log probability of UP would decrease by `2.1 * 0.001` (decrease due to the negative sign). If we then did a parameter update then, yay, our network would now be slightly more likely to predict UP when it sees a very similar image in the future.
 
 <div class="imgcap">
