@@ -55,7 +55,8 @@ Reinforcement learning là các bài toán giúp cho một hệ thống tự đ�
 >**Ví dụ 1:** 
 
 
-<iframe width="420" height="315" src="https://www.youtube.com/watch?v=qv6UVOQ0F44" frameborder="0" allowfullscreen></iframe>
+
+<iframe width="480" height="360" src="https://www.youtube.com/watch?v=qv6UVOQ0F44" frameborder="0"> </iframe>
 
 ## Tài liệu tham khảo 
 1. [A Tour of Machine Learning Algorithms](http://machinelearningmastery.com/a-tour-of-machine-learning-algorithms/)
