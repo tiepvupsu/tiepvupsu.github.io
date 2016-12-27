@@ -29,18 +29,23 @@ Những năm gần đây, khi mà khả năng tính toán của các máy tính 
 
 
 ## Mục đích viết Blog
-Nhu cầu về nhân lực ngành Machine Learning (Deep Learning) ngày một cao, kéo theo đó nhu cầu học Machine Learning trên thế giới và ở Việt Nam ngày một lớn. Cá nhân tôi cũng muốn hệ thống lại kiến thức của mình về lĩnh vực này để chuẩn bị cho tương lai (đây là một trong những mục tiêu của tôi trong năm 2017). Tôi sẽ cố gắng đi từ những thuật toán cơ bản nhất của Machine Learning kèm theo các ví dụ và mã nguồn trong mỗi bài viết. Đồng thơi, tôi cũng muốn nhận được phản hồi của bạn đọc để qua những thảo luận, chúng ta có thể hiểu rõ hơn và nắm bắt các thuật toán này. 
+Nhu cầu về nhân lực ngành Machine Learning (Deep Learning) ngày một cao, kéo theo đó nhu cầu học Machine Learning trên thế giới và ở Việt Nam ngày một lớn. Cá nhân tôi cũng muốn hệ thống lại kiến thức của mình về lĩnh vực này để chuẩn bị cho tương lai (đây là một trong những mục tiêu của tôi trong năm 2017). Tôi sẽ cố gắng đi từ những thuật toán cơ bản nhất của Machine Learning kèm theo các ví dụ và mã nguồn trong mỗi bài viết. Nếu không bận việc đột xuất, tôi sẽ viết 1 bài/tuần. Đồng thơi, tôi cũng muốn nhận được phản hồi của bạn đọc để qua những thảo luận, chúng ta có thể hiểu rõ hơn và nắm bắt các thuật toán này. 
 
 Khi chuẩn bị các bài viết, tôi sẽ giả định rằng bạn đọc có một chút kiến thức về Đại Số Tuyến Tính (Linear Algebra), Xác Suât Thống Kê (Probability and Statistics) và có kinh nghiệm về lập trình Python. Nếu bạn chưa có nhiều kinh nghiệm về các lĩnh vực này, đừng quá lo lắng vì mỗi bài sẽ chỉ sử dụng một vài kỹ thuật cơ bản. Hãy để lại câu hỏi của bạn ở phần Comment bên dưới, tôi sẽ thảo luận thêm với các bạn.
 
-## Các khóa học Machine Learning
-### Tiếng Anh 
+## Tham khảo thêm
 
-1. [Machine Learning với thầy Andrew Ng](https://www.coursera.org/learn/machine-learning) (_Coursera_)
-2. [Deep Learning by Google](https://www.udacity.com/course/deep-learning--ud730) (_Udacity_)
+### Tiếng Anh
+1. [Machine Learning với thầy Andrew Ng trên Coursera](https://www.coursera.org/learn/machine-learning) (_Khóa học nổi tiếng nhất về Machine Learning_)
+2. [Deep Learning by Google trên Udacity](https://www.udacity.com/course/deep-learning--ud730) (_Khóa học nâng cao hơn về Deep Learning với Tensorflow_)
+3. [Machine Learning mastery](http://machinelearningmastery.com/) (_Các thuật toán Machine Learning cơ bản_)
 
 ### Tiếng Việt 
 **Lưu ý**: _Các khóa học này tôi chưa từng tham gia, chỉ đưa ra để các bạn tham khảo._ 
-
 1. [Machine Learning 1/2017](http://tuanvannguyen.blogspot.com/2016/12/cap-nhat-khoa-hoc-ve-machine-learning.html)
-2. [Nhập môn Machine Learning](https://techmaster.vn/khoa-hoc/25511/machine-learning-co-ban)(_Tech Master_)
+2. [Nhập môn Machine Learning - Cao Thanh Hà](https://techmaster.vn/khoa-hoc/25511/machine-learning-co-ban)(_Tech Master_)
+3. [Machine Learning trong Xử Lý Ngôn Ngữ Tự Nhiên - Nhóm Đông Du](http://viet.jnlp.org/kien-thuc-co-ban-ve-xu-ly-ngon-ngu-tu-nhien/machine-learning-trong-nlp)
+4. [Machine Learning cho người mới bắt đầu - Ông Xuân Hồng](https://ongxuanhong.wordpress.com/). 
+5. [Machine Learning book for Vietnamese](https://ml-book-vn.khanhxnguyen.com/)
+
+
