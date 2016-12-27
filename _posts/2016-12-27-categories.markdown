@@ -43,8 +43,19 @@ Các bài toán Unsupervised learning được tiếp tục chia nhỏ thành ha
 
 * **Association**: Là bài toán khi bạn muốn khám phá ra một quy luật dữa trên nhiều dữ liệu cho trước. Ví dụ: những khách hàng nam mua quần áo thường có xu hướng mua thêm đồng hồ hoặc thắt lưng; những khán giả xem phim Spider Man thường có xu hướng xem thêm phim Bat Man, dựa vào đó tạo ra một hệ thống gợi ý khách hàng (Recommendation System), thúc đẩy nhu cầu mua sắm. 
 
+## Semi-Supervised Learning (Học bán giám sát)
+Các bài toán khi chúng ta có một lượng lớn dữ liệu \\(\mathbf{X}\\) nhưng chỉ một phần trong chúng được gán nhãn được gọi là Semi-Supervised Learning. Những bài toán thuộc nhóm này nằm giữa hai nhóm được nêu bên trên. 
+
+Một ví dụ điển hình của nhóm này là chỉ có một lượng lớn ảnh hoặc văn bản được gán nhãn (ví dụ bức ảnh về người, động vật hoặc các văn bản khoa học, chính trị) và phần lớn các bức ảnh/văn bản khác chưa được gán nhãn được thu thập từ internet. Thực tế cho thấy rất nhiều các bài toàn Machine Learning thuộc vào nhóm này vì việc thu thập dữ liệu có nhãn tốn rất nhiều thời gian và chi phí cao và rất nhiều loại dữ liệu thậm chí cần phải có chuyên gia mới gán nhãn được (ảnh y học chẳng hạn). Ngược lại, dữ liệu chưa có nhãn có thể được thu thập với chi phí thấp từ internet. 
+
 
 ## Reinforcement Learning (Học củng cố)
+Reinforcement learning là các bài toán giúp cho một hệ thống tự động xác định hành vi dựa trên hoàn cảnh để đạt được lợi ích cao nhất (maximizing the performance). Hiện tại, Reinforcement learning chủ yếu được áp dụng vào Lý Thuyết Trò Chơi (Game Theory), các thuật toán cần xác định nưóc đi tiếp theo để đạt được điểm số cao nhất.
+
+>**Ví dụ 1:** 
+
+
+<iframe width="420" height="315" src="https://www.youtube.com/watch?v=qv6UVOQ0F44" frameborder="0" allowfullscreen></iframe>
 
 ## Tài liệu tham khảo 
 1. [A Tour of Machine Learning Algorithms](http://machinelearningmastery.com/a-tour-of-machine-learning-algorithms/)
