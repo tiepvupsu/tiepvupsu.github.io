@@ -1,0 +1,41 @@
+---
+layout: post
+comments: true
+title:  "Deep Reinforcement Learning: Pong from Pixels"
+date:   2016-12-26 15:22:00
+mathjax: true
+---
+
+
+
+<div class="imgcap">
+<img src="/assets/rl/preview.jpeg">
+<div class="thecap">Examples of RL in the wild. <b>From left to right</b>: Deep Q Learning network playing ATARI, AlphaGo, Berkeley robot stacking Legos, physically-simulated quadruped leaping over terrain.</div>
+</div>
+
+### Pong from pixels
+
+<div class="imgcap">
+<div style="display:inline-block">
+	<img src="/assets/rl/pong.gif">
+</div>
+<div style="display:inline-block; margin-left: 20px;">
+	<img src="/assets/rl/mdp.png" height="206">
+</div>
+<div class="thecap"><b>Left:</b> The game of Pong. <b>Right:</b> Pong is a special case of a <a href="https://en.wikipedia.org/wiki/Markov_decision_process">Markov Decision Process (MDP)</a>: A graph where each node is a particular game state and each edge is a possible (in general probabilistic) transition. Each edge also gives a reward, and the goal is to compute the optimal way of acting in any state to maximize rewards.</div>
+</div>
+
+
+```python
+h = np.dot(W1, x) # compute hidden layer neuron activations
+h[h<0] = 0 # ReLU nonlinearity: threshold at zero
+logp = np.dot(W2, h) # compute log probability of going up
+p = 1.0 / (1.0 + np.exp(-logp)) # sigmoid function (gives probability of going up)
+```
+
+
+\\( a^2 + b^2 = c^ 2\\)
+
+\\[ \frac{1}{2} + \frac{1}{4} + ... = 1 \\]
+
+
