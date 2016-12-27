@@ -41,7 +41,8 @@ Khi chuẩn bị các bài viết, tôi sẽ giả định rằng bạn đọc c
 3. [Machine Learning mastery](http://machinelearningmastery.com/) (_Các thuật toán Machine Learning cơ bản_)
 
 ### Tiếng Việt 
-**Lưu ý**: _Các khóa học này tôi chưa từng tham gia, chỉ đưa ra để các bạn tham khảo._ 
+**Lưu ý**: _Các khóa học này tôi chưa từng tham gia, chỉ đưa ra để các bạn tham khảo._
+
 1. [Machine Learning 1/2017](http://tuanvannguyen.blogspot.com/2016/12/cap-nhat-khoa-hoc-ve-machine-learning.html)
 2. [Nhập môn Machine Learning - Cao Thanh Hà](https://techmaster.vn/khoa-hoc/25511/machine-learning-co-ban)(_Tech Master_)
 3. [Machine Learning trong Xử Lý Ngôn Ngữ Tự Nhiên - Nhóm Đông Du](http://viet.jnlp.org/kien-thuc-co-ban-ve-xu-ly-ngon-ngu-tu-nhien/machine-learning-trong-nlp)
