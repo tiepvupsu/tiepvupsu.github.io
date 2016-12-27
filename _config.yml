@@ -1,7 +1,7 @@
 # Site settings
-title: Cơ bản về Machine Learning và các Thuật Toán Tối Ưu
+title: Machine Learning cơ bản
 email: vuhuutiep@gmail.com
-description: "Fundatmentals of Machine Learning and Optimization Algorithms"
+# description: "Fundatmentals of Machine Learning and Optimization Algorithms"
 baseurl: ""
 url: "http://tiepvupsu.github.io"
 # twitter_username: karpathy
