@@ -70,10 +70,16 @@ Reinforcement learning là các bài toán giúp cho một hệ thống tự đ�
 
 **Ví dụ 2:** [Huấn luyện cho máy tính chơi game Mario.](https://www.youtube.com/watch?v=qv6UVOQ0F44). Đây là một chương trình thú vị dạy máy tính chơi game Mario. Game này đơn giản hơn cờ vây vì tại một thời điểm, người chơi phải bấm một số lượng nhỏ các nút (di chuyển, nhảy, bắn đạn) hoặc không cần bấm nút nào. Đồng thời, phản ứng của máy cũng đơn giản hơn và lặp lại ở mỗi lần chơi (tại thời điểm cụ thể sẽ xuất hiện một chướng ngại vật cố định ở một vị trí cố định). Đầu vào của thuật toán là sơ đồ của màn hình tại thời điểm hiện tại, nhiệm vụ của thuật toán là với đầu vào đó, tổ hợp phím nào nên được bấm. Việc huấn luyện này được dựa trên điểm số cho việc di chuyển được bao xa trong thời gian bao lâu trong game, càng xa và càng nhanh thì được điểm càng cao. Thông qua huẩn luyện, thuật toán sẽ tìm ra một cách tối ưu để tối đa số điểm trên, qua đó đạt được mục đích cuối cùng là cứu công chúa. Click vào hình dưới để xem video.
 
-<p align="center">
-<a href = "https://www.youtube.com/watch?v=qv6UVOQ0F44"> 
-  <img src="https://img.youtube.com/vi/qv6UVOQ0F44/0.jpg" width = "400" alt="Mario"/> </a>
-</p>
+
+<div class="imgcap">
+<div >
+<a href = "https://www.youtube.com/watch?v=qv6UVOQ0F44">
+    <img src="https://img.youtube.com/vi/qv6UVOQ0F44/0.jpg" width = "800"></a>
+    <!-- <img src="/assets/rl/mdp.png" height="206"> -->
+</div>
+<div class="thecap">Lập trình cho máy tính chơi game Mario</div>
+</div>
+
 
 <!-- <iframe width="480" height="360" src="https://www.youtube.com/watch?v=qv6UVOQ0F44" frameborder="0"> </iframe> -->
 
