@@ -12,8 +12,14 @@ mathjax: true
     <img src="/assets/categories/alphago.jpeg" width = "800"></a>
     <!-- <img src="/assets/rl/mdp.png" height="206"> -->
 </div>
-<div class="thecap">AlphaGo chơi cờ vây với Lee Sedol. AlphaGo là một ví dụ của Reinforcement learning.</div>
+<div class="thecap">AlphaGo chơi cờ vây với Lee Sedol. AlphaGo là một ví dụ của Reinforcement learning. <br> (Nguồn: <a href ="http://www.tomshardware.com/news/alphago-defeats-sedol-second-time,31377.html">AlphaGo AI Defeats Sedol Again, With 'Near Perfect Game')</a></div>
 </div>
+
+
+
+
+
+
 
 Có hai cách phổ biến phân nhóm các thuật toán Machine learning. Một là dựa trên phương thức học (learning style), hai là dựa trên chức năng (function) (của mỗi thuật toán).
 
@@ -29,6 +35,16 @@ Một cách toán học, Supervised learning là khi chúng ra có một tập h
 Mục đích là xấp xỉ hàm số \\(f\\) thật tốt để khi có một dữ liệu \\(\mathbf{x}\\) mới, chúng ta có thể tính được nhãn tương ứng của nó \\( \mathbf{y} = f(\mathbf{x}) \\).
     
 **Ví dụ 1:** trong nhận dạng chữ viết tay, ta có ảnh của hàng nghìn ví dụ của mỗi chữ số được viết bởi nhiều người khác nhau. Chúng ta đưa các bức ảnh này vào trong một thuật toán và chỉ cho nó biết mỗi bức ảnh tương ứng với chữ số nào. Sau khi thuật toán tạo ra (sau khi _học_) một mô hình, tức một hàm số mà đầu vào là một bức ảnh và đầu ra là một chữ số, khi nhận được một bức ảnh mới mà mô hình **chưa nhìn thấy bao giờ**, nó sẽ dự đoán bức ảnh đó chứa chữ số nào.
+
+<div class="imgcap">
+<div >
+<!-- <a href = "http://www.rubylab.io/img/mnist.png"> -->
+    <img src="http://www.rubylab.io/img/mnist.png" width = "600"></a>
+    <!-- <img src="/assets/rl/mdp.png" height="206"> -->
+<!-- </div> -->
+<div class="thecap"><a href = "http://yann.lecun.com/exdb/mnist/">MNIST</a>: bộ cơ sở dữ liệu của chữ số viết tay. <br> (Nguồn: <a href ="http://www.rubylab.io/2015/03/18/simple-neural-network-implenentation-in-ruby/">Simple Neural Network implementation in Ruby)</a></div>
+</div>
+
 
 Ví dụ này khá giống với cách học của con người khi còn nhỏ. Ta đưa bảng chữ cái cho một đứa trẻ và chỉ cho chúng đây là chữ A, đây là chữ B. Sau một vài lần được dạy thì trẻ có thể nhận biết được đâu là chữ A, đâu là chữ B trong một cuốn sách mà chúng chưa nhìn thấy bao giờ. 
 
