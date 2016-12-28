@@ -72,7 +72,7 @@ Reinforcement learning là các bài toán giúp cho một hệ thống tự đ�
 
 <p align="center">
 <a href = "https://www.youtube.com/watch?v=qv6UVOQ0F44"> 
-  <img src="https://img.youtube.com/vi/qv6UVOQ0F44/0.jpg" alt="Sublime's custom image"/> </a>
+  <img src="https://img.youtube.com/vi/qv6UVOQ0F44/0.jpg" width = "400" alt="Mario"/> </a>
 </p>
 
 <!-- <iframe width="480" height="360" src="https://www.youtube.com/watch?v=qv6UVOQ0F44" frameborder="0"> </iframe> -->
