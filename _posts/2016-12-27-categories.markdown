@@ -15,7 +15,7 @@ mathjax: true
 <div class="thecap">AlphaGo chơi cờ vây với Lee Sedol. AlphaGo là một ví dụ của Reinforcement learning.</div>
 </div>
 
-Có hai cách phổ biến phân loại các thuật toán Machine learning. Một là dựa trên phương thức học, hai là dựa trên chức năng (của mỗi thuật toán).
+Có hai cách phổ biến phân loại các thuật toán Machine learning. Một là dựa trên phương thức học (learning style), hai là dựa trên chức năng (function) (của mỗi thuật toán).
 
 ## Dựa trên phương thức học
 
@@ -75,13 +75,9 @@ Reinforcement learning là các bài toán giúp cho một hệ thống tự đ�
 <div >
 <a href = "https://www.youtube.com/watch?v=qv6UVOQ0F44">
     <img src="https://img.youtube.com/vi/qv6UVOQ0F44/0.jpg" width = "800"></a>
-    <!-- <img src="/assets/rl/mdp.png" height="206"> -->
 </div>
 <div class="thecap">Lập trình cho máy tính chơi game Mario</div>
 </div>
-
-
-<!-- <iframe width="480" height="360" src="https://www.youtube.com/watch?v=qv6UVOQ0F44" frameborder="0"> </iframe> -->
 
 ## Dựa trên chức năng 
 
