@@ -5,13 +5,136 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 28 Dec 2016 10:32:33 -0500</pubDate>
-    <lastBuildDate>Wed, 28 Dec 2016 10:32:33 -0500</lastBuildDate>
+    <pubDate>Wed, 28 Dec 2016 12:12:07 -0500</pubDate>
+    <lastBuildDate>Wed, 28 Dec 2016 12:12:07 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
         <title>Linear Regression</title>
-        <description>&lt;h2 id=&quot;linear-regression&quot;&gt;Linear Regression&lt;/h2&gt;
+        <description>&lt;div class=&quot;imgcap&quot;&gt;
+&lt;div&gt;
+&lt;a href=&quot;/2016/12/28/linearregression/&quot;&gt;
+    &lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Linear_regression.svg/400px-Linear_regression.svg.png&quot; width=&quot;500&quot; /&gt;&lt;/a&gt;
+    &lt;!-- &lt;img src=&quot;/assets/rl/mdp.png&quot; height=&quot;206&quot;&gt; --&gt;
+&lt;/div&gt;
+&lt;div class=&quot;thecap&quot;&gt; Linear Regression &lt;br /&gt; (Nguồn: &lt;a href=&quot;https://en.wikipedia.org/wiki/Linear_regression&quot;&gt;Wikipedia&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;linear-regression&quot;&gt;Linear Regression&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;&lt;strong&gt;Chiều cao&lt;/strong&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;strong&gt;Cân nặng&lt;/strong&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;147&lt;/td&gt;
+      &lt;td&gt;49&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;150&lt;/td&gt;
+      &lt;td&gt;50&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;153&lt;/td&gt;
+      &lt;td&gt;51&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;155&lt;/td&gt;
+      &lt;td&gt;52&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;158&lt;/td&gt;
+      &lt;td&gt;54&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;160&lt;/td&gt;
+      &lt;td&gt;56&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;163&lt;/td&gt;
+      &lt;td&gt;58&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;165&lt;/td&gt;
+      &lt;td&gt;59&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;168&lt;/td&gt;
+      &lt;td&gt;60&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;170&lt;/td&gt;
+      &lt;td&gt;62&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;173&lt;/td&gt;
+      &lt;td&gt;63&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;175&lt;/td&gt;
+      &lt;td&gt;64&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;178&lt;/td&gt;
+      &lt;td&gt;66&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;180&lt;/td&gt;
+      &lt;td&gt;67&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;183&lt;/td&gt;
+      &lt;td&gt;68&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;&lt;strong&gt;Chiều cao&lt;/strong&gt;&lt;/th&gt;
+      &lt;th&gt;147&lt;/th&gt;
+      &lt;th&gt;150&lt;/th&gt;
+      &lt;th&gt;153&lt;/th&gt;
+      &lt;th&gt;155&lt;/th&gt;
+      &lt;th&gt;158&lt;/th&gt;
+      &lt;th&gt;160&lt;/th&gt;
+      &lt;th&gt;163&lt;/th&gt;
+      &lt;th&gt;165&lt;/th&gt;
+      &lt;th&gt;168&lt;/th&gt;
+      &lt;th&gt;170&lt;/th&gt;
+      &lt;th&gt;173&lt;/th&gt;
+      &lt;th&gt;175&lt;/th&gt;
+      &lt;th&gt;178&lt;/th&gt;
+      &lt;th&gt;180&lt;/th&gt;
+      &lt;th&gt;183&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Cân nặng&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;49&lt;/td&gt;
+      &lt;td&gt;50&lt;/td&gt;
+      &lt;td&gt;51&lt;/td&gt;
+      &lt;td&gt;52&lt;/td&gt;
+      &lt;td&gt;54&lt;/td&gt;
+      &lt;td&gt;56&lt;/td&gt;
+      &lt;td&gt;58&lt;/td&gt;
+      &lt;td&gt;59&lt;/td&gt;
+      &lt;td&gt;60&lt;/td&gt;
+      &lt;td&gt;62&lt;/td&gt;
+      &lt;td&gt;63&lt;/td&gt;
+      &lt;td&gt;64&lt;/td&gt;
+      &lt;td&gt;66&lt;/td&gt;
+      &lt;td&gt;67&lt;/td&gt;
+      &lt;td&gt;68&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
 &lt;p&gt;&lt;a href=&quot;http://people.sc.fsu.edu/~jburkardt/datasets/regression/regression.html&quot;&gt;Data&lt;/a&gt;&lt;/p&gt;
 </description>
