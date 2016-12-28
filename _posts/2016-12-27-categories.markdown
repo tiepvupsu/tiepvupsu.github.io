@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title:  "Phân loại các thuật toán Machine Learning"
-date:   2016-12-26 15:22:00
+date:   2016-12-27 15:22:00
 mathjax: true
 ---
 
