@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Machine Learning cơ bản</title>
+    <description></description>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Tue, 27 Dec 2016 21:45:24 -0500</pubDate>
+    <lastBuildDate>Tue, 27 Dec 2016 21:45:24 -0500</lastBuildDate>
+    <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>Phân loại các thuật toán Machine Learning</title>
+        <description>&lt;div class=&quot;imgcap&quot;&gt;
+&lt;div&gt;
+&lt;a href=&quot;/2016/12/26/categories/&quot;&gt;
+    &lt;img src=&quot;/assets/categories/alphago.jpeg&quot; width=&quot;800&quot; /&gt;&lt;/a&gt;
+    &lt;!-- &lt;img src=&quot;/assets/rl/mdp.png&quot; height=&quot;206&quot;&gt; --&gt;
+&lt;/div&gt;
+&lt;div class=&quot;thecap&quot;&gt;AlphaGo chơi cờ vây với Lee Sedol. AlphaGo là một ví dụ của Reinforcement learning.&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Có hai cách phổ biến phân loại các thuật toán Machine learning. Một là dựa trên phương thức học (learning style), hai là dựa trên chức năng (function) (của mỗi thuật toán).&lt;/p&gt;
+
+&lt;h2 id=&quot;dựa-trên-phương-thức-học&quot;&gt;Dựa trên phương thức học&lt;/h2&gt;
+
+&lt;p&gt;Theo phương thức học, các thuật toán Machine Learning thường được chia làm 4 loại: Supervise learning, Unsupervised learning, Semi-supervised lerning và Reinforcement learning. &lt;em&gt;Có một số cách phân loại không có Semi-supervised learning hoặc Reinforcement learning.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;supervised-learning-học-có-giám-sát&quot;&gt;Supervised Learning (Học có giám sát)&lt;/h3&gt;
+&lt;p&gt;Supervised learning là thuật toán dự đoán đầu ra (outcome) của một dữ liệu mới (new input) dựa trên các cặp (&lt;em&gt;input, outcome&lt;/em&gt;) mẫu có sẵn. Cặp dữ liệu này còn được gọi là (&lt;em&gt;data. label&lt;/em&gt;), tức (&lt;em&gt;dữ liệu, nhãn&lt;/em&gt;). Supervised learning là loại phổ biến nhất trong các thuật toán Machine Learning.&lt;/p&gt;
+
+&lt;p&gt;Một cách toán học, Supervised learning là khi chúng ra có một tập hợp biến đầu vào \( \mathbf{X} = [\mathbf{x}_1, \mathbf{x}_2, \dots, \mathbf{x}_N] \) và một tập hợp nhãn tương ứng \( \mathbf{Y} = [\mathbf{y}_1, \mathbf{y}_2, \dots, \mathbf{y}_N] \), trong đó \( \mathbf{x}_i, \mathbf{y}_i \) là các vector. Chúng ta cần tạo ra một hàm số ánh xạ từ tập \(\mathbf{X}\) sang tập \(\mathbf{Y}\):
+\[ \mathbf{y}_i = f(\mathbf{x}_i), ~~ \forall i = 1, 2, \dots, N\] 
+Mục đích là xấp xỉ hàm số \(f\) thật tốt để khi có một dữ liệu \(\mathbf{x}\) mới, chúng ta có thể tính được nhãn tương ứng của nó \( \mathbf{y} = f(\mathbf{x}) \).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Ví dụ 1:&lt;/strong&gt; trong nhận dạng chữ viết tay, ta có ảnh của hàng nghìn ví dụ của mỗi chữ số được viết bởi nhiều người khác nhau. Chúng ta đưa các bức ảnh này vào trong một thuật toán và chỉ cho nó biết mỗi bức ảnh tương ứng với chữ số nào. Sau khi thuật toấn tạo ra (học được) một mô hình, tức một hàm số mà đầu vào là một bức ảnh và đầu ra là một chữ số, khi nhận được một bức ảnh mới mà mô hình &lt;strong&gt;chưa nhìn thấy bao giờ&lt;/strong&gt;, nó sẽ dự đoán bức ảnh đó chứa chữ số nào.&lt;/p&gt;
+
+&lt;p&gt;Ví dụ này khá giống với cách học của con người khi còn nhỏ. Ta đưa bảng chữ cái cho một đứa trẻ và chỉ cho chúng đây là chữ A, đây là chữ B. Sau một vài lần được dạy thì trẻ có thể nhận biết được đâu là chữ A, đâu là chữ B trong một cuốn sách mà chúng chưa nhìn thấy bao giờ.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Ví dụ 2:&lt;/strong&gt; Thuật toán dò các khuôn mặt trong một bức ảnh đã có từ rất lâu (dựa vào vị trí tương đối của mắt, mũi, miệng và các bộ phận khác trong mỗi khuôn mặt). Những ngày đầu, facebook sử dụng thuật toán này để chỉ ra các khuôn mặt trong một bức ảnh và yêu cầu người dùng &lt;em&gt;tag friends&lt;/em&gt; - tức gán nhãn cho mỗi khuôn mặt. Số lượng cặp dữ liệu (&lt;em&gt;khuôn mặt, tên người&lt;/em&gt;) càng lớn, độ chính xác ở những lần tự động &lt;em&gt;tag&lt;/em&gt; tiếp theo sẽ càng lớn.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Ví dụ 3:&lt;/strong&gt; Bản thân thuật toán dò tìm các khuôn mặt trong 1 bức ảnh cũng là một thuật toán &lt;strong&gt;Supervised learning&lt;/strong&gt; với training data (dữ liệu học) là hàng ngàn cặp (&lt;em&gt;ảnh, mặt người&lt;/em&gt;) và (&lt;em&gt;ảnh, không phải mặt người&lt;/em&gt;) được đưa vào. Chú ý là dữ liệu này chỉ phân biệt &lt;em&gt;mặt người&lt;/em&gt; và &lt;em&gt;không phải mặt ngưòi&lt;/em&gt; mà không phân biệt khuôn mặt của những người khác nhau.&lt;/p&gt;
+
+&lt;p&gt;Thuật toán supervised learning còn được tiếp tục chia nhỏ ra thành hai loại chính:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Classification&lt;/strong&gt; (Phân loại): Một bài toán được gọi là &lt;em&gt;classification&lt;/em&gt; nếu &lt;em&gt;label&lt;/em&gt; của mỗi &lt;em&gt;input data&lt;/em&gt; được chia thành các nhóm. Ví dụ: xác định xem một email có phải là spam hay không; các hãng tín dụng xác định xem một khách hàng có khả năng thanh toán nợ hay không. Ba ví dụ phía trên được chia vào loại này.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Regression&lt;/strong&gt; (tiếng Việt dịch là &lt;em&gt;Hồi quy&lt;/em&gt;, tôi không thích cách dịch này vì bản thân không hiểu nó nghĩa là gì): Nếu &lt;em&gt;label&lt;/em&gt; không được chia thành các nhóm mà là một giá trị thực cụ thể. Ví dụ: giá cho thuê của một căn nhà rộng \(x ~ \text{m}^2\), có \(y\) phòng ngủ và cách trung tâm thành phố \(z~ \text{km}\) có giá là bao nhiêu.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Gần đây &lt;a href=&quot;http://how-old.net/&quot;&gt;Microsoft có một ứng dụng dự đoán giới tính và tuổi&lt;/a&gt;. Phần dự đoán giới tính có thể coi là thuật toán &lt;strong&gt;Classification&lt;/strong&gt;, phần dự đoán tuổi có thể coi là thuật toán &lt;strong&gt;Regression&lt;/strong&gt;. &lt;em&gt;Chú ý rằng phần dự đoán tuổi cũng có thể coi là &lt;strong&gt;Classification&lt;/strong&gt; nếu ta coi tuổi là một số nguyên dương không lớn hơn 150, chúng ta sẽ có 150 class (lớp) khác nhau.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;unsupervised-learning-học-không-giám-sát&quot;&gt;Unsupervised Learning (Học không giám sát)&lt;/h3&gt;
+&lt;p&gt;Trong thuật toán này, chúng ta không biết được &lt;em&gt;outcome&lt;/em&gt; hãy &lt;em&gt;nhãn&lt;/em&gt; mã chỉ có dữ liệu đầu vào. Thuật toán unsupervised learning sẽ dựa vào cấu trúc của dữ liệu để thực hiện một công việc nào đó, ví dụ như phân nhóm (clustering) hoặc giảm số chiều của dữ liệu (dimention reduction).&lt;/p&gt;
+
+&lt;p&gt;Một cách toán học, Unsupervised learning là khi chúng ta chỉ có dữ liệu vào \(\mathbf{X} \) mà không biết &lt;em&gt;nhãn&lt;/em&gt; \(\mathbf{Y}\) tương ứng.&lt;/p&gt;
+
+&lt;p&gt;Những thuật toán loại này được gọi là Unsupervised learning vì không giống như Supervised learning, chúng ta không biết câu trả lời chính xác cho mỗi dữ liệu đầu vào, hay nói cách khác, không có thầy cô giáo nào chỉ cho ta biết đó là chữ A hay chữ B. Cụm &lt;em&gt;không giám sát&lt;/em&gt; được đặt theo nghĩa này.&lt;/p&gt;
+
+&lt;p&gt;Các bài toán Unsupervised learning được tiếp tục chia nhỏ thành hai loại:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Clustering&lt;/strong&gt; (phân nhóm): một bài toán phân loại toàn bộ dữ liệu \(\mathbf{X}\) thành các nhóm nhỏ dựa trên sự liên quan giữa các dữ liệu trong mỗi nhóm. Ví dụ: phân nhóm khách hàng dựa trên hành vi mua hàng. Điều này cũng giống như việc ta đưa cho một đứa trẻ rất nhiều mảnh ghép với các hình thù và màu sắc khác nhau, ví dụ tam giác, vuông, tròn với màu xanh và đỏ, sau đó yêu cẩu trẻ nhóm chúng vào thành từng nhóm. Mặc dù không cho trẻ biết mảnh nào tương ứng với hình nào hoặc màu nào, nhiều khả năng chúng vẫn có thể phân loại các mảnh ghép theo màu hoặc hình dạng.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Association&lt;/strong&gt;: Là bài toán khi bạn muốn khám phá ra một quy luật dữa trên nhiều dữ liệu cho trước. Ví dụ: những khách hàng nam mua quần áo thường có xu hướng mua thêm đồng hồ hoặc thắt lưng; những khán giả xem phim Spider Man thường có xu hướng xem thêm phim Bat Man, dựa vào đó tạo ra một hệ thống gợi ý khách hàng (Recommendation System), thúc đẩy nhu cầu mua sắm.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;semi-supervised-learning-học-bán-giám-sát&quot;&gt;Semi-Supervised Learning (Học bán giám sát)&lt;/h3&gt;
+&lt;p&gt;Các bài toán khi chúng ta có một lượng lớn dữ liệu \(\mathbf{X}\) nhưng chỉ một phần trong chúng được gán nhãn được gọi là Semi-Supervised Learning. Những bài toán thuộc nhóm này nằm giữa hai nhóm được nêu bên trên.&lt;/p&gt;
+
+&lt;p&gt;Một ví dụ điển hình của nhóm này là chỉ có một lượng lớn ảnh hoặc văn bản được gán nhãn (ví dụ bức ảnh về người, động vật hoặc các văn bản khoa học, chính trị) và phần lớn các bức ảnh/văn bản khác chưa được gán nhãn được thu thập từ internet. Thực tế cho thấy rất nhiều các bài toàn Machine Learning thuộc vào nhóm này vì việc thu thập dữ liệu có nhãn tốn rất nhiều thời gian và chi phí cao và rất nhiều loại dữ liệu thậm chí cần phải có chuyên gia mới gán nhãn được (ảnh y học chẳng hạn). Ngược lại, dữ liệu chưa có nhãn có thể được thu thập với chi phí thấp từ internet.&lt;/p&gt;
+
+&lt;h3 id=&quot;reinforcement-learning-học-củng-cố&quot;&gt;Reinforcement Learning (Học Củng Cố)&lt;/h3&gt;
+&lt;p&gt;Reinforcement learning là các bài toán giúp cho một hệ thống tự động xác định hành vi dựa trên hoàn cảnh để đạt được lợi ích cao nhất (maximizing the performance). Hiện tại, Reinforcement learning chủ yếu được áp dụng vào Lý Thuyết Trò Chơi (Game Theory), các thuật toán cần xác định nưóc đi tiếp theo để đạt được điểm số cao nhất.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Ví dụ 1:&lt;/strong&gt; &lt;a href=&quot;https://gogameguru.com/tag/deepmind-alphago-lee-sedol/&quot;&gt;AlphaGo gần đây nổi tiếng với việc chơi cờ vây thắng cả con người&lt;/a&gt;. &lt;a href=&quot;https://www.tastehit.com/blog/google-deepmind-alphago-how-it-works/&quot;&gt;Cờ vây được xem là có độ phức tạp cực kỳ cao&lt;/a&gt; với tổng số nước đi là xấp xỉ \(10^{761} \) so với cờ vua là \(10^{120} \) và tổng số nguyên tử trong toàn vũ trụ là khoảng \(10^{80}\)!! Vì vậy, thuật toán phải chọn ra 1 nước đi tối ưu trong số hàng nhiều tỉ tỉ lựa chọn, và tất nhiên, không thể áp dụng thuật toán tương tự như &lt;a href=&quot;https://en.wikipedia.org/wiki/Deep_Blue_(chess_computer)&quot;&gt;IBM Deep Blue&lt;/a&gt; (IBM Deep Blue đã thắng con người trong môn cờ vua 20 năm trước). Về cơ bản, Alphago bao gốm các thuật toán thuộc cả Supervised learning và Reinforcement learning. Trong phần Supervised learning, dữ liệu từ các ván cờ do con người chơi với nhau. Tuy nhiên, mục đích cuối cùng của AlphaGo không phải là chơi như con người mà phải thậm chí thắng cả con người. Vì vậy, sau khi &lt;em&gt;học&lt;/em&gt; xong các ván cơ của con người, AlphaGo tự chơi với chính nó với hàng triệu ván chơi để tìm ra các nước đi mới tối ưu hơn. Thuật toán trong phần tự chơi này được xếp vào loại Reinforcement learning. (Xem thêm tại &lt;a href=&quot;https://www.tastehit.com/blog/google-deepmind-alphago-how-it-works/&quot;&gt;Google DeepMind’s AlphaGo: How it works&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Ví dụ 2:&lt;/strong&gt; &lt;a href=&quot;https://www.youtube.com/watch?v=qv6UVOQ0F44&quot;&gt;Huấn luyện cho máy tính chơi game Mario.&lt;/a&gt;. Đây là một chương trình thú vị dạy máy tính chơi game Mario. Game này đơn giản hơn cờ vây vì tại một thời điểm, người chơi phải bấm một số lượng nhỏ các nút (di chuyển, nhảy, bắn đạn) hoặc không cần bấm nút nào. Đồng thời, phản ứng của máy cũng đơn giản hơn và lặp lại ở mỗi lần chơi (tại thời điểm cụ thể sẽ xuất hiện một chướng ngại vật cố định ở một vị trí cố định). Đầu vào của thuật toán là sơ đồ của màn hình tại thời điểm hiện tại, nhiệm vụ của thuật toán là với đầu vào đó, tổ hợp phím nào nên được bấm. Việc huấn luyện này được dựa trên điểm số cho việc di chuyển được bao xa trong thời gian bao lâu trong game, càng xa và càng nhanh thì được điểm càng cao. Thông qua huẩn luyện, thuật toán sẽ tìm ra một cách tối ưu để tối đa số điểm trên, qua đó đạt được mục đích cuối cùng là cứu công chúa. Click vào hình dưới để xem video.&lt;/p&gt;
+
+&lt;div class=&quot;imgcap&quot;&gt;
+&lt;div&gt;
+&lt;a href=&quot;https://www.youtube.com/watch?v=qv6UVOQ0F44&quot;&gt;
+    &lt;img src=&quot;https://img.youtube.com/vi/qv6UVOQ0F44/0.jpg&quot; width=&quot;800&quot; /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class=&quot;thecap&quot;&gt;Lập trình cho máy tính chơi game Mario&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;dựa-trên-chức-năng&quot;&gt;Dựa trên chức năng&lt;/h2&gt;
+
+&lt;p&gt;Có một cách phân loại thứ hai dựa trên 
+Trong phần này, tôi xin chỉ liệt kê các thuật toán. Thông tin cụ thể sẽ được trình bày trong các bài viết khác tại blog này. Trong quá trình viết, tôi có thể sẽ thêm bớt một số thuật toán.&lt;/p&gt;
+
+&lt;h3 id=&quot;regression-algorithms&quot;&gt;Regression Algorithms&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Linear Regression&lt;/li&gt;
+  &lt;li&gt;Logistic Regression&lt;/li&gt;
+  &lt;li&gt;Stepwise Regression&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;classification-algorithms&quot;&gt;Classification Algorithms&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Linear Classifier&lt;/li&gt;
+  &lt;li&gt;Support Vector Machine (SMV)&lt;/li&gt;
+  &lt;li&gt;Kernel SVM&lt;/li&gt;
+  &lt;li&gt;Sparse Represntation-based classification (SRC)&lt;/li&gt;
+  &lt;li&gt;Neural Networks&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;instance-based-algorithms&quot;&gt;Instance-based Algorithms&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;k-Nearest Neighbor (kNN)&lt;/li&gt;
+  &lt;li&gt;Learnin Vector Quantization (LVQ)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;regularization-algorithms&quot;&gt;Regularization Algorithms&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Ridge Regression&lt;/li&gt;
+  &lt;li&gt;Least Absolute Shringkage and Selection Operator (LASSO)&lt;/li&gt;
+  &lt;li&gt;Least-Angle Regression (LARS)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;baysian-algorithms&quot;&gt;Baysian Algorithms&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Naive Bayes&lt;/li&gt;
+  &lt;li&gt;Gausian Naive Bayes&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;clustering-algorithms&quot;&gt;Clustering Algorithms&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;k-Means&lt;/li&gt;
+  &lt;li&gt;k-Medians&lt;/li&gt;
+  &lt;li&gt;Expectation Maximisation (EM)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;artificial-neural-network-algorithms&quot;&gt;Artificial Neural Network Algorithms&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Perceptron&lt;/li&gt;
+  &lt;li&gt;Back-Propagation&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;dimensionality-reduction-algorithms&quot;&gt;Dimensionality Reduction Algorithms&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Principal Component Analysis (PCA)&lt;/li&gt;
+  &lt;li&gt;Linear Discriminant Analysis (LDA)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;ensemble-algorithms&quot;&gt;Ensemble Algorithms&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Boosting&lt;/li&gt;
+  &lt;li&gt;AdaBoost&lt;/li&gt;
+  &lt;li&gt;Randome Forest&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Và còn rất nhiều các thuật toán khác.&lt;/p&gt;
+
+&lt;h2 id=&quot;tài-liệu-tham-khảo&quot;&gt;Tài liệu tham khảo&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;http://machinelearningmastery.com/a-tour-of-machine-learning-algorithms/&quot;&gt;A Tour of Machine Learning Algorithms&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://ongxuanhong.wordpress.com/2015/10/22/diem-qua-cac-thuat-toan-machine-learning-hien-dai/&quot;&gt;Điểm qua các thuật toán Machine Learning hiện đại&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+</description>
+        <pubDate>Mon, 26 Dec 2016 10:22:00 -0500</pubDate>
+        <link>http://localhost:4000/2016/12/26/categories/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/12/26/categories/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Giới thiệu về Machine Learning</title>
+        <description>&lt;div class=&quot;imgcap&quot;&gt;
+&lt;div&gt;
+    &lt;a href=&quot;/2016/12/26/introduce/&quot;&gt;
+    &lt;img src=&quot;/assets/introduce/aimldl.png&quot; width=&quot;800&quot; /&gt;&lt;/a&gt;
+    &lt;!-- &lt;img src=&quot;/assets/rl/mdp.png&quot; height=&quot;206&quot;&gt; --&gt;
+&lt;/div&gt;
+&lt;div class=&quot;thecap&quot;&gt;Mối quan hệ giữa AI, Machine Learning và Deep Learning. &lt;br /&gt; (Nguồn: &lt;a href=&quot;https://blogs.nvidia.com/blog/2016/07/29/whats-difference-artificial-intelligence-machine-learning-deep-learning-ai/&quot;&gt;What’s the Difference Between Artificial Intelligence, Machine Learning, and Deep Learning?&lt;/a&gt;)&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Những năm gần đây, AI - Artificial Intelligence (Trí Tuệ Nhân Tạo), và cụ thể hơn là Machine Learning (Học Máy hoặc Máy Học - &lt;em&gt;Với những từ chuyên ngành, tôi sẽ dùng song song cả tiếng Anh và tiếng Việt, tuy nhiên sẽ ưu tiên tiếng Anh vì thuận tiện hơn trong việc tra cứu&lt;/em&gt;) nổi lên như một bằng chứng của cuộc cách mạng công nghiệp lần thứ tư (1 - động cơ hơi nước, 2 - năng lượng điện, 3 - công nghệ thông tin). Trí Tuệ Nhân Tạo đang len lỏi vào mọi lĩnh vực trong đời sống mà có thể chúng ta không nhận ra. Xe tự hành của Google và Tesla, hệ thống tự tag khuôn mặt trong ảnh của Facebook, trợ lý ảo Siri của Apple, hệ thống gợi ý sản phẩm của Amazon, hệ thống gợi ý phim của Netflix, máy chơi cờ vây AlphaGo của Google DeepMind, …, chỉ là một vài trong vô vàn những ứng dụng của AI/Machine Learning. (Xem thêm &lt;a href=&quot;https://www.facebook.com/zuck/posts/10103351073024591&quot;&gt;Jarvis - trợ lý thông minh cho căn nhà của Mark Zuckerberg&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;Machine Learning là một tập con của AI. Theo định nghĩa của Wikipedia, &lt;em&gt;Machine learning is the subfield of computer science that “gives computers the ability to learn without being explicitly programmed”&lt;/em&gt;. Nói đơn giản, Machine Learning là một lĩnh vựa nhỏ của Khoa Học Máy Tính, nó có khả năng tự học hỏi dựa trên dữ liệu đưa vào mà không cần phải được lập trình cụ thể. Bạn Nguyễn Xuân Khánh tại đại học Maryland đang viết một cuốn sách về Machine Learning bằng tiếng Việt khá thú vị (Bài mới nhất đã viết cách đây vài tháng), các bạn có thể tham khảo bài &lt;a href=&quot;https://ml-book-vn.khanhxnguyen.com/intro.html&quot;&gt;Machine Learning là gì?&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Những năm gần đây, khi mà khả năng tính toán của các máy tính được nâng lên một tầm cao mới và lượng dữ liệu khổng lồ được thu thập bởi các hãng công nghệ lớn, Machine Learning đã tiến thêm một bước tiến dài và một lĩnh vực mới được ra đời gọi là Deep Learning (Học Sâu - &lt;em&gt;thực sự tôi không muốn dịch từ này ra tiếng Việt&lt;/em&gt;). Deep Learning đã giúp máy tính thực thi những việc tưởng chừng như không thể vào 10 năm trước: phân loại cả ngàn vật thể khác nhau trong các bức ảnh, tự tạo chú thích cho ảnh, bắt chước giọng nói và chữ viết của con người, giao tiếp với con người, hay thậm chí cả sáng tác văn hay âm nhạc (Xem thêm &lt;a href=&quot;http://machinelearningmastery.com/inspirational-applications-deep-learning/&quot;&gt;8 Inspirational Applications of Deep Learning&lt;/a&gt;)&lt;/p&gt;
+
+&lt;!-- &lt;div style=&quot;display:inline-block&quot;&gt;
+    &lt;img src=&quot;/assets/introduce/aimldl.png&quot;&gt;
+&lt;/div&gt;
+ --&gt;
+
+&lt;h2 id=&quot;mục-đích-viết-blog&quot;&gt;Mục đích viết Blog&lt;/h2&gt;
+&lt;p&gt;Nhu cầu về nhân lực ngành Machine Learning (Deep Learning) ngày một cao, kéo theo đó nhu cầu học Machine Learning trên thế giới và ở Việt Nam ngày một lớn. Cá nhân tôi cũng muốn hệ thống lại kiến thức của mình về lĩnh vực này để chuẩn bị cho tương lai (đây là một trong những mục tiêu của tôi trong năm 2017). Tôi sẽ cố gắng đi từ những thuật toán cơ bản nhất của Machine Learning kèm theo các ví dụ và mã nguồn trong mỗi bài viết. Nếu không bận việc đột xuất, tôi sẽ viết 1 bài/tuần. Đồng thơi, tôi cũng muốn nhận được phản hồi của bạn đọc để qua những thảo luận, chúng ta có thể hiểu rõ hơn và nắm bắt các thuật toán này.&lt;/p&gt;
+
+&lt;p&gt;Khi chuẩn bị các bài viết, tôi sẽ giả định rằng bạn đọc có một chút kiến thức về Đại Số Tuyến Tính (Linear Algebra), Xác Suât Thống Kê (Probability and Statistics) và có kinh nghiệm về lập trình Python. Nếu bạn chưa có nhiều kinh nghiệm về các lĩnh vực này, đừng quá lo lắng vì mỗi bài sẽ chỉ sử dụng một vài kỹ thuật cơ bản. Hãy để lại câu hỏi của bạn ở phần Comment bên dưới, tôi sẽ thảo luận thêm với các bạn.&lt;/p&gt;
+
+&lt;h2 id=&quot;tham-khảo-thêm&quot;&gt;Tham khảo thêm&lt;/h2&gt;
+
+&lt;h3 id=&quot;tiếng-anh&quot;&gt;Tiếng Anh&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning&quot;&gt;Machine Learning với thầy Andrew Ng trên Coursera&lt;/a&gt; (&lt;em&gt;Khóa học nổi tiếng nhất về Machine Learning&lt;/em&gt;)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.udacity.com/course/deep-learning--ud730&quot;&gt;Deep Learning by Google trên Udacity&lt;/a&gt; (&lt;em&gt;Khóa học nâng cao hơn về Deep Learning với Tensorflow&lt;/em&gt;)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://machinelearningmastery.com/&quot;&gt;Machine Learning mastery&lt;/a&gt; (&lt;em&gt;Các thuật toán Machine Learning cơ bản&lt;/em&gt;)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;tiếng-việt&quot;&gt;Tiếng Việt&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Lưu ý&lt;/strong&gt;: &lt;em&gt;Các khóa học này tôi chưa từng tham gia, chỉ đưa ra để các bạn tham khảo.&lt;/em&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;http://tuanvannguyen.blogspot.com/2016/12/cap-nhat-khoa-hoc-ve-machine-learning.html&quot;&gt;Machine Learning 1/2017&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://techmaster.vn/khoa-hoc/25511/machine-learning-co-ban&quot;&gt;Nhập môn Machine Learning - Cao Thanh Hà &lt;em&gt;POSTECH&lt;/em&gt;&lt;/a&gt; (&lt;em&gt;Tech Master&lt;/em&gt;)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://viet.jnlp.org/kien-thuc-co-ban-ve-xu-ly-ngon-ngu-tu-nhien/machine-learning-trong-nlp&quot;&gt;Machine Learning trong Xử Lý Ngôn Ngữ Tự Nhiên - Nhóm Đông Du &lt;em&gt;Nhật Bản&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://ongxuanhong.wordpress.com/&quot;&gt;Machine Learning cho người mới bắt đầu - Ông Xuân Hồng &lt;em&gt;JAIST&lt;/em&gt;&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://ml-book-vn.khanhxnguyen.com/&quot;&gt;Machine Learning book for Vietnamese - Nguyễn Xuân Khánh &lt;em&gt;University of Maryland&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+</description>
+        <pubDate>Mon, 26 Dec 2016 10:22:00 -0500</pubDate>
+        <link>http://localhost:4000/2016/12/26/introduce/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/12/26/introduce/</guid>
+        
+        
+      </item>
+    
+  </channel>
+</rss>

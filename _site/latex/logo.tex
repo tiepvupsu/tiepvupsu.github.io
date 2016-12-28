@@ -1,0 +1,92 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Welcome to Overleaf --- just edit your LaTeX on the left,
+% and we'll compile it for you on the right. If you give
+% someone the link to this page, they can edit at the same
+% time. See the help menu above for more info. Enjoy!
+%
+% Note: you can export the pdf to see the result at full
+% resolution.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Sudoku
+% Author: Roberto Bonvallet
+\documentclass{article}
+\usepackage[pdftex,active,tightpage]{preview}
+\usepackage{tikz}
+% \usepackage{mathpazo}
+\input{../definitions}
+\PreviewEnvironment{tikzpicture}
+%%%<
+\usepackage{verbatim}
+%%%>
+\begin{comment}
+:Title: Sudoku
+:Tags: Foreach;Scopes;Games
+:Author: Roberto Bonvallet
+:Slug: sudoku
+\end{comment}
+
+
+
+\tikzset{%
+  box/.style={
+    align=center, minimum size=1cm, inner sep=0pt, font=\tiny\bfseries,
+    draw=black, #1
+  },
+  C0/.style={fill=white},
+  C1/.style={fill=red},
+  C2/.style={fill=green},
+  C3/.style={fill=blue},
+  C4/.style={fill=gray},
+  C5/.style={fill=black},
+}
+\newcounter{row}
+\newcounter{col}
+
+\newcommand\setrowY[9]{
+  \setcounter{col}{0}
+  \foreach \n [evaluate={\s=\n<1 ? "C0" : (\n<2 ? "C1" : (\n<3 ? "C2": (\n < 4? "C3" : (\n < 5? "C4":"C5")));}] in {#1, #2, #3, #4, #5, #6, #7, #8, #9} {
+    \edef\x{\value{col}}
+    \edef\y{\value{row}+1}    
+    \draw [\s] (\x,\y) rectangle +(1,-1);
+    \stepcounter{col}
+  }
+  \stepcounter{row}
+}
+
+\newcommand\setrowD[4]{
+  \setcounter{col}{0}
+  \foreach \n [evaluate={\s=\n<1 ? "C0" : (\n<2 ? "C1" : (\n<3 ? "C2": (\n < 4? "C3" : "C4")));}]  in {#1, #2, #3, #4} {
+    \edef\x{\value{col}}
+    \edef\y{\value{row}+1}    
+    \draw [\s] (\x,\y) rectangle +(1,-1);
+    \stepcounter{col}
+  }
+  \stepcounter{row}
+}
+
+\begin{document}
+\begin{tikzpicture}[scale=.5]
+
+\draw [fill=blue!90!white, draw = blue!90!white] (0, 0) rectangle (10, 10);
+
+\def\sx{1.5}
+\def\sy{7}
+\def\h{.5}
+\def\w{3}
+\draw [fill = white, draw = blue!90!white](\sx, \sy) rectangle (\sx + \w, \sy + \h);
+
+\draw [fill = white, draw = blue!90!white](10 - \w - \sx, \sy) rectangle (10 - \sx, \sy + \h);
+
+
+
+
+
+
+
+
+\end{tikzpicture}
+
+
+\end{document}
