@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 29 Dec 2016 18:14:12 -0500</pubDate>
-    <lastBuildDate>Thu, 29 Dec 2016 18:14:12 -0500</lastBuildDate>
+    <pubDate>Thu, 29 Dec 2016 18:19:54 -0500</pubDate>
+    <lastBuildDate>Thu, 29 Dec 2016 18:19:54 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -184,13 +184,6 @@ Hàm số \(\mathcal{L}(\mathbf{w}) \) được gọi là &lt;strong&gt;hàm m�
       &lt;th style=&quot;text-align: center&quot;&gt;160&lt;/th&gt;
       &lt;th style=&quot;text-align: center&quot;&gt;163&lt;/th&gt;
       &lt;th style=&quot;text-align: center&quot;&gt;165&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;168&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;170&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;173&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;175&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;178&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;180&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;183&lt;/th&gt;
     &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
@@ -204,6 +197,26 @@ Hàm số \(\mathcal{L}(\mathbf{w}) \) được gọi là &lt;strong&gt;hàm m�
       &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;56&lt;/strong&gt;&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;58&lt;/strong&gt;&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;59&lt;/strong&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Chiều cao (cm)&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;168&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;170&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;173&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;175&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;178&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;180&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;183&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;Cân nặng (kg)&lt;/strong&gt;&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;60&lt;/strong&gt;&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;62&lt;/strong&gt;&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;63&lt;/strong&gt;&lt;/td&gt;
