@@ -50,13 +50,10 @@ cột chứa thông tin _input_, \\(y\\) là một số vô hướng (scalar) bi
 
 Một cách đơn giản nhất, chúng ta có thể thấy rằng: i) diện tích nhà càng lớn thì giá nhà càng cao; ii) số lượng phòng ngủ càng lớn thì giá nhà càng cao; iii) càng xa trung tâm thì giá nhà càng giảm. Một hàm số đơn giản nhất có thể mô tả mối quan hệ giữa giá nhà và 3 đại lượng đầu vào là: 
 
-\\[ \text{ giá nhà } \approx w_1 (\text{diện tích}) + w_2 (\text{số phòng}) + w_3 (\text{ khoảng cách}) + w_0 \\] 
-
-trong đó, \\(w_1, w_2\\) là các hằng số dương, \\(w_3\\) là một hằng số âm, \\(w_0\\) là một hằng số được gọi là bias. Hay nói cách khác: 
+<!-- \\[ \text{ giá nhà } \approx w_1 (\text{diện tích}) + w_2 (\text{số phòng}) + w_3 (\text{ khoảng cách}) + w_0 \\]  -->
 
 \\[y \approx w_1 x_1 + w_2 x_2 + w_3 x_3 + w_0 = f(\mathbf{x}) = \hat{y}~~~~ (1)\\]
-
-Mối quan hệ \\(y \approx f(\mathbf{x})\\) bên trên là một mối quan hệ tuyến tính (linear). Bài toán chúng ta đang làm là một bài toán thuộc loại regression. Bài toán đi tìm các hệ số tối ưu \\( \\{w_1, w_2, w_3, w_0 \\}\\) chính vì vậy được gọi là bài toán Linear Regression. 
+trong đó, \\(w_1, w_2\\) là các hằng số dương, \\(w_3\\) là một hằng số âm, \\(w_0\\) là một hằng số được gọi là bias. Mối quan hệ \\(y \approx f(\mathbf{x})\\) bên trên là một mối quan hệ tuyến tính (linear). Bài toán chúng ta đang làm là một bài toán thuộc loại regression. Bài toán đi tìm các hệ số tối ưu \\( \\{w_1, w_2, w_3, w_0 \\}\\) chính vì vậy được gọi là bài toán Linear Regression. 
 
 **Chú ý 1:** \\(y\\) là giá trị thực của _outcome_ (dựa trên số liệu thống kê chúng ta có trong tập _training data_), trong khi \\(\hat{y}\\) là giá trị mà mô hình Linear Regression dự đoán được. Nhìn chung, \\(y\\) và \\(\hat{y}\\) là hai giá trị khác nhau do có sai số mô hình, tuy nhiên, chúng ta mong muốn rằng sự khác nhau này rất nhỏ.
 
@@ -119,7 +116,8 @@ Trước khi đi tìm lời giải, chúng ta tối giản phép toán trong ph�
 
 \\[
 \mathcal{L}(\mathbf{w}) 
-= \frac{1}{2}\sum_{i=1}^N (y_i - \mathbf{w}^T\mathbf{\bar{x}}_i)^2 
+= \frac{1}{2}\sum_{i=1}^N (y_i - \mathbf{w}^T\mathbf{\bar{x}}_i)^2 \\]
+\\[
 = \frac{1}{2} \\|\mathbf{y} - \mathbf{w}^T \mathbf{\bar{X}}\\|_2^2 
 = \frac{1}{2} \\|\mathbf{y}^T - \mathbf{\bar{X}}^T\mathbf{w} \\|_2^2
 ~~~(3)
