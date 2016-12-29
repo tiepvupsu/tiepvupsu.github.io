@@ -8,19 +8,6 @@ mathjax: true
 
 ## Bài viết đang trong giai đoạn xây dựng, sẽ được hoàn thành sớm. 
 
-|-----------------+------------+-----------------+----------------|
-| Default aligned |Left aligned| Center aligned  | Right aligned  |
-|-----------------|:-----------|:---------------:|---------------:|
-| First body part |Second cell | Third cell      | fourth cell    |
-| Second line     |foo         | **strong**      | baz            |
-| Third line      |quux        | baz             | bar            |
-|-----------------+------------+-----------------+----------------|
-| Second body     |            |                 |                |
-| 2 line          |            |                 |                |
-|=================+============+=================+================|
-| Footer row      |            |                 |                |
-|-----------------+------------+-----------------+----------------|
-
 <div class="imgcap">
 <div >
 <a href = "/2016/12/28/linearregression/">
@@ -41,7 +28,7 @@ Trong trang này:
     - [Sai số dự đoán](#sai-so-du-doan)
     - [Hàm mất mát](#ham-mat-mat)
     - [Nghiệm cho bài toán Linear Regression](#nghiem-cho-bai-toan-linear-regression)
-- [3. Triển khai trên trên Python](#-trien-khai-tren-tren-python)
+- [3. Ví dụ trên Python](#-vi-du-tren-python)
 - [4. Thảo luận](#-thao-luan)
     - [Output là một vector nhiều biến](#output-la-mot-vector-nhieu-bien)
     - [Mô hình là một đa thức bậc cao](#mo-hinh-la-mot-da-thuc-bac-cao)
@@ -183,9 +170,9 @@ Với khái niệm giả nghịch đảo, điểm tối ưu của bài toán Lin
 
 
 <!-- ========================== New Heading ==================== -->
-<a name="-trien-khai-tren-tren-python"></a>
+<a name="-vi-du-tren-python"></a>
 
-## 3. Triển khai trên trên Python
+## 3. Ví dụ trên Python
 
 
 
