@@ -54,7 +54,7 @@ Ví dụ này khá giống với cách học của con người khi còn nhỏ. 
 Thuật toán supervised learning còn được tiếp tục chia nhỏ ra thành hai loại chính: 
 
 * **Classification** (Phân loại): Một bài toán được gọi là _classification_ nếu các _label_ của _input data_ được chia thành một số hữu hạn nhóm. Ví dụ: Gmail xác định xem một email có phải là spam hay không; các hãng tín dụng xác định xem một khách hàng có khả năng thanh toán nợ hay không. Ba ví dụ phía trên được chia vào loại này. 
-* **Regression** (tiếng Việt dịch là _Hồi quy_, tôi không thích cách dịch này vì bản thân không hiểu nó nghĩa là gì): Nếu _label_ không được chia thành các nhóm mà là một giá trị thực cụ thể. Ví dụ: giá cho thuê của một căn nhà rộng \\(x ~ \text{m}^2\\), có \\(y\\) phòng ngủ và cách trung tâm thành phố \\(z~ \text{km}\\) có giá là bao nhiêu. 
+* **Regression** (tiếng Việt dịch là _Hồi quy_, tôi không thích cách dịch này vì bản thân không hiểu nó nghĩa là gì): Nếu _label_ không được chia thành các nhóm mà là một giá trị thực cụ thể. Ví dụ: một căn nhà rộng \\(x ~ \text{m}^2\\), có \\(y\\) phòng ngủ và cách trung tâm thành phố \\(z~ \text{km}\\) sẽ có giá là bao nhiêu?
  
 Gần đây [Microsoft có một ứng dụng dự đoán giới tính và tuổi dựa trên khuôn mặt](http://how-old.net/). Phần dự đoán giới tính có thể coi là thuật toán **Classification**, phần dự đoán tuổi có thể coi là thuật toán **Regression**. _Chú ý rằng phần dự đoán tuổi cũng có thể coi là **Classification** nếu ta coi tuổi là một số nguyên dương không lớn hơn 150, chúng ta sẽ có 150 class (lớp) khác nhau._
 

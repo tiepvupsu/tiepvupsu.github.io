@@ -5,13 +5,15 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 28 Dec 2016 23:30:50 -0500</pubDate>
-    <lastBuildDate>Wed, 28 Dec 2016 23:30:50 -0500</lastBuildDate>
+    <pubDate>Thu, 29 Dec 2016 00:02:24 -0500</pubDate>
+    <lastBuildDate>Thu, 29 Dec 2016 00:02:24 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
         <title>Linear Regression</title>
-        <description>&lt;div class=&quot;imgcap&quot;&gt;
+        <description>&lt;h2 id=&quot;bài-viết-đang-trong-giai-đoạn-xây-dựng-sẽ-được-hoàn-thành-sớm&quot;&gt;Bài viết đang trong giai đoạn xây dựng, sẽ được hoàn thành sớm.&lt;/h2&gt;
+
+&lt;div class=&quot;imgcap&quot;&gt;
 &lt;div&gt;
 &lt;a href=&quot;/2016/12/28/linearregression/&quot;&gt;
     &lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Linear_regression.svg/400px-Linear_regression.svg.png&quot; width=&quot;500&quot; /&gt;&lt;/a&gt;
@@ -22,9 +24,44 @@
 
 &lt;p&gt;Trong bài này, tôi sẽ giới thiều một trong những thuật toán cơ bản nhất (và đơn giản nhất) của Machine Learning. Đây là một thuật toán &lt;em&gt;Supervised learning&lt;/em&gt; có tên &lt;strong&gt;Linear Regression&lt;/strong&gt; (Hồi Quy Tuyến Tính).&lt;/p&gt;
 
-&lt;p&gt;Quay lại &lt;a href=&quot;/2016/12/27/categories/&quot;&gt;ví dụ đơn giản được nêu trong bài trước&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Trong trang này:
+&lt;!-- MarkdownTOC autolink=&quot;true&quot; bracket=&quot;round&quot; depth=&quot;0&quot; style=&quot;unordered&quot; indent=&quot;  &quot; autoanchor=&quot;false&quot; --&gt;&lt;/p&gt;
 
-&lt;p&gt;Giả sử chúng ta có các cặp (&lt;em&gt;input, outcome&lt;/em&gt;) \( (\mathbf{x}_1, \mathbf{y}_1), \dots, (\mathbf{x}_N, \mathbf{y}_N) \), chúng ta phải tìm một hàm&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#phân-tích-toán-học&quot;&gt;Phân tích toán học&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#python&quot;&gt;Linear Regression trong Python&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#thảo-luận&quot;&gt;Thảo luận&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#limitations&quot;&gt;Hạn chế của Linear Regression&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#optimization&quot;&gt;Các phương pháp tối ưu&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#linear-regression&quot;&gt;Linear Regression&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- /MarkdownTOC --&gt;
+
+&lt;h2 id=&quot;phân-tích-toán-học&quot;&gt;Phân tích toán học&lt;/h2&gt;
+
+&lt;p&gt;Quay lại &lt;a href=&quot;/2016/12/27/categories/&quot;&gt;ví dụ đơn giản được nêu trong bài trước&lt;/a&gt;: một căn nhà rộng \(x_1 ~ \text{m}^2\), có \(x_2\) phòng ngủ và cách trung tâm thành phố \(x_3~ \text{km}\) có giá là bao nhiêu. Giả sử chúng ta đã có số liệu thống kê từ 1000 căn nhà trong thành phố đó, liệu rằng khi có một căn nhà mới với các thông số về diện tích, số phòng ngủ và khoảng cách tới trung tâm, chúng ta có thể dự đoán được giá của căn phòng đó không? Nếu có thì hàm dự đoán \(y = f(\mathbf{x}) \) sẽ có dạng như thế nào. Ở đây \(\mathbf{x} = [x_1, x_2, x_3] \) là một vector hàng chưa thông tin &lt;em&gt;input&lt;/em&gt;, \(y\) là một số vô hướng (scalar) biểu diễn &lt;em&gt;output&lt;/em&gt; (tức giá của căn nhà trong ví dụ này)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Lưu ý về ký hiệu toán học:&lt;/strong&gt; &lt;em&gt;trong các bài viết của tôi, các số vô hướng được biểu diễn bởi các chữ cái viết ở dạng không in đậm, có thể viết hoa, ví dụ \(x_1, N, y, k\). Các vector được biểu diễn bằng các chữ cái thường in đậm, ví dụ \(\mathbf{y}, \mathbf{x}_1 \). Các ma trận được biểu diễn bởi các chữ viết hoa in đậm, ví dụ \(\mathbf{X, Y, W} \).&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;linear-regression-trong-pythonpython&quot;&gt;Linear Regression trong Python[python]&lt;/h2&gt;
+
+&lt;h2 id=&quot;thảo-luận&quot;&gt;Thảo luận&lt;/h2&gt;
+
+&lt;p&gt;\(f(\mathbf{x})\) là một đa thức bậc cao.&lt;/p&gt;
+
+&lt;h3 id=&quot;hạn-chế-của-linear-regressionlimitations&quot;&gt;Hạn chế của Linear Regression[limitations]&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Nhạy cảm với nhiễu&lt;/li&gt;
+  &lt;li&gt;Không biểu diễn được các mô hình phức tạp&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;các-phương-pháp-tối-ưuoptimization&quot;&gt;Các phương pháp tối ưu[optimization]&lt;/h3&gt;
+
+&lt;!-- Giả sử chúng ta có các cặp (_input, outcome_) \\( (\mathbf{x}_1, \mathbf{y}_1), \dots, (\mathbf{x}_N, \mathbf{y}_N) \\), chúng ta phải tìm một hàm  --&gt;
 &lt;h2 id=&quot;linear-regression&quot;&gt;Linear Regression&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&quot;http://people.sc.fsu.edu/~jburkardt/datasets/regression/regression.html&quot;&gt;Data&lt;/a&gt;&lt;/p&gt;
@@ -80,7 +117,7 @@ Mục đích là xấp xỉ hàm số \(f\) thật tốt để khi có một d�
 
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;Classification&lt;/strong&gt; (Phân loại): Một bài toán được gọi là &lt;em&gt;classification&lt;/em&gt; nếu các &lt;em&gt;label&lt;/em&gt; của &lt;em&gt;input data&lt;/em&gt; được chia thành một số hữu hạn nhóm. Ví dụ: Gmail xác định xem một email có phải là spam hay không; các hãng tín dụng xác định xem một khách hàng có khả năng thanh toán nợ hay không. Ba ví dụ phía trên được chia vào loại này.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Regression&lt;/strong&gt; (tiếng Việt dịch là &lt;em&gt;Hồi quy&lt;/em&gt;, tôi không thích cách dịch này vì bản thân không hiểu nó nghĩa là gì): Nếu &lt;em&gt;label&lt;/em&gt; không được chia thành các nhóm mà là một giá trị thực cụ thể. Ví dụ: giá cho thuê của một căn nhà rộng \(x ~ \text{m}^2\), có \(y\) phòng ngủ và cách trung tâm thành phố \(z~ \text{km}\) có giá là bao nhiêu.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Regression&lt;/strong&gt; (tiếng Việt dịch là &lt;em&gt;Hồi quy&lt;/em&gt;, tôi không thích cách dịch này vì bản thân không hiểu nó nghĩa là gì): Nếu &lt;em&gt;label&lt;/em&gt; không được chia thành các nhóm mà là một giá trị thực cụ thể. Ví dụ: một căn nhà rộng \(x ~ \text{m}^2\), có \(y\) phòng ngủ và cách trung tâm thành phố \(z~ \text{km}\) sẽ có giá là bao nhiêu?&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Gần đây &lt;a href=&quot;http://how-old.net/&quot;&gt;Microsoft có một ứng dụng dự đoán giới tính và tuổi dựa trên khuôn mặt&lt;/a&gt;. Phần dự đoán giới tính có thể coi là thuật toán &lt;strong&gt;Classification&lt;/strong&gt;, phần dự đoán tuổi có thể coi là thuật toán &lt;strong&gt;Regression&lt;/strong&gt;. &lt;em&gt;Chú ý rằng phần dự đoán tuổi cũng có thể coi là &lt;strong&gt;Classification&lt;/strong&gt; nếu ta coi tuổi là một số nguyên dương không lớn hơn 150, chúng ta sẽ có 150 class (lớp) khác nhau.&lt;/em&gt;&lt;/p&gt;
