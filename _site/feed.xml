@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 28 Dec 2016 23:21:47 -0500</pubDate>
-    <lastBuildDate>Wed, 28 Dec 2016 23:21:47 -0500</lastBuildDate>
+    <pubDate>Wed, 28 Dec 2016 23:30:50 -0500</pubDate>
+    <lastBuildDate>Wed, 28 Dec 2016 23:30:50 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -22,6 +22,9 @@
 
 &lt;p&gt;Trong bài này, tôi sẽ giới thiều một trong những thuật toán cơ bản nhất (và đơn giản nhất) của Machine Learning. Đây là một thuật toán &lt;em&gt;Supervised learning&lt;/em&gt; có tên &lt;strong&gt;Linear Regression&lt;/strong&gt; (Hồi Quy Tuyến Tính).&lt;/p&gt;
 
+&lt;p&gt;Quay lại &lt;a href=&quot;/2016/12/27/categories/&quot;&gt;ví dụ đơn giản được nêu trong bài trước&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Giả sử chúng ta có các cặp (&lt;em&gt;input, outcome&lt;/em&gt;) \( (\mathbf{x}_1, \mathbf{y}_1), \dots, (\mathbf{x}_N, \mathbf{y}_N) \), chúng ta phải tìm một hàm&lt;/p&gt;
 &lt;h2 id=&quot;linear-regression&quot;&gt;Linear Regression&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&quot;http://people.sc.fsu.edu/~jburkardt/datasets/regression/regression.html&quot;&gt;Data&lt;/a&gt;&lt;/p&gt;
@@ -46,7 +49,7 @@
 
 &lt;p&gt;Có hai cách phổ biến phân nhóm các thuật toán Machine learning. Một là dựa trên phương thức học (learning style), hai là dựa trên chức năng (function) (của mỗi thuật toán).&lt;/p&gt;
 
-&lt;h2 id=&quot;dựa-trên-phương-thức-học&quot;&gt;Dựa trên phương thức học&lt;/h2&gt;
+&lt;h2 id=&quot;phân-nhóm-dựa-trên-phương-thức-học&quot;&gt;Phân nhóm dựa trên phương thức học&lt;/h2&gt;
 
 &lt;p&gt;Theo phương thức học, các thuật toán Machine Learning thường được chia làm 4 nhóm: Supervise learning, Unsupervised learning, Semi-supervised lerning và Reinforcement learning. &lt;em&gt;Có một số cách phân nhóm không có Semi-supervised learning hoặc Reinforcement learning.&lt;/em&gt;&lt;/p&gt;
 
@@ -85,7 +88,7 @@ Mục đích là xấp xỉ hàm số \(f\) thật tốt để khi có một d�
 &lt;h3 id=&quot;unsupervised-learning-học-không-giám-sát&quot;&gt;Unsupervised Learning (Học không giám sát)&lt;/h3&gt;
 &lt;p&gt;Trong thuật toán này, chúng ta không biết được &lt;em&gt;outcome&lt;/em&gt; hãy &lt;em&gt;nhãn&lt;/em&gt; mã chỉ có dữ liệu đầu vào. Thuật toán unsupervised learning sẽ dựa vào cấu trúc của dữ liệu để thực hiện một công việc nào đó, ví dụ như phân nhóm (clustering) hoặc giảm số chiều của dữ liệu (dimention reduction) để thuận tiện trong việc lưu trữ và tính toán.&lt;/p&gt;
 
-&lt;p&gt;Một cách toán học, Unsupervised learning là khi chúng ta chỉ có dữ liệu vào \(\mathbf{X} \) mà không biết &lt;em&gt;nhãn&lt;/em&gt; \(\mathbf{Y}\) tương ứng.&lt;/p&gt;
+&lt;p&gt;Một cách toán học, Unsupervised learning là khi chúng ta chỉ có dữ liệu vào \(\mathcal{X} \) mà không biết &lt;em&gt;nhãn&lt;/em&gt; \(\mathcal{Y}\) tương ứng.&lt;/p&gt;
 
 &lt;p&gt;Những thuật toán loại này được gọi là Unsupervised learning vì không giống như Supervised learning, chúng ta không biết câu trả lời chính xác cho mỗi dữ liệu đầu vào. Giống như khi ta học, không có thầy cô giáo nào chỉ cho ta biết đó là chữ A hay chữ B. Cụm &lt;em&gt;không giám sát&lt;/em&gt; được đặt tên theo nghĩa này.&lt;/p&gt;
 
@@ -93,7 +96,7 @@ Mục đích là xấp xỉ hàm số \(f\) thật tốt để khi có một d�
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Clustering&lt;/strong&gt; (phân nhóm): một bài toán phân nhóm toàn bộ dữ liệu \(\mathbf{X}\) thành các nhóm nhỏ dựa trên sự liên quan giữa các dữ liệu trong mỗi nhóm. Ví dụ: phân nhóm khách hàng dựa trên hành vi mua hàng. Điều này cũng giống như việc ta đưa cho một đứa trẻ rất nhiều mảnh ghép với các hình thù và màu sắc khác nhau, ví dụ tam giác, vuông, tròn với màu xanh và đỏ, sau đó yêu cẩu trẻ phân chúng thành từng nhóm. Mặc dù không cho trẻ biết mảnh nào tương ứng với hình nào hoặc màu nào, nhiều khả năng chúng vẫn có thể phân loại các mảnh ghép theo màu hoặc hình dạng.&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;Clustering&lt;/strong&gt; (phân nhóm): một bài toán phân nhóm toàn bộ dữ liệu \(\mathcal{X}\) thành các nhóm nhỏ dựa trên sự liên quan giữa các dữ liệu trong mỗi nhóm. Ví dụ: phân nhóm khách hàng dựa trên hành vi mua hàng. Điều này cũng giống như việc ta đưa cho một đứa trẻ rất nhiều mảnh ghép với các hình thù và màu sắc khác nhau, ví dụ tam giác, vuông, tròn với màu xanh và đỏ, sau đó yêu cẩu trẻ phân chúng thành từng nhóm. Mặc dù không cho trẻ biết mảnh nào tương ứng với hình nào hoặc màu nào, nhiều khả năng chúng vẫn có thể phân loại các mảnh ghép theo màu hoặc hình dạng.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;&lt;strong&gt;Association&lt;/strong&gt;: Là bài toán khi chúng ta muốn khám phá ra một quy luật dựa trên nhiều dữ liệu cho trước. Ví dụ: những khách hàng nam mua quần áo thường có xu hướng mua thêm đồng hồ hoặc thắt lưng; những khán giả xem phim Spider Man thường có xu hướng xem thêm phim Bat Man, dựa vào đó tạo ra một hệ thống gợi ý khách hàng (Recommendation System), thúc đẩy nhu cầu mua sắm.&lt;/p&gt;
@@ -101,7 +104,7 @@ Mục đích là xấp xỉ hàm số \(f\) thật tốt để khi có một d�
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;semi-supervised-learning-học-bán-giám-sát&quot;&gt;Semi-Supervised Learning (Học bán giám sát)&lt;/h3&gt;
-&lt;p&gt;Các bài toán khi chúng ta có một lượng lớn dữ liệu \(\mathbf{X}\) nhưng chỉ một phần trong chúng được gán nhãn được gọi là Semi-Supervised Learning. Những bài toán thuộc nhóm này nằm giữa hai nhóm được nêu bên trên.&lt;/p&gt;
+&lt;p&gt;Các bài toán khi chúng ta có một lượng lớn dữ liệu \(\mathcal{X}\) nhưng chỉ một phần trong chúng được gán nhãn được gọi là Semi-Supervised Learning. Những bài toán thuộc nhóm này nằm giữa hai nhóm được nêu bên trên.&lt;/p&gt;
 
 &lt;p&gt;Một ví dụ điển hình của nhóm này là chỉ có một phần ảnh hoặc văn bản được gán nhãn (ví dụ bức ảnh về người, động vật hoặc các văn bản khoa học, chính trị) và phần lớn các bức ảnh/văn bản khác chưa được gán nhãn được thu thập từ internet. Thực tế cho thấy rất nhiều các bài toàn Machine Learning thuộc vào nhóm này vì việc thu thập dữ liệu có nhãn tốn rất nhiều thời gian và có chi phí cao. Rất nhiều loại dữ liệu thậm chí cần phải có chuyên gia mới gán nhãn được (ảnh y học chẳng hạn). Ngược lại, dữ liệu chưa có nhãn có thể được thu thập với chi phí thấp từ internet.&lt;/p&gt;
 
@@ -120,7 +123,7 @@ Mục đích là xấp xỉ hàm số \(f\) thật tốt để khi có một d�
 &lt;div class=&quot;thecap&quot;&gt;Lập trình cho máy tính chơi game Mario&lt;/div&gt;
 &lt;/div&gt;
 
-&lt;h2 id=&quot;dựa-trên-chức-năng&quot;&gt;Dựa trên chức năng&lt;/h2&gt;
+&lt;h2 id=&quot;phân-nhóm-dựa-trên-chức-năng&quot;&gt;Phân nhóm dựa trên chức năng&lt;/h2&gt;
 
 &lt;p&gt;Có một cách phân nhóm thứ hai dựa trên chức năng của các thuật toán. Trong phần này, tôi xin chỉ liệt kê các thuật toán. Thông tin cụ thể sẽ được trình bày trong các bài viết khác tại blog này. Trong quá trình viết, tôi có thể sẽ thêm bớt một số thuật toán.&lt;/p&gt;
 

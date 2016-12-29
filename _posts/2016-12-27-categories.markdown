@@ -23,7 +23,7 @@ mathjax: true
 
 Có hai cách phổ biến phân nhóm các thuật toán Machine learning. Một là dựa trên phương thức học (learning style), hai là dựa trên chức năng (function) (của mỗi thuật toán).
 
-## Dựa trên phương thức học
+## Phân nhóm dựa trên phương thức học
 
 Theo phương thức học, các thuật toán Machine Learning thường được chia làm 4 nhóm: Supervise learning, Unsupervised learning, Semi-supervised lerning và Reinforcement learning. _Có một số cách phân nhóm không có Semi-supervised learning hoặc Reinforcement learning._
 
@@ -61,18 +61,18 @@ Gần đây [Microsoft có một ứng dụng dự đoán giới tính và tuổ
 ### Unsupervised Learning (Học không giám sát)
 Trong thuật toán này, chúng ta không biết được _outcome_ hãy _nhãn_ mã chỉ có dữ liệu đầu vào. Thuật toán unsupervised learning sẽ dựa vào cấu trúc của dữ liệu để thực hiện một công việc nào đó, ví dụ như phân nhóm (clustering) hoặc giảm số chiều của dữ liệu (dimention reduction) để thuận tiện trong việc lưu trữ và tính toán. 
 
-Một cách toán học, Unsupervised learning là khi chúng ta chỉ có dữ liệu vào \\(\mathbf{X} \\) mà không biết _nhãn_ \\(\mathbf{Y}\\) tương ứng. 
+Một cách toán học, Unsupervised learning là khi chúng ta chỉ có dữ liệu vào \\(\mathcal{X} \\) mà không biết _nhãn_ \\(\mathcal{Y}\\) tương ứng. 
 
 Những thuật toán loại này được gọi là Unsupervised learning vì không giống như Supervised learning, chúng ta không biết câu trả lời chính xác cho mỗi dữ liệu đầu vào. Giống như khi ta học, không có thầy cô giáo nào chỉ cho ta biết đó là chữ A hay chữ B. Cụm _không giám sát_ được đặt tên theo nghĩa này. 
 
 Các bài toán Unsupervised learning được tiếp tục chia nhỏ thành hai loại: 
 
-* **Clustering** (phân nhóm): một bài toán phân nhóm toàn bộ dữ liệu \\(\mathbf{X}\\) thành các nhóm nhỏ dựa trên sự liên quan giữa các dữ liệu trong mỗi nhóm. Ví dụ: phân nhóm khách hàng dựa trên hành vi mua hàng. Điều này cũng giống như việc ta đưa cho một đứa trẻ rất nhiều mảnh ghép với các hình thù và màu sắc khác nhau, ví dụ tam giác, vuông, tròn với màu xanh và đỏ, sau đó yêu cẩu trẻ phân chúng thành từng nhóm. Mặc dù không cho trẻ biết mảnh nào tương ứng với hình nào hoặc màu nào, nhiều khả năng chúng vẫn có thể phân loại các mảnh ghép theo màu hoặc hình dạng. 
+* **Clustering** (phân nhóm): một bài toán phân nhóm toàn bộ dữ liệu \\(\mathcal{X}\\) thành các nhóm nhỏ dựa trên sự liên quan giữa các dữ liệu trong mỗi nhóm. Ví dụ: phân nhóm khách hàng dựa trên hành vi mua hàng. Điều này cũng giống như việc ta đưa cho một đứa trẻ rất nhiều mảnh ghép với các hình thù và màu sắc khác nhau, ví dụ tam giác, vuông, tròn với màu xanh và đỏ, sau đó yêu cẩu trẻ phân chúng thành từng nhóm. Mặc dù không cho trẻ biết mảnh nào tương ứng với hình nào hoặc màu nào, nhiều khả năng chúng vẫn có thể phân loại các mảnh ghép theo màu hoặc hình dạng. 
 
 * **Association**: Là bài toán khi chúng ta muốn khám phá ra một quy luật dựa trên nhiều dữ liệu cho trước. Ví dụ: những khách hàng nam mua quần áo thường có xu hướng mua thêm đồng hồ hoặc thắt lưng; những khán giả xem phim Spider Man thường có xu hướng xem thêm phim Bat Man, dựa vào đó tạo ra một hệ thống gợi ý khách hàng (Recommendation System), thúc đẩy nhu cầu mua sắm. 
 
 ### Semi-Supervised Learning (Học bán giám sát)
-Các bài toán khi chúng ta có một lượng lớn dữ liệu \\(\mathbf{X}\\) nhưng chỉ một phần trong chúng được gán nhãn được gọi là Semi-Supervised Learning. Những bài toán thuộc nhóm này nằm giữa hai nhóm được nêu bên trên. 
+Các bài toán khi chúng ta có một lượng lớn dữ liệu \\(\mathcal{X}\\) nhưng chỉ một phần trong chúng được gán nhãn được gọi là Semi-Supervised Learning. Những bài toán thuộc nhóm này nằm giữa hai nhóm được nêu bên trên. 
 
 Một ví dụ điển hình của nhóm này là chỉ có một phần ảnh hoặc văn bản được gán nhãn (ví dụ bức ảnh về người, động vật hoặc các văn bản khoa học, chính trị) và phần lớn các bức ảnh/văn bản khác chưa được gán nhãn được thu thập từ internet. Thực tế cho thấy rất nhiều các bài toàn Machine Learning thuộc vào nhóm này vì việc thu thập dữ liệu có nhãn tốn rất nhiều thời gian và có chi phí cao. Rất nhiều loại dữ liệu thậm chí cần phải có chuyên gia mới gán nhãn được (ảnh y học chẳng hạn). Ngược lại, dữ liệu chưa có nhãn có thể được thu thập với chi phí thấp từ internet. 
 
@@ -94,7 +94,7 @@ Reinforcement learning là các bài toán giúp cho một hệ thống tự đ�
 <div class="thecap">Lập trình cho máy tính chơi game Mario</div>
 </div>
 
-## Dựa trên chức năng 
+## Phân nhóm dựa trên chức năng 
 
 Có một cách phân nhóm thứ hai dựa trên chức năng của các thuật toán. Trong phần này, tôi xin chỉ liệt kê các thuật toán. Thông tin cụ thể sẽ được trình bày trong các bài viết khác tại blog này. Trong quá trình viết, tôi có thể sẽ thêm bớt một số thuật toán. 
 
