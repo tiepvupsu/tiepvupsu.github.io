@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 29 Dec 2016 15:22:54 -0500</pubDate>
-    <lastBuildDate>Thu, 29 Dec 2016 15:22:54 -0500</lastBuildDate>
+    <pubDate>Thu, 29 Dec 2016 17:21:31 -0500</pubDate>
+    <lastBuildDate>Thu, 29 Dec 2016 17:21:31 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -16,20 +16,20 @@
 &lt;div class=&quot;imgcap&quot;&gt;
 &lt;div&gt;
 &lt;a href=&quot;/2016/12/28/linearregression/&quot;&gt;
-    &lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Linear_regression.svg/400px-Linear_regression.svg.png&quot; width=&quot;500&quot; /&gt;&lt;/a&gt;
+    &lt;img src=&quot;/assets/LR/output_3_0.png&quot; width=&quot;500&quot; /&gt;&lt;/a&gt;
     &lt;!-- &lt;img src=&quot;/assets/rl/mdp.png&quot; height=&quot;206&quot;&gt; --&gt;
 &lt;/div&gt;
 &lt;div class=&quot;thecap&quot;&gt; Linear Regression &lt;br /&gt; (Nguồn: &lt;a href=&quot;https://en.wikipedia.org/wiki/Linear_regression&quot;&gt;Wikipedia&lt;/a&gt;)&lt;/div&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Trong bài này, tôi sẽ giới thiều một trong những thuật toán cơ bản nhất (và đơn giản nhất) của Machine Learning. Đây là một thuật toán &lt;em&gt;Supervised learning&lt;/em&gt; có tên &lt;strong&gt;Linear Regression&lt;/strong&gt; (Hồi Quy Tuyến Tính).&lt;/p&gt;
+&lt;p&gt;Trong bài này, tôi sẽ giới thiều một trong những thuật toán cơ bản nhất (và đơn giản nhất) của Machine Learning. Đây là một thuật toán &lt;em&gt;Supervised learning&lt;/em&gt; có tên &lt;strong&gt;Linear Regression&lt;/strong&gt; (Hồi Quy Tuyến Tính). Bài toán này đôi khi được gọi là &lt;em&gt;Linear Fitting&lt;/em&gt; hoặc &lt;em&gt;Linear Least Square&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;Trong trang này:
 &lt;!-- MarkdownTOC --&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;#1-gioi-thieu&quot;&gt;1. Giới thiệu&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#2-phan-tich-toan-hoc&quot;&gt;2. Phân tích toán học&lt;/a&gt;
+  &lt;li&gt;&lt;a href=&quot;#-gioi-thieu&quot;&gt;1. Giới thiệu&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#-phan-tich-toan-hoc&quot;&gt;2. Phân tích toán học&lt;/a&gt;
     &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#dang-cua-linear-regression&quot;&gt;Dạng của Linear Regression&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#sai-so-du-doan&quot;&gt;Sai số dự đoán&lt;/a&gt;&lt;/li&gt;
@@ -37,8 +37,8 @@
       &lt;li&gt;&lt;a href=&quot;#nghiem-cho-bai-toan-linear-regression&quot;&gt;Nghiệm cho bài toán Linear Regression&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#3-trien-khai-tren-tren-python&quot;&gt;3. Triển khai trên trên Python&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#4-thao-luan&quot;&gt;4. Thảo luận&lt;/a&gt;
+  &lt;li&gt;&lt;a href=&quot;#-trien-khai-tren-tren-python&quot;&gt;3. Triển khai trên trên Python&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#-thao-luan&quot;&gt;4. Thảo luận&lt;/a&gt;
     &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#output-la-mot-vector-nhieu-bien&quot;&gt;Output là một vector nhiều biến&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#mo-hinh-la-mot-da-thuc-bac-cao&quot;&gt;Mô hình là một đa thức bậc cao&lt;/a&gt;&lt;/li&gt;
@@ -46,13 +46,13 @@
       &lt;li&gt;&lt;a href=&quot;#cac-phuong-phap-toi-uu&quot;&gt;Các phương pháp tối ưu&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#5-tai-lieu-tham-khao&quot;&gt;5. Tài liệu tham khảo&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#-tai-lieu-tham-khao&quot;&gt;5. Tài liệu tham khảo&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;!-- /MarkdownTOC --&gt;
 
 &lt;!-- ========================== New Heading ==================== --&gt;
-&lt;p&gt;&lt;a name=&quot;1-gioi-thieu&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a name=&quot;-gioi-thieu&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;1-giới-thiệu&quot;&gt;1. Giới thiệu&lt;/h2&gt;
 
@@ -67,16 +67,16 @@ cột chứa thông tin &lt;em&gt;input&lt;/em&gt;, \(y\) là một số vô hư
 
 &lt;p&gt;trong đó, \(w_1, w_2\) là các hằng số dương, \(w_3\) là một hằng số âm, \(w_0\) là một hằng số được gọi là bias. Hay nói cách khác:&lt;/p&gt;
 
-&lt;p&gt;\[y \approx w_1 x_1 + w_2 x_2 + w_3 x_3 + w_0 = f(\mathbf{x}) = \bar{y}~~~~ (1)\]&lt;/p&gt;
+&lt;p&gt;\[y \approx w_1 x_1 + w_2 x_2 + w_3 x_3 + w_0 = f(\mathbf{x}) = \hat{y}~~~~ (1)\]&lt;/p&gt;
 
 &lt;p&gt;Mối quan hệ \(y \approx f(\mathbf{x})\) bên trên là một mối quan hệ tuyến tính (linear). Bài toán chúng ta đang làm là một bài toán thuộc loại regression. Bài toán đi tìm các hệ số tối ưu \( \{w_1, w_2, w_3, w_0 \}\) chính vì vậy được gọi là bài toán Linear Regression.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Chú ý 1:&lt;/strong&gt; \(y\) là giá trị thực của &lt;em&gt;outcome&lt;/em&gt; (dựa trên số liệu thống kê chúng ta có trong tập &lt;em&gt;training data&lt;/em&gt;), trong khi \(\bar{y}\) là giá trị mà mô hình Linear Regression dự đoán được. Nhìn chung, \(y\) và \(\bar{y}\) là hai giá trị khác nhau do có sai số mô hình, tuy nhiên, chúng ta mong muốn rằng sự khác nhau này rất nhỏ.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Chú ý 1:&lt;/strong&gt; \(y\) là giá trị thực của &lt;em&gt;outcome&lt;/em&gt; (dựa trên số liệu thống kê chúng ta có trong tập &lt;em&gt;training data&lt;/em&gt;), trong khi \(\hat{y}\) là giá trị mà mô hình Linear Regression dự đoán được. Nhìn chung, \(y\) và \(\hat{y}\) là hai giá trị khác nhau do có sai số mô hình, tuy nhiên, chúng ta mong muốn rằng sự khác nhau này rất nhỏ.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Chú ý 2:&lt;/strong&gt; &lt;em&gt;Linear&lt;/em&gt; hay &lt;em&gt;tuyến tính&lt;/em&gt; hiểu một cách đơn giản là &lt;em&gt;thẳng, phẳng&lt;/em&gt;. Trong không gian hai chiều, một hàm số được gọi là &lt;em&gt;tuyến tính&lt;/em&gt; nếu đồ thị của nó có dạng một &lt;em&gt;đường thẳng&lt;/em&gt;. Trong không gian ba chiều, một hàm số được goi là &lt;em&gt;tuyến tính&lt;/em&gt; nếu đồ thị của nó có dạng một &lt;em&gt;mặt phẳng&lt;/em&gt;. Trong không gian nhiều hơn 3 chiều, khái niệm &lt;em&gt;mặt phẳng&lt;/em&gt; không còn phù hợp nữa, thay vào đó, một khái niệm khác ra đời được gọi là &lt;em&gt;siêu mặt phẳng&lt;/em&gt; (&lt;em&gt;hyperplane&lt;/em&gt;). Các hàm số tuyến tính là các hàm đơn giản nhất, vì chúng thuận tiện trong việc hình dung và tính toán. Chúng ta sẽ được thấy trong các bài viết sau, &lt;em&gt;tuyến tính&lt;/em&gt; rất quan trọng và hữu ích trong các bài toán Machine Learning. Kinh nghiệm cá nhân tôi cho thấy, trước khi hiểu được các thuật toán &lt;em&gt;phi tuyến&lt;/em&gt; (non-linear, không phẳng), chúng ta cần nắm vững các kỹ thuật cho các mô hình &lt;em&gt;tuyến tính&lt;/em&gt;.&lt;/p&gt;
 
 &lt;!-- ========================== New Heading ==================== --&gt;
-&lt;p&gt;&lt;a name=&quot;2-phan-tich-toan-hoc&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a name=&quot;-phan-tich-toan-hoc&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;2-phân-tích-toán-học&quot;&gt;2. Phân tích toán học&lt;/h2&gt;
 
@@ -85,22 +85,22 @@ cột chứa thông tin &lt;em&gt;input&lt;/em&gt;, \(y\) là một số vô hư
 
 &lt;h3 id=&quot;dạng-của-linear-regression&quot;&gt;Dạng của Linear Regression&lt;/h3&gt;
 
-&lt;p&gt;Trong phương trình \((1)\) phía trên, nếu chúng ta đặt \(\mathbf{w} = [w_1; w_2; w_3, w_0] = \) là vector hệ số cần phải tối ưu và \(\mathbf{\bar{x}} = [x_1; x_2; x_3; 1]\) là vector dữ liệu đầu vào &lt;em&gt;mở rộng&lt;/em&gt;. Số \(1\) ở cuối được thêm vào để thuận tiện cho việc tính toán. Khi đó, phương trình (1) có thể được viết lại dưới dạng:&lt;/p&gt;
+&lt;p&gt;Trong phương trình \((1)\) phía trên, nếu chúng ta đặt \(\mathbf{w} = [w_1; w_2; w_3, w_0] = \) là vector hệ số cần phải tối ưu và \(\mathbf{\bar{x}} = [x_1; x_2; x_3; 1]\) (đọc là &lt;em&gt;x bar&lt;/em&gt; trong tiếng Anh) là vector dữ liệu đầu vào &lt;em&gt;mở rộng&lt;/em&gt;. Số \(1\) ở cuối được thêm vào để thuận tiện cho việc tính toán. Khi đó, phương trình (1) có thể được viết lại dưới dạng:&lt;/p&gt;
 
-&lt;p&gt;\[y \approx \mathbf{w}^T\mathbf{\bar{x}} = \bar{y}\]&lt;/p&gt;
+&lt;p&gt;\[y \approx \mathbf{w}^T\mathbf{\bar{x}} = \hat{y}\]&lt;/p&gt;
 
 &lt;!-- ========================== New Heading ==================== --&gt;
 &lt;p&gt;&lt;a name=&quot;sai-so-du-doan&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;sai-số-dự-đoán&quot;&gt;Sai số dự đoán&lt;/h3&gt;
 
-&lt;p&gt;Chúng ta mong muốn rằng sự sai khác \(e\) giữa giá trị thực \(y\) và giá trị dự đoán \(\bar{y}\) là nhỏ nhất. Nói cách khác, chúng ta muốn giá trị sau đây càng nhỏ càng tốt:&lt;/p&gt;
+&lt;p&gt;Chúng ta mong muốn rằng sự sai khác \(e\) giữa giá trị thực \(y\) và giá trị dự đoán \(\hat{y}\) (đọc là &lt;em&gt;y hat&lt;/em&gt; trong tiếng Anh) là nhỏ nhất. Nói cách khác, chúng ta muốn giá trị sau đây càng nhỏ càng tốt:&lt;/p&gt;
 
 &lt;p&gt;\[
-\frac{1}{2}e^2 = \frac{1}{2}(y - \bar{y})^2 = \frac{1}{2}(y - \mathbf{w}^T\mathbf{\bar{x}})^2
+\frac{1}{2}e^2 = \frac{1}{2}(y - \hat{y})^2 = \frac{1}{2}(y - \mathbf{w}^T\mathbf{\bar{x}})^2
 \]&lt;/p&gt;
 
-&lt;p&gt;trong đó hệ số \(\frac{1}{2} \) là để thuận tiện cho việc tính toán (tính đạo hàm mà tôi sẽ trình bày ở phía dưới). Chúng ta cần \(e^2\) vì \(e = y - \bar{y} \) có thể là một số âm, việc nói \(e\) nhỏ nhất sẽ không đúng vì khi \(e = - \infty\) là rất nhỏ nhưng sự sai lệch là rất lớn. Bạn đọc có thể tự đặt câu hỏi: &lt;strong&gt;tại sao không dùng trị tuyệt đối \( |e| \) mà lại dùng bình phương \(e^2\) ở đây?&lt;/strong&gt; Câu trả lời sẽ có ở phần sau.&lt;/p&gt;
+&lt;p&gt;trong đó hệ số \(\frac{1}{2} \) là để thuận tiện cho việc tính toán (tính đạo hàm mà tôi sẽ trình bày ở phía dưới). Chúng ta cần \(e^2\) vì \(e = y - \hat{y} \) có thể là một số âm, việc nói \(e\) nhỏ nhất sẽ không đúng vì khi \(e = - \infty\) là rất nhỏ nhưng sự sai lệch là rất lớn. Bạn đọc có thể tự đặt câu hỏi: &lt;strong&gt;tại sao không dùng trị tuyệt đối \( |e| \) mà lại dùng bình phương \(e^2\) ở đây?&lt;/strong&gt; Câu trả lời sẽ có ở phần sau.&lt;/p&gt;
 
 &lt;!-- ========================== New Heading ==================== --&gt;
 &lt;p&gt;&lt;a name=&quot;ham-mat-mat&quot;&gt;&lt;/a&gt;&lt;/p&gt;
@@ -119,7 +119,11 @@ Hàm số \(\mathcal{L}(\mathbf{w}) \) được gọi là &lt;strong&gt;hàm m�
 &lt;p&gt;Trước khi đi tìm lời giải, chúng ta tối giản phép toán trong phương trình hàm mất mát \((2)\). Đặt \(\mathbf{y} = [y_1, y_2, \dots, y_N]\) là một vector hàng chứa tất cả các &lt;em&gt;output&lt;/em&gt; của &lt;em&gt;training data&lt;/em&gt;; \( \mathbf{\bar{X}} = [\mathbf{\bar{x}}_1, \mathbf{\bar{x}}_2, \dots, \mathbf{\bar{x}}_N ] \) là ma trận dữ liệu đầu vào (mở rộng). Khi đó hàm số mất mát \(\mathcal{L}(\mathbf{w})\) được viết dưới dạng ma trận đơn giản hơn:&lt;/p&gt;
 
 &lt;p&gt;\[
-\mathcal{L}(\mathbf{w}) = \frac{1}{2}\sum_{i=1}^N (y_i - \mathbf{w}^T\mathbf{\bar{x}}_i)^2 = \frac{1}{2} \|\mathbf{y} - \mathbf{w}^T \mathbf{\bar{X}}\|_2^2~~~(3)
+\mathcal{L}(\mathbf{w}) 
+= \frac{1}{2}\sum_{i=1}^N (y_i - \mathbf{w}^T\mathbf{\bar{x}}_i)^2 
+= \frac{1}{2} \|\mathbf{y} - \mathbf{w}^T \mathbf{\bar{X}}\|_2^2 
+= \frac{1}{2} \|\mathbf{y}^T - \mathbf{\bar{X}}^T\mathbf{w} \|_2^2
+~~~(3)
 \]&lt;/p&gt;
 
 &lt;p&gt;với \( \| \mathbf{z} \|_2 \) là Euclidean norm (chuẩn Euclid, hay khoảng cách Euclid) và \( \| \mathbf{z} \|_2^2 \) là tổng của bình phương mỗi phần tử của vector \(\mathbf{z}\). Tới đây, ta đã có một dạng đơn giản của hàm mất mát được viết như phương trình \((3)\).&lt;/p&gt;
@@ -129,17 +133,203 @@ Hàm số \(\mathcal{L}(\mathbf{w}) \) được gọi là &lt;strong&gt;hàm m�
 
 &lt;h3 id=&quot;nghiệm-cho-bài-toán-linear-regression&quot;&gt;Nghiệm cho bài toán Linear Regression&lt;/h3&gt;
 
-&lt;p&gt;&lt;strong&gt;Cách phổ biến nhất để tìm nghiệm cho một bài toán tối ưu (chúng ta đã biết từ khi học cấp 3) là giải phương trình đạo hàm bằng 0!&lt;/strong&gt; Tất nhiên đó là khi việc tính đạo hàm và việc giải phương trình đạo hàm bằng 0 không quá phức tạp. Thật may mắn, với các mô hình tuyến tính, hai việc này là khả thi.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Cách phổ biến nhất để tìm nghiệm cho một bài toán tối ưu (chúng ta đã biết từ khi học cấp 3) là giải phương trình đạo hàm (gradient) bằng 0!&lt;/strong&gt; Tất nhiên đó là khi việc tính đạo hàm và việc giải phương trình đạo hàm bằng 0 không quá phức tạp. Thật may mắn, với các mô hình tuyến tính, hai việc này là khả thi.&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;Đến đây tôi xin quay lại câu hỏi ở phần &lt;a href=&quot;#sai-số-dự-đoán&quot;&gt;Sai số dự đoán&lt;/a&gt; phía trên về việc tại sao không dùng trị tuyệt đối mà lại dùng bình phương. Câu trả lời là hàm bình phương có đạo hàm tại mọi nơi, hàm trị tuyệt đối thì không (đạo hàm không xác định tại 0)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Đạo hàm theo \(\mathbf{w} \) của hàm mất mát là: 
+\[
+\frac{\partial{\mathcal{L}(\mathbf{w})}}{\partial{\mathbf{w}}} 
+= \mathbf{\bar{X}}(\mathbf{y}^T - \mathbf{\bar{X}}^T\mathbf{w}) 
+\]&lt;/p&gt;
+
+&lt;p&gt;Các bạn có thể tham khảo bảng đạo hàm theo vector hoặc ma trận của một hàm số trong &lt;a href=&quot;https://ccrma.stanford.edu/~dattorro/matrixcalc.pdf&quot;&gt;mục D.2 của tài liệu này&lt;/a&gt;. &lt;em&gt;Đến đây tôi xin quay lại câu hỏi ở phần &lt;a href=&quot;#sai so du doan&quot;&gt;Sai số dự đoán&lt;/a&gt; phía trên về việc tại sao không dùng trị tuyệt đối mà lại dùng bình phương. Câu trả lời là hàm bình phương có đạo hàm tại mọi nơi, trong khi hàm trị tuyệt đối thì không (đạo hàm không xác định tại 0)&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Phương trình đạo hàm bằng 0 tương đương với: 
+\[
+\mathbf{\bar{X}}\mathbf{\bar{X}}^T\mathbf{w} = \mathbf{\bar{X}}\mathbf{y}^T \triangleq \mathbf{b}
+~~~ (4)
+\]
+(ký hiệu \(\mathbf{\bar{X}}\mathbf{y}^T \triangleq \mathbf{b} \) nghĩa là &lt;em&gt;đặt&lt;/em&gt; \(\mathbf{\bar{X}}\mathbf{y}^T\) &lt;em&gt;bằng&lt;/em&gt; \(\mathbf{b}\) ).&lt;/p&gt;
+
+&lt;p&gt;Nếu ma trận vuông \( \mathbf{A} \triangleq \mathbf{\bar{X}}\mathbf{\bar{X}}^T\) khả nghịch (non-singular hoặc inversable) thì phương trình \((4)\) có nghiệm duy nhất: \( \mathbf{w} = \mathbf{A}^{-1}\mathbf{b}  \).&lt;/p&gt;
+
+&lt;p&gt;Vậy nếu ma trận \(\mathbf{A} \) không khả nghịch (có định thức bằng 0) thì sao? Nếu các bạn vẫn nhớ các kiến thức về hệ phương trình tuyến tính, trong trường hợp này thì hoặc phương trinh \( (4) \) vô nghiệm, hoặc là có vô số nghiệm. Khi đó, chúng ta sử dụng khái niệm &lt;a href=&quot;https://vi.wikipedia.org/wiki/Giả_nghịch_đảo_Moore–Penrose&quot;&gt;&lt;em&gt;giả nghịch đảo&lt;/em&gt;&lt;/a&gt; \( \mathbf{A}^{\dagger} \) (đọc là &lt;em&gt;A dagger&lt;/em&gt; trong tiếng Anh). (&lt;em&gt;Giả nghịch đảo (pseudo inverse) là trường hợp tổng quát của nghịch đảo khi ma trận không khả nghịch hoặc thậm chí không vuông. Trong khuôn khổ bài viết này, tôi xin phép được lược bỏ phần này, nếu các bạn thực sự quan tâm, tôi sẽ viết một bài khác chỉ nói về giả nghịch đảo. Xem thêm: &lt;a href=&quot;http://www.sci.utah.edu/~gerig/CS6640-F2012/Materials/pseudoinverse-cis61009sl10.pdf&quot;&gt;Least Squares, Pseudo-Inverses, PCA
+&amp;amp; SVD&lt;/a&gt;.&lt;/em&gt;)&lt;/p&gt;
+
+&lt;p&gt;Với khái niệm giả nghịch đảo, điểm tối ưu của bài toán Linear Regression có dạng:&lt;/p&gt;
+
+&lt;!-- Từ đây chúng ta có thể suy ra nghiệm tối ưu \\(\mathbf{w}\\) như sau. Nếu ma trận vuông \\( \mathbf{A} \triangleq \mathbf{\bar{X}}\mathbf{\bar{X}}^T\\) khả nghịch (non-singular hoặc inversable) thì  --&gt;
+&lt;!-- \\( \mathbf{w} = \mathbf{A}^{-1}\mathbf{b}  \\). Ngược lại, nếu ma trận đó không khả nghịch, chúng ta sử dụng [_giả nghịch đảo_](https://vi.wikipedia.org/wiki/Giả_nghịch_đảo_Moore–Penrose) \\( (\mathbf{A})^{\dagger} \\) (đọc là _A dagger_ trong tiếng Anh). (_Giả nghịch đảo (pseudo inverse) là trường hợp tổng quát của nghịch đảo khi ma trận không khả nghịch hoặc thậm chí không vuông_). Tóm lại, nghiệm của bài toán Linear Regression là:  --&gt;
+
+&lt;p&gt;\[
+\mathbf{w} = \mathbf{A}^{\dagger}\mathbf{b} = (\mathbf{\bar{X}}\mathbf{\bar{X}}^T)^{\dagger} \mathbf{\bar{X}}\mathbf{y}^T
+~~~ (5)
+\]&lt;/p&gt;
 
 &lt;!-- ========================== New Heading ==================== --&gt;
-&lt;p&gt;&lt;a name=&quot;3-trien-khai-tren-tren-python&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a name=&quot;-trien-khai-tren-tren-python&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;3-triển-khai-trên-trên-python&quot;&gt;3. Triển khai trên trên Python&lt;/h2&gt;
 
+&lt;p&gt;Trong phần này, tôi sẽ chọn một ví dụ đơn giản về việc giải bài toán Linear Regression trong Python. Tôi cũng sẽ so sánh nghiệm của bài toán khi giải theo phương trình (5) và nghiệm tìm được khi dùng thư viện &lt;a href=&quot;http://scikit-learn.org/stable/&quot;&gt;scikit-learn&lt;/a&gt; của Python. (&lt;em&gt;Đây là thư viện Machine Learning được sử dụng rộng rãi trong Python&lt;/em&gt;). Trong ví dụ này, dữ liệu đầu vào chỉ có 1 giá trị (1 chiều) để thuận tiện cho việc minh hoạ trong mặt phẳng.&lt;/p&gt;
+
+&lt;p&gt;Chúng ta có 1 bảng dữ liệu về chiều cao và cân nặng của 15 người như dưới đây:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;&lt;strong&gt;Chiều cao (cm)&lt;/strong&gt;&lt;/th&gt;
+      &lt;th&gt;147&lt;/th&gt;
+      &lt;th&gt;150&lt;/th&gt;
+      &lt;th&gt;153&lt;/th&gt;
+      &lt;th&gt;155&lt;/th&gt;
+      &lt;th&gt;158&lt;/th&gt;
+      &lt;th&gt;160&lt;/th&gt;
+      &lt;th&gt;163&lt;/th&gt;
+      &lt;th&gt;165&lt;/th&gt;
+      &lt;th&gt;168&lt;/th&gt;
+      &lt;th&gt;170&lt;/th&gt;
+      &lt;th&gt;173&lt;/th&gt;
+      &lt;th&gt;175&lt;/th&gt;
+      &lt;th&gt;178&lt;/th&gt;
+      &lt;th&gt;180&lt;/th&gt;
+      &lt;th&gt;183&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Cân nặng (kg)&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;strong&gt;49&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;strong&gt;50&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;strong&gt;51&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;strong&gt;52&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;strong&gt;54&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;strong&gt;56&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;strong&gt;58&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;strong&gt;59&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;strong&gt;60&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;strong&gt;62&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;strong&gt;63&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;strong&gt;64&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;strong&gt;66&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;strong&gt;67&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;strong&gt;68&lt;/strong&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Bài toán đặt ra là: liệu có thể dự đoán cân nặng của một người dựa vào chiều cao của họ không? (&lt;em&gt;Trên thực tế, tất nhiên là không, vì cân nặng còn phụ thuộc vào nhiều yếu tố khác nữa, thể tích chẳng hạn&lt;/em&gt;). Vì blog này nói về các thuật toán Machine Learning đơn giản nên tôi sẽ giả sử như chúng ta có thể dự đoán được.&lt;/p&gt;
+
+&lt;p&gt;Chúng ta có thể thấy là cân nặng sẽ tỉ lệ thuận với chiều cao (càng cao càng nặng), nên có thể sử dụng Linear Regression model cho việc dự đoán này. Để kiểm tra độ chính xác của model tìm được, chúng ta sẽ giữ lại cột 155 và 160 cm để kiểm thử, các cột còn lại được sử dụng để huấn luyện (train) model.&lt;/p&gt;
+
+&lt;p&gt;Trước tiên, chúng ta cần có hai thư viện &lt;a href=&quot;http://www.numpy.org/&quot;&gt;numpy&lt;/a&gt; cho đại số tuyến tính và &lt;a href=&quot;http://matplotlib.org/&quot;&gt;matplotlib&lt;/a&gt; cho việc vẽ hình.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;np&lt;/span&gt; 
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;plt&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Tiếp theo, chúng ta khai báo và biểu diễn dữ liệu trên một đồ thị.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# height (cm)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;147&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;150&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;153&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;158&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;163&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;165&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;168&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;170&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;173&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;175&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;178&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;180&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;183&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]])&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# weight (kg)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;49&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;51&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;54&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;58&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;59&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;60&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;62&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;63&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;66&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;67&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;68&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]])&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Visualize data &lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'ro'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;140&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;190&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;45&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;75&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xlabel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Height (cm)'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ylabel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Weight (kg)'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;!-- ![png](/assets/LR/output_3_0.png) --&gt;
+&lt;div class=&quot;imgcap&quot;&gt;
+&lt;img src=&quot;/assets/LR/output_3_0.png&quot; align=&quot;center&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Từ đồ thị này ta thấy rằng dữ liệu được sắp xếp gần như theo 1 đường thẳng, vậy mô hình Linear Regression nhiều khả năng sẽ cho kết quả tốt:&lt;/p&gt;
+
+&lt;p&gt;(cân nặng) = w_1*(chiều cao) + w_0)&lt;/p&gt;
+
+&lt;p&gt;Tiếp theo, chúng ta sẽ tính toán các hệ số a và b dựa vào công thức (5).&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Building Xbar &lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;one&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ones&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Xbar&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;concatenate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;one&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Calculating weights of the fitting line &lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;A&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Xbar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Xbar&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Xbar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;w&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;linalg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pinv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'w = '&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Preparing the fitting line &lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;w_1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;w_0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;x0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;linspace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;145&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;185&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;endpoint&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;y0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;w_1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;w_0&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Drawing the fitting line &lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'ro'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;     &lt;span class=&quot;c&quot;&gt;# data &lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;               &lt;span class=&quot;c&quot;&gt;# the fitting line&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;140&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;190&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;45&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;75&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xlabel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Height (cm)'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ylabel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Weight (kg)'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;w =  [[  0.55920496]
+ [-33.73541021]]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;!-- ![pnet/asset/LR/output_5_1.png) --&gt;
+&lt;div class=&quot;imgcap&quot;&gt;
+&lt;img src=&quot;/assets/LR/output_5_1.png&quot; align=&quot;center&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Từ đồ thị bên trên ta thấy rằng các điểm dữ liệu màu đỏ nằm khá gần đường thẳng dự đoán màu xanh. Vậy mô hình Linear Regression hoạt động tốt với tập dữ liệu &lt;em&gt;training&lt;/em&gt;. Bây giờ, chúng ta sử dụng mô hình này để dự đoán cân nặng của hai người có chiều cao 155 và 160 cm mà chúng ta đã không dùng khi tính toán nghiệm.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;y1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;w_1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;155&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;w_0&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;y2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;w_1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;160&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;w_0&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;u'Dự đoán cân nặng của người có chiều cao 155 cm: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%.2&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;f (kg), số liệu thật: 52 (kg)'&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;u'Dự đoán cân nặng của người có chiều cao 160 cm: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%.2&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;f (kg), số liệu thật: 56 (kg)'&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Dự đoán cân nặng của người có chiều cao 155 cm: 52.94 (kg), số liệu thật: 52 (kg)
+Dự đoán cân nặng của người có chiều cao 160 cm: 55.74 (kg), số liệu thật: 56 (kg)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Chúng ta thấy rằng kết quả dự đoán khá gần với số liệu thực tế.&lt;/p&gt;
+
+&lt;p&gt;Tiếp theo, chúng ta sẽ sử dụng thư viện Scikit-learn của Python để tìm nghiệm.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sklearn&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;datasets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;linear_model&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# fit the model by Linear Regression&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;regr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;linear_model&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LinearRegression&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit_intercept&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# fit_intercept = False for calculating the bias&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;regr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Xbar&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Compare two results&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;u'Nghiệm tìm được bằng scikit-learn  : '&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;regr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;coef_&lt;/span&gt; 
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;u'Nghiệm tìm được từ phương trình (5): '&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;W&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Nghiệm tìm được bằng scikit-learn  :  [[  0.55920496 -33.73541021]]
+Nghiệm tìm được từ phương trình (5):  [[  0.55920496 -33.73541021]]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Chúng ta thấy rằng hai kết quả thu được như nhau! (&lt;em&gt;Nghĩa là tôi đã không mắc lỗi nào trong cách tìm nghiệm ở phần trên&lt;/em&gt;)&lt;/p&gt;
+
 &lt;!-- ========================== New Heading ==================== --&gt;
-&lt;p&gt;&lt;a name=&quot;4-thao-luan&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a name=&quot;-thao-luan&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;4-thảo-luận&quot;&gt;4. Thảo luận&lt;/h2&gt;
 
@@ -172,11 +362,12 @@ Hàm số \(\mathcal{L}(\mathbf{w}) \) được gọi là &lt;strong&gt;hàm m�
 &lt;!-- Giả sử chúng ta có các cặp (_input, outcome_) \\( (\mathbf{x}_1, \mathbf{y}_1), \dots, (\mathbf{x}_N, \mathbf{y}_N) \\), chúng ta phải tìm một hàm  --&gt;
 
 &lt;!-- ========================== New Heading ==================== --&gt;
-&lt;p&gt;&lt;a name=&quot;5-tai-lieu-tham-khao&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a name=&quot;-tai-lieu-tham-khao&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;5-tài-liệu-tham-khảo&quot;&gt;5. Tài liệu tham khảo&lt;/h2&gt;
 
-&lt;p&gt;&lt;a href=&quot;http://people.sc.fsu.edu/~jburkardt/datasets/regression/regression.html&quot;&gt;Data&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://people.sc.fsu.edu/~jburkardt/datasets/regression/regression.html&quot;&gt;Data&lt;/a&gt;
+&lt;a href=&quot;http://www.sci.utah.edu/~gerig/CS6640-F2012/Materials/pseudoinverse-cis61009sl10.pdf&quot;&gt;Least Squares, Pseudo-Inverses, PCA &amp;amp; SVD&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Wed, 28 Dec 2016 10:22:00 -0500</pubDate>
         <link>http://localhost:4000/2016/12/28/linearregression/</link>
