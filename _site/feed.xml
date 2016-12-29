@@ -5,66 +5,13 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 29 Dec 2016 17:52:07 -0500</pubDate>
-    <lastBuildDate>Thu, 29 Dec 2016 17:52:07 -0500</lastBuildDate>
+    <pubDate>Thu, 29 Dec 2016 18:10:40 -0500</pubDate>
+    <lastBuildDate>Thu, 29 Dec 2016 18:10:40 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
         <title>Linear Regression</title>
         <description>&lt;h2 id=&quot;bài-viết-đang-trong-giai-đoạn-xây-dựng-sẽ-được-hoàn-thành-sớm&quot;&gt;Bài viết đang trong giai đoạn xây dựng, sẽ được hoàn thành sớm.&lt;/h2&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Default aligned&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;Left aligned&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Center aligned&lt;/th&gt;
-      &lt;th style=&quot;text-align: right&quot;&gt;Right aligned&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;First body part&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Second cell&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Third cell&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;fourth cell&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Second line&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;foo&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;strong&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;baz&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Third line&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;quux&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;baz&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;bar&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Second body&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;2 line&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-  &lt;tfoot&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Footer row&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tfoot&gt;
-&lt;/table&gt;
 
 &lt;div class=&quot;imgcap&quot;&gt;
 &lt;div&gt;
@@ -90,7 +37,7 @@
       &lt;li&gt;&lt;a href=&quot;#nghiem-cho-bai-toan-linear-regression&quot;&gt;Nghiệm cho bài toán Linear Regression&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#-trien-khai-tren-tren-python&quot;&gt;3. Triển khai trên trên Python&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#-vi-du-tren-python&quot;&gt;3. Ví dụ trên Python&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#-thao-luan&quot;&gt;4. Thảo luận&lt;/a&gt;
     &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#output-la-mot-vector-nhieu-bien&quot;&gt;Output là một vector nhiều biến&lt;/a&gt;&lt;/li&gt;
@@ -219,9 +166,9 @@ Hàm số \(\mathcal{L}(\mathbf{w}) \) được gọi là &lt;strong&gt;hàm m�
 \]&lt;/p&gt;
 
 &lt;!-- ========================== New Heading ==================== --&gt;
-&lt;p&gt;&lt;a name=&quot;-trien-khai-tren-tren-python&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a name=&quot;-vi-du-tren-python&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;3-triển-khai-trên-trên-python&quot;&gt;3. Triển khai trên trên Python&lt;/h2&gt;
+&lt;h2 id=&quot;3-ví-dụ-trên-python&quot;&gt;3. Ví dụ trên Python&lt;/h2&gt;
 
 &lt;p&gt;Trong phần này, tôi sẽ chọn một ví dụ đơn giản về việc giải bài toán Linear Regression trong Python. Tôi cũng sẽ so sánh nghiệm của bài toán khi giải theo phương trình (5) và nghiệm tìm được khi dùng thư viện &lt;a href=&quot;http://scikit-learn.org/stable/&quot;&gt;scikit-learn&lt;/a&gt; của Python. (&lt;em&gt;Đây là thư viện Machine Learning được sử dụng rộng rãi trong Python&lt;/em&gt;). Trong ví dụ này, dữ liệu đầu vào chỉ có 1 giá trị (1 chiều) để thuận tiện cho việc minh hoạ trong mặt phẳng.&lt;/p&gt;
 
@@ -230,42 +177,42 @@ Hàm số \(\mathcal{L}(\mathbf{w}) \) được gọi là &lt;strong&gt;hàm m�
 &lt;table&gt;
   &lt;thead&gt;
     &lt;tr&gt;
-      &lt;th&gt;&lt;strong&gt;Chiều cao (cm)&lt;/strong&gt;&lt;/th&gt;
-      &lt;th&gt;147&lt;/th&gt;
-      &lt;th&gt;150&lt;/th&gt;
-      &lt;th&gt;153&lt;/th&gt;
-      &lt;th&gt;155&lt;/th&gt;
-      &lt;th&gt;158&lt;/th&gt;
-      &lt;th&gt;160&lt;/th&gt;
-      &lt;th&gt;163&lt;/th&gt;
-      &lt;th&gt;165&lt;/th&gt;
-      &lt;th&gt;168&lt;/th&gt;
-      &lt;th&gt;170&lt;/th&gt;
-      &lt;th&gt;173&lt;/th&gt;
-      &lt;th&gt;175&lt;/th&gt;
-      &lt;th&gt;178&lt;/th&gt;
-      &lt;th&gt;180&lt;/th&gt;
-      &lt;th&gt;183&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Chiều cao (cm)&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;147&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;150&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;153&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;155&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;158&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;160&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;163&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;165&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;168&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;170&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;173&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;175&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;178&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;180&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;183&lt;/th&gt;
     &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Cân nặng (kg)&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;strong&gt;49&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;strong&gt;50&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;strong&gt;51&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;strong&gt;52&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;strong&gt;54&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;strong&gt;56&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;strong&gt;58&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;strong&gt;59&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;strong&gt;60&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;strong&gt;62&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;strong&gt;63&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;strong&gt;64&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;strong&gt;66&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;strong&gt;67&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;strong&gt;68&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;Cân nặng (kg)&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;49&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;50&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;51&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;52&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;54&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;56&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;58&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;59&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;60&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;62&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;63&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;64&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;66&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;67&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;68&lt;/strong&gt;&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
