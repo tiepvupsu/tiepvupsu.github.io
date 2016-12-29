@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 29 Dec 2016 12:46:27 -0500</pubDate>
-    <lastBuildDate>Thu, 29 Dec 2016 12:46:27 -0500</lastBuildDate>
+    <pubDate>Thu, 29 Dec 2016 13:24:52 -0500</pubDate>
+    <lastBuildDate>Thu, 29 Dec 2016 13:24:52 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -25,29 +25,28 @@
 &lt;p&gt;Trong bài này, tôi sẽ giới thiều một trong những thuật toán cơ bản nhất (và đơn giản nhất) của Machine Learning. Đây là một thuật toán &lt;em&gt;Supervised learning&lt;/em&gt; có tên &lt;strong&gt;Linear Regression&lt;/strong&gt; (Hồi Quy Tuyến Tính).&lt;/p&gt;
 
 &lt;p&gt;Trong trang này:
-&lt;!-- MarkdownTOC autolink=&quot;true&quot; bracket=&quot;round&quot; depth=&quot;0&quot; style=&quot;unordered&quot; indent=&quot;  &quot; autoanchor=&quot;false&quot; --&gt;&lt;/p&gt;
+&lt;!-- MarkdownTOC --&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;#1-giới-thiệu&quot;&gt;1. Giới thiệu&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#2-phân-tích-toán-học&quot;&gt;2. Phân tích toán học&lt;/a&gt;
+  &lt;li&gt;&lt;a href=&quot;#1-gioi-thieu&quot;&gt;1. Giới thiệu&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#2-phan-tich-toan-hoc&quot;&gt;2. Phân tích toán học&lt;/a&gt;
     &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#dạng-của-linear-regression&quot;&gt;Dạng của Linear Regression&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#sai-số-dự-đoán&quot;&gt;Sai số dự đoán&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#hàm-mất-mát&quot;&gt;Hàm mất mát&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#nghiệm-cho-bài-toán-linear-regression&quot;&gt;Nghiệm cho bài toán Linear Regression&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#dang-cua-linear-regression&quot;&gt;Dạng của Linear Regression&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#sai-so-du-doan&quot;&gt;Sai số dự đoán&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#ham-mat-mat&quot;&gt;Hàm mất mát&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#nghiem-cho-bai-toan-linear-regression&quot;&gt;Nghiệm cho bài toán Linear Regression&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#tiep-vu&quot;&gt;Tiep Vu&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#3-triển-khai-trên-trên-python&quot;&gt;3. Triển khai trên trên Python&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#4-thảo-luận&quot;&gt;4. Thảo luận&lt;/a&gt;
+  &lt;li&gt;&lt;a href=&quot;#3-trien-khai-tren-tren-python&quot;&gt;3. Triển khai trên trên Python&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#4-thao-luan&quot;&gt;4. Thảo luận&lt;/a&gt;
     &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#output-là-một-vector-nhiều-biến&quot;&gt;Output là một vector nhiều biến&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#mô-hình-là-một-đa-thức-bậc-cao&quot;&gt;Mô hình là một đa thức bậc cao&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#hạn-chế-của-linear-regression&quot;&gt;Hạn chế của Linear Regression&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#các-phương-pháp-tối-ưu&quot;&gt;Các phương pháp tối ưu&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#output-la-mot-vector-nhieu-bien&quot;&gt;Output là một vector nhiều biến&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#mo-hinh-la-mot-da-thuc-bac-cao&quot;&gt;Mô hình là một đa thức bậc cao&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#han-che-cua-linear-regression&quot;&gt;Hạn chế của Linear Regression&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#cac-phuong-phap-toi-uu&quot;&gt;Các phương pháp tối ưu&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#5-tài-liệu-tham-khảo&quot;&gt;5. Tài liệu tham khảo&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#5-tai-lieu-tham-khao&quot;&gt;5. Tài liệu tham khảo&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;!-- /MarkdownTOC --&gt;
@@ -113,7 +112,7 @@ Hàm số \(\mathcal{L}(\mathbf{w}) \) được gọi là &lt;strong&gt;hàm m�
 &lt;h3 id=&quot;nghiệm-cho-bài-toán-linear-regression&quot;&gt;Nghiệm cho bài toán Linear Regression&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;Cách phổ biến nhất để tìm nghiệm cho một bài toán tối ưu (chúng ta đã biết từ khi học cấp 3) là giải phương trình đạo hàm bằng 0!&lt;/strong&gt; Tất nhiên đó là khi việc tính đạo hàm và việc giải phương trình đạo hàm bằng 0 không quá phức tạp. Thật may mắn, với các mô hình tuyến tính, hai việc này là khả thi.&lt;/p&gt;
 
-&lt;h2 id=&quot;tiep-vu&quot;&gt;Tiep Vu&lt;/h2&gt;
+&lt;p&gt;&lt;a name=&quot;tiep-vu&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Đến đây tôi xin quay lại câu hỏi ở phần &lt;a href=&quot;#sai-số-dự-đoán&quot;&gt;Sai số dự đoán&lt;/a&gt; phía trên về việc tại sao không dùng trị tuyệt đối mà lại dùng bình phương. Câu trả lời là hàm bình phương có đạo hàm tại mọi nơi, hàm trị tuyệt đối thì không (đạo hàm không xác định tại 0)&lt;/em&gt;&lt;/p&gt;
 

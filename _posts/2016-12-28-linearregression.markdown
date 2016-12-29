@@ -17,27 +17,27 @@ mathjax: true
 <div class="thecap"> Linear Regression <br> (Nguồn: <a href ="https://en.wikipedia.org/wiki/Linear_regression">Wikipedia</a>)</div>
 </div>
 
-Trong bài này, tôi sẽ giới thiều một trong những thuật toán cơ bản nhất (và đơn giản nhất) của Machine Learning. Đây là một thuật toán _Supervised learning_ có tên **Linear Regression** (Hồi Quy Tuyến Tính). 
+Trong bài này, tôi sẽ giới thiều một trong những thuật toán cơ bản nhất (và đơn giản nhất) của Machine Learning. Đây là một thuật toán _Supervised learning_ có tên **Linear Regression** (Hồi Quy Tuyến Tính).
 
 Trong trang này:
-<!-- MarkdownTOC autolink="true" bracket="round" depth="0" style="unordered" indent="  " autoanchor="false" -->
+<!-- MarkdownTOC -->
 
-- [1. Giới thiệu](#1-giới-thiệu)
-- [2. Phân tích toán học](#2-phân-tích-toán-học)
-  - [Dạng của Linear Regression](#dạng-của-linear-regression)
-  - [Sai số dự đoán](#sai-số-dự-đoán)
-  - [Hàm mất mát](#hàm-mất-mát)
-  - [Nghiệm cho bài toán Linear Regression](#nghiệm-cho-bài-toán-linear-regression)
-- [Tiep Vu](#tiep-vu)
-- [3. Triển khai trên trên Python](#3-triển-khai-trên-trên-python)
-- [4. Thảo luận](#4-thảo-luận)
-  - [Output là một vector nhiều biến](#output-là-một-vector-nhiều-biến)
-  - [Mô hình là một đa thức bậc cao](#mô-hình-là-một-đa-thức-bậc-cao)
-  - [Hạn chế của Linear Regression](#hạn-chế-của-linear-regression)
-  - [Các phương pháp tối ưu](#các-phương-pháp-tối-ưu)
-- [5. Tài liệu tham khảo](#5-tài-liệu-tham-khảo)
+- [1. Giới thiệu](#1-gioi-thieu)
+- [2. Phân tích toán học](#2-phan-tich-toan-hoc)
+    - [Dạng của Linear Regression](#dang-cua-linear-regression)
+    - [Sai số dự đoán](#sai-so-du-doan)
+    - [Hàm mất mát](#ham-mat-mat)
+    - [Nghiệm cho bài toán Linear Regression](#nghiem-cho-bai-toan-linear-regression)
+- [3. Triển khai trên trên Python](#3-trien-khai-tren-tren-python)
+- [4. Thảo luận](#4-thao-luan)
+    - [Output là một vector nhiều biến](#output-la-mot-vector-nhieu-bien)
+    - [Mô hình là một đa thức bậc cao](#mo-hinh-la-mot-da-thuc-bac-cao)
+    - [Hạn chế của Linear Regression](#han-che-cua-linear-regression)
+    - [Các phương pháp tối ưu](#cac-phuong-phap-toi-uu)
+- [5. Tài liệu tham khảo](#5-tai-lieu-tham-khao)
 
 <!-- /MarkdownTOC -->
+
 
 ## 1. Giới thiệu
 
@@ -102,7 +102,7 @@ với \\( \\| \mathbf{z} \\|_2 \\) là Euclidean norm (chuẩn Euclid, hay kho�
 ### Nghiệm cho bài toán Linear Regression
 __Cách phổ biến nhất để tìm nghiệm cho một bài toán tối ưu (chúng ta đã biết từ khi học cấp 3) là giải phương trình đạo hàm bằng 0!__ Tất nhiên đó là khi việc tính đạo hàm và việc giải phương trình đạo hàm bằng 0 không quá phức tạp. Thật may mắn, với các mô hình tuyến tính, hai việc này là khả thi. 
 
-## Tiep Vu
+<a name="tiep-vu"></a>
 
 _Đến đây tôi xin quay lại câu hỏi ở phần [Sai số dự đoán](#sai-số-dự-đoán) phía trên về việc tại sao không dùng trị tuyệt đối mà lại dùng bình phương. Câu trả lời là hàm bình phương có đạo hàm tại mọi nơi, hàm trị tuyệt đối thì không (đạo hàm không xác định tại 0)_
 
