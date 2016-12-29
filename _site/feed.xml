@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 29 Dec 2016 14:12:18 -0500</pubDate>
-    <lastBuildDate>Thu, 29 Dec 2016 14:12:18 -0500</lastBuildDate>
+    <pubDate>Thu, 29 Dec 2016 14:25:59 -0500</pubDate>
+    <lastBuildDate>Thu, 29 Dec 2016 14:25:59 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -51,8 +51,7 @@
 
 &lt;!-- /MarkdownTOC --&gt;
 
-&lt;p&gt;&lt;a name=&quot;1-gioi-thieu&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;1-giới-thiệu&quot;&gt;1. Giới thiệu&lt;/h2&gt;
+&lt;h2 id=&quot;1-giới-thiệu-1-gioi-thieu&quot;&gt;1. Giới thiệu [1-gioi-thieu]&lt;/h2&gt;
 
 &lt;p&gt;Quay lại &lt;a href=&quot;/2016/12/27/categories/&quot;&gt;ví dụ đơn giản được nêu trong bài trước&lt;/a&gt;: một căn nhà rộng \(x_1 ~ \text{m}^2\), có \(x_2\) phòng ngủ và cách trung tâm thành phố \(x_3~ \text{km}\) có giá là bao nhiêu. Giả sử chúng ta đã có số liệu thống kê từ 1000 căn nhà trong thành phố đó, liệu rằng khi có một căn nhà mới với các thông số về diện tích, số phòng ngủ và khoảng cách tới trung tâm, chúng ta có thể dự đoán được giá của căn phòng đó không? Nếu có thì hàm dự đoán \(y = f(\mathbf{x}) \) sẽ có dạng như thế nào. Ở đây \(\mathbf{x} = [x_1; x_2; x_3] \) là một vector
 cột chứa thông tin &lt;em&gt;input&lt;/em&gt;, \(y\) là một số vô hướng (scalar) biểu diễn &lt;em&gt;output&lt;/em&gt; (tức giá của căn nhà trong ví dụ này).&lt;/p&gt;
@@ -73,17 +72,14 @@ cột chứa thông tin &lt;em&gt;input&lt;/em&gt;, \(y\) là một số vô hư
 
 &lt;p&gt;&lt;strong&gt;Chú ý 2:&lt;/strong&gt; &lt;em&gt;Linear&lt;/em&gt; hay &lt;em&gt;tuyến tính&lt;/em&gt; hiểu một cách đơn giản là &lt;em&gt;thẳng, phẳng&lt;/em&gt;. Trong không gian hai chiều, một hàm số được gọi là &lt;em&gt;tuyến tính&lt;/em&gt; nếu đồ thị của nó có dạng một &lt;em&gt;đường thẳng&lt;/em&gt;. Trong không gian ba chiều, một hàm số được goi là &lt;em&gt;tuyến tính&lt;/em&gt; nếu đồ thị của nó có dạng một &lt;em&gt;mặt phẳng&lt;/em&gt;. Trong không gian nhiều hơn 3 chiều, khái niệm &lt;em&gt;mặt phẳng&lt;/em&gt; không còn phù hợp nữa, thay vào đó, một khái niệm khác ra đời được gọi là &lt;em&gt;siêu mặt phẳng&lt;/em&gt; (&lt;em&gt;hyperplane&lt;/em&gt;). Các hàm số tuyến tính là các hàm đơn giản nhất, vì chúng thuận tiện trong việc hình dung và tính toán. Chúng ta sẽ được thấy trong các bài viết sau, &lt;em&gt;tuyến tính&lt;/em&gt; rất quan trọng và hữu ích trong các bài toán Machine Learning. Kinh nghiệm cá nhân tôi cho thấy, trước khi hiểu được các thuật toán &lt;em&gt;phi tuyến&lt;/em&gt; (non-linear, không phẳng), chúng ta cần nắm vững các kỹ thuật cho các mô hình &lt;em&gt;tuyến tính&lt;/em&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;a name=&quot;2-phan-tich-toan-hoc&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;2-phân-tích-toán-học&quot;&gt;2. Phân tích toán học&lt;/h2&gt;
+&lt;h2 id=&quot;2-phân-tích-toán-học-2-phan-tich-toan-hoc&quot;&gt;2. Phân tích toán học [2-phan-tich-toan-hoc]&lt;/h2&gt;
 
-&lt;p&gt;&lt;a name=&quot;dang-cua-linear-regression&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;dạng-của-linear-regression&quot;&gt;Dạng của Linear Regression&lt;/h3&gt;
+&lt;h3 id=&quot;dạng-của-linear-regression-dang-cua-linear-regression&quot;&gt;Dạng của Linear Regression [dang-cua-linear-regression]&lt;/h3&gt;
 
 &lt;p&gt;Trong phương trình \((1)\) phía trên, nếu chúng ta đặt \(\mathbf{w} = [w_1; w_2; w_3, w_0] = \) là vector hệ số cần phải tối ưu và \(\mathbf{\bar{x}} = [x_1; x_2; x_3; 1]\) là vector dữ liệu đầu vào &lt;em&gt;mở rộng&lt;/em&gt;. Số \(1\) ở cuối được thêm vào để thuận tiện cho việc tính toán. Khi đó, phương trình (1) có thể được viết lại dưới dạng:&lt;/p&gt;
 
 &lt;p&gt;\[y \approx \mathbf{w}^T\mathbf{\bar{x}} = \bar{y}\]&lt;/p&gt;
 
-&lt;p&gt;&lt;a name=&quot;sai-so-du-doan&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&quot;sai-số-dự-đoán&quot;&gt;Sai số dự đoán&lt;/h3&gt;
 
 &lt;p&gt;Chúng ta mong muốn rằng sự sai khác \(e\) giữa giá trị thực \(y\) và giá trị dự đoán \(\bar{y}\) là nhỏ nhất. Nói cách khác, chúng ta muốn giá trị sau đây càng nhỏ càng tốt:&lt;/p&gt;
@@ -94,7 +90,6 @@ cột chứa thông tin &lt;em&gt;input&lt;/em&gt;, \(y\) là một số vô hư
 
 &lt;p&gt;trong đó hệ số \(\frac{1}{2} \) là để thuận tiện cho việc tính toán (tính đạo hàm mà tôi sẽ trình bày ở phía dưới). Chúng ta cần \(e^2\) vì \(e = y - \bar{y} \) có thể là một số âm, việc nói \(e\) nhỏ nhất sẽ không đúng vì khi \(e = - \infty\) là rất nhỏ nhưng sự sai lệch là rất lớn. Bạn đọc có thể tự đặt câu hỏi: &lt;strong&gt;tại sao không dùng trị tuyệt đối \( |e| \) mà lại dùng bình phương \(e^2\) ở đây?&lt;/strong&gt; Câu trả lời sẽ có ở phần sau.&lt;/p&gt;
 
-&lt;p&gt;&lt;a name=&quot;ham-mat-mat&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&quot;hàm-mất-mát&quot;&gt;Hàm mất mát&lt;/h3&gt;
 
 &lt;p&gt;Điều tương tự xảy ra với tất cả các cặp &lt;em&gt;(input, outcome)&lt;/em&gt; \( (\mathbf{x}_i, y_i), i = 1, 2, \dots, N \), với \(N\) là số lượng dữ liệu quan sát được. Điều chúng ta muốn, tổng sai số là nhỏ nhất, tương đương với việc tìm \( \mathbf{w} \) để hàm số sau đạt giá trị nhỏ nhất:&lt;/p&gt;
@@ -114,7 +109,6 @@ Hàm số \(\mathcal{L}(\mathbf{w}) \) được gọi là &lt;strong&gt;hàm m�
 
 &lt;p&gt;với \( \| \mathbf{z} \|_2 \) là Euclidean norm (chuẩn Euclid, hay khoảng cách Euclid) và \( \| \mathbf{z} \|_2^2 \) là tổng của bình phương mỗi phần tử của vector \(\mathbf{z}\). Tới đây, ta đã có một dạng đơn giản của hàm mất mát được viết như phương trình \((3)\).&lt;/p&gt;
 
-&lt;p&gt;&lt;a name=&quot;nghiem-cho-bai-toan-linear-regression&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&quot;nghiệm-cho-bài-toán-linear-regression&quot;&gt;Nghiệm cho bài toán Linear Regression&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;Cách phổ biến nhất để tìm nghiệm cho một bài toán tối ưu (chúng ta đã biết từ khi học cấp 3) là giải phương trình đạo hàm bằng 0!&lt;/strong&gt; Tất nhiên đó là khi việc tính đạo hàm và việc giải phương trình đạo hàm bằng 0 không quá phức tạp. Thật may mắn, với các mô hình tuyến tính, hai việc này là khả thi.&lt;/p&gt;
 
@@ -122,32 +116,25 @@ Hàm số \(\mathcal{L}(\mathbf{w}) \) được gọi là &lt;strong&gt;hàm m�
 
 &lt;p&gt;&lt;em&gt;Đến đây tôi xin quay lại câu hỏi ở phần &lt;a href=&quot;#sai-số-dự-đoán&quot;&gt;Sai số dự đoán&lt;/a&gt; phía trên về việc tại sao không dùng trị tuyệt đối mà lại dùng bình phương. Câu trả lời là hàm bình phương có đạo hàm tại mọi nơi, hàm trị tuyệt đối thì không (đạo hàm không xác định tại 0)&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a name=&quot;3-trien-khai-tren-tren-python&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&quot;3-triển-khai-trên-trên-python&quot;&gt;3. Triển khai trên trên Python&lt;/h2&gt;
 
-&lt;p&gt;&lt;a name=&quot;4-thao-luan&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&quot;4-thảo-luận&quot;&gt;4. Thảo luận&lt;/h2&gt;
 
-&lt;p&gt;&lt;a name=&quot;output-la-mot-vector-nhieu-bien&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&quot;output-là-một-vector-nhiều-biến&quot;&gt;Output là một vector nhiều biến&lt;/h3&gt;
 
 &lt;p&gt;\(f(\mathbf{x})\) là một đa thức bậc cao.&lt;/p&gt;
 
-&lt;p&gt;&lt;a name=&quot;mo-hinh-la-mot-da-thuc-bac-cao&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&quot;mô-hình-là-một-đa-thức-bậc-cao&quot;&gt;Mô hình là một đa thức bậc cao&lt;/h3&gt;
 
-&lt;p&gt;&lt;a name=&quot;han-che-cua-linear-regression&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&quot;hạn-chế-của-linear-regression&quot;&gt;Hạn chế của Linear Regression&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;Nhạy cảm với nhiễu&lt;/li&gt;
   &lt;li&gt;Không biểu diễn được các mô hình phức tạp&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;a name=&quot;cac-phuong-phap-toi-uu&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&quot;các-phương-pháp-tối-ưu&quot;&gt;Các phương pháp tối ưu&lt;/h3&gt;
 
 &lt;!-- Giả sử chúng ta có các cặp (_input, outcome_) \\( (\mathbf{x}_1, \mathbf{y}_1), \dots, (\mathbf{x}_N, \mathbf{y}_N) \\), chúng ta phải tìm một hàm  --&gt;
-&lt;p&gt;&lt;a name=&quot;5-tai-lieu-tham-khao&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&quot;5-tài-liệu-tham-khảo&quot;&gt;5. Tài liệu tham khảo&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&quot;http://people.sc.fsu.edu/~jburkardt/datasets/regression/regression.html&quot;&gt;Data&lt;/a&gt;&lt;/p&gt;
