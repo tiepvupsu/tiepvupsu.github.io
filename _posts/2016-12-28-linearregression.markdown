@@ -39,12 +39,9 @@ Trong trang này:
 <!-- /MarkdownTOC -->
 
 
-
 <a name="1-gioi-thieu"></a>
 
-## 1. Giới thiệu [1-gioi-thieu]
-<a name="1-gioi-thieu"></a>
-<a name="1-gioi-thieu"></a>
+## 1. Giới thiệu
 
 Quay lại [ví dụ đơn giản được nêu trong bài trước](/2016/12/27/categories/): một căn nhà rộng \\(x_1 ~ \text{m}^2\\), có \\(x_2\\) phòng ngủ và cách trung tâm thành phố \\(x_3~ \text{km}\\) có giá là bao nhiêu. Giả sử chúng ta đã có số liệu thống kê từ 1000 căn nhà trong thành phố đó, liệu rằng khi có một căn nhà mới với các thông số về diện tích, số phòng ngủ và khoảng cách tới trung tâm, chúng ta có thể dự đoán được giá của căn phòng đó không? Nếu có thì hàm dự đoán \\(y = f(\mathbf{x}) \\) sẽ có dạng như thế nào. Ở đây \\(\mathbf{x} = [x_1; x_2; x_3] \\) là một vector
 cột chứa thông tin _input_, \\(y\\) là một số vô hướng (scalar) biểu diễn _output_ (tức giá của căn nhà trong ví dụ này).
