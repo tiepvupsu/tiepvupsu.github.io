@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 29 Dec 2016 12:33:33 -0500</pubDate>
-    <lastBuildDate>Thu, 29 Dec 2016 12:33:33 -0500</lastBuildDate>
+    <pubDate>Thu, 29 Dec 2016 12:46:27 -0500</pubDate>
+    <lastBuildDate>Thu, 29 Dec 2016 12:46:27 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -37,6 +37,7 @@
       &lt;li&gt;&lt;a href=&quot;#nghiệm-cho-bài-toán-linear-regression&quot;&gt;Nghiệm cho bài toán Linear Regression&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#tiep-vu&quot;&gt;Tiep Vu&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#3-triển-khai-trên-trên-python&quot;&gt;3. Triển khai trên trên Python&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#4-thảo-luận&quot;&gt;4. Thảo luận&lt;/a&gt;
     &lt;ul&gt;
@@ -111,6 +112,8 @@ Hàm số \(\mathcal{L}(\mathbf{w}) \) được gọi là &lt;strong&gt;hàm m�
 
 &lt;h3 id=&quot;nghiệm-cho-bài-toán-linear-regression&quot;&gt;Nghiệm cho bài toán Linear Regression&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;Cách phổ biến nhất để tìm nghiệm cho một bài toán tối ưu (chúng ta đã biết từ khi học cấp 3) là giải phương trình đạo hàm bằng 0!&lt;/strong&gt; Tất nhiên đó là khi việc tính đạo hàm và việc giải phương trình đạo hàm bằng 0 không quá phức tạp. Thật may mắn, với các mô hình tuyến tính, hai việc này là khả thi.&lt;/p&gt;
+
+&lt;h2 id=&quot;tiep-vu&quot;&gt;Tiep Vu&lt;/h2&gt;
 
 &lt;p&gt;&lt;em&gt;Đến đây tôi xin quay lại câu hỏi ở phần &lt;a href=&quot;#sai-số-dự-đoán&quot;&gt;Sai số dự đoán&lt;/a&gt; phía trên về việc tại sao không dùng trị tuyệt đối mà lại dùng bình phương. Câu trả lời là hàm bình phương có đạo hàm tại mọi nơi, hàm trị tuyệt đối thì không (đạo hàm không xác định tại 0)&lt;/em&gt;&lt;/p&gt;
 

@@ -28,6 +28,7 @@ Trong trang này:
   - [Sai số dự đoán](#sai-số-dự-đoán)
   - [Hàm mất mát](#hàm-mất-mát)
   - [Nghiệm cho bài toán Linear Regression](#nghiệm-cho-bài-toán-linear-regression)
+- [Tiep Vu](#tiep-vu)
 - [3. Triển khai trên trên Python](#3-triển-khai-trên-trên-python)
 - [4. Thảo luận](#4-thảo-luận)
   - [Output là một vector nhiều biến](#output-là-một-vector-nhiều-biến)
@@ -100,6 +101,8 @@ với \\( \\| \mathbf{z} \\|_2 \\) là Euclidean norm (chuẩn Euclid, hay kho�
 
 ### Nghiệm cho bài toán Linear Regression
 __Cách phổ biến nhất để tìm nghiệm cho một bài toán tối ưu (chúng ta đã biết từ khi học cấp 3) là giải phương trình đạo hàm bằng 0!__ Tất nhiên đó là khi việc tính đạo hàm và việc giải phương trình đạo hàm bằng 0 không quá phức tạp. Thật may mắn, với các mô hình tuyến tính, hai việc này là khả thi. 
+
+## Tiep Vu
 
 _Đến đây tôi xin quay lại câu hỏi ở phần [Sai số dự đoán](#sai-số-dự-đoán) phía trên về việc tại sao không dùng trị tuyệt đối mà lại dùng bình phương. Câu trả lời là hàm bình phương có đạo hàm tại mọi nơi, hàm trị tuyệt đối thì không (đạo hàm không xác định tại 0)_
 
