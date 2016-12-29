@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 29 Dec 2016 00:02:24 -0500</pubDate>
-    <lastBuildDate>Thu, 29 Dec 2016 00:02:24 -0500</lastBuildDate>
+    <pubDate>Thu, 29 Dec 2016 00:05:35 -0500</pubDate>
+    <lastBuildDate>Thu, 29 Dec 2016 00:05:35 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -28,41 +28,44 @@
 &lt;!-- MarkdownTOC autolink=&quot;true&quot; bracket=&quot;round&quot; depth=&quot;0&quot; style=&quot;unordered&quot; indent=&quot;  &quot; autoanchor=&quot;false&quot; --&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;#phân-tích-toán-học&quot;&gt;Phân tích toán học&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#python&quot;&gt;Linear Regression trong Python&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#thảo-luận&quot;&gt;Thảo luận&lt;/a&gt;
+  &lt;li&gt;&lt;a href=&quot;#1-giới-thiệu&quot;&gt;1. Giới thiệu&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#2-phân-tích-toán-học&quot;&gt;2. Phân tích toán học&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#3-triển-khai-trên-trên-python&quot;&gt;3. Triển khai trên trên Python&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#4-thảo-luận&quot;&gt;4. Thảo luận&lt;/a&gt;
     &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#limitations&quot;&gt;Hạn chế của Linear Regression&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#optimization&quot;&gt;Các phương pháp tối ưu&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#hạn-chế-của-linear-regression&quot;&gt;Hạn chế của Linear Regression&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#các-phương-pháp-tối-ưu&quot;&gt;Các phương pháp tối ưu&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#linear-regression&quot;&gt;Linear Regression&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#5-tài-liệu-tham-khảo&quot;&gt;5. Tài liệu tham khảo&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;!-- /MarkdownTOC --&gt;
 
-&lt;h2 id=&quot;phân-tích-toán-học&quot;&gt;Phân tích toán học&lt;/h2&gt;
+&lt;h2 id=&quot;1-giới-thiệu&quot;&gt;1. Giới thiệu&lt;/h2&gt;
 
 &lt;p&gt;Quay lại &lt;a href=&quot;/2016/12/27/categories/&quot;&gt;ví dụ đơn giản được nêu trong bài trước&lt;/a&gt;: một căn nhà rộng \(x_1 ~ \text{m}^2\), có \(x_2\) phòng ngủ và cách trung tâm thành phố \(x_3~ \text{km}\) có giá là bao nhiêu. Giả sử chúng ta đã có số liệu thống kê từ 1000 căn nhà trong thành phố đó, liệu rằng khi có một căn nhà mới với các thông số về diện tích, số phòng ngủ và khoảng cách tới trung tâm, chúng ta có thể dự đoán được giá của căn phòng đó không? Nếu có thì hàm dự đoán \(y = f(\mathbf{x}) \) sẽ có dạng như thế nào. Ở đây \(\mathbf{x} = [x_1, x_2, x_3] \) là một vector hàng chưa thông tin &lt;em&gt;input&lt;/em&gt;, \(y\) là một số vô hướng (scalar) biểu diễn &lt;em&gt;output&lt;/em&gt; (tức giá của căn nhà trong ví dụ này)&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Lưu ý về ký hiệu toán học:&lt;/strong&gt; &lt;em&gt;trong các bài viết của tôi, các số vô hướng được biểu diễn bởi các chữ cái viết ở dạng không in đậm, có thể viết hoa, ví dụ \(x_1, N, y, k\). Các vector được biểu diễn bằng các chữ cái thường in đậm, ví dụ \(\mathbf{y}, \mathbf{x}_1 \). Các ma trận được biểu diễn bởi các chữ viết hoa in đậm, ví dụ \(\mathbf{X, Y, W} \).&lt;/em&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;linear-regression-trong-pythonpython&quot;&gt;Linear Regression trong Python[python]&lt;/h2&gt;
+&lt;h2 id=&quot;2-phân-tích-toán-học&quot;&gt;2. Phân tích toán học&lt;/h2&gt;
 
-&lt;h2 id=&quot;thảo-luận&quot;&gt;Thảo luận&lt;/h2&gt;
+&lt;h2 id=&quot;3-triển-khai-trên-trên-python&quot;&gt;3. Triển khai trên trên Python&lt;/h2&gt;
+
+&lt;h2 id=&quot;4-thảo-luận&quot;&gt;4. Thảo luận&lt;/h2&gt;
 
 &lt;p&gt;\(f(\mathbf{x})\) là một đa thức bậc cao.&lt;/p&gt;
 
-&lt;h3 id=&quot;hạn-chế-của-linear-regressionlimitations&quot;&gt;Hạn chế của Linear Regression[limitations]&lt;/h3&gt;
+&lt;h3 id=&quot;hạn-chế-của-linear-regression&quot;&gt;Hạn chế của Linear Regression&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;Nhạy cảm với nhiễu&lt;/li&gt;
   &lt;li&gt;Không biểu diễn được các mô hình phức tạp&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;các-phương-pháp-tối-ưuoptimization&quot;&gt;Các phương pháp tối ưu[optimization]&lt;/h3&gt;
+&lt;h3 id=&quot;các-phương-pháp-tối-ưu&quot;&gt;Các phương pháp tối ưu&lt;/h3&gt;
 
 &lt;!-- Giả sử chúng ta có các cặp (_input, outcome_) \\( (\mathbf{x}_1, \mathbf{y}_1), \dots, (\mathbf{x}_N, \mathbf{y}_N) \\), chúng ta phải tìm một hàm  --&gt;
-&lt;h2 id=&quot;linear-regression&quot;&gt;Linear Regression&lt;/h2&gt;
+&lt;h2 id=&quot;5-tài-liệu-tham-khảo&quot;&gt;5. Tài liệu tham khảo&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&quot;http://people.sc.fsu.edu/~jburkardt/datasets/regression/regression.html&quot;&gt;Data&lt;/a&gt;&lt;/p&gt;
 </description>
