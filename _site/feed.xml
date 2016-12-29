@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 29 Dec 2016 00:05:35 -0500</pubDate>
-    <lastBuildDate>Thu, 29 Dec 2016 00:05:35 -0500</lastBuildDate>
+    <pubDate>Thu, 29 Dec 2016 00:30:51 -0500</pubDate>
+    <lastBuildDate>Thu, 29 Dec 2016 00:30:51 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -33,6 +33,8 @@
   &lt;li&gt;&lt;a href=&quot;#3-triển-khai-trên-trên-python&quot;&gt;3. Triển khai trên trên Python&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#4-thảo-luận&quot;&gt;4. Thảo luận&lt;/a&gt;
     &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#output-là-một-vector-nhiều-biến&quot;&gt;Output là một vector nhiều biến&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#mô-hình-là-một-đa-thức-bậc-cao&quot;&gt;Mô hình là một đa thức bậc cao&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#hạn-chế-của-linear-regression&quot;&gt;Hạn chế của Linear Regression&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#các-phương-pháp-tối-ưu&quot;&gt;Các phương pháp tối ưu&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
@@ -44,9 +46,21 @@
 
 &lt;h2 id=&quot;1-giới-thiệu&quot;&gt;1. Giới thiệu&lt;/h2&gt;
 
-&lt;p&gt;Quay lại &lt;a href=&quot;/2016/12/27/categories/&quot;&gt;ví dụ đơn giản được nêu trong bài trước&lt;/a&gt;: một căn nhà rộng \(x_1 ~ \text{m}^2\), có \(x_2\) phòng ngủ và cách trung tâm thành phố \(x_3~ \text{km}\) có giá là bao nhiêu. Giả sử chúng ta đã có số liệu thống kê từ 1000 căn nhà trong thành phố đó, liệu rằng khi có một căn nhà mới với các thông số về diện tích, số phòng ngủ và khoảng cách tới trung tâm, chúng ta có thể dự đoán được giá của căn phòng đó không? Nếu có thì hàm dự đoán \(y = f(\mathbf{x}) \) sẽ có dạng như thế nào. Ở đây \(\mathbf{x} = [x_1, x_2, x_3] \) là một vector hàng chưa thông tin &lt;em&gt;input&lt;/em&gt;, \(y\) là một số vô hướng (scalar) biểu diễn &lt;em&gt;output&lt;/em&gt; (tức giá của căn nhà trong ví dụ này)&lt;/p&gt;
+&lt;p&gt;Quay lại &lt;a href=&quot;/2016/12/27/categories/&quot;&gt;ví dụ đơn giản được nêu trong bài trước&lt;/a&gt;: một căn nhà rộng \(x_1 ~ \text{m}^2\), có \(x_2\) phòng ngủ và cách trung tâm thành phố \(x_3~ \text{km}\) có giá là bao nhiêu. Giả sử chúng ta đã có số liệu thống kê từ 1000 căn nhà trong thành phố đó, liệu rằng khi có một căn nhà mới với các thông số về diện tích, số phòng ngủ và khoảng cách tới trung tâm, chúng ta có thể dự đoán được giá của căn phòng đó không? Nếu có thì hàm dự đoán \(y = f(\mathbf{x}) \) sẽ có dạng như thế nào. Ở đây \(\mathbf{x} = [x_1, x_2, x_3] \) là một vector hàng chưa thông tin &lt;em&gt;input&lt;/em&gt;, \(y\) là một số vô hướng (scalar) biểu diễn &lt;em&gt;output&lt;/em&gt; (tức giá của căn nhà trong ví dụ này).&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Lưu ý về ký hiệu toán học:&lt;/strong&gt; &lt;em&gt;trong các bài viết của tôi, các số vô hướng được biểu diễn bởi các chữ cái viết ở dạng không in đậm, có thể viết hoa, ví dụ \(x_1, N, y, k\). Các vector được biểu diễn bằng các chữ cái thường in đậm, ví dụ \(\mathbf{y}, \mathbf{x}_1 \). Các ma trận được biểu diễn bởi các chữ viết hoa in đậm, ví dụ \(\mathbf{X, Y, W} \).&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Một cách đơn giản nhất, chúng ta có thể thấy rằng: i) diện tích nhà càng lớn thì giá nhà càng cao; ii) số lượng phòng ngủ càng lớn thì giá nhà càng cao; iii) càng xa trung tâm thì giá nhà càng giảm. Một hàm số đơn giản nhất có thể mô tả mối quan hệ giữa giá nhà và 3 đại lượng đầu vào là:&lt;/p&gt;
+
+&lt;p&gt;\[ \text{ giá nhà } = w_1 (\text{diện tích}) + w_2 (\text{số phòng}) + w_3 (\text{ khoảng cách}) + w_0 \]&lt;/p&gt;
+
+&lt;p&gt;trong đó, \(w_1, w_2\) là các hằng số dương, \(w_3\) là một hằng số âm, \(w_0\) là một hằng số được gọi là bias. Hay nói cách khác:&lt;/p&gt;
+
+&lt;p&gt;\[y = w_0 + w_1 x_1 + w_2 x_2 + w_3 x_3 = f(\mathbf{x})\]&lt;/p&gt;
+
+&lt;p&gt;Mối quan hệ \(y = f(\mathbf{x})\) bên trên là một mối quan hệ tuyến tính (linear). Bài toán chúng ta đang làm là một bài toán thuộc loại regression. Bài toán đi tìm các hệ số tối ưu \( (w_0, w_1, w_2, w_3)\) chính vì vậy được gọi là bài toán Linear Regression.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Chú ý:&lt;/strong&gt; &lt;em&gt;Linear&lt;/em&gt; hay &lt;em&gt;tuyến tính&lt;/em&gt; hiểu một cách đơn giản là &lt;em&gt;thẳng, phẳng&lt;/em&gt;. Trong không gian hai chiều, một hàm số được gọi là &lt;em&gt;tuyến tính&lt;/em&gt; nếu đồ thị của nó có dạng một &lt;em&gt;đường thẳng&lt;/em&gt;. Trong không gian ba chiều, một hàm số được goi là &lt;em&gt;tuyến tính&lt;/em&gt; nếu đồ thị của nó có dạng một &lt;em&gt;mặt phẳng&lt;/em&gt;. Trong không gian nhiều hơn 3 chiều, khái niệm &lt;em&gt;mặt phẳng&lt;/em&gt; không còn phù hợp nữa, thay vào đó, một khái niệm khác ra đời được gọi là &lt;em&gt;siêu mặt phẳng&lt;/em&gt; (&lt;em&gt;hyperplane&lt;/em&gt;). Các hàm số tuyến tính là các hàm đơn giản nhất, vì chúng thuận tiện trong việc hình dung và tính toán. Chúng ta sẽ được thấy trong các bài viết sau, &lt;em&gt;tuyến tính&lt;/em&gt; rất quan trọng và hữu ích trong các bài toán Machine Learning. Kinh nghiệm cá nhân tôi cho thấy, trước khi hiểu được các thuật toán &lt;em&gt;phi tuyến&lt;/em&gt; (non-linear, không phẳng), chúng ta cần nắm vững các kỹ thuật cho các mô hình &lt;em&gt;tuyến tính&lt;/em&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;2-phân-tích-toán-học&quot;&gt;2. Phân tích toán học&lt;/h2&gt;
 
@@ -54,7 +68,11 @@
 
 &lt;h2 id=&quot;4-thảo-luận&quot;&gt;4. Thảo luận&lt;/h2&gt;
 
+&lt;h3 id=&quot;output-là-một-vector-nhiều-biến&quot;&gt;Output là một vector nhiều biến&lt;/h3&gt;
+
 &lt;p&gt;\(f(\mathbf{x})\) là một đa thức bậc cao.&lt;/p&gt;
+
+&lt;h3 id=&quot;mô-hình-là-một-đa-thức-bậc-cao&quot;&gt;Mô hình là một đa thức bậc cao&lt;/h3&gt;
 
 &lt;h3 id=&quot;hạn-chế-của-linear-regression&quot;&gt;Hạn chế của Linear Regression&lt;/h3&gt;
 &lt;ul&gt;
