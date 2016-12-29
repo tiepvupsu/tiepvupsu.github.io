@@ -8,15 +8,15 @@ url: "http://tiepvupsu.github.io"
 github_username:  tiepvupsu
 
 # Build settings
-# markdown: kramdown
+markdown: kramdown
 permalink: pretty
 
 highlighter: rouge
-# kramdown:
-#   input: GFM
-#   auto_ids: true
-#   syntax_highlighter: rouge
+kramdown:
+  input: GFM
+  auto_ids: true
+  syntax_highlighter: rouge
   
-markdown: redcarpet
-redcarpet:
-  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "strikethrough", "superscript", "with_toc_data"]
+# markdown: redcarpet
+# redcarpet:
+#   extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "strikethrough", "superscript", "with_toc_data"]
