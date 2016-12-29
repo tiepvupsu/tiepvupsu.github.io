@@ -22,23 +22,25 @@ Trong bài này, tôi sẽ giới thiều một trong những thuật toán cơ 
 Trong trang này:
 <!-- MarkdownTOC -->
 
-- [1. Giới thiệu](#1-giới-thiệu)
-- [2. Phân tích toán học](#2-phân-tích-toán-học)
-    - [Dạng của Linear Regression](#dạng-của-linear-regression)
-    - [Sai số dự đoán](#sai-số-dự-đoán)
-    - [Hàm mất mát](#hàm-mất-mát)
-    - [Nghiệm cho bài toán Linear Regression](#nghiệm-cho-bài-toán-linear-regression)
-- [3. Triển khai trên trên Python](#3-triển-khai-trên-trên-python)
-- [4. Thảo luận](#4-thảo-luận)
-    - [Output là một vector nhiều biến](#output-là-một-vector-nhiều-biến)
-    - [Mô hình là một đa thức bậc cao](#mô-hình-là-một-đa-thức-bậc-cao)
-    - [Hạn chế của Linear Regression](#hạn-chế-của-linear-regression)
-    - [Các phương pháp tối ưu](#các-phương-pháp-tối-ưu)
-- [5. Tài liệu tham khảo](#5-tài-liệu-tham-khảo)
+- [1. Giới thiệu](#1-gioi-thieu)
+- [2. Phân tích toán học](#2-phan-tich-toan-hoc)
+    - [Dạng của Linear Regression](#dang-cua-linear-regression)
+    - [Sai số dự đoán](#sai-so-du-doan)
+    - [Hàm mất mát](#ham-mat-mat)
+    - [Nghiệm cho bài toán Linear Regression](#nghiem-cho-bai-toan-linear-regression)
+- [3. Triển khai trên trên Python](#3-trien-khai-tren-tren-python)
+- [4. Thảo luận](#4-thao-luan)
+    - [Output là một vector nhiều biến](#output-la-mot-vector-nhieu-bien)
+    - [Mô hình là một đa thức bậc cao](#mo-hinh-la-mot-da-thuc-bac-cao)
+    - [Hạn chế của Linear Regression](#han-che-cua-linear-regression)
+    - [Các phương pháp tối ưu](#cac-phuong-phap-toi-uu)
+- [5. Tài liệu tham khảo](#5-tai-lieu-tham-khao)
 
 <!-- /MarkdownTOC -->
 
 
+
+<a name="1-gioi-thieu"></a>
 ## 1. Giới thiệu
 
 Quay lại [ví dụ đơn giản được nêu trong bài trước](/2016/12/27/categories/): một căn nhà rộng \\(x_1 ~ \text{m}^2\\), có \\(x_2\\) phòng ngủ và cách trung tâm thành phố \\(x_3~ \text{km}\\) có giá là bao nhiêu. Giả sử chúng ta đã có số liệu thống kê từ 1000 căn nhà trong thành phố đó, liệu rằng khi có một căn nhà mới với các thông số về diện tích, số phòng ngủ và khoảng cách tới trung tâm, chúng ta có thể dự đoán được giá của căn phòng đó không? Nếu có thì hàm dự đoán \\(y = f(\mathbf{x}) \\) sẽ có dạng như thế nào. Ở đây \\(\mathbf{x} = [x_1; x_2; x_3] \\) là một vector
@@ -61,14 +63,17 @@ Mối quan hệ \\(y \approx f(\mathbf{x})\\) bên trên là một mối quan h�
 **Chú ý 2:** _Linear_ hay _tuyến tính_ hiểu một cách đơn giản là _thẳng, phẳng_. Trong không gian hai chiều, một hàm số được gọi là _tuyến tính_ nếu đồ thị của nó có dạng một _đường thẳng_. Trong không gian ba chiều, một hàm số được goi là _tuyến tính_ nếu đồ thị của nó có dạng một _mặt phẳng_. Trong không gian nhiều hơn 3 chiều, khái niệm _mặt phẳng_ không còn phù hợp nữa, thay vào đó, một khái niệm khác ra đời được gọi là _siêu mặt phẳng_ (_hyperplane_). Các hàm số tuyến tính là các hàm đơn giản nhất, vì chúng thuận tiện trong việc hình dung và tính toán. Chúng ta sẽ được thấy trong các bài viết sau, _tuyến tính_ rất quan trọng và hữu ích trong các bài toán Machine Learning. Kinh nghiệm cá nhân tôi cho thấy, trước khi hiểu được các thuật toán _phi tuyến_ (non-linear, không phẳng), chúng ta cần nắm vững các kỹ thuật cho các mô hình _tuyến tính_.
 
 
+<a name="2-phan-tich-toan-hoc"></a>
 ## 2. Phân tích toán học 
 
+<a name="dang-cua-linear-regression"></a>
 ### Dạng của Linear Regression 
 
 Trong phương trình \\((1)\\) phía trên, nếu chúng ta đặt \\(\mathbf{w} = [w_1; w_2; w_3, w_0] = \\) là vector hệ số cần phải tối ưu và \\(\mathbf{\bar{x}} = [x_1; x_2; x_3; 1]\\) là vector dữ liệu đầu vào _mở rộng_. Số \\(1\\) ở cuối được thêm vào để thuận tiện cho việc tính toán. Khi đó, phương trình (1) có thể được viết lại dưới dạng:
 
 \\[y \approx \mathbf{w}^T\mathbf{\bar{x}} = \bar{y}\\]
 
+<a name="sai-so-du-doan"></a>
 ### Sai số dự đoán 
 
 Chúng ta mong muốn rằng sự sai khác \\(e\\) giữa giá trị thực \\(y\\) và giá trị dự đoán \\(\bar{y}\\) là nhỏ nhất. Nói cách khác, chúng ta muốn giá trị sau đây càng nhỏ càng tốt: 
@@ -80,6 +85,7 @@ Chúng ta mong muốn rằng sự sai khác \\(e\\) giữa giá trị thực \\(
 trong đó hệ số \\(\frac{1}{2} \\) là để thuận tiện cho việc tính toán (tính đạo hàm mà tôi sẽ trình bày ở phía dưới). Chúng ta cần \\(e^2\\) vì \\(e = y - \bar{y} \\) có thể là một số âm, việc nói \\(e\\) nhỏ nhất sẽ không đúng vì khi \\(e = - \infty\\) là rất nhỏ nhưng sự sai lệch là rất lớn. Bạn đọc có thể tự đặt câu hỏi: **tại sao không dùng trị tuyệt đối \\( \|e\| \\) mà lại dùng bình phương \\(e^2\\) ở đây?** Câu trả lời sẽ có ở phần sau. 
 
 
+<a name="ham-mat-mat"></a>
 ### Hàm mất mát
 
 Điều tương tự xảy ra với tất cả các cặp _(input, outcome)_ \\( (\mathbf{x}_i, y_i), i = 1, 2, \dots, N \\), với \\(N\\) là số lượng dữ liệu quan sát được. Điều chúng ta muốn, tổng sai số là nhỏ nhất, tương đương với việc tìm \\( \mathbf{w} \\) để hàm số sau đạt giá trị nhỏ nhất:
@@ -99,6 +105,7 @@ Trước khi đi tìm lời giải, chúng ta tối giản phép toán trong ph�
 
 với \\( \\| \mathbf{z} \\|_2 \\) là Euclidean norm (chuẩn Euclid, hay khoảng cách Euclid) và \\( \\| \mathbf{z} \\|_2^2 \\) là tổng của bình phương mỗi phần tử của vector \\(\mathbf{z}\\). Tới đây, ta đã có một dạng đơn giản của hàm mất mát được viết như phương trình \\((3)\\).
 
+<a name="nghiem-cho-bai-toan-linear-regression"></a>
 ### Nghiệm cho bài toán Linear Regression
 __Cách phổ biến nhất để tìm nghiệm cho một bài toán tối ưu (chúng ta đã biết từ khi học cấp 3) là giải phương trình đạo hàm bằng 0!__ Tất nhiên đó là khi việc tính đạo hàm và việc giải phương trình đạo hàm bằng 0 không quá phức tạp. Thật may mắn, với các mô hình tuyến tính, hai việc này là khả thi. 
 
@@ -107,25 +114,32 @@ __Cách phổ biến nhất để tìm nghiệm cho một bài toán tối ưu (
 _Đến đây tôi xin quay lại câu hỏi ở phần [Sai số dự đoán](#sai-số-dự-đoán) phía trên về việc tại sao không dùng trị tuyệt đối mà lại dùng bình phương. Câu trả lời là hàm bình phương có đạo hàm tại mọi nơi, hàm trị tuyệt đối thì không (đạo hàm không xác định tại 0)_
 
 
+<a name="3-trien-khai-tren-tren-python"></a>
 ## 3. Triển khai trên trên Python
 
+<a name="4-thao-luan"></a>
 ## 4. Thảo luận
 
+<a name="output-la-mot-vector-nhieu-bien"></a>
 ### Output là một vector nhiều biến
 
 \\(f(\mathbf{x})\\) là một đa thức bậc cao. 
 
+<a name="mo-hinh-la-mot-da-thuc-bac-cao"></a>
 ### Mô hình là một đa thức bậc cao
 
+<a name="han-che-cua-linear-regression"></a>
 ### Hạn chế của Linear Regression
 * Nhạy cảm với nhiễu 
 * Không biểu diễn được các mô hình phức tạp 
 
+<a name="cac-phuong-phap-toi-uu"></a>
 ### Các phương pháp tối ưu
 
 
 
 <!-- Giả sử chúng ta có các cặp (_input, outcome_) \\( (\mathbf{x}_1, \mathbf{y}_1), \dots, (\mathbf{x}_N, \mathbf{y}_N) \\), chúng ta phải tìm một hàm  -->
+<a name="5-tai-lieu-tham-khao"></a>
 ## 5. Tài liệu tham khảo
 
 [Data](http://people.sc.fsu.edu/~jburkardt/datasets/regression/regression.html)
