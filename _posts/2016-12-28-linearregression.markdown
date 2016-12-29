@@ -65,11 +65,11 @@ Mối quan hệ \\(y \approx f(\mathbf{x})\\) bên trên là một mối quan h�
 
 <a name="2-phan-tich-toan-hoc"></a>
 
-## 2. Phân tích toán học [2-phan-tich-toan-hoc]
+## 2. Phân tích toán học
 
 <a name="dang-cua-linear-regression"></a>
 
-### Dạng của Linear Regression [dang-cua-linear-regression]
+### Dạng của Linear Regression 
 
 Trong phương trình \\((1)\\) phía trên, nếu chúng ta đặt \\(\mathbf{w} = [w_1; w_2; w_3, w_0] = \\) là vector hệ số cần phải tối ưu và \\(\mathbf{\bar{x}} = [x_1; x_2; x_3; 1]\\) là vector dữ liệu đầu vào _mở rộng_. Số \\(1\\) ở cuối được thêm vào để thuận tiện cho việc tính toán. Khi đó, phương trình (1) có thể được viết lại dưới dạng:
 

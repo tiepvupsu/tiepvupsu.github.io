@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 29 Dec 2016 14:50:07 -0500</pubDate>
-    <lastBuildDate>Thu, 29 Dec 2016 14:50:07 -0500</lastBuildDate>
+    <pubDate>Thu, 29 Dec 2016 14:51:19 -0500</pubDate>
+    <lastBuildDate>Thu, 29 Dec 2016 14:51:19 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -76,11 +76,11 @@ cột chứa thông tin &lt;em&gt;input&lt;/em&gt;, \(y\) là một số vô hư
 
 &lt;p&gt;&lt;a name=&quot;2-phan-tich-toan-hoc&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;2-phân-tích-toán-học-2-phan-tich-toan-hoc&quot;&gt;2. Phân tích toán học [2-phan-tich-toan-hoc]&lt;/h2&gt;
+&lt;h2 id=&quot;2-phân-tích-toán-học&quot;&gt;2. Phân tích toán học&lt;/h2&gt;
 
 &lt;p&gt;&lt;a name=&quot;dang-cua-linear-regression&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;dạng-của-linear-regression-dang-cua-linear-regression&quot;&gt;Dạng của Linear Regression [dang-cua-linear-regression]&lt;/h3&gt;
+&lt;h3 id=&quot;dạng-của-linear-regression&quot;&gt;Dạng của Linear Regression&lt;/h3&gt;
 
 &lt;p&gt;Trong phương trình \((1)\) phía trên, nếu chúng ta đặt \(\mathbf{w} = [w_1; w_2; w_3, w_0] = \) là vector hệ số cần phải tối ưu và \(\mathbf{\bar{x}} = [x_1; x_2; x_3; 1]\) là vector dữ liệu đầu vào &lt;em&gt;mở rộng&lt;/em&gt;. Số \(1\) ở cuối được thêm vào để thuận tiện cho việc tính toán. Khi đó, phương trình (1) có thể được viết lại dưới dạng:&lt;/p&gt;
 
