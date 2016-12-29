@@ -5,18 +5,41 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 29 Dec 2016 17:21:31 -0500</pubDate>
-    <lastBuildDate>Thu, 29 Dec 2016 17:21:31 -0500</lastBuildDate>
+    <pubDate>Thu, 29 Dec 2016 17:30:23 -0500</pubDate>
+    <lastBuildDate>Thu, 29 Dec 2016 17:30:23 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
         <title>Linear Regression</title>
         <description>&lt;h2 id=&quot;bài-viết-đang-trong-giai-đoạn-xây-dựng-sẽ-được-hoàn-thành-sớm&quot;&gt;Bài viết đang trong giai đoạn xây dựng, sẽ được hoàn thành sớm.&lt;/h2&gt;
 
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;a&lt;/th&gt;
+      &lt;th&gt;b&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
 &lt;div class=&quot;imgcap&quot;&gt;
 &lt;div&gt;
 &lt;a href=&quot;/2016/12/28/linearregression/&quot;&gt;
-    &lt;img src=&quot;/assets/LR/output_3_0.png&quot; width=&quot;500&quot; /&gt;&lt;/a&gt;
+    &lt;img src=&quot;/assets/LR/output_5_1.png&quot; width=&quot;500&quot; /&gt;&lt;/a&gt;
     &lt;!-- &lt;img src=&quot;/assets/rl/mdp.png&quot; height=&quot;206&quot;&gt; --&gt;
 &lt;/div&gt;
 &lt;div class=&quot;thecap&quot;&gt; Linear Regression &lt;br /&gt; (Nguồn: &lt;a href=&quot;https://en.wikipedia.org/wiki/Linear_regression&quot;&gt;Wikipedia&lt;/a&gt;)&lt;/div&gt;

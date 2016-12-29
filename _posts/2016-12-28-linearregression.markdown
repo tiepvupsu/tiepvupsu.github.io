@@ -8,10 +8,16 @@ mathjax: true
 
 ## Bài viết đang trong giai đoạn xây dựng, sẽ được hoàn thành sớm. 
 
+| a | b |
+|---|---|
+| 1 | 2 |
+| 3 | 4 |
+|   |   |
+
 <div class="imgcap">
 <div >
 <a href = "/2016/12/28/linearregression/">
-    <img src ="/assets/LR/output_3_0.png"  width = "500"></a>
+    <img src ="/assets/LR/output_5_1.png"  width = "500"></a>
     <!-- <img src="/assets/rl/mdp.png" height="206"> -->
 </div>
 <div class="thecap"> Linear Regression <br> (Nguồn: <a href ="https://en.wikipedia.org/wiki/Linear_regression">Wikipedia</a>)</div>
