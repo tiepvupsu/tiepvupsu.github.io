@@ -30,16 +30,15 @@ Theo phương thức học, các thuật toán Machine Learning thường đư�
 ### Supervised Learning (Học có giám sát) 
 Supervised learning là thuật toán dự đoán đầu ra (outcome) của một dữ liệu mới (new input) dựa trên các cặp (_input, outcome_) đã biết từ trước. Cặp dữ liệu này còn được gọi là (_data. label_), tức (_dữ liệu, nhãn_). Supervised learning là nhóm phổ biến nhất trong các thuật toán Machine Learning. 
 
-Một cách toán học, Supervised learning là khi chúng ra có một tập hợp biến đầu vào \\( \mathbf{X} = [\mathbf{x}_1, \mathbf{x}_2, \dots, \mathbf{x}_N] \\) và một tập hợp nhãn tương ứng \\( \mathbf{Y} = [\mathbf{y}_1, \mathbf{y}_2, \dots, \mathbf{y}_N] \\), trong đó \\( \mathbf{x}_i, \mathbf{y}_i \\) là các vector. Chúng ta cần tạo ra một hàm số ánh xạ mỗi phần tử từ tập \\(\mathbf{X}\\) sang một phần tử (xấp xỉ) tương ứng của tập \\(\mathbf{Y}\\):
+Một cách toán học, Supervised learning là khi chúng ra có một tập hợp biến đầu vào \\( \mathcal{X} = \\{\mathbf{x}_1, \mathbf{x}_2, \dots, \mathbf{x}_N\\} \\) và một tập hợp nhãn tương ứng \\( \mathcal{Y} = \\{\mathbf{y}_1, \mathbf{y}_2, \dots, \mathbf{y}_N\\} \\), trong đó \\( \mathbf{x}_i, \mathbf{y}_i \\) là các vector. Chúng ta cần tạo ra một hàm số ánh xạ mỗi phần tử từ tập \\(\mathcal{X}\\) sang một phần tử (xấp xỉ) tương ứng của tập \\(\mathcal{Y}\\):
 \\[ \mathbf{y}_i \approx f(\mathbf{x}_i), ~~ \forall i = 1, 2, \dots, N\\] 
 Mục đích là xấp xỉ hàm số \\(f\\) thật tốt để khi có một dữ liệu \\(\mathbf{x}\\) mới, chúng ta có thể tính được nhãn tương ứng của nó \\( \mathbf{y} = f(\mathbf{x}) \\).
     
 **Ví dụ 1:** trong nhận dạng chữ viết tay, ta có ảnh của hàng nghìn ví dụ của mỗi chữ số được viết bởi nhiều người khác nhau. Chúng ta đưa các bức ảnh này vào trong một thuật toán và chỉ cho nó biết mỗi bức ảnh tương ứng với chữ số nào. Sau khi thuật toán tạo ra (sau khi _học_) một mô hình, tức một hàm số mà đầu vào là một bức ảnh và đầu ra là một chữ số, khi nhận được một bức ảnh mới mà mô hình **chưa nhìn thấy bao giờ**, nó sẽ dự đoán bức ảnh đó chứa chữ số nào.
 
 <div class="imgcap">
-<div >
 <!-- <a href = "http://www.rubylab.io/img/mnist.png"> -->
-    <img src="http://www.rubylab.io/img/mnist.png" width = "600"></a>
+    <img src="http://www.rubylab.io/img/mnist.png" width = "600">
     <!-- <img src="/assets/rl/mdp.png" height="206"> -->
 <!-- </div> -->
 <div class="thecap"><a href = "http://yann.lecun.com/exdb/mnist/">MNIST</a>: bộ cơ sở dữ liệu của chữ số viết tay. <br> (Nguồn: <a href ="http://www.rubylab.io/2015/03/18/simple-neural-network-implenentation-in-ruby/">Simple Neural Network implementation in Ruby)</a></div>
