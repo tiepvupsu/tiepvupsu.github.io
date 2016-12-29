@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 29 Dec 2016 00:30:51 -0500</pubDate>
-    <lastBuildDate>Thu, 29 Dec 2016 00:30:51 -0500</lastBuildDate>
+    <pubDate>Thu, 29 Dec 2016 12:33:33 -0500</pubDate>
+    <lastBuildDate>Thu, 29 Dec 2016 12:33:33 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -29,7 +29,14 @@
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;#1-giới-thiệu&quot;&gt;1. Giới thiệu&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#2-phân-tích-toán-học&quot;&gt;2. Phân tích toán học&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#2-phân-tích-toán-học&quot;&gt;2. Phân tích toán học&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#dạng-của-linear-regression&quot;&gt;Dạng của Linear Regression&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#sai-số-dự-đoán&quot;&gt;Sai số dự đoán&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#hàm-mất-mát&quot;&gt;Hàm mất mát&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#nghiệm-cho-bài-toán-linear-regression&quot;&gt;Nghiệm cho bài toán Linear Regression&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#3-triển-khai-trên-trên-python&quot;&gt;3. Triển khai trên trên Python&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#4-thảo-luận&quot;&gt;4. Thảo luận&lt;/a&gt;
     &lt;ul&gt;
@@ -46,23 +53,66 @@
 
 &lt;h2 id=&quot;1-giới-thiệu&quot;&gt;1. Giới thiệu&lt;/h2&gt;
 
-&lt;p&gt;Quay lại &lt;a href=&quot;/2016/12/27/categories/&quot;&gt;ví dụ đơn giản được nêu trong bài trước&lt;/a&gt;: một căn nhà rộng \(x_1 ~ \text{m}^2\), có \(x_2\) phòng ngủ và cách trung tâm thành phố \(x_3~ \text{km}\) có giá là bao nhiêu. Giả sử chúng ta đã có số liệu thống kê từ 1000 căn nhà trong thành phố đó, liệu rằng khi có một căn nhà mới với các thông số về diện tích, số phòng ngủ và khoảng cách tới trung tâm, chúng ta có thể dự đoán được giá của căn phòng đó không? Nếu có thì hàm dự đoán \(y = f(\mathbf{x}) \) sẽ có dạng như thế nào. Ở đây \(\mathbf{x} = [x_1, x_2, x_3] \) là một vector hàng chưa thông tin &lt;em&gt;input&lt;/em&gt;, \(y\) là một số vô hướng (scalar) biểu diễn &lt;em&gt;output&lt;/em&gt; (tức giá của căn nhà trong ví dụ này).&lt;/p&gt;
+&lt;p&gt;Quay lại &lt;a href=&quot;/2016/12/27/categories/&quot;&gt;ví dụ đơn giản được nêu trong bài trước&lt;/a&gt;: một căn nhà rộng \(x_1 ~ \text{m}^2\), có \(x_2\) phòng ngủ và cách trung tâm thành phố \(x_3~ \text{km}\) có giá là bao nhiêu. Giả sử chúng ta đã có số liệu thống kê từ 1000 căn nhà trong thành phố đó, liệu rằng khi có một căn nhà mới với các thông số về diện tích, số phòng ngủ và khoảng cách tới trung tâm, chúng ta có thể dự đoán được giá của căn phòng đó không? Nếu có thì hàm dự đoán \(y = f(\mathbf{x}) \) sẽ có dạng như thế nào. Ở đây \(\mathbf{x} = [x_1; x_2; x_3] \) là một vector
+cột chứa thông tin &lt;em&gt;input&lt;/em&gt;, \(y\) là một số vô hướng (scalar) biểu diễn &lt;em&gt;output&lt;/em&gt; (tức giá của căn nhà trong ví dụ này).&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Lưu ý về ký hiệu toán học:&lt;/strong&gt; &lt;em&gt;trong các bài viết của tôi, các số vô hướng được biểu diễn bởi các chữ cái viết ở dạng không in đậm, có thể viết hoa, ví dụ \(x_1, N, y, k\). Các vector được biểu diễn bằng các chữ cái thường in đậm, ví dụ \(\mathbf{y}, \mathbf{x}_1 \). Các ma trận được biểu diễn bởi các chữ viết hoa in đậm, ví dụ \(\mathbf{X, Y, W} \).&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;Một cách đơn giản nhất, chúng ta có thể thấy rằng: i) diện tích nhà càng lớn thì giá nhà càng cao; ii) số lượng phòng ngủ càng lớn thì giá nhà càng cao; iii) càng xa trung tâm thì giá nhà càng giảm. Một hàm số đơn giản nhất có thể mô tả mối quan hệ giữa giá nhà và 3 đại lượng đầu vào là:&lt;/p&gt;
 
-&lt;p&gt;\[ \text{ giá nhà } = w_1 (\text{diện tích}) + w_2 (\text{số phòng}) + w_3 (\text{ khoảng cách}) + w_0 \]&lt;/p&gt;
+&lt;p&gt;\[ \text{ giá nhà } \approx w_1 (\text{diện tích}) + w_2 (\text{số phòng}) + w_3 (\text{ khoảng cách}) + w_0 \]&lt;/p&gt;
 
 &lt;p&gt;trong đó, \(w_1, w_2\) là các hằng số dương, \(w_3\) là một hằng số âm, \(w_0\) là một hằng số được gọi là bias. Hay nói cách khác:&lt;/p&gt;
 
-&lt;p&gt;\[y = w_0 + w_1 x_1 + w_2 x_2 + w_3 x_3 = f(\mathbf{x})\]&lt;/p&gt;
+&lt;p&gt;\[y \approx w_1 x_1 + w_2 x_2 + w_3 x_3 + w_0 = f(\mathbf{x}) = \bar{y}~~~~ (1)\]&lt;/p&gt;
 
-&lt;p&gt;Mối quan hệ \(y = f(\mathbf{x})\) bên trên là một mối quan hệ tuyến tính (linear). Bài toán chúng ta đang làm là một bài toán thuộc loại regression. Bài toán đi tìm các hệ số tối ưu \( (w_0, w_1, w_2, w_3)\) chính vì vậy được gọi là bài toán Linear Regression.&lt;/p&gt;
+&lt;p&gt;Mối quan hệ \(y \approx f(\mathbf{x})\) bên trên là một mối quan hệ tuyến tính (linear). Bài toán chúng ta đang làm là một bài toán thuộc loại regression. Bài toán đi tìm các hệ số tối ưu \( \{w_1, w_2, w_3, w_0 \}\) chính vì vậy được gọi là bài toán Linear Regression.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Chú ý:&lt;/strong&gt; &lt;em&gt;Linear&lt;/em&gt; hay &lt;em&gt;tuyến tính&lt;/em&gt; hiểu một cách đơn giản là &lt;em&gt;thẳng, phẳng&lt;/em&gt;. Trong không gian hai chiều, một hàm số được gọi là &lt;em&gt;tuyến tính&lt;/em&gt; nếu đồ thị của nó có dạng một &lt;em&gt;đường thẳng&lt;/em&gt;. Trong không gian ba chiều, một hàm số được goi là &lt;em&gt;tuyến tính&lt;/em&gt; nếu đồ thị của nó có dạng một &lt;em&gt;mặt phẳng&lt;/em&gt;. Trong không gian nhiều hơn 3 chiều, khái niệm &lt;em&gt;mặt phẳng&lt;/em&gt; không còn phù hợp nữa, thay vào đó, một khái niệm khác ra đời được gọi là &lt;em&gt;siêu mặt phẳng&lt;/em&gt; (&lt;em&gt;hyperplane&lt;/em&gt;). Các hàm số tuyến tính là các hàm đơn giản nhất, vì chúng thuận tiện trong việc hình dung và tính toán. Chúng ta sẽ được thấy trong các bài viết sau, &lt;em&gt;tuyến tính&lt;/em&gt; rất quan trọng và hữu ích trong các bài toán Machine Learning. Kinh nghiệm cá nhân tôi cho thấy, trước khi hiểu được các thuật toán &lt;em&gt;phi tuyến&lt;/em&gt; (non-linear, không phẳng), chúng ta cần nắm vững các kỹ thuật cho các mô hình &lt;em&gt;tuyến tính&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Chú ý 1:&lt;/strong&gt; \(y\) là giá trị thực của &lt;em&gt;outcome&lt;/em&gt; (dựa trên số liệu thống kê chúng ta có trong tập &lt;em&gt;training data&lt;/em&gt;), trong khi \(\bar{y}\) là giá trị mà mô hình Linear Regression dự đoán được. Nhìn chung, \(y\) và \(\bar{y}\) là hai giá trị khác nhau do có sai số mô hình, tuy nhiên, chúng ta mong muốn rằng sự khác nhau này rất nhỏ.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Chú ý 2:&lt;/strong&gt; &lt;em&gt;Linear&lt;/em&gt; hay &lt;em&gt;tuyến tính&lt;/em&gt; hiểu một cách đơn giản là &lt;em&gt;thẳng, phẳng&lt;/em&gt;. Trong không gian hai chiều, một hàm số được gọi là &lt;em&gt;tuyến tính&lt;/em&gt; nếu đồ thị của nó có dạng một &lt;em&gt;đường thẳng&lt;/em&gt;. Trong không gian ba chiều, một hàm số được goi là &lt;em&gt;tuyến tính&lt;/em&gt; nếu đồ thị của nó có dạng một &lt;em&gt;mặt phẳng&lt;/em&gt;. Trong không gian nhiều hơn 3 chiều, khái niệm &lt;em&gt;mặt phẳng&lt;/em&gt; không còn phù hợp nữa, thay vào đó, một khái niệm khác ra đời được gọi là &lt;em&gt;siêu mặt phẳng&lt;/em&gt; (&lt;em&gt;hyperplane&lt;/em&gt;). Các hàm số tuyến tính là các hàm đơn giản nhất, vì chúng thuận tiện trong việc hình dung và tính toán. Chúng ta sẽ được thấy trong các bài viết sau, &lt;em&gt;tuyến tính&lt;/em&gt; rất quan trọng và hữu ích trong các bài toán Machine Learning. Kinh nghiệm cá nhân tôi cho thấy, trước khi hiểu được các thuật toán &lt;em&gt;phi tuyến&lt;/em&gt; (non-linear, không phẳng), chúng ta cần nắm vững các kỹ thuật cho các mô hình &lt;em&gt;tuyến tính&lt;/em&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;2-phân-tích-toán-học&quot;&gt;2. Phân tích toán học&lt;/h2&gt;
+
+&lt;h3 id=&quot;dạng-của-linear-regression&quot;&gt;Dạng của Linear Regression&lt;/h3&gt;
+
+&lt;p&gt;Trong phương trình \((1)\) phía trên, nếu chúng ta đặt \(\mathbf{w} = [w_1; w_2; w_3, w_0] = \) là vector hệ số cần phải tối ưu và \(\mathbf{\bar{x}} = [x_1; x_2; x_3; 1]\) là vector dữ liệu đầu vào &lt;em&gt;mở rộng&lt;/em&gt;. Số \(1\) ở cuối được thêm vào để thuận tiện cho việc tính toán. Khi đó, phương trình (1) có thể được viết lại dưới dạng:&lt;/p&gt;
+
+&lt;p&gt;\[y \approx \mathbf{w}^T\mathbf{\bar{x}} = \bar{y}\]&lt;/p&gt;
+
+&lt;h3 id=&quot;sai-số-dự-đoán&quot;&gt;Sai số dự đoán&lt;/h3&gt;
+
+&lt;p&gt;Chúng ta mong muốn rằng sự sai khác \(e\) giữa giá trị thực \(y\) và giá trị dự đoán \(\bar{y}\) là nhỏ nhất. Nói cách khác, chúng ta muốn giá trị sau đây càng nhỏ càng tốt:&lt;/p&gt;
+
+&lt;p&gt;\[
+\frac{1}{2}e^2 = \frac{1}{2}(y - \bar{y})^2 = \frac{1}{2}(y - \mathbf{w}^T\mathbf{\bar{x}})^2
+\]&lt;/p&gt;
+
+&lt;p&gt;trong đó hệ số \(\frac{1}{2} \) là để thuận tiện cho việc tính toán (tính đạo hàm mà tôi sẽ trình bày ở phía dưới). Chúng ta cần \(e^2\) vì \(e = y - \bar{y} \) có thể là một số âm, việc nói \(e\) nhỏ nhất sẽ không đúng vì khi \(e = - \infty\) là rất nhỏ nhưng sự sai lệch là rất lớn. Bạn đọc có thể tự đặt câu hỏi: &lt;strong&gt;tại sao không dùng trị tuyệt đối \( |e| \) mà lại dùng bình phương \(e^2\) ở đây?&lt;/strong&gt; Câu trả lời sẽ có ở phần sau.&lt;/p&gt;
+
+&lt;h3 id=&quot;hàm-mất-mát&quot;&gt;Hàm mất mát&lt;/h3&gt;
+
+&lt;p&gt;Điều tương tự xảy ra với tất cả các cặp &lt;em&gt;(input, outcome)&lt;/em&gt; \( (\mathbf{x}_i, y_i), i = 1, 2, \dots, N \), với \(N\) là số lượng dữ liệu quan sát được. Điều chúng ta muốn, tổng sai số là nhỏ nhất, tương đương với việc tìm \( \mathbf{w} \) để hàm số sau đạt giá trị nhỏ nhất:&lt;/p&gt;
+
+&lt;p&gt;\[ \mathcal{L}(\mathbf{w}) = \frac{1}{2}\sum_{i=1}^N (y_i - \mathbf{w}^T\mathbf{\bar{x}}_i)^2 ~~~~~(2) \]&lt;/p&gt;
+
+&lt;p&gt;Trong đó \(\mathbf{w}^T\) là chuyển vị (transpose) của vector \(\mathbf{w}\).
+Hàm số \(\mathcal{L}(\mathbf{w}) \) được gọi là &lt;strong&gt;hàm mất mát&lt;/strong&gt; (loss function) của bài toán Linear Regression. Chúng ta luôn mong muốn rằng sự mất mát càng nhỏ càng tốt, điều đó đồng nghĩa với việc giá trị của hàm mất mát này càng nhỏ càng tốt. Giá trị của \(\mathbf{w}\) làm cho hàm mất mát đạt giá trị nhỏ nhất được gọi là &lt;em&gt;điểm tối ưu&lt;/em&gt; (optimal point), ký hiệu:&lt;/p&gt;
+
+&lt;p&gt;\[ \mathbf{w}^* = \arg\min_{\mathbf{w}} \mathcal{L}(\mathbf{w})  \]&lt;/p&gt;
+
+&lt;p&gt;Trước khi đi tìm lời giải, chúng ta tối giản phép toán trong phương trình hàm mất mát \((2)\). Đặt \(\mathbf{y} = [y_1, y_2, \dots, y_N]\) là một vector hàng chứa tất cả các &lt;em&gt;output&lt;/em&gt; của &lt;em&gt;training data&lt;/em&gt;; \( \mathbf{\bar{X}} = [\mathbf{\bar{x}}_1, \mathbf{\bar{x}}_2, \dots, \mathbf{\bar{x}}_N ] \) là ma trận dữ liệu đầu vào (mở rộng). Khi đó hàm số mất mát \(\mathcal{L}(\mathbf{w})\) được viết dưới dạng ma trận đơn giản hơn:&lt;/p&gt;
+
+&lt;p&gt;\[
+\mathcal{L}(\mathbf{w}) = \frac{1}{2}\sum_{i=1}^N (y_i - \mathbf{w}^T\mathbf{\bar{x}}_i)^2 = \frac{1}{2} \|\mathbf{y} - \mathbf{w}^T \mathbf{\bar{X}}\|_2^2~~~(3)
+\]&lt;/p&gt;
+
+&lt;p&gt;với \( \| \mathbf{z} \|_2 \) là Euclidean norm (chuẩn Euclid, hay khoảng cách Euclid) và \( \| \mathbf{z} \|_2^2 \) là tổng của bình phương mỗi phần tử của vector \(\mathbf{z}\). Tới đây, ta đã có một dạng đơn giản của hàm mất mát được viết như phương trình \((3)\).&lt;/p&gt;
+
+&lt;h3 id=&quot;nghiệm-cho-bài-toán-linear-regression&quot;&gt;Nghiệm cho bài toán Linear Regression&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Cách phổ biến nhất để tìm nghiệm cho một bài toán tối ưu (chúng ta đã biết từ khi học cấp 3) là giải phương trình đạo hàm bằng 0!&lt;/strong&gt; Tất nhiên đó là khi việc tính đạo hàm và việc giải phương trình đạo hàm bằng 0 không quá phức tạp. Thật may mắn, với các mô hình tuyến tính, hai việc này là khả thi.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Đến đây tôi xin quay lại câu hỏi ở phần &lt;a href=&quot;#sai-số-dự-đoán&quot;&gt;Sai số dự đoán&lt;/a&gt; phía trên về việc tại sao không dùng trị tuyệt đối mà lại dùng bình phương. Câu trả lời là hàm bình phương có đạo hàm tại mọi nơi, hàm trị tuyệt đối thì không (đạo hàm không xác định tại 0)&lt;/em&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;3-triển-khai-trên-trên-python&quot;&gt;3. Triển khai trên trên Python&lt;/h2&gt;
 
