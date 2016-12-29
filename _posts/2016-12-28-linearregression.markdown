@@ -8,11 +8,18 @@ mathjax: true
 
 ## Bài viết đang trong giai đoạn xây dựng, sẽ được hoàn thành sớm. 
 
-| a | b |
-|---|---|
-| 1 | 2 |
-| 3 | 4 |
-|   |   |
+|-----------------+------------+-----------------+----------------|
+| Default aligned |Left aligned| Center aligned  | Right aligned  |
+|-----------------|:-----------|:---------------:|---------------:|
+| First body part |Second cell | Third cell      | fourth cell    |
+| Second line     |foo         | **strong**      | baz            |
+| Third line      |quux        | baz             | bar            |
+|-----------------+------------+-----------------+----------------|
+| Second body     |            |                 |                |
+| 2 line          |            |                 |                |
+|=================+============+=================+================|
+| Footer row      |            |                 |                |
+|-----------------+------------+-----------------+----------------|
 
 <div class="imgcap">
 <div >
