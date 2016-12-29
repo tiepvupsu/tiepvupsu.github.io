@@ -38,7 +38,7 @@ Trong trang này:
 
 <!-- /MarkdownTOC -->
 
-
+<!-- ========================== New Heading ==================== -->
 <a name="1-gioi-thieu"></a>
 
 ## 1. Giới thiệu
@@ -63,10 +63,16 @@ Mối quan hệ \\(y \approx f(\mathbf{x})\\) bên trên là một mối quan h�
 **Chú ý 2:** _Linear_ hay _tuyến tính_ hiểu một cách đơn giản là _thẳng, phẳng_. Trong không gian hai chiều, một hàm số được gọi là _tuyến tính_ nếu đồ thị của nó có dạng một _đường thẳng_. Trong không gian ba chiều, một hàm số được goi là _tuyến tính_ nếu đồ thị của nó có dạng một _mặt phẳng_. Trong không gian nhiều hơn 3 chiều, khái niệm _mặt phẳng_ không còn phù hợp nữa, thay vào đó, một khái niệm khác ra đời được gọi là _siêu mặt phẳng_ (_hyperplane_). Các hàm số tuyến tính là các hàm đơn giản nhất, vì chúng thuận tiện trong việc hình dung và tính toán. Chúng ta sẽ được thấy trong các bài viết sau, _tuyến tính_ rất quan trọng và hữu ích trong các bài toán Machine Learning. Kinh nghiệm cá nhân tôi cho thấy, trước khi hiểu được các thuật toán _phi tuyến_ (non-linear, không phẳng), chúng ta cần nắm vững các kỹ thuật cho các mô hình _tuyến tính_.
 
 
+
+
+<!-- ========================== New Heading ==================== -->
 <a name="2-phan-tich-toan-hoc"></a>
 
 ## 2. Phân tích toán học
 
+
+
+<!-- ========================== New Heading ==================== -->
 <a name="dang-cua-linear-regression"></a>
 
 ### Dạng của Linear Regression 
@@ -75,6 +81,10 @@ Trong phương trình \\((1)\\) phía trên, nếu chúng ta đặt \\(\mathbf{w
 
 \\[y \approx \mathbf{w}^T\mathbf{\bar{x}} = \bar{y}\\]
 
+
+
+
+<!-- ========================== New Heading ==================== -->
 <a name="sai-so-du-doan"></a>
 
 ### Sai số dự đoán 
@@ -88,6 +98,10 @@ Chúng ta mong muốn rằng sự sai khác \\(e\\) giữa giá trị thực \\(
 trong đó hệ số \\(\frac{1}{2} \\) là để thuận tiện cho việc tính toán (tính đạo hàm mà tôi sẽ trình bày ở phía dưới). Chúng ta cần \\(e^2\\) vì \\(e = y - \bar{y} \\) có thể là một số âm, việc nói \\(e\\) nhỏ nhất sẽ không đúng vì khi \\(e = - \infty\\) là rất nhỏ nhưng sự sai lệch là rất lớn. Bạn đọc có thể tự đặt câu hỏi: **tại sao không dùng trị tuyệt đối \\( \|e\| \\) mà lại dùng bình phương \\(e^2\\) ở đây?** Câu trả lời sẽ có ở phần sau. 
 
 
+
+
+
+<!-- ========================== New Heading ==================== -->
 <a name="ham-mat-mat"></a>
 
 ### Hàm mất mát
@@ -109,6 +123,10 @@ Trước khi đi tìm lời giải, chúng ta tối giản phép toán trong ph�
 
 với \\( \\| \mathbf{z} \\|_2 \\) là Euclidean norm (chuẩn Euclid, hay khoảng cách Euclid) và \\( \\| \mathbf{z} \\|_2^2 \\) là tổng của bình phương mỗi phần tử của vector \\(\mathbf{z}\\). Tới đây, ta đã có một dạng đơn giản của hàm mất mát được viết như phương trình \\((3)\\).
 
+
+
+
+<!-- ========================== New Heading ==================== -->
 <a name="nghiem-cho-bai-toan-linear-regression"></a>
 
 ### Nghiệm cho bài toán Linear Regression
@@ -119,24 +137,44 @@ __Cách phổ biến nhất để tìm nghiệm cho một bài toán tối ưu (
 _Đến đây tôi xin quay lại câu hỏi ở phần [Sai số dự đoán](#sai-số-dự-đoán) phía trên về việc tại sao không dùng trị tuyệt đối mà lại dùng bình phương. Câu trả lời là hàm bình phương có đạo hàm tại mọi nơi, hàm trị tuyệt đối thì không (đạo hàm không xác định tại 0)_
 
 
+
+
+
+<!-- ========================== New Heading ==================== -->
 <a name="3-trien-khai-tren-tren-python"></a>
 
 ## 3. Triển khai trên trên Python
 
+
+
+
+<!-- ========================== New Heading ==================== -->
 <a name="4-thao-luan"></a>
 
 ## 4. Thảo luận
 
+
+
+
+<!-- ========================== New Heading ==================== -->
 <a name="output-la-mot-vector-nhieu-bien"></a>
 
 ### Output là một vector nhiều biến
 
 \\(f(\mathbf{x})\\) là một đa thức bậc cao. 
 
+
+
+
+<!-- ========================== New Heading ==================== -->
 <a name="mo-hinh-la-mot-da-thuc-bac-cao"></a>
 
 ### Mô hình là một đa thức bậc cao
 
+
+
+
+<!-- ========================== New Heading ==================== -->
 <a name="han-che-cua-linear-regression"></a>
 
 ### Hạn chế của Linear Regression
@@ -145,11 +183,19 @@ _Đến đây tôi xin quay lại câu hỏi ở phần [Sai số dự đoán](#
 
 
 
+
+
+
+<!-- ========================== New Heading ==================== -->
 <a name="cac-phuong-phap-toi-uu"></a>
 
 ### Các phương pháp tối ưu
 
 <!-- Giả sử chúng ta có các cặp (_input, outcome_) \\( (\mathbf{x}_1, \mathbf{y}_1), \dots, (\mathbf{x}_N, \mathbf{y}_N) \\), chúng ta phải tìm một hàm  -->
+
+
+
+<!-- ========================== New Heading ==================== -->
 <a name="5-tai-lieu-tham-khao"></a>
 
 ## 5. Tài liệu tham khảo
