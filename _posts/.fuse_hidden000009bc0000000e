@@ -4,6 +4,7 @@ comments: true
 title:  "Linear Regression"
 date:   2016-12-28 15:22:00
 mathjax: true
+categories: [supervised learning, regression, linear]
 ---
 
 ## Bài viết đang trong giai đoạn xây dựng, sẽ được hoàn thành sớm. 
@@ -20,6 +21,7 @@ mathjax: true
 Trong bài này, tôi sẽ giới thiều một trong những thuật toán cơ bản nhất (và đơn giản nhất) của Machine Learning. Đây là một thuật toán _Supervised learning_ có tên **Linear Regression** (Hồi Quy Tuyến Tính).
 
 Trong trang này:
+
 <!-- MarkdownTOC -->
 
 - [1. Giới thiệu](#1-giới-thiệu)
@@ -34,9 +36,11 @@ Trong trang này:
     - [Mô hình là một đa thức bậc cao](#mô-hình-là-một-đa-thức-bậc-cao)
     - [Hạn chế của Linear Regression](#hạn-chế-của-linear-regression)
     - [Các phương pháp tối ưu](#các-phương-pháp-tối-ưu)
+- [Tiep Vu](#tiep-vu)
 - [5. Tài liệu tham khảo](#5-tài-liệu-tham-khảo)
 
 <!-- /MarkdownTOC -->
+
 
 
 ## 1. Giới thiệu
@@ -123,7 +127,7 @@ _Đến đây tôi xin quay lại câu hỏi ở phần [Sai số dự đoán](#
 
 ### Các phương pháp tối ưu
 
-
+## Tiep Vu
 
 <!-- Giả sử chúng ta có các cặp (_input, outcome_) \\( (\mathbf{x}_1, \mathbf{y}_1), \dots, (\mathbf{x}_N, \mathbf{y}_N) \\), chúng ta phải tìm một hàm  -->
 ## 5. Tài liệu tham khảo

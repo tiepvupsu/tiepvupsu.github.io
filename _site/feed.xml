@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Machine Learning cơ bản</title>
+    <title>Blog của Tiệp Vũ</title>
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 29 Dec 2016 13:24:52 -0500</pubDate>
-    <lastBuildDate>Thu, 29 Dec 2016 13:24:52 -0500</lastBuildDate>
+    <pubDate>Thu, 29 Dec 2016 13:57:33 -0500</pubDate>
+    <lastBuildDate>Thu, 29 Dec 2016 13:57:33 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -28,25 +28,25 @@
 &lt;!-- MarkdownTOC --&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;#1-gioi-thieu&quot;&gt;1. Giới thiệu&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#2-phan-tich-toan-hoc&quot;&gt;2. Phân tích toán học&lt;/a&gt;
+  &lt;li&gt;&lt;a href=&quot;#1-giới-thiệu&quot;&gt;1. Giới thiệu&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#2-phân-tích-toán-học&quot;&gt;2. Phân tích toán học&lt;/a&gt;
     &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#dang-cua-linear-regression&quot;&gt;Dạng của Linear Regression&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#sai-so-du-doan&quot;&gt;Sai số dự đoán&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#ham-mat-mat&quot;&gt;Hàm mất mát&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#nghiem-cho-bai-toan-linear-regression&quot;&gt;Nghiệm cho bài toán Linear Regression&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#dạng-của-linear-regression&quot;&gt;Dạng của Linear Regression&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#sai-số-dự-đoán&quot;&gt;Sai số dự đoán&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#hàm-mất-mát&quot;&gt;Hàm mất mát&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#nghiệm-cho-bài-toán-linear-regression&quot;&gt;Nghiệm cho bài toán Linear Regression&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#3-trien-khai-tren-tren-python&quot;&gt;3. Triển khai trên trên Python&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#4-thao-luan&quot;&gt;4. Thảo luận&lt;/a&gt;
+  &lt;li&gt;&lt;a href=&quot;#3-triển-khai-trên-trên-python&quot;&gt;3. Triển khai trên trên Python&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#4-thảo-luận&quot;&gt;4. Thảo luận&lt;/a&gt;
     &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#output-la-mot-vector-nhieu-bien&quot;&gt;Output là một vector nhiều biến&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#mo-hinh-la-mot-da-thuc-bac-cao&quot;&gt;Mô hình là một đa thức bậc cao&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#han-che-cua-linear-regression&quot;&gt;Hạn chế của Linear Regression&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#cac-phuong-phap-toi-uu&quot;&gt;Các phương pháp tối ưu&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#output-là-một-vector-nhiều-biến&quot;&gt;Output là một vector nhiều biến&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#mô-hình-là-một-đa-thức-bậc-cao&quot;&gt;Mô hình là một đa thức bậc cao&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#hạn-chế-của-linear-regression&quot;&gt;Hạn chế của Linear Regression&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#các-phương-pháp-tối-ưu&quot;&gt;Các phương pháp tối ưu&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#5-tai-lieu-tham-khao&quot;&gt;5. Tài liệu tham khảo&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#5-tài-liệu-tham-khảo&quot;&gt;5. Tài liệu tham khảo&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;!-- /MarkdownTOC --&gt;
