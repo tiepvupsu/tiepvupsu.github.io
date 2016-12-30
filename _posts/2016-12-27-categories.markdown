@@ -23,7 +23,7 @@ mathjax: true
 
 Có hai cách phổ biến phân nhóm các thuật toán Machine learning. Một là dựa trên phương thức học (learning style), hai là dựa trên chức năng (function) (của mỗi thuật toán).
 
-**Trong bài này:**
+**Trong trang này:**
 <!-- MarkdownTOC -->
 
 - [1. Phân nhóm dựa trên phương thức học](#-phan-nhom-dua-tren-phuong-thuc-hoc)
