@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blog của Tiệp Vũ</title>
+    <title>Machine Learning cơ bản</title>
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 29 Dec 2016 23:10:12 -0500</pubDate>
-    <lastBuildDate>Thu, 29 Dec 2016 23:10:12 -0500</lastBuildDate>
+    <pubDate>Fri, 30 Dec 2016 10:46:28 -0500</pubDate>
+    <lastBuildDate>Fri, 30 Dec 2016 10:46:28 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -142,7 +142,7 @@ giá trị của hàm mất mát này càng nhỏ càng tốt. Giá trị của 
 &lt;p&gt;Đạo hàm theo \(\mathbf{w} \) của hàm mất mát là: 
 \[
 \frac{\partial{\mathcal{L}(\mathbf{w})}}{\partial{\mathbf{w}}} 
-= \mathbf{\bar{X}}(\mathbf{y}^T - \mathbf{\bar{X}}^T\mathbf{w}) 
+= \mathbf{\bar{X}}(\mathbf{\bar{X}}^T\mathbf{w} - \mathbf{y}^T) 
 \]&lt;/p&gt;
 
 &lt;p&gt;Các bạn có thể tham khảo bảng đạo hàm theo vector hoặc ma trận của một hàm số trong &lt;a href=&quot;https://ccrma.stanford.edu/~dattorro/matrixcalc.pdf&quot;&gt;mục D.2 của tài liệu này&lt;/a&gt;. &lt;em&gt;Đến đây tôi xin quay lại câu hỏi ở phần &lt;a href=&quot;#sai so du doan&quot;&gt;Sai số dự đoán&lt;/a&gt; phía trên về việc tại sao không dùng trị tuyệt đối mà lại dùng bình phương. Câu trả lời là hàm bình phương có đạo hàm tại mọi nơi, trong khi hàm trị tuyệt đối thì không (đạo hàm không xác định tại 0)&lt;/em&gt;.&lt;/p&gt;
@@ -445,7 +445,7 @@ một cặp dữ liệu &lt;em&gt;nhiễu&lt;/em&gt; (150 cm, 90kg) thì kết q
 
 &lt;p&gt;Có hai cách phổ biến phân nhóm các thuật toán Machine learning. Một là dựa trên phương thức học (learning style), hai là dựa trên chức năng (function) (của mỗi thuật toán).&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Trong bài này:&lt;/strong&gt;
+&lt;p&gt;&lt;strong&gt;Trong trang này:&lt;/strong&gt;
 &lt;!-- MarkdownTOC --&gt;&lt;/p&gt;
 
 &lt;ul&gt;

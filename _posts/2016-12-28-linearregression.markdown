@@ -142,7 +142,7 @@ __Cách phổ biến nhất để tìm nghiệm cho một bài toán tối ưu (
 Đạo hàm theo \\(\mathbf{w} \\) của hàm mất mát là: 
 \\[
 \frac{\partial{\mathcal{L}(\mathbf{w})}}{\partial{\mathbf{w}}} 
-= \mathbf{\bar{X}}(\mathbf{y}^T - \mathbf{\bar{X}}^T\mathbf{w}) 
+= \mathbf{\bar{X}}(\mathbf{\bar{X}}^T\mathbf{w} - \mathbf{y}^T) 
 \\]
 
 Các bạn có thể tham khảo bảng đạo hàm theo vector hoặc ma trận của một hàm số trong [mục D.2 của tài liệu này](https://ccrma.stanford.edu/~dattorro/matrixcalc.pdf). _Đến đây tôi xin quay lại câu hỏi ở phần [Sai số dự đoán](#sai so du doan) phía trên về việc tại sao không dùng trị tuyệt đối mà lại dùng bình phương. Câu trả lời là hàm bình phương có đạo hàm tại mọi nơi, trong khi hàm trị tuyệt đối thì không (đạo hàm không xác định tại 0)_.
