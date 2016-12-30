@@ -5,26 +5,24 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 29 Dec 2016 18:24:30 -0500</pubDate>
-    <lastBuildDate>Thu, 29 Dec 2016 18:24:30 -0500</lastBuildDate>
+    <pubDate>Thu, 29 Dec 2016 22:45:30 -0500</pubDate>
+    <lastBuildDate>Thu, 29 Dec 2016 22:45:30 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
         <title>Linear Regression</title>
-        <description>&lt;h2 id=&quot;bài-viết-đang-trong-giai-đoạn-xây-dựng-sẽ-được-hoàn-thành-sớm&quot;&gt;Bài viết đang trong giai đoạn xây dựng, sẽ được hoàn thành sớm.&lt;/h2&gt;
-
-&lt;div class=&quot;imgcap&quot;&gt;
+        <description>&lt;div class=&quot;imgcap&quot;&gt;
 &lt;div&gt;
 &lt;a href=&quot;/2016/12/28/linearregression/&quot;&gt;
     &lt;img src=&quot;/assets/LR/output_5_1.png&quot; width=&quot;500&quot; /&gt;&lt;/a&gt;
     &lt;!-- &lt;img src=&quot;/assets/rl/mdp.png&quot; height=&quot;206&quot;&gt; --&gt;
 &lt;/div&gt;
-&lt;div class=&quot;thecap&quot;&gt; Linear Regression &lt;br /&gt; (Nguồn: &lt;a href=&quot;https://en.wikipedia.org/wiki/Linear_regression&quot;&gt;Wikipedia&lt;/a&gt;)&lt;/div&gt;
+&lt;div class=&quot;thecap&quot;&gt; Linear Regression &lt;br /&gt;&lt;/div&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Trong bài này, tôi sẽ giới thiều một trong những thuật toán cơ bản nhất (và đơn giản nhất) của Machine Learning. Đây là một thuật toán &lt;em&gt;Supervised learning&lt;/em&gt; có tên &lt;strong&gt;Linear Regression&lt;/strong&gt; (Hồi Quy Tuyến Tính). Bài toán này đôi khi được gọi là &lt;em&gt;Linear Fitting&lt;/em&gt; hoặc &lt;em&gt;Linear Least Square&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Trong bài này, tôi sẽ giới thiều một trong những thuật toán cơ bản nhất (và đơn giản nhất) của Machine Learning. Đây là một thuật toán &lt;em&gt;Supervised learning&lt;/em&gt; có tên &lt;strong&gt;Linear Regression&lt;/strong&gt; (Hồi Quy Tuyến Tính). Bài toán này đôi khi được gọi là &lt;em&gt;Linear Fitting&lt;/em&gt; (trong thống kê) hoặc &lt;em&gt;Linear Least Square&lt;/em&gt;.&lt;/p&gt;
 
-&lt;p&gt;Trong trang này:
+&lt;p&gt;&lt;strong&gt;Trong trang này:&lt;/strong&gt;
 &lt;!-- MarkdownTOC --&gt;&lt;/p&gt;
 
 &lt;ul&gt;
@@ -37,11 +35,17 @@
       &lt;li&gt;&lt;a href=&quot;#nghiem-cho-bai-toan-linear-regression&quot;&gt;Nghiệm cho bài toán Linear Regression&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#-vi-du-tren-python&quot;&gt;3. Ví dụ trên Python&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#-vi-du-tren-python&quot;&gt;3. Ví dụ trên Python&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#bai-toan&quot;&gt;Bài toán&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#hien-thi-du-lieu-tren-do-thi&quot;&gt;Hiển thị dữ liệu trên đồ thị&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#nghiem-theo-cong-thuc&quot;&gt;Nghiệm theo công thức&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#nghiem-theo-thu-vien-scikit-learn&quot;&gt;Nghiệm theo thư viện scikit-learn&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#-thao-luan&quot;&gt;4. Thảo luận&lt;/a&gt;
     &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#output-la-mot-vector-nhieu-bien&quot;&gt;Output là một vector nhiều biến&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#mo-hinh-la-mot-da-thuc-bac-cao&quot;&gt;Mô hình là một đa thức bậc cao&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#cac-bai-toan-co-the-giai-bang-linear-regression&quot;&gt;Các bài toán có thể giải bằng Linear Regression&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#han-che-cua-linear-regression&quot;&gt;Hạn chế của Linear Regression&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#cac-phuong-phap-toi-uu&quot;&gt;Các phương pháp tối ưu&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
@@ -56,7 +60,7 @@
 
 &lt;h2 id=&quot;1-giới-thiệu&quot;&gt;1. Giới thiệu&lt;/h2&gt;
 
-&lt;p&gt;Quay lại &lt;a href=&quot;/2016/12/27/categories/&quot;&gt;ví dụ đơn giản được nêu trong bài trước&lt;/a&gt;: một căn nhà rộng \(x_1 ~ \text{m}^2\), có \(x_2\) phòng ngủ và cách trung tâm thành phố \(x_3~ \text{km}\) có giá là bao nhiêu. Giả sử chúng ta đã có số liệu thống kê từ 1000 căn nhà trong thành phố đó, liệu rằng khi có một căn nhà mới với các thông số về diện tích, số phòng ngủ và khoảng cách tới trung tâm, chúng ta có thể dự đoán được giá của căn phòng đó không? Nếu có thì hàm dự đoán \(y = f(\mathbf{x}) \) sẽ có dạng như thế nào. Ở đây \(\mathbf{x} = [x_1; x_2; x_3] \) là một vector
+&lt;p&gt;Quay lại &lt;a href=&quot;/2016/12/27/categories/#regression&quot;&gt;ví dụ đơn giản được nêu trong bài trước&lt;/a&gt;: một căn nhà rộng \(x_1 ~ \text{m}^2\), có \(x_2\) phòng ngủ và cách trung tâm thành phố \(x_3~ \text{km}\) có giá là bao nhiêu. Giả sử chúng ta đã có số liệu thống kê từ 1000 căn nhà trong thành phố đó, liệu rằng khi có một căn nhà mới với các thông số về diện tích, số phòng ngủ và khoảng cách tới trung tâm, chúng ta có thể dự đoán được giá của căn phòng đó không? Nếu có thì hàm dự đoán \(y = f(\mathbf{x}) \) sẽ có dạng như thế nào. Ở đây \(\mathbf{x} = [x_1; x_2; x_3] \) là một vector
 cột chứa thông tin &lt;em&gt;input&lt;/em&gt;, \(y\) là một số vô hướng (scalar) biểu diễn &lt;em&gt;output&lt;/em&gt; (tức giá của căn nhà trong ví dụ này).&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Lưu ý về ký hiệu toán học:&lt;/strong&gt; &lt;em&gt;trong các bài viết của tôi, các số vô hướng được biểu diễn bởi các chữ cái viết ở dạng không in đậm, có thể viết hoa, ví dụ \(x_1, N, y, k\). Các vector được biểu diễn bằng các chữ cái thường in đậm, ví dụ \(\mathbf{y}, \mathbf{x}_1 \). Các ma trận được biểu diễn bởi các chữ viết hoa in đậm, ví dụ \(\mathbf{X, Y, W} \).&lt;/em&gt;&lt;/p&gt;
@@ -67,7 +71,7 @@ cột chứa thông tin &lt;em&gt;input&lt;/em&gt;, \(y\) là một số vô hư
 
 &lt;p&gt;\[y \approx  f(\mathbf{x}) = \hat{y}\]
 \[f(\mathbf{x}) =w_1 x_1 + w_2 x_2 + w_3 x_3 + w_0 ~~~~ (1)\]
-trong đó, \(w_1, w_2\) là các hằng số dương, \(w_3\) là một hằng số âm, \(w_0\) là một hằng số được gọi là bias. Mối quan hệ \(y \approx f(\mathbf{x})\) bên trên là một mối quan hệ tuyến tính (linear). Bài toán chúng ta đang làm là một bài toán thuộc loại regression. Bài toán đi tìm các hệ số tối ưu \( \{w_1, w_2, w_3, w_0 \}\) chính vì vậy được gọi là bài toán Linear Regression.&lt;/p&gt;
+trong đó, \(w_1, w_2, w_3, w_0\) là các hằng số,  \(w_0\) còn được gọi là bias. Mối quan hệ \(y \approx f(\mathbf{x})\) bên trên là một mối quan hệ tuyến tính (linear). Bài toán chúng ta đang làm là một bài toán thuộc loại regression. Bài toán đi tìm các hệ số tối ưu \( \{w_1, w_2, w_3, w_0 \}\) chính vì vậy được gọi là bài toán Linear Regression.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Chú ý 1:&lt;/strong&gt; \(y\) là giá trị thực của &lt;em&gt;outcome&lt;/em&gt; (dựa trên số liệu thống kê chúng ta có trong tập &lt;em&gt;training data&lt;/em&gt;), trong khi \(\hat{y}\) là giá trị mà mô hình Linear Regression dự đoán được. Nhìn chung, \(y\) và \(\hat{y}\) là hai giá trị khác nhau do có sai số mô hình, tuy nhiên, chúng ta mong muốn rằng sự khác nhau này rất nhỏ.&lt;/p&gt;
 
@@ -83,7 +87,7 @@ trong đó, \(w_1, w_2\) là các hằng số dương, \(w_3\) là một hằng 
 
 &lt;h3 id=&quot;dạng-của-linear-regression&quot;&gt;Dạng của Linear Regression&lt;/h3&gt;
 
-&lt;p&gt;Trong phương trình \((1)\) phía trên, nếu chúng ta đặt \(\mathbf{w} = [w_1; w_2; w_3, w_0] = \) là vector hệ số cần phải tối ưu và \(\mathbf{\bar{x}} = [x_1; x_2; x_3; 1]\) (đọc là &lt;em&gt;x bar&lt;/em&gt; trong tiếng Anh) là vector dữ liệu đầu vào &lt;em&gt;mở rộng&lt;/em&gt;. Số \(1\) ở cuối được thêm vào để thuận tiện cho việc tính toán. Khi đó, phương trình (1) có thể được viết lại dưới dạng:&lt;/p&gt;
+&lt;p&gt;Trong phương trình \((1)\) phía trên, nếu chúng ta đặt \(\mathbf{w} = [w_1, w_2, w_3, w_0]^T = \) là vector hệ số cần phải tối ưu và \(\mathbf{\bar{x}} = [x_1, x_2, x_3, 1]^T\) (đọc là &lt;em&gt;x bar&lt;/em&gt; trong tiếng Anh) là vector dữ liệu đầu vào &lt;em&gt;mở rộng&lt;/em&gt;. Số \(1\) ở cuối được thêm vào để phép tính đơn giản hơn và thuận tiện cho việc tính toán. Khi đó, phương trình (1) có thể được viết lại dưới dạng:&lt;/p&gt;
 
 &lt;p&gt;\[y \approx \mathbf{w}^T\mathbf{\bar{x}} = \hat{y}\]&lt;/p&gt;
 
@@ -98,7 +102,7 @@ trong đó, \(w_1, w_2\) là các hằng số dương, \(w_3\) là một hằng 
 \frac{1}{2}e^2 = \frac{1}{2}(y - \hat{y})^2 = \frac{1}{2}(y - \mathbf{w}^T\mathbf{\bar{x}})^2
 \]&lt;/p&gt;
 
-&lt;p&gt;trong đó hệ số \(\frac{1}{2} \) là để thuận tiện cho việc tính toán (tính đạo hàm mà tôi sẽ trình bày ở phía dưới). Chúng ta cần \(e^2\) vì \(e = y - \hat{y} \) có thể là một số âm, việc nói \(e\) nhỏ nhất sẽ không đúng vì khi \(e = - \infty\) là rất nhỏ nhưng sự sai lệch là rất lớn. Bạn đọc có thể tự đặt câu hỏi: &lt;strong&gt;tại sao không dùng trị tuyệt đối \( |e| \) mà lại dùng bình phương \(e^2\) ở đây?&lt;/strong&gt; Câu trả lời sẽ có ở phần sau.&lt;/p&gt;
+&lt;p&gt;trong đó hệ số \(\frac{1}{2} \) (&lt;em&gt;lại&lt;/em&gt;) là để thuận tiện cho việc tính toán (tính đạo hàm mà tôi sẽ trình bày ở phía dưới). Chúng ta cần \(e^2\) vì \(e = y - \hat{y} \) có thể là một số âm, việc nói \(e\) nhỏ nhất sẽ không đúng vì khi \(e = - \infty\) là rất nhỏ nhưng sự sai lệch là rất lớn. Bạn đọc có thể tự đặt câu hỏi: &lt;strong&gt;tại sao không dùng trị tuyệt đối \( |e| \) mà lại dùng bình phương \(e^2\) ở đây?&lt;/strong&gt; Câu trả lời sẽ có ở phần sau.&lt;/p&gt;
 
 &lt;!-- ========================== New Heading ==================== --&gt;
 &lt;p&gt;&lt;a name=&quot;ham-mat-mat&quot;&gt;&lt;/a&gt;&lt;/p&gt;
@@ -110,11 +114,12 @@ trong đó, \(w_1, w_2\) là các hằng số dương, \(w_3\) là một hằng 
 &lt;p&gt;\[ \mathcal{L}(\mathbf{w}) = \frac{1}{2}\sum_{i=1}^N (y_i - \mathbf{w}^T\mathbf{\bar{x}}_i)^2 ~~~~~(2) \]&lt;/p&gt;
 
 &lt;p&gt;Trong đó \(\mathbf{w}^T\) là chuyển vị (transpose) của vector \(\mathbf{w}\).
-Hàm số \(\mathcal{L}(\mathbf{w}) \) được gọi là &lt;strong&gt;hàm mất mát&lt;/strong&gt; (loss function) của bài toán Linear Regression. Chúng ta luôn mong muốn rằng sự mất mát càng nhỏ càng tốt, điều đó đồng nghĩa với việc giá trị của hàm mất mát này càng nhỏ càng tốt. Giá trị của \(\mathbf{w}\) làm cho hàm mất mát đạt giá trị nhỏ nhất được gọi là &lt;em&gt;điểm tối ưu&lt;/em&gt; (optimal point), ký hiệu:&lt;/p&gt;
+Hàm số \(\mathcal{L}(\mathbf{w}) \) được gọi là &lt;strong&gt;hàm mất mát&lt;/strong&gt; (loss function) của bài toán Linear Regression. Chúng ta luôn mong muốn rằng sự mất mát (sai số) là nhỏ nhất, điều đó đồng nghĩa với việc  tìm vector hệ số \( \mathbf{w} \)  sao cho 
+giá trị của hàm mất mát này càng nhỏ càng tốt. Giá trị của \(\mathbf{w}\) làm cho hàm mất mát đạt giá trị nhỏ nhất được gọi là &lt;em&gt;điểm tối ưu&lt;/em&gt; (optimal point), ký hiệu:&lt;/p&gt;
 
 &lt;p&gt;\[ \mathbf{w}^* = \arg\min_{\mathbf{w}} \mathcal{L}(\mathbf{w})  \]&lt;/p&gt;
 
-&lt;p&gt;Trước khi đi tìm lời giải, chúng ta tối giản phép toán trong phương trình hàm mất mát \((2)\). Đặt \(\mathbf{y} = [y_1, y_2, \dots, y_N]\) là một vector hàng chứa tất cả các &lt;em&gt;output&lt;/em&gt; của &lt;em&gt;training data&lt;/em&gt;; \( \mathbf{\bar{X}} = [\mathbf{\bar{x}}_1, \mathbf{\bar{x}}_2, \dots, \mathbf{\bar{x}}_N ] \) là ma trận dữ liệu đầu vào (mở rộng). Khi đó hàm số mất mát \(\mathcal{L}(\mathbf{w})\) được viết dưới dạng ma trận đơn giản hơn:&lt;/p&gt;
+&lt;p&gt;Trước khi đi tìm lời giải, chúng ta đơn giản hóa phép toán trong phương trình hàm mất mát \((2)\). Đặt \(\mathbf{y} = [y_1, y_2, \dots, y_N]\) là một vector hàng chứa tất cả các &lt;em&gt;output&lt;/em&gt; của &lt;em&gt;training data&lt;/em&gt;; \( \mathbf{\bar{X}} = [\mathbf{\bar{x}}_1, \mathbf{\bar{x}}_2, \dots, \mathbf{\bar{x}}_N ] \) là ma trận dữ liệu đầu vào (mở rộng). Khi đó hàm số mất mát \(\mathcal{L}(\mathbf{w})\) được viết dưới dạng ma trận đơn giản hơn:&lt;/p&gt;
 
 &lt;p&gt;\[
 \mathcal{L}(\mathbf{w}) 
@@ -125,7 +130,7 @@ Hàm số \(\mathcal{L}(\mathbf{w}) \) được gọi là &lt;strong&gt;hàm m�
 ~~~(3)
 \]&lt;/p&gt;
 
-&lt;p&gt;với \( \| \mathbf{z} \|_2 \) là Euclidean norm (chuẩn Euclid, hay khoảng cách Euclid) và \( \| \mathbf{z} \|_2^2 \) là tổng của bình phương mỗi phần tử của vector \(\mathbf{z}\). Tới đây, ta đã có một dạng đơn giản của hàm mất mát được viết như phương trình \((3)\).&lt;/p&gt;
+&lt;p&gt;với \( \| \mathbf{z} \|_2 \) là Euclidean norm (chuẩn Euclid, hay khoảng cách Euclid), nói cách khác \( \| \mathbf{z} \|_2^2 \) là tổng của bình phương mỗi phần tử của vector \(\mathbf{z}\). Tới đây, ta đã có một dạng đơn giản của hàm mất mát được viết như phương trình \((3)\).&lt;/p&gt;
 
 &lt;!-- ========================== New Heading ==================== --&gt;
 &lt;p&gt;&lt;a name=&quot;nghiem-cho-bai-toan-linear-regression&quot;&gt;&lt;/a&gt;&lt;/p&gt;
@@ -140,7 +145,7 @@ Hàm số \(\mathcal{L}(\mathbf{w}) \) được gọi là &lt;strong&gt;hàm m�
 = \mathbf{\bar{X}}(\mathbf{y}^T - \mathbf{\bar{X}}^T\mathbf{w}) 
 \]&lt;/p&gt;
 
-&lt;p&gt;Các bạn có thể tham khảo bảng đạo hàm theo vector hoặc ma trận của một hàm số trong &lt;a href=&quot;https://ccrma.stanford.edu/~dattorro/matrixcalc.pdf&quot;&gt;mục D.2 của tài liệu này&lt;/a&gt;. &lt;em&gt;Đến đây tôi xin quay lại câu hỏi ở phần &lt;a href=&quot;#sai so du doan&quot;&gt;Sai số dự đoán&lt;/a&gt; phía trên về việc tại sao không dùng trị tuyệt đối mà lại dùng bình phương. Câu trả lời là hàm bình phương có đạo hàm tại mọi nơi, trong khi hàm trị tuyệt đối thì không (đạo hàm không xác định tại 0)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Các bạn có thể tham khảo bảng đạo hàm theo vector hoặc ma trận của một hàm số trong &lt;a href=&quot;https://ccrma.stanford.edu/~dattorro/matrixcalc.pdf&quot;&gt;mục D.2 của tài liệu này&lt;/a&gt;. &lt;em&gt;Đến đây tôi xin quay lại câu hỏi ở phần &lt;a href=&quot;#sai so du doan&quot;&gt;Sai số dự đoán&lt;/a&gt; phía trên về việc tại sao không dùng trị tuyệt đối mà lại dùng bình phương. Câu trả lời là hàm bình phương có đạo hàm tại mọi nơi, trong khi hàm trị tuyệt đối thì không (đạo hàm không xác định tại 0)&lt;/em&gt;.&lt;/p&gt;
 
 &lt;p&gt;Phương trình đạo hàm bằng 0 tương đương với: 
 \[
@@ -149,15 +154,14 @@ Hàm số \(\mathcal{L}(\mathbf{w}) \) được gọi là &lt;strong&gt;hàm m�
 \]
 (ký hiệu \(\mathbf{\bar{X}}\mathbf{y}^T \triangleq \mathbf{b} \) nghĩa là &lt;em&gt;đặt&lt;/em&gt; \(\mathbf{\bar{X}}\mathbf{y}^T\) &lt;em&gt;bằng&lt;/em&gt; \(\mathbf{b}\) ).&lt;/p&gt;
 
-&lt;p&gt;Nếu ma trận vuông \( \mathbf{A} \triangleq \mathbf{\bar{X}}\mathbf{\bar{X}}^T\) khả nghịch (non-singular hoặc inversable) thì phương trình \((4)\) có nghiệm duy nhất: \( \mathbf{w} = \mathbf{A}^{-1}\mathbf{b}  \).&lt;/p&gt;
+&lt;p&gt;Nếu ma trận vuông \( \mathbf{A} \triangleq \mathbf{\bar{X}}\mathbf{\bar{X}}^T\) khả nghịch (non-singular hay inversable) thì phương trình \((4)\) có nghiệm duy nhất: \( \mathbf{w} = \mathbf{A}^{-1}\mathbf{b}  \).&lt;/p&gt;
 
-&lt;p&gt;Vậy nếu ma trận \(\mathbf{A} \) không khả nghịch (có định thức bằng 0) thì sao? Nếu các bạn vẫn nhớ các kiến thức về hệ phương trình tuyến tính, trong trường hợp này thì hoặc phương trinh \( (4) \) vô nghiệm, hoặc là có vô số nghiệm. Khi đó, chúng ta sử dụng khái niệm &lt;a href=&quot;https://vi.wikipedia.org/wiki/Giả_nghịch_đảo_Moore–Penrose&quot;&gt;&lt;em&gt;giả nghịch đảo&lt;/em&gt;&lt;/a&gt; \( \mathbf{A}^{\dagger} \) (đọc là &lt;em&gt;A dagger&lt;/em&gt; trong tiếng Anh). (&lt;em&gt;Giả nghịch đảo (pseudo inverse) là trường hợp tổng quát của nghịch đảo khi ma trận không khả nghịch hoặc thậm chí không vuông. Trong khuôn khổ bài viết này, tôi xin phép được lược bỏ phần này, nếu các bạn thực sự quan tâm, tôi sẽ viết một bài khác chỉ nói về giả nghịch đảo. Xem thêm: &lt;a href=&quot;http://www.sci.utah.edu/~gerig/CS6640-F2012/Materials/pseudoinverse-cis61009sl10.pdf&quot;&gt;Least Squares, Pseudo-Inverses, PCA
+&lt;p&gt;Vậy nếu ma trận \(\mathbf{A} \) không khả nghịch (có định thức bằng 0) thì sao? Nếu các bạn vẫn nhớ các kiến thức về hệ phương trình tuyến tính, trong trường hợp này thì hoặc phương trinh \( (4) \) vô nghiệm, hoặc là 
+nó
+có vô số nghiệm. Khi đó, chúng ta sử dụng khái niệm &lt;a href=&quot;https://vi.wikipedia.org/wiki/Giả_nghịch_đảo_Moore–Penrose&quot;&gt;&lt;em&gt;giả nghịch đảo&lt;/em&gt;&lt;/a&gt; \( \mathbf{A}^{\dagger} \) (đọc là &lt;em&gt;A dagger&lt;/em&gt; trong tiếng Anh). (&lt;em&gt;Giả nghịch đảo (pseudo inverse) là trường hợp tổng quát của nghịch đảo khi ma trận không khả nghịch hoặc thậm chí không vuông. Trong khuôn khổ bài viết này, tôi xin phép được lược bỏ phần này, nếu các bạn thực sự quan tâm, tôi sẽ viết một bài khác chỉ nói về giả nghịch đảo. Xem thêm: &lt;a href=&quot;http://www.sci.utah.edu/~gerig/CS6640-F2012/Materials/pseudoinverse-cis61009sl10.pdf&quot;&gt;Least Squares, Pseudo-Inverses, PCA
 &amp;amp; SVD&lt;/a&gt;.&lt;/em&gt;)&lt;/p&gt;
 
 &lt;p&gt;Với khái niệm giả nghịch đảo, điểm tối ưu của bài toán Linear Regression có dạng:&lt;/p&gt;
-
-&lt;!-- Từ đây chúng ta có thể suy ra nghiệm tối ưu \\(\mathbf{w}\\) như sau. Nếu ma trận vuông \\( \mathbf{A} \triangleq \mathbf{\bar{X}}\mathbf{\bar{X}}^T\\) khả nghịch (non-singular hoặc inversable) thì  --&gt;
-&lt;!-- \\( \mathbf{w} = \mathbf{A}^{-1}\mathbf{b}  \\). Ngược lại, nếu ma trận đó không khả nghịch, chúng ta sử dụng [_giả nghịch đảo_](https://vi.wikipedia.org/wiki/Giả_nghịch_đảo_Moore–Penrose) \\( (\mathbf{A})^{\dagger} \\) (đọc là _A dagger_ trong tiếng Anh). (_Giả nghịch đảo (pseudo inverse) là trường hợp tổng quát của nghịch đảo khi ma trận không khả nghịch hoặc thậm chí không vuông_). Tóm lại, nghiệm của bài toán Linear Regression là:  --&gt;
 
 &lt;p&gt;\[
 \mathbf{w} = \mathbf{A}^{\dagger}\mathbf{b} = (\mathbf{\bar{X}}\mathbf{\bar{X}}^T)^{\dagger} \mathbf{\bar{X}}\mathbf{y}^T
@@ -169,7 +173,12 @@ Hàm số \(\mathcal{L}(\mathbf{w}) \) được gọi là &lt;strong&gt;hàm m�
 
 &lt;h2 id=&quot;3-ví-dụ-trên-python&quot;&gt;3. Ví dụ trên Python&lt;/h2&gt;
 
-&lt;p&gt;Trong phần này, tôi sẽ chọn một ví dụ đơn giản về việc giải bài toán Linear Regression trong Python. Tôi cũng sẽ so sánh nghiệm của bài toán khi giải theo phương trình (5) và nghiệm tìm được khi dùng thư viện &lt;a href=&quot;http://scikit-learn.org/stable/&quot;&gt;scikit-learn&lt;/a&gt; của Python. (&lt;em&gt;Đây là thư viện Machine Learning được sử dụng rộng rãi trong Python&lt;/em&gt;). Trong ví dụ này, dữ liệu đầu vào chỉ có 1 giá trị (1 chiều) để thuận tiện cho việc minh hoạ trong mặt phẳng.&lt;/p&gt;
+&lt;!-- ========================== New Heading ==================== --&gt;
+&lt;p&gt;&lt;a name=&quot;bai-toan&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;bài-toán&quot;&gt;Bài toán&lt;/h3&gt;
+
+&lt;p&gt;Trong phần này, tôi sẽ chọn một ví dụ đơn giản về việc giải bài toán Linear Regression trong Python. Tôi cũng sẽ so sánh nghiệm của bài toán khi giải theo phương trình \((5) \) và nghiệm tìm được khi dùng thư viện &lt;a href=&quot;http://scikit-learn.org/stable/&quot;&gt;scikit-learn&lt;/a&gt; của Python. (&lt;em&gt;Đây là thư viện Machine Learning được sử dụng rộng rãi trong Python&lt;/em&gt;). Trong ví dụ này, dữ liệu đầu vào chỉ có 1 giá trị (1 chiều) để thuận tiện cho việc minh hoạ trong mặt phẳng.&lt;/p&gt;
 
 &lt;p&gt;Chúng ta có 1 bảng dữ liệu về chiều cao và cân nặng của 15 người như dưới đây:&lt;/p&gt;
 
@@ -229,10 +238,14 @@ Hàm số \(\mathcal{L}(\mathbf{w}) \) được gọi là &lt;strong&gt;hàm m�
   &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;p&gt;Bài toán đặt ra là: liệu có thể dự đoán cân nặng của một người dựa vào chiều cao của họ không? (&lt;em&gt;Trên thực tế, tất nhiên là không, vì cân nặng còn phụ thuộc vào nhiều yếu tố khác nữa, thể tích chẳng hạn&lt;/em&gt;). Vì blog này nói về các thuật toán Machine Learning đơn giản nên tôi sẽ giả sử như chúng ta có thể dự đoán được.&lt;/p&gt;
+&lt;p&gt;Bài toán đặt ra là: liệu có thể dự đoán cân nặng của một người dựa vào chiều cao của họ không? (&lt;em&gt;Trên thực tế, tất nhiên là không, vì cân nặng còn phụ thuộc vào nhiều yếu tố khác nữa, thể tích chẳng hạn&lt;/em&gt;). Vì blog này nói về các thuật toán Machine Learning đơn giản nên tôi sẽ giả sử rằng chúng ta có thể dự đoán được.&lt;/p&gt;
 
 &lt;p&gt;Chúng ta có thể thấy là cân nặng sẽ tỉ lệ thuận với chiều cao (càng cao càng nặng), nên có thể sử dụng Linear Regression model cho việc dự đoán này. Để kiểm tra độ chính xác của model tìm được, chúng ta sẽ giữ lại cột 155 và 160 cm để kiểm thử, các cột còn lại được sử dụng để huấn luyện (train) model.&lt;/p&gt;
 
+&lt;!-- ========================== New Heading ==================== --&gt;
+&lt;p&gt;&lt;a name=&quot;hien-thi-du-lieu-tren-do-thi&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;hiển-thị-dữ-liệu-trên-đồ-thị&quot;&gt;Hiển thị dữ liệu trên đồ thị&lt;/h3&gt;
 &lt;p&gt;Trước tiên, chúng ta cần có hai thư viện &lt;a href=&quot;http://www.numpy.org/&quot;&gt;numpy&lt;/a&gt; cho đại số tuyến tính và &lt;a href=&quot;http://matplotlib.org/&quot;&gt;matplotlib&lt;/a&gt; cho việc vẽ hình.&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;np&lt;/span&gt; 
@@ -262,9 +275,14 @@ Hàm số \(\mathcal{L}(\mathbf{w}) \) được gọi là &lt;strong&gt;hàm m�
 
 &lt;p&gt;Từ đồ thị này ta thấy rằng dữ liệu được sắp xếp gần như theo 1 đường thẳng, vậy mô hình Linear Regression nhiều khả năng sẽ cho kết quả tốt:&lt;/p&gt;
 
-&lt;p&gt;(cân nặng) = w_1*(chiều cao) + w_0)&lt;/p&gt;
+&lt;p&gt;(cân nặng) = w_1*(chiều cao) + w_0&lt;/p&gt;
 
-&lt;p&gt;Tiếp theo, chúng ta sẽ tính toán các hệ số a và b dựa vào công thức (5).&lt;/p&gt;
+&lt;!-- ========================== New Heading ==================== --&gt;
+&lt;p&gt;&lt;a name=&quot;nghiem-theo-cong-thuc&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;nghiệm-theo-công-thức&quot;&gt;Nghiệm theo công thức&lt;/h3&gt;
+
+&lt;p&gt;Tiếp theo, chúng ta sẽ tính toán các hệ số w_1 và w_0 dựa vào công thức \((5)\). Chú ý: giả nghịch đảo của một ma trận &lt;code class=&quot;highlighter-rouge&quot;&gt;A&lt;/code&gt; trong Python sẽ được tính bằng &lt;code class=&quot;highlighter-rouge&quot;&gt;numpy.linalg.pinv(A)&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;pinv&lt;/code&gt; là từ viết tắt của &lt;em&gt;pseudo inverse&lt;/em&gt;.&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Building Xbar &lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;one&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ones&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt;
@@ -319,7 +337,12 @@ Dự đoán cân nặng của người có chiều cao 160 cm: 55.74 (kg), số 
 
 &lt;p&gt;Chúng ta thấy rằng kết quả dự đoán khá gần với số liệu thực tế.&lt;/p&gt;
 
-&lt;p&gt;Tiếp theo, chúng ta sẽ sử dụng thư viện Scikit-learn của Python để tìm nghiệm.&lt;/p&gt;
+&lt;!-- ========================== New Heading ==================== --&gt;
+&lt;p&gt;&lt;a name=&quot;nghiem-theo-thu-vien-scikit-learn&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;nghiệm-theo-thư-viện-scikit-learn&quot;&gt;Nghiệm theo thư viện scikit-learn&lt;/h3&gt;
+
+&lt;p&gt;Tiếp theo, chúng ta sẽ sử dụng thư viện scikit-learn của Python để tìm nghiệm.&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sklearn&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;datasets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;linear_model&lt;/span&gt;
 
@@ -346,40 +369,58 @@ Nghiệm tìm được từ phương trình (5):  [[  0.55920496 -33.73541021]]
 &lt;h2 id=&quot;4-thảo-luận&quot;&gt;4. Thảo luận&lt;/h2&gt;
 
 &lt;!-- ========================== New Heading ==================== --&gt;
-&lt;p&gt;&lt;a name=&quot;output-la-mot-vector-nhieu-bien&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a name=&quot;cac-bai-toan-co-the-giai-bang-linear-regression&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;output-là-một-vector-nhiều-biến&quot;&gt;Output là một vector nhiều biến&lt;/h3&gt;
+&lt;h3 id=&quot;các-bài-toán-có-thể-giải-bằng-linear-regression&quot;&gt;Các bài toán có thể giải bằng Linear Regression&lt;/h3&gt;
+&lt;p&gt;Hàm số \(y \approx f(\mathbf{x})= \mathbf{w}^T\mathbf{x}\) là một hàm tuyến tính theo cả \( \mathbf{w}\) và \(\mathbf{x}\). Trên thực tế, Linear Regression có thể áp dụng cho các mô hình chỉ cần tuyến tính theo \(\mathbf{w}\). Ví dụ:
+\[
+y \approx w_1 x_1 + w_2 x_2 + w_3 x_1^2 + w_4 \sin(x_2) + w_5 x_1x_2 + w_0
+\]
+là một hàm tuyến tính theo \(\mathbf{w}\) và vì vậy cũng có thể được giải bằng Linear Regression. Với mỗi dữ liệu đầu vào \(\mathbf{x}=[x_1; x_2] \), chúng ta tính toán dữ liệu mới \(\tilde{\mathbf{x}} = [x_1, x_2, x_1^2, \sin(x_2), x_1x_2]\) (đọc là &lt;em&gt;x tilde&lt;/em&gt; trong tiếng Anh) rồi áp dụng Linear Regression với dữ liệu mới này.&lt;/p&gt;
 
-&lt;p&gt;\(f(\mathbf{x})\) là một đa thức bậc cao.&lt;/p&gt;
-
-&lt;!-- ========================== New Heading ==================== --&gt;
-&lt;p&gt;&lt;a name=&quot;mo-hinh-la-mot-da-thuc-bac-cao&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;mô-hình-là-một-đa-thức-bậc-cao&quot;&gt;Mô hình là một đa thức bậc cao&lt;/h3&gt;
+&lt;p&gt;Xem thêm ví dụ về &lt;a href=&quot;http://www.varsitytutors.com/hotmath/hotmath_help/topics/quadratic-regression&quot;&gt;Quadratic Regression&lt;/a&gt; (Hồi Quy Bậc Hai).&lt;/p&gt;
+&lt;div class=&quot;imgcap&quot;&gt;
+&lt;div&gt;
+&lt;a href=&quot;http://www.varsitytutors.com/hotmath/hotmath_help/topics/quadratic-regression&quot;&gt;
+    &lt;img src=&quot;http://www.varsitytutors.com/assets/vt-hotmath-legacy/hotmath_help/topics/quadratic-regression/f-qr-1-1.gif&quot; width=&quot;300&quot; /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class=&quot;thecap&quot;&gt; Quadratic Regression (Nguồn: &lt;a href=&quot;http://www.varsitytutors.com/hotmath/hotmath_help/topics/quadratic-regression&quot;&gt; Quadratic Regression&lt;/a&gt;) &lt;br /&gt;&lt;/div&gt;
+&lt;/div&gt;
 
 &lt;!-- ========================== New Heading ==================== --&gt;
 &lt;p&gt;&lt;a name=&quot;han-che-cua-linear-regression&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;hạn-chế-của-linear-regression&quot;&gt;Hạn chế của Linear Regression&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;Nhạy cảm với nhiễu&lt;/li&gt;
-  &lt;li&gt;Không biểu diễn được các mô hình phức tạp&lt;/li&gt;
-&lt;/ul&gt;
+
+&lt;p&gt;Hạn chế đầu tiên của Linear Regression là nó rất &lt;strong&gt;nhạy cảm với nhiễu&lt;/strong&gt; (sensitive to noise). Trong ví dụ về mối quan hệ giữa chiều cao và cân nặng bên trên, nếu có chỉ
+một cặp dữ liệu &lt;em&gt;nhiễu&lt;/em&gt; (150 cm, 90kg) thì kết quả sẽ sai khác đi rất nhiều. Xem hình dưới đây:&lt;/p&gt;
+&lt;div class=&quot;imgcap&quot;&gt;
+&lt;img src=&quot;/assets/LR/output_13_1.png&quot; align=&quot;center&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Vì vậy, trước khi thực hiện Linear Regression, các nhiễu (&lt;em&gt;outlier&lt;/em&gt;) cần
+ phải được loại bỏ. Bước này được gọi là tiền xử lý (pre-processing).&lt;/p&gt;
+
+&lt;p&gt;Hạn chế thứ hai của Linear Regression là nó &lt;strong&gt;không biễu diễn được các mô hình phức tạp&lt;/strong&gt;. Mặc dù trong phần trên, chúng ta thấy rằng phương pháp này có thể được áp dụng nếu quan hệ giữa &lt;em&gt;outcome&lt;/em&gt; và &lt;em&gt;input&lt;/em&gt; không nhất thiết phải là tuyến tính, nhưng mối quan hệ này vẫn đơn giản nhiều so với các mô hình thực tế. Hơn nữa, chúng ta sẽ tự hỏi: làm thế nào để xác định được các hàm \(x_1^2, \sin(x_2), x_1x_2\) như ở trên?!&lt;/p&gt;
 
 &lt;!-- ========================== New Heading ==================== --&gt;
 &lt;p&gt;&lt;a name=&quot;cac-phuong-phap-toi-uu&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;các-phương-pháp-tối-ưu&quot;&gt;Các phương pháp tối ưu&lt;/h3&gt;
+&lt;p&gt;Linear Regression là một mô hình đơn giản, lời giải cho phương trình đạo hàm bằng 0 cũng khá đơn giản. &lt;em&gt;Trong hầu hết các trường hợp, chúng ta không thể giải được phương trình đạo hàm bằng 0.&lt;/em&gt;&lt;/p&gt;
 
-&lt;!-- Giả sử chúng ta có các cặp (_input, outcome_) \\( (\mathbf{x}_1, \mathbf{y}_1), \dots, (\mathbf{x}_N, \mathbf{y}_N) \\), chúng ta phải tìm một hàm  --&gt;
+&lt;p&gt;Nhưng có một điều chúng ta nên nhớ, &lt;strong&gt;còn tính được đạo hàm là còn có cơ hội&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;!-- ========================== New Heading ==================== --&gt;
 &lt;p&gt;&lt;a name=&quot;-tai-lieu-tham-khao&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;5-tài-liệu-tham-khảo&quot;&gt;5. Tài liệu tham khảo&lt;/h2&gt;
 
-&lt;p&gt;&lt;a href=&quot;http://people.sc.fsu.edu/~jburkardt/datasets/regression/regression.html&quot;&gt;Data&lt;/a&gt;
-&lt;a href=&quot;http://www.sci.utah.edu/~gerig/CS6640-F2012/Materials/pseudoinverse-cis61009sl10.pdf&quot;&gt;Least Squares, Pseudo-Inverses, PCA &amp;amp; SVD&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Linear_regression&quot;&gt;Linear Regression - Wikipedia&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://machinelearningmastery.com/simple-linear-regression-tutorial-for-machine-learning/&quot;&gt;Simple Linear Regression Tutorial for Machine Learning&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.sci.utah.edu/~gerig/CS6640-F2012/Materials/pseudoinverse-cis61009sl10.pdf&quot;&gt;Least Squares, Pseudo-Inverses, PCA &amp;amp; SVD&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
 </description>
         <pubDate>Wed, 28 Dec 2016 10:22:00 -0500</pubDate>
         <link>http://localhost:4000/2016/12/28/linearregression/</link>
@@ -401,15 +442,54 @@ Nghiệm tìm được từ phương trình (5):  [[  0.55920496 -33.73541021]]
 
 &lt;p&gt;Có hai cách phổ biến phân nhóm các thuật toán Machine learning. Một là dựa trên phương thức học (learning style), hai là dựa trên chức năng (function) (của mỗi thuật toán).&lt;/p&gt;
 
-&lt;h2 id=&quot;phân-nhóm-dựa-trên-phương-thức-học&quot;&gt;Phân nhóm dựa trên phương thức học&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Trong bài này:&lt;/strong&gt;
+&lt;!-- MarkdownTOC --&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#-phan-nhom-dua-tren-phuong-thuc-hoc&quot;&gt;1. Phân nhóm dựa trên phương thức học&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#supervised-learning-hoc-co-giam-sat&quot;&gt;Supervised Learning (Học có giám sát)&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#unsupervised-learning-hoc-khong-giam-sat&quot;&gt;Unsupervised Learning (Học không giám sát)&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#semi-supervised-learning-hoc-ban-giam-sat&quot;&gt;Semi-Supervised Learning (Học bán giám sát)&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#reinforcement-learning-hoc-cung-co&quot;&gt;Reinforcement Learning (Học Củng Cố)&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#-phan-nhom-dua-tren-chuc-nang&quot;&gt;2. Phân nhóm dựa trên chức năng&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#regression-algorithms&quot;&gt;Regression Algorithms&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#classification-algorithms&quot;&gt;Classification Algorithms&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#instance-based-algorithms&quot;&gt;Instance-based Algorithms&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#regularization-algorithms&quot;&gt;Regularization Algorithms&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#baysian-algorithms&quot;&gt;Baysian Algorithms&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#clustering-algorithms&quot;&gt;Clustering Algorithms&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#artificial-neural-network-algorithms&quot;&gt;Artificial Neural Network Algorithms&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#dimensionality-reduction-algorithms&quot;&gt;Dimensionality Reduction Algorithms&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#ensemble-algorithms&quot;&gt;Ensemble Algorithms&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#-tai-lieu-tham-khao&quot;&gt;3. Tài liệu tham khảo&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- /MarkdownTOC --&gt;
+
+&lt;!-- ========================== New Heading ==================== --&gt;
+&lt;p&gt;&lt;a name=&quot;-phan-nhom-dua-tren-phuong-thuc-hoc&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;1-phân-nhóm-dựa-trên-phương-thức-học&quot;&gt;1. Phân nhóm dựa trên phương thức học&lt;/h2&gt;
 
 &lt;p&gt;Theo phương thức học, các thuật toán Machine Learning thường được chia làm 4 nhóm: Supervise learning, Unsupervised learning, Semi-supervised lerning và Reinforcement learning. &lt;em&gt;Có một số cách phân nhóm không có Semi-supervised learning hoặc Reinforcement learning.&lt;/em&gt;&lt;/p&gt;
+
+&lt;!-- ========================== New Heading ==================== --&gt;
+&lt;p&gt;&lt;a name=&quot;supervised-learning-hoc-co-giam-sat&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;supervised-learning-học-có-giám-sát&quot;&gt;Supervised Learning (Học có giám sát)&lt;/h3&gt;
 &lt;p&gt;Supervised learning là thuật toán dự đoán đầu ra (outcome) của một dữ liệu mới (new input) dựa trên các cặp (&lt;em&gt;input, outcome&lt;/em&gt;) đã biết từ trước. Cặp dữ liệu này còn được gọi là (&lt;em&gt;data. label&lt;/em&gt;), tức (&lt;em&gt;dữ liệu, nhãn&lt;/em&gt;). Supervised learning là nhóm phổ biến nhất trong các thuật toán Machine Learning.&lt;/p&gt;
 
-&lt;p&gt;Một cách toán học, Supervised learning là khi chúng ra có một tập hợp biến đầu vào \( \mathcal{X} = \{\mathbf{x}_1, \mathbf{x}_2, \dots, \mathbf{x}_N\} \) và một tập hợp nhãn tương ứng \( \mathcal{Y} = \{\mathbf{y}_1, \mathbf{y}_2, \dots, \mathbf{y}_N\} \), trong đó \( \mathbf{x}_i, \mathbf{y}_i \) là các vector. Chúng ta cần tạo ra một hàm số ánh xạ mỗi phần tử từ tập \(\mathcal{X}\) sang một phần tử (xấp xỉ) tương ứng của tập \(\mathcal{Y}\):
-\[ \mathbf{y}_i \approx f(\mathbf{x}_i), ~~ \forall i = 1, 2, \dots, N\] 
+&lt;p&gt;Một cách toán học, Supervised learning là khi chúng ra có một tập hợp biến đầu vào \( \mathcal{X} = \{\mathbf{x}_1, \mathbf{x}_2, \dots, \mathbf{x}_N\} \) và một tập hợp nhãn tương ứng \( \mathcal{Y} = \{\mathbf{y}_1, \mathbf{y}_2, \dots, \mathbf{y}_N\} \), trong đó \( \mathbf{x}_i, \mathbf{y}_i \) là các vector. 
+Các cặp dữ liệu biết trước \( (\mathbf{x}_i, \mathbf{y}_i) \in \mathcal{X} \times \mathcal{Y} \) 
+được gọi là tập training data (dữ liệu huấn luyện). Từ tập traing data này, chúng ta cần tạo ra một hàm số ánh xạ mỗi phần tử từ tập \(\mathcal{X}\) sang một phần tử (xấp xỉ) tương ứng của tập \(\mathcal{Y}\):&lt;/p&gt;
+
+&lt;p&gt;\[ \mathbf{y}_i \approx f(\mathbf{x}_i), ~~ \forall i = 1, 2, \dots, N\] 
 Mục đích là xấp xỉ hàm số \(f\) thật tốt để khi có một dữ liệu \(\mathbf{x}\) mới, chúng ta có thể tính được nhãn tương ứng của nó \( \mathbf{y} = f(\mathbf{x}) \).&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Ví dụ 1:&lt;/strong&gt; trong nhận dạng chữ viết tay, ta có ảnh của hàng nghìn ví dụ của mỗi chữ số được viết bởi nhiều người khác nhau. Chúng ta đưa các bức ảnh này vào trong một thuật toán và chỉ cho nó biết mỗi bức ảnh tương ứng với chữ số nào. Sau khi thuật toán tạo ra (sau khi &lt;em&gt;học&lt;/em&gt;) một mô hình, tức một hàm số mà đầu vào là một bức ảnh và đầu ra là một chữ số, khi nhận được một bức ảnh mới mà mô hình &lt;strong&gt;chưa nhìn thấy bao giờ&lt;/strong&gt;, nó sẽ dự đoán bức ảnh đó chứa chữ số nào.&lt;/p&gt;
@@ -432,10 +512,18 @@ Mục đích là xấp xỉ hàm số \(f\) thật tốt để khi có một d�
 
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;Classification&lt;/strong&gt; (Phân loại): Một bài toán được gọi là &lt;em&gt;classification&lt;/em&gt; nếu các &lt;em&gt;label&lt;/em&gt; của &lt;em&gt;input data&lt;/em&gt; được chia thành một số hữu hạn nhóm. Ví dụ: Gmail xác định xem một email có phải là spam hay không; các hãng tín dụng xác định xem một khách hàng có khả năng thanh toán nợ hay không. Ba ví dụ phía trên được chia vào loại này.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a name=&quot;regression&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;Regression&lt;/strong&gt; (tiếng Việt dịch là &lt;em&gt;Hồi quy&lt;/em&gt;, tôi không thích cách dịch này vì bản thân không hiểu nó nghĩa là gì): Nếu &lt;em&gt;label&lt;/em&gt; không được chia thành các nhóm mà là một giá trị thực cụ thể. Ví dụ: một căn nhà rộng \(x ~ \text{m}^2\), có \(y\) phòng ngủ và cách trung tâm thành phố \(z~ \text{km}\) sẽ có giá là bao nhiêu?&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Gần đây &lt;a href=&quot;http://how-old.net/&quot;&gt;Microsoft có một ứng dụng dự đoán giới tính và tuổi dựa trên khuôn mặt&lt;/a&gt;. Phần dự đoán giới tính có thể coi là thuật toán &lt;strong&gt;Classification&lt;/strong&gt;, phần dự đoán tuổi có thể coi là thuật toán &lt;strong&gt;Regression&lt;/strong&gt;. &lt;em&gt;Chú ý rằng phần dự đoán tuổi cũng có thể coi là &lt;strong&gt;Classification&lt;/strong&gt; nếu ta coi tuổi là một số nguyên dương không lớn hơn 150, chúng ta sẽ có 150 class (lớp) khác nhau.&lt;/em&gt;&lt;/p&gt;
+
+&lt;!-- ========================== New Heading ==================== --&gt;
+&lt;p&gt;&lt;a name=&quot;unsupervised-learning-hoc-khong-giam-sat&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;unsupervised-learning-học-không-giám-sát&quot;&gt;Unsupervised Learning (Học không giám sát)&lt;/h3&gt;
 &lt;p&gt;Trong thuật toán này, chúng ta không biết được &lt;em&gt;outcome&lt;/em&gt; hãy &lt;em&gt;nhãn&lt;/em&gt; mã chỉ có dữ liệu đầu vào. Thuật toán unsupervised learning sẽ dựa vào cấu trúc của dữ liệu để thực hiện một công việc nào đó, ví dụ như phân nhóm (clustering) hoặc giảm số chiều của dữ liệu (dimention reduction) để thuận tiện trong việc lưu trữ và tính toán.&lt;/p&gt;
@@ -455,10 +543,16 @@ Mục đích là xấp xỉ hàm số \(f\) thật tốt để khi có một d�
   &lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;!-- ========================== New Heading ==================== --&gt;
+&lt;p&gt;&lt;a name=&quot;semi-supervised-learning-hoc-ban-giam-sat&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
 &lt;h3 id=&quot;semi-supervised-learning-học-bán-giám-sát&quot;&gt;Semi-Supervised Learning (Học bán giám sát)&lt;/h3&gt;
 &lt;p&gt;Các bài toán khi chúng ta có một lượng lớn dữ liệu \(\mathcal{X}\) nhưng chỉ một phần trong chúng được gán nhãn được gọi là Semi-Supervised Learning. Những bài toán thuộc nhóm này nằm giữa hai nhóm được nêu bên trên.&lt;/p&gt;
 
 &lt;p&gt;Một ví dụ điển hình của nhóm này là chỉ có một phần ảnh hoặc văn bản được gán nhãn (ví dụ bức ảnh về người, động vật hoặc các văn bản khoa học, chính trị) và phần lớn các bức ảnh/văn bản khác chưa được gán nhãn được thu thập từ internet. Thực tế cho thấy rất nhiều các bài toàn Machine Learning thuộc vào nhóm này vì việc thu thập dữ liệu có nhãn tốn rất nhiều thời gian và có chi phí cao. Rất nhiều loại dữ liệu thậm chí cần phải có chuyên gia mới gán nhãn được (ảnh y học chẳng hạn). Ngược lại, dữ liệu chưa có nhãn có thể được thu thập với chi phí thấp từ internet.&lt;/p&gt;
+
+&lt;!-- ========================== New Heading ==================== --&gt;
+&lt;p&gt;&lt;a name=&quot;reinforcement-learning-hoc-cung-co&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;reinforcement-learning-học-củng-cố&quot;&gt;Reinforcement Learning (Học Củng Cố)&lt;/h3&gt;
 &lt;p&gt;Reinforcement learning là các bài toán giúp cho một hệ thống tự động xác định hành vi dựa trên hoàn cảnh để đạt được lợi ích cao nhất (maximizing the performance). Hiện tại, Reinforcement learning chủ yếu được áp dụng vào Lý Thuyết Trò Chơi (Game Theory), các thuật toán cần xác định nưóc đi tiếp theo để đạt được điểm số cao nhất.&lt;/p&gt;
@@ -475,9 +569,15 @@ Mục đích là xấp xỉ hàm số \(f\) thật tốt để khi có một d�
 &lt;div class=&quot;thecap&quot;&gt;Lập trình cho máy tính chơi game Mario&lt;/div&gt;
 &lt;/div&gt;
 
-&lt;h2 id=&quot;phân-nhóm-dựa-trên-chức-năng&quot;&gt;Phân nhóm dựa trên chức năng&lt;/h2&gt;
+&lt;!-- ========================== New Heading ==================== --&gt;
+&lt;p&gt;&lt;a name=&quot;-phan-nhom-dua-tren-chuc-nang&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;2-phân-nhóm-dựa-trên-chức-năng&quot;&gt;2. Phân nhóm dựa trên chức năng&lt;/h2&gt;
 
 &lt;p&gt;Có một cách phân nhóm thứ hai dựa trên chức năng của các thuật toán. Trong phần này, tôi xin chỉ liệt kê các thuật toán. Thông tin cụ thể sẽ được trình bày trong các bài viết khác tại blog này. Trong quá trình viết, tôi có thể sẽ thêm bớt một số thuật toán.&lt;/p&gt;
+
+&lt;!-- ========================== New Heading ==================== --&gt;
+&lt;p&gt;&lt;a name=&quot;regression-algorithms&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;regression-algorithms&quot;&gt;Regression Algorithms&lt;/h3&gt;
 
@@ -486,6 +586,9 @@ Mục đích là xấp xỉ hàm số \(f\) thật tốt để khi có một d�
   &lt;li&gt;Logistic Regression&lt;/li&gt;
   &lt;li&gt;Stepwise Regression&lt;/li&gt;
 &lt;/ol&gt;
+
+&lt;!-- ========================== New Heading ==================== --&gt;
+&lt;p&gt;&lt;a name=&quot;classification-algorithms&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;classification-algorithms&quot;&gt;Classification Algorithms&lt;/h3&gt;
 
@@ -497,12 +600,18 @@ Mục đích là xấp xỉ hàm số \(f\) thật tốt để khi có một d�
   &lt;li&gt;Neural Networks&lt;/li&gt;
 &lt;/ol&gt;
 
+&lt;!-- ========================== New Heading ==================== --&gt;
+&lt;p&gt;&lt;a name=&quot;instance-based-algorithms&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
 &lt;h3 id=&quot;instance-based-algorithms&quot;&gt;Instance-based Algorithms&lt;/h3&gt;
 
 &lt;ol&gt;
   &lt;li&gt;k-Nearest Neighbor (kNN)&lt;/li&gt;
   &lt;li&gt;Learnin Vector Quantization (LVQ)&lt;/li&gt;
 &lt;/ol&gt;
+
+&lt;!-- ========================== New Heading ==================== --&gt;
+&lt;p&gt;&lt;a name=&quot;regularization-algorithms&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;regularization-algorithms&quot;&gt;Regularization Algorithms&lt;/h3&gt;
 
@@ -512,12 +621,18 @@ Mục đích là xấp xỉ hàm số \(f\) thật tốt để khi có một d�
   &lt;li&gt;Least-Angle Regression (LARS)&lt;/li&gt;
 &lt;/ol&gt;
 
+&lt;!-- ========================== New Heading ==================== --&gt;
+&lt;p&gt;&lt;a name=&quot;baysian-algorithms&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
 &lt;h3 id=&quot;baysian-algorithms&quot;&gt;Baysian Algorithms&lt;/h3&gt;
 
 &lt;ol&gt;
   &lt;li&gt;Naive Bayes&lt;/li&gt;
   &lt;li&gt;Gausian Naive Bayes&lt;/li&gt;
 &lt;/ol&gt;
+
+&lt;!-- ========================== New Heading ==================== --&gt;
+&lt;p&gt;&lt;a name=&quot;clustering-algorithms&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;clustering-algorithms&quot;&gt;Clustering Algorithms&lt;/h3&gt;
 
@@ -527,6 +642,9 @@ Mục đích là xấp xỉ hàm số \(f\) thật tốt để khi có một d�
   &lt;li&gt;Expectation Maximisation (EM)&lt;/li&gt;
 &lt;/ol&gt;
 
+&lt;!-- ========================== New Heading ==================== --&gt;
+&lt;p&gt;&lt;a name=&quot;artificial-neural-network-algorithms&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
 &lt;h3 id=&quot;artificial-neural-network-algorithms&quot;&gt;Artificial Neural Network Algorithms&lt;/h3&gt;
 
 &lt;ol&gt;
@@ -534,12 +652,18 @@ Mục đích là xấp xỉ hàm số \(f\) thật tốt để khi có một d�
   &lt;li&gt;Back-Propagation&lt;/li&gt;
 &lt;/ol&gt;
 
+&lt;!-- ========================== New Heading ==================== --&gt;
+&lt;p&gt;&lt;a name=&quot;dimensionality-reduction-algorithms&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
 &lt;h3 id=&quot;dimensionality-reduction-algorithms&quot;&gt;Dimensionality Reduction Algorithms&lt;/h3&gt;
 
 &lt;ol&gt;
   &lt;li&gt;Principal Component Analysis (PCA)&lt;/li&gt;
   &lt;li&gt;Linear Discriminant Analysis (LDA)&lt;/li&gt;
 &lt;/ol&gt;
+
+&lt;!-- ========================== New Heading ==================== --&gt;
+&lt;p&gt;&lt;a name=&quot;ensemble-algorithms&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;ensemble-algorithms&quot;&gt;Ensemble Algorithms&lt;/h3&gt;
 
@@ -551,7 +675,10 @@ Mục đích là xấp xỉ hàm số \(f\) thật tốt để khi có một d�
 
 &lt;p&gt;Và còn rất nhiều các thuật toán khác.&lt;/p&gt;
 
-&lt;h2 id=&quot;tài-liệu-tham-khảo&quot;&gt;Tài liệu tham khảo&lt;/h2&gt;
+&lt;!-- ========================== New Heading ==================== --&gt;
+&lt;p&gt;&lt;a name=&quot;-tai-lieu-tham-khao&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;3-tài-liệu-tham-khảo&quot;&gt;3. Tài liệu tham khảo&lt;/h2&gt;
 &lt;ol&gt;
   &lt;li&gt;&lt;a href=&quot;http://machinelearningmastery.com/a-tour-of-machine-learning-algorithms/&quot;&gt;A Tour of Machine Learning Algorithms&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://ongxuanhong.wordpress.com/2015/10/22/diem-qua-cac-thuat-toan-machine-learning-hien-dai/&quot;&gt;Điểm qua các thuật toán Machine Learning hiện đại&lt;/a&gt;&lt;/li&gt;
