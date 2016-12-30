@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 30 Dec 2016 12:44:18 -0500</pubDate>
-    <lastBuildDate>Fri, 30 Dec 2016 12:44:18 -0500</lastBuildDate>
+    <pubDate>Fri, 30 Dec 2016 18:31:17 -0500</pubDate>
+    <lastBuildDate>Fri, 30 Dec 2016 18:31:17 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -529,7 +529,7 @@ Mục đích là xấp xỉ hàm số \(f\) thật tốt để khi có một d�
 &lt;p&gt;&lt;a name=&quot;unsupervised-learning-hoc-khong-giam-sat&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;unsupervised-learning-học-không-giám-sát&quot;&gt;Unsupervised Learning (Học không giám sát)&lt;/h3&gt;
-&lt;p&gt;Trong thuật toán này, chúng ta không biết được &lt;em&gt;outcome&lt;/em&gt; hãy &lt;em&gt;nhãn&lt;/em&gt; mã chỉ có dữ liệu đầu vào. Thuật toán unsupervised learning sẽ dựa vào cấu trúc của dữ liệu để thực hiện một công việc nào đó, ví dụ như phân nhóm (clustering) hoặc giảm số chiều của dữ liệu (dimention reduction) để thuận tiện trong việc lưu trữ và tính toán.&lt;/p&gt;
+&lt;p&gt;Trong thuật toán này, chúng ta không biết được &lt;em&gt;outcome&lt;/em&gt; hay &lt;em&gt;nhãn&lt;/em&gt; mã chỉ có dữ liệu đầu vào. Thuật toán unsupervised learning sẽ dựa vào cấu trúc của dữ liệu để thực hiện một công việc nào đó, ví dụ như phân nhóm (clustering) hoặc giảm số chiều của dữ liệu (dimention reduction) để thuận tiện trong việc lưu trữ và tính toán.&lt;/p&gt;
 
 &lt;p&gt;Một cách toán học, Unsupervised learning là khi chúng ta chỉ có dữ liệu vào \(\mathcal{X} \) mà không biết &lt;em&gt;nhãn&lt;/em&gt; \(\mathcal{Y}\) tương ứng.&lt;/p&gt;
 
@@ -673,7 +673,7 @@ Mục đích là xấp xỉ hàm số \(f\) thật tốt để khi có một d�
 &lt;ol&gt;
   &lt;li&gt;Boosting&lt;/li&gt;
   &lt;li&gt;AdaBoost&lt;/li&gt;
-  &lt;li&gt;Randome Forest&lt;/li&gt;
+  &lt;li&gt;Random Forest&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;Và còn rất nhiều các thuật toán khác.&lt;/p&gt;
