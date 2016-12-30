@@ -8,7 +8,7 @@ mathjax: true
 
 <div class="imgcap">
 <div >
-<a href = "/2016/12/26/categories/">
+<a href = "/2016/12/27/categories/">
     <img src="/assets/categories/alphago.jpeg" width = "800"></a>
     <!-- <img src="/assets/rl/mdp.png" height="206"> -->
 </div>

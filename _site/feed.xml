@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 29 Dec 2016 23:06:29 -0500</pubDate>
-    <lastBuildDate>Thu, 29 Dec 2016 23:06:29 -0500</lastBuildDate>
+    <pubDate>Thu, 29 Dec 2016 23:10:12 -0500</pubDate>
+    <lastBuildDate>Thu, 29 Dec 2016 23:10:12 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -436,7 +436,7 @@ một cặp dữ liệu &lt;em&gt;nhiễu&lt;/em&gt; (150 cm, 90kg) thì kết q
         <title>Phân nhóm các thuật toán Machine Learning</title>
         <description>&lt;div class=&quot;imgcap&quot;&gt;
 &lt;div&gt;
-&lt;a href=&quot;/2016/12/26/categories/&quot;&gt;
+&lt;a href=&quot;/2016/12/27/categories/&quot;&gt;
     &lt;img src=&quot;/assets/categories/alphago.jpeg&quot; width=&quot;800&quot; /&gt;&lt;/a&gt;
     &lt;!-- &lt;img src=&quot;/assets/rl/mdp.png&quot; height=&quot;206&quot;&gt; --&gt;
 &lt;/div&gt;
