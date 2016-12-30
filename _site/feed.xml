@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 30 Dec 2016 12:37:02 -0500</pubDate>
-    <lastBuildDate>Fri, 30 Dec 2016 12:37:02 -0500</lastBuildDate>
+    <pubDate>Fri, 30 Dec 2016 12:44:18 -0500</pubDate>
+    <lastBuildDate>Fri, 30 Dec 2016 12:44:18 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -20,7 +20,7 @@
 &lt;div class=&quot;thecap&quot;&gt; Linear Regression &lt;br /&gt;&lt;/div&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Trong bài này, tôi sẽ giới thiều một trong những thuật toán cơ bản nhất (và đơn giản nhất) của Machine Learning. Đây là một thuật toán &lt;em&gt;Supervised learning&lt;/em&gt; có tên &lt;strong&gt;Linear Regression&lt;/strong&gt; (Hồi Quy Tuyến Tính). Bài toán này đôi khi được gọi là &lt;em&gt;Linear Fitting&lt;/em&gt; (trong thống kê) hoặc &lt;em&gt;Linear Least Square&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Trong bài này, tôi sẽ giới thiệu một trong những thuật toán cơ bản nhất (và đơn giản nhất) của Machine Learning. Đây là một thuật toán &lt;em&gt;Supervised learning&lt;/em&gt; có tên &lt;strong&gt;Linear Regression&lt;/strong&gt; (Hồi Quy Tuyến Tính). Bài toán này đôi khi được gọi là &lt;em&gt;Linear Fitting&lt;/em&gt; (trong thống kê) hoặc &lt;em&gt;Linear Least Square&lt;/em&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Trong trang này:&lt;/strong&gt;
 &lt;!-- MarkdownTOC --&gt;&lt;/p&gt;
@@ -102,7 +102,7 @@ trong đó, \(w_1, w_2, w_3, w_0\) là các hằng số,  \(w_0\) còn được 
 \frac{1}{2}e^2 = \frac{1}{2}(y - \hat{y})^2 = \frac{1}{2}(y - \mathbf{w}^T\mathbf{\bar{x}})^2
 \]&lt;/p&gt;
 
-&lt;p&gt;trong đó hệ số \(\frac{1}{2} \) (&lt;em&gt;lại&lt;/em&gt;) là để thuận tiện cho việc tính toán (tính đạo hàm mà tôi sẽ trình bày ở phía dưới). Chúng ta cần \(e^2\) vì \(e = y - \hat{y} \) có thể là một số âm, việc nói \(e\) nhỏ nhất sẽ không đúng vì khi \(e = - \infty\) là rất nhỏ nhưng sự sai lệch là rất lớn. Bạn đọc có thể tự đặt câu hỏi: &lt;strong&gt;tại sao không dùng trị tuyệt đối \( |e| \) mà lại dùng bình phương \(e^2\) ở đây?&lt;/strong&gt; Câu trả lời sẽ có ở phần sau.&lt;/p&gt;
+&lt;p&gt;trong đó hệ số \(\frac{1}{2} \) (&lt;em&gt;lại&lt;/em&gt;) là để thuận tiện cho việc tính toán (khi tính đạo hàm thì số \(\frac{1}{2} \) sẽ bị triệt tiêu). Chúng ta cần \(e^2\) vì \(e = y - \hat{y} \) có thể là một số âm, việc nói \(e\) nhỏ nhất sẽ không đúng vì khi \(e = - \infty\) là rất nhỏ nhưng sự sai lệch là rất lớn. Bạn đọc có thể tự đặt câu hỏi: &lt;strong&gt;tại sao không dùng trị tuyệt đối \( |e| \) mà lại dùng bình phương \(e^2\) ở đây?&lt;/strong&gt; Câu trả lời sẽ có ở phần sau.&lt;/p&gt;
 
 &lt;!-- ========================== New Heading ==================== --&gt;
 &lt;p&gt;&lt;a name=&quot;ham-mat-mat&quot;&gt;&lt;/a&gt;&lt;/p&gt;

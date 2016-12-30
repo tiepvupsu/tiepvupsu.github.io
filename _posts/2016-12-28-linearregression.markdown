@@ -16,7 +16,7 @@ mathjax: true
 <div class="thecap"> Linear Regression <br></div>
 </div>
 
-Trong bài này, tôi sẽ giới thiều một trong những thuật toán cơ bản nhất (và đơn giản nhất) của Machine Learning. Đây là một thuật toán _Supervised learning_ có tên **Linear Regression** (Hồi Quy Tuyến Tính). Bài toán này đôi khi được gọi là _Linear Fitting_ (trong thống kê) hoặc _Linear Least Square_.
+Trong bài này, tôi sẽ giới thiệu một trong những thuật toán cơ bản nhất (và đơn giản nhất) của Machine Learning. Đây là một thuật toán _Supervised learning_ có tên **Linear Regression** (Hồi Quy Tuyến Tính). Bài toán này đôi khi được gọi là _Linear Fitting_ (trong thống kê) hoặc _Linear Least Square_.
 
 **Trong trang này:**
 <!-- MarkdownTOC -->
@@ -95,7 +95,7 @@ Chúng ta mong muốn rằng sự sai khác \\(e\\) giữa giá trị thực \\(
 \frac{1}{2}e^2 = \frac{1}{2}(y - \hat{y})^2 = \frac{1}{2}(y - \mathbf{w}^T\mathbf{\bar{x}})^2
 \\]
 
-trong đó hệ số \\(\frac{1}{2} \\) (_lại_) là để thuận tiện cho việc tính toán (tính đạo hàm mà tôi sẽ trình bày ở phía dưới). Chúng ta cần \\(e^2\\) vì \\(e = y - \hat{y} \\) có thể là một số âm, việc nói \\(e\\) nhỏ nhất sẽ không đúng vì khi \\(e = - \infty\\) là rất nhỏ nhưng sự sai lệch là rất lớn. Bạn đọc có thể tự đặt câu hỏi: **tại sao không dùng trị tuyệt đối \\( \|e\| \\) mà lại dùng bình phương \\(e^2\\) ở đây?** Câu trả lời sẽ có ở phần sau. 
+trong đó hệ số \\(\frac{1}{2} \\) (_lại_) là để thuận tiện cho việc tính toán (khi tính đạo hàm thì số \\(\frac{1}{2} \\) sẽ bị triệt tiêu). Chúng ta cần \\(e^2\\) vì \\(e = y - \hat{y} \\) có thể là một số âm, việc nói \\(e\\) nhỏ nhất sẽ không đúng vì khi \\(e = - \infty\\) là rất nhỏ nhưng sự sai lệch là rất lớn. Bạn đọc có thể tự đặt câu hỏi: **tại sao không dùng trị tuyệt đối \\( \|e\| \\) mà lại dùng bình phương \\(e^2\\) ở đây?** Câu trả lời sẽ có ở phần sau. 
 
 
 
