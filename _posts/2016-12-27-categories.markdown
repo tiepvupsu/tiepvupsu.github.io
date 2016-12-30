@@ -98,7 +98,7 @@ Gần đây [Microsoft có một ứng dụng dự đoán giới tính và tuổ
 <a name="unsupervised-learning-hoc-khong-giam-sat"></a>
 
 ### Unsupervised Learning (Học không giám sát)
-Trong thuật toán này, chúng ta không biết được _outcome_ hay _nhãn_ mã chỉ có dữ liệu đầu vào. Thuật toán unsupervised learning sẽ dựa vào cấu trúc của dữ liệu để thực hiện một công việc nào đó, ví dụ như phân nhóm (clustering) hoặc giảm số chiều của dữ liệu (dimention reduction) để thuận tiện trong việc lưu trữ và tính toán. 
+Trong thuật toán này, chúng ta không biết được _outcome_ hay _nhãn_ mà chỉ có dữ liệu đầu vào. Thuật toán unsupervised learning sẽ dựa vào cấu trúc của dữ liệu để thực hiện một công việc nào đó, ví dụ như phân nhóm (clustering) hoặc giảm số chiều của dữ liệu (dimention reduction) để thuận tiện trong việc lưu trữ và tính toán.
 
 Một cách toán học, Unsupervised learning là khi chúng ta chỉ có dữ liệu vào \\(\mathcal{X} \\) mà không biết _nhãn_ \\(\mathcal{Y}\\) tương ứng. 
 
