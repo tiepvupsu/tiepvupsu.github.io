@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 29 Dec 2016 22:45:30 -0500</pubDate>
-    <lastBuildDate>Thu, 29 Dec 2016 22:45:30 -0500</lastBuildDate>
+    <pubDate>Thu, 29 Dec 2016 22:54:23 -0500</pubDate>
+    <lastBuildDate>Thu, 29 Dec 2016 22:54:23 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -374,7 +374,10 @@ Nghiệm tìm được từ phương trình (5):  [[  0.55920496 -33.73541021]]
 &lt;h3 id=&quot;các-bài-toán-có-thể-giải-bằng-linear-regression&quot;&gt;Các bài toán có thể giải bằng Linear Regression&lt;/h3&gt;
 &lt;p&gt;Hàm số \(y \approx f(\mathbf{x})= \mathbf{w}^T\mathbf{x}\) là một hàm tuyến tính theo cả \( \mathbf{w}\) và \(\mathbf{x}\). Trên thực tế, Linear Regression có thể áp dụng cho các mô hình chỉ cần tuyến tính theo \(\mathbf{w}\). Ví dụ:
 \[
-y \approx w_1 x_1 + w_2 x_2 + w_3 x_1^2 + w_4 \sin(x_2) + w_5 x_1x_2 + w_0
+y \approx w_1 x_1 + w_2 x_2 + w_3 x_1^2 + 
+\]
+\[
++w_4 \sin(x_2) + w_5 x_1x_2 + w_0
 \]
 là một hàm tuyến tính theo \(\mathbf{w}\) và vì vậy cũng có thể được giải bằng Linear Regression. Với mỗi dữ liệu đầu vào \(\mathbf{x}=[x_1; x_2] \), chúng ta tính toán dữ liệu mới \(\tilde{\mathbf{x}} = [x_1, x_2, x_1^2, \sin(x_2), x_1x_2]\) (đọc là &lt;em&gt;x tilde&lt;/em&gt; trong tiếng Anh) rồi áp dụng Linear Regression với dữ liệu mới này.&lt;/p&gt;
 
@@ -715,27 +718,33 @@ Mục đích là xấp xỉ hàm số \(f\) thật tốt để khi có một d�
  --&gt;
 
 &lt;h2 id=&quot;mục-đích-viết-blog&quot;&gt;Mục đích viết Blog&lt;/h2&gt;
-&lt;p&gt;Nhu cầu về nhân lực ngành Machine Learning (Deep Learning) đang ngày một cao, kéo theo đó nhu cầu học Machine Learning trên thế giới và ở Việt Nam ngày một lớn. Cá nhân tôi cũng muốn hệ thống lại kiến thức của mình về lĩnh vực này để chuẩn bị cho tương lai (đây là một trong những mục tiêu của tôi trong năm 2017). Tôi sẽ cố gắng đi từ những thuật toán cơ bản nhất của Machine Learning kèm theo các ví dụ và mã nguồn trong mỗi bài viết. Nếu không bận việc đột xuất, tôi sẽ viết 1 bài/tuần. Đồng thơi, tôi cũng muốn nhận được phản hồi của bạn đọc để qua những thảo luận, chúng ta có thể hiểu rõ hơn và nắm bắt các thuật toán này.&lt;/p&gt;
+&lt;p&gt;Nhu cầu về nhân lực ngành Machine Learning (Deep Learning) đang ngày một cao, kéo theo đó nhu cầu học Machine Learning trên thế giới và ở Việt Nam ngày một lớn. Cá nhân tôi cũng muốn hệ thống lại kiến thức của mình về lĩnh vực này để chuẩn bị cho tương lai (đây là một trong những mục tiêu của tôi trong năm 2017). Tôi sẽ cố gắng đi từ những thuật toán cơ bản nhất của Machine Learning kèm theo các ví dụ và mã nguồn trong mỗi bài viết. Tôi sẽ viết 1-2 tuần 1 bài (việc viết các công thức toán và code trên blog thực sự tốn nhiều thời gian hơn tôi từng nghĩ). Đồng thơi, tôi cũng mong muốn nhận được phản hồi của bạn đọc để qua những thảo luận, tôi và các bạn có thể nắm bắt được các thuật toán này.&lt;/p&gt;
 
-&lt;p&gt;Khi chuẩn bị các bài viết, tôi sẽ giả định rằng bạn đọc có một chút kiến thức về Đại Số Tuyến Tính (Linear Algebra), Xác Suât Thống Kê (Probability and Statistics) và có kinh nghiệm về lập trình Python. Nếu bạn chưa có nhiều kinh nghiệm về các lĩnh vực này, đừng quá lo lắng vì mỗi bài sẽ chỉ sử dụng một vài kỹ thuật cơ bản. Hãy để lại câu hỏi của bạn ở phần Comment bên dưới, tôi sẽ thảo luận thêm với các bạn.&lt;/p&gt;
+&lt;p&gt;Khi chuẩn bị các bài viết, tôi sẽ giả định rằng bạn đọc có một chút kiến thức về Đại Số Tuyến Tính (Linear Algebra), Xác Suât Thống Kê (Probability and Statistics) và có kinh nghiệm về lập trình Python. Nếu bạn chưa có nhiều kinh nghiệm về các lĩnh vực này, đừng quá lo lắng vì mỗi bài sẽ chỉ sử dụng một vài kỹ thuật cơ bản. Hãy để lại câu hỏi của bạn ở phần Comment bên dưới mỗi bài, tôi sẽ thảo luận thêm với các bạn.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;/2016/12/27/categories/&quot;&gt;Trong bài tiếp theo của blog này&lt;/a&gt;, tôi sẽ giới thiệu về các nhóm thuật toán Machine learning cơ bản. Mời các bạn theo dõi.&lt;/p&gt;
 
-&lt;h2 id=&quot;mời-các-bạn-tham-khảo-thêm-thêm&quot;&gt;Mời các bạn tham khảo thêm thêm&lt;/h2&gt;
+&lt;h2 id=&quot;tham-khảo-thêm&quot;&gt;Tham khảo thêm&lt;/h2&gt;
 
-&lt;h3 id=&quot;tiếng-anh&quot;&gt;Tiếng Anh&lt;/h3&gt;
+&lt;h3 id=&quot;các-khóa-học&quot;&gt;Các khóa học&lt;/h3&gt;
+
+&lt;h4 id=&quot;tiếng-anh&quot;&gt;Tiếng Anh&lt;/h4&gt;
 &lt;ol&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning&quot;&gt;Machine Learning với thầy Andrew Ng trên Coursera&lt;/a&gt; (&lt;em&gt;Khóa học nổi tiếng nhất về Machine Learning&lt;/em&gt;)&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.udacity.com/course/deep-learning--ud730&quot;&gt;Deep Learning by Google trên Udacity&lt;/a&gt; (&lt;em&gt;Khóa học nâng cao hơn về Deep Learning với Tensorflow&lt;/em&gt;)&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://machinelearningmastery.com/&quot;&gt;Machine Learning mastery&lt;/a&gt; (&lt;em&gt;Các thuật toán Machine Learning cơ bản&lt;/em&gt;)&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h3 id=&quot;tiếng-việt&quot;&gt;Tiếng Việt&lt;/h3&gt;
+&lt;h4 id=&quot;tiếng-việt&quot;&gt;Tiếng Việt&lt;/h4&gt;
 &lt;p&gt;&lt;strong&gt;Lưu ý&lt;/strong&gt;: &lt;em&gt;Các khóa học này tôi chưa từng tham gia, chỉ đưa ra để các bạn tham khảo.&lt;/em&gt;&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;&lt;a href=&quot;http://tuanvannguyen.blogspot.com/2016/12/cap-nhat-khoa-hoc-ve-machine-learning.html&quot;&gt;Machine Learning 1/2017&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://techmaster.vn/khoa-hoc/25511/machine-learning-co-ban&quot;&gt;Nhập môn Machine Learning - Cao Thanh Hà &lt;em&gt;POSTECH&lt;/em&gt;&lt;/a&gt; (&lt;em&gt;Tech Master&lt;/em&gt;)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;các-trang-machine-learning-tiếng-việt-khác&quot;&gt;Các trang Machine Learning tiếng Việt khác&lt;/h3&gt;
+&lt;ol&gt;
   &lt;li&gt;&lt;a href=&quot;http://viet.jnlp.org/kien-thuc-co-ban-ve-xu-ly-ngon-ngu-tu-nhien/machine-learning-trong-nlp&quot;&gt;Machine Learning trong Xử Lý Ngôn Ngữ Tự Nhiên - Nhóm Đông Du &lt;em&gt;Nhật Bản&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://ongxuanhong.wordpress.com/&quot;&gt;Machine Learning cho người mới bắt đầu - Ông Xuân Hồng &lt;em&gt;JAIST&lt;/em&gt;&lt;/a&gt;.&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://ml-book-vn.khanhxnguyen.com/&quot;&gt;Machine Learning book for Vietnamese - Nguyễn Xuân Khánh &lt;em&gt;University of Maryland&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;

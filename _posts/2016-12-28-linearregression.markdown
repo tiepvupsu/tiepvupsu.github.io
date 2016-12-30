@@ -337,7 +337,10 @@ Chúng ta thấy rằng hai kết quả thu được như nhau! (_Nghĩa là tô
 ### Các bài toán có thể giải bằng Linear Regression
 Hàm số \\(y \approx f(\mathbf{x})= \mathbf{w}^T\mathbf{x}\\) là một hàm tuyến tính theo cả \\( \mathbf{w}\\) và \\(\mathbf{x}\\). Trên thực tế, Linear Regression có thể áp dụng cho các mô hình chỉ cần tuyến tính theo \\(\mathbf{w}\\). Ví dụ:
 \\[
-y \approx w_1 x_1 + w_2 x_2 + w_3 x_1^2 + w_4 \sin(x_2) + w_5 x_1x_2 + w_0
+y \approx w_1 x_1 + w_2 x_2 + w_3 x_1^2 + 
+\\]
+\\[
++w_4 \sin(x_2) + w_5 x_1x_2 + w_0
 \\]
 là một hàm tuyến tính theo \\(\mathbf{w}\\) và vì vậy cũng có thể được giải bằng Linear Regression. Với mỗi dữ liệu đầu vào \\(\mathbf{x}=[x_1; x_2] \\), chúng ta tính toán dữ liệu mới \\(\tilde{\mathbf{x}} = [x_1, x_2, x_1^2, \sin(x_2), x_1x_2]\\) (đọc là _x tilde_ trong tiếng Anh) rồi áp dụng Linear Regression với dữ liệu mới này. 
 
