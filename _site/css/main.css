@@ -461,3 +461,44 @@ th{
 td{
     border:1px solid #111;
 }
+
+.share-page {
+    text-align: left;
+    background: $secondary-color;
+    color: $light-color;
+    padding: 8px 15px;
+    border-radius: 5px;
+    margin: 1.5 * $spacing-unit 0;
+    /*width: 500px;*/
+
+    a {
+        font-weight: 300;
+        color: #fff;
+        margin-left: 10px;
+
+        &:hover {
+            border-bottom: 1px dashed #fff;
+        }
+    }
+}
+
+
+.share-page-head {
+    text-align: right;
+    background: $secondary-color;
+    color: $light-color;
+    padding: 8px 15px;
+    border-radius: 5px;
+    margin: 1.5 * $spacing-unit 0;
+    /*width: 500px;*/
+
+    a {
+        font-weight: 300;
+        color: #fff;
+        margin-left: 10px;
+
+        &:hover {
+            border-bottom: 1px dashed #fff;
+        }
+    }
+}
