@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 29 Dec 2016 22:54:23 -0500</pubDate>
-    <lastBuildDate>Thu, 29 Dec 2016 22:54:23 -0500</lastBuildDate>
+    <pubDate>Thu, 29 Dec 2016 23:06:29 -0500</pubDate>
+    <lastBuildDate>Thu, 29 Dec 2016 23:06:29 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -60,7 +60,7 @@
 
 &lt;h2 id=&quot;1-giới-thiệu&quot;&gt;1. Giới thiệu&lt;/h2&gt;
 
-&lt;p&gt;Quay lại &lt;a href=&quot;/2016/12/27/categories/#regression&quot;&gt;ví dụ đơn giản được nêu trong bài trước&lt;/a&gt;: một căn nhà rộng \(x_1 ~ \text{m}^2\), có \(x_2\) phòng ngủ và cách trung tâm thành phố \(x_3~ \text{km}\) có giá là bao nhiêu. Giả sử chúng ta đã có số liệu thống kê từ 1000 căn nhà trong thành phố đó, liệu rằng khi có một căn nhà mới với các thông số về diện tích, số phòng ngủ và khoảng cách tới trung tâm, chúng ta có thể dự đoán được giá của căn phòng đó không? Nếu có thì hàm dự đoán \(y = f(\mathbf{x}) \) sẽ có dạng như thế nào. Ở đây \(\mathbf{x} = [x_1; x_2; x_3] \) là một vector
+&lt;p&gt;Quay lại &lt;a href=&quot;/2016/12/27/categories/#regression&quot;&gt;ví dụ đơn giản được nêu trong bài trước&lt;/a&gt;: một căn nhà rộng \(x_1 ~ \text{m}^2\), có \(x_2\) phòng ngủ và cách trung tâm thành phố \(x_3~ \text{km}\) có giá là bao nhiêu. Giả sử chúng ta đã có số liệu thống kê từ 1000 căn nhà trong thành phố đó, liệu rằng khi có một căn nhà mới với các thông số về diện tích, số phòng ngủ và khoảng cách tới trung tâm, chúng ta có thể dự đoán được giá của căn nhà đó không? Nếu có thì hàm dự đoán \(y = f(\mathbf{x}) \) sẽ có dạng như thế nào. Ở đây \(\mathbf{x} = [x_1; x_2; x_3] \) là một vector
 cột chứa thông tin &lt;em&gt;input&lt;/em&gt;, \(y\) là một số vô hướng (scalar) biểu diễn &lt;em&gt;output&lt;/em&gt; (tức giá của căn nhà trong ví dụ này).&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Lưu ý về ký hiệu toán học:&lt;/strong&gt; &lt;em&gt;trong các bài viết của tôi, các số vô hướng được biểu diễn bởi các chữ cái viết ở dạng không in đậm, có thể viết hoa, ví dụ \(x_1, N, y, k\). Các vector được biểu diễn bằng các chữ cái thường in đậm, ví dụ \(\mathbf{y}, \mathbf{x}_1 \). Các ma trận được biểu diễn bởi các chữ viết hoa in đậm, ví dụ \(\mathbf{X, Y, W} \).&lt;/em&gt;&lt;/p&gt;
