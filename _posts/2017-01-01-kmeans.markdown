@@ -414,6 +414,7 @@ Thật may mắn (_cho tôi_), hai thuật toán cho cùng một đáp số! V�
 ### Hạn chế
 Có một vài hạn chế của thuật toán K-means clustering:
 #### Chúng ta cần biết số lượng nhóm cần clustering
+Có một số phương pháp giúp xác định số lượng clusters, tôi sẽ dành thời gian nói về chúng sau nếu có dịp. Bạn đọc có thể tham khảo [Elbow method - Determining the number of clusters in a data set](https://en.wikipedia.org/wiki/Determining_the_number_of_clusters_in_a_data_set).
 
 #### Nghiệm cuối cùng phụ thuộc vào các centers được khởi tạo ban đầu
 Tùy vào các center ban đầu mà thuật toán có thể có tốc độ hội tụ rất chậm, ví dụ:
