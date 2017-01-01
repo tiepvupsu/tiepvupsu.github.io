@@ -315,7 +315,7 @@ def kmeans_update_centers(X, labels, K):
     return centers
 
 def has_converged(centers, new_centers):
-    # return True if two sets of centers as the same
+    # return True if two sets of centers are the same
     return (set([tuple(a) for a in centers]) == 
         set([tuple(a) for a in new_centers]))
 ```
