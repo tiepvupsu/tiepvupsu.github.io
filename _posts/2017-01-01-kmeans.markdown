@@ -182,7 +182,10 @@ Một khi chúng ta đã xác định được label vector cho từng điểm d
 
 Giải phương trình đạo hàm bằng 0 ta có: 
 \\[
-\mathbf{m}\_j \sum\_{i=1}^N y\_{ij} = \sum\_{i=1}^N y\_{ij} \mathbf{x}\_i \Rightarrow \mathbf{m}\_j = \frac{ \sum\_{i=1}^N y\_{ij} \mathbf{x}\_i}{\sum\_{i=1}^N y\_{ij}}
+\mathbf{m}\_j \sum\_{i=1}^N y\_{ij} = \sum\_{i=1}^N y\_{ij} \mathbf{x}\_i 
+\\]
+\\[
+\Rightarrow \mathbf{m}\_j = \frac{ \sum\_{i=1}^N y\_{ij} \mathbf{x}\_i}{\sum\_{i=1}^N y\_{ij}}
 \\]
 
 Nếu để ý một chút, chúng ta sẽ thấy rằng mẫu số chính là phép đếm _số lượng các điểm dữ liệu_ trong cluster \\(j\\) (_Bạn có nhận ra không?_). Còn tử số chính là _tổng các điểm dữ liệu_ trong cluster \\(j\\). (_Nếu bạn đọc vẫn nhớ điều kiện ràng buộc của các_ \\(y\_{ij} \\) _thì sẽ có thể nhanh chóng nhìn ra điều này_).
