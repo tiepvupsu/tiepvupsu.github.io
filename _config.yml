@@ -10,7 +10,7 @@ github_username:  tiepvupsu
 # Build settings
 markdown: kramdown
 permalink: pretty
-
+future: true
 highlighter: rouge
 kramdown:
   input: GFM
