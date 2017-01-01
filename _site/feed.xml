@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 01 Jan 2017 00:12:20 -0500</pubDate>
-    <lastBuildDate>Sun, 01 Jan 2017 00:12:20 -0500</lastBuildDate>
+    <pubDate>Sun, 01 Jan 2017 00:46:28 -0500</pubDate>
+    <lastBuildDate>Sun, 01 Jan 2017 00:46:28 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -425,6 +425,7 @@ j = \arg\min_{j} \|\mathbf{x}_i - \mathbf{m}_j\|_2^2
 &lt;h3 id=&quot;hạn-chế&quot;&gt;Hạn chế&lt;/h3&gt;
 &lt;p&gt;Có một vài hạn chế của thuật toán K-means clustering:&lt;/p&gt;
 &lt;h4 id=&quot;chúng-ta-cần-biết-số-lượng-nhóm-cần-clustering&quot;&gt;Chúng ta cần biết số lượng nhóm cần clustering&lt;/h4&gt;
+&lt;p&gt;Có một số phương pháp giúp xác định số lượng clusters, tôi sẽ dành thời gian nói về chúng sau nếu có dịp. Bạn đọc có thể tham khảo &lt;a href=&quot;https://en.wikipedia.org/wiki/Determining_the_number_of_clusters_in_a_data_set&quot;&gt;Elbow method - Determining the number of clusters in a data set&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h4 id=&quot;nghiệm-cuối-cùng-phụ-thuộc-vào-các-centers-được-khởi-tạo-ban-đầu&quot;&gt;Nghiệm cuối cùng phụ thuộc vào các centers được khởi tạo ban đầu&lt;/h4&gt;
 &lt;p&gt;Tùy vào các center ban đầu mà thuật toán có thể có tốc độ hội tụ rất chậm, ví dụ:
