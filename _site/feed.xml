@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 01 Jan 2017 15:54:13 -0500</pubDate>
-    <lastBuildDate>Sun, 01 Jan 2017 15:54:13 -0500</lastBuildDate>
+    <pubDate>Sun, 01 Jan 2017 16:02:07 -0500</pubDate>
+    <lastBuildDate>Sun, 01 Jan 2017 16:02:07 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -492,6 +492,21 @@ j = \arg\min_{j} \|\mathbf{x}_i - \mathbf{m}_j\|_2^2
 
 &lt;p&gt;&lt;a href=&quot;http://stanford.edu/class/ee103/visualizations/kmeans/kmeans.html&quot;&gt;Visualizing K-Means Clustering - Standford&lt;/a&gt;&lt;/p&gt;
 
+&lt;!-- Start of StatCounter Code for Default Guide --&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+var sc_project=11206292; 
+var sc_invisible=1; 
+var sc_security=&quot;37333da0&quot;; 
+var scJsHost = ((&quot;https:&quot; == document.location.protocol) ?
+&quot;https://secure.&quot; : &quot;http://www.&quot;);
+document.write(&quot;&lt;sc&quot;+&quot;ript type='text/javascript' src='&quot; +
+scJsHost+
+&quot;statcounter.com/counter/counter.js'&gt;&lt;/&quot;+&quot;script&gt;&quot;);
+&lt;/script&gt;
+
+&lt;noscript&gt;&lt;div class=&quot;statcounter&quot;&gt;&lt;a title=&quot;website
+statistics&quot; href=&quot;http://statcounter.com/&quot; target=&quot;_blank&quot;&gt;&lt;img class=&quot;statcounter&quot; src=&quot;//c.statcounter.com/11206292/0/37333da0/1/&quot; alt=&quot;website statistics&quot; /&gt;&lt;/a&gt;&lt;/div&gt;&lt;/noscript&gt;
+&lt;!-- End of StatCounter Code for Default Guide --&gt;
 </description>
         <pubDate>Sun, 01 Jan 2017 10:22:00 -0500</pubDate>
         <link>http://localhost:4000/2017/01/01/kmeans/</link>
