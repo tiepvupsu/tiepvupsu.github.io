@@ -7,6 +7,15 @@ layout: default
 
 
   {% include share-page-head.html %}
+   <!-- previous and next posts -->
+<div class="PageNavigation">
+  {% if page.previous.url %}
+    <a class="prev" href="{{page.previous.url}}">&laquo; {{page.previous.title}}</a>
+  {% endif %}
+  {% if page.next.url %}
+    <a class="next" href="{{page.next.url}}">{{page.next.title}} &raquo;</a>
+  {% endif %}
+</div>
   <header class="post-header">
     <h1>{{ page.title }}</h1>
 
@@ -14,7 +23,7 @@ layout: default
     
     <p class="meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}
     <!-- Hit counter https://gist.github.com/Phlow/b31f3a8d292aa63081c6--> 
-    {% comment %}
+<!--     {% comment %}
     *
     *   Counter: This include counts the your jekyll posts
     *
@@ -24,7 +33,8 @@ layout: default
         {% unless item.published == false %}
           {% assign counter=counter | plus:1 %}
         {% endunless %}
-      {% endfor %}{{ counter }} views)</p>
+      {% endfor %}{{ counter }} views) -->
+      </p>
     <!-- Hit counter -->
   </header>
   <article class="post-content">
