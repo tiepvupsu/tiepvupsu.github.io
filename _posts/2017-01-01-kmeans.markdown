@@ -22,7 +22,7 @@ published: true
 
 - [1. Giới thiệu](#-gioi-thieu)
 - [2. Phân tích toán học](#-phan-tich-toan-hoc)
-    - [Một số ký hiệu toán học](#mot-so-ký-hieu-toan-hoc)
+    - [Một số ký hiệu toán học](#mot-so-ky-hieu-toan-hoc)
     - [Hàm mất mát và bài toán tối ưu](#ham-mat-mat-va-bai-toan-toi-uu)
     - [Thuật toán tối ưu hàm mất mát](#thuat-toan-toi-uu-ham-mat-mat)
     - [Tóm tắt thuật toán](#tom-tat-thuat-toan)
@@ -78,7 +78,7 @@ Quay lại với bài toán phân nhóm và cụ thể là thuật toán K-means
 Mục đích cuối cùng của thuật toán phân nhóm này là: từ dữ liệu đầu vào và số lượng nhóm chúng ta muốn tìm, hãy chỉ ra center của mỗi nhóm và phân các điểm dữ liệu vào các nhóm tương ứng. Giả sử thêm rằng mỗi điểm dữ liệu chỉ thuộc vào đúng một nhóm. 
 
 <!-- ========================== New Heading ==================== -->
-<a name="mot-so-ký-hieu-toan-hoc"></a>
+<a name="mot-so-ky-hieu-toan-hoc"></a>
 
 ### Một số ký hiệu toán học
 Giả sử có \\(N\\) điểm dữ liệu là \\( \mathbf{X} = [\mathbf{x}_1, \mathbf{x}_2, \dots, \mathbf{x}_N] \in \mathbb{R}^{d \times N}\\) và \\(K < N\\) là số cluster chúng ta muốn phân chia. Chúng ta cần tìm các center \\( \mathbf{m}_1, \mathbf{m}_2, \dots, \mathbf{m}_K \in \mathbb{R}^{d \times 1} \\) và label của mỗi điểm dữ liệu.
