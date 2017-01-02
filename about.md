@@ -13,7 +13,7 @@ Tôi sẽ cố gắng đi từ những thuật toán cơ bản nhất của Mach
 
 Khi chuẩn bị các bài viết, tôi sẽ giả định rằng bạn đọc có một chút kiến thức về Đại Số Tuyến Tính, Xác Suât Thống Kê và có kinh nghiệm về lập trình Python. Nếu bạn chưa có nhiều kinh nghiệm về các lĩnh vực này, đừng quá lo lắng vì mỗi bài sẽ chỉ sử dụng một vài kỹ thuật cơ bản. Tôi rất vui được trao đổi thêm với các bạn ở phần Comment cuối mỗi bài.
 
-Một lần nữa, tôi xin chân thành cảm ơn. 
+Một lần nữa, tôi xin chân thành cảm ơn.
 
 <div class="share-page">
 <b>Các bạn có thể theo dõi dõi Facebook Page tại:</b> <br>
