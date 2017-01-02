@@ -59,8 +59,17 @@ layout: default
     <a class="next" href="{{page.next.url}}">{{page.next.title}} &raquo;</a>
   {% endif %}
 </div>
+
+
   <!-- disqus comments -->
- {% if page.comments %}
+<!-- {% if site.disqus_shortname %} -->
+  {% include disqus_comments.html %}
+<!-- {% endif %} -->
+
+
+
+  <!-- disqus comments -->
+<!--  {% if page.comments %}
 <div id="disqus_thread"></div>
 <script>
 
@@ -81,7 +90,7 @@ s.setAttribute('data-timestamp', +new Date());
 })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  {% endif %}
+  {% endif %} -->
   
 </div>
 
