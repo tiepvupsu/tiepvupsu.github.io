@@ -151,7 +151,7 @@ Có một cách phân nhóm thứ hai dựa trên chức năng của các thuậ
 
 ### Regression Algorithms
 
-1. Linear Regression
+1. [Linear Regression](/2016/12/28/linearregression/)
 2. Logistic Regression 
 3. Stepwise Regression
 
@@ -196,7 +196,7 @@ Có một cách phân nhóm thứ hai dựa trên chức năng của các thuậ
 
 ### Clustering Algorithms
 
-1. k-Means 
+1. [k-Means clustering](/2017/01/01/kmeans/) 
 2. k-Medians 
 3. Expectation Maximisation (EM) 
 
