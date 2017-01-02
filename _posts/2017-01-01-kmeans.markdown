@@ -136,7 +136,9 @@ Tóm lại, chúng ta cần tối ưu bài toán sau:
 \text{subject to:} ~~ y\_{ij} \in \\{0, 1\\}~~ \forall i, j;~~~ \sum\_{j = 1}^K y\_{ij} = 1~~\forall i
 \\]
 
-(_subject to_ nghĩa là _thỏa mãn điều kiện_ ).
+(_subject to_ nghĩa là _thỏa mãn điều kiện_).
+
+**Nhắc lại khái niệm \\(\arg\min\\)**: Chúng ta biết ký hiệu \\(\min\\) là _giá trị nhỏ nhất của hàm số_, \\(\arg\min\\) chính là _giá trị của biến số để hàm số đó đạt giá trị nhỏ nhất đó_. Nếu \\(f(x) = x^2 -2x + 1 = (x-1)^2 \\) thì giá trị nhỏ nhất của hàm số này bằng 0, đạt được khi \\(x = 1\\). Trong ví dụ này \\(\min_{x} f(x) = 0\\) và \\(\arg\min_{x} f(x) = 1\\). Thêm ví dụ khác, nếu \\(x_1 = 0, x_2 = 10, x_3 = 5\\) thì ta nói \\(\arg\min_{i} x_i = 1\\) vì \\(1\\) là chỉ số để \\(x_i\\) đạt giá trị nhỏ nhất (bằng \\(0\\)). Biến số viết bên dưới \\(\min\\) là biến số cúng ta cần tối ưu. Trong các bài toán tối ưu, ta thường quan tâm tới \\(\arg\min\\) hơn là \\(\min\\).
 <!-- _K-means còn là một trong những phương pháp thực hiện ước lượng vector [_vector quantization_](https://en.wikipedia.org/wiki/Vector_quantization)_ -->
 <!-- ========================== New Heading ==================== -->
 <a name="thuat-toan-toi-uu-ham-mat-mat"></a>

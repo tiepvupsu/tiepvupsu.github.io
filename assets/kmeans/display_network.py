@@ -15,7 +15,7 @@ import matplotlib
 # case, each row of A is a filter. Default value is false.
 # source: https://github.com/tsaith/ufldl_tutorial
 
-def display_network(A):
+def display_network(A, m = -1, n = -1):
     opt_normalize = True
     opt_graycolor = True
 
@@ -26,8 +26,10 @@ def display_network(A):
     (row, col) = A.shape
     sz = int(np.ceil(np.sqrt(row)))
     buf = 1
-    n = np.ceil(np.sqrt(col))
-    m = np.ceil(col / n)
+    if m < 0 or n < 0:
+        n = np.ceil(np.sqrt(col))
+        m = np.ceil(col / n)
+        
 
     image = np.ones(shape=(buf + m * (sz + buf), buf + n * (sz + buf)))
 
@@ -35,6 +37,7 @@ def display_network(A):
         image *= 0.1
 
     k = 0
+
     for i in range(int(m)):
         for j in range(int(n)):
             if k >= col:
