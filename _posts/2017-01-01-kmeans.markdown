@@ -202,6 +202,7 @@ Tới đây tôi xin được tóm tắt lại thuật toán (_đặc biệt qua
 **Đầu vào:** Dữ liệu \\(\mathbf{X}\\) và số lượng cluster cần tìm \\(K\\).
 
 **Đầu ra:** Các center \\(\mathbf{M}\\) và label vector cho từng điểm dữ liệu \\(\mathbf{Y}\\).
+
 1. Chọn \\(K\\) điểm bất kỳ làm các center ban đầu.
 2. Phân mỗi điểm dữ liệu vào cluster có center gần nó nhất. 
 3. Nếu việc gán dữ liệu vào từng cluster ở bước 2 không thay đổi so với vòng lặp trước nó thì ta dừng thuật toán. 

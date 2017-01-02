@@ -20,3 +20,14 @@ kramdown:
 # markdown: redcarpet
 # redcarpet:
 #   extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "strikethrough", "superscript", "with_toc_data"]
+# octopress-page-view
+page-view:
+  service_account_email:    # XXXXXX@developer.gserviceaccount.com
+  key_file: privatekey.p12  # service account private key file
+  key_secret: notasecret    # service account private key's password
+  profileID:                # ga:XXXXXXXX
+  start: 3 years ago        # Beginning of report
+  end: now                  # End of report
+  metric: ga:pageviews      # Metric code
+  segment: gaid::-1         # All visits
+  filters:                  # optional
