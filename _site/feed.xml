@@ -5,9 +5,20 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 01 Jan 2017 19:57:35 -0500</pubDate>
-    <lastBuildDate>Sun, 01 Jan 2017 19:57:35 -0500</lastBuildDate>
+    <pubDate>Mon, 02 Jan 2017 01:14:12 -0500</pubDate>
+    <lastBuildDate>Mon, 02 Jan 2017 01:14:12 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>K-means Clustering: Ứng dụng</title>
+        <description>&lt;h2 id=&quot;thử-nghiệm&quot;&gt;Thử nghiệm&lt;/h2&gt;
+</description>
+        <pubDate>Wed, 04 Jan 2017 10:22:00 -0500</pubDate>
+        <link>http://localhost:4000/2017/01/04/kmeans2/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/01/04/kmeans2/</guid>
+        
+        
+      </item>
     
       <item>
         <title>K-means Clustering</title>
@@ -27,7 +38,7 @@
   &lt;li&gt;&lt;a href=&quot;#-gioi-thieu&quot;&gt;1. Giới thiệu&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#-phan-tich-toan-hoc&quot;&gt;2. Phân tích toán học&lt;/a&gt;
     &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#mot-so-ký-hieu-toan-hoc&quot;&gt;Một số ký hiệu toán học&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#mot-so-ky-hieu-toan-hoc&quot;&gt;Một số ký hiệu toán học&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#ham-mat-mat-va-bai-toan-toi-uu&quot;&gt;Hàm mất mát và bài toán tối ưu&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#thuat-toan-toi-uu-ham-mat-mat&quot;&gt;Thuật toán tối ưu hàm mất mát&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#tom-tat-thuat-toan&quot;&gt;Tóm tắt thuật toán&lt;/a&gt;&lt;/li&gt;
@@ -91,7 +102,7 @@
 &lt;p&gt;Mục đích cuối cùng của thuật toán phân nhóm này là: từ dữ liệu đầu vào và số lượng nhóm chúng ta muốn tìm, hãy chỉ ra center của mỗi nhóm và phân các điểm dữ liệu vào các nhóm tương ứng. Giả sử thêm rằng mỗi điểm dữ liệu chỉ thuộc vào đúng một nhóm.&lt;/p&gt;
 
 &lt;!-- ========================== New Heading ==================== --&gt;
-&lt;p&gt;&lt;a name=&quot;mot-so-ký-hieu-toan-hoc&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a name=&quot;mot-so-ky-hieu-toan-hoc&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;một-số-ký-hiệu-toán-học&quot;&gt;Một số ký hiệu toán học&lt;/h3&gt;
 &lt;p&gt;Giả sử có \(N\) điểm dữ liệu là \( \mathbf{X} = [\mathbf{x}_1, \mathbf{x}_2, \dots, \mathbf{x}_N] \in \mathbb{R}^{d \times N}\) và \(K &amp;lt; N\) là số cluster chúng ta muốn phân chia. Chúng ta cần tìm các center \( \mathbf{m}_1, \mathbf{m}_2, \dots, \mathbf{m}_K \in \mathbb{R}^{d \times 1} \) và label của mỗi điểm dữ liệu.&lt;/p&gt;
@@ -215,6 +226,7 @@ j = \arg\min_{j} \|\mathbf{x}_i - \mathbf{m}_j\|_2^2
 &lt;p&gt;&lt;strong&gt;Đầu vào:&lt;/strong&gt; Dữ liệu \(\mathbf{X}\) và số lượng cluster cần tìm \(K\).&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Đầu ra:&lt;/strong&gt; Các center \(\mathbf{M}\) và label vector cho từng điểm dữ liệu \(\mathbf{Y}\).&lt;/p&gt;
+
 &lt;ol&gt;
   &lt;li&gt;Chọn \(K\) điểm bất kỳ làm các center ban đầu.&lt;/li&gt;
   &lt;li&gt;Phân mỗi điểm dữ liệu vào cluster có center gần nó nhất.&lt;/li&gt;
