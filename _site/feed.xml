@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 03 Jan 2017 07:54:34 -0500</pubDate>
-    <lastBuildDate>Tue, 03 Jan 2017 07:54:34 -0500</lastBuildDate>
+    <pubDate>Tue, 03 Jan 2017 07:58:22 -0500</pubDate>
+    <lastBuildDate>Tue, 03 Jan 2017 07:58:22 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -1049,6 +1049,8 @@ Nghiệm tìm được từ phương trình (5):  [[  0.55920496 -33.73541021]]
 &lt;/div&gt;
 
 &lt;p&gt;Chúng ta thấy rằng hai kết quả thu được như nhau! (&lt;em&gt;Nghĩa là tôi đã không mắc lỗi nào trong cách tìm nghiệm ở phần trên&lt;/em&gt;)&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/LR/LR.ipynb&quot;&gt;Source code Jupyter Notebook cho bài này.&lt;/a&gt;&lt;/p&gt;
 
 &lt;!-- ========================== New Heading ==================== --&gt;
 &lt;p&gt;&lt;a name=&quot;-thao-luan&quot;&gt;&lt;/a&gt;&lt;/p&gt;

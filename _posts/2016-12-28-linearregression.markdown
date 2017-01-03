@@ -324,6 +324,7 @@ print u'Nghiệm tìm được từ phương trình (5): ', w.T
 
 Chúng ta thấy rằng hai kết quả thu được như nhau! (_Nghĩa là tôi đã không mắc lỗi nào trong cách tìm nghiệm ở phần trên_)
 
+[Source code Jupyter Notebook cho bài này.](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/LR/LR.ipynb)
 
 
 <!-- ========================== New Heading ==================== -->
