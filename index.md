@@ -5,7 +5,7 @@ permalink: /index/
 ---
 
 * [arg min](/2017/01/01/kmeans/#ham-mat-mat-va-bai-toan-toi-uu)
-* [Cluassification](/2016/12/27/categories/#classification-phan-loai)
+* [Classification](/2016/12/27/categories/#classification-phan-loai)
 * [Clustering](/2016/12/27/categories/#clustering-phan-nhom)    
     - [K-means Clustering](/2017/01/01/kmeans/)
 * [Loss function (Hàm mất mát)](/2016/12/28/linearregression/#ham-mat-mat) ([2](/2017/01/01/kmeans/#ham-mat-mat-va-bai-toan-toi-uu))
