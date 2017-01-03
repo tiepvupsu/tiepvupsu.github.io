@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 02 Jan 2017 20:48:13 -0500</pubDate>
-    <lastBuildDate>Mon, 02 Jan 2017 20:48:13 -0500</lastBuildDate>
+    <pubDate>Mon, 02 Jan 2017 21:27:23 -0500</pubDate>
+    <lastBuildDate>Mon, 02 Jan 2017 21:27:23 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -992,9 +992,9 @@ một cặp dữ liệu &lt;em&gt;nhiễu&lt;/em&gt; (150 cm, 90kg) thì kết q
 &lt;h3 id=&quot;supervised-learning-học-có-giám-sát&quot;&gt;Supervised Learning (Học có giám sát)&lt;/h3&gt;
 &lt;p&gt;Supervised learning là thuật toán dự đoán đầu ra (outcome) của một dữ liệu mới (new input) dựa trên các cặp (&lt;em&gt;input, outcome&lt;/em&gt;) đã biết từ trước. Cặp dữ liệu này còn được gọi là (&lt;em&gt;data. label&lt;/em&gt;), tức (&lt;em&gt;dữ liệu, nhãn&lt;/em&gt;). Supervised learning là nhóm phổ biến nhất trong các thuật toán Machine Learning.&lt;/p&gt;
 
-&lt;p&gt;Một cách toán học, Supervised learning là khi chúng ra có một tập hợp biến đầu vào \( \mathcal{X} = \{\mathbf{x}&lt;em&gt;1, \mathbf{x}_2, \dots, \mathbf{x}_N\} \) và một tập hợp nhãn tương ứng \( \mathcal{Y} = \{\mathbf{y}_1, \mathbf{y}_2, \dots, \mathbf{y}_N\} \), trong đó \( \mathbf{x}_i, \mathbf{y}_i \) là các vector. 
+&lt;p&gt;Một cách toán học, Supervised learning là khi chúng ra có một tập hợp biến đầu vào \( \mathcal{X} = \{\mathbf{x}_1, \mathbf{x}_2, \dots, \mathbf{x}_N\} \) và một tập hợp nhãn tương ứng \( \mathcal{Y} = \{\mathbf{y}_1, \mathbf{y}_2, \dots, \mathbf{y}_N\} \), trong đó \( \mathbf{x}_i, \mathbf{y}_i \) là các vector. 
 Các cặp dữ liệu biết trước \( (\mathbf{x}_i, \mathbf{y}_i) \in \mathcal{X} \times \mathcal{Y} \) 
-được gọi là tập _training data&lt;/em&gt; (dữ liệu huấn luyện). Từ tập traing data này, chúng ta cần tạo ra một hàm số ánh xạ mỗi phần tử từ tập \(\mathcal{X}\) sang một phần tử (xấp xỉ) tương ứng của tập \(\mathcal{Y}\):&lt;/p&gt;
+được gọi là tập &lt;em&gt;training data&lt;/em&gt; (dữ liệu huấn luyện). Từ tập traing data này, chúng ta cần tạo ra một hàm số ánh xạ mỗi phần tử từ tập \(\mathcal{X}\) sang một phần tử (xấp xỉ) tương ứng của tập \(\mathcal{Y}\):&lt;/p&gt;
 
 &lt;p&gt;\[ \mathbf{y}_i \approx f(\mathbf{x}_i), ~~ \forall i = 1, 2, \dots, N\] 
 Mục đích là xấp xỉ hàm số \(f\) thật tốt để khi có một dữ liệu \(\mathbf{x}\) mới, chúng ta có thể tính được nhãn tương ứng của nó \( \mathbf{y} = f(\mathbf{x}) \).&lt;/p&gt;

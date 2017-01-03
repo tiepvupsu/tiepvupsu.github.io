@@ -62,8 +62,8 @@ Theo phương thức học, các thuật toán Machine Learning thường đư�
 ### Supervised Learning (Học có giám sát) 
 Supervised learning là thuật toán dự đoán đầu ra (outcome) của một dữ liệu mới (new input) dựa trên các cặp (_input, outcome_) đã biết từ trước. Cặp dữ liệu này còn được gọi là (_data. label_), tức (_dữ liệu, nhãn_). Supervised learning là nhóm phổ biến nhất trong các thuật toán Machine Learning. 
 
-Một cách toán học, Supervised learning là khi chúng ra có một tập hợp biến đầu vào \\( \mathcal{X} = \\{\mathbf{x}_1, \mathbf{x}_2, \dots, \mathbf{x}_N\\} \\) và một tập hợp nhãn tương ứng \\( \mathcal{Y} = \\{\mathbf{y}_1, \mathbf{y}_2, \dots, \mathbf{y}_N\\} \\), trong đó \\( \mathbf{x}_i, \mathbf{y}_i \\) là các vector. 
-Các cặp dữ liệu biết trước \\( (\mathbf{x}_i, \mathbf{y}_i) \in \mathcal{X} \times \mathcal{Y} \\) 
+Một cách toán học, Supervised learning là khi chúng ra có một tập hợp biến đầu vào \\( \mathcal{X} = \\{\mathbf{x}\_1, \mathbf{x}\_2, \dots, \mathbf{x}\_N\\} \\) và một tập hợp nhãn tương ứng \\( \mathcal{Y} = \\{\mathbf{y}\_1, \mathbf{y}\_2, \dots, \mathbf{y}\_N\\} \\), trong đó \\( \mathbf{x}\_i, \mathbf{y}\_i \\) là các vector. 
+Các cặp dữ liệu biết trước \\( (\mathbf{x}\_i, \mathbf{y}\_i) \in \mathcal{X} \times \mathcal{Y} \\) 
 được gọi là tập _training data_ (dữ liệu huấn luyện). Từ tập traing data này, chúng ta cần tạo ra một hàm số ánh xạ mỗi phần tử từ tập \\(\mathcal{X}\\) sang một phần tử (xấp xỉ) tương ứng của tập \\(\mathcal{Y}\\):
 
 \\[ \mathbf{y}_i \approx f(\mathbf{x}_i), ~~ \forall i = 1, 2, \dots, N\\] 
