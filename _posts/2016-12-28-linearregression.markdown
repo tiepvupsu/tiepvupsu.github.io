@@ -311,11 +311,11 @@ from sklearn import datasets, linear_model
 
 # fit the model by Linear Regression
 regr = linear_model.LinearRegression(fit_intercept=False) # fit_intercept = False for calculating the bias
-regr.fit(Xbar.T, Y.T)
+regr.fit(Xbar.T, y.T)
 
 # Compare two results
 print u'Nghiệm tìm được bằng scikit-learn  : ', regr.coef_ 
-print u'Nghiệm tìm được từ phương trình (5): ', W.T
+print u'Nghiệm tìm được từ phương trình (5): ', w.T
 ```
 
     Nghiệm tìm được bằng scikit-learn  :  [[  0.55920496 -33.73541021]]
