@@ -28,7 +28,11 @@ Có hai cách phổ biến phân nhóm các thuật toán Machine learning. Mộ
 
 - [1. Phân nhóm dựa trên phương thức học](#-phan-nhom-dua-tren-phuong-thuc-hoc)
     - [Supervised Learning \(Học có giám sát\)](#supervised-learning-hoc-co-giam-sat)
+        - [**Classification** \(Phân loại\)](#classification-phan-loai)
+        - [**Regression** \(Hồi quy\)](#regression-hoi-quy)
     - [Unsupervised Learning \(Học không giám sát\)](#unsupervised-learning-hoc-khong-giam-sat)
+        - [**Clustering** \(phân nhóm\)](#clustering-phan-nhom)
+        - [**Association**](#association)
     - [Semi-Supervised Learning \(Học bán giám sát\)](#semi-supervised-learning-hoc-ban-giam-sat)
     - [Reinforcement Learning \(Học Củng Cố\)](#reinforcement-learning-hoc-cung-co)
 - [2. Phân nhóm dựa trên chức năng](#-phan-nhom-dua-tren-chuc-nang)
@@ -45,8 +49,6 @@ Có hai cách phổ biến phân nhóm các thuật toán Machine learning. Mộ
 
 <!-- /MarkdownTOC -->
 
-
-
 <!-- ========================== New Heading ==================== -->
 <a name="-phan-nhom-dua-tren-phuong-thuc-hoc"></a>
 
@@ -62,7 +64,7 @@ Supervised learning là thuật toán dự đoán đầu ra (outcome) của mộ
 
 Một cách toán học, Supervised learning là khi chúng ra có một tập hợp biến đầu vào \\( \mathcal{X} = \\{\mathbf{x}_1, \mathbf{x}_2, \dots, \mathbf{x}_N\\} \\) và một tập hợp nhãn tương ứng \\( \mathcal{Y} = \\{\mathbf{y}_1, \mathbf{y}_2, \dots, \mathbf{y}_N\\} \\), trong đó \\( \mathbf{x}_i, \mathbf{y}_i \\) là các vector. 
 Các cặp dữ liệu biết trước \\( (\mathbf{x}_i, \mathbf{y}_i) \in \mathcal{X} \times \mathcal{Y} \\) 
-được gọi là tập training data (dữ liệu huấn luyện). Từ tập traing data này, chúng ta cần tạo ra một hàm số ánh xạ mỗi phần tử từ tập \\(\mathcal{X}\\) sang một phần tử (xấp xỉ) tương ứng của tập \\(\mathcal{Y}\\):
+được gọi là tập _training data_ (dữ liệu huấn luyện). Từ tập traing data này, chúng ta cần tạo ra một hàm số ánh xạ mỗi phần tử từ tập \\(\mathcal{X}\\) sang một phần tử (xấp xỉ) tương ứng của tập \\(\mathcal{Y}\\):
 
 \\[ \mathbf{y}_i \approx f(\mathbf{x}_i), ~~ \forall i = 1, 2, \dots, N\\] 
 Mục đích là xấp xỉ hàm số \\(f\\) thật tốt để khi có một dữ liệu \\(\mathbf{x}\\) mới, chúng ta có thể tính được nhãn tương ứng của nó \\( \mathbf{y} = f(\mathbf{x}) \\).
@@ -86,11 +88,21 @@ Ví dụ này khá giống với cách học của con người khi còn nhỏ. 
 
 Thuật toán supervised learning còn được tiếp tục chia nhỏ ra thành hai loại chính: 
 
-* **Classification** (Phân loại): Một bài toán được gọi là _classification_ nếu các _label_ của _input data_ được chia thành một số hữu hạn nhóm. Ví dụ: Gmail xác định xem một email có phải là spam hay không; các hãng tín dụng xác định xem một khách hàng có khả năng thanh toán nợ hay không. Ba ví dụ phía trên được chia vào loại này. 
+<!-- ========================== New Heading ==================== -->
+<a name="classification-phan-loai"></a>
+
+#### **Classification** (Phân loại)
+ Một bài toán được gọi là _classification_ nếu các _label_ của _input data_ được chia thành một số hữu hạn nhóm. Ví dụ: Gmail xác định xem một email có phải là spam hay không; các hãng tín dụng xác định xem một khách hàng có khả năng thanh toán nợ hay không. Ba ví dụ phía trên được chia vào loại này. 
 
 <a name = "regression"></a>
 
-* **Regression** (tiếng Việt dịch là _Hồi quy_, tôi không thích cách dịch này vì bản thân không hiểu nó nghĩa là gì): Nếu _label_ không được chia thành các nhóm mà là một giá trị thực cụ thể. Ví dụ: một căn nhà rộng \\(x ~ \text{m}^2\\), có \\(y\\) phòng ngủ và cách trung tâm thành phố \\(z~ \text{km}\\) sẽ có giá là bao nhiêu?
+<!-- ========================== New Heading ==================== -->
+<a name="regression-hoi-quy"></a>
+
+#### **Regression** (Hồi quy)
+(tiếng Việt dịch là _Hồi quy_, tôi không thích cách dịch này vì bản thân không hiểu nó nghĩa là gì)
+
+Nếu _label_ không được chia thành các nhóm mà là một giá trị thực cụ thể. Ví dụ: một căn nhà rộng \\(x ~ \text{m}^2\\), có \\(y\\) phòng ngủ và cách trung tâm thành phố \\(z~ \text{km}\\) sẽ có giá là bao nhiêu?
  
 Gần đây [Microsoft có một ứng dụng dự đoán giới tính và tuổi dựa trên khuôn mặt](http://how-old.net/). Phần dự đoán giới tính có thể coi là thuật toán **Classification**, phần dự đoán tuổi có thể coi là thuật toán **Regression**. _Chú ý rằng phần dự đoán tuổi cũng có thể coi là **Classification** nếu ta coi tuổi là một số nguyên dương không lớn hơn 150, chúng ta sẽ có 150 class (lớp) khác nhau._
 
@@ -106,9 +118,17 @@ Những thuật toán loại này được gọi là Unsupervised learning vì k
 
 Các bài toán Unsupervised learning được tiếp tục chia nhỏ thành hai loại: 
 
-* **Clustering** (phân nhóm): một bài toán phân nhóm toàn bộ dữ liệu \\(\mathcal{X}\\) thành các nhóm nhỏ dựa trên sự liên quan giữa các dữ liệu trong mỗi nhóm. Ví dụ: phân nhóm khách hàng dựa trên hành vi mua hàng. Điều này cũng giống như việc ta đưa cho một đứa trẻ rất nhiều mảnh ghép với các hình thù và màu sắc khác nhau, ví dụ tam giác, vuông, tròn với màu xanh và đỏ, sau đó yêu cẩu trẻ phân chúng thành từng nhóm. Mặc dù không cho trẻ biết mảnh nào tương ứng với hình nào hoặc màu nào, nhiều khả năng chúng vẫn có thể phân loại các mảnh ghép theo màu hoặc hình dạng. 
+<!-- ========================== New Heading ==================== -->
+<a name="clustering-phan-nhom"></a>
 
-* **Association**: Là bài toán khi chúng ta muốn khám phá ra một quy luật dựa trên nhiều dữ liệu cho trước. Ví dụ: những khách hàng nam mua quần áo thường có xu hướng mua thêm đồng hồ hoặc thắt lưng; những khán giả xem phim Spider Man thường có xu hướng xem thêm phim Bat Man, dựa vào đó tạo ra một hệ thống gợi ý khách hàng (Recommendation System), thúc đẩy nhu cầu mua sắm. 
+#### **Clustering** (phân nhóm)
+Một bài toán phân nhóm toàn bộ dữ liệu \\(\mathcal{X}\\) thành các nhóm nhỏ dựa trên sự liên quan giữa các dữ liệu trong mỗi nhóm. Ví dụ: phân nhóm khách hàng dựa trên hành vi mua hàng. Điều này cũng giống như việc ta đưa cho một đứa trẻ rất nhiều mảnh ghép với các hình thù và màu sắc khác nhau, ví dụ tam giác, vuông, tròn với màu xanh và đỏ, sau đó yêu cẩu trẻ phân chúng thành từng nhóm. Mặc dù không cho trẻ biết mảnh nào tương ứng với hình nào hoặc màu nào, nhiều khả năng chúng vẫn có thể phân loại các mảnh ghép theo màu hoặc hình dạng. 
+
+<!-- ========================== New Heading ==================== -->
+<a name="association"></a>
+
+#### **Association**
+Là bài toán khi chúng ta muốn khám phá ra một quy luật dựa trên nhiều dữ liệu cho trước. Ví dụ: những khách hàng nam mua quần áo thường có xu hướng mua thêm đồng hồ hoặc thắt lưng; những khán giả xem phim Spider Man thường có xu hướng xem thêm phim Bat Man, dựa vào đó tạo ra một hệ thống gợi ý khách hàng (Recommendation System), thúc đẩy nhu cầu mua sắm. 
 
 <!-- ========================== New Heading ==================== -->
 <a name="semi-supervised-learning-hoc-ban-giam-sat"></a>

@@ -5,20 +5,9 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 02 Jan 2017 01:14:12 -0500</pubDate>
-    <lastBuildDate>Mon, 02 Jan 2017 01:14:12 -0500</lastBuildDate>
+    <pubDate>Mon, 02 Jan 2017 20:48:13 -0500</pubDate>
+    <lastBuildDate>Mon, 02 Jan 2017 20:48:13 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
-    
-      <item>
-        <title>K-means Clustering: Ứng dụng</title>
-        <description>&lt;h2 id=&quot;thử-nghiệm&quot;&gt;Thử nghiệm&lt;/h2&gt;
-</description>
-        <pubDate>Wed, 04 Jan 2017 10:22:00 -0500</pubDate>
-        <link>http://localhost:4000/2017/01/04/kmeans2/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/01/04/kmeans2/</guid>
-        
-        
-      </item>
     
       <item>
         <title>K-means Clustering</title>
@@ -160,7 +149,9 @@ y_{ik}\|\mathbf{x}_i - \mathbf{m}_k\|_2^2 =  \sum_{j=1}^K y_{ij}\|\mathbf{x}_i -
 \text{subject to:} ~~ y_{ij} \in \{0, 1\}~~ \forall i, j;~~~ \sum_{j = 1}^K y_{ij} = 1~~\forall i
 \]&lt;/p&gt;
 
-&lt;p&gt;(&lt;em&gt;subject to&lt;/em&gt; nghĩa là &lt;em&gt;thỏa mãn điều kiện&lt;/em&gt; ).
+&lt;p&gt;(&lt;em&gt;subject to&lt;/em&gt; nghĩa là &lt;em&gt;thỏa mãn điều kiện&lt;/em&gt;).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Nhắc lại khái niệm \(\arg\min\)&lt;/strong&gt;: Chúng ta biết ký hiệu \(\min\) là &lt;em&gt;giá trị nhỏ nhất của hàm số&lt;/em&gt;, \(\arg\min\) chính là &lt;em&gt;giá trị của biến số để hàm số đó đạt giá trị nhỏ nhất đó&lt;/em&gt;. Nếu \(f(x) = x^2 -2x + 1 = (x-1)^2 \) thì giá trị nhỏ nhất của hàm số này bằng 0, đạt được khi \(x = 1\). Trong ví dụ này \(\min_{x} f(x) = 0\) và \(\arg\min_{x} f(x) = 1\). Thêm ví dụ khác, nếu \(x_1 = 0, x_2 = 10, x_3 = 5\) thì ta nói \(\arg\min_{i} x_i = 1\) vì \(1\) là chỉ số để \(x_i\) đạt giá trị nhỏ nhất (bằng \(0\)). Biến số viết bên dưới \(\min\) là biến số cúng ta cần tối ưu. Trong các bài toán tối ưu, ta thường quan tâm tới \(\arg\min\) hơn là \(\min\).
 &lt;!-- _K-means còn là một trong những phương pháp thực hiện ước lượng vector [_vector quantization_](https://en.wikipedia.org/wiki/Vector_quantization)_ --&gt;
 &lt;!-- ========================== New Heading ==================== --&gt;
 &lt;a name=&quot;thuat-toan-toi-uu-ham-mat-mat&quot;&gt;&lt;/a&gt;&lt;/p&gt;
@@ -954,8 +945,18 @@ một cặp dữ liệu &lt;em&gt;nhiễu&lt;/em&gt; (150 cm, 90kg) thì kết q
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;#-phan-nhom-dua-tren-phuong-thuc-hoc&quot;&gt;1. Phân nhóm dựa trên phương thức học&lt;/a&gt;
     &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#supervised-learning-hoc-co-giam-sat&quot;&gt;Supervised Learning (Học có giám sát)&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#unsupervised-learning-hoc-khong-giam-sat&quot;&gt;Unsupervised Learning (Học không giám sát)&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#supervised-learning-hoc-co-giam-sat&quot;&gt;Supervised Learning (Học có giám sát)&lt;/a&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#classification-phan-loai&quot;&gt;&lt;strong&gt;Classification&lt;/strong&gt; (Phân loại)&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#regression-hoi-quy&quot;&gt;&lt;strong&gt;Regression&lt;/strong&gt; (Hồi quy)&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#unsupervised-learning-hoc-khong-giam-sat&quot;&gt;Unsupervised Learning (Học không giám sát)&lt;/a&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#clustering-phan-nhom&quot;&gt;&lt;strong&gt;Clustering&lt;/strong&gt; (phân nhóm)&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#association&quot;&gt;&lt;strong&gt;Association&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#semi-supervised-learning-hoc-ban-giam-sat&quot;&gt;Semi-Supervised Learning (Học bán giám sát)&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#reinforcement-learning-hoc-cung-co&quot;&gt;Reinforcement Learning (Học Củng Cố)&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
@@ -991,9 +992,9 @@ một cặp dữ liệu &lt;em&gt;nhiễu&lt;/em&gt; (150 cm, 90kg) thì kết q
 &lt;h3 id=&quot;supervised-learning-học-có-giám-sát&quot;&gt;Supervised Learning (Học có giám sát)&lt;/h3&gt;
 &lt;p&gt;Supervised learning là thuật toán dự đoán đầu ra (outcome) của một dữ liệu mới (new input) dựa trên các cặp (&lt;em&gt;input, outcome&lt;/em&gt;) đã biết từ trước. Cặp dữ liệu này còn được gọi là (&lt;em&gt;data. label&lt;/em&gt;), tức (&lt;em&gt;dữ liệu, nhãn&lt;/em&gt;). Supervised learning là nhóm phổ biến nhất trong các thuật toán Machine Learning.&lt;/p&gt;
 
-&lt;p&gt;Một cách toán học, Supervised learning là khi chúng ra có một tập hợp biến đầu vào \( \mathcal{X} = \{\mathbf{x}_1, \mathbf{x}_2, \dots, \mathbf{x}_N\} \) và một tập hợp nhãn tương ứng \( \mathcal{Y} = \{\mathbf{y}_1, \mathbf{y}_2, \dots, \mathbf{y}_N\} \), trong đó \( \mathbf{x}_i, \mathbf{y}_i \) là các vector. 
+&lt;p&gt;Một cách toán học, Supervised learning là khi chúng ra có một tập hợp biến đầu vào \( \mathcal{X} = \{\mathbf{x}&lt;em&gt;1, \mathbf{x}_2, \dots, \mathbf{x}_N\} \) và một tập hợp nhãn tương ứng \( \mathcal{Y} = \{\mathbf{y}_1, \mathbf{y}_2, \dots, \mathbf{y}_N\} \), trong đó \( \mathbf{x}_i, \mathbf{y}_i \) là các vector. 
 Các cặp dữ liệu biết trước \( (\mathbf{x}_i, \mathbf{y}_i) \in \mathcal{X} \times \mathcal{Y} \) 
-được gọi là tập training data (dữ liệu huấn luyện). Từ tập traing data này, chúng ta cần tạo ra một hàm số ánh xạ mỗi phần tử từ tập \(\mathcal{X}\) sang một phần tử (xấp xỉ) tương ứng của tập \(\mathcal{Y}\):&lt;/p&gt;
+được gọi là tập _training data&lt;/em&gt; (dữ liệu huấn luyện). Từ tập traing data này, chúng ta cần tạo ra một hàm số ánh xạ mỗi phần tử từ tập \(\mathcal{X}\) sang một phần tử (xấp xỉ) tương ứng của tập \(\mathcal{Y}\):&lt;/p&gt;
 
 &lt;p&gt;\[ \mathbf{y}_i \approx f(\mathbf{x}_i), ~~ \forall i = 1, 2, \dots, N\] 
 Mục đích là xấp xỉ hàm số \(f\) thật tốt để khi có một dữ liệu \(\mathbf{x}\) mới, chúng ta có thể tính được nhãn tương ứng của nó \( \mathbf{y} = f(\mathbf{x}) \).&lt;/p&gt;
@@ -1016,15 +1017,21 @@ Mục đích là xấp xỉ hàm số \(f\) thật tốt để khi có một d�
 
 &lt;p&gt;Thuật toán supervised learning còn được tiếp tục chia nhỏ ra thành hai loại chính:&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Classification&lt;/strong&gt; (Phân loại): Một bài toán được gọi là &lt;em&gt;classification&lt;/em&gt; nếu các &lt;em&gt;label&lt;/em&gt; của &lt;em&gt;input data&lt;/em&gt; được chia thành một số hữu hạn nhóm. Ví dụ: Gmail xác định xem một email có phải là spam hay không; các hãng tín dụng xác định xem một khách hàng có khả năng thanh toán nợ hay không. Ba ví dụ phía trên được chia vào loại này.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;!-- ========================== New Heading ==================== --&gt;
+&lt;p&gt;&lt;a name=&quot;classification-phan-loai&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;classification-phân-loại&quot;&gt;&lt;strong&gt;Classification&lt;/strong&gt; (Phân loại)&lt;/h4&gt;
+&lt;p&gt;Một bài toán được gọi là &lt;em&gt;classification&lt;/em&gt; nếu các &lt;em&gt;label&lt;/em&gt; của &lt;em&gt;input data&lt;/em&gt; được chia thành một số hữu hạn nhóm. Ví dụ: Gmail xác định xem một email có phải là spam hay không; các hãng tín dụng xác định xem một khách hàng có khả năng thanh toán nợ hay không. Ba ví dụ phía trên được chia vào loại này.&lt;/p&gt;
 
 &lt;p&gt;&lt;a name=&quot;regression&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Regression&lt;/strong&gt; (tiếng Việt dịch là &lt;em&gt;Hồi quy&lt;/em&gt;, tôi không thích cách dịch này vì bản thân không hiểu nó nghĩa là gì): Nếu &lt;em&gt;label&lt;/em&gt; không được chia thành các nhóm mà là một giá trị thực cụ thể. Ví dụ: một căn nhà rộng \(x ~ \text{m}^2\), có \(y\) phòng ngủ và cách trung tâm thành phố \(z~ \text{km}\) sẽ có giá là bao nhiêu?&lt;/li&gt;
-&lt;/ul&gt;
+&lt;!-- ========================== New Heading ==================== --&gt;
+&lt;p&gt;&lt;a name=&quot;regression-hoi-quy&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;regression-hồi-quy&quot;&gt;&lt;strong&gt;Regression&lt;/strong&gt; (Hồi quy)&lt;/h4&gt;
+&lt;p&gt;(tiếng Việt dịch là &lt;em&gt;Hồi quy&lt;/em&gt;, tôi không thích cách dịch này vì bản thân không hiểu nó nghĩa là gì)&lt;/p&gt;
+
+&lt;p&gt;Nếu &lt;em&gt;label&lt;/em&gt; không được chia thành các nhóm mà là một giá trị thực cụ thể. Ví dụ: một căn nhà rộng \(x ~ \text{m}^2\), có \(y\) phòng ngủ và cách trung tâm thành phố \(z~ \text{km}\) sẽ có giá là bao nhiêu?&lt;/p&gt;
 
 &lt;p&gt;Gần đây &lt;a href=&quot;http://how-old.net/&quot;&gt;Microsoft có một ứng dụng dự đoán giới tính và tuổi dựa trên khuôn mặt&lt;/a&gt;. Phần dự đoán giới tính có thể coi là thuật toán &lt;strong&gt;Classification&lt;/strong&gt;, phần dự đoán tuổi có thể coi là thuật toán &lt;strong&gt;Regression&lt;/strong&gt;. &lt;em&gt;Chú ý rằng phần dự đoán tuổi cũng có thể coi là &lt;strong&gt;Classification&lt;/strong&gt; nếu ta coi tuổi là một số nguyên dương không lớn hơn 150, chúng ta sẽ có 150 class (lớp) khác nhau.&lt;/em&gt;&lt;/p&gt;
 
@@ -1040,14 +1047,17 @@ Mục đích là xấp xỉ hàm số \(f\) thật tốt để khi có một d�
 
 &lt;p&gt;Các bài toán Unsupervised learning được tiếp tục chia nhỏ thành hai loại:&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Clustering&lt;/strong&gt; (phân nhóm): một bài toán phân nhóm toàn bộ dữ liệu \(\mathcal{X}\) thành các nhóm nhỏ dựa trên sự liên quan giữa các dữ liệu trong mỗi nhóm. Ví dụ: phân nhóm khách hàng dựa trên hành vi mua hàng. Điều này cũng giống như việc ta đưa cho một đứa trẻ rất nhiều mảnh ghép với các hình thù và màu sắc khác nhau, ví dụ tam giác, vuông, tròn với màu xanh và đỏ, sau đó yêu cẩu trẻ phân chúng thành từng nhóm. Mặc dù không cho trẻ biết mảnh nào tương ứng với hình nào hoặc màu nào, nhiều khả năng chúng vẫn có thể phân loại các mảnh ghép theo màu hoặc hình dạng.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Association&lt;/strong&gt;: Là bài toán khi chúng ta muốn khám phá ra một quy luật dựa trên nhiều dữ liệu cho trước. Ví dụ: những khách hàng nam mua quần áo thường có xu hướng mua thêm đồng hồ hoặc thắt lưng; những khán giả xem phim Spider Man thường có xu hướng xem thêm phim Bat Man, dựa vào đó tạo ra một hệ thống gợi ý khách hàng (Recommendation System), thúc đẩy nhu cầu mua sắm.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;!-- ========================== New Heading ==================== --&gt;
+&lt;p&gt;&lt;a name=&quot;clustering-phan-nhom&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;clustering-phân-nhóm&quot;&gt;&lt;strong&gt;Clustering&lt;/strong&gt; (phân nhóm)&lt;/h4&gt;
+&lt;p&gt;Một bài toán phân nhóm toàn bộ dữ liệu \(\mathcal{X}\) thành các nhóm nhỏ dựa trên sự liên quan giữa các dữ liệu trong mỗi nhóm. Ví dụ: phân nhóm khách hàng dựa trên hành vi mua hàng. Điều này cũng giống như việc ta đưa cho một đứa trẻ rất nhiều mảnh ghép với các hình thù và màu sắc khác nhau, ví dụ tam giác, vuông, tròn với màu xanh và đỏ, sau đó yêu cẩu trẻ phân chúng thành từng nhóm. Mặc dù không cho trẻ biết mảnh nào tương ứng với hình nào hoặc màu nào, nhiều khả năng chúng vẫn có thể phân loại các mảnh ghép theo màu hoặc hình dạng.&lt;/p&gt;
+
+&lt;!-- ========================== New Heading ==================== --&gt;
+&lt;p&gt;&lt;a name=&quot;association&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;association&quot;&gt;&lt;strong&gt;Association&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;Là bài toán khi chúng ta muốn khám phá ra một quy luật dựa trên nhiều dữ liệu cho trước. Ví dụ: những khách hàng nam mua quần áo thường có xu hướng mua thêm đồng hồ hoặc thắt lưng; những khán giả xem phim Spider Man thường có xu hướng xem thêm phim Bat Man, dựa vào đó tạo ra một hệ thống gợi ý khách hàng (Recommendation System), thúc đẩy nhu cầu mua sắm.&lt;/p&gt;
 
 &lt;!-- ========================== New Heading ==================== --&gt;
 &lt;p&gt;&lt;a name=&quot;semi-supervised-learning-hoc-ban-giam-sat&quot;&gt;&lt;/a&gt;&lt;/p&gt;

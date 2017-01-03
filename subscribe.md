@@ -1,6 +1,6 @@
 ---
 layout: page 
-title: "Subscribe form"
+title: "Subscribe"
 ---
 
 

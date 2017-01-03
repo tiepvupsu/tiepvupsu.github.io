@@ -23,7 +23,7 @@ K = 10
 if is_train_set:
 	kmeans = MiniBatchKMeans(n_clusters=K, n_init=50, batch_size=20000).fit(X)
 else:
-	kmeans = MiniBatchKMeans(n_clusters=K, init='k-means++', n_init=10000, batch_size=5000).fit(X)
+	kmeans = MiniBatchKMeans(n_clusters=K, init='k-means++', n_init=10000, batch_size=1000).fit(X)
 	# kmeans = KMeans(n_clusters=K).fit(X)
 
 pred_label = kmeans.predict(X)

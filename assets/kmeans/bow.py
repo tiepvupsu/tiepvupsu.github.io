@@ -58,10 +58,10 @@ if len(args) > 0:
 
 
 categories = [
-    'alt.atheism',
+   'rec.motorcycles',
     'talk.religion.misc',
     'comp.graphics',
-    'sci.space',
+    'talk.politics.misc',
 ]
 # Uncomment the following to do the analysis on all the categories
 #categories = None
@@ -155,7 +155,7 @@ if not opts.use_hashing:
         original_space_centroids = svd.inverse_transform(km.cluster_centers_)
         order_centroids = original_space_centroids.argsort()[:, ::-1]
     else:
-        order_centroids = km.cluster_centers_.argsort()[:, ::-1]
+        order_centroids = km.cluster_centers_.argsort()[:, ::-1  ]
 
     terms = vectorizer.get_feature_names()
     for i in range(true_k):
