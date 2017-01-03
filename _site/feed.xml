@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 02 Jan 2017 22:25:19 -0500</pubDate>
-    <lastBuildDate>Mon, 02 Jan 2017 22:25:19 -0500</lastBuildDate>
+    <pubDate>Mon, 02 Jan 2017 23:06:35 -0500</pubDate>
+    <lastBuildDate>Mon, 02 Jan 2017 23:06:35 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -92,7 +92,11 @@ Mất thứ tự của các từ
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;#phan-nhom-chu-so-viet-tay&quot;&gt;Phân nhóm chữ số viết tay&lt;/a&gt;
     &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#bo-co-so-du-lieu-mnist&quot;&gt;Bộ cơ sở dữ liệu MNIST&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#bo-co-so-du-lieu-mnist&quot;&gt;Bộ cơ sở dữ liệu MNIST&lt;/a&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#chuan-hoa-du-lieu&quot;&gt;Chuẩn hóa dữ liệu&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#lam-viec-tren-python&quot;&gt;Làm việc trên Python&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
@@ -119,6 +123,11 @@ Mất thứ tự của các từ
 &lt;p&gt;&lt;a name=&quot;bo-co-so-du-lieu-mnist&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;bộ-cơ-sở-dữ-liệu-mnist&quot;&gt;Bộ cơ sở dữ liệu MNIST&lt;/h3&gt;
+
+&lt;!-- ========================== New Heading ==================== --&gt;
+&lt;p&gt;&lt;a name=&quot;chuan-hoa-du-lieu&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;chuẩn-hóa-dữ-liệu&quot;&gt;Chuẩn hóa dữ liệu&lt;/h4&gt;
 
 &lt;!-- ========================== New Heading ==================== --&gt;
 &lt;p&gt;&lt;a name=&quot;lam-viec-tren-python&quot;&gt;&lt;/a&gt;&lt;/p&gt;
@@ -178,7 +187,12 @@ Mất thứ tự của các từ
     &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#mot-so-ky-hieu-toan-hoc&quot;&gt;Một số ký hiệu toán học&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#ham-mat-mat-va-bai-toan-toi-uu&quot;&gt;Hàm mất mát và bài toán tối ưu&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#thuat-toan-toi-uu-ham-mat-mat&quot;&gt;Thuật toán tối ưu hàm mất mát&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#thuat-toan-toi-uu-ham-mat-mat&quot;&gt;Thuật toán tối ưu hàm mất mát&lt;/a&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#co-dinh-\\\mathbfm-\\-tim-\\\mathbfy\\&quot;&gt;Cố định \(\mathbf{M} \), tìm \(\mathbf{Y}\)&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#co-dinh-\\\mathbfy-\\-tim-\\\mathbfm\\&quot;&gt;Cố định \(\mathbf{Y} \), tìm \(\mathbf{M}\)&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#tom-tat-thuat-toan&quot;&gt;Tóm tắt thuật toán&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
@@ -192,7 +206,15 @@ Mất thứ tự của các từ
   &lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#-thao-luan&quot;&gt;4. Thảo luận&lt;/a&gt;
     &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#han-che&quot;&gt;Hạn chế&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#han-che&quot;&gt;Hạn chế&lt;/a&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#chung-ta-can-biet-so-luong-cluster-can-clustering&quot;&gt;Chúng ta cần biết số lượng cluster cần clustering&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#nghiem-cuoi-cung-phu-thuoc-vao-cac-centers-duoc-khoi-tao-ban-dau&quot;&gt;Nghiệm cuối cùng phụ thuộc vào các centers được khởi tạo ban đầu&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#cac-cluster-can-co-so-luong-diem-gan-bang-nhau&quot;&gt;Các cluster cần có só lượng điểm gần bằng nhau&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#cac-cluster-can-co-dang-hinh-tron-tuan-theo-phan-phoi-chuan-va-ma-tran-hiep-phuong-sai-la-ma-tran-duong-cheo-co-cac-diem-tren-duong-cheo-giong-nhau&quot;&gt;Các cluster cần có dạng hình tròn (tuân theo phân phối chuẩn và ma trận hiệp phương sai là ma trận đường chéo có các điểm trên đường chéo giống nhau)&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#khi-mot-cluster-nam-phia-trong--cluster-khac&quot;&gt;Khi một cluster nằm phía trong 1 cluster khác&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#-tai-lieu-tham-khao&quot;&gt;5. Tài liệu tham khảo&lt;/a&gt;&lt;/li&gt;
@@ -310,6 +332,9 @@ y_{ik}\|\mathbf{x}_i - \mathbf{m}_k\|_2^2 =  \sum_{j=1}^K y_{ij}\|\mathbf{x}_i -
 
 &lt;p&gt;Một cách đơn giản để giải bài toán \((2)\) là xen kẽ giải \(\mathbf{Y}\) và \( \mathbf{M}\) khi biến còn lại được cố định. Đây là một thuật toán lặp, cũng là kỹ thuật phổ biến khi giải bài toán tối ưu. Chúng ta sẽ lật lượt giải quyết hai bài toán sau đây:&lt;/p&gt;
 
+&lt;!-- ========================== New Heading ==================== --&gt;
+&lt;p&gt;&lt;a name=&quot;co-dinh-\\\mathbfm-\\-tim-\\\mathbfy\\&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
 &lt;h4 id=&quot;cố-định-mathbfm--tìm-mathbfy&quot;&gt;Cố định \(\mathbf{M} \), tìm \(\mathbf{Y}\)&lt;/h4&gt;
 &lt;p&gt;&lt;strong&gt;Giả sử đã tìm được các centers, hãy tìm các label vector để hàm mất mát đạt giá trị nhỏ nhất.&lt;/strong&gt; Điều này tương đương với việc tìm cluster cho mỗi điểm dữ liệu.&lt;/p&gt;
 
@@ -328,6 +353,9 @@ j = \arg\min_{j} \|\mathbf{x}_i - \mathbf{m}_j\|_2^2
 \]&lt;/p&gt;
 
 &lt;p&gt;Vì \(\|\mathbf{x}_i - \mathbf{m}_j\|_2^2\) chính là bình phương khoảng cách tính từ điểm \(\mathbf{x}_i \) tới center \(\mathbf{m}_j \), ta có thể kết luận rằng &lt;strong&gt;mỗi điểm \(\mathbf{x}_i \) thuộc vào cluster có center gần nó nhất&lt;/strong&gt;! Từ đó ta có thể dễ dàng suy ra label vector của từng điểm dữ liệu.&lt;/p&gt;
+
+&lt;!-- ========================== New Heading ==================== --&gt;
+&lt;p&gt;&lt;a name=&quot;co-dinh-\\\mathbfy-\\-tim-\\\mathbfm\\&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;cố-định-mathbfy--tìm-mathbfm&quot;&gt;Cố định \(\mathbf{Y} \), tìm \(\mathbf{M}\)&lt;/h4&gt;
 &lt;p&gt;&lt;strong&gt;Giả sử đã tìm được cluster cho từng điểm, hãy tìm center mới cho mỗi cluster để hàm mất mát đạt giá trị nhỏ nhất.&lt;/strong&gt;&lt;/p&gt;
@@ -451,6 +479,7 @@ j = \arg\min_{j} \|\mathbf{x}_i - \mathbf{m}_j\|_2^2
 
 &lt;h3 id=&quot;các-hàm-số-cần-thiết-cho-k-means-clustering&quot;&gt;Các hàm số cần thiết cho K-means clustering&lt;/h3&gt;
 &lt;p&gt;Viết các hàm:&lt;/p&gt;
+
 &lt;ol&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;kmeans_init_centers&lt;/code&gt; để khởi tạo các centers ban đầu.&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;kmeans_asign_labels&lt;/code&gt; để gán nhán mới cho các điểm khi biết các centers.&lt;/li&gt;
@@ -577,8 +606,14 @@ j = \arg\min_{j} \|\mathbf{x}_i - \mathbf{m}_j\|_2^2
 &lt;h3 id=&quot;hạn-chế&quot;&gt;Hạn chế&lt;/h3&gt;
 &lt;p&gt;Có một vài hạn chế của thuật toán K-means clustering:&lt;/p&gt;
 
+&lt;!-- ========================== New Heading ==================== --&gt;
+&lt;p&gt;&lt;a name=&quot;chung-ta-can-biet-so-luong-cluster-can-clustering&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
 &lt;h4 id=&quot;chúng-ta-cần-biết-số-lượng-cluster-cần-clustering&quot;&gt;Chúng ta cần biết số lượng cluster cần clustering&lt;/h4&gt;
 &lt;p&gt;Để ý thấy rằng trong &lt;a href=&quot;#tom-tat-thuat-toan&quot;&gt;thuật toán nêu trên&lt;/a&gt;, chúng ta cần biết đại lượng \(K\) là số lượng clusters. Trong thực tế, nhiều trường hợp chúng ta không xác định được giá trị này. Có một số phương pháp giúp xác định số lượng clusters, tôi sẽ dành thời gian nói về chúng sau nếu có dịp. Bạn đọc có thể tham khảo &lt;a href=&quot;https://en.wikipedia.org/wiki/Determining_the_number_of_clusters_in_a_data_set&quot;&gt;Elbow method - Determining the number of clusters in a data set&lt;/a&gt;.&lt;/p&gt;
+
+&lt;!-- ========================== New Heading ==================== --&gt;
+&lt;p&gt;&lt;a name=&quot;nghiem-cuoi-cung-phu-thuoc-vao-cac-centers-duoc-khoi-tao-ban-dau&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;nghiệm-cuối-cùng-phụ-thuộc-vào-các-centers-được-khởi-tạo-ban-đầu&quot;&gt;Nghiệm cuối cùng phụ thuộc vào các centers được khởi tạo ban đầu&lt;/h4&gt;
 &lt;p&gt;Tùy vào các center ban đầu mà thuật toán có thể có tốc độ hội tụ rất chậm, ví dụ:
@@ -599,6 +634,9 @@ j = \arg\min_{j} \|\mathbf{x}_i - \mathbf{m}_j\|_2^2
   &lt;li&gt;Bạn nào muốn tìm hiểu sâu hơn có thể xem bài báo khoa học &lt;a href=&quot;http://www.sciencedirect.com/science/article/pii/S0167865504000996&quot;&gt;Cluster center initialization algorithm for K-means clustering&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;!-- ========================== New Heading ==================== --&gt;
+&lt;p&gt;&lt;a name=&quot;cac-cluster-can-co-so-luong-diem-gan-bang-nhau&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
 &lt;h4 id=&quot;các-cluster-cần-có-só-lượng-điểm-gần-bằng-nhau&quot;&gt;Các cluster cần có só lượng điểm gần bằng nhau&lt;/h4&gt;
 
 &lt;p&gt;Dưới đây là một ví dụ với 3 cluster với 20, 50, và 1000 điểm. Kết quả cuối cùng không chính xác.&lt;/p&gt;
@@ -607,6 +645,9 @@ j = \arg\min_{j} \|\mathbf{x}_i - \mathbf{m}_j\|_2^2
 &lt;img src=&quot;/assets/kmeans/kmeans_unbalanced.gif&quot; align=&quot;center&quot; /&gt;
 &lt;/div&gt;
 
+&lt;!-- ========================== New Heading ==================== --&gt;
+&lt;p&gt;&lt;a name=&quot;cac-cluster-can-co-dang-hinh-tron-tuan-theo-phan-phoi-chuan-va-ma-tran-hiep-phuong-sai-la-ma-tran-duong-cheo-co-cac-diem-tren-duong-cheo-giong-nhau&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
 &lt;h4 id=&quot;các-cluster-cần-có-dạng-hình-tròn-tuân-theo-phân-phối-chuẩn-và-ma-trận-hiệp-phương-sai-là-ma-trận-đường-chéo-có-các-điểm-trên-đường-chéo-giống-nhau&quot;&gt;Các cluster cần có dạng hình tròn (tuân theo phân phối chuẩn và ma trận hiệp phương sai là ma trận đường chéo có các điểm trên đường chéo giống nhau)&lt;/h4&gt;
 
 &lt;p&gt;Dưới đây là 1 ví dụ khi 1 cluster có dạng hình dẹt.&lt;/p&gt;
@@ -614,6 +655,9 @@ j = \arg\min_{j} \|\mathbf{x}_i - \mathbf{m}_j\|_2^2
 &lt;div class=&quot;imgcap&quot;&gt;
 &lt;img src=&quot;/assets/kmeans/kmeans_diffcov.gif&quot; align=&quot;center&quot; /&gt;
 &lt;/div&gt;
+
+&lt;!-- ========================== New Heading ==================== --&gt;
+&lt;p&gt;&lt;a name=&quot;khi-mot-cluster-nam-phia-trong--cluster-khac&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;khi-một-cluster-nằm-phía-trong-1-cluster-khác&quot;&gt;Khi một cluster nằm phía trong 1 cluster khác&lt;/h4&gt;
 &lt;p&gt;Đây là ví dụ kinh điển về việc K-means clustering không thể phân cụm dữ liệu. Một cách tự nhiên, chúng ta sẽ phân ra thành 4 cụm: mắt trái, mắt phải, miệng, xunh quanh mặt. Nhưng vì mắt và miệng nằm trong khuôn mặt nên K-means clustering không thực hiện được:&lt;/p&gt;

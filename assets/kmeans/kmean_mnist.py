@@ -4,13 +4,14 @@ from mnist import MNIST
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans, MiniBatchKMeans
 from sklearn.neighbors import NearestNeighbors
+from sklearn.preprocessing import normalize
 
 from display_network import *
 
 mndata = MNIST('../MNIST/')
 
 is_train_set = False 
-# is_train_set = True 
+is_train_set = True 
 if is_train_set:
 	mndata.load_training()
 	X = mndata.train_images
@@ -18,12 +19,14 @@ else:
 	mndata.load_testing()
 	X = mndata.test_images
 X = np.asarray(X)
+X = normalize(X)
+# X = np.sum(np.abs(X)**2,axis=-1)**(1./2)
 
 K = 10
 if is_train_set:
-	kmeans = MiniBatchKMeans(n_clusters=K, n_init=50, batch_size=20000).fit(X)
+	kmeans = MiniBatchKMeans(n_clusters=K, n_init=30, batch_size=10000).fit(X)
 else:
-	kmeans = MiniBatchKMeans(n_clusters=K, init='k-means++', n_init=10000, batch_size=1000).fit(X)
+	kmeans = MiniBatchKMeans(n_clusters=K, init='k-means++', n_init=10, batch_size=1000, verbose = True).fit(X)
 	# kmeans = KMeans(n_clusters=K).fit(X)
 
 pred_label = kmeans.predict(X)
