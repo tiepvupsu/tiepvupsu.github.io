@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 04 Jan 2017 11:49:13 -0500</pubDate>
-    <lastBuildDate>Wed, 04 Jan 2017 11:49:13 -0500</lastBuildDate>
+    <pubDate>Wed, 04 Jan 2017 11:49:38 -0500</pubDate>
+    <lastBuildDate>Wed, 04 Jan 2017 11:49:38 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -443,7 +443,7 @@ y_{ik}\|\mathbf{x}_i - \mathbf{m}_k\|_2^2 =  \sum_{j=1}^K y_{ij}\|\mathbf{x}_i -
 \mathcal{L}(\mathbf{Y}, \mathbf{M}) = \sum_{i=1}^N\sum_{j=1}^K y_{ij} \|\mathbf{x}_i - \mathbf{m}_j\|_2^2
 \]&lt;/p&gt;
 
-&lt;p&gt;Trong đó \( \mathbf{Y} = [\mathbf{y}_1; \mathbf{y}_2; \dots; \mathbf{y}_N]\),\( \mathbf{M} = [\mathbf{m}_1, \mathbf{m}_2, \dots \mathbf{m}_K] \) lần lượt là các ma trận được tạo bởi label vector của mỗi điểm dữ liệu và center của mỗi cluster. Hàm số mất mát trong bài toán K-means clustering của chúng ta là hàm \(\mathcal{L}(\mathbf{Y}, \mathbf{M})\) với ràng buộc như được nêu trong phương trình \((1)\).&lt;/p&gt;
+&lt;p&gt;Trong đó \( \mathbf{Y} = [\mathbf{y}_1; \mathbf{y}_2; \dots; \mathbf{y}_N]\), \( \mathbf{M} = [\mathbf{m}_1, \mathbf{m}_2, \dots \mathbf{m}_K] \) lần lượt là các ma trận được tạo bởi label vector của mỗi điểm dữ liệu và center của mỗi cluster. Hàm số mất mát trong bài toán K-means clustering của chúng ta là hàm \(\mathcal{L}(\mathbf{Y}, \mathbf{M})\) với ràng buộc như được nêu trong phương trình \((1)\).&lt;/p&gt;
 
 &lt;p&gt;Tóm lại, chúng ta cần tối ưu bài toán sau: 
 \[
