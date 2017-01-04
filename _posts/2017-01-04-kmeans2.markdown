@@ -97,8 +97,6 @@ import numpy as np
 from mnist import MNIST
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
-from sklearn.neighbors import NearestNeighbors
-from sklearn.preprocessing import normalize
 ```
 
 Để hiện thị nhiều bức ảnh các chữ số cùng một lúc, tôi có dùng thêm hàm số [`display_network.py`](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/kmeans/display_network.py).
