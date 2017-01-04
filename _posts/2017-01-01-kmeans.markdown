@@ -132,7 +132,7 @@ Sai số cho toàn bộ dữ liệu sẽ là:
 \mathcal{L}(\mathbf{Y}, \mathbf{M}) = \sum_{i=1}^N\sum_{j=1}^K y\_{ij} \\|\mathbf{x}\_i - \mathbf{m}_j\\|_2^2
 \\]
 
-Trong đó \\( \mathbf{Y} = [\mathbf{y}_1; \mathbf{y}_2; \dots; \mathbf{y}_N], ~ \mathbf{M} = [\mathbf{m}_1, \mathbf{m}_2, \dots \mathbf{m}_N] \\) lần lượt là các ma trận được tạo bởi label vector của mỗi điểm dữ liệu và center của mỗi cluster. Hàm số mất mát trong bài toán K-means clustering của chúng ta là hàm \\(\mathcal{L}(\mathbf{Y}, \mathbf{M})\\) với ràng buộc như được nêu trong phương trình \\((1)\\).
+Trong đó \\( \mathbf{Y} = [\mathbf{y}_1; \mathbf{y}_2; \dót\\); \\( \mathbf{y}_N], ~ \mathbf{M} = [\mathbf{m}_1, \mathbf{m}_2, \dots \mathbf{m}_K] \\) lần lượt là các ma trận được tạo bởi label vector của mỗi điểm dữ liệu và center của mỗi cluster. Hàm số mất mát trong bài toán K-means clustering của chúng ta là hàm \\(\mathcal{L}(\mathbf{Y}, \mathbf{M})\\) với ràng buộc như được nêu trong phương trình \\((1)\\).
 
 Tóm lại, chúng ta cần tối ưu bài toán sau: 
 \\[
