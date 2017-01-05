@@ -9,7 +9,7 @@ permalink: /index/
 * [Clustering](/2016/12/27/categories/#clustering-phan-nhom)    
     - [K-means Clustering](/2017/01/01/kmeans/)
 * [Loss function (Hàm mất mát)](/2016/12/28/linearregression/#ham-mat-mat) ([2](/2017/01/01/kmeans/#ham-mat-mat-va-bai-toan-toi-uu))
-* [Nóm (chuẩn)](https://tiepvupsu.github.io/math/#norms-chuan)
+* [Norms (chuẩn)](https://tiepvupsu.github.io/math/#norms-chuan)
 * [Regression](/2016/12/27/categories/#regression-hoi-quy)
     - [Linear Regression](/2016/12/28/linearregression/)
 * [Reinforement Learning (Học Củng Cố)](/2016/12/27/categories/#reinforcement-learning-hoc-cung-co)
