@@ -5,83 +5,12 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 04 Jan 2017 21:31:32 -0500</pubDate>
-    <lastBuildDate>Wed, 04 Jan 2017 21:31:32 -0500</lastBuildDate>
+    <pubDate>Thu, 05 Jan 2017 11:48:26 -0500</pubDate>
+    <lastBuildDate>Thu, 05 Jan 2017 11:48:26 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
-        <title>K-means Clustering: Ứng dụng</title>
-        <description>&lt;!-- MarkdownTOC --&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;#thu-nghiem&quot;&gt;Thử nghiệm&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#vi-du-voi-k-means-clustering-trong-python&quot;&gt;Ví dụ với K-means clustering trong Python&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#thao-luan&quot;&gt;Thảo luận&lt;/a&gt;
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#bag-of-words-trong-computer-vision&quot;&gt;Bag of Words trong Computer Vision&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#han-che&quot;&gt;Hạn chế&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#tai-lieu-tham-khao&quot;&gt;Tài liệu tham khảo&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!-- /MarkdownTOC --&gt;
-
-&lt;!-- ========================== New Heading ==================== --&gt;
-&lt;p&gt;&lt;a name=&quot;thu-nghiem&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;thử-nghiệm&quot;&gt;Thử nghiệm&lt;/h2&gt;
-
-&lt;!-- ========================== New Heading ==================== --&gt;
-&lt;p&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;!-- ========================== New Heading ==================== --&gt;
-&lt;p&gt;&lt;a name=&quot;vi-du-voi-k-means-clustering-trong-python&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;ví-dụ-với-k-means-clustering-trong-python&quot;&gt;Ví dụ với K-means clustering trong Python&lt;/h2&gt;
-
-&lt;!-- ========================== New Heading ==================== --&gt;
-&lt;p&gt;&lt;a name=&quot;thao-luan&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;thảo-luận&quot;&gt;Thảo luận&lt;/h2&gt;
-
-&lt;!-- ========================== New Heading ==================== --&gt;
-&lt;p&gt;&lt;a name=&quot;&quot;&gt;&lt;/a&gt;
-&lt;!-- ========================== New Heading ==================== --&gt;
-&lt;a name=&quot;&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;###&lt;/p&gt;
-
-&lt;!-- ========================== New Heading ==================== --&gt;
-&lt;p&gt;&lt;a name=&quot;bag-of-words-trong-computer-vision&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;bag-of-words-trong-computer-vision&quot;&gt;Bag of Words trong Computer Vision&lt;/h3&gt;
-
-&lt;!-- ========================== New Heading ==================== --&gt;
-&lt;p&gt;&lt;a name=&quot;han-che&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;hạn-chế&quot;&gt;Hạn chế&lt;/h3&gt;
-
-&lt;p&gt;sparse and high dimension
-Mất thứ tự của các từ
-&lt;!-- ========================== New Heading ==================== --&gt;
-&lt;a name=&quot;tai-lieu-tham-khao&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;tài-liệu-tham-khảo&quot;&gt;Tài liệu tham khảo&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.kaggle.com/c/word2vec-nlp-tutorial/details/part-1-for-beginners-bag-of-words&quot;&gt;Bag of Words Meets Bags of Popcorn&lt;/a&gt;
-&lt;a href=&quot;http://scikit-learn.org/stable/auto_examples/text/document_clustering.html&quot;&gt;Clustering text documents using k-means&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Thu, 05 Jan 2017 10:22:00 -0500</pubDate>
-        <link>http://localhost:4000/2017/01/05/bagofwords/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/01/05/bagofwords/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>K-means Clustering: Simple Applications</title>
+        <title>Bài 5: K-means Clustering: Simple Applications</title>
         <description>&lt;div class=&quot;imgcap&quot;&gt;
 &lt;div&gt;
 &lt;a href=&quot;/2017/01/04/kmeans2/&quot;&gt;
@@ -371,94 +300,7 @@ Mất thứ tự của các từ
       </item>
     
       <item>
-        <title>K-means Clustering: Ứng dụng</title>
-        <description>&lt;p&gt;Trong bài trước, chúng ta đã tìm hiểu về thuật toán chia nhóm đơn giản - &lt;a href=&quot;/2017/01/01/kmeans/&quot;&gt;K-means clustering&lt;/a&gt;. Trong bài này, tôi sẽ áp dụng thuật toán này vào hai bài toán thực tế hơn: i) xử lý ảnh với cơ sở là các chữ số viết tay, và ii) xử lý ngôn ngữ tự nhiên với cơ sở dữ liệu là các tin báo (news). Đồng thời, tôi cũng giới thiệu một số kỹ thuật đơn giản đễ đưa dữ liệu về dạng vector (chuỗi số) trước khi áp dụng các thuật toán Machine Learning.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Cảnh báo:&lt;/strong&gt; bài này không có nhiều toán.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Trong trang này:&lt;/strong&gt;
-&lt;!-- MarkdownTOC --&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;#phan-nhom-chu-so-viet-tay&quot;&gt;Phân nhóm chữ số viết tay&lt;/a&gt;
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#bo-co-so-du-lieu-mnist&quot;&gt;Bộ cơ sở dữ liệu MNIST&lt;/a&gt;
-        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#chuan-hoa-du-lieu&quot;&gt;Chuẩn hóa dữ liệu&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#lam-viec-tren-python&quot;&gt;Làm việc trên Python&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#phan-nhom-tin-tuc&quot;&gt;Phân nhóm tin tức&lt;/a&gt;
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#bo-co-so-du-lieu--news&quot;&gt;Bộ cơ sở dữ liệu 20 News&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#bag-of-words&quot;&gt;Bag of words&lt;/a&gt;
-        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#han-che&quot;&gt;Hạn chế&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#vi-du-voi-python&quot;&gt;Ví dụ với Python&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!-- /MarkdownTOC --&gt;
-
-&lt;!-- ========================== New Heading ==================== --&gt;
-&lt;p&gt;&lt;a name=&quot;phan-nhom-chu-so-viet-tay&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;phân-nhóm-chữ-số-viết-tay&quot;&gt;Phân nhóm chữ số viết tay&lt;/h2&gt;
-&lt;!-- ========================== New Heading ==================== --&gt;
-&lt;p&gt;&lt;a name=&quot;bo-co-so-du-lieu-mnist&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;bộ-cơ-sở-dữ-liệu-mnist&quot;&gt;Bộ cơ sở dữ liệu MNIST&lt;/h3&gt;
-
-&lt;!-- ========================== New Heading ==================== --&gt;
-&lt;p&gt;&lt;a name=&quot;chuan-hoa-du-lieu&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;chuẩn-hóa-dữ-liệu&quot;&gt;Chuẩn hóa dữ liệu&lt;/h4&gt;
-
-&lt;!-- ========================== New Heading ==================== --&gt;
-&lt;p&gt;&lt;a name=&quot;lam-viec-tren-python&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;làm-việc-trên-python&quot;&gt;Làm việc trên Python&lt;/h3&gt;
-
-&lt;p&gt;[Source code]&lt;/p&gt;
-
-&lt;!-- ========================== New Heading ==================== --&gt;
-&lt;p&gt;&lt;a name=&quot;phan-nhom-tin-tuc&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;phân-nhóm-tin-tức&quot;&gt;Phân nhóm tin tức&lt;/h2&gt;
-&lt;!-- ========================== New Heading ==================== --&gt;
-&lt;p&gt;&lt;a name=&quot;bo-co-so-du-lieu--news&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;bộ-cơ-sở-dữ-liệu-20-news&quot;&gt;Bộ cơ sở dữ liệu 20 News&lt;/h3&gt;
-
-&lt;!-- ========================== New Heading ==================== --&gt;
-&lt;p&gt;&lt;a name=&quot;bag-of-words&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;bag-of-words&quot;&gt;Bag of words&lt;/h3&gt;
-&lt;!-- ========================== New Heading ==================== --&gt;
-&lt;p&gt;&lt;a name=&quot;han-che&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;hạn-chế&quot;&gt;Hạn chế&lt;/h4&gt;
-&lt;!-- ========================== New Heading ==================== --&gt;
-&lt;p&gt;&lt;a name=&quot;vi-du-voi-python&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;ví-dụ-với-python&quot;&gt;Ví dụ với Python&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://scikit-learn.org/stable/tutorial/text_analytics/working_with_text_data.html&quot;&gt;Working With Text Data¶&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Wed, 04 Jan 2017 10:22:00 -0500</pubDate>
-        <link>http://localhost:4000/2017/01/04/kmeans2/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/01/04/kmeans2/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>K-means Clustering</title>
+        <title>Bài 4: K-means Clustering</title>
         <description>&lt;div class=&quot;imgcap&quot;&gt;
 &lt;div&gt;
 &lt;a href=&quot;/2017/01/01/kmeans/&quot;&gt;
@@ -987,7 +829,7 @@ j = \arg\min_{j} \|\mathbf{x}_i - \mathbf{m}_j\|_2^2
       </item>
     
       <item>
-        <title>Linear Regression</title>
+        <title>Bài 3: Linear Regression</title>
         <description>&lt;div class=&quot;imgcap&quot;&gt;
 &lt;div&gt;
 &lt;a href=&quot;/2016/12/28/linearregression/&quot;&gt;
@@ -1412,7 +1254,7 @@ một cặp dữ liệu &lt;em&gt;nhiễu&lt;/em&gt; (150 cm, 90kg) thì kết q
       </item>
     
       <item>
-        <title>Phân nhóm các thuật toán Machine Learning</title>
+        <title>Bài 2: Phân nhóm các thuật toán Machine Learning</title>
         <description>&lt;div class=&quot;imgcap&quot;&gt;
 &lt;div&gt;
 &lt;a href=&quot;/2016/12/27/categories/&quot;&gt;
@@ -1694,7 +1536,7 @@ Mục đích là xấp xỉ hàm số \(f\) thật tốt để khi có một d�
       </item>
     
       <item>
-        <title>Giới thiệu về Machine Learning</title>
+        <title>Bài 1: Giới thiệu về Machine Learning</title>
         <description>&lt;div class=&quot;imgcap&quot;&gt;
 &lt;div&gt;
     &lt;a href=&quot;/2016/12/26/introduce/&quot;&gt;
