@@ -85,7 +85,7 @@ Nhận thấy rằng khoảng cách Euclid chính là một norm, norm này thư
 
 Với \\(p\\) __là một số không nhỏ hơn 1__ bất kỳ, hàm số sau đây:
 \\[
-\|\|\mathbf{x}\|\|\_p = (x_1^p + x_2^p + \dots x_n^p)^{\frac{1}{p}} ~~(1)
+\|\|\mathbf{x}\|\|\_p = (\|x_1\|^p + \|x_2\|^p + \dots \|x_n\|^p)^{\frac{1}{p}} ~~(1)
 \\]
 
 được chứng minh thỏa mãn ba điều kiện bên trên, và được gọi là **norm p**. 
