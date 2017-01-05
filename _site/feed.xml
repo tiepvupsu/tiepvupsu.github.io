@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 04 Jan 2017 19:56:57 -0500</pubDate>
-    <lastBuildDate>Wed, 04 Jan 2017 19:56:57 -0500</lastBuildDate>
+    <pubDate>Wed, 04 Jan 2017 20:48:47 -0500</pubDate>
+    <lastBuildDate>Wed, 04 Jan 2017 20:48:47 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -462,7 +462,7 @@ Mất thứ tự của các từ
         <description>&lt;div class=&quot;imgcap&quot;&gt;
 &lt;div&gt;
 &lt;a href=&quot;/2017/01/01/kmeans/&quot;&gt;
-    &lt;img src=&quot;/assets/kmeans/kmeans11.gif&quot; width=&quot;500&quot; /&gt;&lt;/a&gt;
+    &lt;img src=&quot;/assets/kmeans/kmeans11.gif&quot; width=&quot;800&quot; /&gt;&lt;/a&gt;
     &lt;!-- &lt;img src=&quot;/assets/rl/mdp.png&quot; height=&quot;206&quot;&gt; --&gt;
 &lt;/div&gt;
 &lt;div class=&quot;thecap&quot;&gt; K-means Clustering &lt;br /&gt;&lt;/div&gt;
@@ -991,7 +991,7 @@ j = \arg\min_{j} \|\mathbf{x}_i - \mathbf{m}_j\|_2^2
         <description>&lt;div class=&quot;imgcap&quot;&gt;
 &lt;div&gt;
 &lt;a href=&quot;/2016/12/28/linearregression/&quot;&gt;
-    &lt;img src=&quot;/assets/LR/output_5_1.png&quot; width=&quot;500&quot; /&gt;&lt;/a&gt;
+    &lt;img src=&quot;/assets/LR/output_5_1.png&quot; width=&quot;800&quot; /&gt;&lt;/a&gt;
     &lt;!-- &lt;img src=&quot;/assets/rl/mdp.png&quot; height=&quot;206&quot;&gt; --&gt;
 &lt;/div&gt;
 &lt;div class=&quot;thecap&quot;&gt; Linear Regression &lt;br /&gt;&lt;/div&gt;

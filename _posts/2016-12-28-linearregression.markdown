@@ -10,7 +10,7 @@ mathjax: true
 <div class="imgcap">
 <div >
 <a href = "/2016/12/28/linearregression/">
-    <img src ="/assets/LR/output_5_1.png"  width = "500"></a>
+    <img src ="/assets/LR/output_5_1.png"  width = "800"></a>
     <!-- <img src="/assets/rl/mdp.png" height="206"> -->
 </div>
 <div class="thecap"> Linear Regression <br></div>
