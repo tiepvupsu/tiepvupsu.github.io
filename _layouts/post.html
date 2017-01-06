@@ -21,24 +21,11 @@ layout: default
 
 
     
-    <p class="meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %} 
-    | <ul class="tags">
+    <p class="meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %} | <ul class="tags">
   {% for tag in page.tags %}
     <li><a href="/tags#{{ tag }}" class="tag">{{ tag }}</a></li>
   {% endfor %}
 </ul>
-    <!-- Hit counter https://gist.github.com/Phlow/b31f3a8d292aa63081c6--> 
-<!--     {% comment %}
-    *
-    *   Counter: This include counts the your jekyll posts
-    *
-    {% endcomment %}
-    ({% assign counter = 1 %}
-      {% for item in site.posts %}
-        {% unless item.published == false %}
-          {% assign counter=counter | plus:1 %}
-        {% endunless %}
-      {% endfor %}{{ counter }} views) -->
       </p>
     <!-- Hit counter -->
   </header>
