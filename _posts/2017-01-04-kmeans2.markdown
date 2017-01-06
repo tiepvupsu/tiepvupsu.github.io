@@ -5,8 +5,6 @@ title:  "Bài 5: K-means Clustering: Simple Applications"
 date:   2017-01-04 15:22:00
 mathjax: true
 published: true
-category: Clustering
-tags: [Unsupervised-learning, Kmeans]
 ---
 
 <div class="imgcap">

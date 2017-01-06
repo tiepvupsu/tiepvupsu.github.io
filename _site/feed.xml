@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 06 Jan 2017 10:43:15 -0500</pubDate>
-    <lastBuildDate>Fri, 06 Jan 2017 10:43:15 -0500</lastBuildDate>
+    <pubDate>Fri, 06 Jan 2017 10:44:38 -0500</pubDate>
+    <lastBuildDate>Fri, 06 Jan 2017 10:44:38 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -293,15 +293,9 @@
 &lt;p&gt;&lt;a href=&quot;http://users.isr.ist.utl.pt/~wurmd/Livros/school/Bishop%20-%20Pattern%20Recognition%20And%20Machine%20Learning%20-%20Springer%20%202006.pdf&quot;&gt;Pattern Recognition and Machine Learning - Christopher Bishop&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Wed, 04 Jan 2017 10:22:00 -0500</pubDate>
-        <link>http://localhost:4000/clustering/2017/01/04/kmeans2/</link>
-        <guid isPermaLink="true">http://localhost:4000/clustering/2017/01/04/kmeans2/</guid>
+        <link>http://localhost:4000/2017/01/04/kmeans2/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/01/04/kmeans2/</guid>
         
-        <category>Unsupervised-learning</category>
-        
-        <category>Kmeans</category>
-        
-        
-        <category>Clustering</category>
         
       </item>
     
