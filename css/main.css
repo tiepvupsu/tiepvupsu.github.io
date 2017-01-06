@@ -172,10 +172,10 @@ a:visited { color: #205caa; }
 .post-header { margin: 10px 0 30px; }
 
 .post-header h1 {
-  font-size: 36px;
-  letter-spacing: -1.75px;
+  font-size: 20px;
+  /*letter-spacing: -1.75px;*/
   line-height: 1;
-  font-weight: 300;
+  font-weight: 200;
 }
 
 .post-header .meta {
@@ -521,7 +521,8 @@ td{
 .tag {
   background: #eee;
   border-radius: 3px 3px 3px 3px;
-  color: ##eee;
+  /*color: ##eee;*/
+  /*font-weight: bold*/
   display: inline-block;
   height: 23px;
   font-size: 14px;

@@ -27,25 +27,25 @@ Trong bài này, tôi sẽ áp dụng thuật toán [K-means clustering](/2017/0
 **Trong trang này:**
 <!-- MarkdownTOC -->
 
-- [Phân nhóm chữ số viết tay](#phan-nhom-chu-so-viet-tay)
+- [1. Phân nhóm chữ số viết tay](#-phan-nhom-chu-so-viet-tay)
     - [Bộ cơ sở dữ liệu MNIST](#bo-co-so-du-lieu-mnist)
     - [Bài toán phân nhóm giả định](#bai-toan-phan-nhom-gia-dinh)
     - [Làm việc trên Python](#lam-viec-tren-python)
-- [Object Segmentation \(tách vật thể trong ảnh\)](#object-segmentation-tach-vat-the-trong-anh)
+- [2. Object Segmentation \(tách vật thể trong ảnh\)](#-object-segmentation-tach-vat-the-trong-anh)
     - [Đặt vấn đề](#dat-van-de)
     - [Lên ý tưởng](#len-y-tuong)
     - [Làm việc trên Python](#lam-viec-tren-python-1)
-- [Image Compression \(nén ảnh và nén dữ liệu nói chung\)](#image-compression-nen-anh-va-nen-du-lieu-noi-chung)
-- [Thảo luận](#thao-luan)
-- [Souce code](#souce-code)
-- [Tài liệu tham khảo](#tai-lieu-tham-khao)
+- [3. Image Compression \(nén ảnh và nén dữ liệu nói chung\)](#-image-compression-nen-anh-va-nen-du-lieu-noi-chung)
+- [4. Thảo luận](#-thao-luan)
+- [5. Souce code](#-souce-code)
+- [6. Tài liệu tham khảo](#-tai-lieu-tham-khao)
 
 <!-- /MarkdownTOC -->
 
 <!-- ========================== New Heading ==================== -->
-<a name="phan-nhom-chu-so-viet-tay"></a>
+<a name="-phan-nhom-chu-so-viet-tay"></a>
 
-## Phân nhóm chữ số viết tay 
+## 1. Phân nhóm chữ số viết tay 
 <!-- ========================== New Heading ==================== -->
 <a name="bo-co-so-du-lieu-mnist"></a>
 
@@ -151,9 +151,9 @@ Bạn đọc có thể thấy dữ liệu trong mỗi hàng khá giống nhau v�
     *  **Divisive** tức "đi từ trên xuống". Ban đầu coi tất cả các điểm dữ liệu thuộc cùng một cluster, sau đó chia nhỏ mỗi cluster bằng một thuật toán clustering nào đó. 
 
 <!-- ========================== New Heading ==================== -->
-<a name="object-segmentation-tach-vat-the-trong-anh"></a>
+<a name="-object-segmentation-tach-vat-the-trong-anh"></a>
 
-## Object Segmentation (tách vật thể trong ảnh)
+## 2. Object Segmentation (tách vật thể trong ảnh)
 <!-- ========================== New Heading ==================== -->
 <a name="dat-van-de"></a>
 
@@ -217,9 +217,9 @@ Sau khi tìm được các cluster, tôi thay giá trị của mỗi pixel bằn
 Ba màu: Hồng, đen, và màu da đã được phân nhóm. Và khuôn mặt có thể được tách ra từ phần có màu da (và vùng bên trong nó). Vậy là K-means clustering tạo ra một kết quả chấp nhận được.
 
 <!-- ========================== New Heading ==================== -->
-<a name="image-compression-nen-anh-va-nen-du-lieu-noi-chung"></a>
+<a name="-image-compression-nen-anh-va-nen-du-lieu-noi-chung"></a>
 
-## Image Compression (nén ảnh và nén dữ liệu nói chung)
+## 3. Image Compression (nén ảnh và nén dữ liệu nói chung)
 
 Để ý thấy rằng mỗi một pixel có thể nhận một trong số \\(256^3 = 16,777,216\\) (16 triệu màu mà chúng ta vẫn nghe khi quảng cáo màn hình). Đây là một số rất lớn (tương đương với 24 bit cho một điểm ảnh). Nếu ta muốn lưu mỗi điểm ảnh với một số bit nhỏ hơn và chấp nhận mất dữ liệu ở một mức nào đó, có cách nào không nếu ta chỉ biết K-means clustering?
 
@@ -252,9 +252,9 @@ Kết quả:
 Bạn đọc có thể quan sát là khi số lượng clusters tăng lên, chất lượng bức ảnh đã được cải thiện. Đồng thời, chúng ta chỉ cần lưu các centers và label của mỗi điểm ảnh là đã có được một bức ảnh nén (có mất dữ liệu). 
 
 <!-- ========================== New Heading ==================== -->
-<a name="thao-luan"></a>
+<a name="-thao-luan"></a>
 
-## Thảo luận
+## 4. Thảo luận
 1. Với một thuật toán K-means clustering đơn giản, chúng ta đã có thể áp dụng nó vào các bài toán thực tế. Mặc dù kết quả chưa thực sự như ý, chúng ta vẫn thấy được tiềm năng của thuật toán đơn giản này.
 
 2. Cách thay một điểm dữ liệu bằng center tương ứng là một trong số các kỹ thuật có tên chung là [Vector Quantization (VQ)](https://en.wikipedia.org/wiki/Vector_quantization). Không chỉ trong nén dữ liệu, VQ còn được áp dụng rộng rãi trong các thuật toán tạo Feature Vector cho các bài toán Phân loại (classification).  
@@ -262,14 +262,14 @@ Bạn đọc có thể quan sát là khi số lượng clusters tăng lên, ch�
 3. Các thuật toán trong bài toán này được áp dụng cho xử lý ảnh vì việc này giúp tôi dễ dàng minh họa kết quả hơn. Các kỹ thuật này hoàn toàn có thể áp dụng cho các loại cơ sở dữ liệu khác. 
 
 <!-- ========================== New Heading ==================== -->
-<a name="souce-code"></a>
+<a name="-souce-code"></a>
 
-## Souce code
+## 5. Souce code
 Các bạn có thể [download source code ở đây](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/kmeans/Kmeans2.ipynb). 
 
 <!-- ========================== New Heading ==================== -->
-<a name="tai-lieu-tham-khao"></a>
+<a name="-tai-lieu-tham-khao"></a>
 
-## Tài liệu tham khảo 
+## 6. Tài liệu tham khảo 
 
 [Pattern Recognition and Machine Learning - Christopher Bishop](http://users.isr.ist.utl.pt/~wurmd/Livros/school/Bishop%20-%20Pattern%20Recognition%20And%20Machine%20Learning%20-%20Springer%20%202006.pdf)

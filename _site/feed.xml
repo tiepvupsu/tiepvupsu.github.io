@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 06 Jan 2017 13:11:03 -0500</pubDate>
-    <lastBuildDate>Fri, 06 Jan 2017 13:11:03 -0500</lastBuildDate>
+    <pubDate>Fri, 06 Jan 2017 13:38:16 -0500</pubDate>
+    <lastBuildDate>Fri, 06 Jan 2017 13:38:16 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -28,32 +28,32 @@
 &lt;!-- MarkdownTOC --&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;#phan-nhom-chu-so-viet-tay&quot;&gt;Phân nhóm chữ số viết tay&lt;/a&gt;
+  &lt;li&gt;&lt;a href=&quot;#-phan-nhom-chu-so-viet-tay&quot;&gt;1. Phân nhóm chữ số viết tay&lt;/a&gt;
     &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#bo-co-so-du-lieu-mnist&quot;&gt;Bộ cơ sở dữ liệu MNIST&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#bai-toan-phan-nhom-gia-dinh&quot;&gt;Bài toán phân nhóm giả định&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#lam-viec-tren-python&quot;&gt;Làm việc trên Python&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#object-segmentation-tach-vat-the-trong-anh&quot;&gt;Object Segmentation (tách vật thể trong ảnh)&lt;/a&gt;
+  &lt;li&gt;&lt;a href=&quot;#-object-segmentation-tach-vat-the-trong-anh&quot;&gt;2. Object Segmentation (tách vật thể trong ảnh)&lt;/a&gt;
     &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#dat-van-de&quot;&gt;Đặt vấn đề&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#len-y-tuong&quot;&gt;Lên ý tưởng&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#lam-viec-tren-python-1&quot;&gt;Làm việc trên Python&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#image-compression-nen-anh-va-nen-du-lieu-noi-chung&quot;&gt;Image Compression (nén ảnh và nén dữ liệu nói chung)&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#thao-luan&quot;&gt;Thảo luận&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#souce-code&quot;&gt;Souce code&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#tai-lieu-tham-khao&quot;&gt;Tài liệu tham khảo&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#-image-compression-nen-anh-va-nen-du-lieu-noi-chung&quot;&gt;3. Image Compression (nén ảnh và nén dữ liệu nói chung)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#-thao-luan&quot;&gt;4. Thảo luận&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#-souce-code&quot;&gt;5. Souce code&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#-tai-lieu-tham-khao&quot;&gt;6. Tài liệu tham khảo&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;!-- /MarkdownTOC --&gt;
 
 &lt;!-- ========================== New Heading ==================== --&gt;
-&lt;p&gt;&lt;a name=&quot;phan-nhom-chu-so-viet-tay&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a name=&quot;-phan-nhom-chu-so-viet-tay&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;phân-nhóm-chữ-số-viết-tay&quot;&gt;Phân nhóm chữ số viết tay&lt;/h2&gt;
+&lt;h2 id=&quot;1-phân-nhóm-chữ-số-viết-tay&quot;&gt;1. Phân nhóm chữ số viết tay&lt;/h2&gt;
 &lt;!-- ========================== New Heading ==================== --&gt;
 &lt;p&gt;&lt;a name=&quot;bo-co-so-du-lieu-mnist&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
@@ -167,9 +167,9 @@
 &lt;/ol&gt;
 
 &lt;!-- ========================== New Heading ==================== --&gt;
-&lt;p&gt;&lt;a name=&quot;object-segmentation-tach-vat-the-trong-anh&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a name=&quot;-object-segmentation-tach-vat-the-trong-anh&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;object-segmentation-tách-vật-thể-trong-ảnh&quot;&gt;Object Segmentation (tách vật thể trong ảnh)&lt;/h2&gt;
+&lt;h2 id=&quot;2-object-segmentation-tách-vật-thể-trong-ảnh&quot;&gt;2. Object Segmentation (tách vật thể trong ảnh)&lt;/h2&gt;
 &lt;!-- ========================== New Heading ==================== --&gt;
 &lt;p&gt;&lt;a name=&quot;dat-van-de&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
@@ -231,9 +231,9 @@
 &lt;p&gt;Ba màu: Hồng, đen, và màu da đã được phân nhóm. Và khuôn mặt có thể được tách ra từ phần có màu da (và vùng bên trong nó). Vậy là K-means clustering tạo ra một kết quả chấp nhận được.&lt;/p&gt;
 
 &lt;!-- ========================== New Heading ==================== --&gt;
-&lt;p&gt;&lt;a name=&quot;image-compression-nen-anh-va-nen-du-lieu-noi-chung&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a name=&quot;-image-compression-nen-anh-va-nen-du-lieu-noi-chung&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;image-compression-nén-ảnh-và-nén-dữ-liệu-nói-chung&quot;&gt;Image Compression (nén ảnh và nén dữ liệu nói chung)&lt;/h2&gt;
+&lt;h2 id=&quot;3-image-compression-nén-ảnh-và-nén-dữ-liệu-nói-chung&quot;&gt;3. Image Compression (nén ảnh và nén dữ liệu nói chung)&lt;/h2&gt;
 
 &lt;p&gt;Để ý thấy rằng mỗi một pixel có thể nhận một trong số \(256^3 = 16,777,216\) (16 triệu màu mà chúng ta vẫn nghe khi quảng cáo màn hình). Đây là một số rất lớn (tương đương với 24 bit cho một điểm ảnh). Nếu ta muốn lưu mỗi điểm ảnh với một số bit nhỏ hơn và chấp nhận mất dữ liệu ở một mức nào đó, có cách nào không nếu ta chỉ biết K-means clustering?&lt;/p&gt;
 
@@ -264,9 +264,9 @@
 &lt;p&gt;Bạn đọc có thể quan sát là khi số lượng clusters tăng lên, chất lượng bức ảnh đã được cải thiện. Đồng thời, chúng ta chỉ cần lưu các centers và label của mỗi điểm ảnh là đã có được một bức ảnh nén (có mất dữ liệu).&lt;/p&gt;
 
 &lt;!-- ========================== New Heading ==================== --&gt;
-&lt;p&gt;&lt;a name=&quot;thao-luan&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a name=&quot;-thao-luan&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;thảo-luận&quot;&gt;Thảo luận&lt;/h2&gt;
+&lt;h2 id=&quot;4-thảo-luận&quot;&gt;4. Thảo luận&lt;/h2&gt;
 &lt;ol&gt;
   &lt;li&gt;
     &lt;p&gt;Với một thuật toán K-means clustering đơn giản, chúng ta đã có thể áp dụng nó vào các bài toán thực tế. Mặc dù kết quả chưa thực sự như ý, chúng ta vẫn thấy được tiềm năng của thuật toán đơn giản này.&lt;/p&gt;
@@ -280,15 +280,15 @@
 &lt;/ol&gt;
 
 &lt;!-- ========================== New Heading ==================== --&gt;
-&lt;p&gt;&lt;a name=&quot;souce-code&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a name=&quot;-souce-code&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;souce-code&quot;&gt;Souce code&lt;/h2&gt;
+&lt;h2 id=&quot;5-souce-code&quot;&gt;5. Souce code&lt;/h2&gt;
 &lt;p&gt;Các bạn có thể &lt;a href=&quot;https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/kmeans/Kmeans2.ipynb&quot;&gt;download source code ở đây&lt;/a&gt;.&lt;/p&gt;
 
 &lt;!-- ========================== New Heading ==================== --&gt;
-&lt;p&gt;&lt;a name=&quot;tai-lieu-tham-khao&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a name=&quot;-tai-lieu-tham-khao&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;tài-liệu-tham-khảo&quot;&gt;Tài liệu tham khảo&lt;/h2&gt;
+&lt;h2 id=&quot;6-tài-liệu-tham-khảo&quot;&gt;6. Tài liệu tham khảo&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&quot;http://users.isr.ist.utl.pt/~wurmd/Livros/school/Bishop%20-%20Pattern%20Recognition%20And%20Machine%20Learning%20-%20Springer%20%202006.pdf&quot;&gt;Pattern Recognition and Machine Learning - Christopher Bishop&lt;/a&gt;&lt;/p&gt;
 </description>
