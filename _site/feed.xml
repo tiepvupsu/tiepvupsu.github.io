@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 06 Jan 2017 11:28:38 -0500</pubDate>
-    <lastBuildDate>Fri, 06 Jan 2017 11:28:38 -0500</lastBuildDate>
+    <pubDate>Fri, 06 Jan 2017 11:29:38 -0500</pubDate>
+    <lastBuildDate>Fri, 06 Jan 2017 11:29:38 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -298,7 +298,7 @@
         
         <category>Clustering</category>
         
-        <category>Supervised-learning</category>
+        <category>Unsupervised-learning</category>
         
         <category>Kmeans</category>
         
@@ -833,7 +833,7 @@ j = \arg\min_{j} \|\mathbf{x}_i - \mathbf{m}_j\|_2^2
         
         <category>Clustering</category>
         
-        <category>Supervised-learning</category>
+        <category>Unsupervised-learning</category>
         
         <category>Kmeans</category>
         
