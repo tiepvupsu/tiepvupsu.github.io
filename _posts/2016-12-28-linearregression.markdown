@@ -4,6 +4,7 @@ comments: true
 title:  "Bài 3: Linear Regression"
 date:   2016-12-28 15:22:00
 mathjax: true
+tags: Linear-models Regression Supervised-learning
 ---
 
 

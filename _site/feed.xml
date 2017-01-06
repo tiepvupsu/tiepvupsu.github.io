@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 06 Jan 2017 11:10:50 -0500</pubDate>
-    <lastBuildDate>Fri, 06 Jan 2017 11:10:50 -0500</lastBuildDate>
+    <pubDate>Fri, 06 Jan 2017 11:22:47 -0500</pubDate>
+    <lastBuildDate>Fri, 06 Jan 2017 11:22:47 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -295,6 +295,12 @@
         <pubDate>Wed, 04 Jan 2017 10:22:00 -0500</pubDate>
         <link>http://localhost:4000/2017/01/04/kmeans2/</link>
         <guid isPermaLink="true">http://localhost:4000/2017/01/04/kmeans2/</guid>
+        
+        <category>Clustering</category>
+        
+        <category>Supervised-learning</category>
+        
+        <category>Kmeans</category>
         
         
       </item>
@@ -825,6 +831,12 @@ j = \arg\min_{j} \|\mathbf{x}_i - \mathbf{m}_j\|_2^2
         <link>http://localhost:4000/2017/01/01/kmeans/</link>
         <guid isPermaLink="true">http://localhost:4000/2017/01/01/kmeans/</guid>
         
+        <category>Clustering</category>
+        
+        <category>Supervised-learning</category>
+        
+        <category>Kmeans</category>
+        
         
       </item>
     
@@ -1250,6 +1262,12 @@ một cặp dữ liệu &lt;em&gt;nhiễu&lt;/em&gt; (150 cm, 90kg) thì kết q
         <link>http://localhost:4000/2016/12/28/linearregression/</link>
         <guid isPermaLink="true">http://localhost:4000/2016/12/28/linearregression/</guid>
         
+        <category>Linear-models</category>
+        
+        <category>Regression</category>
+        
+        <category>Supervised-learning</category>
+        
         
       </item>
     
@@ -1531,6 +1549,8 @@ Mục đích là xấp xỉ hàm số \(f\) thật tốt để khi có một d�
         <pubDate>Tue, 27 Dec 2016 10:22:00 -0500</pubDate>
         <link>http://localhost:4000/2016/12/27/categories/</link>
         <guid isPermaLink="true">http://localhost:4000/2016/12/27/categories/</guid>
+        
+        <category>general</category>
         
         
       </item>

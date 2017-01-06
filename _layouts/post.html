@@ -21,11 +21,12 @@ layout: default
 
 
     
-    <p class="meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %} | <ul class="tags">
-  {% for tag in page.tags %}
-    <li><a href="/tags#{{ tag }}" class="tag">{{ tag }}</a></li>
+   <p class="meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %} 
+
+{% for tag in page.tags %}
+    | <a href="/tags/{{ site.baseurl }}{{ site.tag_page }}#{{ tag | slugify }}" class="tag">{{ tag }}</a>
   {% endfor %}
-</ul>
+
       </p>
     <!-- Hit counter -->
   </header>
