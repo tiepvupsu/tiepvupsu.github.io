@@ -40,6 +40,9 @@ w, h = 512, 512
 img = Image.fromarray(x1)
 
 img2 = img.resize((14, 14))
-img2.save('my.png')
-img2.show()
+# img2.save('my.png')
+# img2.show()
+import scipy.misc
+scipy.misc.imsave('my2.png', img2)
+
 print np.asarray(img2)
