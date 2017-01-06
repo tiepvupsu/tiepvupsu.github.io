@@ -19,7 +19,9 @@ body {
 
 h1, h2, h3, h4, h5, h6 { 
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  font-size: 100%; font-weight: 500; }
+  font-size: 100%; font-weight: 500; 
+  text-align: left;
+}
 
 a         { color: #2a7ae2; text-decoration: none; }
 a:hover   { color: #000; text-decoration: underline; }
@@ -200,6 +202,7 @@ a:hover   { color: #000; text-decoration: underline; }
   line-height: 1;
   font-weight: 300;
   margin: 40px 0 20px;
+  text-align: left;
 }
 
 .post-content h2 {
