@@ -1,8 +1,9 @@
 ---
-layout: post
+layout: page
 title: Math
 permalink: /math/
 mathjax: true
+<!-- tags: General -->
 ---
 
 Một số kiến thức về Đại Số Tuyến Tính, Xác Suất Thống Kê, Toán Tối Ưu cần thiết cho Machine Learning.

@@ -513,18 +513,20 @@ td{
   padding: 0;
 }
 
+
 .tags li {
   float: left; 
 }
 
 .tag {
   background: #eee;
-  border-radius: 3px 0 0 3px;
-  color: ##308FDF;
+  border-radius: 3px 3px 3px 3px;
+  color: ##eee;
   display: inline-block;
-  height: 26px;
-  line-height: 26px;
-  padding: 0 20px 0 23px;
+  height: 23px;
+  font-size: 14px;
+  line-height: 23px;
+  padding: 0 10px 0 20px;
   position: relative;
   margin: 0 10px 10px 0;
   text-decoration: none;
@@ -537,13 +539,13 @@ td{
   box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
   content: '';
   height: 6px;
-  left: 10px;
+  left: 8px;
   position: absolute;
   width: 6px;
-  top: 10px;
+  top: 8px;
 }
 
-.tag::after {
+/*.tag::after {
   background: #fff;
   border-bottom: 13px solid transparent;
   border-left: 10px solid #eee;
@@ -552,7 +554,24 @@ td{
   position: absolute;
   right: 0;
   top: 0;
-}
+}*/
+
+.tag:after { 
+ /* content: '';  
+  position: absolute;  
+  top: 7px;  
+  left: 1px;  
+  width: 5px;  
+  height: 5px;  
+  background: #FFF;  
+  border-radius: 4px;  
+  border: 1px solid #DCA03B;  
+  box-shadow: 0 1px 0 rgba(255,255,255,0.2), inset 0 1px 1px rgba(0,0,0,0.21);  */
+    -webkit-transform: scale(1, 1.5) rotate(45deg);  
+  -moz-transform: scale(1, 1.5) rotate(45deg);  
+  -ms-transform: scale(1, 1.5) rotate(45deg);  
+  transform: scale(1, 1.5) rotate(45deg); 
+}  
 
 .tag:hover {
   background-color: #308FDF;
