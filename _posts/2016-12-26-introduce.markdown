@@ -4,6 +4,10 @@ comments: true
 title:  "Bài 1: Giới thiệu về Machine Learning"
 date:   2016-12-26 15:22:00
 mathjax: true
+category: Cat1
+tags: 
+    - tag1
+    - tag2
 ---
 
 <div class="imgcap">

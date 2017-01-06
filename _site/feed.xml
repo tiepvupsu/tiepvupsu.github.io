@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 06 Jan 2017 10:45:17 -0500</pubDate>
-    <lastBuildDate>Fri, 06 Jan 2017 10:45:17 -0500</lastBuildDate>
+    <pubDate>Fri, 06 Jan 2017 10:48:24 -0500</pubDate>
+    <lastBuildDate>Fri, 06 Jan 2017 10:48:24 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -295,8 +295,6 @@
         <pubDate>Wed, 04 Jan 2017 10:22:00 -0500</pubDate>
         <link>http://localhost:4000/2017/01/04/kmeans2/</link>
         <guid isPermaLink="true">http://localhost:4000/2017/01/04/kmeans2/</guid>
-        
-        <category>-Unsupervised-learning</category>
         
         
       </item>
@@ -1594,9 +1592,15 @@ Mục đích là xấp xỉ hàm số \(f\) thật tốt để khi có một d�
 
 </description>
         <pubDate>Mon, 26 Dec 2016 10:22:00 -0500</pubDate>
-        <link>http://localhost:4000/2016/12/26/introduce/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/12/26/introduce/</guid>
+        <link>http://localhost:4000/cat1/2016/12/26/introduce/</link>
+        <guid isPermaLink="true">http://localhost:4000/cat1/2016/12/26/introduce/</guid>
         
+        <category>tag1</category>
+        
+        <category>tag2</category>
+        
+        
+        <category>Cat1</category>
         
       </item>
     
