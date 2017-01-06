@@ -23,8 +23,8 @@ layout: default
     
    <p class="meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %} 
 
-{% for tag in page.tags %}
-    | <a href="/tags#{{ site.baseurl }}{{ site.tag_page }}#{{ tag | slugify }}" class="tag">{{ tag }}</a>
+| {% for tag in page.tags %}
+    <a href="/tags{{ site.baseurl }}{{ site.tag_page }}#{{ tag | slugify }}" class="tag">{{ tag }}</a>
   {% endfor %}
       </p>
   </header>
