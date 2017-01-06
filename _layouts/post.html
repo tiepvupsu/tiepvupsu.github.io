@@ -23,9 +23,11 @@ layout: default
     
     <p class="meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %} 
     |
-{% for tag in page.tags %}
-    <a href="/tags/{{ site.baseurl }}{{ site.tag_page }}#{{ tag | slugify }}" class="tag">{{ tag }}</a>
+<ul class="tags">
+  {% for tag in page.tags %}
+    <li><a href="/tags#{{ tag }}" class="tag">{{ tag }}</a></li>
   {% endfor %}
+</ul>
     <!-- Hit counter https://gist.github.com/Phlow/b31f3a8d292aa63081c6--> 
 <!--     {% comment %}
     *
