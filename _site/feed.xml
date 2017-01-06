@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 06 Jan 2017 11:22:47 -0500</pubDate>
-    <lastBuildDate>Fri, 06 Jan 2017 11:22:47 -0500</lastBuildDate>
+    <pubDate>Fri, 06 Jan 2017 11:26:00 -0500</pubDate>
+    <lastBuildDate>Fri, 06 Jan 2017 11:26:00 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -1550,7 +1550,7 @@ Mục đích là xấp xỉ hàm số \(f\) thật tốt để khi có một d�
         <link>http://localhost:4000/2016/12/27/categories/</link>
         <guid isPermaLink="true">http://localhost:4000/2016/12/27/categories/</guid>
         
-        <category>general</category>
+        <category>General</category>
         
         
       </item>
@@ -1615,7 +1615,7 @@ Mục đích là xấp xỉ hàm số \(f\) thật tốt để khi có một d�
         <link>http://localhost:4000/2016/12/26/introduce/</link>
         <guid isPermaLink="true">http://localhost:4000/2016/12/26/introduce/</guid>
         
-        <category>general</category>
+        <category>General</category>
         
         
       </item>

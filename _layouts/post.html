@@ -26,9 +26,7 @@ layout: default
 {% for tag in page.tags %}
     | <a href="/tags/{{ site.baseurl }}{{ site.tag_page }}#{{ tag | slugify }}" class="tag">{{ tag }}</a>
   {% endfor %}
-
       </p>
-    <!-- Hit counter -->
   </header>
   <article class="post-content">
   {{ content }}
@@ -39,7 +37,7 @@ layout: default
   <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   {% endif %}
   
-
+  <hr>
   {% include share-page.html %}
 
 
