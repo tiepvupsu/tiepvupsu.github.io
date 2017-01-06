@@ -23,7 +23,7 @@ h1, h2, h3, h4, h5, h6 {
 
 a         { color: #2a7ae2; text-decoration: none; }
 a:hover   { color: #000; text-decoration: underline; }
-a:visited { color: #205caa; }
+/*a:visited { color: #205caa; }*/
 
 /* Utility */
 
@@ -432,7 +432,7 @@ a:visited { color: #205caa; }
 
 .PageNavigation {
   font-size: 16px;
-  font-weight: bold;
+  /*font-weight: bold;*/
   display: block;
   width: auto;
   overflow: hidden;
@@ -513,21 +513,25 @@ td{
   margin: 0;
   overflow: hidden; 
   padding: 0;
+  text-align: left;
 }
 
 
 .tags li {
   float: left; 
+  text-align: left;
 }
 
 .tag {
-  background: #eee;
+  text-align: left;
+  background: #308FDF;
+  color : #fff;
   border-radius: 3px 3px 3px 3px;
   /*color: ##eee;*/
   /*font-weight: bold*/
   display: inline-block;
   height: 23px;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 23px;
   padding: 0 10px 0 20px;
   position: relative;

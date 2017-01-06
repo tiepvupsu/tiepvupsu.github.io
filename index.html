@@ -9,11 +9,11 @@ layout: default
       <li>
         <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}
         </span>
-        <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+        <a style = "text-align: left" class="post-link" href="{{ post.url | prepend: site.baseurl }}" > {{ post.title }}</a>
         <br>
         {% if post.tags %}    
         <!-- |      -->
-        <!-- <ul class="tags"> -->
+        <ul class="tags">
           {% for tag in post.tags %}
             <!-- <li> -->
             <a href="/tags#{{ tag }}" class="tag">{{ tag }}</a>

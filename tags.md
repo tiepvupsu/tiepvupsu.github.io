@@ -23,6 +23,7 @@ to the `site_tags` variable. -->
 </ul>
 
 <!-- Posts by Tag -->
+## Posts by Tags:
 <div>
   {% for item in (0..site.tags.size) %}{% unless forloop.last %}
     {% capture this_word %}{{ tag_words[item] }}{% endcapture %}

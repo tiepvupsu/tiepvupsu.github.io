@@ -5,7 +5,7 @@ title:  "Bài 5: K-means Clustering: Simple Applications"
 date:   2017-01-04 15:22:00
 mathjax: true
 published: true
-tags: Clustering Unsupervised-learning Kmeans
+tags: Clustering Kmeans Unsupervised-learning MNIST
 ---
 
 <div class="imgcap">

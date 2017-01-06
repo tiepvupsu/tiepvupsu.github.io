@@ -1,8 +1,6 @@
 ---
 layout: default
 ---
-<div class="post">
-
 <div class="PageNavigation">
   {% if page.previous.url %}
     <a class="prev" href="{{page.previous.url}}">&laquo; {{page.previous.title}}</a>
@@ -11,18 +9,27 @@ layout: default
     <a class="next" href="{{page.next.url}}">{{page.next.title}} &raquo;</a>
   {% endif %}
 </div>
-  <header class="post-header">    
+  <header>    
+  <!-- title -->
+     <p style = "font-size: 35px; font-weight: 300; color: #3C5B9B; text-align: left">{{ page.title }}</p>
+  <!-- title -->
 
-   <p class="meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %} 
-  </p>
-    <p class = "post-link" style = "font-size: 20px; font-weight: 200; text-align: left">{{ page.title }}</p>
+  <!-- tags -->
   {% if page.tags%} 
- {% for tag in page.tags %}
-    <a href="/tags{{ site.baseurl }}{{ site.tag_page }}#{{ tag | slugify }}" class="tag">{{ tag }}</a>
-  {% endfor %}
+    <span style = "text-align: left">
+   {% for tag in page.tags %}
+      <a href="/tags#{{ tag }}" class="tag">{{ tag }}</a>
+    {% endfor %}
+    </span>
   {% endif %}
+  <!-- tags -->
+  <!-- date -->
+   <p class="meta" style = "color: #9C848C">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %} 
+  </p>
+  <!-- date -->
   </header>
 
+<div class="post">
   <article class="post-content">
   {{ content }}
   </article>
@@ -52,31 +59,5 @@ layout: default
   {% include disqus_comments.html %}
 <!-- {% endif %} -->
 
-
-
-  <!-- disqus comments -->
-<!--  {% if page.comments %}
-<div id="disqus_thread"></div>
-<script>
-
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-
-var disqus_config = function () {
-this.page.url = "{{site.url}}{{page.url}}";  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = "{{page.id}}"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = '//tiepvu.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  {% endif %} -->
-  
 </div>
 
