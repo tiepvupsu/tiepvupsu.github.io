@@ -5,7 +5,7 @@ title:  "Bài 6: K-nearest neighbors"
 permalink: /2017/01/08/knn/
 mathjax: true
 published: true
-tags: Clustering KNN Regression Supervised-learning MNIST Iris
+tags: KNN Regression Supervised-learning MNIST Iris
 ---
 
 <div class="imgcap">

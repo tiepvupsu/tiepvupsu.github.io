@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 07 Jan 2017 17:32:10 -0500</pubDate>
-    <lastBuildDate>Sat, 07 Jan 2017 17:32:10 -0500</lastBuildDate>
+    <pubDate>Sat, 07 Jan 2017 17:32:55 -0500</pubDate>
+    <lastBuildDate>Sat, 07 Jan 2017 17:32:55 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -471,8 +471,6 @@ w_i = \exp{- \|\|\mathbf{x} - \mathbf{x}_i\|\|_2^2}{\sigma^2}}
         <pubDate>Sun, 08 Jan 2017 00:00:00 -0500</pubDate>
         <link>http://localhost:4000/2017/01/08/knn/</link>
         <guid isPermaLink="true">http://localhost:4000/2017/01/08/knn/</guid>
-        
-        <category>Clustering</category>
         
         <category>KNN</category>
         
