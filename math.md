@@ -28,7 +28,6 @@ Một số kiến thức về Đại Số Tuyến Tính, Xác Suất Thống Kê
 <!-- ========================== New Heading ==================== -->
 <a name="luu-y-ve-ky-hieu"></a>
 
-<a name="luu-y-ve-ky-hieu"></a>
 ## Lưu ý về ký hiệu
 
 Trong các bài viết của tôi, các số vô hướng được biểu diễn bởi các chữ cái viết ở dạng không in đậm, có thể viết hoa, ví dụ \\(x_1, N, y, k\\). Các vector được biểu diễn bằng các chữ cái thường in đậm, ví dụ \\(\mathbf{y}, \mathbf{x}_1 \\). Nếu không giải thích gì thêm, các vector được mặc định hiểu là các vector cột. Các ma trận được biểu diễn bởi các chữ viết hoa in đậm, ví dụ \\(\mathbf{X, Y, W} \\).
@@ -40,13 +39,11 @@ Tương tự, trong ma trận, \\(\mathbf{X} = [\mathbf{x}\_1, \mathbf{x}\_2, \d
 <!-- ========================== New Heading ==================== -->
 <a name="dai-so-tuyen-tinh"></a>
 
-<a name="dai-so-tuyen-tinh"></a>
 ## Đại số tuyến tính 
 
 <!-- ========================== New Heading ==================== -->
 <a name="norms-chuan"></a>
 
-<a name="norms-chuan"></a>
 ### Norms (chuẩn)
 Trong không gian một chiều, việc đo khoảng cách giữa hai điểm đã rất quen thuộc: lấy trị tuyệt đối của hiệu giữa hai giá trị đó. Trong không gian hai chiều, tức mặt phẳng, chúng ta thường dùng khoảng cách Eclid để đo khoảng cách giữa hai điểm. Khoảng cách này chính là cái chúng ta thường nói bằng ngôn ngữ thông thường là _đường chim bay_. Đôi khi, để đi từ một điểm này tới một điểm kia, con người chúng ta không thể đi bằng đường chim bay được mà còn phụ thuộc vào việc đường đi nối giữa hai điểm có dạng như thế nào nữa. 
 
@@ -58,7 +55,6 @@ Và đó chính là lý do mà khái niệm norm (chuẩn) ra đời. Có nhiề
 <!-- ========================== New Heading ==================== -->
 <a name="dinh-nghia"></a>
 
-<a name="dinh-nghia"></a>
 #### Định nghĩa
 Một hàm số \\(f() \\) ánh xạ một điểm \\(\mathbf{x}\\) từ không gian \\(n\\) chiều sang tập số thực một chiều được gọi là norm nếu nó thỏa mãn ba điều kiện sau đây:
 
@@ -76,7 +72,6 @@ Một hàm số \\(f() \\) ánh xạ một điểm \\(\mathbf{x}\\) từ không 
 <!-- ========================== New Heading ==================== -->
 <a name="mot-so-chuan-thuong-dung"></a>
 
-<a name="mot-so-chuan-thuong-dung"></a>
 #### Một số chuẩn thường dùng
 
 Giả sử các vectors \\(\mathbf{x} = [x_1; x_2; \dots; x_n]\\), \\(\mathbf{y} = [y_1; y_2; \dots; y_n]\\).
@@ -125,7 +120,6 @@ Norm 2 (màu xanh) chính là đường thằng "chim bay" nối giữa hai vect
 <!-- ========================== New Heading ==================== -->
 <a name="chuan-cua-ma-tran"></a>
 
-<a name="chuan-cua-ma-tran"></a>
 #### Chuẩn của ma trận
 Với một ma trận \\(\mathbf{A} \in \mathbf{m\times n}\\), chuẩn thường được dùng nhất là chuẩn Frobenius, ký hiệu là \\(\|\|\mathbf{A}\|\|\_F\\) là căn bậc hai của tổng bình phương tất cả các phần tử của ma trận đó. 
 \\[
@@ -135,13 +129,11 @@ Với một ma trận \\(\mathbf{A} \in \mathbf{m\times n}\\), chuẩn thường
 <!-- ========================== New Heading ==================== -->
 <a name="bang-cac-dao-ham-co-ban"></a>
 
-<a name="bang-cac-dao-ham-co-ban"></a>
 ### Bảng các đạo hàm cơ bản 
 (_Đừng sợ, chỉ cần dùng để tra cứu thôi_)
 <!-- ========================== New Heading ==================== -->
 <a name="cho-vector"></a>
 
-<a name="cho-vector"></a>
 #### Cho vector 
 
 | \\(f(\mathbf{x}) \\)           | \\( \frac{\partial f(\mathbf{x})}{\partial \mathbf{x}} \\)     |         
@@ -155,7 +147,6 @@ Với một ma trận \\(\mathbf{A} \in \mathbf{m\times n}\\), chuẩn thường
 <!-- ========================== New Heading ==================== -->
 <a name="cho-ma-tran"></a>
 
-<a name="cho-ma-tran"></a>
 #### Cho ma trận
 
 | \\(f(\mathbf{x}) \\)           | \\( \frac{\partial f(\mathbf{x})}{\partial \mathbf{x}} \\)     |       
