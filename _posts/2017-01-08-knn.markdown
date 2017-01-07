@@ -41,6 +41,7 @@ Nếu như con người có kiểu học "nước đến chân mới nhảy", th
     - [Sử dụng các phép đo khoảng cách khác nhau](#su-dung-cac-phep-do-khoang-cach-khac-nhau)
     - [Ưu điểm của KNN](#uu-diem-cua-knn)
     - [Nhược điểm của KNN](#nhuoc-diem-cua-knn)
+    - [Tăng tốc cho KNN](#tang-toc-cho-knn)
     - [Try this yourself](#try-this-yourself)
     - [Source code](#source-code)
 - [5. Tài liệu tham khảo](#-tai-lieu-tham-khao)
@@ -372,6 +373,10 @@ Ngoài norm 1 và norm 2 tôi giới thiệu trong bài này, còn rất nhiều
 1. KNN rất nhạy cảm với nhiễu khi K nhỏ.
 2. Như đã nói, KNN là một thuật toán mà mọi tính toán đều nằm ở khâu test. Trong đó việc tính khoảng cách tới _từng_ điểm dữ liệu trong training set sẽ tốn rất nhiều thời gian, đặc biệt là với các cơ sở dữ liệu có số chiều lớn và có nhiều điểm dữ liệu. Với K càng lớn thì độ phức tạp cũng sẽ tăng lên. Ngoài ra, việc lưu toàn bộ dữ liệu trong bộ nhớ cũng ảnh hưởng tới hiệu năng của KNN.
 
+<a name="tang-toc-cho-knn"></a>
+
+### Tăng tốc cho KNN
+Ngoài việc tính toán khoảng cách từ một điểm test data đến tất cả các điểm trong traing set (Brute Force), có một số thuật toán khác giúp tăng tốc việc tìm kiếm này. Bạn đọc có thẻ tìm kiếm thêm với hai từ khóa: [K-D Tree](http://pointclouds.org/documentation/tutorials/kdtree_search.php) và [Ball Tree](https://en.wikipedia.org/wiki/Ball_tree). Tôi xin dành phần này cho độc giả tự tìm hiểu, và sẽ quay lại nếu có dịp. Chúng ta vẫn còn những thuật toán quan trọng hơn khác cần nhiều sự quan tâm hơn. 
 
 <a name="try-this-yourself"></a>
 

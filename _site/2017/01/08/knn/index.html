@@ -192,6 +192,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <li><a href="#su-dung-cac-phep-do-khoang-cach-khac-nhau">Sử dụng các phép đo khoảng cách khác nhau</a></li>
       <li><a href="#uu-diem-cua-knn">Ưu điểm của KNN</a></li>
       <li><a href="#nhuoc-diem-cua-knn">Nhược điểm của KNN</a></li>
+      <li><a href="#tang-toc-cho-knn">Tăng tốc cho KNN</a></li>
       <li><a href="#try-this-yourself">Try this yourself</a></li>
       <li><a href="#source-code">Source code</a></li>
     </ul>
@@ -548,6 +549,11 @@ w_i = \exp{- \|\|\mathbf{x} - \mathbf{x}_i\|\|_2^2}{\sigma^2}}
   <li>KNN rất nhạy cảm với nhiễu khi K nhỏ.</li>
   <li>Như đã nói, KNN là một thuật toán mà mọi tính toán đều nằm ở khâu test. Trong đó việc tính khoảng cách tới <em>từng</em> điểm dữ liệu trong training set sẽ tốn rất nhiều thời gian, đặc biệt là với các cơ sở dữ liệu có số chiều lớn và có nhiều điểm dữ liệu. Với K càng lớn thì độ phức tạp cũng sẽ tăng lên. Ngoài ra, việc lưu toàn bộ dữ liệu trong bộ nhớ cũng ảnh hưởng tới hiệu năng của KNN.</li>
 </ol>
+
+<p><a name="tang-toc-cho-knn"></a></p>
+
+<h3 id="tăng-tốc-cho-knn">Tăng tốc cho KNN</h3>
+<p>Ngoài việc tính toán khoảng cách từ một điểm test data đến tất cả các điểm trong traing set (Brute Force), có một số thuật toán khác giúp tăng tốc việc tìm kiếm này. Bạn đọc có thẻ tìm kiếm thêm với hai từ khóa: <a href="http://pointclouds.org/documentation/tutorials/kdtree_search.php">K-D Tree</a> và <a href="https://en.wikipedia.org/wiki/Ball_tree">Ball Tree</a>. Tôi xin dành phần này cho độc giả tự tìm hiểu, và sẽ quay lại nếu có dịp. Chúng ta vẫn còn những thuật toán quan trọng hơn khác cần nhiều sự quan tâm hơn.</p>
 
 <p><a name="try-this-yourself"></a></p>
 

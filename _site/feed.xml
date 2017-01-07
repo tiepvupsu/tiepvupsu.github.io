@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 07 Jan 2017 17:32:55 -0500</pubDate>
-    <lastBuildDate>Sat, 07 Jan 2017 17:32:55 -0500</lastBuildDate>
+    <pubDate>Sat, 07 Jan 2017 17:40:23 -0500</pubDate>
+    <lastBuildDate>Sat, 07 Jan 2017 17:40:23 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -53,6 +53,7 @@
       &lt;li&gt;&lt;a href=&quot;#su-dung-cac-phep-do-khoang-cach-khac-nhau&quot;&gt;Sử dụng các phép đo khoảng cách khác nhau&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#uu-diem-cua-knn&quot;&gt;Ưu điểm của KNN&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#nhuoc-diem-cua-knn&quot;&gt;Nhược điểm của KNN&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#tang-toc-cho-knn&quot;&gt;Tăng tốc cho KNN&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#try-this-yourself&quot;&gt;Try this yourself&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#source-code&quot;&gt;Source code&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
@@ -409,6 +410,11 @@ w_i = \exp{- \|\|\mathbf{x} - \mathbf{x}_i\|\|_2^2}{\sigma^2}}
   &lt;li&gt;KNN rất nhạy cảm với nhiễu khi K nhỏ.&lt;/li&gt;
   &lt;li&gt;Như đã nói, KNN là một thuật toán mà mọi tính toán đều nằm ở khâu test. Trong đó việc tính khoảng cách tới &lt;em&gt;từng&lt;/em&gt; điểm dữ liệu trong training set sẽ tốn rất nhiều thời gian, đặc biệt là với các cơ sở dữ liệu có số chiều lớn và có nhiều điểm dữ liệu. Với K càng lớn thì độ phức tạp cũng sẽ tăng lên. Ngoài ra, việc lưu toàn bộ dữ liệu trong bộ nhớ cũng ảnh hưởng tới hiệu năng của KNN.&lt;/li&gt;
 &lt;/ol&gt;
+
+&lt;p&gt;&lt;a name=&quot;tang-toc-cho-knn&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;tăng-tốc-cho-knn&quot;&gt;Tăng tốc cho KNN&lt;/h3&gt;
+&lt;p&gt;Ngoài việc tính toán khoảng cách từ một điểm test data đến tất cả các điểm trong traing set (Brute Force), có một số thuật toán khác giúp tăng tốc việc tìm kiếm này. Bạn đọc có thẻ tìm kiếm thêm với hai từ khóa: &lt;a href=&quot;http://pointclouds.org/documentation/tutorials/kdtree_search.php&quot;&gt;K-D Tree&lt;/a&gt; và &lt;a href=&quot;https://en.wikipedia.org/wiki/Ball_tree&quot;&gt;Ball Tree&lt;/a&gt;. Tôi xin dành phần này cho độc giả tự tìm hiểu, và sẽ quay lại nếu có dịp. Chúng ta vẫn còn những thuật toán quan trọng hơn khác cần nhiều sự quan tâm hơn.&lt;/p&gt;
 
 &lt;p&gt;&lt;a name=&quot;try-this-yourself&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
