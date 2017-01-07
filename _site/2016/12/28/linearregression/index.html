@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Bài 3: Linear Regression</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="">
+    <link rel="canonical" href="http://localhost:4000/2016/12/28/linearregression/">
+    <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Machine Learning cơ bản posts" />
+    <!-- <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" /> -->
+    <!-- <link rel="icon" type="image/x-icon" href="favicon.ico" sizes="16x16"> -->
+    <!-- <link rel="icon" type="image/png" href="http://earlystudios.altervista.org/images/ai.png" sizes="16x16"> -->
+    <link rel="icon" type="image/png" href="https://www.highspot.com/wp-content/uploads/icon-intelligent-recommendations.png" sizes="32x32">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+         <!-- Google Analytics -->
+      
+      <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KTCD8BX');</script>
+<!-- End Google Tag Manager -->
+</head>
+
+ 
+    
+    <body>
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KTCD8BX"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+
+    <header class="site-header">
+
+  <div class="wrap">
+
+    <div style="float:left; margin-top:10px; margin-right:10px;">
+    <a href="/feed.xml">
+      <img src="/assets/rssicon.svg" width="40">
+    </a>
+    </div>
+
+    <a class="site-title" href="/">Machine Learning cơ bản</a>
+    
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+          <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+            h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+            h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+            c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">
+        
+          <a class="page-link" href="/about/">About</a>
+        
+          
+        
+          
+        
+          <a class="page-link" href="/index/">Index</a>
+        
+          <a class="page-link" href="/math/">Math</a>
+        
+          
+        
+          <a class="page-link" href="/subscribe/">Subscribe</a>
+        
+          <a class="page-link" href="/tags">Tags</a>
+        
+      </div>
+    </nav>
+  </div>
+</header>
+
+
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="PageNavigation">
+  
+    <a class="prev" href="/2016/12/27/categories/">&laquo; Bài 2: Phân nhóm các thuật toán Machine Learning</a>
+  
+  
+    <a class="next" href="/2017/01/01/kmeans/">Bài 4: K-means Clustering &raquo;</a>
+  
+</div>
+  <header>    
+  <!-- title -->
+     <p style = "font-size: 27px; text-align: left">Bài 3: Linear Regression</p>
+  <!-- title -->
+  </header>
+
+  <!-- tags -->
+  <!--   <span style = "text-align: left">
+   
+   
+      <a href="/tags#Linear-models" class="tag">Linear-models</a>
+    
+      <a href="/tags#Regression" class="tag">Regression</a>
+    
+      <a href="/tags#Supervised-learning" class="tag">Supervised-learning</a>
+    
+  
+    </span> -->
+
+         
+        <!-- |      -->
+        <ul class="tags">
+          
+            <!-- <li> -->
+            <a href="/tags#Linear-models" class="tag">Linear-models</a>
+            <!-- </li> -->
+          
+            <!-- <li> -->
+            <a href="/tags#Regression" class="tag">Regression</a>
+            <!-- </li> -->
+          
+            <!-- <li> -->
+            <a href="/tags#Supervised-learning" class="tag">Supervised-learning</a>
+            <!-- </li> -->
+          
+          </ul>
+        
+  <!-- tags -->
+  <!-- date -->
+   <p class="meta" style = "color: #818181">Dec 28, 2016 
+  </p>
+  <!-- date -->
+
+<div class="post">
+  <article class="post-content">
+  <div class="imgcap">
+<div>
+<a href="/2016/12/28/linearregression/">
+    <img src="/assets/LR/output_5_1.png" width="800" /></a>
+    <!-- <img src="/assets/rl/mdp.png" height="206"> -->
+</div>
+<div class="thecap"> Linear Regression <br /></div>
+</div>
+
+<p>Trong bài này, tôi sẽ giới thiệu một trong những thuật toán cơ bản nhất (và đơn giản nhất) của Machine Learning. Đây là một thuật toán <em>Supervised learning</em> có tên <strong>Linear Regression</strong> (Hồi Quy Tuyến Tính). Bài toán này đôi khi được gọi là <em>Linear Fitting</em> (trong thống kê) hoặc <em>Linear Least Square</em>.</p>
+
+<p><strong>Trong trang này:</strong>
+<!-- MarkdownTOC --></p>
+
+<ul>
+  <li><a href="#-gioi-thieu">1. Giới thiệu</a></li>
+  <li><a href="#-phan-tich-toan-hoc">2. Phân tích toán học</a>
+    <ul>
+      <li><a href="#dang-cua-linear-regression">Dạng của Linear Regression</a></li>
+      <li><a href="#sai-so-du-doan">Sai số dự đoán</a></li>
+      <li><a href="#ham-mat-mat">Hàm mất mát</a></li>
+      <li><a href="#nghiem-cho-bai-toan-linear-regression">Nghiệm cho bài toán Linear Regression</a></li>
+    </ul>
+  </li>
+  <li><a href="#-vi-du-tren-python">3. Ví dụ trên Python</a>
+    <ul>
+      <li><a href="#bai-toan">Bài toán</a></li>
+      <li><a href="#hien-thi-du-lieu-tren-do-thi">Hiển thị dữ liệu trên đồ thị</a></li>
+      <li><a href="#nghiem-theo-cong-thuc">Nghiệm theo công thức</a></li>
+      <li><a href="#nghiem-theo-thu-vien-scikit-learn">Nghiệm theo thư viện scikit-learn</a></li>
+    </ul>
+  </li>
+  <li><a href="#-thao-luan">4. Thảo luận</a>
+    <ul>
+      <li><a href="#cac-bai-toan-co-the-giai-bang-linear-regression">Các bài toán có thể giải bằng Linear Regression</a></li>
+      <li><a href="#han-che-cua-linear-regression">Hạn chế của Linear Regression</a></li>
+      <li><a href="#cac-phuong-phap-toi-uu">Các phương pháp tối ưu</a></li>
+    </ul>
+  </li>
+  <li><a href="#-tai-lieu-tham-khao">5. Tài liệu tham khảo</a></li>
+</ul>
+
+<!-- /MarkdownTOC -->
+
+<!-- ========================== New Heading ==================== -->
+<p><a name="-gioi-thieu"></a></p>
+
+<h2 id="1-giới-thiệu">1. Giới thiệu</h2>
+
+<p>Quay lại <a href="/2016/12/27/categories/#regression">ví dụ đơn giản được nêu trong bài trước</a>: một căn nhà rộng \(x_1 ~ \text{m}^2\), có \(x_2\) phòng ngủ và cách trung tâm thành phố \(x_3~ \text{km}\) có giá là bao nhiêu. Giả sử chúng ta đã có số liệu thống kê từ 1000 căn nhà trong thành phố đó, liệu rằng khi có một căn nhà mới với các thông số về diện tích, số phòng ngủ và khoảng cách tới trung tâm, chúng ta có thể dự đoán được giá của căn nhà đó không? Nếu có thì hàm dự đoán \(y = f(\mathbf{x}) \) sẽ có dạng như thế nào. Ở đây \(\mathbf{x} = [x_1; x_2; x_3] \) là một vector
+cột chứa thông tin <em>input</em>, \(y\) là một số vô hướng (scalar) biểu diễn <em>output</em> (tức giá của căn nhà trong ví dụ này).</p>
+
+<p><strong>Lưu ý về ký hiệu toán học:</strong> <em>trong các bài viết của tôi, các số vô hướng được biểu diễn bởi các chữ cái viết ở dạng không in đậm, có thể viết hoa, ví dụ \(x_1, N, y, k\). Các vector được biểu diễn bằng các chữ cái thường in đậm, ví dụ \(\mathbf{y}, \mathbf{x}_1 \). Các ma trận được biểu diễn bởi các chữ viết hoa in đậm, ví dụ \(\mathbf{X, Y, W} \).</em></p>
+
+<p>Một cách đơn giản nhất, chúng ta có thể thấy rằng: i) diện tích nhà càng lớn thì giá nhà càng cao; ii) số lượng phòng ngủ càng lớn thì giá nhà càng cao; iii) càng xa trung tâm thì giá nhà càng giảm. Một hàm số đơn giản nhất có thể mô tả mối quan hệ giữa giá nhà và 3 đại lượng đầu vào là:</p>
+
+<!-- \\[ \text{ giá nhà } \approx w_1 (\text{diện tích}) + w_2 (\text{số phòng}) + w_3 (\text{ khoảng cách}) + w_0 \\]  -->
+
+<p>\[y \approx  f(\mathbf{x}) = \hat{y}\]
+\[f(\mathbf{x}) =w_1 x_1 + w_2 x_2 + w_3 x_3 + w_0 ~~~~ (1)\]
+trong đó, \(w_1, w_2, w_3, w_0\) là các hằng số,  \(w_0\) còn được gọi là bias. Mối quan hệ \(y \approx f(\mathbf{x})\) bên trên là một mối quan hệ tuyến tính (linear). Bài toán chúng ta đang làm là một bài toán thuộc loại regression. Bài toán đi tìm các hệ số tối ưu \( \{w_1, w_2, w_3, w_0 \}\) chính vì vậy được gọi là bài toán Linear Regression.</p>
+
+<p><strong>Chú ý 1:</strong> \(y\) là giá trị thực của <em>outcome</em> (dựa trên số liệu thống kê chúng ta có trong tập <em>training data</em>), trong khi \(\hat{y}\) là giá trị mà mô hình Linear Regression dự đoán được. Nhìn chung, \(y\) và \(\hat{y}\) là hai giá trị khác nhau do có sai số mô hình, tuy nhiên, chúng ta mong muốn rằng sự khác nhau này rất nhỏ.</p>
+
+<p><strong>Chú ý 2:</strong> <em>Linear</em> hay <em>tuyến tính</em> hiểu một cách đơn giản là <em>thẳng, phẳng</em>. Trong không gian hai chiều, một hàm số được gọi là <em>tuyến tính</em> nếu đồ thị của nó có dạng một <em>đường thẳng</em>. Trong không gian ba chiều, một hàm số được goi là <em>tuyến tính</em> nếu đồ thị của nó có dạng một <em>mặt phẳng</em>. Trong không gian nhiều hơn 3 chiều, khái niệm <em>mặt phẳng</em> không còn phù hợp nữa, thay vào đó, một khái niệm khác ra đời được gọi là <em>siêu mặt phẳng</em> (<em>hyperplane</em>). Các hàm số tuyến tính là các hàm đơn giản nhất, vì chúng thuận tiện trong việc hình dung và tính toán. Chúng ta sẽ được thấy trong các bài viết sau, <em>tuyến tính</em> rất quan trọng và hữu ích trong các bài toán Machine Learning. Kinh nghiệm cá nhân tôi cho thấy, trước khi hiểu được các thuật toán <em>phi tuyến</em> (non-linear, không phẳng), chúng ta cần nắm vững các kỹ thuật cho các mô hình <em>tuyến tính</em>.</p>
+
+<!-- ========================== New Heading ==================== -->
+<p><a name="-phan-tich-toan-hoc"></a></p>
+
+<h2 id="2-phân-tích-toán-học">2. Phân tích toán học</h2>
+
+<!-- ========================== New Heading ==================== -->
+<p><a name="dang-cua-linear-regression"></a></p>
+
+<h3 id="dạng-của-linear-regression">Dạng của Linear Regression</h3>
+
+<p>Trong phương trình \((1)\) phía trên, nếu chúng ta đặt \(\mathbf{w} = [w_1, w_2, w_3, w_0]^T = \) là vector hệ số cần phải tối ưu và \(\mathbf{\bar{x}} = [x_1, x_2, x_3, 1]^T\) (đọc là <em>x bar</em> trong tiếng Anh) là vector dữ liệu đầu vào <em>mở rộng</em>. Số \(1\) ở cuối được thêm vào để phép tính đơn giản hơn và thuận tiện cho việc tính toán. Khi đó, phương trình (1) có thể được viết lại dưới dạng:</p>
+
+<p>\[y \approx \mathbf{w}^T\mathbf{\bar{x}} = \hat{y}\]</p>
+
+<!-- ========================== New Heading ==================== -->
+<p><a name="sai-so-du-doan"></a></p>
+
+<h3 id="sai-số-dự-đoán">Sai số dự đoán</h3>
+
+<p>Chúng ta mong muốn rằng sự sai khác \(e\) giữa giá trị thực \(y\) và giá trị dự đoán \(\hat{y}\) (đọc là <em>y hat</em> trong tiếng Anh) là nhỏ nhất. Nói cách khác, chúng ta muốn giá trị sau đây càng nhỏ càng tốt:</p>
+
+<p>\[
+\frac{1}{2}e^2 = \frac{1}{2}(y - \hat{y})^2 = \frac{1}{2}(y - \mathbf{w}^T\mathbf{\bar{x}})^2
+\]</p>
+
+<p>trong đó hệ số \(\frac{1}{2} \) (<em>lại</em>) là để thuận tiện cho việc tính toán (khi tính đạo hàm thì số \(\frac{1}{2} \) sẽ bị triệt tiêu). Chúng ta cần \(e^2\) vì \(e = y - \hat{y} \) có thể là một số âm, việc nói \(e\) nhỏ nhất sẽ không đúng vì khi \(e = - \infty\) là rất nhỏ nhưng sự sai lệch là rất lớn. Bạn đọc có thể tự đặt câu hỏi: <strong>tại sao không dùng trị tuyệt đối \( |e| \) mà lại dùng bình phương \(e^2\) ở đây?</strong> Câu trả lời sẽ có ở phần sau.</p>
+
+<!-- ========================== New Heading ==================== -->
+<p><a name="ham-mat-mat"></a></p>
+
+<h3 id="hàm-mất-mát">Hàm mất mát</h3>
+
+<p>Điều tương tự xảy ra với tất cả các cặp <em>(input, outcome)</em> \( (\mathbf{x}_i, y_i), i = 1, 2, \dots, N \), với \(N\) là số lượng dữ liệu quan sát được. Điều chúng ta muốn, tổng sai số là nhỏ nhất, tương đương với việc tìm \( \mathbf{w} \) để hàm số sau đạt giá trị nhỏ nhất:</p>
+
+<p>\[ \mathcal{L}(\mathbf{w}) = \frac{1}{2}\sum_{i=1}^N (y_i - \mathbf{w}^T\mathbf{\bar{x}}_i)^2 ~~~~~(2) \]</p>
+
+<p>Trong đó \(\mathbf{w}^T\) là chuyển vị (transpose) của vector \(\mathbf{w}\).
+Hàm số \(\mathcal{L}(\mathbf{w}) \) được gọi là <strong>hàm mất mát</strong> (loss function) của bài toán Linear Regression. Chúng ta luôn mong muốn rằng sự mất mát (sai số) là nhỏ nhất, điều đó đồng nghĩa với việc  tìm vector hệ số \( \mathbf{w} \)  sao cho 
+giá trị của hàm mất mát này càng nhỏ càng tốt. Giá trị của \(\mathbf{w}\) làm cho hàm mất mát đạt giá trị nhỏ nhất được gọi là <em>điểm tối ưu</em> (optimal point), ký hiệu:</p>
+
+<p>\[ \mathbf{w}^* = \arg\min_{\mathbf{w}} \mathcal{L}(\mathbf{w})  \]</p>
+
+<p>Trước khi đi tìm lời giải, chúng ta đơn giản hóa phép toán trong phương trình hàm mất mát \((2)\). Đặt \(\mathbf{y} = [y_1, y_2, \dots, y_N]\) là một vector hàng chứa tất cả các <em>output</em> của <em>training data</em>; \( \mathbf{\bar{X}} = [\mathbf{\bar{x}}_1, \mathbf{\bar{x}}_2, \dots, \mathbf{\bar{x}}_N ] \) là ma trận dữ liệu đầu vào (mở rộng). Khi đó hàm số mất mát \(\mathcal{L}(\mathbf{w})\) được viết dưới dạng ma trận đơn giản hơn:</p>
+
+<p>\[
+\mathcal{L}(\mathbf{w}) 
+= \frac{1}{2}\sum_{i=1}^N (y_i - \mathbf{w}^T\mathbf{\bar{x}}_i)^2 \]
+\[
+= \frac{1}{2} \|\mathbf{y} - \mathbf{w}^T \mathbf{\bar{X}}\|_2^2 
+= \frac{1}{2} \|\mathbf{y}^T - \mathbf{\bar{X}}^T\mathbf{w} \|_2^2
+~~~(3)
+\]</p>
+
+<p>với \( \| \mathbf{z} \|_2 \) là Euclidean norm (chuẩn Euclid, hay khoảng cách Euclid), nói cách khác \( \| \mathbf{z} \|_2^2 \) là tổng của bình phương mỗi phần tử của vector \(\mathbf{z}\). Tới đây, ta đã có một dạng đơn giản của hàm mất mát được viết như phương trình \((3)\).</p>
+
+<!-- ========================== New Heading ==================== -->
+<p><a name="nghiem-cho-bai-toan-linear-regression"></a></p>
+
+<h3 id="nghiệm-cho-bài-toán-linear-regression">Nghiệm cho bài toán Linear Regression</h3>
+
+<p><strong>Cách phổ biến nhất để tìm nghiệm cho một bài toán tối ưu (chúng ta đã biết từ khi học cấp 3) là giải phương trình đạo hàm (gradient) bằng 0!</strong> Tất nhiên đó là khi việc tính đạo hàm và việc giải phương trình đạo hàm bằng 0 không quá phức tạp. Thật may mắn, với các mô hình tuyến tính, hai việc này là khả thi.</p>
+
+<p>Đạo hàm theo \(\mathbf{w} \) của hàm mất mát là: 
+\[
+\frac{\partial{\mathcal{L}(\mathbf{w})}}{\partial{\mathbf{w}}} 
+= \mathbf{\bar{X}}(\mathbf{\bar{X}}^T\mathbf{w} - \mathbf{y}^T) 
+\]</p>
+
+<p>Các bạn có thể tham khảo bảng đạo hàm theo vector hoặc ma trận của một hàm số trong <a href="https://ccrma.stanford.edu/~dattorro/matrixcalc.pdf">mục D.2 của tài liệu này</a>. <em>Đến đây tôi xin quay lại câu hỏi ở phần <a href="#sai so du doan">Sai số dự đoán</a> phía trên về việc tại sao không dùng trị tuyệt đối mà lại dùng bình phương. Câu trả lời là hàm bình phương có đạo hàm tại mọi nơi, trong khi hàm trị tuyệt đối thì không (đạo hàm không xác định tại 0)</em>.</p>
+
+<p>Phương trình đạo hàm bằng 0 tương đương với: 
+\[
+\mathbf{\bar{X}}\mathbf{\bar{X}}^T\mathbf{w} = \mathbf{\bar{X}}\mathbf{y}^T \triangleq \mathbf{b}
+~~~ (4)
+\]
+(ký hiệu \(\mathbf{\bar{X}}\mathbf{y}^T \triangleq \mathbf{b} \) nghĩa là <em>đặt</em> \(\mathbf{\bar{X}}\mathbf{y}^T\) <em>bằng</em> \(\mathbf{b}\) ).</p>
+
+<p>Nếu ma trận vuông \( \mathbf{A} \triangleq \mathbf{\bar{X}}\mathbf{\bar{X}}^T\) khả nghịch (non-singular hay inversable) thì phương trình \((4)\) có nghiệm duy nhất: \( \mathbf{w} = \mathbf{A}^{-1}\mathbf{b}  \).</p>
+
+<p>Vậy nếu ma trận \(\mathbf{A} \) không khả nghịch (có định thức bằng 0) thì sao? Nếu các bạn vẫn nhớ các kiến thức về hệ phương trình tuyến tính, trong trường hợp này thì hoặc phương trinh \( (4) \) vô nghiệm, hoặc là 
+nó
+có vô số nghiệm. Khi đó, chúng ta sử dụng khái niệm <a href="https://vi.wikipedia.org/wiki/Giả_nghịch_đảo_Moore–Penrose"><em>giả nghịch đảo</em></a> \( \mathbf{A}^{\dagger} \) (đọc là <em>A dagger</em> trong tiếng Anh). (<em>Giả nghịch đảo (pseudo inverse) là trường hợp tổng quát của nghịch đảo khi ma trận không khả nghịch hoặc thậm chí không vuông. Trong khuôn khổ bài viết này, tôi xin phép được lược bỏ phần này, nếu các bạn thực sự quan tâm, tôi sẽ viết một bài khác chỉ nói về giả nghịch đảo. Xem thêm: <a href="http://www.sci.utah.edu/~gerig/CS6640-F2012/Materials/pseudoinverse-cis61009sl10.pdf">Least Squares, Pseudo-Inverses, PCA
+&amp; SVD</a>.</em>)</p>
+
+<p>Với khái niệm giả nghịch đảo, điểm tối ưu của bài toán Linear Regression có dạng:</p>
+
+<p>\[
+\mathbf{w} = \mathbf{A}^{\dagger}\mathbf{b} = (\mathbf{\bar{X}}\mathbf{\bar{X}}^T)^{\dagger} \mathbf{\bar{X}}\mathbf{y}^T
+~~~ (5)
+\]</p>
+
+<!-- ========================== New Heading ==================== -->
+<p><a name="-vi-du-tren-python"></a></p>
+
+<h2 id="3-ví-dụ-trên-python">3. Ví dụ trên Python</h2>
+
+<!-- ========================== New Heading ==================== -->
+<p><a name="bai-toan"></a></p>
+
+<h3 id="bài-toán">Bài toán</h3>
+
+<p>Trong phần này, tôi sẽ chọn một ví dụ đơn giản về việc giải bài toán Linear Regression trong Python. Tôi cũng sẽ so sánh nghiệm của bài toán khi giải theo phương trình \((5) \) và nghiệm tìm được khi dùng thư viện <a href="http://scikit-learn.org/stable/">scikit-learn</a> của Python. (<em>Đây là thư viện Machine Learning được sử dụng rộng rãi trong Python</em>). Trong ví dụ này, dữ liệu đầu vào chỉ có 1 giá trị (1 chiều) để thuận tiện cho việc minh hoạ trong mặt phẳng.</p>
+
+<p>Chúng ta có 1 bảng dữ liệu về chiều cao và cân nặng của 15 người như dưới đây:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Chiều cao (cm)</th>
+      <th style="text-align: center">147</th>
+      <th style="text-align: center">150</th>
+      <th style="text-align: center">153</th>
+      <th style="text-align: center">155</th>
+      <th style="text-align: center">158</th>
+      <th style="text-align: center">160</th>
+      <th style="text-align: center">163</th>
+      <th style="text-align: center">165</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><strong>Cân nặng (kg)</strong></td>
+      <td style="text-align: center"><strong>49</strong></td>
+      <td style="text-align: center"><strong>50</strong></td>
+      <td style="text-align: center"><strong>51</strong></td>
+      <td style="text-align: center"><strong>52</strong></td>
+      <td style="text-align: center"><strong>54</strong></td>
+      <td style="text-align: center"><strong>56</strong></td>
+      <td style="text-align: center"><strong>58</strong></td>
+      <td style="text-align: center"><strong>59</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Chiều cao (cm)</th>
+      <th style="text-align: center">168</th>
+      <th style="text-align: center">170</th>
+      <th style="text-align: center">173</th>
+      <th style="text-align: center">175</th>
+      <th style="text-align: center">178</th>
+      <th style="text-align: center">180</th>
+      <th style="text-align: center">183</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><strong>Cân nặng (kg)</strong></td>
+      <td style="text-align: center"><strong>60</strong></td>
+      <td style="text-align: center"><strong>62</strong></td>
+      <td style="text-align: center"><strong>63</strong></td>
+      <td style="text-align: center"><strong>64</strong></td>
+      <td style="text-align: center"><strong>66</strong></td>
+      <td style="text-align: center"><strong>67</strong></td>
+      <td style="text-align: center"><strong>68</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Bài toán đặt ra là: liệu có thể dự đoán cân nặng của một người dựa vào chiều cao của họ không? (<em>Trên thực tế, tất nhiên là không, vì cân nặng còn phụ thuộc vào nhiều yếu tố khác nữa, thể tích chẳng hạn</em>). Vì blog này nói về các thuật toán Machine Learning đơn giản nên tôi sẽ giả sử rằng chúng ta có thể dự đoán được.</p>
+
+<p>Chúng ta có thể thấy là cân nặng sẽ tỉ lệ thuận với chiều cao (càng cao càng nặng), nên có thể sử dụng Linear Regression model cho việc dự đoán này. Để kiểm tra độ chính xác của model tìm được, chúng ta sẽ giữ lại cột 155 và 160 cm để kiểm thử, các cột còn lại được sử dụng để huấn luyện (train) model.</p>
+
+<!-- ========================== New Heading ==================== -->
+<p><a name="hien-thi-du-lieu-tren-do-thi"></a></p>
+
+<h3 id="hiển-thị-dữ-liệu-trên-đồ-thị">Hiển thị dữ liệu trên đồ thị</h3>
+<p>Trước tiên, chúng ta cần có hai thư viện <a href="http://www.numpy.org/">numpy</a> cho đại số tuyến tính và <a href="http://matplotlib.org/">matplotlib</a> cho việc vẽ hình.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span> 
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+</code></pre>
+</div>
+
+<p>Tiếp theo, chúng ta khai báo và biểu diễn dữ liệu trên một đồ thị.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># height (cm)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">147</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">153</span><span class="p">,</span> <span class="mi">158</span><span class="p">,</span> <span class="mi">163</span><span class="p">,</span> <span class="mi">165</span><span class="p">,</span> <span class="mi">168</span><span class="p">,</span> <span class="mi">170</span><span class="p">,</span> <span class="mi">173</span><span class="p">,</span> <span class="mi">175</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">183</span><span class="p">]])</span>
+<span class="c"># weight (kg)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span>  <span class="mi">54</span><span class="p">,</span> <span class="mi">58</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">62</span><span class="p">,</span> <span class="mi">63</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">66</span><span class="p">,</span> <span class="mi">67</span><span class="p">,</span> <span class="mi">68</span><span class="p">]])</span>
+<span class="c"># Visualize data </span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s">'ro'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">140</span><span class="p">,</span> <span class="mi">190</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">75</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'Height (cm)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'Weight (kg)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<!-- ![png](/assets/LR/output_3_0.png) -->
+<div class="imgcap">
+<img src="/assets/LR/output_3_0.png" align="center" />
+</div>
+
+<p>Từ đồ thị này ta thấy rằng dữ liệu được sắp xếp gần như theo 1 đường thẳng, vậy mô hình Linear Regression nhiều khả năng sẽ cho kết quả tốt:</p>
+
+<p>(cân nặng) = w_1*(chiều cao) + w_0</p>
+
+<!-- ========================== New Heading ==================== -->
+<p><a name="nghiem-theo-cong-thuc"></a></p>
+
+<h3 id="nghiệm-theo-công-thức">Nghiệm theo công thức</h3>
+
+<p>Tiếp theo, chúng ta sẽ tính toán các hệ số w_1 và w_0 dựa vào công thức \((5)\). Chú ý: giả nghịch đảo của một ma trận <code class="highlighter-rouge">A</code> trong Python sẽ được tính bằng <code class="highlighter-rouge">numpy.linalg.pinv(A)</code>, <code class="highlighter-rouge">pinv</code> là từ viết tắt của <em>pseudo inverse</em>.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># Building Xbar </span>
+<span class="n">one</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="n">Xbar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">X</span><span class="p">,</span> <span class="n">one</span><span class="p">),</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c"># Calculating weights of the fitting line </span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Xbar</span><span class="p">,</span> <span class="n">Xbar</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Xbar</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">pinv</span><span class="p">(</span><span class="n">A</span><span class="p">),</span> <span class="n">b</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">'w = '</span><span class="p">,</span> <span class="n">w</span>
+<span class="c"># Preparing the fitting line </span>
+<span class="n">w_1</span> <span class="o">=</span> <span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">w_0</span> <span class="o">=</span> <span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">145</span><span class="p">,</span> <span class="mi">185</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">y0</span> <span class="o">=</span> <span class="n">w_1</span><span class="o">*</span><span class="n">x0</span> <span class="o">+</span> <span class="n">w_0</span>
+
+<span class="c"># Drawing the fitting line </span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="s">'ro'</span><span class="p">)</span>     <span class="c"># data </span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">)</span>               <span class="c"># the fitting line</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">140</span><span class="p">,</span> <span class="mi">190</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">75</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'Height (cm)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'Weight (kg)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>w =  [[  0.55920496]
+ [-33.73541021]]
+</code></pre>
+</div>
+
+<!-- ![pnet/asset/LR/output_5_1.png) -->
+<div class="imgcap">
+<img src="/assets/LR/output_5_1.png" align="center" />
+</div>
+
+<p>Từ đồ thị bên trên ta thấy rằng các điểm dữ liệu màu đỏ nằm khá gần đường thẳng dự đoán màu xanh. Vậy mô hình Linear Regression hoạt động tốt với tập dữ liệu <em>training</em>. Bây giờ, chúng ta sử dụng mô hình này để dự đoán cân nặng của hai người có chiều cao 155 và 160 cm mà chúng ta đã không dùng khi tính toán nghiệm.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">y1</span> <span class="o">=</span> <span class="n">w_1</span><span class="o">*</span><span class="mi">155</span> <span class="o">+</span> <span class="n">w_0</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="n">w_1</span><span class="o">*</span><span class="mi">160</span> <span class="o">+</span> <span class="n">w_0</span>
+
+<span class="k">print</span> <span class="s">u'Dự đoán cân nặng của người có chiều cao 155 cm: </span><span class="si">%.2</span><span class="s">f (kg), số liệu thật: 52 (kg)'</span>  <span class="o">%</span><span class="p">(</span><span class="n">y1</span><span class="p">)</span> 
+<span class="k">print</span> <span class="s">u'Dự đoán cân nặng của người có chiều cao 160 cm: </span><span class="si">%.2</span><span class="s">f (kg), số liệu thật: 56 (kg)'</span>  <span class="o">%</span><span class="p">(</span><span class="n">y2</span><span class="p">)</span> 
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Dự đoán cân nặng của người có chiều cao 155 cm: 52.94 (kg), số liệu thật: 52 (kg)
+Dự đoán cân nặng của người có chiều cao 160 cm: 55.74 (kg), số liệu thật: 56 (kg)
+</code></pre>
+</div>
+
+<p>Chúng ta thấy rằng kết quả dự đoán khá gần với số liệu thực tế.</p>
+
+<!-- ========================== New Heading ==================== -->
+<p><a name="nghiem-theo-thu-vien-scikit-learn"></a></p>
+
+<h3 id="nghiệm-theo-thư-viện-scikit-learn">Nghiệm theo thư viện scikit-learn</h3>
+
+<p>Tiếp theo, chúng ta sẽ sử dụng thư viện scikit-learn của Python để tìm nghiệm.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">linear_model</span>
+
+<span class="c"># fit the model by Linear Regression</span>
+<span class="n">regr</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">LinearRegression</span><span class="p">(</span><span class="n">fit_intercept</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span> <span class="c"># fit_intercept = False for calculating the bias</span>
+<span class="n">regr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Xbar</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+
+<span class="c"># Compare two results</span>
+<span class="k">print</span> <span class="s">u'Nghiệm tìm được bằng scikit-learn  : '</span><span class="p">,</span> <span class="n">regr</span><span class="o">.</span><span class="n">coef_</span> 
+<span class="k">print</span> <span class="s">u'Nghiệm tìm được từ phương trình (5): '</span><span class="p">,</span> <span class="n">w</span><span class="o">.</span><span class="n">T</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Nghiệm tìm được bằng scikit-learn  :  [[  0.55920496 -33.73541021]]
+Nghiệm tìm được từ phương trình (5):  [[  0.55920496 -33.73541021]]
+</code></pre>
+</div>
+
+<p>Chúng ta thấy rằng hai kết quả thu được như nhau! (<em>Nghĩa là tôi đã không mắc lỗi nào trong cách tìm nghiệm ở phần trên</em>)</p>
+
+<p><a href="https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/LR/LR.ipynb">Source code Jupyter Notebook cho bài này.</a></p>
+
+<!-- ========================== New Heading ==================== -->
+<p><a name="-thao-luan"></a></p>
+
+<h2 id="4-thảo-luận">4. Thảo luận</h2>
+
+<!-- ========================== New Heading ==================== -->
+<p><a name="cac-bai-toan-co-the-giai-bang-linear-regression"></a></p>
+
+<h3 id="các-bài-toán-có-thể-giải-bằng-linear-regression">Các bài toán có thể giải bằng Linear Regression</h3>
+<p>Hàm số \(y \approx f(\mathbf{x})= \mathbf{w}^T\mathbf{x}\) là một hàm tuyến tính theo cả \( \mathbf{w}\) và \(\mathbf{x}\). Trên thực tế, Linear Regression có thể áp dụng cho các mô hình chỉ cần tuyến tính theo \(\mathbf{w}\). Ví dụ:
+\[
+y \approx w_1 x_1 + w_2 x_2 + w_3 x_1^2 + 
+\]
+\[
++w_4 \sin(x_2) + w_5 x_1x_2 + w_0
+\]
+là một hàm tuyến tính theo \(\mathbf{w}\) và vì vậy cũng có thể được giải bằng Linear Regression. Với mỗi dữ liệu đầu vào \(\mathbf{x}=[x_1; x_2] \), chúng ta tính toán dữ liệu mới \(\tilde{\mathbf{x}} = [x_1, x_2, x_1^2, \sin(x_2), x_1x_2]\) (đọc là <em>x tilde</em> trong tiếng Anh) rồi áp dụng Linear Regression với dữ liệu mới này.</p>
+
+<p>Xem thêm ví dụ về <a href="http://www.varsitytutors.com/hotmath/hotmath_help/topics/quadratic-regression">Quadratic Regression</a> (Hồi Quy Bậc Hai).</p>
+<div class="imgcap">
+<div>
+<a href="http://www.varsitytutors.com/hotmath/hotmath_help/topics/quadratic-regression">
+    <img src="http://www.varsitytutors.com/assets/vt-hotmath-legacy/hotmath_help/topics/quadratic-regression/f-qr-1-1.gif" width="300" /></a>
+</div>
+<div class="thecap"> Quadratic Regression (Nguồn: <a href="http://www.varsitytutors.com/hotmath/hotmath_help/topics/quadratic-regression"> Quadratic Regression</a>) <br /></div>
+</div>
+
+<!-- ========================== New Heading ==================== -->
+<p><a name="han-che-cua-linear-regression"></a></p>
+
+<h3 id="hạn-chế-của-linear-regression">Hạn chế của Linear Regression</h3>
+
+<p>Hạn chế đầu tiên của Linear Regression là nó rất <strong>nhạy cảm với nhiễu</strong> (sensitive to noise). Trong ví dụ về mối quan hệ giữa chiều cao và cân nặng bên trên, nếu có chỉ
+một cặp dữ liệu <em>nhiễu</em> (150 cm, 90kg) thì kết quả sẽ sai khác đi rất nhiều. Xem hình dưới đây:</p>
+<div class="imgcap">
+<img src="/assets/LR/output_13_1.png" align="center" />
+</div>
+
+<p>Vì vậy, trước khi thực hiện Linear Regression, các nhiễu (<em>outlier</em>) cần
+ phải được loại bỏ. Bước này được gọi là tiền xử lý (pre-processing).</p>
+
+<p>Hạn chế thứ hai của Linear Regression là nó <strong>không biễu diễn được các mô hình phức tạp</strong>. Mặc dù trong phần trên, chúng ta thấy rằng phương pháp này có thể được áp dụng nếu quan hệ giữa <em>outcome</em> và <em>input</em> không nhất thiết phải là tuyến tính, nhưng mối quan hệ này vẫn đơn giản nhiều so với các mô hình thực tế. Hơn nữa, chúng ta sẽ tự hỏi: làm thế nào để xác định được các hàm \(x_1^2, \sin(x_2), x_1x_2\) như ở trên?!</p>
+
+<!-- ========================== New Heading ==================== -->
+<p><a name="cac-phuong-phap-toi-uu"></a></p>
+
+<h3 id="các-phương-pháp-tối-ưu">Các phương pháp tối ưu</h3>
+<p>Linear Regression là một mô hình đơn giản, lời giải cho phương trình đạo hàm bằng 0 cũng khá đơn giản. <em>Trong hầu hết các trường hợp, chúng ta không thể giải được phương trình đạo hàm bằng 0.</em></p>
+
+<p>Nhưng có một điều chúng ta nên nhớ, <strong>còn tính được đạo hàm là còn có cơ hội</strong>.</p>
+
+<!-- ========================== New Heading ==================== -->
+<p><a name="-tai-lieu-tham-khao"></a></p>
+
+<h2 id="5-tài-liệu-tham-khảo">5. Tài liệu tham khảo</h2>
+
+<ol>
+  <li><a href="https://en.wikipedia.org/wiki/Linear_regression">Linear Regression - Wikipedia</a></li>
+  <li><a href="http://machinelearningmastery.com/simple-linear-regression-tutorial-for-machine-learning/">Simple Linear Regression Tutorial for Machine Learning</a></li>
+  <li><a href="http://www.sci.utah.edu/~gerig/CS6640-F2012/Materials/pseudoinverse-cis61009sl10.pdf">Least Squares, Pseudo-Inverses, PCA &amp; SVD</a></li>
+</ol>
+
+  </article>
+
+  <!-- mathjax -->
+  <!--  -->
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!--  -->
+  
+  <hr>
+  <div class="share-page">
+    <b>Share this on:</b>  <br>
+
+    <!-- Facebook -->
+    <a href="https://facebook.com/sharer.php?u=http://localhost:4000/2016/12/28/linearregression/" rel="nofollow" target="_blank" title="Share on Facebook"><img src = "/assets/images/facebook.png" width="40"></a>
+
+    <!-- Twitter -->
+    <a href="https://twitter.com/intent/tweet?text=Bài 3: Linear Regression&url=http://localhost:4000/2016/12/28/linearregression/&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter" width="40" ><img src = "/assets/images/twitter.png" width="40"></a>
+
+    <!-- Google -->
+    <a href="https://plus.google.com/share?url=http://localhost:4000/2016/12/28/linearregression/" rel="nofollow" target="_blank" title="Share on Google+"><img src = "/assets/images/google.png" width="40"></a>
+
+    
+    <!-- LinkedIn -->
+    <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:4000/2016/12/28/linearregression/" target="_blank">
+        <img src="/assets/images/linkedin.png" alt="LinkedIn" width="40"/>
+    </a>
+
+    <!-- Email -->
+    <a href="mailto:?Subject=Simple Share Buttons&amp;Body=I%20saw%20this%20and%20thought%20of%20you!%20 http://localhost:4000/2016/12/28/linearregression/">
+        <img src="/assets/images/email.png" alt="Email" width="40"/>
+    </a>
+    <!-- Print -->
+    <a href="javascript:;" onclick="window.print()">
+        <img src="/assets/images/print.png" alt="Print" width="40"/>
+    </a>
+    <br>
+    <b>Follow us:</b> <br>
+    <a href = "https://www.facebook.com/machinelearningbasicvn/" target="_blank" title="Follow us"><img src = "/assets/images/facebook.png" width="40"></a>
+</div>
+
+
+  <!-- previous and next posts -->
+<div class="PageNavigation">
+  
+    <a class="prev" href="/2016/12/27/categories/">&laquo; Bài 2: Phân nhóm các thuật toán Machine Learning</a>
+  
+  
+    <a class="next" href="/2017/01/01/kmeans/">Bài 4: K-means Clustering &raquo;</a>
+  
+</div>
+
+
+  <!-- disqus comments -->
+<!--  -->
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname  = 'tiepvu';
+  var disqus_identifier = '/2016/12/28/linearregression/';
+
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+<!-- disqus comments -->
+<!--  
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+var disqus_config = function () {
+this.page.url = "http://localhost:4000/2016/12/28/linearregression/";  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = "/2016/12/28/linearregression"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = '//tiepvu.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+   -->
+<!--  -->
+
+</div>
+
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+
+
+  <div class="wrap">
+
+    <!-- <h2 class="footer-heading">Machine Learning cơ bản</h2> -->
+
+    <div class="footer-col-1 column">
+      <ul>
+        <li>Machine Learning cơ bản</li>
+        <!-- <li><a href="mailto:vuhuutiep@gmail.com">vuhuutiep@gmail.com</a></li> -->
+      </ul>
+    </div>
+
+    <div class="footer-col-2 column">
+      <ul>
+        <li>
+          <a href="https://github.com/tiepvupsu">
+            <span class="icon github">
+              <svg version="1.1" class="github-icon-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+                <path fill-rule="evenodd" clip-rule="evenodd" fill="#C2C2C2" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761
+                c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32
+                c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472
+                c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037
+                C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65
+                c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261
+                c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082
+                c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129
+                c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            <span class="username">tiepvupsu</span>
+          </a>
+        </li>
+        
+      </ul>
+    </div>
+
+    <div class="footer-col-3 column">
+      <p class="text"></p>
+    </div>
+
+  </div>
+
+</footer>
+
+     <!-- <script id="dsq-count-scr" src="//tiepvu.disqus.com/count.js" async></script> -->
+
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=11206292; 
+var sc_invisible=1; 
+var sc_security="37333da0"; 
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="website
+statistics" href="http://statcounter.com/"
+target="_blank"><img class="statcounter"
+src="//c.statcounter.com/11206292/0/37333da0/1/"
+alt="website statistics"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+  <script id="dsq-count-scr" src="//tiepvu.disqus.com/count.js" async></script>
+    </body>
+</html>

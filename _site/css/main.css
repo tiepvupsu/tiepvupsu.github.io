@@ -458,16 +458,19 @@ a:hover   { color: #000; text-decoration: underline; }
 
 table{
     border-collapse: collapse;
-    border-spacing: 2px;
+    border-spacing: 20px;
     border:1px solid #111;
     width: 100%;
+    padding-left: 10px;
 }
 
 th{
     border:1px solid #111;
+     padding-left: 10px;
 }
 
 td{
+   padding-left: 10px;
     border:1px solid #111;
 }
 
