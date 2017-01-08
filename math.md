@@ -121,7 +121,7 @@ Norm 2 (màu xanh) chính là đường thằng "chim bay" nối giữa hai vect
 <a name="chuan-cua-ma-tran"></a>
 
 #### Chuẩn của ma trận
-Với một ma trận \\(\mathbf{A} \in \mathbf{m\times n}\\), chuẩn thường được dùng nhất là chuẩn Frobenius, ký hiệu là \\(\|\|\mathbf{A}\|\|\_F\\) là căn bậc hai của tổng bình phương tất cả các phần tử của ma trận đó. 
+Với một ma trận \\(\mathbf{A} \in \mathbb{R}^{m\times n}\\), chuẩn thường được dùng nhất là chuẩn Frobenius, ký hiệu là \\(\|\|\mathbf{A}\|\|\_F\\) là căn bậc hai của tổng bình phương tất cả các phần tử của ma trận đó. 
 \\[
 \|\|\mathbf{A}\|\|\_F = \sqrt{\sum_{i = 1}^m \sum_{j = 1}^n a\_{ij}^2}
 \\]
