@@ -6,6 +6,8 @@ permalink: /2017/01/08/knn/
 mathjax: true
 published: true
 tags: KNN Regression Supervised-learning MNIST Iris
+sc_project: 11213322
+sc_security: 1ee84003
 ---
 
 <div class="imgcap">

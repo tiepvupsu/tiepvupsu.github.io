@@ -6,6 +6,8 @@ permalink: /2017/01/04/kmeans2/
 mathjax: true
 published: true
 tags: Clustering Kmeans Unsupervised-learning MNIST
+sc_project: 11213320
+sc_security: cfec1432
 ---
 
 <div class="imgcap">
