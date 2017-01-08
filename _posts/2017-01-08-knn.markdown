@@ -342,7 +342,8 @@ Trong trường hợp này, kết quả tương đương với kỹ thuật majo
 Với bài toán Regression, chúng ta cũng hoàn toàn có thể sử dụng phương pháp tương tự: ước lượng đầu ra dựa trên đầu ra và khoảng cách của các điểm trong K-lân cận. Việc ước lượng như thế nào các bạn có thể tự định nghĩa tùy vào từng bài toán. 
 
 <div class="imgcap">
-<img src ="/assets/knn/knnR.png" align = "center">
+<!-- <img src ="/assets/knn/knnR.png" align = "center"> -->
+<img src ="http://scikit-learn.org/stable/_images/sphx_glr_plot_regression_001.png" align = "center">
 <div class="thecap"> KNN cho bài toán Regression  (Nguồn: <a href = "http://scikit-learn.org/stable/auto_examples/neighbors/plot_regression.html#sphx-glr-auto-examples-neighbors-plot-regression-py">Nearest Neighbors regression</a>) <br></div>
 </div>
 
