@@ -408,9 +408,11 @@ y_train = np.asarray(mndata.train_labels)
 
 # KNN starts from here
 start_time = time.time()
+print 'Start running KNN on MNIST...',
 clf = neighbors.KNeighborsClassifier(n_neighbors = 1, p = 2)
 clf.fit(X_train, y_train)
 y_pred = clf.predict(X_test)
+print 'done!'
 end_time = time.time()
 print "Accuracy of 1NN for MNIST: %.2f %%" %(100*accuracy_score(y_test, y_pred))
 print "Running time: %.2f (s)" % (end_time - start_time)

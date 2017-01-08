@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.19)  7 JAN 2017 00:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.19)  8 JAN 2017 04:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -730,19 +730,19 @@ your preamble.
 <iris1.jpg, id=4, 220.825pt x 294.09875pt>
 File: iris1.jpg Graphic file (type jpg)
  <use iris1.jpg>
-Package pdftex.def Info: iris1.jpg used on input line 13.
+Package pdftex.def Info: iris1.jpg used on input line 11.
 (pdftex.def)             Requested size: 75.08623pt x 100.0pt.
 
 <iris2.jpg, id=5, 220.825pt x 165.61874pt>
 File: iris2.jpg Graphic file (type jpg)
  <use iris2.jpg>
-Package pdftex.def Info: iris2.jpg used on input line 14.
+Package pdftex.def Info: iris2.jpg used on input line 12.
 (pdftex.def)             Requested size: 133.33165pt x 100.0pt.
 
 <iris3.jpg, id=6, 52.998pt x 43.1211pt>
 File: iris3.jpg Graphic file (type jpg)
  <use iris3.jpg>
-Package pdftex.def Info: iris3.jpg used on input line 15.
+Package pdftex.def Info: iris3.jpg used on input line 13.
 (pdftex.def)             Requested size: 122.9158pt x 100.0pt.
  [1
 
@@ -754,7 +754,7 @@ vupsu.github.io/assets/latex/iris3.jpg>]
 Here is how much of TeX's memory you used:
  24865 strings out of 493029
  630713 string characters out of 6136233
- 778816 words of memory out of 5000000
+ 778817 words of memory out of 5000000
  27906 multiletter control sequences out of 15000+600000
  3640 words of font info for 14 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
