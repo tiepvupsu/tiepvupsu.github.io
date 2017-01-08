@@ -5,7 +5,27 @@ title:  "Bài 1: Giới thiệu về Machine Learning"
 date:   2016-12-26 15:22:00
 mathjax: true
 tags: General
+sc_project: 11213304
+sc_security: 68cc7887
 ---
+<!-- Start of StatCounter Code for Default Guide -->
+<!-- <script type="text/javascript">
+var sc_project=11213304; 
+var sc_invisible=0; 
+var sc_security="68cc7887"; 
+var sc_text=2; 
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("(<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'> </"+"script>views)");
+</script>
+<noscript><div class="statcounter"><a title="web analytics"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="//c.statcounter.com/11213304/0/68cc7887/0/" alt="web
+analytics"></a> </div></noscript> -->
+<!-- End of StatCounter Code for Default Guide -->
 
 <div class="imgcap">
 <div >
