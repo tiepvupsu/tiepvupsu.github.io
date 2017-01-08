@@ -8,6 +8,7 @@ layout: default
     {% for post in site.posts %}
       <li>
         <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}
+        {% include stat_counter_index.html %}
         </span>
         <a style = "text-align: left; color: #485899; font-size: 27px" class="post-link" href="{{ post.url | prepend: site.baseurl }}" > {{ post.title }}</a>
         <br>
