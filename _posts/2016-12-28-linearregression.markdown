@@ -11,7 +11,7 @@ tags: Linear-models Regression Supervised-learning
 <div class="imgcap">
 <div >
 <a href = "/2016/12/28/linearregression/">
-    <img src ="/assets/LR/output_5_1.png"  width = "800"></a>
+    <img src ="/public/LR/output_5_1.png"  width = "800"></a>
     <!-- <img src="/assets/rl/mdp.png" height="206"> -->
 </div>
 <div class="thecap"> Linear Regression <br></div>
@@ -363,7 +363,7 @@ Xem thêm ví dụ về [Quadratic Regression](http://www.varsitytutors.com/hotm
 Hạn chế đầu tiên của Linear Regression là nó rất **nhạy cảm với nhiễu** (sensitive to noise). Trong ví dụ về mối quan hệ giữa chiều cao và cân nặng bên trên, nếu có chỉ
 một cặp dữ liệu _nhiễu_ (150 cm, 90kg) thì kết quả sẽ sai khác đi rất nhiều. Xem hình dưới đây:
 <div class="imgcap">
-<img src ="/assets/LR/output_13_1.png" align = "center">
+<img src ="/public/LR/output_13_1.png" align = "center">
 </div>
 
 Vì vậy, trước khi thực hiện Linear Regression, các nhiễu (_outlier_) cần

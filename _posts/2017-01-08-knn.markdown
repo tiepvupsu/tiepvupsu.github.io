@@ -406,7 +406,7 @@ X_train = mndata.train_images
 y_test = np.asarray(mndata.test_labels)
 y_train = np.asarray(mndata.train_labels)
 
-
+# KNN starts from here
 start_time = time.time()
 clf = neighbors.KNeighborsClassifier(n_neighbors = 1, p = 2)
 clf.fit(X_train, y_train)
