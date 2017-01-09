@@ -1,54 +1,48 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.9.25)  8 JAN 2017 17:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.19)  8 JAN 2017 20:27
 entering extended mode
-**C:/Users/THV102/Dropbox/tiepvupsu.github.io/assets/latex/gradient_descent.tex
-
-(C:/Users/THV102/Dropbox/tiepvupsu.github.io/assets/latex/gradient_descent.tex
-LaTeX2e <2011/06/27>
-Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
-abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
-croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
-lician, german, german-x-2013-05-26, greek, gujarati, hindi, hungarian, iceland
-ic, indonesian, interlingua, irish, italian, kannada, kurmanji, latin, latvian,
- lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerman, n
-german-x-2013-05-26, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
-ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
-an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
-ishmax, welsh, loaded.
-
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\standalone\standalone.cls
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**gradient_descent.tex
+(/home/tiepvu/Dropbox/tiepvupsu.github.io/assets/latex/gradient_descent.tex
+LaTeX2e <2016/02/01>
+Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/standalone/standalone.cls
 Document Class: standalone 2015/07/15 v1.2 Class to compile TeX sub-files stand
 alone
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifluatex.sty"
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
 Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
 Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
 Package ifpdf Info: pdfTeX in PDF mode is detected.
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
+(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\xkeyval\xkeyval.sty"
-Package: xkeyval 2012/10/14 v2.6b package option processing (HA)
+(/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\xkeyval\xkeyval.tex"
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkvutils.tex
 \XKV@toks=\toks14
 \XKV@tempa@toks=\toks15
-\XKV@depth=\count79
-File: xkeyval.tex 2012/10/14 v2.6b key=value parser (HA)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\xkeyval\keyval.tex")))
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/keyval.tex))
+\XKV@depth=\count79
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
 \sa@internal=\count80
 \c@sapage=\count81
 
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\standalone\standalone.cfg
+(/usr/share/texlive/texmf-dist/tex/latex/standalone/standalone.cfg
 File: standalone.cfg 2015/07/15 v1.2 Default configuration file for 'standalone
 ' class
-) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\article.cls"
-Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\size10.clo"
-File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count82
 \c@section=\count83
@@ -64,51 +58,47 @@ File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \sa@box=\box26
 )
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\frontendlayer\tikz.st
-y (C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\basiclayer\pgf.sty
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\utilities\pgfrcs.sty
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfutil-c
-ommon.tex
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
 \pgfutil@everybye=\toks16
 \pgfutil@tempdima=\dimen103
 \pgfutil@tempdimb=\dimen104
 
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfutil-c
-ommon-lists.tex))
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfutil-l
-atex.def
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.t
+ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 \pgfutil@abb=\box27
- (C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\ms\everyshi.sty
+(/usr/share/texlive/texmf-dist/tex/latex/ms/everyshi.sty
 Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
 ))
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfrcs.co
-de.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
 Package: pgfrcs 2015/08/07 v3.0.1a (rcs-revision 1.31)
 ))
 Package: pgf 2015/08/07 v3.0.1a (rcs-revision 1.15)
 
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\basiclayer\pgfcore.st
-y ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
-Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
-Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2016/01/03 v1.0q Standard LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty"
-Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
-File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
-Package graphics Info: Driver file: pdftex.def on input line 91.
+Package graphics Info: Driver file: pdftex.def on input line 95.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
 Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count90
@@ -116,19 +106,16 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen105
 \Gin@req@width=\dimen106
 )
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\systemlayer\pgfsys.st
-y
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\systemlayer\pgfsys.
-code.tex
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 Package: pgfsys 2014/07/09 v3.0.1a (rcs-revision 1.48)
 
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfkeys.c
-ode.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
 \pgfkeys@pathtoks=\toks17
 \pgfkeys@temptoks=\toks18
 
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfkeysfi
-ltered.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
+ex
 \pgfkeys@tmptoks=\toks19
 ))
 \pgf@x=\dimen107
@@ -148,34 +135,31 @@ ltered.code.tex
 \t@pgf@toka=\toks20
 \t@pgf@tokb=\toks21
 \t@pgf@tokc=\toks22
-
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\systemlayer\pgf.cfg
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2008/05/14  (rcs-revision 1.7)
 )
 Driver file for pgf: pgfsys-pdftex.def
 
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\systemlayer\pgfsys-
-pdftex.def
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
 File: pgfsys-pdftex.def 2014/10/11  (rcs-revision 1.35)
 
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\systemlayer\pgfsys-
-common-pdf.def
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
+f
 File: pgfsys-common-pdf.def 2013/10/10  (rcs-revision 1.13)
 )))
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\systemlayer\pgfsyss
-oftpath.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
+tex
 File: pgfsyssoftpath.code.tex 2013/09/09  (rcs-revision 1.9)
 \pgfsyssoftpath@smallbuffer@items=\count95
 \pgfsyssoftpath@bigbuffer@items=\count96
 )
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\systemlayer\pgfsysp
-rotocol.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
+tex
 File: pgfsysprotocol.code.tex 2006/10/16  (rcs-revision 1.4)
-))
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\xcolor\xcolor.sty
+)) (/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package xcolor Info: Driver file: pdftex.def on input line 225.
@@ -189,18 +173,13 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
 )
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcore.
-code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
 Package: pgfcore 2010/04/11 v3.0.1a (rcs-revision 1.7)
 
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmath.code.t
-ex
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathcalc.co
-de.tex
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathutil.co
-de.tex)
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathparser.
-code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
 \pgfmath@dimen=\dimen115
 \pgfmath@count=\count97
 \pgfmath@box=\box28
@@ -208,30 +187,28 @@ code.tex
 \pgfmath@stack@operand=\toks24
 \pgfmath@stack@operation=\toks25
 )
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfunctio
-ns.code.tex
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfunctio
-ns.basic.code.tex)
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfunctio
-ns.trigonometric.code.tex)
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfunctio
-ns.random.code.tex)
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfunctio
-ns.comparison.code.tex)
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfunctio
-ns.base.code.tex)
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfunctio
-ns.round.code.tex)
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfunctio
-ns.misc.code.tex)
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfunctio
-ns.integerarithmetics.code.tex)))
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfloat.c
-ode.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonomet
+ric.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.cod
+e.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerari
+thmetics.code.tex)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
 \c@pgfmathroundto@lastzeros=\count98
 ))
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcorep
-oints.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
+x
 File: pgfcorepoints.code.tex 2013/10/07  (rcs-revision 1.27)
 \pgf@picminx=\dimen116
 \pgf@picmaxx=\dimen117
@@ -248,126 +225,113 @@ File: pgfcorepoints.code.tex 2013/10/07  (rcs-revision 1.27)
 \pgf@zx=\dimen128
 \pgf@zy=\dimen129
 )
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcorep
-athconstruct.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.
+code.tex
 File: pgfcorepathconstruct.code.tex 2013/10/07  (rcs-revision 1.29)
 \pgf@path@lastx=\dimen130
 \pgf@path@lasty=\dimen131
 )
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcorep
-athusage.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code
+.tex
 File: pgfcorepathusage.code.tex 2014/11/02  (rcs-revision 1.24)
 \pgf@shorten@end@additional=\dimen132
 \pgf@shorten@start@additional=\dimen133
 )
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcores
-copes.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.te
+x
 File: pgfcorescopes.code.tex 2015/05/08  (rcs-revision 1.46)
 \pgfpic=\box29
 \pgf@hbox=\box30
 \pgf@layerbox@main=\box31
 \pgf@picture@serial@count=\count99
 )
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcoreg
-raphicstate.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
+ode.tex
 File: pgfcoregraphicstate.code.tex 2014/11/02  (rcs-revision 1.12)
 \pgflinewidth=\dimen134
 )
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcoret
-ransformations.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformation
+s.code.tex
 File: pgfcoretransformations.code.tex 2015/08/07  (rcs-revision 1.20)
 \pgf@pt@x=\dimen135
 \pgf@pt@y=\dimen136
 \pgf@pt@temp=\dimen137
 )
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcoreq
-uick.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
 File: pgfcorequick.code.tex 2008/10/09  (rcs-revision 1.3)
 )
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcoreo
-bjects.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.t
+ex
 File: pgfcoreobjects.code.tex 2006/10/11  (rcs-revision 1.2)
 )
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcorep
-athprocessing.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing
+.code.tex
 File: pgfcorepathprocessing.code.tex 2013/09/09  (rcs-revision 1.9)
 )
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcorea
-rrows.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.te
+x
 File: pgfcorearrows.code.tex 2015/05/14  (rcs-revision 1.43)
 \pgfarrowsep=\dimen138
 )
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcores
-hade.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2013/07/15  (rcs-revision 1.15)
 \pgf@max=\dimen139
 \pgf@sys@shading@range@num=\count100
 )
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcorei
-mage.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2013/07/15  (rcs-revision 1.18)
 
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcoree
-xternal.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.
+tex
 File: pgfcoreexternal.code.tex 2014/07/09  (rcs-revision 1.21)
 \pgfexternal@startupbox=\box32
 ))
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcorel
-ayers.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.te
+x
 File: pgfcorelayers.code.tex 2013/07/18  (rcs-revision 1.7)
 )
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcoret
-ransparency.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.c
+ode.tex
 File: pgfcoretransparency.code.tex 2013/09/30  (rcs-revision 1.5)
 )
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcorep
-atterns.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.
+tex
 File: pgfcorepatterns.code.tex 2013/11/07  (rcs-revision 1.5)
 )))
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\modules\pgfmodulesh
-apes.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
 File: pgfmoduleshapes.code.tex 2014/03/21  (rcs-revision 1.35)
 \pgfnodeparttextbox=\box33
-)
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\modules\pgfmodulepl
-ot.code.tex
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
 File: pgfmoduleplot.code.tex 2015/08/03  (rcs-revision 1.13)
 )
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\compatibility\pgfcomp
--version-0-65.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65
+.sty
 Package: pgfcomp-version-0-65 2007/07/03 v3.0.1a (rcs-revision 1.7)
 \pgf@nodesepstart=\dimen140
 \pgf@nodesepend=\dimen141
 )
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\compatibility\pgfcomp
--version-1-18.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18
+.sty
 Package: pgfcomp-version-1-18 2007/07/23 v3.0.1a (rcs-revision 1.1)
-))
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\utilities\pgffor.sty
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\utilities\pgfkeys.sty
-
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfkeys.c
-ode.tex))
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\math\pgfmath.sty
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmath.code.t
-ex))
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgffor.co
-de.tex
+)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex))
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 Package: pgffor 2013/12/13 v3.0.1a (rcs-revision 1.25)
 
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmath.code.t
-ex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
 \pgffor@iter=\dimen142
 \pgffor@skip=\dimen143
 \pgffor@stack=\toks26
 \pgffor@toks=\toks27
 ))
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\frontendlayer\tikz\
-tikz.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 Package: tikz 2015/08/07 v3.0.1a (rcs-revision 1.151)
 
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\libraries\pgflibrar
-yplothandlers.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers
+.code.tex
 File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
 \pgf@plot@mark@count=\count101
 \pgfplotmarksize=\dimen144
@@ -387,8 +351,7 @@ File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
 \tikznumberofcurrentchild=\count104
 \tikz@fig@count=\count105
 
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\modules\pgfmodulema
-trix.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
 \pgfmatrixcurrentrow=\count106
 \pgfmatrixcurrentcolumn=\count107
@@ -396,19 +359,16 @@ File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
 )
 \tikz@expandcount=\count109
 
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\frontendlayer\tikz\
-libraries\tikzlibrarytopaths.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.1a (rcs-revision 1.2)
 )))
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\pgfplots\pgfplots.sty
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\pgfplots.revis
-ion.tex)
-Package: pgfplots 2015/05/02 v1.12.1 Data Visualization (1.12.1)
+(/usr/share/texlive/texmf-dist/tex/latex/pgfplots/pgfplots.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex)
+Package: pgfplots 2016/01/06 v1.13 Data Visualization (1.13)
 
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\pgfplots.code.
-tex
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\pgfplotscore.c
-ode.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotscore.code.tex
 \t@pgfplots@toka=\toks28
 \t@pgfplots@tokb=\toks29
 \t@pgfplots@tokc=\toks30
@@ -416,91 +376,95 @@ ode.tex
 \c@pgfplots@coordindex=\count110
 \c@pgfplots@scanlineindex=\count111
 
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\sys\pgfplotssy
-sgeneric.code.tex))
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\libs\pgfplotsl
-ibrary.code.tex)
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\oldpgfcompatib
-\pgfplotsoldpgfsupp_loader.code.tex
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\libraries\pgflibrar
-yfpu.code.tex))
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\util\pgfplotsu
-til.code.tex
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\liststructure\
-pgfplotsliststructure.code.tex)
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\liststructure\
-pgfplotsliststructureext.code.tex)
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\liststructure\
-pgfplotsarray.code.tex
-\c@pgfplotsarray@tmp=\count112
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/sys/pgfplotssysgeneric.code
+.tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/libs/pgfplotslibrary.code.t
+ex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldp
+gfsupp_loader.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryfpu.code.tex
 )
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\liststructure\
-pgfplotsmatrix.code.tex)
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\numtable\pgfpl
-otstableshared.code.tex
-\c@pgfplotstable@counta=\count113
+Package pgfplots: loading complementary arithmetics for your pgf version...
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldp
+gfsupp_pgflibraryfpu.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldp
+gfsupp_pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count112
+))
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotslists
+tructure.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotslists
+tructureext.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsarray
+.code.tex
+\c@pgfplotsarray@tmp=\count113
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsmatri
+x.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstableshare
+d.code.tex
+\c@pgfplotstable@counta=\count114
 \t@pgfplotstable@a=\toks31
 )
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\liststructure\
-pgfplotsdeque.code.tex)
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\util\pgfplotsb
-inary.code.tex
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\util\pgfplotsb
-inary.data.code.tex))
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\util\pgfplotsu
-til.verb.code.tex)
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\libs\pgflibrar
-ypgfplots.surfshading.code.tex
-\c@pgfplotslibrarysurf@no=\count114
-
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\sys\pgflibrary
-pgfplots.surfshading.pgfsys-pdftex.def)))
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\util\pgfplotsc
-olormap.code.tex
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\util\pgfplotsc
-olor.code.tex))
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\pgfplotsstacke
-dplots.code.tex)
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\pgfplotsplotha
-ndlers.code.tex
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\pgfplotsmeshpl
-othandler.code.tex))
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\pgfplots.scali
-ng.code.tex)
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\pgfplotscoordp
-rocessing.code.tex)
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\pgfplots.error
-bars.code.tex)
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\pgfplots.marke
-rs.code.tex)
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\pgfplotsticks.
-code.tex)
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\pgfplots.paths
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsdeque
 .code.tex)
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\frontendlayer\tikz\
-libraries\tikzlibrarydecorations.code.tex
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\modules\pgfmodulede
-corations.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.code.te
+x
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.data.co
+de.tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.verb.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/libs/pgflibrarypgfplots.sur
+fshading.code.tex
+\c@pgfplotslibrarysurf@no=\count115
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/sys/pgflibrarypgfplots.surf
+shading.pgfsys-pdftex.def)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotscolormap.code.
+tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotscolor.code.tex
+))
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsstackedplots.code.t
+ex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsplothandlers.code.t
+ex
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplothandler.cod
+e.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplotimage.code.
+tex)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.scaling.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotscoordprocessing.cod
+e.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.errorbars.code.tex
+) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.markers.code.tex
+) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsticks.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.paths.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarydecorations.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.cod
+e.tex
 \pgfdecoratedcompleteddistance=\dimen152
 \pgfdecoratedremainingdistance=\dimen153
 \pgfdecoratedinputsegmentcompleteddistance=\dimen154
 \pgfdecoratedinputsegmentremainingdistance=\dimen155
 \pgf@decorate@distancetomove=\dimen156
-\pgf@decorate@repeatstate=\count115
+\pgf@decorate@repeatstate=\count116
 \pgfdecorationsegmentamplitude=\dimen157
 \pgfdecorationsegmentlength=\dimen158
 )
 \tikz@lib@dec@box=\box38
 )
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\frontendlayer\tikz\
-libraries\tikzlibrarydecorations.pathmorphing.code.tex
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\libraries\decoratio
-ns\pgflibrarydecorations.pathmorphing.code.tex))
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\frontendlayer\tikz\
-libraries\tikzlibrarydecorations.pathreplacing.code.tex
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\libraries\decoratio
-ns\pgflibrarydecorations.pathreplacing.code.tex))
-\pgfplots@numplots=\count116
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarydecorations.pathmorphing.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrary
+decorations.pathmorphing.code.tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarydecorations.pathreplacing.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrary
+decorations.pathreplacing.code.tex))
+\pgfplots@numplots=\count117
 \pgfplots@xmin@reg=\dimen159
 \pgfplots@xmax@reg=\dimen160
 \pgfplots@ymin@reg=\dimen161
@@ -508,89 +472,87 @@ ns\pgflibrarydecorations.pathreplacing.code.tex))
 \pgfplots@zmin@reg=\dimen163
 \pgfplots@zmax@reg=\dimen164
 )
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\frontendlayer\tikz\
-libraries\tikzlibraryplotmarks.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibraryplotmarks.code.tex
 File: tikzlibraryplotmarks.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1)
 
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\libraries\pgflibrar
-yplotmarks.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplotmarks.co
+de.tex
 File: pgflibraryplotmarks.code.tex 2015/08/03 v3.0.1a (rcs-revision 1.14)
-)))
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\calc.sty"
-Package: calc 2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count117
-\calc@Bcount=\count118
+))) (/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count118
+\calc@Bcount=\count119
 \calc@Adimen=\dimen165
 \calc@Bdimen=\dimen166
 \calc@Askip=\skip43
 \calc@Bskip=\skip44
-LaTeX Info: Redefining \setlength on input line 76.
-LaTeX Info: Redefining \addtolength on input line 77.
-\calc@Ccount=\count119
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count120
 \calc@Cskip=\skip45
 )
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\tkz-euclide\tkz-euclide.s
-ty
+(/usr/share/texlive/texmf-dist/tex/latex/tkz-euclide/tkz-euclide.sty
 Package: tkz-euclide 2011/06/01 1.16 c for plots 2d 
- (C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\tkz-base\tkz-base.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/tkz-base/tkz-base.sty
 Package: tkz-base 2011/06/01 1.16 c tkz-base
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\misc\etex.sty"
-Package: etex 1998/03/26 v2.0 eTeX basic definition package (PEB)
-\et@xins=\count120
+(/usr/share/texlive/texmf-dist/tex/latex/etex-pkg/etex.sty
+Package: etex 2016/01/11 v2.6 eTeX basic definition package (PEB,DPC)
+\et@xins=\count121
 )
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\frontendlayer\tikz\
-libraries\tikzlibrarycalc.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarycalc.code.tex
 File: tikzlibrarycalc.code.tex 2013/07/15 v3.0.1a (rcs-revision 1.9)
 )
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\frontendlayer\tikz\
-libraries\tikzlibraryarrows.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibraryarrows.code.tex
 File: tikzlibraryarrows.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1)
 
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\libraries\pgflibrar
-yarrows.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.code.
+tex
 File: pgflibraryarrows.code.tex 2013/09/23 v3.0.1a (rcs-revision 1.16)
 \arrowsize=\dimen167
 ))
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\frontendlayer\tikz\
-libraries\tikzlibrarypositioning.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarypositioning.code.tex
 File: tikzlibrarypositioning.code.tex 2008/10/06 v3.0.1a (rcs-revision 1.7)
 )
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\frontendlayer\tikz\
-libraries\tikzlibraryshapes.misc.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibraryshapes.misc.code.tex
 File: tikzlibraryshapes.misc.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1)
 
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\libraries\shapes\pg
-flibraryshapes.misc.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshape
+s.misc.code.tex
 File: pgflibraryshapes.misc.code.tex 2013/07/18 v3.0.1a (rcs-revision 1.5)
 ))
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\frontendlayer\tikz\
-libraries\tikzlibrarydecorations.markings.code.tex
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\libraries\decoratio
-ns\pgflibrarydecorations.markings.code.tex))
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\frontendlayer\tikz\
-libraries\tikzlibrarypatterns.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarydecorations.markings.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrary
+decorations.markings.code.tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarypatterns.code.tex
 File: tikzlibrarypatterns.code.tex 2008/01/15 v3.0.1a (rcs-revision 1.2)
 
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\libraries\pgflibrar
-ypatterns.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibrarypatterns.cod
+e.tex
 File: pgflibrarypatterns.code.tex 2008/03/03 v3.0.1a (rcs-revision 1.13)
-))
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\numprint\numprint.sty
+)) (/usr/share/texlive/texmf-dist/tex/latex/numprint/numprint.sty
 Package: numprint 2012/08/20 v1.39 Print numbers (HH)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\array.sty"
-Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
+Package: array 2014/10/28 v2.4c Tabular extension package (FMi)
 \col@sep=\dimen168
 \extrarowheight=\dimen169
 \NC@list=\toks32
 \extratabsurround=\skip46
 \backup@length=\skip47
 )
-\c@nprt@mantissa@digitsbefore=\count121
-\c@nprt@mantissa@digitsafter=\count122
-\c@nprt@exponent@digitsbefore=\count123
-\c@nprt@exponent@digitsafter=\count124
+\c@nprt@mantissa@digitsbefore=\count122
+\c@nprt@mantissa@digitsafter=\count123
+\c@nprt@exponent@digitsbefore=\count124
+\c@nprt@exponent@digitsafter=\count125
 \nprt@digitwidth=\skip48
 \nprt@sepwidth=\skip49
 \nprt@decimalwidth=\skip50
@@ -598,60 +560,60 @@ Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 \nprt@digittoks=\toks33
 \nprt@pretoks=\toks34
 \nprt@posttoks=\toks35
-\nprt@thisdigit=\count125
-\nprt@curpos=\count126
-\nprt@rndpos=\count127
-\c@nprt@digitsfirstblock=\count128
-\c@nprt@blockcnt=\count129
-\c@nprt@cntprint=\count130
+\nprt@thisdigit=\count126
+\nprt@curpos=\count127
+\nprt@rndpos=\count128
+\c@nprt@digitsfirstblock=\count129
+\c@nprt@blockcnt=\count130
+\c@nprt@cntprint=\count131
 
 No configuration file `numprint.cfg' found.)
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\fp\fp.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp.sty
 Package: fp 1995/04/02
 
 `Fixed Point Package', Version 0.8, April 2, 1995 (C) Michael Mehlich
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\fp\defpattern.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fp/defpattern.sty
 Package: defpattern 1994/10/12
-\actioncount=\count131
+\actioncount=\count132
 )
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\fp\fp-basic.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp-basic.sty
 Package: fp-basic 1996/05/13
-\FP@xs=\count132
-\FP@xia=\count133
-\FP@xib=\count134
-\FP@xfa=\count135
-\FP@xfb=\count136
-\FP@rega=\count137
-\FP@regb=\count138
-\FP@regs=\count139
-\FP@times=\count140
+\FP@xs=\count133
+\FP@xia=\count134
+\FP@xib=\count135
+\FP@xfa=\count136
+\FP@xfb=\count137
+\FP@rega=\count138
+\FP@regb=\count139
+\FP@regs=\count140
+\FP@times=\count141
 )
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\fp\fp-addons.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp-addons.sty
 Package: fp-addons 1995/03/15
 )
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\fp\fp-snap.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp-snap.sty
 Package: fp-snap 1995/04/05
 )
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\fp\fp-exp.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp-exp.sty
 Package: fp-exp 1995/04/03
 )
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\fp\fp-trigo.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp-trigo.sty
 Package: fp-trigo 1995/04/14
 )
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\fp\fp-pas.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp-pas.sty
 Package: fp-pas 1994/08/29
 )
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\fp\fp-random.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp-random.sty
 Package: fp-random 1995/02/23
-\FPseed=\count141
+\FPseed=\count142
 )
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\fp\fp-eqn.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp-eqn.sty
 Package: fp-eqn 1995/04/03
 )
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\fp\fp-upn.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp-upn.sty
 Package: fp-upn 1996/10/21
 )
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\fp\fp-eval.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp-eval.sty
 Package: fp-eval 1995/04/03
 ))
 \tkzRadius=\dimen170
@@ -666,51 +628,34 @@ Package: fp-eval 1995/04/03
 \tkz@dx=\dimen179
 \tkz@dy=\dimen180
 
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\tkz-base\tkz-tools-utilit
-ies.tex)
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\tkz-base\tkz-tools-arith.
-tex
+(/usr/share/texlive/texmf-dist/tex/latex/tkz-base/tkz-tools-utilities.tex)
+(/usr/share/texlive/texmf-dist/tex/latex/tkz-base/tkz-tools-arith.tex
 File: tkz-tool-arith.tex tkz-tool-arith 1.161 c
 )
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\tkz-base\tkz-tools-base.t
-ex)
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\tkz-base\tkz-tools-misc.t
-ex)
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\tkz-base\tkz-tools-math.t
-ex)
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\tkz-base\tkz-obj-points.t
-ex)
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\tkz-base\tkz-obj-segments
-.tex)
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\tkz-base\tkz-obj-marks.te
-x
-\tkz@cntmk=\count142
+(/usr/share/texlive/texmf-dist/tex/latex/tkz-base/tkz-tools-base.tex)
+(/usr/share/texlive/texmf-dist/tex/latex/tkz-base/tkz-tools-misc.tex)
+(/usr/share/texlive/texmf-dist/tex/latex/tkz-base/tkz-tools-math.tex)
+(/usr/share/texlive/texmf-dist/tex/latex/tkz-base/tkz-obj-points.tex)
+(/usr/share/texlive/texmf-dist/tex/latex/tkz-base/tkz-obj-segments.tex)
+(/usr/share/texlive/texmf-dist/tex/latex/tkz-base/tkz-obj-marks.tex
+\tkz@cntmk=\count143
 ))
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\tkz-euclide\tkz-tools-int
-ersections.tex)
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\tkz-euclide\tkz-tools-tra
-nsformations.tex)
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\tkz-euclide\tkz-obj-lines
-.tex)
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\tkz-euclide\tkz-lib-symbo
-ls.tex)
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\tkz-euclide\tkz-obj-circl
-es.tex)
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\tkz-euclide\tkz-obj-addpo
-ints.tex))
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\tkz-euclide\tkz-obj-polyg
-ons.tex)
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\tkz-euclide\tkz-obj-vecto
-rs.tex)
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\tkz-euclide\tkz-obj-arcs.
-tex)
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\tkz-euclide\tkz-obj-secto
-rs.tex)
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\tkz-euclide\tkz-obj-angle
-s.tex)
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\tkz-euclide\tkz-obj-protr
-actor.tex)
-(C:\Users\THV102\Dropbox\tiepvupsu.github.io\assets\latex\gradient_descent.aux)
+(/usr/share/texlive/texmf-dist/tex/latex/tkz-euclide/tkz-tools-intersections.te
+x)
+(/usr/share/texlive/texmf-dist/tex/latex/tkz-euclide/tkz-tools-transformations.
+tex) (/usr/share/texlive/texmf-dist/tex/latex/tkz-euclide/tkz-obj-lines.tex)
+(/usr/share/texlive/texmf-dist/tex/latex/tkz-euclide/tkz-lib-symbols.tex)
+(/usr/share/texlive/texmf-dist/tex/latex/tkz-euclide/tkz-obj-circles.tex)
+(/usr/share/texlive/texmf-dist/tex/latex/tkz-euclide/tkz-obj-addpoints.tex))
+(/usr/share/texlive/texmf-dist/tex/latex/tkz-euclide/tkz-obj-polygons.tex)
+(/usr/share/texlive/texmf-dist/tex/latex/tkz-euclide/tkz-obj-vectors.tex)
+(/usr/share/texlive/texmf-dist/tex/latex/tkz-euclide/tkz-obj-arcs.tex)
+(/usr/share/texlive/texmf-dist/tex/latex/tkz-euclide/tkz-obj-sectors.tex)
+(/usr/share/texlive/texmf-dist/tex/latex/tkz-euclide/tkz-obj-angles.tex)
+(/usr/share/texlive/texmf-dist/tex/latex/tkz-euclide/tkz-obj-protractor.tex)
+(/home/tiepvu/Dropbox/tiepvupsu.github.io/assets/latex/gradient_descent.aux)
+\openout1 = `gradient_descent.aux'.
+
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
 LaTeX Font Info:    ... okay on input line 9.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 9.
@@ -723,24 +668,63 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 9.
 LaTeX Font Info:    ... okay on input line 9.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
 LaTeX Font Info:    ... okay on input line 9.
+
 ABD: EveryShipout initializing macros
-(C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count143
+\scratchcounter=\count144
 \scratchdimen=\dimen181
 \scratchbox=\box39
-\nofMPsegments=\count144
-\nofMParguments=\count145
+\nofMPsegments=\count145
+\nofMParguments=\count146
 \everyMPshowfont=\toks36
-\MPscratchCnt=\count146
+\MPscratchCnt=\count147
 \MPscratchDim=\dimen182
-\MPnumerator=\count147
-\makeMPintoPDFobject=\count148
+\MPnumerator=\count148
+\makeMPintoPDFobject=\count149
 \everyMPtoPDFconversion=\toks37
+) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
 
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
-ick labels; missing features). Consider writing \pgfplotsset{compat=1.12} into 
+ick labels; missing features). Consider writing \pgfplotsset{compat=1.13} into 
 your preamble.
  on input line 9.
 
@@ -750,25 +734,27 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 15.
 [1
 
-{C:/Users/THV102/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-(C:\Users\THV102\Dropbox\tiepvupsu.github.io\assets\latex\gradient_descent.aux)
- ) 
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+(/home/tiepvu/Dropbox/tiepvupsu.github.io/assets/latex/gradient_descent.aux) ) 
 Here is how much of TeX's memory you used:
- 24407 strings out of 493921
- 618328 string characters out of 3144873
- 759955 words of memory out of 3000000
- 27248 multiletter control sequences out of 15000+200000
- 3640 words of font info for 14 fonts, out of 3000000 for 9000
- 841 hyphenation exceptions out of 8191
- 55i,7n,77p,803b,778s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
-<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:
-/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Pro
-gram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Progr
-am Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on gradient_descent.pdf (1 page, 48839 bytes).
+ 25186 strings out of 493029
+ 637368 string characters out of 6136233
+ 795105 words of memory out of 5000000
+ 28231 multiletter control sequences out of 15000+600000
+ 3640 words of font info for 14 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 55i,7n,77p,745b,778s stack positions out of 5000i,500n,10000p,200000b,80000s
+<
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+Output written on /home/tiepvu/Dropbox/tiepvupsu.github.io/assets/latex/gradien
+t_descent.pdf (1 page, 46540 bytes).
 PDF statistics:
- 29 PDF objects out of 1000 (max. 8388607)
+ 31 PDF objects out of 1000 (max. 8388607)
+ 22 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
