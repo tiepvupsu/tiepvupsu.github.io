@@ -7,22 +7,10 @@ mathjax: true
 tags: General
 sc_project: 11213327
 sc_security: 02b75c79
+permalink: /2016/12/27/categories/
+img: /assets/categories/alphago.jpeg
+summary: Có hai cách phổ biến phân nhóm các thuật toán Machine learning. Một là dựa trên phương thức học (learning style), hai là dựa trên chức năng (function) (của mỗi thuật toán). Bài này cũng giới thiệu thêm rất nhiều các ví dụ về Machine Learning trong cuộc sống.
 ---
-
-<div class="imgcap">
-<div >
-<a href = "/2016/12/27/categories/">
-    <img src="/assets/categories/alphago.jpeg" width = "800"></a>
-    <!-- <img src="/assets/rl/mdp.png" height="206"> -->
-</div>
-<div class="thecap">AlphaGo chơi cờ vây với Lee Sedol. AlphaGo là một ví dụ của Reinforcement learning. <br> (Nguồn: <a href ="http://www.tomshardware.com/news/alphago-defeats-sedol-second-time,31377.html">AlphaGo AI Defeats Sedol Again, With 'Near Perfect Game')</a></div>
-</div>
-
-
-
-
-
-
 
 Có hai cách phổ biến phân nhóm các thuật toán Machine learning. Một là dựa trên phương thức học (learning style), hai là dựa trên chức năng (function) (của mỗi thuật toán).
 
@@ -148,8 +136,18 @@ Một ví dụ điển hình của nhóm này là chỉ có một phần ảnh h
 ### Reinforcement Learning (Học Củng Cố)
 Reinforcement learning là các bài toán giúp cho một hệ thống tự động xác định hành vi dựa trên hoàn cảnh để đạt được lợi ích cao nhất (maximizing the performance). Hiện tại, Reinforcement learning chủ yếu được áp dụng vào Lý Thuyết Trò Chơi (Game Theory), các thuật toán cần xác định nưóc đi tiếp theo để đạt được điểm số cao nhất.
 
+<div class="imgcap">
+<div >
+<a href = "/2016/12/27/categories/">
+    <img src="/assets/categories/alphago.jpeg" width = "800"></a>
+    <!-- <img src="/assets/rl/mdp.png" height="206"> -->
+</div>
+<div class="thecap">AlphaGo chơi cờ vây với Lee Sedol. AlphaGo là một ví dụ của Reinforcement learning. <br> (Nguồn: <a href ="http://www.tomshardware.com/news/alphago-defeats-sedol-second-time,31377.html">AlphaGo AI Defeats Sedol Again, With 'Near Perfect Game')</a></div>
+</div>
+
 
 **Ví dụ 1:** [AlphaGo gần đây nổi tiếng với việc chơi cờ vây thắng cả con người](https://gogameguru.com/tag/deepmind-alphago-lee-sedol/). [Cờ vây được xem là có độ phức tạp cực kỳ cao](https://www.tastehit.com/blog/google-deepmind-alphago-how-it-works/) với tổng số nước đi là xấp xỉ \\(10^{761} \\), so với cờ vua là \\(10^{120} \\) và tổng số nguyên tử trong toàn vũ trụ là khoảng \\(10^{80}\\)!! Vì vậy, thuật toán phải chọn ra 1 nước đi tối ưu trong số hàng nhiều tỉ tỉ lựa chọn, và tất nhiên, không thể áp dụng thuật toán tương tự như [IBM Deep Blue](https://en.wikipedia.org/wiki/Deep_Blue_(chess_computer)) (IBM Deep Blue đã thắng con người trong môn cờ vua 20 năm trước). Về cơ bản, AlphaGo bao gồm các thuật toán thuộc cả Supervised learning và Reinforcement learning. Trong phần Supervised learning, dữ liệu từ các ván cờ do con người chơi với nhau được đưa vào để huấn luyện. Tuy nhiên, mục đích cuối cùng của AlphaGo không phải là chơi như con người mà phải thậm chí thắng cả con người. Vì vậy, sau khi _học_ xong các ván cờ của con người, AlphaGo tự chơi với chính nó với hàng triệu ván chơi để tìm ra các nước đi mới tối ưu hơn. Thuật toán trong phần tự chơi này được xếp vào loại Reinforcement learning. (Xem thêm tại [Google DeepMind's AlphaGo: How it works](https://www.tastehit.com/blog/google-deepmind-alphago-how-it-works/)).
+
 
 **Ví dụ 2:** [Huấn luyện cho máy tính chơi game Mario](https://www.youtube.com/watch?v=qv6UVOQ0F44). Đây là một chương trình thú vị dạy máy tính chơi game Mario. Game này đơn giản hơn cờ vây vì tại một thời điểm, người chơi chỉ phải bấm một số lượng nhỏ các nút (di chuyển, nhảy, bắn đạn) hoặc không cần bấm nút nào. Đồng thời, phản ứng của máy cũng đơn giản hơn và lặp lại ở mỗi lần chơi (tại thời điểm cụ thể sẽ xuất hiện một chướng ngại vật cố định ở một vị trí cố định). Đầu vào của thuật toán là sơ đồ của màn hình tại thời điểm hiện tại, nhiệm vụ của thuật toán là với đầu vào đó, tổ hợp phím nào nên được bấm. Việc huấn luyện này được dựa trên điểm số cho việc di chuyển được bao xa trong thời gian bao lâu trong game, càng xa và càng nhanh thì được điểm thưởng càng cao (điểm thưởng này không phải là điểm của trò chơi mà là điểm do chính người lập trình tạo ra). Thông qua huấn luyện, thuật toán sẽ tìm ra một cách tối ưu để tối đa số điểm trên, qua đó đạt được mục đích cuối cùng là cứu công chúa. Click vào hình dưới để xem video.
 

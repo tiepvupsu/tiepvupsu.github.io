@@ -7,6 +7,8 @@ mathjax: true
 tags: Linear-models Regression Supervised-learning
 sc_project: 11213317
 sc_security: 31bb1f61
+img: /assets/LR/output_5_1.png
+summary: Trong bài này, tôi sẽ giới thiệu một trong những thuật toán cơ bản nhất của Machine Learning. Đây là một thuật toán Supervised learning có tên <b>Linear Regression</b> (Hồi Quy Tuyến Tính). Bài toán này đôi khi được gọi là <em>Linear Fitting</em> (trong thống kê) hoặc <em>Linear Least Square</em>.
 ---
 
 
@@ -19,8 +21,9 @@ sc_security: 31bb1f61
 <div class="thecap"> Linear Regression <br></div>
 </div>
 
-Trong bài này, tôi sẽ giới thiệu một trong những thuật toán cơ bản nhất (và đơn giản nhất) của Machine Learning. Đây là một thuật toán _Supervised learning_ có tên **Linear Regression** (Hồi Quy Tuyến Tính). Bài toán này đôi khi được gọi là _Linear Fitting_ (trong thống kê) hoặc _Linear Least Square_.
 
+
+Trong bài này, tôi sẽ giới thiệu một trong những thuật toán cơ bản nhất (và đơn giản nhất) của Machine Learning. Đây là một thuật toán _Supervised learning_ có tên **Linear Regression** (Hồi Quy Tuyến Tính). Bài toán này đôi khi được gọi là _Linear Fitting_ (trong thống kê) hoặc _Linear Least Square_.
 **Trong trang này:**
 <!-- MarkdownTOC -->
 

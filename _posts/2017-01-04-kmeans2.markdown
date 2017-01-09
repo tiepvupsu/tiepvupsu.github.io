@@ -8,16 +8,17 @@ published: true
 tags: Clustering Kmeans Unsupervised-learning MNIST
 sc_project: 11213320
 sc_security: cfec1432
+img: /assets/kmeans/girl_all.png
+summary: Trong bài này, tôi sẽ áp dụng thuật toán K-means clustering vào ba bài toán xử lý ảnh thực tế hơn -- i) Phân nhóm các chữ số viết tay, ii) Tách vật thể (image segmentation) và iii) Nén ảnh/dữ liệu (image compression). Qua đây, tôi cũng muốn độc giả  làm quen với một số kỹ thuật đơn giản trong xử lý hình ảnh - một mảng quan trọng trong Machine Learning.
 ---
 
-<div class="imgcap">
+<!-- <div class="imgcap">
 <div >
 <a href = "/2017/01/04/kmeans2/">
     <img src ="/assets/kmeans/girl_all.png"  width = "800"></a>
-    <!-- <img src="/assets/rl/mdp.png" height="206"> -->
 </div>
 <div class="thecap"> Nén ảnh đơn giản với K-means clustering<br></div>
-</div>
+</div> -->
 
 
 

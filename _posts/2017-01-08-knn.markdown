@@ -8,16 +8,17 @@ published: true
 tags: KNN Regression Supervised-learning MNIST Iris
 sc_project: 11213322
 sc_security: 1ee84003
+img: https://upload.wikimedia.org/wikipedia/commons/5/52/Map1NN.png
+summary: Nếu như con người có kiểu học "nước đến chân mới nhảy", thì trong Machine Learning cũng có một thuật toán như vậy. 
 ---
 
-<div class="imgcap">
+<!-- <div class="imgcap">
 <div >
 <a href = "/2017/01/08/knn/">
     <img src ="https://upload.wikimedia.org/wikipedia/commons/5/52/Map1NN.png" align = "center" width="800"></a>
-    <!-- <img src="/assets/rl/mdp.png" height="206"> -->
 </div>
 <div class="thecap"> Bản đồ của 1NN (Nguồn: <a href = "https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm">Wikipedia</a>) <br></div>
-</div>
+</div> -->
 
 
 
