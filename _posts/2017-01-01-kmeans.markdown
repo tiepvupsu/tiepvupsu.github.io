@@ -12,15 +12,14 @@ img: /assets/kmeans/kmeans11.gif
 summary: Trong thuật toán K-means clustering, chúng ta không biết nhãn (label) của từng điểm dữ liệu. Mục đích là làm thể nào để phân dữ liệu thành các cụm (cluster) khác nhau sao cho 
 ---
 
-
+<!-- 
 <div class="imgcap">
 <div >
 <a href = "/2017/01/01/kmeans/">
     <img src ="/assets/kmeans/kmeans11.gif"  width = "800"></a>
-    <!-- <img src="/assets/rl/mdp.png" height="206"> -->
 </div>
 <div class="thecap"> K-means Clustering <br></div>
-</div>
+</div> -->
 
 **Trong trang này:**
 <!-- MarkdownTOC -->
@@ -52,6 +51,7 @@ summary: Trong thuật toán K-means clustering, chúng ta không biết nhãn (
 <!-- ========================== New Heading ==================== -->
 <a name="-gioi-thieu"></a>
 
+<a name="-gioi-thieu"></a>
 ## 1. Giới thiệu
 <a href = "/2016/12/28/linearregression/">Trong bài trước</a>, chúng ta đã làm quen với thuật toán Linear Regression - là thuật toán đơn giản nhất trong <a href = "/2016/12/27/categories/#supervised-learning-hoc-co-giam-sat">Supervised learning</a>. Bài này tôi sẽ giới thiệu một trong những thuật toán cơ bản nhất trong <a href = "/2016/12/27/categories/#unsupervised-learning-hoc-khong-giam-sat">Unsupervised learning</a> - thuật toán K-means clustering (phân cụm K-means). 
 
@@ -85,6 +85,7 @@ Quay lại với bài toán phân nhóm và cụ thể là thuật toán K-means
 <!-- ========================== New Heading ==================== -->
 <a name="-phan-tich-toan-hoc"></a>
 
+<a name="-phan-tich-toan-hoc"></a>
 ## 2. Phân tích toán học 
 
 Mục đích cuối cùng của thuật toán phân nhóm này là: từ dữ liệu đầu vào và số lượng nhóm chúng ta muốn tìm, hãy chỉ ra center của mỗi nhóm và phân các điểm dữ liệu vào các nhóm tương ứng. Giả sử thêm rằng mỗi điểm dữ liệu chỉ thuộc vào đúng một nhóm. 
@@ -92,6 +93,7 @@ Mục đích cuối cùng của thuật toán phân nhóm này là: từ dữ li
 <!-- ========================== New Heading ==================== -->
 <a name="mot-so-ky-hieu-toan-hoc"></a>
 
+<a name="mot-so-ky-hieu-toan-hoc"></a>
 ### Một số ký hiệu toán học
 Giả sử có \\(N\\) điểm dữ liệu là \\( \mathbf{X} = [\mathbf{x}_1, \mathbf{x}_2, \dots, \mathbf{x}_N] \in \mathbb{R}^{d \times N}\\) và \\(K < N\\) là số cluster chúng ta muốn phân chia. Chúng ta cần tìm các center \\( \mathbf{m}_1, \mathbf{m}_2, \dots, \mathbf{m}_K \in \mathbb{R}^{d \times 1} \\) và label của mỗi điểm dữ liệu.
 
@@ -111,6 +113,7 @@ Ràng buộc của \\(\mathbf{y}\_i \\) có thể viết dưới dạng toán h�
 <!-- ========================== New Heading ==================== -->
 <a name="ham-mat-mat-va-bai-toan-toi-uu"></a>
 
+<a name="ham-mat-mat-va-bai-toan-toi-uu"></a>
 ### Hàm mất mát và bài toán tối ưu
 
 Nếu ta coi center \\(\mathbf{m}\_k \\)  là center (hoặc representative) của mỗi cluster và *ước lượng* tất cả các điểm được phân vào cluster này bởi \\(\mathbf{m}\_k \\), thì một điểm dữ liệu \\(\mathbf{x}\_i \\) được phân vào cluster \\(k\\) sẽ bị sai số là \\( (\mathbf{x}\_i - \mathbf{m}\_k) \\). Chúng ta mong muốn sai số này có trị tuyệt đối nhỏ nhất nên ([giống như trong bài Linear Regression](/2016/12/28/linearregression/#sai-so-du-doan)) ta sẽ tìm cách để đại lượng sau đây đạt giá trị nhỏ nhất: 
@@ -155,6 +158,7 @@ Tóm lại, chúng ta cần tối ưu bài toán sau:
 <!-- ========================== New Heading ==================== -->
 <a name="thuat-toan-toi-uu-ham-mat-mat"></a>
 
+<a name="thuat-toan-toi-uu-ham-mat-mat"></a>
 ### Thuật toán tối ưu hàm mất mát
 Bài toán \\((2)\\) là một bài toán khó tìm _điểm tối ưu_ vì nó có thêm các điều kiện ràng buộc. _Bài toán này thuộc loại mix-integer programming (điều kiện biến là số nguyên) - là loại rất khó tìm nghiệm tối ưu toàn cục (global optimal point, tức nghiệm làm cho hàm mất mát đạt giá trị nhỏ nhất có thể)._ Tuy nhiên, trong một số trường hợp chúng ta vẫn có thể tìm được phương pháp để tìm được nghiệm gần đúng hoặc điểm cực tiểu. (_Nếu chúng ta vẫn nhớ chương trình toán ôn thi đại học thì điểm cực tiểu chưa chắc đã phải là điểm làm cho hàm số đạt giá trị nhỏ nhất_).
 
@@ -163,6 +167,7 @@ Một cách đơn giản để giải bài toán \\((2)\\) là xen kẽ giải \
 <!-- ========================== New Heading ==================== -->
 <a name="co-dinh-\\\mathbfm-\\-tim-\\\mathbfy\\"></a>
 
+<a name="co-dinh-\\\mathbfm-\\-tim-\\\mathbfy\\"></a>
 #### Cố định \\(\mathbf{M} \\), tìm \\(\mathbf{Y}\\) 
 **Giả sử đã tìm được các centers, hãy tìm các label vector để hàm mất mát đạt giá trị nhỏ nhất.** Điều này tương đương với việc tìm cluster cho mỗi điểm dữ liệu.
 
@@ -185,6 +190,7 @@ Vì \\(\\|\mathbf{x}\_i - \mathbf{m}\_j\\|_2^2\\) chính là bình phương kho�
 <!-- ========================== New Heading ==================== -->
 <a name="co-dinh-\\\mathbfy-\\-tim-\\\mathbfm\\"></a>
 
+<a name="co-dinh-\\\mathbfy-\\-tim-\\\mathbfm\\"></a>
 #### Cố định \\(\mathbf{Y} \\), tìm \\(\mathbf{M}\\) 
 **Giả sử đã tìm được cluster cho từng điểm, hãy tìm center mới cho mỗi cluster để hàm mất mát đạt giá trị nhỏ nhất.**
 
@@ -216,6 +222,7 @@ Tên gọi _K-means clustering_ cũng xuất phát từ đây.
 <!-- ========================== New Heading ==================== -->
 <a name="tom-tat-thuat-toan"></a>
 
+<a name="tom-tat-thuat-toan"></a>
 ### Tóm tắt thuật toán
 Tới đây tôi xin được tóm tắt lại thuật toán (_đặc biệt quan trọng với các bạn bỏ qua phần toán học bên trên_) như sau:
 
@@ -236,11 +243,13 @@ Chúng ta sẽ có một vài [thảo luận](#-thao-luan) về thuật toán n�
 <!-- ========================== New Heading ==================== -->
 <a name="vi-du-tren-python"></a>
 
+<a name="vi-du-tren-python"></a>
 ## Ví dụ trên Python
 
 <!-- ========================== New Heading ==================== -->
 <a name="gioi-thieu-bai-toan"></a>
 
+<a name="gioi-thieu-bai-toan"></a>
 ### Giới thiệu bài toán
 
 Để kiểm tra mức độ hiểu quả của một thuật toán, chúng ta sẽ làm một ví dụ đơn giản (thường được gọi là _toy example_). Trước hết, chúng ta chọn center cho từng cluster và tạo dữ liệu cho từng cluster bằng cách lấy mẫu theo phân phối chuẩn có kỳ vọng là center của cluster đó và ma trận hiệp phương sai (covariance matrix) là ma trận đơn vị. 
@@ -275,6 +284,7 @@ original_label = np.asarray([0]*N + [1]*N + [2]*N).T
 <!-- ========================== New Heading ==================== -->
 <a name="hien-thi-du-lieu-tren-do-thi"></a>
 
+<a name="hien-thi-du-lieu-tren-do-thi"></a>
 ### Hiển thị dữ liệu trên đồ thị
 
 Chúng ta cần một hàm `kmeans_display` để hiển thị dữ liệu. Sau đó hiển thị dữ liệu theo nhãn ban đầu.
@@ -307,6 +317,7 @@ Trong đồ thị trên, mỗi cluster tương ứng với một màu. Có thể
 <!-- ========================== New Heading ==================== -->
 <a name="cac-ham-so-can-thiet-cho-k-means-clustering"></a>
 
+<a name="cac-ham-so-can-thiet-cho-k-means-clustering"></a>
 ### Các hàm số cần thiết cho K-means clustering 
 Viết các hàm:
 
@@ -398,6 +409,7 @@ Các bạn có thể xem thêm các trang web minh họa thuật toán K-means c
 <!-- ========================== New Heading ==================== -->
 <a name="ket-qua-tim-duoc-bang-thu-vien-scikit-learn"></a>
 
+<a name="ket-qua-tim-duoc-bang-thu-vien-scikit-learn"></a>
 ### Kết quả tìm được bằng thư viện scikit-learn
 
 Để kiểm tra thêm, chúng ta hãy so sánh kết quả trên với kết quả thu được bằng cách sử dụng thư viện [`scikit-learn`](http://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html).
@@ -429,22 +441,26 @@ Thật may mắn (_cho tôi_), hai thuật toán cho cùng một đáp số! V�
 <!-- ========================== New Heading ==================== -->
 <a name="-thao-luan"></a>
 
+<a name="-thao-luan"></a>
 ## 4. Thảo luận
 <!-- ========================== New Heading ==================== -->
 <a name="han-che"></a>
 
+<a name="han-che"></a>
 ### Hạn chế
 Có một vài hạn chế của thuật toán K-means clustering:
 
 <!-- ========================== New Heading ==================== -->
 <a name="chung-ta-can-biet-so-luong-cluster-can-clustering"></a>
 
+<a name="chung-ta-can-biet-so-luong-cluster-can-clustering"></a>
 #### Chúng ta cần biết số lượng cluster cần clustering
 Để ý thấy rằng trong [thuật toán nêu trên](#tom-tat-thuat-toan), chúng ta cần biết đại lượng \\(K\\) là số lượng clusters. Trong thực tế, nhiều trường hợp chúng ta không xác định được giá trị này. Có một số phương pháp giúp xác định số lượng clusters, tôi sẽ dành thời gian nói về chúng sau nếu có dịp. Bạn đọc có thể tham khảo [Elbow method - Determining the number of clusters in a data set](https://en.wikipedia.org/wiki/Determining_the_number_of_clusters_in_a_data_set).
 
 <!-- ========================== New Heading ==================== -->
 <a name="nghiem-cuoi-cung-phu-thuoc-vao-cac-centers-duoc-khoi-tao-ban-dau"></a>
 
+<a name="nghiem-cuoi-cung-phu-thuoc-vao-cac-centers-duoc-khoi-tao-ban-dau"></a>
 #### Nghiệm cuối cùng phụ thuộc vào các centers được khởi tạo ban đầu
 Tùy vào các center ban đầu mà thuật toán có thể có tốc độ hội tụ rất chậm, ví dụ:
 <!-- ![png](output_14_1.png) -->
@@ -465,6 +481,7 @@ Có một vài cách khắc phục đó là:
 <!-- ========================== New Heading ==================== -->
 <a name="cac-cluster-can-co-so-luong-diem-gan-bang-nhau"></a>
 
+<a name="cac-cluster-can-co-so-luong-diem-gan-bang-nhau"></a>
 #### Các cluster cần có só lượng điểm gần bằng nhau
 
 Dưới đây là một ví dụ với 3 cluster với 20, 50, và 1000 điểm. Kết quả cuối cùng không chính xác. 
@@ -476,6 +493,7 @@ Dưới đây là một ví dụ với 3 cluster với 20, 50, và 1000 điểm.
 <!-- ========================== New Heading ==================== -->
 <a name="cac-cluster-can-co-dang-hinh-tron-tuan-theo-phan-phoi-chuan-va-ma-tran-hiep-phuong-sai-la-ma-tran-duong-cheo-co-cac-diem-tren-duong-cheo-giong-nhau"></a>
 
+<a name="cac-cluster-can-co-dang-hinh-tron-tuan-theo-phan-phoi-chuan-va-ma-tran-hiep-phuong-sai-la-ma-tran-duong-cheo-co-cac-diem-tren-duong-cheo-giong-nhau"></a>
 #### Các cluster cần có dạng hình tròn (tuân theo phân phối chuẩn và ma trận hiệp phương sai là ma trận đường chéo có các điểm trên đường chéo giống nhau) 
 
 Dưới đây là 1 ví dụ khi 1 cluster có dạng hình dẹt. 
@@ -487,6 +505,7 @@ Dưới đây là 1 ví dụ khi 1 cluster có dạng hình dẹt.
 <!-- ========================== New Heading ==================== -->
 <a name="khi-mot-cluster-nam-phia-trong--cluster-khac"></a>
 
+<a name="khi-mot-cluster-nam-phia-trong--cluster-khac"></a>
 #### Khi một cluster nằm phía trong 1 cluster khác
  Đây là ví dụ kinh điển về việc K-means clustering không thể phân cụm dữ liệu. Một cách tự nhiên, chúng ta sẽ phân ra thành 4 cụm: mắt trái, mắt phải, miệng, xunh quanh mặt. Nhưng vì mắt và miệng nằm trong khuôn mặt nên K-means clustering không thực hiện được:
 
@@ -505,6 +524,7 @@ Mặc dù có những hạn chế, K-means clustering vẫn cực kỳ quan tr�
 <!-- ========================== New Heading ==================== -->
 <a name="-tai-lieu-tham-khao"></a>
 
+<a name="-tai-lieu-tham-khao"></a>
 ## 5. Tài liệu tham khảo
 
 [Clustering documents using k-means](http://scikit-learn.org/stable/auto_examples/text/document_clustering.html)
