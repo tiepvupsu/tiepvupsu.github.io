@@ -80,11 +80,11 @@ trong đó, \\(w_1, w_2, w_3, w_0\\) là các hằng số,  \\(w_0\\) còn đư�
 
 ### Dạng của Linear Regression 
 
-Trong phương trình \\((1)\\) phía trên, nếu chúng ta đặt \\(\mathbf{w} = [w_1, w_2, w_3, w_0]^T = \\) là vector hệ số cần phải tối ưu và \\(\mathbf{\bar{x}} = [x_1, x_2, x_3, 1]^T\\) (đọc là _x bar_ trong tiếng Anh) là vector dữ liệu đầu vào _mở rộng_. Số \\(1\\) ở cuối được thêm vào để phép tính đơn giản hơn và thuận tiện cho việc tính toán. Khi đó, phương trình (1) có thể được viết lại dưới dạng:
+Trong phương trình \\((1)\\) phía trên, nếu chúng ta đặt \\(\mathbf{w} = [w_0, w_1, w_2, w_3]^T = \\) là vector (cột) hệ số cần phải tối ưu và \\(\mathbf{\bar{x}} = [1, x_1, x_2, x_3]\\) (đọc là _x bar_ trong tiếng Anh) là vector (hàng) dữ liệu đầu vào _mở rộng_. Số \\(1\\) ở đầu được thêm vào để phép tính đơn giản hơn và thuận tiện cho việc tính toán. Khi đó, phương trình (1) có thể được viết lại dưới dạng:
 
-\\[y \approx \mathbf{w}^T\mathbf{\bar{x}} = \hat{y}\\]
+\\[y \approx \mathbf{\bar{x}}\mathbf{w} = \hat{y}\\]
 
-
+Chú ý rằng \mathbf{\bar{x}} là một vector hàng.
 
 
 <!-- ========================== New Heading ==================== -->
@@ -95,7 +95,7 @@ Trong phương trình \\((1)\\) phía trên, nếu chúng ta đặt \\(\mathbf{w
 Chúng ta mong muốn rằng sự sai khác \\(e\\) giữa giá trị thực \\(y\\) và giá trị dự đoán \\(\hat{y}\\) (đọc là _y hat_ trong tiếng Anh) là nhỏ nhất. Nói cách khác, chúng ta muốn giá trị sau đây càng nhỏ càng tốt: 
 
 \\[
-\frac{1}{2}e^2 = \frac{1}{2}(y - \hat{y})^2 = \frac{1}{2}(y - \mathbf{w}^T\mathbf{\bar{x}})^2
+\frac{1}{2}e^2 = \frac{1}{2}(y - \hat{y})^2 = \frac{1}{2}(y - \mathbf{\bar{x}}\mathbf{w})^2
 \\]
 
 trong đó hệ số \\(\frac{1}{2} \\) (_lại_) là để thuận tiện cho việc tính toán (khi tính đạo hàm thì số \\(\frac{1}{2} \\) sẽ bị triệt tiêu). Chúng ta cần \\(e^2\\) vì \\(e = y - \hat{y} \\) có thể là một số âm, việc nói \\(e\\) nhỏ nhất sẽ không đúng vì khi \\(e = - \infty\\) là rất nhỏ nhưng sự sai lệch là rất lớn. Bạn đọc có thể tự đặt câu hỏi: **tại sao không dùng trị tuyệt đối \\( \|e\| \\) mà lại dùng bình phương \\(e^2\\) ở đây?** Câu trả lời sẽ có ở phần sau. 
@@ -111,22 +111,21 @@ trong đó hệ số \\(\frac{1}{2} \\) (_lại_) là để thuận tiện cho v
 
 Điều tương tự xảy ra với tất cả các cặp _(input, outcome)_ \\( (\mathbf{x}_i, y_i), i = 1, 2, \dots, N \\), với \\(N\\) là số lượng dữ liệu quan sát được. Điều chúng ta muốn, tổng sai số là nhỏ nhất, tương đương với việc tìm \\( \mathbf{w} \\) để hàm số sau đạt giá trị nhỏ nhất:
 
-\\[ \mathcal{L}(\mathbf{w}) = \frac{1}{2}\sum_{i=1}^N (y_i - \mathbf{w}^T\mathbf{\bar{x}}_i)^2 ~~~~~(2) \\] 
+\\[ \mathcal{L}(\mathbf{w}) = \frac{1}{2}\sum_{i=1}^N (y - \mathbf{\bar{x}}\mathbf{w})^2 ~~~~~(2) \\] 
 
-Trong đó \\(\mathbf{w}^T\\) là chuyển vị (transpose) của vector \\(\mathbf{w}\\).
 Hàm số \\(\mathcal{L}(\mathbf{w}) \\) được gọi là __hàm mất mát__ (loss function) của bài toán Linear Regression. Chúng ta luôn mong muốn rằng sự mất mát (sai số) là nhỏ nhất, điều đó đồng nghĩa với việc  tìm vector hệ số \\( \mathbf{w} \\)  sao cho 
 giá trị của hàm mất mát này càng nhỏ càng tốt. Giá trị của \\(\mathbf{w}\\) làm cho hàm mất mát đạt giá trị nhỏ nhất được gọi là _điểm tối ưu_ (optimal point), ký hiệu:
 
 \\[ \mathbf{w}^* = \arg\min_{\mathbf{w}} \mathcal{L}(\mathbf{w})  \\] 
 
-Trước khi đi tìm lời giải, chúng ta đơn giản hóa phép toán trong phương trình hàm mất mát \\((2)\\). Đặt \\(\mathbf{y} = [y_1, y_2, \dots, y_N]\\) là một vector hàng chứa tất cả các _output_ của _training data_; \\( \mathbf{\bar{X}} = [\mathbf{\bar{x}}_1, \mathbf{\bar{x}}_2, \dots, \mathbf{\bar{x}}_N ] \\) là ma trận dữ liệu đầu vào (mở rộng). Khi đó hàm số mất mát \\(\mathcal{L}(\mathbf{w})\\) được viết dưới dạng ma trận đơn giản hơn:
+Trước khi đi tìm lời giải, chúng ta đơn giản hóa phép toán trong phương trình hàm mất mát \\((2)\\). Đặt \\(\mathbf{y} = [y_1; y_2; \dots; y_N]\\) là một vector cột chứa tất cả các _output_ của _training data_; \\( \mathbf{\bar{X}} = [\mathbf{\bar{x}}_1; \mathbf{\bar{x}}_2; \dots; \mathbf{\bar{x}}_N ] \\) là ma trận dữ liệu đầu vào (mở rộng) mà mỗi hàng của nó là một điểm dữ liệu. Khi đó hàm số mất mát \\(\mathcal{L}(\mathbf{w})\\) được viết dưới dạng ma trận đơn giản hơn:
 
 \\[
 \mathcal{L}(\mathbf{w}) 
-= \frac{1}{2}\sum_{i=1}^N (y_i - \mathbf{w}^T\mathbf{\bar{x}}_i)^2 \\]
+= \frac{1}{2}\sum_{i=1}^N (y_i - \mathbf{\bar{x}}_i\mathbf{w})^2 \\]
 \\[
-= \frac{1}{2} \\|\mathbf{y} - \mathbf{w}^T \mathbf{\bar{X}}\\|_2^2 
-= \frac{1}{2} \\|\mathbf{y}^T - \mathbf{\bar{X}}^T\mathbf{w} \\|_2^2
+= \frac{1}{2} \\|\mathbf{y} - \mathbf{\bar{X}}\mathbf{w} \\|_2^2 
+= \frac{1}{2} \\|\mathbf{y} - \mathbf{\bar{X}}\mathbf{w} \\|_2^2
 ~~~(3)
 \\]
 
@@ -145,19 +144,19 @@ __Cách phổ biến nhất để tìm nghiệm cho một bài toán tối ưu (
 Đạo hàm theo \\(\mathbf{w} \\) của hàm mất mát là: 
 \\[
 \frac{\partial{\mathcal{L}(\mathbf{w})}}{\partial{\mathbf{w}}} 
-= \mathbf{\bar{X}}(\mathbf{\bar{X}}^T\mathbf{w} - \mathbf{y}^T) 
+= \mathbf{\bar{X}}^T(\mathbf{\bar{X}}\mathbf{w} - \mathbf{y}) 
 \\]
 
 Các bạn có thể tham khảo bảng đạo hàm theo vector hoặc ma trận của một hàm số trong [mục D.2 của tài liệu này](https://ccrma.stanford.edu/~dattorro/matrixcalc.pdf). _Đến đây tôi xin quay lại câu hỏi ở phần [Sai số dự đoán](#sai so du doan) phía trên về việc tại sao không dùng trị tuyệt đối mà lại dùng bình phương. Câu trả lời là hàm bình phương có đạo hàm tại mọi nơi, trong khi hàm trị tuyệt đối thì không (đạo hàm không xác định tại 0)_.
 
 Phương trình đạo hàm bằng 0 tương đương với: 
 \\[
-\mathbf{\bar{X}}\mathbf{\bar{X}}^T\mathbf{w} = \mathbf{\bar{X}}\mathbf{y}^T \triangleq \mathbf{b} 
+\mathbf{\bar{X}}^T\mathbf{\bar{X}}\mathbf{w} = \mathbf{\bar{X}}^T\mathbf{y} \triangleq \mathbf{b} 
 ~~~ (4)
 \\]
-(ký hiệu \\(\mathbf{\bar{X}}\mathbf{y}^T \triangleq \mathbf{b} \\) nghĩa là _đặt_ \\(\mathbf{\bar{X}}\mathbf{y}^T\\) _bằng_ \\(\mathbf{b}\\) ).
+(ký hiệu \\(\mathbf{\bar{X}}^T\mathbf{y} \triangleq \mathbf{b} \\) nghĩa là _đặt_ \\(\mathbf{\bar{X}}^T\mathbf{y}\\) _bằng_ \\(\mathbf{b}\\) ).
 
-Nếu ma trận vuông \\( \mathbf{A} \triangleq \mathbf{\bar{X}}\mathbf{\bar{X}}^T\\) khả nghịch (non-singular hay inversable) thì phương trình \\((4)\\) có nghiệm duy nhất: \\( \mathbf{w} = \mathbf{A}^{-1}\mathbf{b}  \\).
+Nếu ma trận vuông \\( \mathbf{A} \triangleq \mathbf{\bar{X}}^T\mathbf{\bar{X}}\\) khả nghịch (non-singular hay inversable) thì phương trình \\((4)\\) có nghiệm duy nhất: \\( \mathbf{w} = \mathbf{A}^{-1}\mathbf{b}  \\).
 
 Vậy nếu ma trận \\(\mathbf{A} \\) không khả nghịch (có định thức bằng 0) thì sao? Nếu các bạn vẫn nhớ các kiến thức về hệ phương trình tuyến tính, trong trường hợp này thì hoặc phương trinh \\( (4) \\) vô nghiệm, hoặc là 
 nó
@@ -168,7 +167,7 @@ Với khái niệm giả nghịch đảo, điểm tối ưu của bài toán Lin
 
 
 \\[
-\mathbf{w} = \mathbf{A}^{\dagger}\mathbf{b} = (\mathbf{\bar{X}}\mathbf{\bar{X}}^T)^{\dagger} \mathbf{\bar{X}}\mathbf{y}^T
+\mathbf{w} = \mathbf{A}^{\dagger}\mathbf{b} = (\mathbf{\bar{X}}^T\mathbf{\bar{X}})^{\dagger} \mathbf{\bar{X}}^T\mathbf{y}
 ~~~ (5)
 \\]
 
@@ -218,9 +217,9 @@ Tiếp theo, chúng ta khai báo và biểu diễn dữ liệu trên một đồ
 
 ```python
 # height (cm)
-X = np.array([[147, 150, 153, 158, 163, 165, 168, 170, 173, 175, 178, 180, 183]])
+X = np.array([[147, 150, 153, 158, 163, 165, 168, 170, 173, 175, 178, 180, 183]]).T
 # weight (kg)
-y = np.array([[ 49, 50, 51,  54, 58, 59, 60, 62, 63, 64, 66, 67, 68]])
+y = np.array([[ 49, 50, 51,  54, 58, 59, 60, 62, 63, 64, 66, 67, 68]]).T
 # Visualize data 
 plt.plot(X, y, 'ro')
 plt.axis([140, 190, 45, 75])
@@ -249,19 +248,19 @@ Tiếp theo, chúng ta sẽ tính toán các hệ số w_1 và w_0 dựa vào c�
 
 ```python
 # Building Xbar 
-one = np.ones((1,X.shape[1]))
-Xbar = np.concatenate((X, one), axis = 0)
+one = np.ones((X.shape[0], 1))
+Xbar = np.concatenate((one, X), axis = 1)
 
 # Calculating weights of the fitting line 
-A = np.dot(Xbar, Xbar.T)
-b = np.dot(Xbar, y.T)
+A = np.dot(Xbar.T, Xbar)
+b = np.dot(Xbar.T, y)
 w = np.dot(np.linalg.pinv(A), b)
 print 'w = ', w
 # Preparing the fitting line 
-w_1 = w[0][0]
-w_0 = w[1][0]
+w_0 = w[0][0]
+w_1 = w[1][0]
 x0 = np.linspace(145, 185, 2, endpoint=True)
-y0 = w_1*x0 + w_0
+y0 = w_0 + w_1*x0
 
 # Drawing the fitting line 
 plt.plot(X.T, y.T, 'ro')     # data 
@@ -273,8 +272,8 @@ plt.show()
 
 ```
 
-    w =  [[  0.55920496]
-     [-33.73541021]]
+w =  [[-33.73541021]
+ [  0.55920496]]
 
 
 
@@ -314,15 +313,15 @@ from sklearn import datasets, linear_model
 
 # fit the model by Linear Regression
 regr = linear_model.LinearRegression(fit_intercept=False) # fit_intercept = False for calculating the bias
-regr.fit(Xbar.T, y.T)
+regr.fit(Xbar, y)
 
 # Compare two results
 print u'Nghiệm tìm được bằng scikit-learn  : ', regr.coef_ 
 print u'Nghiệm tìm được từ phương trình (5): ', w.T
 ```
 
-    Nghiệm tìm được bằng scikit-learn  :  [[  0.55920496 -33.73541021]]
-    Nghiệm tìm được từ phương trình (5):  [[  0.55920496 -33.73541021]]
+    Nghiệm tìm được bằng scikit-learn  :  [[  -33.73541021 0.55920496]]
+    Nghiệm tìm được từ phương trình (5):  [[  -33.73541021 0.55920496 ]]
 
 
 Chúng ta thấy rằng hai kết quả thu được như nhau! (_Nghĩa là tôi đã không mắc lỗi nào trong cách tìm nghiệm ở phần trên_)
