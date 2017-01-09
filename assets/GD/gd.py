@@ -3,27 +3,33 @@ import numpy as np
 
 import matplotlib.pyplot as plt
 
+c_sin = 8
 def grad(x):
-	return 2*x+ 3*np.cos(3*x)
+	return 2*x+ c_sin*np.cos(x)
 
 def cost(x):
-	return x**2 + np.sin(3*x)
+	return x**2 + c_sin*np.sin(x)
 
-alpha = .1
-x = [5]
+alpha = .5
+x = [5.5]
+
+title = '$f(x) = x^2 + %dsin(x)$; ' %c_sin
+title += '$x_0 =  %.2f$; ' %x[0]
+title += r'$\alpha = %.2f$ ' % alpha 
+file_name = 'gd_14.gif'
 
 for it in range(100):
 	print cost(x[-1])
 	x_new = x[-1] - alpha*grad(x[-1])
 
-	if np.linalg.norm(x_new - x[-1]) < 1e-7:
+	if np.linalg.norm(x_new - x[-1]) < 1e-3:
 		break 
 	x.append(x_new)
 
-
+print it 
 x = np.asarray(x)
 # print it, x_old
-x0 = np.linspace(-5, 5, 1000)
+x0 = np.linspace(-4.5, 5.5, 1000)
 y0 = cost(x0)
 
 y = cost(x)
@@ -39,10 +45,13 @@ def update(ii):
 
     animlist = plt.cla()
     # animlist = plt.axis('equal')
-    animlist = plt.axis([-6, 6, -2, 30])
+    animlist = plt.axis([-6, 6, -8, 30])
 
     animlist = plt.plot(x0, y0)
-
+    
+    # title += '$\alpha = $ %2f' % alpha
+    # animlist = plt.title('$x_0 = $%f, $\alpha = $%f' % (x[0], alpha))
+    animlist = plt.title(title)
     if ii == 0:
     	animlist = plt.plot(x[ii], y[ii], 'ro', markersize = 7)
     else:
@@ -55,7 +64,7 @@ def update(ii):
 import matplotlib.animation as animation
 from matplotlib.animation import FuncAnimation 
 
-anim = FuncAnimation(fig, update, frames=np.arange(0, it), interval=1000)
-
-plt.show()
+anim = FuncAnimation(fig, update, frames=np.arange(0, it), interval=500)
+anim.save(file_name, dpi=100, writer='imagemagick')
+# plt.show()
 
