@@ -156,14 +156,15 @@ a:hover   { color: #000; text-decoration: underline; }
 .posts li { margin-bottom: 30px; }
 
 .posts .post-link {
-  font-size: 20px;
+  font-size: 17px;
+  text-align: left;
   letter-spacing: -1px;
   line-height: 1;
 }
 
 .posts .post-date {
   display: block;
-  font-size: 15px;
+  font-size: 13px;
   color: #818181;
 }
 
@@ -540,9 +541,9 @@ td{
   /*color: ##eee;*/
   /*font-weight: bold*/
   display: inline-block;
-  height: 23px;
-  font-size: 12px;
-  line-height: 23px;
+  height: 20px;
+  font-size: 11px;
+  line-height: 20px;
   padding: 0 10px 0 20px;
   position: relative;
   margin: 0 10px 10px 0;
