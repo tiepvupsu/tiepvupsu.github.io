@@ -9,7 +9,7 @@ tags: Clustering Kmeans Unsupervised-learning
 sc_project: 11213319
 sc_security: 9fb5c98f
 img: /assets/kmeans/kmeans11.gif
-summary: Trong thuật toán K-means clustering, chúng ta không biết nhãn (label) của từng điểm dữ liệu. Mục đích là làm thể nào để phân dữ liệu thành các cụm (cluster) khác nhau sao cho <em>dữ liệu trong cùng một cụm có tính chất giống nhau</em>.
+summary: Trong thuật toán K-means clustering, chúng ta không biết nhãn (label) của từng điểm dữ liệu. Mục đích là làm thể nào để phân dữ liệu thành các cụm (cluster) khác nhau sao cho 
 ---
 
 

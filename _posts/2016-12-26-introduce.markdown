@@ -8,7 +8,7 @@ tags: General
 sc_project: 11213301
 sc_security: 8d50f6a5
 img: /assets/introduce/aimldl.png
-summary: Những năm gần đây, AI - Artificial Intelligence (Trí Tuệ Nhân Tạo), và cụ thể hơn là Machine Learning nổi lên như một bằng chứng của cuộc cách mạng công nghiệp lần thứ tư (1 - động cơ hơi nước, 2 - năng lượng điện, 3 - công nghệ thông tin). Trí Tuệ Nhân Tạo đang len lỏi vào mọi lĩnh vực trong đời sống mà có thể chúng ta không nhận ra. 
+summary: Những năm gần đây, AI - Artificial Intelligence (Trí Tuệ Nhân Tạo), và cụ thể hơn là Machine Learning nổi lên như một bằng chứng của cuộc cách mạng công nghiệp lần thứ tư 
 ---
 
 
