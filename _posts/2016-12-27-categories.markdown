@@ -9,7 +9,7 @@ sc_project: 11213327
 sc_security: 02b75c79
 permalink: /2016/12/27/categories/
 img: /assets/categories/alphago.jpeg
-summary: Có hai cách phổ biến phân nhóm các thuật toán Machine learning. Một là dựa trên phương thức học (learning style), hai là dựa trên chức năng (function) (của mỗi thuật toán). Bài này cũng giới thiệu thêm rất nhiều các ví dụ về Machine Learning trong cuộc sống.
+summary: Có hai cách phổ biến phân nhóm các thuật toán Machine learning. Một là dựa trên phương thức học (learning style), hai là dựa trên chức năng 
 ---
 
 Có hai cách phổ biến phân nhóm các thuật toán Machine learning. Một là dựa trên phương thức học (learning style), hai là dựa trên chức năng (function) (của mỗi thuật toán).
