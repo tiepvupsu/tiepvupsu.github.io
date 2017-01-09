@@ -271,7 +271,7 @@ a:hover   { color: #000; text-decoration: underline; }
 /* AK custom CSS mods */
 .imgright { float: right; margin-left: 10px; }
 .imgcap img {
-  border: 1px solid #999;
+  /*border: 1px solid #999;*/
   max-width: 100%;
 }
 .imgcap {

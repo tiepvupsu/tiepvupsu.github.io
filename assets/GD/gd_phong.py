@@ -21,12 +21,6 @@ plt.rcParams['ytick.labelsize'] = 12
 X = 2 * rnd.rand(100, 1)
 y = 4 + 3 * X + rnd.randn(100, 1)
 
-# plt.plot(X, y, "b.")
-# plt.xlabel("$x_1$", fontsize=18)
-# plt.ylabel("$y$", rotation=0, fontsize=18)
-# plt.axis([0, 2, 0, 15])
-# plt.show()
-
 import numpy.linalg as LA
 
 X_b = np.c_[np.ones((100, 1)), X]  # add x0 = 1 to each instance
@@ -51,6 +45,7 @@ def plot_gradient_descent(theta, eta, theta_path=None):
             style = "g-" if iteration > 0 else "r--"
             plt.plot(X_new, y_predict, style)
         gradients = 2/m * X_b.T.dot(X_b.dot(theta) - y)
+        import pdb; pdb.set_trace()  # breakpoint 1cb16e1b //
         theta = theta - eta * gradients
         if theta_path is not None:
             theta_path.append(theta)
