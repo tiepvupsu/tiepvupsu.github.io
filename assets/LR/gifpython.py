@@ -33,5 +33,6 @@ if __name__ == '__main__':
         anim.save('line.gif', dpi=80, writer='imagemagick')
     else:
         # plt.show() will just loop the animation forever.
+        # anim.save('line.gif', dpi=80, writer='imagemagick')
+        anim.save('line.gif', dpi=80)
         plt.show()
-        anim.save('line.gif', dpi=80, writer='imagemagick')

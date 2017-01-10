@@ -41,6 +41,7 @@
             \draw[->, red, ultra thick, domain=(\xx-.5):(\xx+.5),smooth,variable=\x] plot ({\x},{(\xx - 1)*(\x - \xx) + .5*(\xx - 1)^2 - 2});      
         }
         \draw [fill = green, draw = green] (1, -2) circle (2pt);
+        \node [scale = 3] at (1, -1.5) {$x^*$};
     \end{scope}
 
     % \draw[domain=-3:-2] plot (\x,{(\x-1)*(\x-1)-2}) {[turn] (-3,) coordinate(t1) (-1,0) coordinate(t2)};
