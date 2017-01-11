@@ -85,7 +85,7 @@ Trong đó \\(\eta\\) (đọc là _eta_) là một số dương được gọi l
 
 ### Ví dụ đơn giản với Python
 
-Xét hàm số \\(f(x) = x^2 + 5\sin(x)\\) với đạo hàm \\(f'(x) = 2x + 5\cos(x)\\) (tôi chọn hàm này vì nó không dễ tìm nghiệm của đạo hàm bằng 0 như hàm phía trên). Giả sử bắt đầu từ một điểm \\(x\_{0}\\) nào đó, tại vòng lặp thứ \\(t\\), chúng ta sẽ cập nhật như sau:
+Xét hàm số \\(f(x) = x^2 + 5\sin(x)\\) với đạo hàm \\(f'(x) = 2x + 5\cos(x)\\) (một lý do tôi chọn hàm này vì nó không dễ tìm nghiệm của đạo hàm bằng 0 như hàm phía trên). Giả sử bắt đầu từ một điểm \\(x\_{0}\\) nào đó, tại vòng lặp thứ \\(t\\), chúng ta sẽ cập nhật như sau:
 \\[
 x\_{t+1} = x_\{t} - \eta(2x_\{t} + 5\cos(x_\{t}))
 \\]
