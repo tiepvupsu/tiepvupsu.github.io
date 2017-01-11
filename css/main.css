@@ -591,6 +591,7 @@ td{
   transform: scale(1, 1.5) rotate(45deg); 
 }  */
 
+
 .tag:hover {
   background-color: #308FDF;
   color: white;
