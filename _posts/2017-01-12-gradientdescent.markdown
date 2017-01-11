@@ -5,8 +5,8 @@ title:  "Bài 7: Gradient Descent (phần 1/2)"
 date:   2017-01-12 15:22:00
 mathjax: true
 tags: GD Optimization
-sc_project: 
-sc_security: 
+sc_project: 11216220
+sc_security: 5089fb7c
 img: /assets/GD/img2_1.gif 
 summary: Gradient Descent một trong những thuật toán quan trọng nhất trong Optimization và Machine Learning 
 ---
