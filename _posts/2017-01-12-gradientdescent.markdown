@@ -153,8 +153,7 @@ Vậy là với các điểm ban đầu khác nhau, thuật toán của chúng t
     </tr>
 </table> 
 
-Từ hình minh họa trên ta thấy rằng hình bên trái, tương ứng với \\(x\_{0} = -5\\), nghiệm hội tụ nhanh hơn, vì điểm ban đâu \\(x_0\\) gần với nghiệm (\\( x^\* \approx -1\\))
- hơn. Hơn nữa, với \\(x\_{0} = 5 \\) ở hình bên phải, _đường đi_ của nghiệm có chứa
+Từ hình minh họa trên ta thấy rằng hình bên trái, tương ứng với \\(x\_{0} = -5\\), nghiệm hội tụ nhanh hơn, vì điểm ban đầu \\(x_0\\) gần với nghiệm \\( x^\* \approx -1\\)  hơn. Hơn nữa, với \\(x\_{0} = 5 \\) ở hình bên phải, _đường đi_ của nghiệm có chứa
   một khu vực có đạo hàm khá nhỏ gần điểm có hoành độ bằng 2. Điều này khiến cho thuật toán _la cà_ ở đây khá lâu. Khi vượt qua được điểm này thì mọi việc diễn ra rất tốt đẹp. 
 
 Tốc độ hội tụ của GD không những phụ thuộc vào điểm khởi tạo ban đầu mà còn phụ thuộc vào _learning rate_. Dưới đây là một ví dụ với cùng điểm khởi tạo \\(x\_{0} = -5\\) nhưng learning rate khác nhau:
