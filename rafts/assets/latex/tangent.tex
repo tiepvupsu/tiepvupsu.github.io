@@ -1,0 +1,93 @@
+% used PGFPlots v1.13 and TikZ v3.0.1a
+\documentclass[border=2mm]{standalone}
+\usepackage{xcolor}
+    \colorlet{Curve}{blue!75!black}
+    \colorlet{Tangent}{red!75!black}
+\usepackage{pgfplots}
+    \pgfplotsset{compat=1.10}
+    \usetikzlibrary{
+        calc,
+        intersections,
+        math,
+    }
+    \makeatletter
+        \def\parsenode[#1]#2\pgf@nil{%
+            \tikzset{label node/.style={#1}}
+            \def\nodetext{#2}
+        }
+        \tikzset{
+            % define style for the points
+            Point/.style={
+                shape=circle,
+                inner sep=0pt,
+                minimum size=3pt,
+            },
+            add node at x/.style 2 args={
+                name path global=plot line,
+                /pgfplots/execute at end plot visualization/.append={
+                        \begingroup
+                        \@ifnextchar[{\parsenode}{\parsenode[]}#2\pgf@nil
+                    \path [name path global = position line #1-1]
+                        ({axis cs:#1,0}|-{rel axis cs:0,0}) --
+                        ({axis cs:#1,0}|-{rel axis cs:0,1});
+                    \path [xshift=1pt, name path global = position line #1-2]
+                        ({axis cs:#1,0}|-{rel axis cs:0,0}) --
+                        ({axis cs:#1,0}|-{rel axis cs:0,1});
+                    \path [
+                        name intersections={
+                            of={plot line and position line #1-1},
+                            name=left intersection
+                        },
+                        name intersections={
+                            of={plot line and position line #1-2},
+                            name=right intersection
+                        },
+                        label node/.append style={pos=1}
+                    ] (left intersection-1) -- (right intersection-1)
+                        node [label node]{\nodetext};
+                    % ---------------------------------------------------------
+                    % draw the tangent line from a bit right of the point on
+                    % the curve to the intersection with the ordinate
+                    % and draw the corresponding points
+                    \draw [->, Tangent] let
+                        \p1=($ (left intersection-1) - (right intersection-1) $),
+                        \p2=($ (left intersection-1)!sign(#1)*5mm!(right intersection-1) $),
+                        \p3=($ ({axis cs:0,0}) - (\p2) $),
+                        \n1={\x3/\x1}
+                    in
+                        (\p2) -- +($ {\n1}*(\x1,\y1) $)
+                    ;
+
+                        \endgroup
+                },
+            },
+        }
+    \makeatother
+\begin{document}
+    \begin{tikzpicture}
+        \begin{axis}[
+            axis lines=middle,
+            enlargelimits=0.1,
+            xmin=-3,
+            xmax=5,
+            ymin=-2,
+            ymax=7.5,
+            xtick=\empty,
+            ytick=\empty,
+            % xlabel=$x$,
+            % ylabel=$y$,
+            axis line style={draw=none},
+            domain=\pgfkeysvalueof{/pgfplots/xmin}:(\pgfkeysvalueof{/pgfplots/xmax},
+            samples=50,
+            tangent/.style={
+                add node at x={#1}{},
+            },
+        ]
+            \addplot [draw=Curve,
+                tangent=-1.5,
+                tangent=1,
+                tangent=2.3,
+            ] {(x-1)^2 - 2};
+        \end{axis}
+    \end{tikzpicture}
+\end{document}

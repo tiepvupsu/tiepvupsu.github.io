@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Bài 4: K-means Clustering</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="">
+    <link rel="canonical" href="http://localhost:4000/2017/01/01/kmeans/">
+    <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Machine Learning cơ bản posts" />
+    <!-- <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" /> -->
+    <!-- <link rel="icon" type="image/x-icon" href="favicon.ico" sizes="16x16"> -->
+    <!-- <link rel="icon" type="image/png" href="http://earlystudios.altervista.org/images/ai.png" sizes="16x16"> -->
+    <link rel="icon" type="image/png" href="https://www.highspot.com/wp-content/uploads/icon-intelligent-recommendations.png" sizes="32x32">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+         <!-- Google Analytics -->
+      
+      <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KTCD8BX');</script>
+<!-- End Google Tag Manager -->
+</head>
+
+ 
+    
+    <body>
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KTCD8BX"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+
+    <header class="site-header">
+
+  <div class="wrap">
+
+    <div style="float:left; margin-top:10px; margin-right:10px;">
+    <a href="/feed.xml">
+      <img src="/assets/rssicon.svg" width="40">
+    </a>
+    </div>
+
+    <a class="site-title" href="/">Machine Learning cơ bản</a>
+    
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+          <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+            h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+            h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+            c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">
+        
+          <a class="page-link" href="/about/">About</a>
+        
+          
+        
+          
+        
+          <a class="page-link" href="/index/">Index</a>
+        
+          <a class="page-link" href="/math/">Math</a>
+        
+          
+        
+          <a class="page-link" href="/subscribe/">Subscribe</a>
+        
+          <a class="page-link" href="/tags">Tags</a>
+        
+      </div>
+    </nav>
+  </div>
+</header>
+
+
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="PageNavigation">
+  
+    <a class="prev" href="/2016/12/28/linearregression/">&laquo; Bài 3: Linear Regression</a>
+  
+  
+    <a class="next" href="/2017/01/04/kmeans2/">Bài 5: K-means Clustering: Simple Applications &raquo;</a>
+  
+</div>
+  <header>    
+  <!-- title -->
+     <p style = "font-size: 27px; text-align: left">Bài 4: K-means Clustering</p>
+  <!-- title -->
+  </header>
+
+  <!-- tags -->
+  <!--   <span style = "text-align: left">
+   
+   
+      <a href="/tags#Clustering" class="tag">Clustering</a>
+    
+      <a href="/tags#Kmeans" class="tag">Kmeans</a>
+    
+      <a href="/tags#Unsupervised-learning" class="tag">Unsupervised-learning</a>
+    
+  
+    </span> -->
+
+         
+        <!-- |      -->
+        <ul class="tags">
+          
+            <!-- <li> -->
+            <a href="/tags#Clustering" class="tag">Clustering</a>
+            <!-- </li> -->
+          
+            <!-- <li> -->
+            <a href="/tags#Kmeans" class="tag">Kmeans</a>
+            <!-- </li> -->
+          
+            <!-- <li> -->
+            <a href="/tags#Unsupervised-learning" class="tag">Unsupervised-learning</a>
+            <!-- </li> -->
+          
+          </ul>
+        
+  <!-- tags -->
+  <!-- date -->
+   <p class="meta" style = "color: #818181">Jan 1, 2017 
+
+    <!-- Start of StatCounter Code for Default Guide -->
+           <!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=11213319; 
+var sc_invisible=0; 
+var sc_security="9fb5c98f"; 
+var sc_text=2; 
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("(<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'> </"+"script>visits)");
+</script>
+<noscript><div class="statcounter"><a title="web analytics"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="//c.statcounter.com/11213319/0/9fb5c98f/0/" alt="web
+analytics"></a> </div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+    <!-- End of StatCounter Code for Default Guide -->
+
+   <!-- 5145  -->
+  </p>
+  <!-- date -->
+
+<div class="post">
+  <article class="post-content">
+  <!-- 
+<div class="imgcap">
+<div >
+<a href = "/2017/01/01/kmeans/">
+    <img src ="/assets/kmeans/kmeans11.gif"  width = "800"></a>
+</div>
+<div class="thecap"> K-means Clustering <br></div>
+</div> -->
+
+<p><strong>Trong trang này:</strong>
+<!-- MarkdownTOC --></p>
+
+<ul>
+  <li><a href="#-gioi-thieu">1. Giới thiệu</a></li>
+  <li><a href="#-phan-tich-toan-hoc">2. Phân tích toán học</a>
+    <ul>
+      <li><a href="#mot-so-ky-hieu-toan-hoc">Một số ký hiệu toán học</a></li>
+      <li><a href="#ham-mat-mat-va-bai-toan-toi-uu">Hàm mất mát và bài toán tối ưu</a></li>
+      <li><a href="#thuat-toan-toi-uu-ham-mat-mat">Thuật toán tối ưu hàm mất mát</a>
+        <ul>
+          <li><a href="#co-dinh-\\\mathbfm-\\-tim-\\\mathbfy\\">Cố định \(\mathbf{M} \), tìm \(\mathbf{Y}\)</a></li>
+          <li><a href="#co-dinh-\\\mathbfy-\\-tim-\\\mathbfm\\">Cố định \(\mathbf{Y} \), tìm \(\mathbf{M}\)</a></li>
+        </ul>
+      </li>
+      <li><a href="#tom-tat-thuat-toan">Tóm tắt thuật toán</a></li>
+    </ul>
+  </li>
+  <li><a href="#vi-du-tren-python">Ví dụ trên Python</a>
+    <ul>
+      <li><a href="#gioi-thieu-bai-toan">Giới thiệu bài toán</a></li>
+      <li><a href="#hien-thi-du-lieu-tren-do-thi">Hiển thị dữ liệu trên đồ thị</a></li>
+      <li><a href="#cac-ham-so-can-thiet-cho-k-means-clustering">Các hàm số cần thiết cho K-means clustering</a></li>
+      <li><a href="#ket-qua-tim-duoc-bang-thu-vien-scikit-learn">Kết quả tìm được bằng thư viện scikit-learn</a></li>
+    </ul>
+  </li>
+  <li><a href="#-thao-luan">4. Thảo luận</a>
+    <ul>
+      <li><a href="#han-che">Hạn chế</a>
+        <ul>
+          <li><a href="#chung-ta-can-biet-so-luong-cluster-can-clustering">Chúng ta cần biết số lượng cluster cần clustering</a></li>
+          <li><a href="#nghiem-cuoi-cung-phu-thuoc-vao-cac-centers-duoc-khoi-tao-ban-dau">Nghiệm cuối cùng phụ thuộc vào các centers được khởi tạo ban đầu</a></li>
+          <li><a href="#cac-cluster-can-co-so-luong-diem-gan-bang-nhau">Các cluster cần có só lượng điểm gần bằng nhau</a></li>
+          <li><a href="#cac-cluster-can-co-dang-hinh-tron-tuan-theo-phan-phoi-chuan-va-ma-tran-hiep-phuong-sai-la-ma-tran-duong-cheo-co-cac-diem-tren-duong-cheo-giong-nhau">Các cluster cần có dạng hình tròn (tuân theo phân phối chuẩn và ma trận hiệp phương sai là ma trận đường chéo có các điểm trên đường chéo giống nhau)</a></li>
+          <li><a href="#khi-mot-cluster-nam-phia-trong--cluster-khac">Khi một cluster nằm phía trong 1 cluster khác</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#-tai-lieu-tham-khao">5. Tài liệu tham khảo</a></li>
+</ul>
+
+<!-- /MarkdownTOC -->
+
+<!-- ========================== New Heading ==================== -->
+<p><a name="-gioi-thieu"></a></p>
+
+<p><a name="-gioi-thieu"></a></p>
+<h2 id="1-giới-thiệu">1. Giới thiệu</h2>
+<p><a href="/2016/12/28/linearregression/">Trong bài trước</a>, chúng ta đã làm quen với thuật toán Linear Regression - là thuật toán đơn giản nhất trong <a href="/2016/12/27/categories/#supervised-learning-hoc-co-giam-sat">Supervised learning</a>. Bài này tôi sẽ giới thiệu một trong những thuật toán cơ bản nhất trong <a href="/2016/12/27/categories/#unsupervised-learning-hoc-khong-giam-sat">Unsupervised learning</a> - thuật toán K-means clustering (phân cụm K-means).</p>
+
+<p>Trong thuật toán K-means clustering, chúng ta không biết nhãn (label) của từng điểm dữ liệu. Mục đích là làm thể nào để phân dữ liệu thành các cụm (cluster) khác nhau sao cho <em>dữ liệu trong cùng một cụm có tính chất giống nhau</em>.</p>
+
+<p><strong>Ví dụ:</strong> Một công ty muốn tạo ra những chính sách ưu đãi cho những nhóm khách hàng khác nhau dựa trên sự tương tác giữa mỗi khách hàng với công ty đó (số năm là khách hàng; số tiền khách hàng đã chi trả cho công ty; độ tuổi; giới tính; thành phố; nghề nghiệp; …). Giả sử công ty đó có rất nhiều dữ liệu của rất nhiều khách hàng nhưng chưa có cách nào chia toàn bộ khách hàng đó thành một số nhóm/cụm khác nhau. Nếu một người biết Machine Learning được đặt câu hỏi này, phương pháp đầu tiên anh (chị) ta nghĩ đến sẽ là K-means Clustering. Vì nó là một trong những thuật toán đầu tiên mà anh ấy tìm được trong các cuốn sách, khóa học về Machine Learning. Và tôi cũng chắc rằng anh ấy đã đọc blog <a href="https://tiepvupsu.github.io">Machine Learning cơ bản</a>. Sau khi đã phân ra được từng nhóm, nhân viên công ty đó có thể lựa chọn ra một vài khách hàng trong mỗi nhóm để quyết định xem mỗi nhóm tương ứng với nhóm khách hàng nào. Phần việc cuối cùng này cần sự can thiệp của con người, nhưng lượng công việc đã được rút gọn đi rất nhiều.</p>
+
+<p>Ý tưởng đơn giản nhất về cluster (cụm) là tập hợp các điểm <em>ở gần nhau trong một không gian nào đó</em> (không gian này có thể có rất nhiều chiều trong trường hợp thông tin về một điểm dữ liệu là rất lớn). Hình bên dưới là một ví dụ về 3 cụm dữ liệu (từ giờ rôi sẽ viết gọn là <em>cluster</em>).</p>
+
+<div class="imgcap">
+<img src="/assets/kmeans/figure_2.png" width="500" align="center" />
+<div class="thecap"> Bài toán với 3 clusters. <br /></div>
+</div>
+
+<p>Giả sử mỗi cluster có một điểm đại diện (<em>center</em>) màu vàng. Và những điểm xung quanh mỗi center thuộc vào cùng nhóm với center đó. Một cách đơn giản nhất, xét một điểm bất kỳ, ta xét xem điểm đó gần với center nào nhất thì nó thuộc về cùng nhóm với center đó. Tới đây, chúng ta có một bài toán thú vị: <em>Trên một vùng biển hình vuông lớn có ba đảo hình vuông, tam giác, và tròn màu vàng như hình trên. Một điểm trên biển được gọi là thuộc lãnh hải của một đảo nếu nó nằm gần đảo này hơn so với hai đảo kia . Hãy xác định ranh giới lãnh hải của các đảo.</em></p>
+
+<p>Hình dưới đây là một hình minh họa cho việc phân chia lãnh hải nếu có 5 đảo khác nhau được biểu diễn bằng các hình tròn màu đen:</p>
+<div class="imgcap">
+<img src="/assets/kmeans/figure_1.png" width="500" align="center" />
+<div class="thecap"> Phân vùng lãnh hải của mỗi đảo. Các vùng khác nhau có màu sắc khác nhau. <br /></div>
+</div>
+
+<p>Chúng ta thấy rằng đường phân định giữa các lãnh hải là các đường thẳng (chính xác hơn thì chúng là các đường trung trực của các cặp điểm gần nhau). Vì vậy, lãnh hải của một đảo sẽ là một hình đa giác.</p>
+
+<p>Cách phân chia này trong toán học được gọi là <a href="https://en.wikipedia.org/wiki/Voronoi_diagram">Voronoi Diagram</a>.</p>
+
+<p>Trong không gian ba chiều, lấy ví dụ là các hành tinh, thì (tạm gọi là) <em>lãnh không</em> của mỗi hành tinh sẽ là một đa diện. Trong không gian nhiều chiều hơn, chúng ta sẽ có những thứ (mà tôi gọi là) <em>siêu đa diện</em> (hyperpolygon).</p>
+
+<p>Quay lại với bài toán phân nhóm và cụ thể là thuật toán K-means clustering, chúng ta cần một chút phân tích toán học trước khi đi tới phần <a href="#tom-tat-thuat-toan">tóm tắt thuật toán</a> ở phần dưới. Nếu bạn không muốn đọc quá nhiều về toán, bạn có thể bỏ qua phần này. (<em>Tốt nhất là đừng bỏ qua, bạn sẽ tiếc đấy</em>).
+<!-- ========================== New Heading ==================== -->
+<a name="-phan-tich-toan-hoc"></a></p>
+
+<p><a name="-phan-tich-toan-hoc"></a></p>
+<h2 id="2-phân-tích-toán-học">2. Phân tích toán học</h2>
+
+<p>Mục đích cuối cùng của thuật toán phân nhóm này là: từ dữ liệu đầu vào và số lượng nhóm chúng ta muốn tìm, hãy chỉ ra center của mỗi nhóm và phân các điểm dữ liệu vào các nhóm tương ứng. Giả sử thêm rằng mỗi điểm dữ liệu chỉ thuộc vào đúng một nhóm.</p>
+
+<!-- ========================== New Heading ==================== -->
+<p><a name="mot-so-ky-hieu-toan-hoc"></a></p>
+
+<p><a name="mot-so-ky-hieu-toan-hoc"></a></p>
+<h3 id="một-số-ký-hiệu-toán-học">Một số ký hiệu toán học</h3>
+<p>Giả sử có \(N\) điểm dữ liệu là \( \mathbf{X} = [\mathbf{x}_1, \mathbf{x}_2, \dots, \mathbf{x}_N] \in \mathbb{R}^{d \times N}\) và \(K &lt; N\) là số cluster chúng ta muốn phân chia. Chúng ta cần tìm các center \( \mathbf{m}_1, \mathbf{m}_2, \dots, \mathbf{m}_K \in \mathbb{R}^{d \times 1} \) và label của mỗi điểm dữ liệu.</p>
+
+<p><strong>Lưu ý về ký hiệu toán học:</strong> <em>trong các bài viết của tôi, các số vô hướng được biểu diễn bởi các chữ cái viết ở dạng không in đậm, có thể viết hoa, ví dụ \(x_1, N, y, k\). Các vector được biểu diễn bằng các chữ cái thường in đậm, ví dụ \(\mathbf{m}, \mathbf{x}_1 \). Các ma trận được biểu diễn bởi các chữ viết hoa in đậm, ví dụ \(\mathbf{X, M, Y} \). Lưu ý này đã được nêu ở bài <a href="/2016/12/28/linearregression/">Linear Regression</a>. Tôi xin được không nhắc lại trong các bài tiếp theo.</em></p>
+
+<p>Với mỗi điểm dữ liệu \( \mathbf{x}_i \) đặt \(\mathbf{y}_i = [y_{i1}, y_{i1}, \dots, y_{iK}]\) là label vector của nó, trong đó nếu \( \mathbf{x}_i \) được phân vào cluster \(k\) thì  \(y_{ik} = 1\) và \(y_{ij} = 0, \forall j \neq k \). Điều này có nghĩa là có đúng một phần tử của vector \(\mathbf{y}_i\) là bằng 1 (tương ứng với cluster của \(\mathbf{x}_i \)), các phần tử còn lại bằng 0. Ví dụ: nếu một điểm dữ liệu có label vector là \([1,0,0,\dots,0]\) thì nó thuộc vào cluster 1, là \([0,1,0,\dots,0]\) thì nó thuộc vào cluster 2, \(\dots\). Cách mã hóa label của dữ liệu như thế này được goi là biểu diễn <a href="https://en.wikipedia.org/wiki/One-hot"><em>one-hot</em></a>. Chúng ta sẽ thấy cách biểu diễn one-hot này rất phổ biến trong Machine Learning ở các bài tiếp theo.</p>
+
+<p>Ràng buộc của \(\mathbf{y}_i \) có thể viết dưới dạng toán học như sau:
+\[
+ y_{ik} \in \{0, 1\},~~~ \sum_{k = 1}^K y_{ik} = 1 ~~~ (1)
+\]
+<!-- \\[ \mathbf{y}_i = [y_{i}, y_2] \\] -->
+<!-- [y_{i1}]\\) -->
+<!-- đặt \\(\mathbf{y}_i = [y_{i1}, y_{i2}, \dots, y_{iK} \\) là vector biểu diễn label của một điểm, trong đó nếu nếu điểm dữ liệu --></p>
+
+<p><!-- \\(\mathbf{x}_i\\) được phân vào cluster \\(k\\) thì  \\(y_{ik} = 1\\)  -->
+<!-- ========================== New Heading ==================== -->
+<a name="ham-mat-mat-va-bai-toan-toi-uu"></a></p>
+
+<p><a name="ham-mat-mat-va-bai-toan-toi-uu"></a></p>
+<h3 id="hàm-mất-mát-và-bài-toán-tối-ưu">Hàm mất mát và bài toán tối ưu</h3>
+
+<p>Nếu ta coi center \(\mathbf{m}_k \)  là center (hoặc representative) của mỗi cluster và <em>ước lượng</em> tất cả các điểm được phân vào cluster này bởi \(\mathbf{m}_k \), thì một điểm dữ liệu \(\mathbf{x}_i \) được phân vào cluster \(k\) sẽ bị sai số là \( (\mathbf{x}_i - \mathbf{m}_k) \). Chúng ta mong muốn sai số này có trị tuyệt đối nhỏ nhất nên (<a href="/2016/12/28/linearregression/#sai-so-du-doan">giống như trong bài Linear Regression</a>) ta sẽ tìm cách để đại lượng sau đây đạt giá trị nhỏ nhất: 
+\[
+\|\mathbf{x}_i - \mathbf{m}_k\|_2^2
+\]</p>
+
+<p>Hơn nữa, vì \(\mathbf{x}_i \) được phân vào cluster \(k\) nên \(y_{ik} = 1, y_{ij} = 0, ~\forall j \neq k \). Khi đó, biểu thức bên trên sẽ được viết lại là:
+\[
+y_{ik}\|\mathbf{x}_i - \mathbf{m}_k\|_2^2 =  \sum_{j=1}^K y_{ij}\|\mathbf{x}_i - \mathbf{m}_j\|_2^2
+\]</p>
+
+<p>(<em>Hy vọng chỗ này không quá khó hiểu</em>)</p>
+
+<!-- Với mỗi điểm dữ liệu \\(\mathbf{x}\_i \\), vì chưa biết nó thuộc cluster nào, (_ở đây chúng ta tạm thời giả sử rằng ta đã biết các center_), thế thì hàm mất mát của cách phân cụm cho điểm \\(\mathbf{x}\_i \\) sẽ là: -->
+
+<!-- \\[
+\sum\_{k=1}^K y\_{ik} \\\|\mathbf{x}\_i - \mathbf{m}\_k \\|_2^2
+\\]
+ -->
+
+<p>Sai số cho toàn bộ dữ liệu sẽ là: 
+\[
+\mathcal{L}(\mathbf{Y}, \mathbf{M}) = \sum_{i=1}^N\sum_{j=1}^K y_{ij} \|\mathbf{x}_i - \mathbf{m}_j\|_2^2
+\]</p>
+
+<p>Trong đó \( \mathbf{Y} = [\mathbf{y}_1; \mathbf{y}_2; \dots; \mathbf{y}_N]\), \( \mathbf{M} = [\mathbf{m}_1, \mathbf{m}_2, \dots \mathbf{m}_K] \) lần lượt là các ma trận được tạo bởi label vector của mỗi điểm dữ liệu và center của mỗi cluster. Hàm số mất mát trong bài toán K-means clustering của chúng ta là hàm \(\mathcal{L}(\mathbf{Y}, \mathbf{M})\) với ràng buộc như được nêu trong phương trình \((1)\).</p>
+
+<p>Tóm lại, chúng ta cần tối ưu bài toán sau: 
+\[
+\mathbf{Y}, \mathbf{M} = \arg\min_{\mathbf{Y}, \mathbf{M}} \sum_{i=1}^N\sum_{j=1}^K y_{ij} \|\mathbf{x}_i - \mathbf{m}_j\|_2^2~~~~~(2)
+\]</p>
+
+<p>\[
+\text{subject to:} ~~ y_{ij} \in \{0, 1\}~~ \forall i, j;~~~ \sum_{j = 1}^K y_{ij} = 1~~\forall i
+\]</p>
+
+<p>(<em>subject to</em> nghĩa là <em>thỏa mãn điều kiện</em>).</p>
+
+<p><strong>Nhắc lại khái niệm \(\arg\min\)</strong>: Chúng ta biết ký hiệu \(\min\) là <em>giá trị nhỏ nhất của hàm số</em>, \(\arg\min\) chính là <em>giá trị của biến số để hàm số đó đạt giá trị nhỏ nhất đó</em>. Nếu \(f(x) = x^2 -2x + 1 = (x-1)^2 \) thì giá trị nhỏ nhất của hàm số này bằng 0, đạt được khi \(x = 1\). Trong ví dụ này \(\min_{x} f(x) = 0\) và \(\arg\min_{x} f(x) = 1\). Thêm ví dụ khác, nếu \(x_1 = 0, x_2 = 10, x_3 = 5\) thì ta nói \(\arg\min_{i} x_i = 1\) vì \(1\) là chỉ số để \(x_i\) đạt giá trị nhỏ nhất (bằng \(0\)). Biến số viết bên dưới \(\min\) là biến số cúng ta cần tối ưu. Trong các bài toán tối ưu, ta thường quan tâm tới \(\arg\min\) hơn là \(\min\).
+<!-- _K-means còn là một trong những phương pháp thực hiện ước lượng vector [_vector quantization_](https://en.wikipedia.org/wiki/Vector_quantization)_ -->
+<!-- ========================== New Heading ==================== -->
+<a name="thuat-toan-toi-uu-ham-mat-mat"></a></p>
+
+<p><a name="thuat-toan-toi-uu-ham-mat-mat"></a></p>
+<h3 id="thuật-toán-tối-ưu-hàm-mất-mát">Thuật toán tối ưu hàm mất mát</h3>
+<p>Bài toán \((2)\) là một bài toán khó tìm <em>điểm tối ưu</em> vì nó có thêm các điều kiện ràng buộc. <em>Bài toán này thuộc loại mix-integer programming (điều kiện biến là số nguyên) - là loại rất khó tìm nghiệm tối ưu toàn cục (global optimal point, tức nghiệm làm cho hàm mất mát đạt giá trị nhỏ nhất có thể).</em> Tuy nhiên, trong một số trường hợp chúng ta vẫn có thể tìm được phương pháp để tìm được nghiệm gần đúng hoặc điểm cực tiểu. (<em>Nếu chúng ta vẫn nhớ chương trình toán ôn thi đại học thì điểm cực tiểu chưa chắc đã phải là điểm làm cho hàm số đạt giá trị nhỏ nhất</em>).</p>
+
+<p>Một cách đơn giản để giải bài toán \((2)\) là xen kẽ giải \(\mathbf{Y}\) và \( \mathbf{M}\) khi biến còn lại được cố định. Đây là một thuật toán lặp, cũng là kỹ thuật phổ biến khi giải bài toán tối ưu. Chúng ta sẽ lật lượt giải quyết hai bài toán sau đây:</p>
+
+<!-- ========================== New Heading ==================== -->
+<p><a name="co-dinh-\\\mathbfm-\\-tim-\\\mathbfy\\"></a></p>
+
+<p><a name="co-dinh-\\\mathbfm-\\-tim-\\\mathbfy\\"></a></p>
+<h4 id="cố-định-mathbfm--tìm-mathbfy">Cố định \(\mathbf{M} \), tìm \(\mathbf{Y}\)</h4>
+<p><strong>Giả sử đã tìm được các centers, hãy tìm các label vector để hàm mất mát đạt giá trị nhỏ nhất.</strong> Điều này tương đương với việc tìm cluster cho mỗi điểm dữ liệu.</p>
+
+<p>Khi các centers là cố định, bài toán tìm label vector cho toàn bộ dữ liệu có thể được chia nhỏ thành bài toán tìm label vector cho từng điểm dữ liệu \(\mathbf{x}_i\) như sau:</p>
+
+<p>\[
+\mathbf{y}_i = \arg\min_{\mathbf{y}_i} \sum_{j=1}^K y_{ij}\|\mathbf{x}_i - \mathbf{m}_j\|_2^2 ~~~ (3)
+\]
+\[
+\text{subject to:} ~~ y_{ij} \in \{0, 1\}~~ \forall j;~~~ \sum_{j = 1}^K y_{ij} = 1
+\]</p>
+
+<p>Vì chỉ có một phần tử của label vector \(\mathbf{y}_i\) bằng \(1\) nên bài toán \((3)\) có thể tiếp tục được viết dưới dạng đơn giản hơn: 
+\[
+j = \arg\min_{j} \|\mathbf{x}_i - \mathbf{m}_j\|_2^2
+\]</p>
+
+<p>Vì \(\|\mathbf{x}_i - \mathbf{m}_j\|_2^2\) chính là bình phương khoảng cách tính từ điểm \(\mathbf{x}_i \) tới center \(\mathbf{m}_j \), ta có thể kết luận rằng <strong>mỗi điểm \(\mathbf{x}_i \) thuộc vào cluster có center gần nó nhất</strong>! Từ đó ta có thể dễ dàng suy ra label vector của từng điểm dữ liệu.</p>
+
+<!-- ========================== New Heading ==================== -->
+<p><a name="co-dinh-\\\mathbfy-\\-tim-\\\mathbfm\\"></a></p>
+
+<p><a name="co-dinh-\\\mathbfy-\\-tim-\\\mathbfm\\"></a></p>
+<h4 id="cố-định-mathbfy--tìm-mathbfm">Cố định \(\mathbf{Y} \), tìm \(\mathbf{M}\)</h4>
+<p><strong>Giả sử đã tìm được cluster cho từng điểm, hãy tìm center mới cho mỗi cluster để hàm mất mát đạt giá trị nhỏ nhất.</strong></p>
+
+<p>Một khi chúng ta đã xác định được label vector cho từng điểm dữ liệu, bài toán tìm center cho mỗi cluster được rút gọn thành:</p>
+
+<p>\[
+\mathbf{m}_j = \arg\min_{\mathbf{m}_j} \sum_{i = 1}^{N} y_{ij}\|\mathbf{x}_i - \mathbf{m}_j \|_2^2.
+\]
+ Tới đây, ta có thể tìm nghiệm bằng phương pháp giải đạo hàm bằng 0, vì hàm cần tối ưu là một hàm liên tục và có đạo hàm xác định tại mọi điểm. <em>Và quan trọng hơn, hàm này là hàm convex (lồi) theo \(\mathbf{m}_j \) nên chúng ta sẽ tìm được giá trị nhỏ nhất và điểm tối ưu tương ứng. Sau này nếu có dịp, tôi sẽ nói thêm về tối ưu lồi (convex optimization) - một mảng cực kỳ quan trọng trong toán tối ưu</em>.</p>
+
+<p>Đặt \(l(\mathbf{m}_j)\) là hàm bên trong dấu \(\arg\min\), ta có đạo hàm:
+\[
+\frac{\partial l(\mathbf{m}_j)}{\partial \mathbf{m}_j} = 2\sum_{i=1}^N y_{ij}(\mathbf{m}_j - \mathbf{x}_i) 
+\]</p>
+
+<p>Giải phương trình đạo hàm bằng 0 ta có: 
+\[
+\mathbf{m}_j \sum_{i=1}^N y_{ij} = \sum_{i=1}^N y_{ij} \mathbf{x}_i 
+\]
+\[
+\Rightarrow \mathbf{m}_j = \frac{ \sum_{i=1}^N y_{ij} \mathbf{x}_i}{\sum_{i=1}^N y_{ij}}
+\]</p>
+
+<p>Nếu để ý một chút, chúng ta sẽ thấy rằng mẫu số chính là phép đếm <em>số lượng các điểm dữ liệu</em> trong cluster \(j\) (<em>Bạn có nhận ra không?</em>). Còn tử số chính là <em>tổng các điểm dữ liệu</em> trong cluster \(j\). (<em>Nếu bạn đọc vẫn nhớ điều kiện ràng buộc của các</em> \(y_{ij} \) <em>thì sẽ có thể nhanh chóng nhìn ra điều này</em>).</p>
+
+<p>Hay nói một cách đơn giản hơn nhiều: \(\mathbf{m}_j\) <strong>là trung bình cộng của các điểm trong cluster</strong> \(j\).</p>
+
+<p>Tên gọi <em>K-means clustering</em> cũng xuất phát từ đây.
+<!-- ========================== New Heading ==================== -->
+<a name="tom-tat-thuat-toan"></a></p>
+
+<p><a name="tom-tat-thuat-toan"></a></p>
+<h3 id="tóm-tắt-thuật-toán">Tóm tắt thuật toán</h3>
+<p>Tới đây tôi xin được tóm tắt lại thuật toán (<em>đặc biệt quan trọng với các bạn bỏ qua phần toán học bên trên</em>) như sau:</p>
+
+<p><strong>Đầu vào:</strong> Dữ liệu \(\mathbf{X}\) và số lượng cluster cần tìm \(K\).</p>
+
+<p><strong>Đầu ra:</strong> Các center \(\mathbf{M}\) và label vector cho từng điểm dữ liệu \(\mathbf{Y}\).</p>
+
+<ol>
+  <li>Chọn \(K\) điểm bất kỳ làm các center ban đầu.</li>
+  <li>Phân mỗi điểm dữ liệu vào cluster có center gần nó nhất.</li>
+  <li>Nếu việc gán dữ liệu vào từng cluster ở bước 2 không thay đổi so với vòng lặp trước nó thì ta dừng thuật toán.</li>
+  <li>Cập nhật center cho từng cluster bằng cách lấy trung bình cộng của tất các các điểm dữ liệu đã được gán vào cluster đó sau bước 2.</li>
+  <li>Quay lại bước 2.</li>
+</ol>
+
+<p>Chúng ta có thể đảm bảo rằng thuật toán sẽ dừng lại sau một số hữu hạn vòng lặp. Thật vậy, vì hàm mất mát là một số dương và sau mỗi bước 2 hoặc 3, giá trị của hàm mất mát bị giảm đi. Theo kiến thức về dãy số trong chương trình cấp 3: <em>nếu một dãy số giảm và bị chặn dưới thì nó hội tụ!</em> Hơn nữa, số lượng cách phân nhóm cho toàn bộ dữ liệu là hữu hạn nên đến một lúc nào đó, hàm mất mát sẽ không thể thay đổi, và chúng ta có thể dừng thuật toán tại đây.</p>
+
+<p>Chúng ta sẽ có một vài <a href="#-thao-luan">thảo luận</a> về thuật toán này, về những hạn chế và một số phương pháp khắc phục. Nhưng trước hết, hãy xem nó thể hiện như thế nào trong một ví dụ cụ thể dưới đây.</p>
+
+<!-- ========================== New Heading ==================== -->
+<p><a name="vi-du-tren-python"></a></p>
+
+<p><a name="vi-du-tren-python"></a></p>
+<h2 id="ví-dụ-trên-python">Ví dụ trên Python</h2>
+
+<!-- ========================== New Heading ==================== -->
+<p><a name="gioi-thieu-bai-toan"></a></p>
+
+<p><a name="gioi-thieu-bai-toan"></a></p>
+<h3 id="giới-thiệu-bài-toán">Giới thiệu bài toán</h3>
+
+<p>Để kiểm tra mức độ hiểu quả của một thuật toán, chúng ta sẽ làm một ví dụ đơn giản (thường được gọi là <em>toy example</em>). Trước hết, chúng ta chọn center cho từng cluster và tạo dữ liệu cho từng cluster bằng cách lấy mẫu theo phân phối chuẩn có kỳ vọng là center của cluster đó và ma trận hiệp phương sai (covariance matrix) là ma trận đơn vị.</p>
+
+<p>Trước tiên, chúng ta cần khai báo các thư viện cần dùng. Chúng ta cần <code class="highlighter-rouge">numpy</code> và <code class="highlighter-rouge">matplotlib</code> như trong bài <a href="/2016/12/28/linearregression/">Linear Regression</a> cho việc tính toán ma trận và hiển thị dữ liệu. Chúng ta cũng cần thêm thư viện <code class="highlighter-rouge">scipy.spatial.distance</code> để tính khoảng cách giữa các cặp điểm trong hai tập hợp một cách hiệu quả.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span> 
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.spatial.distance</span> <span class="kn">import</span> <span class="n">cdist</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>Tiếp theo, ta tạo dữ liệu bằng cách lấy các điểm theo phân phối chuẩn có kỳ vọng tại các điểm có tọa độ <code class="highlighter-rouge">(2, 2), (8, 3)</code> và <code class="highlighter-rouge">(3, 6)</code>, ma trận hiệp phương sai giống nhau và là ma trận đơn vị. Mỗi cluster có 500 điểm. (<em>Chú ý rằng mỗi điểm dữ liệu là một hàng của ma trận dữ liệu.</em></p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">means</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">]]</span>
+<span class="n">cov</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">X0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">means</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cov</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">X1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">means</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cov</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">X2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">means</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">cov</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">X0</span><span class="p">,</span> <span class="n">X1</span><span class="p">,</span> <span class="n">X2</span><span class="p">),</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">K</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="n">original_label</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">N</span> <span class="o">+</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">N</span> <span class="o">+</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">N</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+</code></pre>
+</div>
+
+<!-- ========================== New Heading ==================== -->
+<p><a name="hien-thi-du-lieu-tren-do-thi"></a></p>
+
+<p><a name="hien-thi-du-lieu-tren-do-thi"></a></p>
+<h3 id="hiển-thị-dữ-liệu-trên-đồ-thị">Hiển thị dữ liệu trên đồ thị</h3>
+
+<p>Chúng ta cần một hàm <code class="highlighter-rouge">kmeans_display</code> để hiển thị dữ liệu. Sau đó hiển thị dữ liệu theo nhãn ban đầu.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">kmeans_display</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+    <span class="n">K</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">amax</span><span class="p">(</span><span class="n">label</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">X0</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">label</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="n">X1</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">label</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="n">X2</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">label</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="p">:]</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X0</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X0</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s">'b^'</span><span class="p">,</span> <span class="n">markersize</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="o">.</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X1</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X1</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s">'go'</span><span class="p">,</span> <span class="n">markersize</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="o">.</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X2</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X2</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s">'rs'</span><span class="p">,</span> <span class="n">markersize</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="o">.</span><span class="mi">8</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">'equal'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    
+<span class="n">kmeans_display</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">original_label</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<!-- ![png](output_5_0.png) -->
+<div class="imgcap">
+<img src="/assets/kmeans/output_5_0.png" align="center" />
+</div>
+<p>Trong đồ thị trên, mỗi cluster tương ứng với một màu. Có thể nhận thấy rằng có một vài điểm màu đỏ bị lẫn sang phần cluster màu xanh.
+<!-- ========================== New Heading ==================== -->
+<a name="cac-ham-so-can-thiet-cho-k-means-clustering"></a></p>
+
+<p><a name="cac-ham-so-can-thiet-cho-k-means-clustering"></a></p>
+<h3 id="các-hàm-số-cần-thiết-cho-k-means-clustering">Các hàm số cần thiết cho K-means clustering</h3>
+<p>Viết các hàm:</p>
+
+<ol>
+  <li><code class="highlighter-rouge">kmeans_init_centers</code> để khởi tạo các centers ban đầu.</li>
+  <li><code class="highlighter-rouge">kmeans_asign_labels</code> để gán nhán mới cho các điểm khi biết các centers.</li>
+  <li><code class="highlighter-rouge">kmeans_update_centers</code> để cập nhật các centers mới dữa trên dữ liệu vừa được gán nhãn.</li>
+  <li><code class="highlighter-rouge">has_converged</code> để kiểm tra điều kiện dừng của thuật toán.</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">kmeans_init_centers</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="c"># randomly pick k rows of X as initial centers</span>
+    <span class="k">return</span> <span class="n">X</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">k</span><span class="p">)]</span>
+
+<span class="k">def</span> <span class="nf">kmeans_assign_labels</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">centers</span><span class="p">):</span>
+    <span class="c"># calculate pairwise distances btw data and centers</span>
+    <span class="n">D</span> <span class="o">=</span> <span class="n">cdist</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">centers</span><span class="p">)</span>
+    <span class="c"># return index of the closest center</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">kmeans_update_centers</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">K</span><span class="p">):</span>
+    <span class="n">centers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">K</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">K</span><span class="p">):</span>
+        <span class="c"># collect all points assigned to the k-th cluster </span>
+        <span class="n">Xk</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">labels</span> <span class="o">==</span> <span class="n">k</span><span class="p">,</span> <span class="p">:]</span>
+        <span class="c"># take average</span>
+        <span class="n">centers</span><span class="p">[</span><span class="n">k</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">Xk</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">centers</span>
+
+<span class="k">def</span> <span class="nf">has_converged</span><span class="p">(</span><span class="n">centers</span><span class="p">,</span> <span class="n">new_centers</span><span class="p">):</span>
+    <span class="c"># return True if two sets of centers are the same</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="nb">tuple</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">centers</span><span class="p">])</span> <span class="o">==</span> 
+        <span class="nb">set</span><span class="p">([</span><span class="nb">tuple</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">new_centers</span><span class="p">]))</span>
+</code></pre>
+</div>
+
+<p>Phần chính của K-means clustering:</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">kmeans</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">K</span><span class="p">):</span>
+    <span class="n">centers</span> <span class="o">=</span> <span class="p">[</span><span class="n">kmeans_init_centers</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">K</span><span class="p">)]</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">it</span> <span class="o">=</span> <span class="mi">0</span> 
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">kmeans_assign_labels</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">centers</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+        <span class="n">new_centers</span> <span class="o">=</span> <span class="n">kmeans_update_centers</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">labels</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">K</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">has_converged</span><span class="p">(</span><span class="n">centers</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">new_centers</span><span class="p">):</span>
+            <span class="k">break</span>
+        <span class="n">centers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_centers</span><span class="p">)</span>
+        <span class="n">it</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">centers</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">it</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>Áp dụng thuật toán vừa viết vào dữ liệu ban đầu, hiển thị kết quả cuối cùng.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="p">(</span><span class="n">centers</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">it</span><span class="p">)</span> <span class="o">=</span> <span class="n">kmeans</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">'Centers found by our algorithm:'</span>
+<span class="k">print</span> <span class="n">centers</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">kmeans_display</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">labels</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Centers found by our algorithm:
+[[ 1.97563391  2.01568065]
+ [ 8.03643517  3.02468432]
+ [ 2.99084705  6.04196062]]
+</code></pre>
+</div>
+
+<div class="imgcap">
+<img src="/assets/kmeans/output_11_1.png" align="center" />
+</div>
+
+<!-- ![png](output_11_1.png) -->
+
+<p>Từ kết quả này chúng ta thấy rằng thuật toán K-means clustering làm việc khá thành công, các centers tìm được khá gần với kỳ vọng ban đầu. Các điểm thuộc cùng một cluster hầu như được phân vào cùng một cluster (trừ một số diểm màu đỏ ban đầu đã bị phân nhầm vào cluster màu xanh da trời, nhưng tỉ lệ là nhỏ và có thể chấp nhận được).</p>
+
+<p>Dưới đây là hình ảnh động minh họa thuật toán qua từng vòng lặp, chúng ta thấy rằng thuật toán trên hội tụ rất nhanh, chỉ cần 6 vòng lặp để có được kết quả cuối cùng:</p>
+<div class="imgcap">
+<img src="/assets/kmeans/kmeans11.gif" align="center" />
+</div>
+
+<p>Các bạn có thể xem thêm các trang web minh họa thuật toán K-means cluster tại:</p>
+<ol>
+  <li><a href="https://www.naftaliharris.com/blog/visualizing-k-means-clustering/">Visualizing K-Means Clustering</a></li>
+  <li><a href="http://stanford.edu/class/ee103/visualizations/kmeans/kmeans.html">Visualizing K-Means Clustering - Standford</a></li>
+</ol>
+
+<!-- ========================== New Heading ==================== -->
+<p><a name="ket-qua-tim-duoc-bang-thu-vien-scikit-learn"></a></p>
+
+<p><a name="ket-qua-tim-duoc-bang-thu-vien-scikit-learn"></a></p>
+<h3 id="kết-quả-tìm-được-bằng-thư-viện-scikit-learn">Kết quả tìm được bằng thư viện scikit-learn</h3>
+
+<p>Để kiểm tra thêm, chúng ta hãy so sánh kết quả trên với kết quả thu được bằng cách sử dụng thư viện <a href="http://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html"><code class="highlighter-rouge">scikit-learn</code></a>.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
+<span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">'Centers found by scikit-learn:'</span>
+<span class="k">print</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">cluster_centers_</span>
+<span class="n">pred_label</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">kmeans_display</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">pred_label</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Centers found by scikit-learn:
+[[ 8.0410628   3.02094748]
+ [ 2.99357611  6.03605255]
+ [ 1.97634981  2.01123694]]
+</code></pre>
+</div>
+
+<!-- ![png](output_14_1.png) -->
+<div class="imgcap">
+<img src="/assets/kmeans/output_14_1.png" align="center" />
+</div>
+
+<p>Thật may mắn (<em>cho tôi</em>), hai thuật toán cho cùng một đáp số! Với cách thứ nhất, tôi mong muốn các bạn hiểu rõ được thuật toán K-means clustering làm việc như thế nào. Với cách thứ hai, tôi hy vọng các bạn biết áp dụng thư viện sẵn có như thế nào.</p>
+
+<!-- ========================== New Heading ==================== -->
+<p><a name="-thao-luan"></a></p>
+
+<p><a name="-thao-luan"></a></p>
+<h2 id="4-thảo-luận">4. Thảo luận</h2>
+<!-- ========================== New Heading ==================== -->
+<p><a name="han-che"></a></p>
+
+<p><a name="han-che"></a></p>
+<h3 id="hạn-chế">Hạn chế</h3>
+<p>Có một vài hạn chế của thuật toán K-means clustering:</p>
+
+<!-- ========================== New Heading ==================== -->
+<p><a name="chung-ta-can-biet-so-luong-cluster-can-clustering"></a></p>
+
+<p><a name="chung-ta-can-biet-so-luong-cluster-can-clustering"></a></p>
+<h4 id="chúng-ta-cần-biết-số-lượng-cluster-cần-clustering">Chúng ta cần biết số lượng cluster cần clustering</h4>
+<p>Để ý thấy rằng trong <a href="#tom-tat-thuat-toan">thuật toán nêu trên</a>, chúng ta cần biết đại lượng \(K\) là số lượng clusters. Trong thực tế, nhiều trường hợp chúng ta không xác định được giá trị này. Có một số phương pháp giúp xác định số lượng clusters, tôi sẽ dành thời gian nói về chúng sau nếu có dịp. Bạn đọc có thể tham khảo <a href="https://en.wikipedia.org/wiki/Determining_the_number_of_clusters_in_a_data_set">Elbow method - Determining the number of clusters in a data set</a>.</p>
+
+<!-- ========================== New Heading ==================== -->
+<p><a name="nghiem-cuoi-cung-phu-thuoc-vao-cac-centers-duoc-khoi-tao-ban-dau"></a></p>
+
+<p><a name="nghiem-cuoi-cung-phu-thuoc-vao-cac-centers-duoc-khoi-tao-ban-dau"></a></p>
+<h4 id="nghiệm-cuối-cùng-phụ-thuộc-vào-các-centers-được-khởi-tạo-ban-đầu">Nghiệm cuối cùng phụ thuộc vào các centers được khởi tạo ban đầu</h4>
+<p>Tùy vào các center ban đầu mà thuật toán có thể có tốc độ hội tụ rất chậm, ví dụ:
+<!-- ![png](output_14_1.png) --></p>
+<div class="imgcap">
+<img src="/assets/kmeans/kmeans_slowconverge.gif" align="center" />
+</div>
+<p>hoặc thậm chí cho chúng ta nghiệm không chính xác (chỉ là local minimum - điểm cực tiểu - mà không phải giá trị nhỏ nhất):</p>
+
+<div class="imgcap">
+<img src="/assets/kmeans/kmeans_badresult.gif" align="center" />
+</div>
+
+<p>Có một vài cách khắc phục đó là:</p>
+<ul>
+  <li>Chạy K-means clustering nhiều lần với các center ban đầu khác nhau rồi chọn cách có hàm mất mát cuối cùng đạt giá trị nhỏ nhất.</li>
+  <li><a href="https://en.wikipedia.org/wiki/K-means%2B%2B#Improved_initialization_algorithm">K-means++ -Improve initialization algorithm - wiki</a>.</li>
+  <li>Bạn nào muốn tìm hiểu sâu hơn có thể xem bài báo khoa học <a href="http://www.sciencedirect.com/science/article/pii/S0167865504000996">Cluster center initialization algorithm for K-means clustering</a>.</li>
+</ul>
+
+<!-- ========================== New Heading ==================== -->
+<p><a name="cac-cluster-can-co-so-luong-diem-gan-bang-nhau"></a></p>
+
+<p><a name="cac-cluster-can-co-so-luong-diem-gan-bang-nhau"></a></p>
+<h4 id="các-cluster-cần-có-só-lượng-điểm-gần-bằng-nhau">Các cluster cần có só lượng điểm gần bằng nhau</h4>
+
+<p>Dưới đây là một ví dụ với 3 cluster với 20, 50, và 1000 điểm. Kết quả cuối cùng không chính xác.</p>
+
+<div class="imgcap">
+<img src="/assets/kmeans/kmeans_unbalanced.gif" align="center" />
+</div>
+
+<!-- ========================== New Heading ==================== -->
+<p><a name="cac-cluster-can-co-dang-hinh-tron-tuan-theo-phan-phoi-chuan-va-ma-tran-hiep-phuong-sai-la-ma-tran-duong-cheo-co-cac-diem-tren-duong-cheo-giong-nhau"></a></p>
+
+<p><a name="cac-cluster-can-co-dang-hinh-tron-tuan-theo-phan-phoi-chuan-va-ma-tran-hiep-phuong-sai-la-ma-tran-duong-cheo-co-cac-diem-tren-duong-cheo-giong-nhau"></a></p>
+<h4 id="các-cluster-cần-có-dạng-hình-tròn-tuân-theo-phân-phối-chuẩn-và-ma-trận-hiệp-phương-sai-là-ma-trận-đường-chéo-có-các-điểm-trên-đường-chéo-giống-nhau">Các cluster cần có dạng hình tròn (tuân theo phân phối chuẩn và ma trận hiệp phương sai là ma trận đường chéo có các điểm trên đường chéo giống nhau)</h4>
+
+<p>Dưới đây là 1 ví dụ khi 1 cluster có dạng hình dẹt.</p>
+
+<div class="imgcap">
+<img src="/assets/kmeans/kmeans_diffcov.gif" align="center" />
+</div>
+
+<!-- ========================== New Heading ==================== -->
+<p><a name="khi-mot-cluster-nam-phia-trong--cluster-khac"></a></p>
+
+<p><a name="khi-mot-cluster-nam-phia-trong--cluster-khac"></a></p>
+<h4 id="khi-một-cluster-nằm-phía-trong-1-cluster-khác">Khi một cluster nằm phía trong 1 cluster khác</h4>
+<p>Đây là ví dụ kinh điển về việc K-means clustering không thể phân cụm dữ liệu. Một cách tự nhiên, chúng ta sẽ phân ra thành 4 cụm: mắt trái, mắt phải, miệng, xunh quanh mặt. Nhưng vì mắt và miệng nằm trong khuôn mặt nên K-means clustering không thực hiện được:</p>
+
+<div class="imgcap">
+<img src="/assets/kmeans/smile_face.png" align="center" />
+</div>
+<!-- ========================== New Heading ==================== -->
+<p><a name="-tai-lieu-tham-khao"></a></p>
+
+<!-- ### Khoảng cách không phải Euclid -->
+<!-- Trong nhiều trường hợp, chúng ta có thể định -->
+
+<p>Mặc dù có những hạn chế, K-means clustering vẫn cực kỳ quan trọng trong Machine Learning và là nền tảng cho nhiều thuật toán phức tạp khác sau này. Chúng ta cần bắt đầu từ những thứ đơn giản. <em>Simple is best!</em></p>
+
+<!-- ========================== New Heading ==================== -->
+<p><a name="-tai-lieu-tham-khao"></a></p>
+
+<p><a name="-tai-lieu-tham-khao"></a></p>
+<h2 id="5-tài-liệu-tham-khảo">5. Tài liệu tham khảo</h2>
+
+<p><a href="http://scikit-learn.org/stable/auto_examples/text/document_clustering.html">Clustering documents using k-means</a></p>
+
+<p><a href="https://en.wikipedia.org/wiki/Voronoi_diagram">Voronoi Diagram - Wikipedia</a></p>
+
+<p><a href="http://www.sciencedirect.com/science/article/pii/S0167865504000996">Cluster center initialization algorithm for K-means clustering</a></p>
+
+<p><a href="https://www.naftaliharris.com/blog/visualizing-k-means-clustering/">Visualizing K-Means Clustering</a></p>
+
+<p><a href="http://stanford.edu/class/ee103/visualizations/kmeans/kmeans.html">Visualizing K-Means Clustering - Standford</a></p>
+
+
+  </article>
+
+  <!-- mathjax -->
+  <!--  -->
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!--  -->
+  
+  <hr>
+  <div class="share-page">
+    <b>Share this on:</b>  <br>
+
+    <!-- Facebook -->
+    <a href="https://facebook.com/sharer.php?u=http://localhost:4000/2017/01/01/kmeans/" rel="nofollow" target="_blank" title="Share on Facebook"><img src = "/assets/images/facebook.png" width="40"></a>
+
+    <!-- Twitter -->
+    <a href="https://twitter.com/intent/tweet?text=Bài 4: K-means Clustering&url=http://localhost:4000/2017/01/01/kmeans/&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter" width="40" ><img src = "/assets/images/twitter.png" width="40"></a>
+
+    <!-- Google -->
+    <a href="https://plus.google.com/share?url=http://localhost:4000/2017/01/01/kmeans/" rel="nofollow" target="_blank" title="Share on Google+"><img src = "/assets/images/google.png" width="40"></a>
+
+    
+    <!-- LinkedIn -->
+    <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:4000/2017/01/01/kmeans/" target="_blank">
+        <img src="/assets/images/linkedin.png" alt="LinkedIn" width="40"/>
+    </a>
+
+    <!-- Email -->
+    <a href="mailto:?Subject=Simple Share Buttons&amp;Body=I%20saw%20this%20and%20thought%20of%20you!%20 http://localhost:4000/2017/01/01/kmeans/">
+        <img src="/assets/images/email.png" alt="Email" width="40"/>
+    </a>
+    <!-- Print -->
+    <a href="javascript:;" onclick="window.print()">
+        <img src="/assets/images/print.png" alt="Print" width="40"/>
+    </a>
+    <br>
+    <b>Follow us:</b> <br>
+    <a href = "https://www.facebook.com/machinelearningbasicvn/" target="_blank" title="Follow us"><img src = "/assets/images/facebook.png" width="40"></a>
+</div>
+
+
+  <!-- previous and next posts -->
+<div class="PageNavigation">
+  
+    <a class="prev" href="/2016/12/28/linearregression/">&laquo; Bài 3: Linear Regression</a>
+  
+  
+    <a class="next" href="/2017/01/04/kmeans2/">Bài 5: K-means Clustering: Simple Applications &raquo;</a>
+  
+</div>
+
+
+  <!-- disqus comments -->
+<!--  -->
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname  = 'tiepvu';
+  var disqus_identifier = '/2017/01/01/kmeans/';
+
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+    <script id="dsq-count-scr" src="//tiepvu.disqus.com/count.js" async></script>
+
+<!-- disqus comments -->
+<!--  
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+var disqus_config = function () {
+this.page.url = "http://localhost:4000/2017/01/01/kmeans/";  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = "/2017/01/01/kmeans"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = '//tiepvu.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+   -->
+<!--  -->
+
+</div>
+
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+
+
+  <div class="wrap">
+
+    <!-- <h2 class="footer-heading">Machine Learning cơ bản</h2> -->
+
+    <div class="footer-col-1 column">
+      <ul>
+        <li>Machine Learning cơ bản</li>
+        <!-- <li><a href="mailto:vuhuutiep@gmail.com">vuhuutiep@gmail.com</a></li> -->
+      </ul>
+    </div>
+
+    <div class="footer-col-2 column">
+      <ul>
+        <li>
+          <a href="https://github.com/tiepvupsu">
+            <span class="icon github">
+              <svg version="1.1" class="github-icon-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+                <path fill-rule="evenodd" clip-rule="evenodd" fill="#C2C2C2" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761
+                c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32
+                c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472
+                c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037
+                C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65
+                c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261
+                c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082
+                c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129
+                c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            <span class="username">tiepvupsu</span>
+          </a>
+        </li>
+        
+      </ul>
+    </div>
+
+    <div class="footer-col-3 column">
+      <p class="text"></p>
+    </div>
+
+  </div>
+
+</footer>
+
+     <!-- <script id="dsq-count-scr" src="//tiepvu.disqus.com/count.js" async></script> -->
+
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=11206292; 
+var sc_invisible=1; 
+var sc_security="37333da0"; 
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="website
+statistics" href="http://statcounter.com/"
+target="_blank"><img class="statcounter"
+src="//c.statcounter.com/11206292/0/37333da0/1/"
+alt="website statistics"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+  <script id="dsq-count-scr" src="//tiepvu.disqus.com/count.js" async></script>
+    </body>
+</html>
