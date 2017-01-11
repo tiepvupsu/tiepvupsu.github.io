@@ -75,7 +75,7 @@ Không phải ngẫu nhiên mà tôi dành ra ba đoạn văn để kể về ch
 
 ### K-nearest neighbor 
 
-K-nearest neighbor là một trong những thuật toán supervised-learning đơn giản nhất (mà hiệu quả trong một vài trường hợp) trong Machine Learning. Khi training, thuật toán này _không học_ một điều gì từ dữ liệu traing (đây cũng là lý do thuật toán này được xếp vào loại [lazy learning](https://en.wikipedia.org/wiki/Lazy_learning)), mọi tính toán được thực hiện khi nó cần dự đoán kết quả của dữ liệu mới. K-nearest neighbor có thể áp dụng được vào cả hai loại của bài toán Supervised learning là [Classification](/2016/12/27/categories/#classification-phan-loai) và [Regression](/2016/12/27/categories/#regression-hoi-quy). KNN còn được gọi là một thuật toán [Instance-based hay Memory-based learning](https://en.wikipedia.org/wiki/Instance-based_learning).
+K-nearest neighbor là một trong những thuật toán supervised-learning đơn giản nhất (mà hiệu quả trong một vài trường hợp) trong Machine Learning. Khi training, thuật toán này _không học_ một điều gì từ dữ liệu training (đây cũng là lý do thuật toán này được xếp vào loại [lazy learning](https://en.wikipedia.org/wiki/Lazy_learning)), mọi tính toán được thực hiện khi nó cần dự đoán kết quả của dữ liệu mới. K-nearest neighbor có thể áp dụng được vào cả hai loại của bài toán Supervised learning là [Classification](/2016/12/27/categories/#classification-phan-loai) và [Regression](/2016/12/27/categories/#regression-hoi-quy). KNN còn được gọi là một thuật toán [Instance-based hay Memory-based learning](https://en.wikipedia.org/wiki/Instance-based_learning).
 
 Có một vài khái niệm tương ứng người-máy như sau:
 
@@ -88,7 +88,7 @@ Có một vài khái niệm tương ứng người-máy như sau:
 | Đề thi                          | Tập dữ liểu kiểm thử  | Test set            |
 | Câu hỏi trong dề thi            | Dữ liệu kiểm thử      | Test data point     |
 | Câu hỏi có đáp án sai           | Nhiễu                 | Noise, Outlier      |
-| Câu gỏi gần giống               | Điểm dữ liệu gần nhất | Nearest Neighbor    |
+| Câu hỏi gần giống               | Điểm dữ liệu gần nhất | Nearest Neighbor    |
  
 
 
