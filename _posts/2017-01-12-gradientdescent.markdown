@@ -64,7 +64,7 @@ Vì kiến thức về GD khá rộng nên tôi xin phép được chia thành h
 ## 2. Gradient Descent cho hàm 1 biến
 Quay trở lại hình vẽ ban đầu và một vài quan sát tôi đã nêu. Giả sử  \\(x_\{t}\\) là điểm ta tìm được sau vòng lặp thứ \\(t\\). Ta cần tìm một thuật toán để đưa \\(x_\{t}\\) về càng gần \\(x^\*\\) càng tốt. 
 
-Trong hình đầu tiên, c húng ta lại có thêm hai quan sát nữa:
+Trong hình đầu tiên, chúng ta lại có thêm hai quan sát nữa:
 
 1. Nếu đạo hàm của hàm số tại \\(x_\{t}\\): \\(f'(x_\{t}) > 0\\) thì \\(x_\{t}\\) nằm về bên phải so với \\(x^*\\) (và ngược lại). Để điểm tiếp theo \\(x\_{t+1}\\) gần với \\(x^\*\\) hơn, chúng ta cần di chuyển \\(x_\{t}\\) về phía bên trái, tức về phía _âm_. Nói các khác, __chúng ta cần di chuyển ngược dấu với đạo hàm__:
 \\[
