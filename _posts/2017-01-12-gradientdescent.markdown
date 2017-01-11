@@ -10,7 +10,7 @@ sc_security:
 img: /assets/GD/img2_1.gif 
 summary: Gradient Descent một trong những thuật toán quan trọng nhất trong Optimization và Machine Learning 
 ---
-
+**Trong trang này:**
 <!-- MarkdownTOC -->
 
 - [1. Giới thiệu](#-gioi-thieu)
