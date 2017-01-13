@@ -5,6 +5,7 @@ title:  "Bài 3: Linear Regression"
 date:   2016-12-28 15:22:00
 mathjax: true
 tags: Linear-models Regression Supervised-learning
+categories: Regression
 sc_project: 11213317
 sc_security: 31bb1f61
 img: /assets/LR/output_5_1.png
@@ -86,7 +87,7 @@ Trong phương trình \\((1)\\) phía trên, nếu chúng ta đặt \\(\mathbf{w
 
 \\[y \approx \mathbf{\bar{x}}\mathbf{w} = \hat{y}\\]
 
-Chú ý rằng \mathbf{\bar{x}} là một vector hàng.
+Chú ý rằng \\(\mathbf{\bar{x}}\\) là một vector hàng. ([Xem thêm về ký hiệu vector hàng và cột tại đây](/math/#luu-y-ve-ky-hieu))
 
 
 <!-- ========================== New Heading ==================== -->
