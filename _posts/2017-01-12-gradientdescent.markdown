@@ -19,6 +19,8 @@ summary: Gradient Descent một trong những thuật toán quan trọng nhất 
     - [Gradient Descent](#gradient-descent)
 - [2. Gradient Descent cho hàm 1 biến](#-gradient-descent-cho-ham--bien)
     - [Ví dụ đơn giản với Python](#vi-du-don-gian-voi-python)
+        - [Điểm khởi tạo khác nhau](#diem-khoi-tao-khac-nhau)
+        - [Learning rate khác nhau](#learning-rate-khac-nhau)
 - [3. Gradient Descent cho hàm nhiều biến](#-gradient-descent-cho-ham-nhieu-bien)
     - [Quay lại với bài toán Linear Regression](#quay-lai-voi-bai-toan-linear-regression)
     - [Sau đây là ví dụ trên Python và một vài lưu ý khi lập trình](#sau-day-la-vi-du-tren-python-va-mot-vai-luu-y-khi-lap-trinh)
@@ -127,7 +129,12 @@ def myGD1(eta, x0):
     return (x, it)
 ```
 
-Sau khi có các hàm cần thiết, tôi thử tìm nghiệm với các điểm ban đầu khác nhau là \\(x\_{0} = -5\\) và \\(x\_{0} = 5\\).
+
+<a name="diem-khoi-tao-khac-nhau"></a>
+
+#### Điểm khởi tạo khác nhau
+
+Sau khi có các hàm cần thiết, tôi thử tìm nghiệm với các điểm khởi tạo khác nhau là \\(x\_{0} = -5\\) và \\(x\_{0} = 5\\).
 
 
 ```python
@@ -158,6 +165,10 @@ Vậy là với các điểm ban đầu khác nhau, thuật toán của chúng t
 Từ hình minh họa trên ta thấy rằng hình bên trái, tương ứng với \\(x\_{0} = -5\\), nghiệm hội tụ nhanh hơn, vì điểm ban đầu \\(x_0\\) gần với nghiệm \\( x^\* \approx -1\\)  hơn. Hơn nữa, với \\(x\_{0} = 5 \\) ở hình bên phải, _đường đi_ của nghiệm có chứa
   một khu vực có đạo hàm khá nhỏ gần điểm có hoành độ bằng 2. Điều này khiến cho thuật toán _la cà_ ở đây khá lâu. Khi vượt qua được điểm này thì mọi việc diễn ra rất tốt đẹp. 
 
+<a name="learning-rate-khac-nhau"></a>
+
+#### Learning rate khác nhau
+
 Tốc độ hội tụ của GD không những phụ thuộc vào điểm khởi tạo ban đầu mà còn phụ thuộc vào _learning rate_. Dưới đây là một ví dụ với cùng điểm khởi tạo \\(x\_{0} = -5\\) nhưng learning rate khác nhau:
 
 <table width = "100%" style = "border: 0px solid white">
@@ -175,8 +186,8 @@ Tốc độ hội tụ của GD không những phụ thuộc vào điểm khởi
 </table> 
 Ta quan sát thấy hai điều:
 
-1. Với _learning rate_ nhỏ \\(x\_{0} = 0.01\\), tốc độ hội tụ rất chậm. Trong ví dụ này tôi chọn tối đa 100 vòng lặp nên thuật toán dừng lại trước khi tới _đích_, mặc dù đã rất gần. Trong thực tế, khi việc tính toán trở nên phức tạp, _learning rate_ quá thấp sẽ ảnh hưởng tới tốc độ của thuật toán rất nhiều, thậm chí không bao giờ tới được đích. 
-2. Với _learning rate_ lớn \\(x\_{0} = 0.5\\), thuật toán tiến rất nhanh tới _gần đích_ sau vài vòng lặp. Tuy nhiên, thuật toán không hội tụ được vì _bước nhảy_ quá lớn, khiến nó cứ _quẩn quanh_ ở đích. 
+1. Với _learning rate_ nhỏ \\(\eta = 0.01\\), tốc độ hội tụ rất chậm. Trong ví dụ này tôi chọn tối đa 100 vòng lặp nên thuật toán dừng lại trước khi tới _đích_, mặc dù đã rất gần. Trong thực tế, khi việc tính toán trở nên phức tạp, _learning rate_ quá thấp sẽ ảnh hưởng tới tốc độ của thuật toán rất nhiều, thậm chí không bao giờ tới được đích. 
+2. Với _learning rate_ lớn \\(\eta = 0.5\\), thuật toán tiến rất nhanh tới _gần đích_ sau vài vòng lặp. Tuy nhiên, thuật toán không hội tụ được vì _bước nhảy_ quá lớn, khiến nó cứ _quẩn quanh_ ở đích. 
 
 Việc lựa chọn _learning rate_ rất quan trọng trong các bài toán thực tế. Việc lựa chọn giá trị này phụ thuộc nhiều vào từng bài toán và phải làm một vài thí nghiệm để chọn ra giá trị tốt nhất. Ngoài ra, tùy vào một số bài toán, GD có thể làm việc hiệu quả hơn bằng cách chọn ra _learning rate_ phù hợp hoặc chọn _learning rate_ khác nhau ở mỗi vòng lặp. Tôi sẽ quay lại vấn đề này ở phần 2. 
 
