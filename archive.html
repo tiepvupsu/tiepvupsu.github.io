@@ -1,0 +1,25 @@
+---
+layout: default
+title: Archive
+---
+
+<div>
+
+  <h2>Archive</h2>
+
+  <section class="archive_list">
+    {% for post in site.posts %}
+
+    <span style="float: left;">
+          <a href="{{ post.url }}">{{ post.title }}</a>
+        </span>
+        <span style="float: right; color: #818181;" class = "post-date">
+        {% include stat_counter_index.html %}   {{ post.date | date_to_string }}
+        </span>
+        <br>
+    {% endfor %}
+
+  </section>
+</div>
+
+
