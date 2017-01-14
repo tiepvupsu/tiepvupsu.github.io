@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="0 0 500 500"
+   style="box-shadow: 3px 3px 5px #888888"
+   id="svg3485"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="logo_raw.svg">
+  <metadata
+     id="metadata3501">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs3499" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1432"
+     inkscape:window-height="736"
+     id="namedview3497"
+     showgrid="false"
+     inkscape:zoom="1.03"
+     inkscape:cx="167.93619"
+     inkscape:cy="250"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg3485" />
+  <rect
+     width="500"
+     height="500"
+     style="fill: rgb(137,40,94)"
+     id="rect3487" />
+  <circle
+     cx="95"
+     cy="95"
+     r="60"
+     style="fill: white"
+     id="circle3489" />
+  <circle
+     cx="95"
+     cy="250"
+     r="60"
+     style="fill: black"
+     id="circle3491" />
+  <circle
+     cx="95"
+     cy="405"
+     r="60"
+     style="fill: white"
+     id="circle3493" />
+  <text
+     x="188.75293"
+     y="236.08089"
+     textLength="315"
+     lengthAdjust="spacingAndGlyphs"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:43.29173279px;line-height:125%;font-family:Nunito;-inkscape-font-specification:'Nunito, Bold';text-align:start;writing-mode:lr-tb;text-anchor:start;opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="text3495"
+     sodipodi:linespacing="125%"
+     transform="scale(0.90191927,1.1087467)">veithen.github.io</text>
+</svg>

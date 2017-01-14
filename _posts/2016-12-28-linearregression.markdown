@@ -6,7 +6,7 @@ date:   2016-12-28 15:22:00
 permalink: 2016/12/28/linearregression/
 mathjax: true
 tags: Linear-models Regression Supervised-learning
-categories: Regression
+category: Regression
 sc_project: 11213317
 sc_security: 31bb1f61
 img: /assets/LR/output_5_1.png

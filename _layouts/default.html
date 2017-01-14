@@ -1,47 +1,101 @@
+---
+---
+
 <!DOCTYPE html>
 <html>
-
-  {% include head.html %}
- 
-    
-    <body>
-    <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KTCD8BX"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-
+  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+    <meta charset="utf-8" />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
-    {% include header.html %}
 
+    <title>{{ page.title }}</title>
+    {% include scripts.html %}
 
-    <div class="page-content">
-      <div class="wrap">
-      {{ content }}
-      </div>
-    </div>
+    {% if layout.style.embedded %}
+    <style type="text/css">
+    {% comment %} See http://www.kevinsweet.com/inline-scss-jekyll-github-pages/ for explanation {% endcomment %}
+    {% capture include_to_scssify %}{% include {{ layout.style.name}}.scss %}{% endcapture %}
+    {{ include_to_scssify | scssify }}
+    </style>
+    {% else %}
+    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style/{{ layout.style.name }}.css" />
+    {% endif %}
+    <link rel="icon" type="image/png" href="https://www.highspot.com/wp-content/uploads/icon-intelligent-recommendations.png" sizes="32x32">
 
-    {% include footer.html %}
-     <!-- <script id="dsq-count-scr" src="//tiepvu.disqus.com/count.js" async></script> -->
+    <!-- <meta property="fb:admins" content="1722464172" /> -->
+    <!-- <link rel="author" href="https://plus.google.com/113984689781548338264"/> -->
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}"/>
 
-<!-- Start of StatCounter Code for Default Guide -->
-<script type="text/javascript">
-var sc_project=11206292; 
-var sc_invisible=1; 
-var sc_security="37333da0"; 
-var scJsHost = (("https:" == document.location.protocol) ?
-"https://secure." : "http://www.");
-document.write("<sc"+"ript type='text/javascript' src='" +
-scJsHost+
-"statcounter.com/counter/counter.js'></"+"script>");
-</script>
-<noscript><div class="statcounter"><a title="website
-statistics" href="http://statcounter.com/"
-target="_blank"><img class="statcounter"
-src="//c.statcounter.com/11206292/0/37333da0/1/"
-alt="website statistics"></a></div></noscript>
-<!-- End of StatCounter Code for Default Guide -->
+    <meta name="author" content="Tiep Vu " />
 
-  <script id="dsq-count-scr" src="//tiepvu.disqus.com/count.js" async></script>
-    </body>
+<!--     {% if page.url == '/index.html' %}
+    <meta name="google-site-verification" content="0OzayPMnX8Or8e5AXFENM9U5816VyamZnt50_za7vNA" />
+    {% endif %}
+ -->
+    {% if layout.metadata %}
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@AndreasVeithen"/>
+    <meta name="twitter:creator" content="@AndreasVeithen"/>
+    <meta property="og:title" content="{{ page.title }}" />
+    <meta property="og:site_name" content="Andreas Veithen's blog" />
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+    <meta property="og:description" content="{{ page.description | replace: '"', '&quot;' }}" />
+    {% if page.image %}
+    <meta property="og:image" content="{{ site.url }}{{ page.image }}" />
+    {% endif %}
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content="{{ page.date | date: '%Y-%m-%d' }}" />
+    {% if page.updated %}
+    <meta property="article:modified_time" content="{{ page.updated | date: '%Y-%m-%d' }}" />
+    {% endif %}
+    <meta property="article:author" content="Andreas Veithen" />
+    <meta property="article:section" content="{{ page.category }}" />
+    {% for tag in page.tags %}
+    <meta property="article:tag" content="{{ tag }}" />
+    {% endfor %}
+    {% endif %}
+
+    <!--[if lt IE 9]>
+    <script type="text/javascript">window.location="{{ site.baseurl }}/old-browser.html";</script>
+    <![endif]-->
+
+    <link rel="alternate" type="application/atom+xml" title="Andreas Veithen's blog - Atom feed" href="{{ site.baseurl }}/feed.xml" />
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+       <!-- Google Analytics -->
+      {% if jekyll.environment == 'production' %}
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-89509207-1', 'auto');
+          // ga('send', 'pageview');
+
+          ga('send', 'pageview', {
+            'page': '{{ page.url }}',
+            'title': '{{ page.title | replace: "'", "\\'" }}'
+          });
+
+        </script>
+      {% endif %}
+      <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KTCD8BX');</script>
+<!-- End Google Tag Manager -->
+  </head>
+
+{{ content }}
+
 </html>

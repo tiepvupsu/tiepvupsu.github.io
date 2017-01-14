@@ -1,11 +1,15 @@
-# Site settings
-title: Machine Learning cơ bản
-email: vuhuutiep@gmail.com
-# description: "Fundatmentals of Machine Learning and Optimization Algorithms"
-baseurl: ""
-url: "http://tiepvupsu.github.io"
-# twitter_username: karpathy
-github_username:  tiepvupsu
+sass:
+  style: :compressed  # Change to :expanded for debugging
+
+permalink: /:year/:month/:day/:title.html
+
+url: http://tiepvupsu.github.io
+future: true
+debug: false
+
+disqus_categories:
+  tech: 3550508
+  opinion: 3550509
 
 # Build settings
 markdown: kramdown

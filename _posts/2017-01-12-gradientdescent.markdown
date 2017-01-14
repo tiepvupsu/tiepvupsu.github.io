@@ -6,7 +6,7 @@ date:   2017-01-12 15:22:00
 permalink: 2017/01/12/gradientdescent/
 mathjax: true
 tags: GD Optimization
-categories: Optimization
+category: Optimization
 sc_project: 11216220
 sc_security: 5089fb7c
 img: /assets/GD/img2_1.gif 

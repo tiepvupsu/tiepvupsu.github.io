@@ -1,0 +1,21 @@
+<script>
+var pageProperties = {
+    {% if page.category %}
+    category: "{{ page.category }}",
+    {% endif %}
+    url: "{{ page.url }}",
+    title: "{{ page.title | replace: '"', '\\"' }}",
+    scripts: [
+        {% for script in page.scripts %}
+        "{{ script }}",
+        {% endfor %}
+    ],
+};
+{% if page.disqus %}
+var disqus_identifer = "{{ page.id }}";
+var disqus_url = "{{ site.url }}{{ page.url }}";
+var disqus_title = pageProperties.title;
+var disqus_category_id = "{{ site.disqus_categories[page.category] }}";
+{% endif %}
+</script>
+<script src="{{ site.baseurl }}/scripts/modules.js" async></script>

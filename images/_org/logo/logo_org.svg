@@ -1,0 +1,7 @@
+<svg viewBox="0 0 500 500" style="box-shadow: 3px 3px 5px #888888" xmlns="http://www.w3.org/2000/svg">
+  <rect width="500" height="500" style="fill: rgb(137,40,94)" />
+  <circle cx="95" cy="95" r="60" style="fill: white" />
+  <circle cx="95" cy="250" r="60" style="fill: black" />
+  <circle cx="95" cy="405" r="60" style="fill: white" />
+  <text x="170" y="250" textLength="315" lengthAdjust="spacingAndGlyphs" style="fill: white; alignment-baseline: middle; font-family: Nunito, sans-serif; font-size: 48px">veithen.github.io</text>
+</svg>

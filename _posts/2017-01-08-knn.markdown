@@ -6,7 +6,7 @@ permalink: /2017/01/08/knn/
 mathjax: true
 published: true
 tags: KNN Regression Supervised-learning MNIST Iris
-categories: Instance-based
+category: Instance-based
 sc_project: 11213322
 sc_security: 1ee84003
 img: https://upload.wikimedia.org/wikipedia/commons/5/52/Map1NN.png

@@ -1,0 +1,130 @@
+@import "variables";
+
+@import "bootstrap/mixins";
+@import "bootstrap/normalize";
+@import "bootstrap/print";
+@import "bootstrap/scaffolding";
+@import "bootstrap/type";
+@import "bootstrap/grid";
+@import "bootstrap/responsive-utilities";
+
+@import "common";
+
+// Tag index
+.tag-box {
+  list-style: none;
+  margin: 0;
+  padding: 4px 0;
+  overflow: hidden
+}
+
+.tag-box li {
+  float: left;
+  line-height: 2.2
+}
+
+.tag-box a { 
+  padding: 4px 6px;
+  margin: 2px;
+  color: #928983;
+  background-color: lighten(black, 90);
+  border-radius: 4px;
+  text-decoration: none
+}
+
+.tag-box span { 
+  font-size: 0.7*$font-size-base;
+  vertical-align: super
+}
+
+.post-list {
+  padding: .5rem 0;
+  border-top: 1px solid #eee;
+  padding-left: 0;
+  list-style: none;
+  margin: .5em 0
+}
+
+.post-list li {
+  margin-top: 0;
+  font-size: 1.17*$font-size-base;
+  font-weight: bold;
+  line-height: 2
+}
+
+.post-list li .entry-date {
+  font-size: 75%;
+  color: #999;
+}
+
+.post-list li a:hover {
+  color: #268bd2;
+  text-decoration: none;
+}
+
+.post-list li a:hover span {
+  color: inherit;
+}
+
+.hidden {
+  display: none;
+  visibility: hidden
+}
+
+
+.ui-helper-clearfix:before,
+.ui-helper-clearfix:after {
+    content: "";
+    display: table;
+    border-collapse: collapse;
+}
+.ui-helper-clearfix:after {
+    clear: both;
+}
+.ui-helper-clearfix {
+    min-height: 0; /* support: IE7 */
+}
+.ui-tabs {
+    position: relative;/* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
+    padding: .2em;
+}
+.ui-tabs .ui-tabs-nav {
+    margin: 0;
+    padding: 0;
+}
+.ui-tabs .ui-tabs-nav li {
+    list-style: none;
+    float: left;
+    position: relative;
+    top: 0;
+    padding: 0;
+    white-space: nowrap;
+}
+.ui-tabs .ui-tabs-nav .ui-tabs-anchor {
+    float: left;
+    padding: .3em .7em;
+    text-decoration: none;
+}
+.ui-tabs .ui-tabs-nav li.ui-tabs-active {
+    margin-bottom: -2px;
+}
+.ui-tabs .ui-tabs-panel {
+    padding: .5em .3em;
+}
+.ui-widget-header {
+    border-bottom: 2px solid #dfdfdf;
+    color: rgb(60, 64, 64);
+}
+.ui-state-default a,
+.ui-state-default a:link,
+.ui-state-default a:visited {
+    color: inherit;
+    cursor: pointer;
+    outline: none;
+}
+.ui-state-default a:hover {
+    background: #eee
+}
+.ui-tabs-active {
+    border-bottom: 2px solid #80b2b2
+}

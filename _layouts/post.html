@@ -1,66 +1,130 @@
 ---
 layout: default
+metadata: true
+style:
+ name: post
+ embedded: false
 ---
-<div class="PageNavigation">
-  {% if page.previous.url %}
-    <a class="prev" href="{{page.previous.url}}">&laquo; {{page.previous.title}}</a>
-  {% endif %}
-  {% if page.next.url %}
-    <a class="next" href="{{page.next.url}}">{{page.next.title}} &raquo;</a>
-  {% endif %}
-</div>
-  <header>    
-  <!-- title -->
-     <p style = "font-size: 27px; text-align: left">{{ page.title }}</p>
-  <!-- title -->
-  </header>
 
-  <!-- tags -->
-  <!--   <span style = "text-align: left">
-  {% if page.tags%} 
-   {% for tag in page.tags %}
-      <a href="/tags#{{ tag }}" class="tag">{{ tag }}</a>
-    {% endfor %}
-  {% endif %}
-    </span> -->
+{% capture url %}{{ site.url }}{{ page.url}}{% endcapture %}
 
-     {% if page.tags %}    
-        <!-- |      -->
-        <ul class="tags">
-          {% for tag in page.tags %}
-            <!-- <li> -->
-            <a href="/tags#{{ tag }}" class="tag">{{ tag }}</a>
-            <!-- </li> -->
-          {% endfor %}
-          </ul>
-        {% endif %}
-  <!-- tags -->
-  <!-- date -->
-   <p class="meta" style = "color: #818181">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %} 
+  <body>
+    <br>
+    <div class="container">
+      <div class="row">
 
-    <!-- Start of StatCounter Code for Default Guide -->
-        {% include stat_counter.html %}
-    <!-- End of StatCounter Code for Default Guide -->
+        <div class="col-md-3 hidden-xs hidden-sm">
+          <a   href="{{ site.baseurl }}/">
+            <img width="80%" src="{{ site.baseurl }}/images/logo.svg" />
+          </a>
+          <aside class = "social">
+          <div class = "header">Share</div>
+          {% include share-page.html %}
+          </aside>
+          <nav>
+          <div class = "header">Follow</div>
+          <a href = "https://www.facebook.com/machinelearningbasicvn/" target="_blank" title="Follow us"><img src = "/assets/images/facebook.png" width="30"></a>
+          </nav>
+          <nav>
+            <div class="header">Latest</div>
+            <ul>
+              {% for post in site.posts limit:5 %}
+                <li><a style="text-align: left"  href="{{ post.url }}">{{ post.title }}</a></li>
+              {% endfor %}
+            </ul>
+          </nav>
+          {% if page.category %}
+          <nav>
+          
+            <div class="header">Latest by category</div>
+            <ul>
+              {% for category in site.categories %}
+              <!-- {{ category[0] }} -->
+                {% if category[0] == page.category %}
+                  {% for post in category[1] limit:5 %}
+                    <li><a style="text-align: left" href="{{ post.url }}">{{ post.title }}</a></li>
+                  {% endfor %}
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </nav>
+          {% endif %}
+          {% if page.previous.url %} 
+            <nav>
+              <div class="header">Previous by date</div>
+              <ul>
+                <li><a style="text-align: left" href="{{ page.previous.url }}">{{ page.previous.title }}</a></li>
+              </ul>
+            </nav>
+          {% endif %} 
+          {% if page.next.url %} 
+            <nav>
+              <div class="header">Next by date</div>
+              <ul>
+                <li><a style="text-align: left" href="{{ page.next.url }}">{{ page.next.title }}</a></li>
+              </ul>
+            </nav>
+          {% endif %} 
+        </div>
+        <div class="col-md-9 col-xs-12">
+        {% include topbar.html %}
+          {% if site.banner %}
+          <div class="banner hidden-xs hidden-sm">
+            <a href="{{ site.banner.url }}"><img src="{{ site.baseurl }}/banner/{{ site.banner.image }}" style="display: block; margin-left: auto; margin-right: auto"/></a>
+          </div>
+          {% endif %}
+          <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+            <meta itemprop="keywords" content="{{ page.tags | join: ',' }}" />
+            <meta itemprop="description" content="{{ page.description | replace: '"', '&quot;' }}" />
+            {% if page.image %}
+            <meta itemprop="image" content="{{ site.url }}{{ page.image }}" />
+            {% endif %}
+          
+            <h1 itemprop="name" class="post-title">{{ page.title }}</h1>
+            <!-- <h1 itemprop="name" style = "font-size: 27px; text-align: left; font-family: "Arial Black", Gadget, sans-serif">{{ page.title }}</h1> -->
+            {% if page.subtitle %}
+            <p class="subtitle">{{ page.subtitle }}</p>
+            {% endif %}
+          <!--   <ul class="tags">
+            {% for tag in page.tags %}
+              <li class="tag"><a href="/#{{ page.category }};{{ tag }}">{{ tag }}</a></li>
+            {% endfor %}
+            </ul> -->
+            
+            {% if page.tags %}    
+              <ul class = "tags">
+                {% for tag in page.tags %}
+                  <a href="/tags#{{ tag }}" class="tag">{{ tag }}</a>
+                {% endfor %}
+              </ul>
+            {% endif %} 
+            <div class="published">
+              <time itemprop="datePublished" datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: "%B %e, %Y" }}</time>
+              {% if page.updated %}
+              (updated <time itemprop="dateModified" datetime="{{ page.updated | date: '%Y-%m-%d' }}">{{ page.updated | date: "%B %e, %Y" }}</time>)
+              {% endif %}
+            </div>
+          
+            <div itemprop="articleBody">
+              {{ content }}
+            </div>
+            <!-- <span align = "right"> -->
+ {% include stat_counter.html %}
+ <!-- </span> -->
+        <hr>  
+   <!--          {% if page.disqus %}
+            <div id="disqus_thread"></div>
+            {% else %}
+            <script src="https://apis.google.com/js/plusone.js"></script>
+            <div class="hidden-xs">
+              <hr/>
+              <div style="margin-right: auto; margin-left: auto; width: 720px">
+                <div class="g-comments" data-href="http://veithen.github.io{{page.url}}" data-width="720" data-first_party_property="BLOGGER" data-view_type="FILTERED_POSTMOD"></div>
+              </div>
+            </div>
+            {% endif %} -->
 
-   <!-- {{ page.content | number_of_words }}  -->
-  </p>
-  <!-- date -->
-
-<div class="post">
-  <article class="post-content">
-  {{ content }}
-  </article>
-
-  <!-- mathjax -->
-  <!-- {% if page.mathjax %} -->
-  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-  <!-- {% endif %} -->
-  
-  <hr>
-  {% include share-page.html %}
-
-
-  <!-- previous and next posts -->
+              <!-- previous and next posts -->
 <div class="PageNavigation">
   {% if page.previous.url %}
     <a class="prev" href="{{page.previous.url}}">&laquo; {{page.previous.title}}</a>
@@ -75,6 +139,8 @@ layout: default
 <!-- {% if site.disqus_shortname %} -->
   {% include disqus_comments.html %}
 <!-- {% endif %} -->
-
-</div>
-
+          </article>
+        </div>
+      </div>
+    </div>
+  </body>
