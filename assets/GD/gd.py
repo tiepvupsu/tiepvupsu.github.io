@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 alpha = .5
 x = [5.5]
-c_sin = 8
+c_sin = 5
 title = '$f(x) = x^2 + %dsin(x)$; ' %c_sin
 title += '$x_0 =  %.2f$; ' %x[0]
 title += r'$\alpha = %.2f$ ' % alpha 
@@ -37,8 +37,8 @@ y0 = cost(x0)
 
 y = cost(x)
 g = grad(x)
-# plt.plot(x0, y0)
-# plt.plot(x, y, 'ro', markersize=7)
+plt.plot(x0, y0)
+plt.plot(x, y, 'ro', markersize=7)
 
 
 fig, ax = plt.subplots()
