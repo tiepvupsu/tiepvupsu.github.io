@@ -9,6 +9,16 @@ style:
 {% capture url %}{{ site.url }}{{ page.url}}{% endcapture %}
 
   <body>
+  <!-- For facebook page -->
+  <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
     <br>
     <div class="container">
       <div class="row">
@@ -22,8 +32,14 @@ style:
           {% include share-page.html %}
           </aside>
           <nav>
-          <div class = "header">Follow</div>
-          <a href = "https://www.facebook.com/machinelearningbasicvn/" target="_blank" title="Follow us"><img src = "/assets/images/facebook.png" width="30"></a>
+          <div class = "header" with = "100%">Follow
+          <!-- <a href = "https://www.facebook.com/machinelearningbasicvn/" target="_blank" title="Follow us"><img src = "/assets/images/facebook.png" width="30"></a> -->
+          <!-- facebook page -->
+
+         <div class="fb-page" data-href="https://www.facebook.com/machinelearningbasicvn/" data-width="220" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/machinelearningbasicvn/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/machinelearningbasicvn/">Machine Learning cơ bản</a></blockquote></div>
+          <!--end facebook page -->
+
+          </div>
           </nav>
           <nav>
             <div class="header">Latest</div>
@@ -130,7 +146,7 @@ style:
     <a class="prev" href="{{page.previous.url}}">&laquo; {{page.previous.title}}</a>
   {% endif %}
   {% if page.next.url %}
-    <a class="next" href="{{page.next.url}}">{{page.next.title}} &raquo;</a>
+    <a class="next" style = "float: right" href="{{page.next.url}}">{{page.next.title}} &raquo;</a>
   {% endif %}
 </div>
 
