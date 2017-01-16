@@ -7,12 +7,15 @@ permalink: 2017/01/16/gradientdescent2/
 mathjax: true
 tags: GD Optimization
 category: Optimization
-sc_project: 
-sc_security: 
+sc_project: 11221352
+sc_security: b7d744c5
 img: http://sebastianruder.com/content/images/2016/09/contours_evaluation_optimizers.gif
 summary: Các phương pháp tăng tốc và các biến thể của Gradient Descent thường được dùng trong Machine Learning và Deep Learning  
 ---
-
+<div class="imgcap">
+ <img src ="http://sebastianruder.com/content/images/2016/09/contours_evaluation_optimizers.gif" align = "center" width = "400">
+ <div class = "thecap"> Tốc độ hội tụ của các thuật toán GD khác nhau. (Nguồn <a href="http://sebastianruder.com/optimizing-gradient-descent/index.html#stochasticgradientdescent"></a> An overview of gradient descent optimization algorithms). </div>
+</div>
 
 Trong [phần 1](/2017/01/12/gradientdescent/) của Gradient Descent (GD), tôi đã giới thiệu với bạn đọc về thuật toán Gradient Descent. Tôi xin nhắc lại rằng nghiệm cuối cùng của Gradient Descent phụ thuộc rất nhiều vào điểm khởi tạo và learning rate. Trong bài này, tôi xin đề cập một vài phương pháp thường được dùng để khắc phục những hạn chế của GD. Đồng thời, các thuật toán biến thể của GD thường được áp dụng trong các mô hình Deep Learning cũng sẽ được tổng hợp. 
 
@@ -21,13 +24,13 @@ Trong [phần 1](/2017/01/12/gradientdescent/) của Gradient Descent (GD), tôi
 
 - [1. Các thuật toán tối ưu Gradient Descent](#-cac-thuat-toan-toi-uu-gradient-descent)
     - [1.1 Momentum](#-momentum)
-        - [Nhắc lại thuạt toán Gradient Descent](#nhac-lai-thuat-toan-gradient-descent)
+        - [Nhắc lại thuật toán Gradient Descent](#nhac-lai-thuat-toan-gradient-descent)
         - [Gradient dưới góc nhìn vật lý](#gradient-duoi-goc-nhin-vat-ly)
         - [Gradient Descent với Momentum](#gradient-descent-voi-momentum)
         - [Một ví dụ nhỏ](#mot-vi-du-nho)
     - [1.2. Newton's method](#-newtons-method)
         - [Newton's method cho giải phương trình \\\(f\(x\) = 0\\\)](#newtons-method-cho-giai-phuong-trinh-\\fx--\\)
-    - [Newton's method trong bài toán tìm local minimun](#newtons-method-trong-bai-toan-tim-local-minimun)
+        - [Newton's method trong bài toán tìm local minimun](#newtons-method-trong-bai-toan-tim-local-minimun)
         - [Hạn chế của Newton's method](#han-che-cua-newtons-method)
     - [1.3. Các thuật toán khác](#-cac-thuat-toan-khac)
 - [2. Biến thể của Gradient Descent](#-bien-the-cua-gradient-descent)
@@ -50,7 +53,7 @@ Trong [phần 1](/2017/01/12/gradientdescent/) của Gradient Descent (GD), tôi
 ### 1.1 Momentum
 <a name="nhac-lai-thuat-toan-gradient-descent"></a>
 
-#### Nhắc lại thuạt toán Gradient Descent
+#### Nhắc lại thuật toán Gradient Descent
 Dành cho các bạn chưa đọc [phần 1](/2017/01/12/gradientdescent/) của Gradient Descent. Để giải bài toán tìm điểm _global optimal_ của hàm mất mát \\(J(\theta)\\) (Hàm mất mát cũng thường được ký hiệu là \\(J()\\) với \\(\theta\\) là tập hợp các tham số của mô hình, thuật tóan GD được phát biểu như sau:
 
 -------------
@@ -187,7 +190,7 @@ x = x\_t - \frac{f(x\_t)}{f'(x\_t)} \triangleq x\_{t+1}
 
 <a name="newtons-method-trong-bai-toan-tim-local-minimun"></a>
 
-### Newton's method trong bài toán tìm local minimun
+#### Newton's method trong bài toán tìm local minimun
 Áp dụng phương pháp này cho việc giải phương trình \\(f'(x) = 0\\) ta có:
 \\[
 x\_{t+1} = x\_t - \frac{1}{f"(x_t)}{f'(x_t)}

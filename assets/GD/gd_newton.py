@@ -36,7 +36,7 @@ x0 = np.linspace(-4.5, 5.5, 1000)
 y0 = cost(x0)
 
 y = cost(x)
-g = grad(x)
+g = grad(x)ls
 plt.plot(x0, y0)
 plt.plot(x, y, 'ro', markersize=7)
 
