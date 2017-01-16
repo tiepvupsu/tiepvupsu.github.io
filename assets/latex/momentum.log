@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.19)  15 JAN 2017 14:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.19)  15 JAN 2017 19:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -586,7 +586,7 @@ Here is how much of TeX's memory you used:
 </usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb>
 Output written on /home/tiepvu/Dropbox/tiepvupsu.github.io/assets/latex/momentu
-m.pdf (1 page, 14009 bytes).
+m.pdf (1 page, 13991 bytes).
 PDF statistics:
  15 PDF objects out of 1000 (max. 8388607)
  10 compressed objects within 1 object stream
