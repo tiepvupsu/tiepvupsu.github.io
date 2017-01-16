@@ -193,21 +193,21 @@ x = x\_t - \frac{f(x\_t)}{f'(x\_t)} \triangleq x\_{t+1}
 #### Newton's method trong bài toán tìm local minimun
 Áp dụng phương pháp này cho việc giải phương trình \\(f'(x) = 0\\) ta có:
 \\[
-x\_{t+1} = x\_t - \frac{1}{f"(x_t)}{f'(x_t)}
+x\_{t+1} = x\_t -(f"(x_t))^{-1}{f'(x_t)}
 \\]
 
 Và trong không gian nhiều chiều với \\(\theta\\) là biến:
 \\[
-\theta = \theta - \frac{1}{\|\nabla^2\_{\theta} J(\theta)\|} \nabla\_{\theta} J(\theta)
+\theta = \theta - \mathbf{H}(J(\theta))^{-1} \nabla\_{\theta} J(\theta)
 \\]
-trong đó \\(\nabla^2\_{\theta} J(\theta)\\) là đạo hàm bậc hai của hàm mất mất. Biểu thức này là một ma trận nếu \\(\theta\\) là một vector. Và \\(\|\nabla^2\_{\theta} J(\theta)\|\\) chính là định thức (determinant) của ma trận đó. 
+trong đó \\(\mathbf{H}(J(\theta))\\) là đạo hàm bậc hai của hàm mất mất (còn gọi là [Hesian matrix](https://en.wikipedia.org/wiki/Hessian_matrix)). Biểu thức này là một ma trận nếu \\(\theta\\) là một vector. Và \\(\mathbf{H}(J(\theta))^{-1}\\) chính là nghịch đảo của ma trận đó. 
 
-Bạn đọc có thể nhận thấy rằng đây chính là trường hợp đặc biệt của Gradient Descent với learning rate được tính chính xác:
+<!-- Bạn đọc có thể nhận thấy rằng đây chính là trường hợp đặc biệt của Gradient Descent với learning rate được tính chính xác:
 \\[
 \eta = \frac{1}{\|\nabla^2\_{\theta} J(\theta)\|}
-\\]
+\\] -->
 
-Nếu có một phương pháp hiệu quả để tính \\(\|\nabla^2\_{\theta} J(\theta)\|\\), Newton's method thường cho nghiệm sau ít vòng lặp hơn so với GD vì tại mỗi vòng lặp, nó cho biết chính xác _quãng đường cần di chuyển_.
+Nếu có một phương pháp hiệu quả để tính \\(\mathbf{H}(J(\theta))^{-1}\\), Newton's method thường cho nghiệm sau ít vòng lặp hơn so với GD vì tại mỗi vòng lặp, nó cho biết chính xác _quãng đường cần di chuyển_.
 
 <a name="han-che-cua-newtons-method"></a>
 
@@ -225,7 +225,7 @@ Dưới đây là một ví dụ kinh điển trên Wikipedia về việc Newton
  <div class = "thecap"> Hình 4: Nghiệm là một điểm gần -2. Tiếp tuyến của đồ thị hàm số tại điểm có hoành độ bằng 0 cắt trục hoành tại 1, và ngược lại. Trong trường hợp này, Newton's method không bao giờ hội tụ. (Nguồn: <a href = "https://en.wikipedia.org/wiki/Newton's_method">Wikipedia</a>). </div>
 </div>
 * Nhận thấy rằng trong việc giải phương trình \\(f(x) = 0\\), chúng ta có đạo hàm ở mẫu số. Khi đạo hàm này gần với 0, ta sẽ được một đường thằng song song hoặc gần song song với trục hoành. Ta sẽ hoặc không tìm được giao điểm, hoặc được một giao điểm ở vô cùng. Đặc biệt, khi nghiệm chính là điểm có đạo hàm bằng 0, thuật toán gần như sẽ không tìm được nghiệm!
-* Khi áp dụng Newton's method cho thuật toán GD trong bài toán ở không gian nhiều chiều, chúng ta cần tính định thức của đạo hàm bậc hai. Khi số chiều và số điểm dữ liệu lớn, đạo hàm bậc hai của hàm mất mát sẽ là một ma trận rất lớn, ảnh hưởng tới cả memory và tốc độ tính toán của hệ thống. 
+* Khi áp dụng Newton's method cho thuật toán GD trong bài toán ở không gian nhiều chiều, chúng ta cần tính nghịch đảo của Hessian matrix. Khi số chiều và số điểm dữ liệu lớn, đạo hàm bậc hai của hàm mất mát sẽ là một ma trận rất lớn, ảnh hưởng tới cả memory và tốc độ tính toán của hệ thống. 
 
 
 <a name="-cac-thuat-toan-khac"></a>
