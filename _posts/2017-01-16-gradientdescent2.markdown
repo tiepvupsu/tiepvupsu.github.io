@@ -207,7 +207,7 @@ trong đó \\(\mathbf{H}(J(\theta))\\) là đạo hàm bậc hai của hàm mấ
 \eta = \frac{1}{\|\nabla^2\_{\theta} J(\theta)\|}
 \\] -->
 
-Nếu có một phương pháp hiệu quả để tính \\(\mathbf{H}(J(\theta))^{-1}\\), Newton's method thường cho nghiệm sau ít vòng lặp hơn so với GD vì tại mỗi vòng lặp, nó cho biết chính xác _quãng đường cần di chuyển_.
+<!-- Nếu có một phương pháp hiệu quả để tính \\(\mathbf{H}(J(\theta))^{-1}\\), Newton's method thường cho nghiệm sau ít vòng lặp hơn so với GD vì tại mỗi vòng lặp, nó cho biết chính xác _quãng đường cần di chuyển_. -->
 
 <a name="han-che-cua-newtons-method"></a>
 
