@@ -5,7 +5,7 @@ title:  "Bài 8: Gradient Descent (phần 2/2)"
 date:   2017-01-16 15:22:00
 permalink: 2017/01/16/gradientdescent2/
 mathjax: true
-tags: GD Optimization
+tags: GD Optimization SGD Online-learning Batch
 category: Optimization
 sc_project: 11221352
 sc_security: b7d744c5
