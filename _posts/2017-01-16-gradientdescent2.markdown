@@ -200,7 +200,7 @@ Và trong không gian nhiều chiều với \\(\theta\\) là biến:
 \\[
 \theta = \theta - \mathbf{H}(J(\theta))^{-1} \nabla\_{\theta} J(\theta)
 \\]
-trong đó \\(\mathbf{H}(J(\theta))\\) là đạo hàm bậc hai của hàm mất mất (còn gọi là [Hesian matrix](https://en.wikipedia.org/wiki/Hessian_matrix)). Biểu thức này là một ma trận nếu \\(\theta\\) là một vector. Và \\(\mathbf{H}(J(\theta))^{-1}\\) chính là nghịch đảo của ma trận đó. 
+trong đó \\(\mathbf{H}(J(\theta))\\) là đạo hàm bậc hai của hàm mất mất (còn gọi là [Hessian matrix](https://en.wikipedia.org/wiki/Hessian_matrix)). Biểu thức này là một ma trận nếu \\(\theta\\) là một vector. Và \\(\mathbf{H}(J(\theta))^{-1}\\) chính là nghịch đảo của ma trận đó. 
 
 <!-- Bạn đọc có thể nhận thấy rằng đây chính là trường hợp đặc biệt của Gradient Descent với learning rate được tính chính xác:
 \\[
