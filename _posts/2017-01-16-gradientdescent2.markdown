@@ -58,6 +58,7 @@ Dành cho các bạn chưa đọc [phần 1](/2017/01/12/gradientdescent/) của
 
 -------------
 **Thuật toán Gradient Descent:**
+
 1. Dự đoán một điểm khởi tạo \\(\theta = \theta_0\\).
 2. Cập nhật \\(\theta\\) đến khi đạt được kết quả chấp nhận được: 
 \\[
