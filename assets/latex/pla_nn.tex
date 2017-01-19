@@ -1,6 +1,9 @@
 \documentclass{standalone}
 \usepackage{amsmath}
 \usepackage{tikz}
+\renewcommand{\familydefault}{\sfdefault}
+
+
 \begin{document}
 \pagestyle{empty}
 % \input{definitions}
@@ -19,11 +22,12 @@
 }
 \tikzstyle{every pin edge}=[shorten <=1pt]
 \tikzstyle{neuron}=[circle,fill=black!25,minimum size=17pt,inner sep=0pt]
-\tikzstyle{input neuron}=[neuron, thick, draw = black, fill=blue!40]
+\tikzstyle{input neuron}=[neuron, thick, draw = black, fill=green!40]
 \tikzstyle{output neuron}=[neuron,thick, draw = black, fill=red!40]
 \tikzstyle{sign neuron}=[output neuron, dist]
 \tikzstyle{hidden neuron}=[neuron, thick, draw = black, fill=green!40]
 \tikzstyle{annot} = [text width=4em, text centered]
+
 
 \begin{tikzpicture}[shorten >=1pt,draw=black,thick, node distance=\layersep, >= stealth]
 

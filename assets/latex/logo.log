@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.19)  4 JAN 2017 19:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.19)  19 JAN 2017 14:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**norm12.tex
-(/media/tiepvu/TIEPVU/PROJECTS/tiepvupsu.github.io/assets/latex/norm12.tex
+**logo.tex
+(/home/tiepvu/Dropbox/tiepvupsu.github.io/assets/latex/logo.tex
 LaTeX2e <2016/02/01>
 Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/standalone/standalone.cls
@@ -652,8 +652,8 @@ tex) (/usr/share/texlive/texmf-dist/tex/latex/tkz-euclide/tkz-obj-lines.tex)
 (/usr/share/texlive/texmf-dist/tex/latex/tkz-euclide/tkz-obj-sectors.tex)
 (/usr/share/texlive/texmf-dist/tex/latex/tkz-euclide/tkz-obj-angles.tex)
 (/usr/share/texlive/texmf-dist/tex/latex/tkz-euclide/tkz-obj-protractor.tex)
-(/media/tiepvu/TIEPVU/PROJECTS/tiepvupsu.github.io/assets/latex/norm12.aux)
-\openout1 = `norm12.aux'.
+(/home/tiepvu/Dropbox/tiepvupsu.github.io/assets/latex/logo.aux)
+\openout1 = `logo.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
 LaTeX Font Info:    ... okay on input line 9.
@@ -727,34 +727,25 @@ ick labels; missing features). Consider writing \pgfplotsset{compat=1.13} into
 your preamble.
  on input line 9.
 
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 90.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 90.
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-(/media/tiepvu/TIEPVU/PROJECTS/tiepvupsu.github.io/assets/latex/norm12.aux) ) 
+(/home/tiepvu/Dropbox/tiepvupsu.github.io/assets/latex/logo.aux) ) 
 Here is how much of TeX's memory you used:
- 24937 strings out of 493029
- 632150 string characters out of 6136233
- 781818 words of memory out of 5000000
- 27979 multiletter control sequences out of 15000+600000
- 4567 words of font info for 17 fonts, out of 8000000 for 9000
+ 24887 strings out of 493029
+ 631078 string characters out of 6136233
+ 777909 words of memory out of 5000000
+ 27931 multiletter control sequences out of 15000+600000
+ 3945 words of font info for 15 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,7n,77p,735b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
-</
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on /media/tiepvu/TIEPVU/PROJECTS/tiepvupsu.github.io/assets/late
-x/norm12.pdf (1 page, 46335 bytes).
+ 55i,7n,77p,733b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb>
+Output written on /home/tiepvu/Dropbox/tiepvupsu.github.io/assets/latex/logo.pd
+f (1 page, 10404 bytes).
 PDF statistics:
- 35 PDF objects out of 1000 (max. 8388607)
- 25 compressed objects within 1 object stream
+ 15 PDF objects out of 1000 (max. 8388607)
+ 10 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

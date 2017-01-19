@@ -34,6 +34,7 @@ summary: Gradient Descent một trong những thuật toán quan trọng nhất 
 
 <a name="-gioi-thieu"></a>
 
+<a name="-gioi-thieu"></a>
 ## 1. Giới thiệu
 
 Các bạn hẳn thấy hình vẽ dưới đây quen thuộc:
@@ -53,6 +54,7 @@ Trong hình phía trên, các điểm bên trái của điểm local minimum mà
 
 <a name="gradient-descent"></a>
 
+<a name="gradient-descent"></a>
 ### Gradient Descent
 Trong Machine Learning nói riêng và Toán Tối Ưu nói chung, chúng ta thường xuyên phải tìm giá trị nhỏ nhất (hoặc đôi khi là lớn nhất) của một hàm số nào đó. Ví dụ như các hàm mất mát trong hai bài [Linear Regression](/2016/12/28/linearregression/) và [K-means Clustering](/2017/01/01/kmeans/). Nhìn chung, việc tìm global minimum của các hàm mất mát trong Machine Learning là rất phức tạp, thậm chí là bất khả thi. Thay vào đó, người ta thường cố gắng tìm các điểm local minimum, và ở một mức độ nào đó, coi đó là nghiệm cần tìm của bài toán. 
 
@@ -60,11 +62,13 @@ Các điểm local minimum là nghiệm của phương trình đạo hàm bằng
 
 Hướng tiếp cận phổ biến nhất là xuất phát từ một điểm mà chúng ta coi là _gần_ với nghiệm của bài toán, sau đó dùng một phép toán lặp để _tiến dần_ đến điểm cần tìm, tức đến khi đạo hàm gần với 0. (Đây cũng chính là lý do phương pháp này được gọi là Gradient Descent - tức giảm _độ lớn_ của đạo hàm). Gradient Descent (viết gọn là GD) và các biến thể của nó là một trong những phương pháp được dùng nhiều nhất. 
 
+<a name="large-scale"></a>
 Vì kiến thức về GD khá rộng nên tôi xin phép được chia thành hai phần. Phần 1 này giới thiệu ý tưởng phía sau thuật toán GD và một vài ví dụ đơn giản giúp các bạn làm quen với thuật toán này và vài khái niệm mới. Phần 2 sẽ nói về các phương pháp cải tiến GD và các biến thể của GD trong các bài toán mà số chiều và số điểm dữ liệu lớn. Những bài toán như vậy được gọi là _large-scale_. 
 
 
 <a name="-gradient-descent-cho-ham--bien"></a>
 
+<a name="-gradient-descent-cho-ham--bien"></a>
 ## 2. Gradient Descent cho hàm 1 biến
 Quay trở lại hình vẽ ban đầu và một vài quan sát tôi đã nêu. Giả sử  \\(x_\{t}\\) là điểm ta tìm được sau vòng lặp thứ \\(t\\). Ta cần tìm một thuật toán để đưa \\(x_\{t}\\) về càng gần \\(x^\*\\) càng tốt. 
 
@@ -87,6 +91,7 @@ Trong đó \\(\eta\\) (đọc là _eta_) là một số dương được gọi l
 
 <a name="vi-du-don-gian-voi-python"></a>
 
+<a name="vi-du-don-gian-voi-python"></a>
 ### Ví dụ đơn giản với Python
 
 Xét hàm số \\(f(x) = x^2 + 5\sin(x)\\) với đạo hàm \\(f'(x) = 2x + 5\cos(x)\\) (một lý do tôi chọn hàm này vì nó không dễ tìm nghiệm của đạo hàm bằng 0 như hàm phía trên). Giả sử bắt đầu từ một điểm \\(x\_{0}\\) nào đó, tại vòng lặp thứ \\(t\\), chúng ta sẽ cập nhật như sau:
@@ -132,6 +137,7 @@ def myGD1(eta, x0):
 
 <a name="diem-khoi-tao-khac-nhau"></a>
 
+<a name="diem-khoi-tao-khac-nhau"></a>
 #### Điểm khởi tạo khác nhau
 
 Sau khi có các hàm cần thiết, tôi thử tìm nghiệm với các điểm khởi tạo khác nhau là \\(x\_{0} = -5\\) và \\(x\_{0} = 5\\).
@@ -167,6 +173,7 @@ Từ hình minh họa trên ta thấy rằng hình bên trái, tương ứng v�
 
 <a name="learning-rate-khac-nhau"></a>
 
+<a name="learning-rate-khac-nhau"></a>
 #### Learning rate khác nhau
 
 Tốc độ hội tụ của GD không những phụ thuộc vào điểm khởi tạo ban đầu mà còn phụ thuộc vào _learning rate_. Dưới đây là một ví dụ với cùng điểm khởi tạo \\(x\_{0} = -5\\) nhưng learning rate khác nhau:
@@ -193,6 +200,7 @@ Việc lựa chọn _learning rate_ rất quan trọng trong các bài toán th�
 
 <a name="-gradient-descent-cho-ham-nhieu-bien"></a>
 
+<a name="-gradient-descent-cho-ham-nhieu-bien"></a>
 ## 3. Gradient Descent cho hàm nhiều biến
 Giả sử ta cần tìm global minimum cho hàm \\(f(\mathbf{\theta})\\) trong đó \\(\mathbf{\theta}\\) (_theta_) là một vector, thường được dùng để ký hiệu tập hợp các tham số của một mô hình cần tối ưu (trong Linear Regression thì các tham số chính là hệ số \\(\mathbf{w}\\)). Đạo hàm của hàm số đó tại một điểm \\(\theta\\) bất kỳ được ký hiệu là \\(\nabla_{\theta}f(\theta)\\) (hình tam giác ngược đọc là _nabla_). Tương tự như hàm 1 biến, thuật toán GD cho hàm nhiều biến cũng bắt đầu bằng một điểm dự đoán \\(\theta\_{0}\\), sau đó, ở vòng lặp thứ \\(t\\), quy tắc cập nhật là:
 
@@ -207,6 +215,7 @@ Quy tắc cần nhớ: **luôn luôn đi ngược hướng với đạo hàm**.
 Việc tính toán đạo hàm của các hàm nhiều biến là một kỹ năng cần thiết. Một vài đạo hàm đơn giản có thể được [tìm thấy ở đây](/math/#bang-cac-dao-ham-co-ban).
 <a name="quay-lai-voi-bai-toan-linear-regression"></a>
 
+<a name="quay-lai-voi-bai-toan-linear-regression"></a>
 ### Quay lại với bài toán Linear Regression
 Trong mục này, chúng ta quay lại với bài toán [Linear Regression](/2016/12/28/linearregression/) và thử tối ưu hàm mất mát của nó bằng thuật toán GD. 
 
@@ -225,6 +234,7 @@ Hàm mất mát của Linear Regression là:
 
 <a name="sau-day-la-vi-du-tren-python-va-mot-vai-luu-y-khi-lap-trinh"></a>
 
+<a name="sau-day-la-vi-du-tren-python-va-mot-vai-luu-y-khi-lap-trinh"></a>
 ### Sau đây là ví dụ trên Python và một vài lưu ý khi lập trình
 
 Load thư viện
@@ -294,6 +304,7 @@ def cost(w):
 
 <a name="kiem-tra-dao-ham"></a>
 
+<a name="kiem-tra-dao-ham"></a>
 #### Kiểm tra đạo hàm
 Việc tính đạo hàm của hàm nhiều biến thông thường khá phức tạp và rất dễ mắc lỗi, nếu chúng ta tính sai đạo hàm thì thuật toán GD không thể chạy đúng được. Trong thực nghiệm, có một cách để kiểm tra liệu đạo hàm tính được có chính xác không. Cách này dựa trên định nghĩa của đạo hàm (cho hàm 1 biến):
 \\[
@@ -381,6 +392,7 @@ Trong hình bên trái, các đường thẳng màu đỏ là nghiệm tìm đư
 Trong hình bên phải, tôi xin giới thiệu một thuật ngữ mới: _đường đồng mức_.
 <a name="duong-dong-muc-level-sets"></a>
 
+<a name="duong-dong-muc-level-sets"></a>
 #### Đường đồng mức (level sets)
 Với đồ thị của một hàm số với hai biến đầu vào cần được vẽ trong không gian ba chiều, nhều khi chúng ta khó nhìn được nghiệm có khoảng tọa độ bao nhiêu. Trong toán tối ưu, người ta thường dùng một cách vẽ sử dụng khái niệm _đường đồng mức_ (level sets). 
 
@@ -415,6 +427,7 @@ Tốc độ hội tụ đã chậm đi nhiều, thậm chí sau 99 vòng lặp, 
 
 <a name="-mot-vi-du-khac"></a>
 
+<a name="-mot-vi-du-khac"></a>
 ## 4. Một ví dụ khác
 
 Để kết thúc phần 1 của Gradient Descent, tôi xin nêu thêm một ví dụ khác.
@@ -427,12 +440,14 @@ Hàm số \\(f(x, y) = (x^2 + y - 7)^2 + (x - y + 1)^2\\) có hai điểm local 
 
 <a name="-thao-luan"></a>
 
+<a name="-thao-luan"></a>
 ## 5. Thảo luận
 
 Dựa trên GD, có rất nhiều thuật toán phức tạp và hiệu quả hơn được thiết kế cho những loại bài toán khác nhau. Vì bài này đã đủ dài, tôi xin phép dừng lại ở đây. Mời các bạn đón đọc bài Gradient Descent phần 2 với nhiều kỹ thuật nâng cao hơn.
 
 <a name="-tai-lieu-tham-khao"></a>
 
+<a name="-tai-lieu-tham-khao"></a>
 ## 6. Tài liệu tham khảo
 1. [An overview of gradient descent optimization algorithms](http://sebastianruder.com/optimizing-gradient-descent/)
 2. [http://www.benfrederickson.com/numerical-optimization/](An Interactive Tutorial on Numerical Optimization)

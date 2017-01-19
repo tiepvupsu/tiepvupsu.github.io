@@ -1,7 +1,0 @@
-PWD /home/tiepvu/Dropbox/tiepvupsu.github.io/assets/latex
-INPUT /etc/texmf/web2c/texmf.cnf
-INPUT /usr/share/texmf/web2c/texmf.cnf
-INPUT /usr/share/texlive/texmf-dist/web2c/texmf.cnf
-INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
-INPUT /home/tiepvu/Dropbox/tiepvupsu.github.io/assets/latex/definitions.tex
-OUTPUT /home/tiepvu/Dropbox/tiepvupsu.github.io/assets/latex/definitions.log

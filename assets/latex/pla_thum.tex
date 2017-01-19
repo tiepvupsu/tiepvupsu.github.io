@@ -3,9 +3,9 @@
 \usepackage{tikz}
 \renewcommand{\familydefault}{\sfdefault}
 
+% \pagestyle{empty}
 
 \begin{document}
-\pagestyle{empty}
 % \input{definitions}
 \def\layersep{2.5cm}
 \tikzset{dist/.style={path picture= {
@@ -26,8 +26,11 @@
 \tikzstyle{output neuron}=[neuron,thick, draw = black, fill=red!40]
 \tikzstyle{sign neuron}=[output neuron, dist]
 \tikzstyle{hidden neuron}=[neuron, thick, draw = black, fill=blue!40]
-\tikzstyle{annot} = [text width=4em, text centered]
-\begin{tikzpicture}[shorten >=1pt,draw=black,thick, node distance=\layersep, >= stealth]
+% \tikzstyle{annot} = [text width=4em, text centered]
+\begin{tikzpicture}[draw=black,thick, node distance=\layersep, >= stealth]
+\begin{scope}
+    
+% \clip (0, -5) rectangle (3.5, .3);
 
     % Draw the input layer nodes
     \foreach \name / \y in {1,...,4}
@@ -40,7 +43,7 @@
     % Draw the output layer nodes
     \foreach \name / \y in {3}
         \path[yshift=0.5cm]
-            node[output neuron ] (O-\name) at (\layersep,-\y cm) {$\Sigma$};
+            node[sign neuron ] (O-\name) at (\layersep,-\y cm) {};
     %         node[sign neuron, label = below:$y$] (O2-\name) at (1.5*\layersep,-\y cm) {};
 
     % Draw the output layer node
@@ -64,6 +67,7 @@
     % \node[annot,above of=H-1, node distance=1cm] (O) {Hidden layer};
     % \node[annot,left of=hl] {Input layer};
     % \node[annot,right of=hl] {Output layer};
+\end{scope}
 \end{tikzpicture}
 % End of code
 \end{document}
