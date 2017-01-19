@@ -38,3 +38,13 @@ kramdown:
 
 # Disqus post comments
 disqus_shortname: tiepvu
+
+gems:
+  - algoliasearch-jekyll
+algolia:
+  application_id: '97MVG63J2Q'
+  index_name:     'blog'
+ALGOLIA_API_KEY: b6e5cd24029e3ae0bea8a51be79d7bf2
+
+gems:
+  - jekyll-sitemap
