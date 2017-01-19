@@ -5,7 +5,7 @@ title:  "Bài 3: Linear Regression"
 date:   2016-12-28 15:22:00
 permalink: 2016/12/28/linearregression/
 mathjax: true
-tags: [Linear-models Regression Supervised-learning]
+tags: Linear-models Regression Supervised-learning
 category: Regression
 sc_project: 11213317
 sc_security: 31bb1f61
@@ -50,6 +50,7 @@ Trong bài này, tôi sẽ giới thiệu một trong những thuật toán cơ 
 <!-- ========================== New Heading ==================== -->
 <a name="-gioi-thieu"></a>
 
+<a name="-gioi-thieu"></a>
 ## 1. Giới thiệu
 
 Quay lại [ví dụ đơn giản được nêu trong bài trước](/2016/12/27/categories/#regression): một căn nhà rộng \\(x_1 ~ \text{m}^2\\), có \\(x_2\\) phòng ngủ và cách trung tâm thành phố \\(x_3~ \text{km}\\) có giá là bao nhiêu. Giả sử chúng ta đã có số liệu thống kê từ 1000 căn nhà trong thành phố đó, liệu rằng khi có một căn nhà mới với các thông số về diện tích, số phòng ngủ và khoảng cách tới trung tâm, chúng ta có thể dự đoán được giá của căn nhà đó không? Nếu có thì hàm dự đoán \\(y = f(\mathbf{x}) \\) sẽ có dạng như thế nào. Ở đây \\(\mathbf{x} = [x_1; x_2; x_3] \\) là một vector
@@ -75,6 +76,7 @@ trong đó, \\(w_1, w_2, w_3, w_0\\) là các hằng số,  \\(w_0\\) còn đư�
 <!-- ========================== New Heading ==================== -->
 <a name="-phan-tich-toan-hoc"></a>
 
+<a name="-phan-tich-toan-hoc"></a>
 ## 2. Phân tích toán học
 
 
@@ -82,6 +84,7 @@ trong đó, \\(w_1, w_2, w_3, w_0\\) là các hằng số,  \\(w_0\\) còn đư�
 <!-- ========================== New Heading ==================== -->
 <a name="dang-cua-linear-regression"></a>
 
+<a name="dang-cua-linear-regression"></a>
 ### Dạng của Linear Regression 
 
 Trong phương trình \\((1)\\) phía trên, nếu chúng ta đặt \\(\mathbf{w} = [w_0, w_1, w_2, w_3]^T = \\) là vector (cột) hệ số cần phải tối ưu và \\(\mathbf{\bar{x}} = [1, x_1, x_2, x_3]\\) (đọc là _x bar_ trong tiếng Anh) là vector (hàng) dữ liệu đầu vào _mở rộng_. Số \\(1\\) ở đầu được thêm vào để phép tính đơn giản hơn và thuận tiện cho việc tính toán. Khi đó, phương trình (1) có thể được viết lại dưới dạng:
@@ -94,6 +97,7 @@ Chú ý rằng \\(\mathbf{\bar{x}}\\) là một vector hàng. ([Xem thêm về k
 <!-- ========================== New Heading ==================== -->
 <a name="sai-so-du-doan"></a>
 
+<a name="sai-so-du-doan"></a>
 ### Sai số dự đoán 
 
 Chúng ta mong muốn rằng sự sai khác \\(e\\) giữa giá trị thực \\(y\\) và giá trị dự đoán \\(\hat{y}\\) (đọc là _y hat_ trong tiếng Anh) là nhỏ nhất. Nói cách khác, chúng ta muốn giá trị sau đây càng nhỏ càng tốt: 
@@ -111,6 +115,7 @@ trong đó hệ số \\(\frac{1}{2} \\) (_lại_) là để thuận tiện cho v
 <!-- ========================== New Heading ==================== -->
 <a name="ham-mat-mat"></a>
 
+<a name="ham-mat-mat"></a>
 ### Hàm mất mát
 
 Điều tương tự xảy ra với tất cả các cặp _(input, outcome)_ \\( (\mathbf{x}_i, y_i), i = 1, 2, \dots, N \\), với \\(N\\) là số lượng dữ liệu quan sát được. Điều chúng ta muốn, tổng sai số là nhỏ nhất, tương đương với việc tìm \\( \mathbf{w} \\) để hàm số sau đạt giá trị nhỏ nhất:
@@ -141,6 +146,7 @@ với \\( \\| \mathbf{z} \\|_2 \\) là Euclidean norm (chuẩn Euclid, hay kho�
 <!-- ========================== New Heading ==================== -->
 <a name="nghiem-cho-bai-toan-linear-regression"></a>
 
+<a name="nghiem-cho-bai-toan-linear-regression"></a>
 ### Nghiệm cho bài toán Linear Regression
 
 __Cách phổ biến nhất để tìm nghiệm cho một bài toán tối ưu (chúng ta đã biết từ khi học cấp 3) là giải phương trình đạo hàm (gradient) bằng 0!__ Tất nhiên đó là khi việc tính đạo hàm và việc giải phương trình đạo hàm bằng 0 không quá phức tạp. Thật may mắn, với các mô hình tuyến tính, hai việc này là khả thi. 
@@ -180,11 +186,13 @@ Với khái niệm giả nghịch đảo, điểm tối ưu của bài toán Lin
 <!-- ========================== New Heading ==================== -->
 <a name="-vi-du-tren-python"></a>
 
+<a name="-vi-du-tren-python"></a>
 ## 3. Ví dụ trên Python
 
 <!-- ========================== New Heading ==================== -->
 <a name="bai-toan"></a>
 
+<a name="bai-toan"></a>
 ### Bài toán
 
 Trong phần này, tôi sẽ chọn một ví dụ đơn giản về việc giải bài toán Linear Regression trong Python. Tôi cũng sẽ so sánh nghiệm của bài toán khi giải theo phương trình \\((5) \\) và nghiệm tìm được khi dùng thư viện [scikit-learn](http://scikit-learn.org/stable/) của Python. (_Đây là thư viện Machine Learning được sử dụng rộng rãi trong Python_). Trong ví dụ này, dữ liệu đầu vào chỉ có 1 giá trị (1 chiều) để thuận tiện cho việc minh hoạ trong mặt phẳng. 
@@ -207,6 +215,7 @@ Chúng ta có thể thấy là cân nặng sẽ tỉ lệ thuận với chiều 
 <!-- ========================== New Heading ==================== -->
 <a name="hien-thi-du-lieu-tren-do-thi"></a>
 
+<a name="hien-thi-du-lieu-tren-do-thi"></a>
 ### Hiển thị dữ liệu trên đồ thị
 Trước tiên, chúng ta cần có hai thư viện [numpy](http://www.numpy.org/) cho đại số tuyến tính và [matplotlib](http://matplotlib.org/) cho việc vẽ hình. 
 
@@ -246,6 +255,7 @@ Từ đồ thị này ta thấy rằng dữ liệu được sắp xếp gần nh
 <!-- ========================== New Heading ==================== -->
 <a name="nghiem-theo-cong-thuc"></a>
 
+<a name="nghiem-theo-cong-thuc"></a>
 ### Nghiệm theo công thức
 
 Tiếp theo, chúng ta sẽ tính toán các hệ số w_1 và w_0 dựa vào công thức \\((5)\\). Chú ý: giả nghịch đảo của một ma trận `A` trong Python sẽ được tính bằng `numpy.linalg.pinv(A)`, `pinv` là từ viết tắt của _pseudo inverse_.
@@ -307,6 +317,7 @@ Chúng ta thấy rằng kết quả dự đoán khá gần với số liệu th�
 <!-- ========================== New Heading ==================== -->
 <a name="nghiem-theo-thu-vien-scikit-learn"></a>
 
+<a name="nghiem-theo-thu-vien-scikit-learn"></a>
 ### Nghiệm theo thư viện scikit-learn
 
 Tiếp theo, chúng ta sẽ sử dụng thư viện scikit-learn của Python để tìm nghiệm. 
@@ -336,11 +347,13 @@ Chúng ta thấy rằng hai kết quả thu được như nhau! (_Nghĩa là tô
 <!-- ========================== New Heading ==================== -->
 <a name="-thao-luan"></a>
 
+<a name="-thao-luan"></a>
 ## 4. Thảo luận
 
 <!-- ========================== New Heading ==================== -->
 <a name="cac-bai-toan-co-the-giai-bang-linear-regression"></a>
 
+<a name="cac-bai-toan-co-the-giai-bang-linear-regression"></a>
 ### Các bài toán có thể giải bằng Linear Regression
 Hàm số \\(y \approx f(\mathbf{x})= \mathbf{w}^T\mathbf{x}\\) là một hàm tuyến tính theo cả \\( \mathbf{w}\\) và \\(\mathbf{x}\\). Trên thực tế, Linear Regression có thể áp dụng cho các mô hình chỉ cần tuyến tính theo \\(\mathbf{w}\\). Ví dụ:
 \\[
@@ -363,6 +376,7 @@ Xem thêm ví dụ về [Quadratic Regression](http://www.varsitytutors.com/hotm
 <!-- ========================== New Heading ==================== -->
 <a name="han-che-cua-linear-regression"></a>
 
+<a name="han-che-cua-linear-regression"></a>
 ### Hạn chế của Linear Regression
 
 Hạn chế đầu tiên của Linear Regression là nó rất **nhạy cảm với nhiễu** (sensitive to noise). Trong ví dụ về mối quan hệ giữa chiều cao và cân nặng bên trên, nếu có chỉ
@@ -379,6 +393,7 @@ Hạn chế thứ hai của Linear Regression là nó **không biễu diễn đ�
 <!-- ========================== New Heading ==================== -->
 <a name="cac-phuong-phap-toi-uu"></a>
 
+<a name="cac-phuong-phap-toi-uu"></a>
 ### Các phương pháp tối ưu
 Linear Regression là một mô hình đơn giản, lời giải cho phương trình đạo hàm bằng 0 cũng khá đơn giản. _Trong hầu hết các trường hợp, chúng ta không thể giải được phương trình đạo hàm bằng 0._
 
@@ -389,6 +404,7 @@ Nhưng có một điều chúng ta nên nhớ, **còn tính được đạo hàm
 <!-- ========================== New Heading ==================== -->
 <a name="-tai-lieu-tham-khao"></a>
 
+<a name="-tai-lieu-tham-khao"></a>
 ## 5. Tài liệu tham khảo
 
 1. [Linear Regression - Wikipedia](https://en.wikipedia.org/wiki/Linear_regression)
