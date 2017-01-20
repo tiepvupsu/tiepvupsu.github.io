@@ -61,12 +61,11 @@ def draw_line(w):
         return plt.plot([x10, x10], [-100, 100], 'k')
 
 
-## GD example
+## Visualization
 import matplotlib.animation as animation
 from matplotlib.animation import FuncAnimation 
 def viz_alg_1d_2(w):
     it = len(w)    
-       
     fig, ax = plt.subplots(figsize=(5, 5))  
     
     def update(i):
@@ -78,10 +77,10 @@ def viz_alg_1d_2(w):
         i2 =  i if i < it else it-1
         ani = draw_line(w[i2])
         if i < it-1:
-            # print(X[1, m[i]], X[2, ])
+            # draw one  misclassified point
             circle = plt.Circle((X[1, m[i]], X[2, m[i]]), 0.15, color='k', fill = False)
             ax.add_artist(circle)
-        # hid axis 
+        # hide axis 
         cur_axes = plt.gca()
         cur_axes.axes.get_xaxis().set_ticks([])
         cur_axes.axes.get_yaxis().set_ticks([])
@@ -91,8 +90,8 @@ def viz_alg_1d_2(w):
         return ani, ax 
         
     anim = FuncAnimation(fig, update, frames=np.arange(0, it + 2), interval=1000)
+    # save 
     anim.save('pla_vis.gif', dpi = 100, writer = 'imagemagick')
     plt.show()
     
-# x = np.asarray(x)
 viz_alg_1d_2(w)
