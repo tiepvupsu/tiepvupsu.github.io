@@ -405,7 +405,7 @@ Trong tương lai, nếu có thể, tôi sẽ viết tiếp về Deep Learning v
 
 [3] Abu-Mostafa, Yaser S., Malik Magdon-Ismail, and Hsuan-Tien Lin. Learning from data. Vol. 4. New York, NY, USA:: AMLBook, 2012. ([link to course](http://work.caltech.edu/telecourse.html))
 
-[4] Bishop, Christopher M. "Pattern recognition." Machine Learning 128 (2006): 1-58. ([book](http://users.isr.ist.utl.pt/~wurmd/Livros/school/Bishop%20-%20Pattern%20Recognition%20And%20Machine%20Learning%20-%20Springer%20%202006.pdf))
+[4] Bishop, Christopher M. "Pattern recognition and Machine Learning.", Springer  (2006). ([book](http://users.isr.ist.utl.pt/~wurmd/Livros/school/Bishop%20-%20Pattern%20Recognition%20And%20Machine%20Learning%20-%20Springer%20%202006.pdf))
 
 [5] Duda, Richard O., Peter E. Hart, and David G. Stork. Pattern classification. John Wiley & Sons, 2012.
 
