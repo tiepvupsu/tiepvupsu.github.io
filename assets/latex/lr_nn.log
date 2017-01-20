@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.19)  19 JAN 2017 14:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.19)  19 JAN 2017 22:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -495,21 +495,20 @@ e
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 (/home/tiepvu/Dropbox/tiepvupsu.github.io/assets/latex/lr_nn.aux) ) 
 Here is how much of TeX's memory you used:
- 12456 strings out of 493029
- 248506 string characters out of 6136233
- 284211 words of memory out of 5000000
- 15769 multiletter control sequences out of 15000+600000
- 4399 words of font info for 17 fonts, out of 8000000 for 9000
+ 12461 strings out of 493029
+ 248700 string characters out of 6136233
+ 285211 words of memory out of 5000000
+ 15775 multiletter control sequences out of 15000+600000
+ 3945 words of font info for 15 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,7n,68p,427b,782s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,7n,76p,427b,1057s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb>
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb>
 Output written on /home/tiepvu/Dropbox/tiepvupsu.github.io/assets/latex/lr_nn.p
-df (1 page, 17438 bytes).
+df (1 page, 10378 bytes).
 PDF statistics:
- 19 PDF objects out of 1000 (max. 8388607)
- 13 compressed objects within 1 object stream
+ 15 PDF objects out of 1000 (max. 8388607)
+ 10 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

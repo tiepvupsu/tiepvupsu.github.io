@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.19)  19 JAN 2017 14:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.19)  19 JAN 2017 21:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -495,13 +495,13 @@ e
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 (/home/tiepvu/Dropbox/tiepvupsu.github.io/assets/latex/pla_nn.aux) ) 
 Here is how much of TeX's memory you used:
- 12514 strings out of 493029
- 249589 string characters out of 6136233
- 296643 words of memory out of 5000000
- 15823 multiletter control sequences out of 15000+600000
+ 12524 strings out of 493029
+ 249808 string characters out of 6136233
+ 297385 words of memory out of 5000000
+ 15833 multiletter control sequences out of 15000+600000
  5926 words of font info for 22 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,7n,76p,428b,1071s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,7n,76p,428b,1132s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/tex
@@ -511,7 +511,7 @@ t/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts
 public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
 msfonts/cm/cmss10.pfb>
 Output written on /home/tiepvu/Dropbox/tiepvupsu.github.io/assets/latex/pla_nn.
-pdf (1 page, 58931 bytes).
+pdf (1 page, 58989 bytes).
 PDF statistics:
  39 PDF objects out of 1000 (max. 8388607)
  28 compressed objects within 1 object stream

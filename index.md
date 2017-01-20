@@ -14,6 +14,7 @@ permalink: /index/
     - [Momentum](/2017/01/16/gradientdescent2/#-momentum)
     - [Stochastic Gradient Descent](/2017/01/16/gradientdescent2/#-stochastic-gradient-descent)
 * [K-nearest neighbors](/2017/01/08/knn/)
+* [Large-sclae problem](/2017/01/12/gradientdescent/#large-scale)
 * [Level sets](/2017/01/12/gradientdescent/#duong-dong-muc-level-sets)
 * [Loss function (Hàm mất mát)](/2016/12/28/linearregression/#ham-mat-mat) ([2](/2017/01/01/kmeans/#ham-mat-mat-va-bai-toan-toi-uu))
 * [Newton's Method](/2017/01/16/gradientdescent2/#-newtons-method)

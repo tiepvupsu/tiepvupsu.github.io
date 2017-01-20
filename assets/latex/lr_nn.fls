@@ -166,10 +166,7 @@ INPUT /usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
 INPUT /usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT /usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 OUTPUT /home/tiepvu/Dropbox/tiepvupsu.github.io/assets/latex/lr_nn.pdf
 INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
 INPUT /home/tiepvu/Dropbox/tiepvupsu.github.io/assets/latex/lr_nn.aux
-INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb

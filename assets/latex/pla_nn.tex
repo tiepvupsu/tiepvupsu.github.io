@@ -15,16 +15,34 @@
       % \draw plot[domain=-6:0] (\x,-.5);
       % \draw (0, -.5) -- (0, .5);
         \def\a{5}
-      \draw (-\a, -.5) -- (0, -.5) -- (0, .5) -- (\a, .5);
+      \draw [blue] (-\a, -.5) -- (0, -.5) -- (0, .5) -- (\a, .5);
+      \draw [thin] (-1.1*\a, 0) -- (1.2*\a, 0);
+      \draw [thin] (0, -.7) -- (0, .8);
     \end{scope}
     }
   }
 }
+
+\tikzset{distt/.style={path picture= {
+    \begin{scope}[x=1pt,y=10pt]
+      % \draw plot[domain=-6:6] (\x,{1/(1 + exp(-\x))-0.5});
+      % \draw plot[domain=0:6] (\x,.5);
+      % \draw plot[domain=-6:0] (\x,-.5);
+      % \draw (0, -.5) -- (0, .5);
+        \def\a{5}
+      \draw [blue] (-\a, -.5) -- (0, -.5) -- (0, .5) -- (\a, .5);
+    \end{scope}
+    }
+  }
+}
+
+
 \tikzstyle{every pin edge}=[shorten <=1pt]
 \tikzstyle{neuron}=[circle,fill=black!25,minimum size=17pt,inner sep=0pt]
 \tikzstyle{input neuron}=[neuron, thick, draw = black, fill=green!40]
 \tikzstyle{output neuron}=[neuron,thick, draw = black, fill=red!40]
 \tikzstyle{sign neuron}=[output neuron, dist]
+\tikzstyle{signn neuron}=[output neuron, distt]
 \tikzstyle{hidden neuron}=[neuron, thick, draw = black, fill=green!40]
 \tikzstyle{annot} = [text width=4em, text centered]
 
@@ -76,7 +94,7 @@
         % Draw the output layer nodes
         \foreach \name / \y in {3}
             \path[yshift=0.5cm]
-                node[sign neuron ] (O-\name) at (\layersep,-\y cm) {};
+                node[signn neuron ] (O-\name) at (\layersep,-\y cm) {};
         %         node[sign neuron, label = below:$y$] (O2-\name) at (1.5*\layersep,-\y cm) {};
 
         % Draw the output layer node
