@@ -9,7 +9,7 @@ tags: Neural-nets Supervised-learning Linear-models GD
 category: Neural-nets
 sc_project: 11226400
 sc_security: 63a7e1d8
-img: /assets/pla/pla2.png
+img: /assets/pla/pla4.png
 summary: Perceptron - tế bào của Neural Networks và Deep Learning.  
 ---
 

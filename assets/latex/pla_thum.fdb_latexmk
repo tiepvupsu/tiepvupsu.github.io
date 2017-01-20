@@ -1,8 +1,8 @@
 # Fdb version 3
-["pdflatex"] 1484853365 "pla_thum.tex" "/home/tiepvu/Dropbox/tiepvupsu.github.io/assets/latex/pla_thum.pdf" "pla_thum" 1484853372
-  "/dev/null" 1484786321 0 d41d8cd98f00b204e9800998ecf8427e ""
+["pdflatex"] 1484894237 "pla_thum.tex" "/home/tiepvu/Dropbox/tiepvupsu.github.io/assets/latex/pla_thum.pdf" "pla_thum" 1484894240
+  "/dev/null" 1484883986 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/etc/texmf/web2c/texmf.cnf" 1476924511 1101 af7716885e081ab43982cab7b4672c1a ""
-  "/home/tiepvu/Dropbox/tiepvupsu.github.io/assets/latex/pla_thum.aux" 1484853366 8 a94a2480d3289e625eea47cd1b285758 ""
+  "/home/tiepvu/Dropbox/tiepvupsu.github.io/assets/latex/pla_thum.aux" 1484894239 8 a94a2480d3289e625eea47cd1b285758 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmss10.tfm" 1136768653 1316 b636689f1933f24d1294acdf6041daaa ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb" 1248133631 24457 5cbb7bdf209d5d1ce9892a9b80a307cc ""
@@ -105,11 +105,11 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1458942643 31351 b32c45dce4a01cb7b53ed90c546614ca ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1476924582 1863403 f3ff9a4253bcb5fb9a9baaf0c572cb01 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1476924597 3856431 f9c94138039199b86e883dc1c4eb6c05 ""
-  "pla_thum.aux" 1484853366 8 a94a2480d3289e625eea47cd1b285758 ""
-  "pla_thum.tex" 1484853365 2609 051084fff310204992ffe1c3f1ffd9a3 ""
+  "pla_thum.aux" 1484894239 8 a94a2480d3289e625eea47cd1b285758 ""
+  "pla_thum.tex" 1484894237 2616 07f0eabe2e1add0ff6b7cb445efb3994 ""
   (generated)
-  "pla_thum.log"
-  "pla_thum.pdf"
   "pla_thum.aux"
+  "pla_thum.log"
   "/home/tiepvu/Dropbox/tiepvupsu.github.io/assets/latex/pla_thum.pdf"
   "/home/tiepvu/Dropbox/tiepvupsu.github.io/assets/latex/pla_thum.log"
+  "pla_thum.pdf"
