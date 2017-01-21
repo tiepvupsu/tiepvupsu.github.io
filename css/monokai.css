@@ -1,5 +1,6 @@
 .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
+.highlight {font-size: 12px;}
 .highlight .c, .highlight .cd {
   color: #75715e;
   font-style: italic;
