@@ -1,36 +1,24 @@
 ---
 ---
-
 <!DOCTYPE html>
 <html>
-  {% include head.html %}
-
-<!-- {{ content }} -->
+{% include head.html %}
 
 <body>
-{% include facebookpage.html %}
-
+	{% include facebookpage.html %}
     <br>
     <div class="container">
-      <div class="row">
-
-        <div class="col-md-3 hidden-xs hidden-sm">
-          {% include sidebar.html %}
-        </div>
-        <div class="col-md-9 col-xs-12">
-
-        {% include topbar.html %}
-          
-              
-           
-          
-            {{ content }}
-        
-         
-        </div>
-      </div>
+      	<div class="row">
+	        <div class="col-md-3 hidden-xs hidden-sm">
+	          	{% include sidebar.html %}
+	        </div>
+	        <div class="col-md-9 col-xs-12">
+	        	{% include topbar.html %}
+	            {{ content }}
+	        </div>
+      	</div>
     </div>
-  </body>
+</body>
 
 
 </html>
