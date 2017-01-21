@@ -22,6 +22,8 @@ style:
 <!-- </div> -->
 
 <h1 itemprop="name" class="post-title">{{ page.title }}</h1>
+
+{% if page.tags %}
 <ul class = "tags">
    {% for tag in page.tags %}
       <a href="/tags#{{ tag }}" class="tag">{{ tag }}</a>
