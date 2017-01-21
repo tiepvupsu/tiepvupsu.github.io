@@ -1,6 +1,6 @@
 .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
-.highlight {font-size: 13px;
+.highlight {font-size: 90%;
   color: #f8f8f2;
   background-color: #233445;}
 .highlight .c, .highlight .cd {
@@ -207,4 +207,5 @@
 .highlight .nt {
   color: #f92672;
 }
+
 
