@@ -1,21 +1,38 @@
 //
 // Tables
 // --------------------------------------------------
-
+/*
 
 table {
   background-color: $table-bg;
-}
+}*/
 caption {
   padding-top: $table-cell-padding;
   padding-bottom: $table-cell-padding;
   color: $text-muted;
   text-align: left;
 }
-th {
+/*th {
   text-align: left;
 }
+*/
+table{
+    border-collapse: collapse;
+    border-spacing: 20px;
+    /*border-top:1px solid #111;*/
+    width: 100%;
+    padding-left: 10px;
+}
 
+th{
+    /*border-bottom:1px solid #111;*/
+     padding-left: 10px;
+}
+
+td{
+   padding-left: 10px;
+    /*border-bottom:1px solid #111;*/
+}
 
 // Baseline styles
 

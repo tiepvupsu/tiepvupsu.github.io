@@ -135,7 +135,7 @@ Thuật toán KNN rất dễ hiểu nên sẽ phần "Phân tích toán học" n
 [Iris flower dataset](https://en.wikipedia.org/wiki/Iris_flower_data_set) là một bộ dữ liệu nhỏ (nhỏ hơn rất nhiều so với [MNIST](/2017/01/04/kmeans2/#bo-co-so-du-lieu-mnist). Bộ dữ liệu này bao gồm thông tin của ba loại hoa Iris (một loài hoa lan) khác nhau: Iris setosa, Iris virginica và Iris versicolor. Mỗi loại có 50 bông hoa được đo với dữ liệu là 4 thông tin: chiều dài, chiều rộng đài hoa (sepal), và chiều dài, chiều rộng cánh hoa (petal). Dưới đây là ví dụ về hình ảnh của ba loại hoa. (Chú ý, đây không phải là bộ cơ sở dữ liệu ảnh như MNIST, mỗi điểm dữ liệu trong tập này chỉ là một vector 4 chiều). 
 
 <div class="imgcap">
-<img src ="/assets/knn/iris.png" align = "center">
+<img src ="/assets/knn/iris.png" align = "center" width="800">
 <div class="thecap"> Ví dụ về Iris flower dataset (Nguồn: <a href = "https://en.wikipedia.org/wiki/Iris_flower_data_set">Wikipedia</a>) <br></div>
 </div>
 

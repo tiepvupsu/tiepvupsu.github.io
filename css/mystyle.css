@@ -163,10 +163,12 @@ input.gsc-input,
 
 .gsc-control-cse .gsc-table-result {
   font-family : inherit;
+  border: 0px;
 }
 
 .gsc-control-cse .gsc-input-box {
   height : inherit;
+  border: 0px;
 }
 
 input.gsc-input,
@@ -174,6 +176,7 @@ input.gsc-input,
 .gsc-input-box-hover,
 .gsc-input-box-focus,
 .gsc-search-button, input.gsc-search-button-v2 {
+  border: 0px;
   box-sizing  : content-box;
   line-height : normal;
   margin-top  : 0px;
