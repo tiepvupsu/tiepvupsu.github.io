@@ -217,7 +217,7 @@ y = np.concatenate((np.ones((1, N)), -1*np.ones((1, N))), axis = 1)
 X = np.concatenate((np.ones((1, 2*N)), X), axis = 0)
 ```
 
-Sau khi thực hiện đoạn code này, biến `X` sẽ chứa dữ liệu input (mở rông), biến `y` sẽ chứa nhãn của mỗi điểm dữ liệu trong `X`.
+Sau khi thực hiện đoạn code này, biến `X` sẽ chứa dữ liệu input (mở rộng), biến `y` sẽ chứa nhãn của mỗi điểm dữ liệu trong `X`.
 <a name="cac-ham-so-cho-pla"></a>
 
 ### Các hàm số cho PLA

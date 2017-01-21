@@ -274,6 +274,7 @@ a:hover   { color: #000; text-decoration: underline; }
 .imgcap img {
   /*border: 1px solid #999;*/
   max-width: 100%;
+  align-content: center;
 }
 .imgcap {
   color: #555;
