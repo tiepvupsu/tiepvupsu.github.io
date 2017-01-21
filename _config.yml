@@ -20,6 +20,5 @@ kramdown:
 # Disqus post comments
 disqus_shortname: tiepvu
 
-
 gems:
   - jekyll-sitemap
