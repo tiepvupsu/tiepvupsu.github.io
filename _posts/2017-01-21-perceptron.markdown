@@ -86,13 +86,13 @@ Giả sử thêm các nhãn tương ứng với từng điểm dữ liệu đư�
 
 Tại một thời điểm, giả sử ta tìm được boundary là đường phẳng có phương trình:
 \\[
-f_{\mathbf{w}}(\mathbf{x}) = w_1x_1 + w_2x_2 + \dots + w_Nx_N + w_0 = 
-\\]
-\\[
-=\mathbf{w}^T\mathbf{\bar{x}} = 0
+\begin{eqnarray}
+f_{\mathbf{w}}(\mathbf{x}) &=& w_1x_1 + \dots + w_Nx_N + w_0 \\\ 
+&=&\mathbf{w}^T\mathbf{\bar{x}} = 0
+\end{eqnarray}
 \\]
 
-với \\(\mathbf{\bar{x}}\\) là điểm dữ liệu mở rộng bằng cách thêm phần tử 1 lên trước vector \\(\mathbf{x}\\) tương tự như trong [Linear Regression](/2016/12/28/linearregression/). Và từ đây, khi nói \\(\mathbf{x}\\), tôi cũng ngầm hiểu là điểm dữ liệu mở rộng.
+với \\(\mathbf{\bar{x}}\\) là điểm dữ liệu mở rộng bằng cách thêm phần tử \\(x\_0 = 1\\) lên trước vector \\(\mathbf{x}\\) tương tự như trong [Linear Regression](/2016/12/28/linearregression/). Và từ đây, khi nói \\(\mathbf{x}\\), tôi cũng ngầm hiểu là điểm dữ liệu mở rộng.
 
 Để cho đơn giản, chúng ta hãy cùng làm việc với trường hợp mỗi điểm dữ liệu có số chiều \\(d = 2\\). Giả sử đường thẳng \\(w_1 x_1 + w_2 x_2 + w_0 = 0\\) chính là nghiệm cần tìm như Hình 2 dưới đây:
 
