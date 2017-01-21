@@ -11,11 +11,11 @@ debug: false
 markdown: kramdown
 permalink: pretty
 future: true
-highlighter: pygments
+highlighter: rouge
 kramdown:
   input: GFM
   auto_ids: true
-  syntax_highlighter: pyments
+  syntax_highlighter: rouge
 
 # Disqus post comments
 disqus_shortname: tiepvu
