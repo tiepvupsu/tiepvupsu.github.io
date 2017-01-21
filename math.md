@@ -107,7 +107,7 @@ Có một vài giá trị của \\(p\\) thường được dùng:
 \\]
 là tổng các trị tuyệt đối của từng phần tử của \\(\mathbf{x}\\). Norm 1 thường được dùng như xấp xỉ của norm 0 trong các bài toán có ràng buộc "sparse". Dưới đây là một ví dụ so sánh norm 1 và norm 2 trong không gian hai chiều:
 <div class="imgcap">
-<img src ="/assets/latex/norm12.png" width = "500" align = "center">
+<img src ="/assets/norm12.png" width = "500" align = "center">
 <div class="thecap"> Norm 1 và norm 2 trong không gian hai chiều.<br></div>
 </div> 
 Norm 2 (màu xanh) chính là đường thằng "chim bay" nối giữa hai vector \\(\mathbf{x} \\) và \\(\mathbf{y}\\). Khoảng cách norm 1 giữa hai điểm này (màu đỏ) có thể diễn giải như là đường đi từ \\(\mathbf{x} \\) tới \\(\mathbf{y}\\) trong một thành phố mà đường phố tạo thành hình bàn cờ. Chúng ta chỉ có cách đi dọc theo cạnh của bàn cờ mà không được đi thẳng.

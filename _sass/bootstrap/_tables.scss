@@ -5,6 +5,9 @@
 
 table {
   background-color: $table-bg;
+  border-collapse: collapse;
+  border-spacing: 20px;
+  width: 100%;
 }
 caption {
   padding-top: $table-cell-padding;
@@ -49,7 +52,7 @@ th {
     > tr:first-child {
       > th,
       > td {
-        border-top: 0;
+        border-top: 1px;
       }
     }
   }
