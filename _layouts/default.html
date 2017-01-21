@@ -40,11 +40,8 @@
     {% endif %}
  -->
     {% if layout.metadata %}
-    <meta name="twitter:card" content="summary"/>
-    <meta name="twitter:site" content="@AndreasVeithen"/>
-    <meta name="twitter:creator" content="@AndreasVeithen"/>
     <meta property="og:title" content="{{ page.title }}" />
-    <meta property="og:site_name" content="Andreas Veithen's blog" />
+    <meta property="og:site_name" content="Tiep Vu's blog" />
     <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
     <meta property="og:description" content="{{ page.description | replace: '"', '&quot;' }}" />
     {% if page.image %}
@@ -55,7 +52,7 @@
     {% if page.updated %}
     <meta property="article:modified_time" content="{{ page.updated | date: '%Y-%m-%d' }}" />
     {% endif %}
-    <meta property="article:author" content="Andreas Veithen" />
+    <meta property="article:author" content="Tiep Vu" />
     <meta property="article:section" content="{{ page.category }}" />
     {% for tag in page.tags %}
     <meta property="article:tag" content="{{ tag }}" />
