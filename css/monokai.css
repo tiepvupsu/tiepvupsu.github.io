@@ -1,24 +1,26 @@
 .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
-.highlight {font-size: 12px;}
+.highlight {font-size: 13px;
+  color: #f8f8f2;
+  background-color: #233445;}
 .highlight .c, .highlight .cd {
-  color: #75715e;
+  color: #3776CE;
   font-style: italic;
 }
 .highlight .cm {
-  color: #75715e;
+  color: #3776CE;
   font-style: italic;
 }
 .highlight .c1 {
-  color: #75715e;
+  color: #3776CE;
   font-style: italic;
 }
 .highlight .cp {
-  color: #75715e;
+  color: #3776CE;
   font-weight: bold;
 }
 .highlight .cs {
-  color: #75715e;
+  color: #3776CE;
   font-weight: bold;
   font-style: italic;
 }
@@ -205,7 +207,4 @@
 .highlight .nt {
   color: #f92672;
 }
-.highlight {
-  color: #f8f8f2;
-  background-color: #49483e;
-}
+
