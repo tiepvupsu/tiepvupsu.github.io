@@ -8,12 +8,22 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
     <title>Machine Learning cơ bản</title>
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> --><!-- 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 
+{% if layout.style.embedded %}
+    <style type="text/css">
+    {% comment %} See http://www.kevinsweet.com/inline-scss-jekyll-github-pages/ for explanation {% endcomment %}
+    {% capture include_to_scssify %}{% include {{ layout.style.name}}.scss %}{% endcapture %}
+    {{ include_to_scssify | scssify }}
+    </style>
+    {% else %}
+    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style/{{ layout.style.name }}.css" />
+    {% endif %}
 
+    
 
     <title>{{ page.title }}</title>
     {% include scripts.html %}

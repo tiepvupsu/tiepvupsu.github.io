@@ -10,7 +10,7 @@ category: Neural-nets
 sc_project: 11226400
 sc_security: 63a7e1d8
 img: /assets/pla/pla4.png
-summary: Perceptron - tế bào của Neural Networks và Deep Learning.  
+summary: Perceptron - khởi đầu của Neural Networks và Deep Learning.  
 ---
 
 Cứ làm đi, sai đâu sửa đấy, cuối cùng sẽ thành công!
