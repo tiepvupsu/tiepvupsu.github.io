@@ -24,77 +24,7 @@ style:
       <div class="row">
 
         <div class="col-md-3 hidden-xs hidden-sm">
-          <a   href="{{ site.baseurl }}/">
-            <img width="80%" src="{{ site.baseurl }}/images/logo.svg" />
-          </a>
-          <div>
-          <script>
-            (function() {
-              var cx = '012053542614118746585:ktgei4l2oek';
-              var gcse = document.createElement('script');
-              gcse.type = 'text/javascript';
-              gcse.async = true;
-              gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-              var s = document.getElementsByTagName('script')[0];
-              s.parentNode.insertBefore(gcse, s);
-            })();
-          </script>
-          <gcse:search></gcse:search>
-          </div>
-          <aside class = "social">
-          <div class = "header">Share</div>
-          {% include share-page.html %}
-          </aside>
-          <nav>
-          <div class = "header" with = "100%">Follow
-          <!-- <a href = "https://www.facebook.com/machinelearningbasicvn/" target="_blank" title="Follow us"><img src = "/assets/images/facebook.png" width="30"></a> -->
-          <!-- facebook page -->
-
-         <div class="fb-page" data-href="https://www.facebook.com/machinelearningbasicvn/" data-width="220" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"><blockquote cite="https://www.facebook.com/machinelearningbasicvn/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/machinelearningbasicvn/">Machine Learning cơ bản</a></blockquote></div>
-          <!--end facebook page -->
-
-          </div>
-          </nav>
-          <nav>
-            <div class="header">Latest</div>
-            <ul>
-              {% for post in site.posts limit:5 %}
-                <li><a style="text-align: left"  href="{{ post.url }}">{{ post.title }}</a></li>
-              {% endfor %}
-            </ul>
-          </nav>
-          {% if page.category %}
-          <nav>
-          
-            <div class="header">Latest by category</div>
-            <ul>
-              {% for category in site.categories %}
-              <!-- {{ category[0] }} -->
-                {% if category[0] == page.category %}
-                  {% for post in category[1] limit:5 %}
-                    <li><a style="text-align: left" href="{{ post.url }}">{{ post.title }}</a></li>
-                  {% endfor %}
-                {% endif %}
-              {% endfor %}
-            </ul>
-          </nav>
-          {% endif %}
-          {% if page.previous.url %} 
-            <nav>
-              <div class="header">Previous by date</div>
-              <ul>
-                <li><a style="text-align: left" href="{{ page.previous.url }}">{{ page.previous.title }}</a></li>
-              </ul>
-            </nav>
-          {% endif %} 
-          {% if page.next.url %} 
-            <nav>
-              <div class="header">Next by date</div>
-              <ul>
-                <li><a style="text-align: left" href="{{ page.next.url }}">{{ page.next.title }}</a></li>
-              </ul>
-            </nav>
-          {% endif %} 
+          {% include sidebar.html %}
         </div>
         <div class="col-md-9 col-xs-12">
 
