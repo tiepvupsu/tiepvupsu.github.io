@@ -6,33 +6,13 @@ style:
  embedded: false
 ---
 
-{% capture url %}{{ site.url }}{{ page.url}}{% endcapture %}
-
-  <body>
-{% include facebookpage.html %}
-
-    <br>
-    <div class="container">
-      <div class="row">
-
-        <div class="col-md-3 hidden-xs hidden-sm">
-          {% include sidebar.html %}
-        </div>
-        <div class="col-md-9 col-xs-12">
-
-        {% include topbar.html %}
-          {% if site.banner %}
-          <div class="banner hidden-xs hidden-sm">
-            <a href="{{ site.banner.url }}"><img src="{{ site.baseurl }}/banner/{{ site.banner.image }}" style="display: block; margin-left: auto; margin-right: auto"/></a>
-          </div>
-          {% endif %}
-          <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+<!-- {% capture url %}{{ site.url }}{{ page.url}}{% endcapture %} -->
+ <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
             <meta itemprop="keywords" content="{{ page.tags | join: ',' }}" />
-            <meta itemprop="description" content="{{ page.description | replace: '"', '&quot;' }}" />
-            {% if page.image %}
-            <meta itemprop="image" content="{{ site.url }}{{ page.image }}" />
-            {% endif %}
-            <div class = "row">
+            <meta itemprop="description" content="{{ page.description | replace: '"', '&quot;' }}" />  
+
+
+<div class = "row">
               <div class = "col-xs-12 hidden-md hidden-lg">
                             <!-- previous and next posts -->
               <div class="PageNavigation">
@@ -47,15 +27,6 @@ style:
 
             </div>
             <h1 itemprop="name" class="post-title">{{ page.title }}</h1>
-            <!-- <h1 itemprop="name" style = "font-size: 27px; text-align: left; font-family: "Arial Black", Gadget, sans-serif">{{ page.title }}</h1> -->
-            {% if page.subtitle %}
-            <p class="subtitle">{{ page.subtitle }}</p>
-            {% endif %}
-          <!--   <ul class="tags">
-            {% for tag in page.tags %}
-              <li class="tag"><a href="/#{{ page.category }};{{ tag }}">{{ tag }}</a></li>
-            {% endfor %}
-            </ul> -->
             
             {% if page.tags %}    
               <ul class = "tags">
@@ -64,33 +35,22 @@ style:
                 {% endfor %}
               </ul>
             {% endif %} 
-            <div class="published">
+
+ <div class="published">
               <time itemprop="datePublished" datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: "%B %e, %Y" }}</time>
               {% if page.updated %}
               (updated <time itemprop="dateModified" datetime="{{ page.updated | date: '%Y-%m-%d' }}">{{ page.updated | date: "%B %e, %Y" }}</time>)
               {% endif %}
             </div>
-          
-            <div itemprop="articleBody">
+
+<div itemprop="articleBody">
               {{ content }}
             </div>
             <!-- <span align = "right"> -->
- {% include stat_counter.html %}
- <!-- </span> -->
-        <hr>  
-   <!--          {% if page.disqus %}
-            <div id="disqus_thread"></div>
-            {% else %}
-            <script src="https://apis.google.com/js/plusone.js"></script>
-            <div class="hidden-xs">
-              <hr/>
-              <div style="margin-right: auto; margin-left: auto; width: 720px">
-                <div class="g-comments" data-href="http://veithen.github.io{{page.url}}" data-width="720" data-first_party_property="BLOGGER" data-view_type="FILTERED_POSTMOD"></div>
-              </div>
-            </div>
-            {% endif %} -->
+       {% include stat_counter.html %}
 
-              <!-- previous and next posts -->
+
+       <hr>  
 <div class="PageNavigation">
   {% if page.previous.url %}
     <a class="prev" href="{{page.previous.url}}">&laquo; {{page.previous.title}}</a>
@@ -105,8 +65,6 @@ style:
 <!-- {% if site.disqus_shortname %} -->
   {% include disqus_comments.html %}
 <!-- {% endif %} -->
-          </article>
-        </div>
-      </div>
-    </div>
-  </body>
+
+
+ </article>
