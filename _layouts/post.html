@@ -6,65 +6,53 @@ style:
  embedded: false
 ---
 
-<!-- {% capture url %}{{ site.url }}{{ page.url}}{% endcapture %} -->
-<!--  <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
-            <meta itemprop="keywords" content="{{ page.tags | join: ',' }}" />
-            <meta itemprop="description" content="{{ page.description | replace: '"', '&quot;' }}" />   -->
 
+<!-- <div class = "row"> -->
+   <!-- <div class = "col-xs-12 hidden-md hidden-lg"> -->
+      <!-- previous and next posts -->
+      <div class="PageNavigation">
+         {% if page.previous.url %}
+            <a class="prev" href="{{page.previous.url}}">&laquo; {{page.previous.title}}</a>
+         {% endif %}
+         {% if page.next.url %}
+            <a class="next" style = "float: right" href="{{page.next.url}}">{{page.next.title}} &raquo;</a>
+         {% endif %}
+      </div>
+  <!-- </div> -->
+<!-- </div> -->
 
-<div class = "row">
-              <div class = "col-xs-12 hidden-md hidden-lg">
-                            <!-- previous and next posts -->
-              <div class="PageNavigation">
-                {% if page.previous.url %}
-                  <a class="prev" href="{{page.previous.url}}">&laquo; {{page.previous.title}}</a>
-                {% endif %}
-                {% if page.next.url %}
-                  <a class="next" style = "float: right" href="{{page.next.url}}">{{page.next.title}} &raquo;</a>
-                {% endif %}
-              </div>
-              </div>
+<h1 itemprop="name" class="post-title">{{ page.title }}</h1>
+<ul class = "tags">
+   {% for tag in page.tags %}
+      <a href="/tags#{{ tag }}" class="tag">{{ tag }}</a>
+   {% endfor %}
+</ul>
+{% endif %}
 
-            </div>
-            <h1 itemprop="name" class="post-title">{{ page.title }}</h1>
-            
-            {% if page.tags %}    
-              <ul class = "tags">
-                {% for tag in page.tags %}
-                  <a href="/tags#{{ tag }}" class="tag">{{ tag }}</a>
-                {% endfor %}
-              </ul>
-            {% endif %} 
-
- <div class="published">
-              <time itemprop="datePublished" datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: "%B %e, %Y" }}</time>
-              {% if page.updated %}
-              (updated <time itemprop="dateModified" datetime="{{ page.updated | date: '%Y-%m-%d' }}">{{ page.updated | date: "%B %e, %Y" }}</time>)
-              {% endif %}
-            </div>
-
-<div itemprop="articleBody">
-              {{ content }}
-            </div>
-            <!-- <span align = "right"> -->
-       {% include stat_counter.html %}
-
-
-       <hr>  
-<div class="PageNavigation">
-  {% if page.previous.url %}
-    <a class="prev" href="{{page.previous.url}}">&laquo; {{page.previous.title}}</a>
-  {% endif %}
-  {% if page.next.url %}
-    <a class="next" style = "float: right" href="{{page.next.url}}">{{page.next.title}} &raquo;</a>
-  {% endif %}
+<div class="published">
+   <time itemprop="datePublished" datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: "%B %e, %Y" }}</time>
+   {% if page.updated %}
+      (updated <time itemprop="dateModified" datetime="{{ page.updated | date: '%Y-%m-%d' }}">{{ page.updated | date: "%B %e, %Y" }}</time>)
+   {% endif %}
 </div>
-<script src="/public/js/algolia.js"></script>
 
-  <!-- disqus comments -->
-<!-- {% if site.disqus_shortname %} -->
-  {% include disqus_comments.html %}
-<!-- {% endif %} -->
+<!-- Main content -->
+<div itemprop="articleBody">
+   {{ content }}
+</div>
 
+{% include stat_counter.html %}
+<hr>
 
- <!-- </article> -->
+<!-- previous and next posts -->
+<div class="PageNavigation">
+   {% if page.previous.url %}
+      <a class="prev" href="{{page.previous.url}}">&laquo; {{page.previous.title}}</a>
+   {% endif %}
+   {% if page.next.url %}
+      <a class="next" style = "float: right" href="{{page.next.url}}">{{page.next.title}} &raquo;</a>
+   {% endif %}
+</div>
+
+<!-- disqus comments -->
+{% include disqus_comments.html %}
