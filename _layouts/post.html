@@ -20,7 +20,7 @@ style:
       </div>
   <!-- </div> -->
 <!-- </div> -->
-
+<hr>
 <h1 itemprop="name" class="post-title">{{ page.title }}</h1>
 
 {% if page.tags %}
@@ -30,15 +30,14 @@ style:
    {% endfor %}
 </ul>
 {% endif %}
+{% if page.date %}
 
-<div class="published">
-   <time itemprop="datePublished" datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: "%B %e, %Y" }}</time>
-   {% if page.updated %}
-      (updated <time itemprop="dateModified" datetime="{{ page.updated | date: '%Y-%m-%d' }}">{{ page.updated | date: "%B %e, %Y" }}</time>)
-   {% endif %}
-</div>
-
+<span class = "post-date" style="color: gray; font-style: italic;">{{ page.date | date: "%b %-d, %Y" }}
+            </span>
 <!-- Main content -->
+<br>
+<br>
+{% endif %}
 <div itemprop="articleBody">
    {{ content }}
 </div>
