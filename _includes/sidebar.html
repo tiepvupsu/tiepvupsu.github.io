@@ -35,7 +35,7 @@
             <div class="header">Latest</div>
             <ul>
               {% for post in site.posts limit:5 %}
-                <li><a style="text-align: left"  href="{{ post.url }}">{{ post.title }}</a></li>
+                <li><a style="text-align: left; font-family: 'Roboto Condensed', sans-serif;"  href="{{ post.url }}">{{ post.title }}</a></li>
               {% endfor %}
             </ul>
           </nav>
@@ -48,7 +48,7 @@
               <!-- {{ category[0] }} -->
                 {% if category[0] == page.category %}
                   {% for post in category[1] limit:5 %}
-                    <li><a style="text-align: left" href="{{ post.url }}">{{ post.title }}</a></li>
+                    <li><a style="text-align: left; font-family: 'Roboto Condensed', sans-serif;" href="{{ post.url }}">{{ post.title }}</a></li>
                   {% endfor %}
                 {% endif %}
               {% endfor %}
@@ -59,7 +59,7 @@
             <nav>
               <div class="header">Previous by date</div>
               <ul>
-                <li><a style="text-align: left" href="{{ page.previous.url }}">{{ page.previous.title }}</a></li>
+                <li><a style="text-align: left; font-family: 'Roboto Condensed', sans-serif;" href="{{ page.previous.url }}">{{ page.previous.title }}</a></li>
               </ul>
             </nav>
           {% endif %} 
@@ -67,7 +67,7 @@
             <nav>
               <div class="header">Next by date</div>
               <ul>
-                <li><a style="text-align: left" href="{{ page.next.url }}">{{ page.next.title }}</a></li>
+                <li><a style="text-align: left; font-family: 'Roboto Condensed', sans-serif;" href="{{ page.next.url }}">{{ page.next.title }}</a></li>
               </ul>
             </nav>
           {% endif %} 
