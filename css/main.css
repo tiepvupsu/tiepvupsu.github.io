@@ -601,3 +601,11 @@ td{
 .tag:hover::after {
    border-left-color: #308FDF; 
 }
+
+.nav {
+  background-color: #014B81;
+}
+
+#myNavbar{
+  background-color: #014B81;
+}
