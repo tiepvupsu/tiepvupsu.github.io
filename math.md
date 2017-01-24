@@ -157,3 +157,6 @@ Với một ma trận \\(\mathbf{A} \in \mathbb{R}^{m\times n}\\), chuẩn thư�
 | \\( \mathbf{a}^T \mathbf{Y}^T \mathbf{X} \mathbf{b}\\) | \\( \mathbf{Y}\mathbf{a}\mathbf{b}^T         \\) |
 | \\( \mathbf{a}^T \mathbf{X} \mathbf{Y}^T \mathbf{b}\\) | \\( \mathbf{a}\mathbf{b}^T\mathbf{Y}         \\) |
 | \\( \mathbf{a}^T \mathbf{X}^T \mathbf{Y} \mathbf{b}\\) | \\( \mathbf{Y}\mathbf{b}\mathbf{a}^T         \\) |
+
+
+
