@@ -264,7 +264,7 @@ print('w = ', w)
 # Preparing the fitting line 
 w_0 = w[0][0]
 w_1 = w[1][0]
-x0 = np.linspace(145, 185, 2, endpoint=True)
+x0 = np.linspace(145, 185, 2)
 y0 = w_0 + w_1*x0
 
 # Drawing the fitting line 
