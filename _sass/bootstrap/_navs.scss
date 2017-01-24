@@ -10,7 +10,7 @@
   margin-bottom: 0;
   padding-left: 0; // Override default ul/ol
   list-style: none;
-  background-color: red;
+  background-color: $myblue;
   @include clearfix;
 
   > li {
