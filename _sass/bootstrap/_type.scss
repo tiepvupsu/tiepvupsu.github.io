@@ -316,13 +316,13 @@ address {
 .tags li {
   float: left; 
   text-align: left;
-  color: #fff;
+  color: $myyellow;
 }
 
 .tag {
   text-align: left;
-  background: rgba(1, 75, 129, .8);
-  color : #fff;
+  background: rgba(176, 0, 0, .99);
+  color : $myyellow;
   border-radius: 0px 0px 0px 0px;
   /*color: ##eee;*/
   /*font-weight: bold*/

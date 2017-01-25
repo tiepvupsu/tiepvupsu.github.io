@@ -118,7 +118,8 @@
 .ui-state-default a,
 .ui-state-default a:link,
 .ui-state-default a:visited {
-    color: inherit;
+    /*color: inherit;*/
+    color: $myblue;
     cursor: pointer;
     outline: none;
 }
