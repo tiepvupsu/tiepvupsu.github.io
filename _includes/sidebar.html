@@ -34,28 +34,27 @@
           </nav>
           <nav>
             <div class="header">Latest</div>
-              {% for post in site.posts limit:5 %}
+              {% for post in site.posts limit:2 %}
                 <li><a style="text-align: left; font-family: 'Roboto Condensed', sans-serif; color: #B60000"  href="{{ post.url }}">{{ post.title }}</a></li>
               {% endfor %}
             </ul>
           </nav>
-          {% if page.category %}
+          <!-- {% if page.category %}
           <nav>
           
             <div class="header">Latest by category</div>
             <ul>
               {% for category in site.categories %}
-              <!-- {{ category[0] }} -->
                 {% if category[0] == page.category %}
-                  {% for post in category[1] limit:5 %}
+                  {% for post in category[1] limit:2 %}
                     <li><a style="text-align: left; font-family: 'Roboto Condensed', sans-serif; color: #B60000;" href="{{ post.url }}">{{ post.title }}</a></li>
                   {% endfor %}
                 {% endif %}
               {% endfor %}
             </ul>
           </nav>
-          {% endif %}
-          {% if page.previous.url %} 
+          {% endif %} -->
+         <!--  {% if page.previous.url %} 
             <nav>
               <div class="header">Previous by date</div>
               <ul>
@@ -70,4 +69,4 @@
                 <li><a style="text-align: left; font-family: 'Roboto Condensed', sans-serif; color: #B60000;" href="{{ page.next.url }}">{{ page.next.title }}</a></li>
               </ul>
             </nav>
-          {% endif %} 
+          {% endif %}  -->
