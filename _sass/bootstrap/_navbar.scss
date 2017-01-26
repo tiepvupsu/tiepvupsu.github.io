@@ -427,7 +427,8 @@
 
       &:hover,
       &:focus {
-        color: $navbar-default-link-hover-color;
+        /*color: $navbar-default-link-hover-color;*/
+        color: $myyellow;
         background-color: $navbar-default-link-hover-bg;
       }
     }
