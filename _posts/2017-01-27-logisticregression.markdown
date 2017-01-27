@@ -12,6 +12,7 @@ sc_security: f6ce29d2
 img: \assets\LogisticRegression\logistic_2d_2.png
 summary: Giới thiệu về một phương pháp Regression với hàm activation có những tính chất thú vị. 
 ---
+**Trong trang này:**
 <!-- MarkdownTOC -->
 
 - [1. Giới thiệu](#-gioi-thieu)
