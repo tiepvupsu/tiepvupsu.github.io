@@ -415,7 +415,7 @@ J(\mathbf{w}) = \sum_{i=1}^N (y_i - z_i)^2
 \\]
 thì khó khăn gì sẽ xảy ra? Các bạn hãy coi đây như một bài tập nhỏ. 
 
-* Source code cho các ví dụ trong bài này có thể tìm ở đây.
+* Source code cho các ví dụ trong bài này có thể [tìm thấy ở đây](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/LogisticRegression/LogisticRegression_post.ipynb).
 
 ## 6. Tài liệu tham khảo
 
