@@ -15,7 +15,7 @@ Khi chuẩn bị các bài viết, tôi sẽ giả định rằng bạn đọc c
 
 Một lần nữa, tôi xin chân thành cảm ơn.
 
-<b>Các bạn có thể theo dõi dõi Facebook Page tại:</b> <br>
+<b>Các bạn có thể theo dõi Facebook Page tại:</b> <br>
 <div class="share-page">
     <a href = "https://www.facebook.com/machinelearningbasicvn/" target="_blank" title="Follow us"><img src = "https://simplesharebuttons.com/images/somacro/facebook.png" width="50"></a>
 </div>
