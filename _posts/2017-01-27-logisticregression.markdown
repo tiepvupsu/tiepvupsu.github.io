@@ -10,7 +10,7 @@ category: Neural-nets
 sc_project: 11234220
 sc_security: f6ce29d2
 img: \assets\LogisticRegression\logistic_2d_2.png
-summary: filled later 
+summary: Giới thiệu về một phương pháp Regression với hàm activation có những tính chất thú vị. 
 ---
 
 ## 1. Giới thiệu
