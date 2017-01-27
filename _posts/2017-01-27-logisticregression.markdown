@@ -9,7 +9,7 @@ tags: Neural-nets Supervised-learning Regression Classification GD
 category: Neural-nets
 sc_project: 
 sc_security: 
-img: 
+img: \assets\LogisticRegression\logistic_2d_2.png
 summary: filled later 
 ---
 
