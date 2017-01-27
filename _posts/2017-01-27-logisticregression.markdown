@@ -169,7 +169,10 @@ với \\(\prod\\) là ký hiệu của tích. Bạn đọc có thể muốn đ�
 
 Trực tiếp tối ưu hàm số này theo \\(\mathbf{w}\\) nhìn qua không đơn giản! Hơn nữa, khi \\(N\\) lớn, tích của \\(N\\) số nhỏ hơn 1 có thể dẫn tới sai số trong tính toán (numerial error) vì tích là một số quá nhỏ. Một phương pháp thường được sử dụng đó là lấy logarit tự nhiên (cơ số \\(e\\)) của  _likelihood function_ biến phép nhân thành phép cộng và để tránh việc số quá nhỏ. Sau đó lấy ngược dấu để được một hàm và coi nó là hàm mất mát. Lúc này bài toán tìm giá trị lớn nhất (maximum likelihood) trở thành bài toán tìm giá trị nhỏ nhất của hàm mất mát:
 \\[
-J(\mathbf{w}) = -\log P(\mathbf{y}|\mathbf{X}; \mathbf{w}) = -\sum\_{i=1}^N(y\_i \log {z}\_i + (1-y\_i) \log (1 - {z}\_i))
+\begin{eqnarray}
+J(\mathbf{w}) = -\log P(\mathbf{y}|\mathbf{X}; \mathbf{w}) \\\
+= -\sum\_{i=1}^N(y\_i \log {z}\_i + (1-y\_i) \log (1 - {z}\_i))
+\end{eqnarray}
 \\]
 với chú ý rằng \\(z\_i\\) là một hàm số của \\(\mathbf{w}\\). Bạn đọc tạm nhớ biểu thức vế phải có tên gọi là _cross entropy_, thường được sử dụng để đo _khoảng cách_ giữa hai phân phối (distributions). Trong bài toán đang xét, một phân phối là dữ liệu được cho, với xác suất chỉ là 0 hoặc 1; phân phối còn lại được tính theo mô hình logistic regression. _Khoảng cách_ giữa hai phân phối nhỏ đồng nghĩa với việc (_có vẻ hiển nhiên là_) hai phân phối đó rất gần nhau. Tính chất cụ thể của hàm số này sẽ được đề cập trong một bài khác mà tầm quan trọng của khoảng cách giữa hai phân phối là lớn hơn.
 
@@ -245,7 +248,9 @@ Và công thức cập nhật (theo thuật toán [SGD](/2017/01/16/gradientdesc
 Khá đơn giản! Và, như thường lệ, chúng ta đã có vài ví dụ với Python.
 
 ## 3. Ví dụ với Python
+
 ### Ví dụ với dữ liệu 1 chiều
+
 Quay trở lại với ví dụ nêu ở phần Giới thiệu. Trước tiên ta cần khai báo vài thư viện và dữ liệu:
 
 
