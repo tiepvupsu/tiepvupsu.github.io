@@ -496,3 +496,5 @@ thì khó khăn gì sẽ xảy ra? Các bạn hãy coi đây như một bài t�
 [5] Duda, Richard O., Peter E. Hart, and David G. Stork. Pattern classification. John Wiley & Sons, 2012.
 
 [6] Andrer Ng. CS229 Lecture notes. [Part II: Classification and logistic regression](https://datajobs.com/data-science-repo/Generalized-Linear-Models-[Andrew-Ng].pdf)
+
+[7] Jerome H. Friedman, Robert Tibshirani, and Trevor Hastie. [The Elements of Statistical Learning](https://statweb.stanford.edu/~tibs/).
