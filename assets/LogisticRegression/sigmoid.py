@@ -27,7 +27,7 @@ cur_axes = plt.gca()
 cur_axes.axes.get_xaxis().set_ticks([])
 cur_axes.axes.get_yaxis().set_ticks([0, 1])
 
-plt.axis([-4, 8, -1, 2])
+plt.axis([-4, 6, -.5, 1.4])
 plt.axes().set_aspect('equal')
 plt.savefig('activation.png', bbox_inches='tight', dpi = 300)
 plt.show()
