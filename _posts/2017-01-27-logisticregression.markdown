@@ -12,8 +12,34 @@ sc_security: f6ce29d2
 img: \assets\LogisticRegression\logistic_2d_2.png
 summary: Giới thiệu về một phương pháp Regression với hàm activation có những tính chất thú vị. 
 ---
+<!-- MarkdownTOC -->
+
+- [1. Giới thiệu](#-gioi-thieu)
+    - [Nhắc lại hai mô hình tuyến tính](#nhac-lai-hai-mo-hinh-tuyen-tinh)
+    - [Một ví dụ nhỏ](#mot-vi-du-nho)
+    - [Mô hình Logistic Regression](#mo-hinh-logistic-regression)
+    - [Sigmoid function](#sigmoid-function)
+- [2. Hàm mất mát và phương pháp tối ưu](#-ham-mat-mat-va-phuong-phap-toi-uu)
+    - [Xây dựng hàm mất mát](#xay-dung-ham-mat-mat)
+    - [Tối ưu hàm mất mát](#toi-uu-ham-mat-mat)
+    - [Công thức cập nhật cho logistic sigmoid regression](#cong-thuc-cap-nhat-cho-logistic-sigmoid-regression)
+- [3. Ví dụ với Python](#-vi-du-voi-python)
+    - [Ví dụ với dữ liệu 1 chiều](#vi-du-voi-du-lieu--chieu)
+    - [Các hàm cần thiết cho logistic sigmoid regression](#cac-ham-can-thiet-cho-logistic-sigmoid-regression)
+    - [Ví dụ với dữ liệu 2 chiều](#vi-du-voi-du-lieu--chieu-1)
+- [4. Một vài tính chất của Linear Regression](#-mot-vai-tinh-chat-cua-linear-regression)
+    - [Logistic Regression thực ra được sử dụng nhiều trong các bài toán Classification.](#logistic-regression-thuc-ra-duoc-su-dung-nhieu-trong-cac-bai-toan-classification)
+    - [Boundary tạo bởi Logistic Regression có dạng tuyến tính](#boundary-tao-boi-logistic-regression-co-dang-tuyen-tinh)
+- [5. Thảo luận](#-thao-luan)
+- [6. Tài liệu tham khảo](#-tai-lieu-tham-khao)
+
+<!-- /MarkdownTOC -->
+
+<a name="-gioi-thieu"></a>
 
 ## 1. Giới thiệu
+
+<a name="nhac-lai-hai-mo-hinh-tuyen-tinh"></a>
 
 ### Nhắc lại hai mô hình tuyến tính
 Hai mô hình tuyến tính (linear models) [Linear Regression](/2016/12/28/linearregression/) và [Perceptron Learning Algorithm](/2017/01/21/perceptron/) (PLA) chúng ta đã biết đều có chung một dạng:
@@ -24,6 +50,8 @@ y = f(\mathbf{w}^T\mathbf{x})
 trong đó \\(f()\\) được gọi là activation function, và \\(\mathbf{x}\\) được hiểu là dữ liệu mở rộng với \\(x\_0 = 1\\) được thêm vào để thuận tiện cho việc tính toán. Với linear regression thì \\(f(s) = s\\), với PLA thì \\(f(s) = \text{sgn}(s)\\). Trong linear regression, tích vô hướng \\(\mathbf{w}^T\mathbf{x}\\) được trực tiếp sử dụng để dự đoán output \\(y\\), loại này phù hợp nếu chúng ta cần dự đoán một giá trị thực của đầu ra không bị chặn trên và dưới. Trong PLA, đầu ra chỉ nhận một trong hai giá trị \\(1\\) hoặc \\(-1 \\), phù hợp với các bài toán _binary classification_. 
 
 Trong bài này, tôi sẽ giới thiệu mô hình thứ ba với một activation khác, được sử dụng cho các bài toán _flexible_ hơn. Trong dạng này, đầu ra có thể được thể hiện dưới dạng xác suất (probability). Ví dụ: xác suất thi đỗ nếu biết thời gian ôn thi, xác suất ngày mai có mưa dựa trên những thông tin đo được trong ngày hôm nay,... Mô hình mới này của chúng ta có tên là _logistic regression_. Mô hình này giống với linear regression ở khía cạnh đầu ra là số thực, và giống với PLA ở việc đầu ra bị chặn (trong đoạn \\([0, 1]\\)). Mặc dù trong tên có chứa từ _regression_, logistic regression thường được sử dụng nhiều hơn cho các bài toán classification.
+
+<a name="mot-vi-du-nho"></a>
 
 ### Một ví dụ nhỏ 
 Tôi xin được sử dụng [một ví dụ trên Wikipedia](https://en.wikipedia.org/wiki/Logistic_regression):
@@ -55,6 +83,8 @@ Chúng ta biểu diễn các điểm này trên đồ thị để thấy rõ hơ
 </div> 
 
 Nhận thấy rằng cả linear regression và PLA đều không phù hợp với bài toán này, chúng ta cần một mô hình _flexible_ hơn.
+
+<a name="mo-hinh-logistic-regression"></a>
 
 ### Mô hình Logistic Regression
 Đầu ra dự đoán của:
@@ -94,6 +124,8 @@ Trong đó \\(\theta\\) được gọi là logistic function. Một số activat
     - _Mượt_ (smooth) nên có đạo hàm mọi nơi, có thể được lợi trong việc tối ưu.
     
 
+<a name="sigmoid-function"></a>
+
 ### Sigmoid function
 
 Trong số các hàm số có 3 tính chất nói trên thì hàm _sigmoid_:
@@ -124,7 +156,11 @@ Hàm số này nhận giá trị trong khoảng \\((-1, 1)\\) nhưng có thể d
 \text{tanh}(s) = 2\sigma(2s) - 1
 \\]
 
+<a name="-ham-mat-mat-va-phuong-phap-toi-uu"></a>
+
 ## 2. Hàm mất mát và phương pháp tối ưu
+
+<a name="xay-dung-ham-mat-mat"></a>
 
 ### Xây dựng hàm mất mát
 
@@ -178,6 +214,8 @@ với chú ý rằng \\(z\_i\\) là một hàm số của \\(\mathbf{w}\\). Bạ
 
 **Chú ý:** Trong machine learning, logarit thập phân ít được dùng, vì vậy \\(\log\\) thường được dùng để ký hiệu logarit tự nhiên.
 
+
+<a name="toi-uu-ham-mat-mat"></a>
 
 ### Tối ưu hàm mất mát
 
@@ -234,6 +272,8 @@ Một cách trực quan nhất, ta sẽ tìm hàm số \\(z = f(s)\\) sao cho:
 \\]
 Đến đây, tôi hy vọng các bạn đã hiểu hàm số _sigmoid_ được tạo ra như thế nào.
 
+<a name="cong-thuc-cap-nhat-cho-logistic-sigmoid-regression"></a>
+
 ### Công thức cập nhật cho logistic sigmoid regression
 Tới đây, bạn đọc có thể kiểm tra rằng:
 \\[
@@ -247,7 +287,11 @@ Và công thức cập nhật (theo thuật toán [SGD](/2017/01/16/gradientdesc
 \\]
 Khá đơn giản! Và, như thường lệ, chúng ta đã có vài ví dụ với Python.
 
+<a name="-vi-du-voi-python"></a>
+
 ## 3. Ví dụ với Python
+
+<a name="vi-du-voi-du-lieu--chieu"></a>
 
 ### Ví dụ với dữ liệu 1 chiều
 
@@ -268,6 +312,8 @@ y = np.array([0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1])
 # extened data 
 X = np.concatenate((np.ones((1, X.shape[1])), X), axis = 0)
 ```
+
+<a name="cac-ham-can-thiet-cho-logistic-sigmoid-regression"></a>
 
 ### Các hàm cần thiết cho logistic sigmoid regression
 
@@ -358,6 +404,8 @@ plt.show()
 
 Nếu như chỉ có hai output là 'fail' hoặc 'pass', điểm trên đồ thị của hàm sigmoid tương ứng với xác suất 0.5 được chọn làm _hard threshold_ (ngưỡng cứng). Việc này có thể chứng minh khá dễ dàng (tôi sẽ bàn ở phần dưới). 
 
+<a name="vi-du-voi-du-lieu--chieu-1"></a>
+
 ### Ví dụ với dữ liệu 2 chiều
 Chúng ta xét thêm một ví dụ nhỏ nữa trong không gian hai chiều. Giả sử chúng ta có hai class xanh-đỏ với dữ liệu được phân bố như hình dưới. 
 <div class="imgcap">
@@ -379,7 +427,11 @@ Kết quả tìm được khi áp dụng mô hình logistic regression được 
 Nếu phải lựa chọn một _ngưỡng cứng_ (chứ không chấp nhận xác suất) để phân chia hai class, chúng ta quan sát thấy đường thẳng nằm nằm trong khu vực xanh lục là một lựa chọn hợp lý. Tôi sẽ chứng minh ở phần dưới rằng, đường phân chia giữa hai class tìm được bởi logistic regression có dạng một đường phẳng, tức vẫn là linear.
 
 
+<a name="-mot-vai-tinh-chat-cua-linear-regression"></a>
+
 ## 4. Một vài tính chất của Linear Regression
+
+<a name="logistic-regression-thuc-ra-duoc-su-dung-nhieu-trong-cac-bai-toan-classification"></a>
 
 ### Logistic Regression thực ra được sử dụng nhiều trong các bài toán Classification.
 Mặc dù có tên là Regression, tức một mô hình cho fitting, Logistic Regression lại được sử dụng nhiều trong các bài toán Classification. Sau khi tìm được mô hình, việc xác định class \\(y\\) cho một điểm dữ liệu \\(\mathbf{x}\\) được xác định bằng việc so sánh hai biểu thức xác suất:
@@ -387,6 +439,8 @@ Mặc dù có tên là Regression, tức một mô hình cho fitting, Logistic R
 P(y = 1| \mathbf{x}; \mathbf{w}); ~~ P(y = 0| \mathbf{x}; \mathbf{w}) 
 \\]
 Nếu biểu thức thứ nhất lớn hơn thì ta kết luận điểm dữ liệu thuộc class 1, ngược lại thì nó thuộc class 0. Vì tổng hai biểu thức này luôn bằng 1 nên một cách gọn hơn, ta chỉ cần xác định xem \\(P(y = 1| \mathbf{x}; \mathbf{w})\\) lớn hơn 0.5 hay không. Nếu có, class 1. Nếu không, class 0. 
+
+<a name="boundary-tao-boi-logistic-regression-co-dang-tuyen-tinh"></a>
 
 ### Boundary tạo bởi Logistic Regression có dạng tuyến tính
 Thật vậy, theo lập luận ở phần trên thì chúng ta cần kiểm tra:
@@ -402,6 +456,8 @@ P(y = 1| \mathbf{x}; \mathbf{w}) &>& 0.5 \\\
 
 
 Nói cách khác, boundary giữa hai class là đường có phương trình \\(\mathbf{w}^T\mathbf{x}\\). Đây chính là phương trình của một siêu mặt phẳng. Vậy Logistic Regression tạo ra boundary có dạng tuyến tính.
+
+<a name="-thao-luan"></a>
 
 ## 5. Thảo luận 
 
@@ -421,6 +477,8 @@ J(\mathbf{w}) = \sum_{i=1}^N (y_i - z_i)^2
 thì khó khăn gì sẽ xảy ra? Các bạn hãy coi đây như một bài tập nhỏ. 
 
 * Source code cho các ví dụ trong bài này có thể [tìm thấy ở đây](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/LogisticRegression/LogisticRegression_post.ipynb).
+
+<a name="-tai-lieu-tham-khao"></a>
 
 ## 6. Tài liệu tham khảo
 
