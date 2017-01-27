@@ -273,6 +273,8 @@ Một cách trực quan nhất, ta sẽ tìm hàm số \\(z = f(s)\\) sao cho:
 \\]
 Đến đây, tôi hy vọng các bạn đã hiểu hàm số _sigmoid_ được tạo ra như thế nào.
 
+_Chú ý: Trong việc giải phương trình vi phân ở trên, tôi đã bỏ qua hằng số khi lấy nguyên hàm hai vế. Tuy vậy, việc này không ảnh hưởng nhiều tới kết quả._
+
 <a name="cong-thuc-cap-nhat-cho-logistic-sigmoid-regression"></a>
 
 ### Công thức cập nhật cho logistic sigmoid regression

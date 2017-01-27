@@ -31,3 +31,5 @@ plt.axis([-4, 6, -.5, 1.4])
 plt.axes().set_aspect('equal')
 plt.savefig('activation.png', bbox_inches='tight', dpi = 300)
 plt.show()
+
+plt.close("all")
