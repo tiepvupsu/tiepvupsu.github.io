@@ -5,7 +5,7 @@ title:  "Bài 9: Perceptron Learning Algorithm"
 date:   2017-01-21 15:22:00
 permalink: 2017/01/21/perceptron/
 mathjax: true
-tags: Neural-nets Supervised-learning Linear-models GD
+tags: Neural-nets Supervised-learning Classification Linear-models GD
 category: Neural-nets
 sc_project: 11226400
 sc_security: 63a7e1d8
@@ -237,12 +237,13 @@ def has_converged(X, y, w):
 def perceptron(X, y, w_init):
     w = [w_init]
     N = X.shape[1]
+    d = X.shape[0]
     mis_points = []
     while True:
         # mix data 
         mix_id = np.random.permutation(N)
         for i in range(N):
-            xi = X[:, mix_id[i]].reshape(3, 1)
+            xi = X[:, mix_id[i]].reshape(d, 1)
             yi = y[0, mix_id[i]]
             if h(w[-1], xi)[0] != yi: # misclassified point
                 mis_points.append(mix_id[i])
