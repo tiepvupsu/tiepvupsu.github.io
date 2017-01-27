@@ -7,8 +7,8 @@ permalink: 2017/01/27/logisticregression/
 mathjax: true
 tags: Neural-nets Supervised-learning Regression Classification GD
 category: Neural-nets
-sc_project: 
-sc_security: 
+sc_project: 11234220
+sc_security: f6ce29d2
 img: \assets\LogisticRegression\logistic_2d_2.png
 summary: filled later 
 ---
