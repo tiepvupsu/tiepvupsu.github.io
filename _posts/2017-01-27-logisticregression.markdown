@@ -288,7 +288,7 @@ Và công thức cập nhật (theo thuật toán [SGD](/2017/01/16/gradientdesc
 \\[
 \mathbf{w} = \mathbf{w} + \eta(y\_i - z\_i)\mathbf{x}\_i
 \\]
-Khá đơn giản! Và, như thường lệ, chúng ta đã có vài ví dụ với Python.
+Khá đơn giản! Và, như thường lệ, chúng ta sẽ có vài ví dụ với Python.
 
 <a name="-vi-du-voi-python"></a>
 
