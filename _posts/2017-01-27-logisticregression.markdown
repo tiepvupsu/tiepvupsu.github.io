@@ -204,7 +204,7 @@ P(\mathbf{y}|\mathbf{X}; \mathbf{w}) &=& \prod_{i=1}^N P(y\_i| \mathbf{x}\_i; \m
 \\]
 với \\(\prod\\) là ký hiệu của tích. Bạn đọc có thể muốn đọc thêm về [Độc lập thống kê](https://vi.wikipedia.org/wiki/Độc_lập_thống_kê).
 
-Trực tiếp tối ưu hàm số này theo \\(\mathbf{w}\\) nhìn qua không đơn giản! Hơn nữa, khi \\(N\\) lớn, tích của \\(N\\) số nhỏ hơn 1 có thể dẫn tới sai số trong tính toán (numerial error) vì tích là một số quá nhỏ. Một phương pháp thường được sử dụng đó là lấy logarit tự nhiên (cơ số \\(e\\)) của  _likelihood function_ biến phép nhân thành phép cộng và để tránh việc số quá nhỏ. Sau đó lấy ngược dấu để được một hàm và coi nó là hàm mất mát. Lúc này bài toán tìm giá trị lớn nhất (maximum likelihood) trở thành bài toán tìm giá trị nhỏ nhất của hàm mất mát:
+Trực tiếp tối ưu hàm số này theo \\(\mathbf{w}\\) nhìn qua không đơn giản! Hơn nữa, khi \\(N\\) lớn, tích của \\(N\\) số nhỏ hơn 1 có thể dẫn tới sai số trong tính toán (numerial error) vì tích là một số quá nhỏ. Một phương pháp thường được sử dụng đó là lấy logarit tự nhiên (cơ số \\(e\\)) của  _likelihood function_ biến phép nhân thành phép cộng và để tránh việc số quá nhỏ. Sau đó lấy ngược dấu để được một hàm và coi nó là hàm mất mát. Lúc này bài toán tìm giá trị lớn nhất (maximum likelihood) trở thành bài toán tìm giá trị nhỏ nhất của hàm mất mát (hàm này còn được gọi là negative log likelihood):
 \\[
 \begin{eqnarray}
 J(\mathbf{w}) = -\log P(\mathbf{y}|\mathbf{X}; \mathbf{w}) \\\
