@@ -173,7 +173,7 @@ Có một cách phân nhóm thứ hai dựa trên chức năng của các thuậ
 ### Regression Algorithms
 
 1. [Linear Regression](/2016/12/28/linearregression/)
-2. Logistic Regression 
+2. [Logistic Regression](/2017/01/27/logisticregression/#sigmoid-function)
 3. Stepwise Regression
 
 <!-- ========================== New Heading ==================== -->
@@ -185,14 +185,13 @@ Có một cách phân nhóm thứ hai dựa trên chức năng của các thuậ
 2. Support Vector Machine (SMV)
 3. Kernel SVM 
 4. Sparse Represntation-based classification (SRC)
-5. Neural Networks
 
 <!-- ========================== New Heading ==================== -->
 <a name="instance-based-algorithms"></a>
 
 ### Instance-based Algorithms 
 
-1. k-Nearest Neighbor (kNN)
+1. [k-Nearest Neighbor (kNN)](/2017/01/08/knn/)
 2. Learnin Vector Quantization (LVQ)
 
 <!-- ========================== New Heading ==================== -->
@@ -226,7 +225,7 @@ Có một cách phân nhóm thứ hai dựa trên chức năng của các thuậ
 
 ### Artificial Neural Network Algorithms 
 
-1. Perceptron
+1. [Perceptron](/2017/01/21/perceptron/)
 2. Back-Propagation 
 
 <!-- ========================== New Heading ==================== -->
