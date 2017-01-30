@@ -28,7 +28,7 @@ summary: Giới thiệu về một phương pháp Regression với hàm activati
     - [Ví dụ với dữ liệu 1 chiều](#vi-du-voi-du-lieu--chieu)
     - [Các hàm cần thiết cho logistic sigmoid regression](#cac-ham-can-thiet-cho-logistic-sigmoid-regression)
     - [Ví dụ với dữ liệu 2 chiều](#vi-du-voi-du-lieu--chieu-1)
-- [4. Một vài tính chất của Linear Regression](#-mot-vai-tinh-chat-cua-linear-regression)
+- [4. Một vài tính chất của Logistic Regression](#-mot-vai-tinh-chat-cua-logistic-regression)
     - [Logistic Regression thực ra được sử dụng nhiều trong các bài toán Classification.](#logistic-regression-thuc-ra-duoc-su-dung-nhieu-trong-cac-bai-toan-classification)
     - [Boundary tạo bởi Logistic Regression có dạng tuyến tính](#boundary-tao-boi-logistic-regression-co-dang-tuyen-tinh)
 - [5. Thảo luận](#-thao-luan)
@@ -430,9 +430,9 @@ Kết quả tìm được khi áp dụng mô hình logistic regression được 
 Nếu phải lựa chọn một _ngưỡng cứng_ (chứ không chấp nhận xác suất) để phân chia hai class, chúng ta quan sát thấy đường thẳng nằm nằm trong khu vực xanh lục là một lựa chọn hợp lý. Tôi sẽ chứng minh ở phần dưới rằng, đường phân chia giữa hai class tìm được bởi logistic regression có dạng một đường phẳng, tức vẫn là linear.
 
 
-<a name="-mot-vai-tinh-chat-cua-linear-regression"></a>
+<a name="-mot-vai-tinh-chat-cua-logistic-regression"></a>
 
-## 4. Một vài tính chất của Linear Regression
+## 4. Một vài tính chất của Logistic Regression
 
 <a name="logistic-regression-thuc-ra-duoc-su-dung-nhieu-trong-cac-bai-toan-classification"></a>
 
