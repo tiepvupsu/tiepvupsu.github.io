@@ -9,7 +9,7 @@ tags: GD Optimization SGD Online-learning Batch
 category: Optimization
 sc_project: 11221352
 sc_security: b7d744c5
-img: http://sebastianruder.com/content/images/2016/09/contours_evaluation_optimizers.gif
+img: /assets/GD/gd2.gif
 summary: Các phương pháp tăng tốc và các biến thể của Gradient Descent thường được dùng trong Machine Learning và Deep Learning  
 ---
 <div class="imgcap">
