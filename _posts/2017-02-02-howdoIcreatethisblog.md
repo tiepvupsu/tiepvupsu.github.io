@@ -7,8 +7,8 @@ permalink: 2017/02/02/howdoIcreatethisblog/
 mathjax: true
 tags: 
 category: 
-sc_project: 
-sc_security: 
+sc_project: 11240681
+sc_security: 2198e980
 img: /images/logoTet.png
 summary: Bạn muốn tạo một blog tương tự hoặc muốn biết tôi chuẩn bị cho các bài viết như thế nào? 
 ---
