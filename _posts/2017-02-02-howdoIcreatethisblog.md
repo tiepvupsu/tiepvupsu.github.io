@@ -19,7 +19,7 @@ Tôi xin phép khởi động năm mới bằng một bài _ngoại truyện_. B
 <!-- MarkdownTOC -->
 
 - [1. Blog](#-blog)
-    - [Sever](#sever)
+    - [Server](#server)
     - [Posts](#posts)
     - [Comments](#comments)
     - [Search box](#search-box)
@@ -36,9 +36,9 @@ Tôi xin phép khởi động năm mới bằng một bài _ngoại truyện_. B
 
 ## 1. Blog 
 
-<a name="sever"></a>
+<a name="server"></a>
 
-### Sever 
+### Server 
 Tên miền của blog là `github.io`, các bạn quen với git có lẽ đều biết tới trang [https://github.com/ ](https://github.com/) - là một nơi lưu các projects, có hỗ trợ quản lý version và cũng là một Internet hosting service. Tôi dùng trang này để lưu blog vì việc update bài mới rất thuận tiện. Toàn bộ source code của blog này đều có thể xem [tại đây](https://github.com/tiepvupsu/tiepvupsu.github.io). 
 
 Blog được tạo dựa trên nền tảng [Jekyll](https://jekyllrb.com/): hỗ trợ web tĩnh, cực kỳ đơn giản mà vẫn có thể tích hợp được HTML và CSS. Layout của blog được tạo bằng HTML CSS kết hợp với (một chút) Ruby. Việc tạo blog và ba bài đầu tiên chiếm trọn 4 ngày làm việc của tôi. Lúc đó đang là kỳ nghỉ đông, lại ở nhà một mình nên tôi tập trung làm được. 
