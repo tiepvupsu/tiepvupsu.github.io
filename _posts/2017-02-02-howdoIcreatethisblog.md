@@ -184,7 +184,7 @@ Khi bắt đầu viết, tôi thường làm theo thứ tự sau:
 
 5. **Rà soát lại:** tôi thường đọc lại hai lần để sửa các lỗi chính tả, ngữ pháp và xem có ý nào cần thêm bớt không. Tôi dành khoảng 20-30 phút cho phần này. 
 
-6. Upload bài lên blog, post bài lên facebook page, facebook cá nhân. Lúc này thường khá muộn, khoảng 1-2 giờ đêm, tôi đi ngủ, sáng hôm sau dậy đếm likes và xem comments. Cũng vào StatCounter xem có bao nhiêu người đã vào blog.
+6. **Upload** bài lên blog, post bài lên facebook page, facebook cá nhân. Lúc này thường khá muộn, khoảng 1-2 giờ đêm, tôi đi ngủ, sáng hôm sau dậy đếm likes và xem comments. Cũng vào StatCounter xem có bao nhiêu người đã vào blog.
 
 Thi thoảng tôi lại nghĩ ra gì đó mới cho blog thì thường dành một tối nữa để code. Ví dụ như việc chuyển sang giao diện Tết với nền đỏ chữ vàng và hoa đào hoa mai. Màu ưa thích của tôi là màu xanh đậm. 
 
