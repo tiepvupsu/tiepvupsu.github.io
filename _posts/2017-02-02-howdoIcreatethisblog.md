@@ -167,14 +167,23 @@ Khi viết một bài, tôi luôn nghĩ tới việc bài sau sẽ nói gì, có
 
 Khi bắt đầu viết, tôi thường làm theo thứ tự sau:
 1. **Viết code:** tôi cần kiểm tra xem những gì mình hiểu có đúng không, code chạy có như ý muốn không. Việc viết code này thường mất 1-2 giờ, đôi khi mất thời gian hơn.
+
 2. **Suy luận toán học:** sau khi code đã chạy theo ý mình, tôi dùng giấy bút để kiểm tra lại các suy luận toán học trong bài, xem có thể dẫn dắt như thế nào từ những quan sát đơn giản. Tôi hạn chế những kiến thức toán mới trong mỗi bài để các bạn mới không cảm thấy ngợp. Phương châm của tôi luôn là "chậm nhưng chắc", bạn đọc muốn đi nhanh hơn có thể đọc thêm sách và các khóa học online. Khoản này mất thêm 1 giờ nữa. 
+
 3. **Vẽ hình:** khoản này mất nhiều thời gian nhất. Trước khi làm blog hơn 1 tháng trước, tôi chưa bao giờ vẽ hình trên matplotlib của Python, chủ yếu dùng LaTeX với TikZ cho các bài báo khoa học. Tuy nhiên, matplotlib hỗ trợ vẽ các hình động rất tốt nên tôi vừa viết vừa học. Cả hai đều có hình vẽ với độ chính xác và thẩm mỹ cao, đồng nghĩa với việc công sức và thời gian bỏ vào cũng cao hơn. Tôi cũng rất thích vẽ hình minh họa nên dành khoảng hơn 2 giờ cho việc vẽ các hình trong mỗi bài. Tôi không thực sự muốn sử dụng các hình có sẵn online vì:
+
     * Độ phân giải ảnh có thể không cao.
+
     * Các màu sắc, ký hiệu không thống nhất với các ký hiệu tôi dùng trong bài.
+
     * Khó có thể chỉnh sửa nếu tôi muốn thêm bớt.
+
     * Có thể gây khó hiểu với những bạn mới bắt đầu học Machine Learning. 
+
 4. **Viết lần 1:** phần này khá dài nhưng lại không mất nhiều thời gian bằng các phần phía trên vì chủ yếu là gõ theo dòng suy nghĩ đã chuẩn bị trước trong đầu. Vì các bài được viết bằng markdown nên việc chỉnh sửa format không mất thời gian của tôi lắm. Việc mất thời gian nhất là gõ các công thức toán học trong markdown. Không như LaTeX thuần hỗ trợ nhiều packages và có thể define các tên dài, LaTeX trong markdown bị hạn chế rất nhiều (thậm chí không báo lỗi, nhiều khi tôi mất rất nhiều thời gian để tìm lỗi LaTeX không hiển thị đúng). Đôi khi tôi cũng bị nhầm lẫn khi chuyển đổi tiếng Anh/tiếng Việt. Việc này chiếm khoảng 2 giờ nữa. 
+
 5. **Rà soát lại:** tôi thường đọc lại hai lần để sửa các lỗi chính tả, ngữ pháp và xem có ý nào cần thêm bớt không. Tôi dành khoảng 20-30 phút cho phần này. 
+
 6. Upload bài lên blog, post bài lên facebook page, facebook cá nhân. Lúc này thường khá muộn, khoảng 1-2 giờ đêm, tôi đi ngủ, sáng hôm sau dậy đếm likes và xem comments. Cũng vào StatCounter xem có bao nhiêu người đã vào blog.
 
 Thi thoảng tôi lại nghĩ ra gì đó mới cho blog thì thường dành một tối nữa để code. Ví dụ như việc chuyển sang giao diện Tết với nền đỏ chữ vàng và hoa đào hoa mai. Màu ưa thích của tôi là màu xanh đậm. 
