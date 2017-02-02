@@ -18,7 +18,7 @@ Tôi xin phép khởi động năm mới bằng một bài _ngoại truyện_. B
 **Trong trang này:**
 <!-- MarkdownTOC -->
 
-- [1. Platform](#-platform)
+- [1. Blog](#-blog)
     - [Sever](#sever)
     - [Posts](#posts)
     - [Comments](#comments)
@@ -32,9 +32,9 @@ Tôi xin phép khởi động năm mới bằng một bài _ngoại truyện_. B
 
 <!-- /MarkdownTOC -->
 
-<a name="-platform"></a>
+<a name="-blog"></a>
 
-## 1. Platform 
+## 1. Blog 
 
 <a name="sever"></a>
 
