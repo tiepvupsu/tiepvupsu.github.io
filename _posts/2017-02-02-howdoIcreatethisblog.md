@@ -12,6 +12,9 @@ sc_security: 2198e980
 img: /images/logoTet.png
 summary: Bạn muốn tạo một blog tương tự hoặc muốn biết tôi chuẩn bị cho các bài viết như thế nào? 
 ---
+
+Tôi xin phép khởi động năm mới bằng một bài _ngoại truyện_. Bài này sẽ nói về việc tôi tạo blog này như thế nào, và mỗi bài viết được chuẩn bị ra sao.
+
 **Trong trang này:**
 <!-- MarkdownTOC -->
 
