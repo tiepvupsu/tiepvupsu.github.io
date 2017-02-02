@@ -170,6 +170,7 @@ Mỗi bài viết thường được tôi chuẩn bị trong trọn vẹn một 
 Khi viết một bài, tôi luôn nghĩ tới việc bài sau sẽ nói gì, có gì liên quan đến bài này, những điều chưa nên viết ở bài này mà để lại ở bài sau. Sau khi viết xong một bài, tôi luôn nghĩ về việc bài tiếp được giới thiệu như thế nào, có những gì cần lưu ý, ... trong khi đi bộ lên trường/về nhà hoặc trong khi tập thể dục. Nếu có điều nào chưa rõ, tôi phải tìm đọc các tài liệu liên quan trước khi bắt tay vào viết.
 
 Khi bắt đầu viết, tôi thường làm theo thứ tự sau:
+
 1. **Viết code:** tôi cần kiểm tra xem những gì mình hiểu có đúng không, code chạy có như ý muốn không. Việc viết code này thường mất 1-2 giờ, đôi khi mất thời gian hơn.
 
 2. **Suy luận toán học:** sau khi code đã chạy theo ý mình, tôi dùng giấy bút để kiểm tra lại các suy luận toán học trong bài, xem có thể dẫn dắt như thế nào từ những quan sát đơn giản. Tôi hạn chế những kiến thức toán mới trong mỗi bài để các bạn mới không cảm thấy ngợp. Phương châm của tôi luôn là "chậm nhưng chắc", bạn đọc muốn đi nhanh hơn có thể đọc thêm sách và các khóa học online. Khoản này mất thêm 1 giờ nữa. 
