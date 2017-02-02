@@ -48,6 +48,7 @@ Hệ điều hành tôi sử dụng là Linux Ubuntu.
 Các bài viết được tạo dựa trên ngôn ngữ [Markdown](https://en.wikipedia.org/wiki/Markdown#Example) với cú pháp cực kỳ đơn giản. Vài ví dụ:
 
 * In nghiêng
+
 ```
 *Machine Learning*
 ```
@@ -56,6 +57,7 @@ Kết quả: *Machine Learning*
 
 
 * In đậm
+
 ```
 **cơ bản**
 ```
@@ -63,6 +65,7 @@ Kết quả: *Machine Learning*
 Kết quả: **cơ bản**
 
 * Insert link
+
 ```
 [Machine Learning cơ bản](https://tiepvupsu.github.io/)
 ```
@@ -70,6 +73,7 @@ Kết quả: **cơ bản**
 Kết quả: [Machine Learning cơ bản](https://tiepvupsu.github.io/)
 
 * LaTex 
+
 ```
 \\( \mathbf{w}^T\mathbf{x} \\)
 ```
@@ -105,6 +109,7 @@ Editors chính tôi sử dụng là [Sublime Text](https://www.sublimetext.com/)
 Để tạo mục lục cho mỗi bài viết (hỗ trợ tự động sinh links), tôi cần cài package [MarkdownTOC](https://github.com/jonschlinkert/markdown-toc) cho Sublime Text. Có một  khó khăn tôi phải khắc phục. Lấy một ví dụ, tôi đang viết bài Logistic Regression với đường link `/2017/01/27/logisticregression/` và một mục có tên là "Giới thiệu". Nếu dùng MarkdownTOC để tự động tạo mục lục thì nó sẽ tạo ra đường link có dạng `/2017/01/27/logisticregression/#-giới-thiệu`. Vì github.io không hỗ trợ đường link có ký tự tiếng Việt (hoặc có nhưng tôi chưa biết dùng) nên tôi phải sửa package MarkdownTOC một chút bằng cách bỏ dấu tiếng Việt trong link, để nó tự động tạo link có dạng `/2017/01/27/logisticregression/#-gioi-thieu`. 
 
 Nếu bạn nào muốn thử thì có thể sửa `Preferences/Package Settings/MarkdownTOC/Settings - User` như sau:
+
 ```
 {
   "default_lowercase_only_ascii": true,
