@@ -152,9 +152,13 @@ Các packages thường được dùng là [numpy](http://www.numpy.org/), [scip
 ### Main references 
 
 Các tài liệu trên mạng internet có rất nhiều, nhưng tôi vẫn ưu tiên đọc sách giấy trước. Tôi có sử dụng một số cuốn sách giấy sau:
+
 1. [Learning from data](https://www.google.com/search?q=Learning+from+data&ie=utf-8&oe=utf-8&aq=t). Cuốn này khá ngắn, là cuốn sách Machine Learning đầu tiên tôi mua ($28) và đọc ở Mỹ sau khi xem bài giảng online của tác giả (video online của tác giả có trong link đính kèm).
+
 2. [Pattern Recognition and Machine Learning](http://users.isr.ist.utl.pt/~wurmd/Livros/school/Bishop%20-%20Pattern%20Recognition%20And%20Machine%20Learning%20-%20Springer%20%202006.pdf) - Christoper M. Bishop. Cuốn này rất cơ bản, tôi phải chờ 2 tuần mới mượn được ở thư viện của trường, và phải trả sau chỉ 3 tháng. 
+
 3. [Computer Vision:  Models, Learning, and Inference](http://www.computervisionmodels.com/). Đây là texbook trong môn Computer Vision tôi học ở Penn State. Mặc dù có bản pdf online, tôi vẫn mua ($70) vì tôi thấy nội dung rất đầy đủ, hình vẽ cũng đẹp và dễ hiểu. Nội dung chính là các phương pháp xác suất cho Computer Vision. 
+
 4. [Khóa học Machine Learning của Andrew Ng](https://www.coursera.org/learn/machine-learning?utm_source=gg&utm_medium=sem&campaignid=685340575&adgroupid=37009789418&device=c&keyword=%2Bmachine%20%2Blearning%20%2Bandrew%20%2Bng&matchtype=b&network=g&devicemodel=&adpostion=1t1&creativeid=161364220743&hide_mobile_promo&gclid=CjwKEAiAq8bEBRDuuOuyspf5oyMSJAAcsEyW7LJ5k2hZ8pVy_tUuqEMZ9LwFc6aPeNYknB0QDIODlRoCARfw_wcB). Khóa này rất cơ bản, free. Tác giả là co-founder của coursera và là một big name trong ngành Machine Learning. Theo tôi thì cách trình bày của tác giả rất cơ bản và dễ hiểu. Các bạn nên dành thời gian theo khóa này nếu muốn bước chân vào ngành Machine Learning.
 
 <a name="-moi-bai-viet-duoc-chuan-bi-nhu-the-nao"></a>
