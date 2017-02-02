@@ -171,7 +171,7 @@ Khi bắt đầu viết, tôi thường làm theo thứ tự sau:
 
 Thi thoảng tôi lại nghĩ ra gì đó mới cho blog thì thường dành một tối nữa để code. Ví dụ như việc chuyển sang giao diện Tết với nền đỏ chữ vàng và hoa đào hoa mai. Màu ưa thích của tôi là màu xanh đậm. 
 
-
+**Bạn muốn biết thêm điều gì, hãy để lại comment, tôi sẽ cập nhật thêm.** 
 
 
 
