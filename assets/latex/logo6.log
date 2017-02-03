@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.19)  3 FEB 2017 16:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.19)  3 FEB 2017 16:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **logo6.tex
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/logo6.tex
+(./logo6.tex
 LaTeX2e <2016/02/01>
 Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/standalone/standalone.cls
@@ -652,7 +652,7 @@ tex) (/usr/share/texlive/texmf-dist/tex/latex/tkz-euclide/tkz-obj-lines.tex)
 (/usr/share/texlive/texmf-dist/tex/latex/tkz-euclide/tkz-obj-sectors.tex)
 (/usr/share/texlive/texmf-dist/tex/latex/tkz-euclide/tkz-obj-angles.tex)
 (/usr/share/texlive/texmf-dist/tex/latex/tkz-euclide/tkz-obj-protractor.tex)
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/logo6.aux)
+(./logo6.aux)
 \openout1 = `logo6.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
@@ -667,8 +667,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 27.
 LaTeX Font Info:    ... okay on input line 27.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 27.
 LaTeX Font Info:    ... okay on input line 27.
-
-ABD: EveryShipout initializing macros
+ ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count144
@@ -754,19 +753,18 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
  [1
 
- </home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/mario2.jpg>]
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/logo6.aux) ) 
+ <./mario2.jpg>]
+(./logo6.aux) ) 
 Here is how much of TeX's memory you used:
- 24875 strings out of 493029
- 631024 string characters out of 6136233
+ 24874 strings out of 493029
+ 630517 string characters out of 6136233
  820793 words of memory out of 5000000
  27918 multiletter control sequences out of 15000+600000
  3945 words of font info for 15 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,7n,77p,734b,655s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on /home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/logo
-6.pdf (1 page, 36935 bytes).
+Output written on logo6.pdf (1 page, 36935 bytes).
 PDF statistics:
  12 PDF objects out of 1000 (max. 8388607)
  7 compressed objects within 1 object stream

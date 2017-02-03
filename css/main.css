@@ -23,7 +23,7 @@ h1, h2, h3, h4, h5, h6 {
   text-align: left;
 }
 
-a         { color: #B60000; text-decoration: none; }
+a         { color: ##014B81; text-decoration: none; }
 a:hover   { color: #000; text-decoration: underline; }
 /*a:visited { color: #205caa; }*/
 
