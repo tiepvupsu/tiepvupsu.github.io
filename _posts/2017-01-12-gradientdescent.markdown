@@ -353,11 +353,11 @@ def myGD(w_init, grad, eta):
 
 w_init = np.array([[2], [1]])
 (w1, it1) = myGD(w_init, grad, 1)
-print('Solution found by GD: w = ', w1[-1].T, ',\nafter %d iterations', it1+1)
+print('Solution found by GD: w = ', w1[-1].T, ',\nafter %d iterations.' %(it1+1))
 ```
 
     Solution found by GD: w =  [[ 4.01780793  2.97133693]] ,
-    after %d iterations 49
+    after 49 iterations.
 
 
 Sau 49 vòng lặp, thuật toán đã hội tụ với một nghiệm khá gần với nghiệm tìm được theo công thức. 
