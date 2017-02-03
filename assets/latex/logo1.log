@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.19)  3 FEB 2017 16:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.19)  3 FEB 2017 18:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -758,17 +758,17 @@ Missing character: There is no ; in font nullfont!
 epvupsu.github.io/assets/latex/mario2.jpg>]
 (/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/logo1.aux) ) 
 Here is how much of TeX's memory you used:
- 24885 strings out of 493029
- 631187 string characters out of 6136233
- 822753 words of memory out of 5000000
- 27926 multiletter control sequences out of 15000+600000
+ 24884 strings out of 493029
+ 631172 string characters out of 6136233
+ 822661 words of memory out of 5000000
+ 27925 multiletter control sequences out of 15000+600000
  4239 words of font info for 16 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,7n,77p,734b,655s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,7n,77p,734b,641s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb>
 Output written on /home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/logo
-1.pdf (1 page, 45026 bytes).
+1.pdf (1 page, 45005 bytes).
 PDF statistics:
  16 PDF objects out of 1000 (max. 8388607)
  10 compressed objects within 1 object stream
