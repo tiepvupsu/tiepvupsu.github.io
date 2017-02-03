@@ -39,13 +39,13 @@
           </nav>
           <nav>
             <div class="header">Latest</div>
-              {% for post in site.posts limit:2 %}
+              {% for post in site.posts limit:10 %}
                 <li><a style="text-align: left; font-family: 'Roboto Condensed', sans-serif; color: #014B81"  href="{{ post.url }}">{{ post.title }}</a></li>
               {% endfor %}
             </ul>
           </nav>
-          <img style = "transform: scaleX(1); width:100%; margin-left:00px;position: absolute;" src = "/images/mai.jpg">
-          <!-- {% if page.category %}
+          <!-- <img style = "transform: scaleX(1); width:100%; margin-left:00px;position: absolute;" src = "/images/mai.jpg"> -->
+          {% if page.category %}
           <nav>
           
             <div class="header">Latest by category</div>
@@ -59,7 +59,7 @@
               {% endfor %}
             </ul>
           </nav>
-          {% endif %} -->
+          {% endif %}
          <!--  {% if page.previous.url %} 
             <nav>
               <div class="header">Previous by date</div>
