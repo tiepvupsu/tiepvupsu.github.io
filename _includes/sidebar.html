@@ -5,20 +5,23 @@
           </a>
 
           <!-- Google search -->
-          <div style="width: 292px; margin-left: -13.5px; margin-top: -10px; margin-bottom: -15px;">
+          <table border="0">
+          <div id = "top-widget" style="width: 292px; margin-left: -13.5px; margin-top: -10px; margin-bottom: -15px;">
          <script>
-             (function() {
-               var cx = '012053542614118746585:ktgei4l2oek';
-               var gcse = document.createElement('script');
-               gcse.type = 'text/javascript';
-               gcse.async = true;
-               gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-               var s = document.getElementsByTagName('script')[0];
-               s.parentNode.insertBefore(gcse, s);
-             })();
-           </script>
-           <gcse:search></gcse:search>
+           (function() {
+             var cx = '012053542614118746585:ktgei4l2oek';
+             var gcse = document.createElement('script');
+             gcse.type = 'text/javascript';
+             gcse.async = true;
+             gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+             var s = document.getElementsByTagName('script')[0];
+             s.parentNode.insertBefore(gcse, s);
+           })();
+         </script>
+         <gcse:search></gcse:search>
           </div>
+          </table>
+
           <aside class = "social">
           <div class = "header">Share</div>
           {% include share-page.html %}

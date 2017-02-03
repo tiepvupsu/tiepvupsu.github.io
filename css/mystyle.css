@@ -182,3 +182,28 @@ input.gsc-input,
   line-height : normal;
   margin-top  : 0px;
 }
+
+
+
+table{
+    border-collapse: collapse;
+    border-spacing: 20px;
+    border:1px solid #111;
+    width: 100%;
+    padding-left: 10px;
+}
+
+th{
+    border:1px solid #111;
+     padding-left: 10px;
+}
+
+td{
+   padding-left: 10px;
+    border:1px solid #111;
+}
+
+/*For google search box*/
+#top-widget td, tr, table{
+border: none;
+}

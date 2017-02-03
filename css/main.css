@@ -458,7 +458,7 @@ a:hover   { color: #000; text-decoration: underline; }
   text-align: left;
 }
 
-table{
+/*table{
     border-collapse: collapse;
     border-spacing: 20px;
     border:1px solid #111;
@@ -475,7 +475,7 @@ td{
    padding-left: 10px;
     border:1px solid #111;
 }
-
+*/
 .share-page {
     text-align: left;
     background: $secondary-color;
