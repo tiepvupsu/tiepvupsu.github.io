@@ -61,18 +61,18 @@ Tôi xin được sử dụng [một ví dụ trên Wikipedia](https://en.wikipe
 
 Kết quả thu được như sau:
 
-| Hours     | Pass   | Hours     | Pass   |
-| :-------: | ------ | :-------: | ------ |
-| .5        | 0      | 2.75      | 1      |
-| .75       | 0      | 3         | 0      |
-| 1         | 0      | 3.25      | 1      |
-| 1.25      | 0      | 3.5       | 0      |
-| 1.5       | 0      | 4         | 1      |
-| 1.75      | 0      | 4.25      | 1      |
-| 1.75      | 1      | 4.5       | 1      |
-| 2         | 0      | 4.75      | 1      |
-| 2.25      | 1      | 5         | 1      |
-| 2.5       | 0      | 5.5       | 1      |
+| Hours     | Pass     | Hours     | Pass     |
+| :-------: | :------: | :-------: | :------: |
+| .5        | 0        | 2.75      | 1        |
+| .75       | 0        | 3         | 0        |
+| 1         | 0        | 3.25      | 1        |
+| 1.25      | 0        | 3.5       | 0        |
+| 1.5       | 0        | 4         | 1        |
+| 1.75      | 0        | 4.25      | 1        |
+| 1.75      | 1        | 4.5       | 1        |
+| 2         | 0        | 4.75      | 1        |
+| 2.25      | 1        | 5         | 1        |
+| 2.5       | 0        | 5.5       | 1        |
 
 Mặc dù có một chút _bất công_ khi học 3.5 giờ thì trượt, còn học 1.75 giờ thì lại đỗ, nhìn chung, học càng nhiều thì khả năng đỗ càng cao. PLA không thể áp dụng được cho bài toán này vì không thể nói một người học bao nhiêu giờ thì 100% trượt hay đỗ, và thực tế là dữ liệu này cũng không _linearly separable_ (điệu kiện để PLA có thể làm việc). Chú ý rằng các điểm màu đỏ và xanh được vẽ ở hai tung độ khác nhau để tiện cho việc minh họa. Các điểm này được vẽ dùng cả dữ liệu đầu vào \\(\mathbf{x}\\) và đầu ra \\(y). Khi ta nói _linearly seperable_ là khi ta chỉ dùng dữ liệu đầu vào \\(\mathbf{x}\\). 
 
