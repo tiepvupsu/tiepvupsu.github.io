@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.19)  19 JAN 2017 14:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.19)  2 FEB 2017 23:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **logo.tex
-(/home/tiepvu/Dropbox/tiepvupsu.github.io/assets/latex/logo.tex
+(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/logo.tex
 LaTeX2e <2016/02/01>
 Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/standalone/standalone.cls
@@ -652,21 +652,21 @@ tex) (/usr/share/texlive/texmf-dist/tex/latex/tkz-euclide/tkz-obj-lines.tex)
 (/usr/share/texlive/texmf-dist/tex/latex/tkz-euclide/tkz-obj-sectors.tex)
 (/usr/share/texlive/texmf-dist/tex/latex/tkz-euclide/tkz-obj-angles.tex)
 (/usr/share/texlive/texmf-dist/tex/latex/tkz-euclide/tkz-obj-protractor.tex)
-(/home/tiepvu/Dropbox/tiepvupsu.github.io/assets/latex/logo.aux)
+(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/logo.aux)
 \openout1 = `logo.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
 
 ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
@@ -725,27 +725,33 @@ e
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
 ick labels; missing features). Consider writing \pgfplotsset{compat=1.13} into 
 your preamble.
- on input line 9.
+ on input line 10.
 
-[1
+<bluemario.png, id=4, 284.06125pt x 407.5225pt>
+File: bluemario.png Graphic file (type png)
+ <use bluemario.png>
+Package pdftex.def Info: bluemario.png used on input line 26.
+(pdftex.def)             Requested size: 284.06053pt x 407.5215pt.
+ [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-(/home/tiepvu/Dropbox/tiepvupsu.github.io/assets/latex/logo.aux) ) 
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} </home/tiepvu/myProjects/ti
+epvupsu.github.io/assets/latex/bluemario.png>]
+(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/logo.aux) ) 
 Here is how much of TeX's memory you used:
- 24887 strings out of 493029
- 631078 string characters out of 6136233
- 777909 words of memory out of 5000000
- 27931 multiletter control sequences out of 15000+600000
+ 24895 strings out of 493029
+ 631220 string characters out of 6136233
+ 778906 words of memory out of 5000000
+ 27937 multiletter control sequences out of 15000+600000
  3945 words of font info for 15 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,7n,77p,733b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/t
-exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb>
-Output written on /home/tiepvu/Dropbox/tiepvupsu.github.io/assets/latex/logo.pd
-f (1 page, 10404 bytes).
+ 55i,7n,77p,733b,657s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb>
+Output written on /home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/logo
+.pdf (1 page, 33830 bytes).
 PDF statistics:
- 15 PDF objects out of 1000 (max. 8388607)
- 10 compressed objects within 1 object stream
+ 18 PDF objects out of 1000 (max. 8388607)
+ 11 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 18 words of extra memory for PDF output out of 10000 (max. 10000000)
 

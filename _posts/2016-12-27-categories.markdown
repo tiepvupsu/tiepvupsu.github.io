@@ -182,7 +182,7 @@ Có một cách phân nhóm thứ hai dựa trên chức năng của các thuậ
 ### Classification Algorithms 
 
 1. Linear Classifier 
-2. Support Vector Machine (SMV)
+2. Support Vector Machine (SVM)
 3. Kernel SVM 
 4. Sparse Represntation-based classification (SRC)
 

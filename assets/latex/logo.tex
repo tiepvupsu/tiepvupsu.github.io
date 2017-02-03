@@ -5,7 +5,8 @@
 \usepackage{tkz-euclide}
 \usetkzobj{all}
 \renewcommand{\familydefault}{\sfdefault}
-\definecolor{myblue}{HTML}{014B81}
+% \definecolor{myblue}{HTML}{014B81}
+\definecolor{myblue}{HTML}{092F4B}
 \begin{document}
 \begin{tikzpicture}[>=stealth', thick]
     \def\xx{.5}
@@ -18,16 +19,11 @@
     \def\c{myblue}
     \def\d{5}
     \draw [white] (0, 0) rectangle (4*\d, 4*\d);
-    % \draw [\c, fill = \c, rounded corners = 0pt] (0, 0) rectangle (4*\d, \d);
-    % \draw [\c, fill = \c, rounded corners = 0pt] (\d, \d) rectangle (2*\d, 2*\d);
-    % \draw [\c, fill = \c, rounded corners = 0pt] (2*\d, 2*\d) rectangle (3*\d, 3*\d);
-    % \draw [\c, fill = \c, rounded corners = 0pt] (3*\d, 3*\d) rectangle (4*\d, 4*\d);
 
     \draw [\c ,fill = \c, rounded corners = 5pt] (0, 0) -- (4*\d, 0) -- 
-    % (4*\d, \d) -- (2*\d, \d) -- (2*\d, 2*\d) -- (3*\d, 2*\d) -- (3*\d, 3*\d) -- (4*\d, 3*\d)-- 
     (4*\d, 4*\d) -- (3*\d, 4*\d) -- (3*\d, 3*\d) -- (2*\d, 3*\d) -- (2*\d, 2*\d) -- (\d, 2*\d) -- (\d, \d) -- (0, \d) -- cycle;
-    % (4*\d, 3*\d) -- (5*\d, 3*\d) -- (5*\d, 4*\d) -- (3*\d, 4*\d) -- (3*\d, 3*\d) -- (2*\d, 3*\d) -- (2*\d, 2*\d) -- (\d, 2*\d) -- (\d, \d) -- (0, \d) -- cycle;
     \node [white, scale = 6.5] (text) at (2*\d, \d/2) {tiepvupsu.github.io};
+    \node [scale = .7] at (0, 1.7*\d) {\includegraphics{bluemario.png}};
 
 
 \end{tikzpicture}

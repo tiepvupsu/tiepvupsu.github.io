@@ -52,8 +52,7 @@ Trong bài này, tôi sẽ giới thiệu một trong những thuật toán cơ 
 
 ## 1. Giới thiệu
 
-Quay lại [ví dụ đơn giản được nêu trong bài trước](/2016/12/27/categories/#regression): một căn nhà rộng \\(x_1 ~ \text{m}^2\\), có \\(x_2\\) phòng ngủ và cách trung tâm thành phố \\(x_3~ \text{km}\\) có giá là bao nhiêu. Giả sử chúng ta đã có số liệu thống kê từ 1000 căn nhà trong thành phố đó, liệu rằng khi có một căn nhà mới với các thông số về diện tích, số phòng ngủ và khoảng cách tới trung tâm, chúng ta có thể dự đoán được giá của căn nhà đó không? Nếu có thì hàm dự đoán \\(y = f(\mathbf{x}) \\) sẽ có dạng như thế nào. Ở đây \\(\mathbf{x} = [x_1; x_2; x_3] \\) là một vector
-cột chứa thông tin _input_, \\(y\\) là một số vô hướng (scalar) biểu diễn _output_ (tức giá của căn nhà trong ví dụ này).
+Quay lại [ví dụ đơn giản được nêu trong bài trước](/2016/12/27/categories/#regression): một căn nhà rộng \\(x_1 ~ \text{m}^2\\), có \\(x_2\\) phòng ngủ và cách trung tâm thành phố \\(x_3~ \text{km}\\) có giá là bao nhiêu. Giả sử chúng ta đã có số liệu thống kê từ 1000 căn nhà trong thành phố đó, liệu rằng khi có một căn nhà mới với các thông số về diện tích, số phòng ngủ và khoảng cách tới trung tâm, chúng ta có thể dự đoán được giá của căn nhà đó không? Nếu có thì hàm dự đoán \\(y = f(\mathbf{x}) \\) sẽ có dạng như thế nào. Ở đây \\(\mathbf{x} = [x_1, x_2, x_3] \\) là một vector hàng chứa thông tin _input_, \\(y\\) là một số vô hướng (scalar) biểu diễn _output_ (tức giá của căn nhà trong ví dụ này).
 
 **Lưu ý về ký hiệu toán học:** _trong các bài viết của tôi, các số vô hướng được biểu diễn bởi các chữ cái viết ở dạng không in đậm, có thể viết hoa, ví dụ \\(x_1, N, y, k\\). Các vector được biểu diễn bằng các chữ cái thường in đậm, ví dụ \\(\mathbf{y}, \mathbf{x}_1 \\). Các ma trận được biểu diễn bởi các chữ viết hoa in đậm, ví dụ \\(\mathbf{X, Y, W} \\)._
 
@@ -190,13 +189,17 @@ Trong phần này, tôi sẽ chọn một ví dụ đơn giản về việc gi�
 
 Chúng ta có 1 bảng dữ liệu về chiều cao và cân nặng của 15 người như dưới đây:
 
-| Chiều cao (cm)        | 147        | 150        | 153        | 155        | 158        | 160        | 163        | 165        |
-| :-------------------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: |
-| **Cân nặng (kg)**     | **49**     | **50**     | **51**     | **52**     | **54**     | **56**     | **58**     | **59**     |
 
-| Chiều cao (cm)        | 168        | 170        | 173        | 175        | 178        | 180        | 183        |
-| :-------------------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: |
-| **Cân nặng (kg)**     | **60**     | **62**     | **63**     | **64**     | **66**     | **67**     | **68**     |
+| Chiều cao (cm)     | Cân nặng (km)   | Chiều cao (cm)     | Cân nặng (kg)   |
+| :----------------: | --------------- | :----------------: | --------------- |
+| 147                | 49              | 168                | 60              |
+| 150                | 50              | 170                | 72              |
+| 153                | 51              | 173                | 63              |
+| 155                | 52              | 175                | 64              |
+| 158                | 54              | 178                | 66              |
+| 160                | 56              | 180                | 67              |
+| 163                | 58              | 183                | 68              |
+| 165                | 59              |                    |                 |
 
 
 Bài toán đặt ra là: liệu có thể dự đoán cân nặng của một người dựa vào chiều cao của họ không? (_Trên thực tế, tất nhiên là không, vì cân nặng còn phụ thuộc vào nhiều yếu tố khác nữa, thể tích chẳng hạn_). Vì blog này nói về các thuật toán Machine Learning đơn giản nên tôi sẽ giả sử rằng chúng ta có thể dự đoán được.
