@@ -304,4 +304,7 @@ INPUT /home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/mario2.jpg
 INPUT /home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/mario2.jpg
 OUTPUT /home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/logo3.pdf
 INPUT /home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/mario2.jpg
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm
+INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
 INPUT /home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/logo3.aux
+INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb
