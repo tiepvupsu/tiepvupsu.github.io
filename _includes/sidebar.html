@@ -32,7 +32,7 @@
           <!-- <a href = "https://www.facebook.com/machinelearningbasicvn/" target="_blank" title="Follow us"><img src = "/assets/images/facebook.png" width="30"></a> -->
           <!-- facebook page -->
 
-         <div class="fb-page" data-href="https://www.facebook.com/machinelearningbasicvn/" data-width="280" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"><blockquote cite="https://www.facebook.com/machinelearningbasicvn/" class="fb-xfbml-parse-ignore" ><a style = "color: #B60000" href="https://www.facebook.com/machinelearningbasicvn/">Machine Learning cơ bản</a></blockquote></div>
+         <div class="fb-page" data-href="https://www.facebook.com/machinelearningbasicvn/" data-width="280" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"><blockquote cite="https://www.facebook.com/machinelearningbasicvn/" class="fb-xfbml-parse-ignore" ><a style = "color: #014B81" href="https://www.facebook.com/machinelearningbasicvn/">Machine Learning cơ bản</a></blockquote></div>
           <!--end facebook page -->
 
           </div>
@@ -40,7 +40,7 @@
           <nav>
             <div class="header">Latest</div>
               {% for post in site.posts limit:2 %}
-                <li><a style="text-align: left; font-family: 'Roboto Condensed', sans-serif; color: #B60000"  href="{{ post.url }}">{{ post.title }}</a></li>
+                <li><a style="text-align: left; font-family: 'Roboto Condensed', sans-serif; color: #014B81"  href="{{ post.url }}">{{ post.title }}</a></li>
               {% endfor %}
             </ul>
           </nav>
@@ -53,7 +53,7 @@
               {% for category in site.categories %}
                 {% if category[0] == page.category %}
                   {% for post in category[1] limit:2 %}
-                    <li><a style="text-align: left; font-family: 'Roboto Condensed', sans-serif; color: #B60000;" href="{{ post.url }}">{{ post.title }}</a></li>
+                    <li><a style="text-align: left; font-family: 'Roboto Condensed', sans-serif; color: #014B81;" href="{{ post.url }}">{{ post.title }}</a></li>
                   {% endfor %}
                 {% endif %}
               {% endfor %}
@@ -64,7 +64,7 @@
             <nav>
               <div class="header">Previous by date</div>
               <ul>
-                <li><a style="text-align: left; font-family: 'Roboto Condensed', sans-serif; color: #B60000;" href="{{ page.previous.url }}">{{ page.previous.title }}</a></li>
+                <li><a style="text-align: left; font-family: 'Roboto Condensed', sans-serif; color: #014B81;" href="{{ page.previous.url }}">{{ page.previous.title }}</a></li>
               </ul>
             </nav>
           {% endif %} 
@@ -72,7 +72,7 @@
             <nav>
               <div class="header">Next by date</div>
               <ul>
-                <li><a style="text-align: left; font-family: 'Roboto Condensed', sans-serif; color: #B60000;" href="{{ page.next.url }}">{{ page.next.title }}</a></li>
+                <li><a style="text-align: left; font-family: 'Roboto Condensed', sans-serif; color: #014B81;" href="{{ page.next.url }}">{{ page.next.title }}</a></li>
               </ul>
             </nav>
           {% endif %}  -->
