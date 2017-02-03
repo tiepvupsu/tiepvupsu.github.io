@@ -1,0 +1,57 @@
+\documentclass{standalone}
+\usepackage{tikz,pgfplots,calc}
+\usetikzlibrary{positioning,calc}
+\usetikzlibrary{arrows}
+\usepackage{tkz-euclide}
+\usetkzobj{all}
+\renewcommand{\familydefault}{\sfdefault}
+\definecolor{myblue}{HTML}{014B81}
+% \definecolor{myblue}{HTML}{092F4B}
+
+
+\def\d{1}
+\def\dd{.8}
+\def\cs{blue!30!black}
+
+\newcommand{\blockk}[2]{
+    \begin{scope}[xshift = #1*4*\d cm, yshift = #2*4*\d cm]
+        \draw [black, rounded corners = 2pt, fill = blue!30!black] (0, 0) -- (4*\d, 0) -- (4*\d - \dd, 1*\dd) -- (1*\dd, 1*\dd) -- cycle;
+        \draw [black, rounded corners = 2pt, fill = blue!30!black] (4*\d, 4*\d) -- (4*\d, 0) -- (4*\d - \dd, 1*\dd) -- (4*\d - \dd, 4*\d - \dd) -- cycle;
+        \draw [black, rounded corners = 2pt, fill = myblue!30!white] (4*\d, 4*\d) -- (0, 4*\d) -- (1*\dd, 4*\d - \dd) -- (4*\d - \dd, 4*\d - \dd) -- cycle;
+        \draw [black, rounded corners = 2pt, fill = myblue!30!white] (0*\d, 0*\d) -- (0, 4*\d) -- (1*\dd, 4*\d - \dd) -- (1*\dd, 1*\dd) -- cycle;
+        \draw [black, rounded corners = 2pt, fill = myblue] (1*\dd, 1*\dd) -- (4*\d - \dd, 1*\dd) -- (4*\d - \dd, 4*\d - \dd) -- (1*\dd, 4*\d - \dd) -- cycle;
+    \end{scope}
+}
+
+
+\begin{document}
+\begin{tikzpicture}[>=stealth', thick]
+    \clip (-4, 0) rectangle (24, 24);
+    \node [scale = .5] at (18.5*\d, 24*\d) {\includegraphics{mario2.jpg}};
+    \blockk{0}{0};
+    \blockk{1}{0};
+    \blockk{2}{0};
+    \blockk{3}{0};
+    \blockk{4}{0};
+    \blockk{5}{0};
+
+    \blockk{1}{1};
+    \blockk{2}{1};
+    \blockk{3}{1};
+    \blockk{4}{1};
+    \blockk{5}{1};
+
+    \blockk{2}{2};
+    \blockk{3}{2};
+    \blockk{4}{2};
+    \blockk{5}{2};
+
+    \blockk{3}{3};
+    \blockk{4}{3};
+    \blockk{5}{3};
+
+    \blockk{4}{4};
+    \blockk{5}{4};
+
+\end{tikzpicture}
+\end{document}
