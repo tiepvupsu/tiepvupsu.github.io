@@ -12,6 +12,7 @@ markdown: kramdown
 permalink: pretty
 future: true
 highlighter: rouge
+linenos: true
 kramdown:
   input: GFM
   auto_ids: true
