@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.9.25)  4 FEB 2017 11:02
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.9.25)  4 FEB 2017 10:50
 entering extended mode
-**D:/PROJECTS/tiepvupsu.github.io/assets/latex/ML_models.tex
-(D:/PROJECTS/tiepvupsu.github.io/assets/latex/ML_models.tex
+**D:/PROJECTS/tiepvupsu.github.io/assets/latex/raw_data.tex
+(D:/PROJECTS/tiepvupsu.github.io/assets/latex/raw_data.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -708,7 +708,7 @@ rs.tex)
 (C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\tkz-euclide\tkz-obj-angle
 s.tex)
 (C:\Users\THV102\AppData\Roaming\MiKTeX\2.9\tex\latex\tkz-euclide\tkz-obj-protr
-actor.tex) (D:\PROJECTS\tiepvupsu.github.io\assets\latex\ML_models.aux)
+actor.tex) (D:\PROJECTS\tiepvupsu.github.io\assets\latex\raw_data.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
 LaTeX Font Info:    ... okay on input line 11.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
@@ -743,29 +743,21 @@ ick labels; missing features). Consider writing \pgfplotsset{compat=1.12} into
 your preamble.
  on input line 11.
 
-<raw_data.pdf, id=4, 160.13527pt x 83.31326pt>
-File: raw_data.pdf Graphic file (type pdf)
- <use raw_data.pdf>
-Package pdftex.def Info: raw_data.pdf used on input line 113.
-(pdftex.def)             Requested size: 85.35826pt x 44.40878pt.
- [1
+[1
 
-{C:/Users/THV102/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <D:/PROJECT
-S/tiepvupsu.github.io/assets/latex/raw_data.pdf>]
-(D:\PROJECTS\tiepvupsu.github.io\assets\latex\ML_models.aux) ) 
+] (D:\PROJECTS\tiepvupsu.github.io\assets\latex\raw_data.aux) ) 
 Here is how much of TeX's memory you used:
- 24075 strings out of 493921
- 611496 string characters out of 3144873
- 743874 words of memory out of 3000000
- 26915 multiletter control sequences out of 15000+200000
+ 24040 strings out of 493921
+ 610876 string characters out of 3144873
+ 741794 words of memory out of 3000000
+ 26882 multiletter control sequences out of 15000+200000
  3640 words of font info for 14 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 55i,7n,77p,784b,698s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files
- (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb>
-Output written on ML_models.pdf (1 page, 17051 bytes).
+ 55i,5n,77p,783b,609s stack positions out of 5000i,500n,10000p,200000b,50000s
+
+Output written on raw_data.pdf (1 page, 1333 bytes).
 PDF statistics:
- 15 PDF objects out of 1000 (max. 8388607)
+ 9 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 18 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

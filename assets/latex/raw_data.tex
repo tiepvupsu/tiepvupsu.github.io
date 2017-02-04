@@ -6,7 +6,7 @@
 \usetkzobj{all}
 
 \tikzset{
-  mynode/.style = {align = center, text width = 3.7cm}}
+  mynode/.style = {align = center}}
 
 \begin{document}
 \begin{tikzpicture}[>=stealth', thick]
@@ -108,14 +108,12 @@
     % % \draw 
     % % \draw 
 
-\node [draw, anchor = center, minimum height = 3cm, minimum width = 4cm] (raw_train) {};
-\node [mynode, align = center, anchor = north, below = .1cm of raw_train.north] {Raw training data \\ (input, output)};
-\node [anchor = south, above = 0cm of raw_train.south] {\includegraphics[width = 3cm]{raw_data.pdf}};
 
-\node [draw, anchor = south, minimum height = 1cm, minimum width = 4cm, mynode] (prior) at (8, 2.5) {Prio knowledge \\ about data};
-
-\node (fea) [mynode, draw, anchor = west, right =of raw_train.east, minimum width = 4cm, minimum height = 3cm, fill =green!10] {Feature Extrantion \\ (Feature Engineering)};
-
-
+% \node [text width = 4cm, align = center] at (0, 0) {Raw training data \\ (both input, output)};
+\draw [draw, fill = blue!50] (0, 0.3) rectangle (1, 1);
+\draw [draw, fill = red!50] (1.2, 0) rectangle (2, 2);
+\draw [draw, fill = green!50] (2.2, -.2) rectangle (4, 1.7);
+\draw [draw, fill = yellow!50] (4.2, .2) rectangle (4.6, 2.7);
+\draw [draw, fill = purple!50] (4.8, .5) rectangle (5.6, 2.);
 \end{tikzpicture}
 \end{document}
