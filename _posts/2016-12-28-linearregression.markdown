@@ -114,7 +114,7 @@ trong đó hệ số \\(\frac{1}{2} \\) (_lại_) là để thuận tiện cho v
 
 Điều tương tự xảy ra với tất cả các cặp _(input, outcome)_ \\( (\mathbf{x}_i, y_i), i = 1, 2, \dots, N \\), với \\(N\\) là số lượng dữ liệu quan sát được. Điều chúng ta muốn, tổng sai số là nhỏ nhất, tương đương với việc tìm \\( \mathbf{w} \\) để hàm số sau đạt giá trị nhỏ nhất:
 
-\\[ \mathcal{L}(\mathbf{w}) = \frac{1}{2}\sum_{i=1}^N (y - \mathbf{\bar{x}}\mathbf{w})^2 ~~~~~(2) \\] 
+\\[ \mathcal{L}(\mathbf{w}) = \frac{1}{2}\sum_{i=1}^N (y\_i - \mathbf{\bar{x}\_i}\mathbf{w})^2 ~~~~~(2) \\] 
 
 Hàm số \\(\mathcal{L}(\mathbf{w}) \\) được gọi là __hàm mất mát__ (loss function) của bài toán Linear Regression. Chúng ta luôn mong muốn rằng sự mất mát (sai số) là nhỏ nhất, điều đó đồng nghĩa với việc  tìm vector hệ số \\( \mathbf{w} \\)  sao cho 
 giá trị của hàm mất mát này càng nhỏ càng tốt. Giá trị của \\(\mathbf{w}\\) làm cho hàm mất mát đạt giá trị nhỏ nhất được gọi là _điểm tối ưu_ (optimal point), ký hiệu:
