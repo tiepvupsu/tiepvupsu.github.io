@@ -2,13 +2,11 @@
 \usepackage{tikz,pgfplots,calc}
 \usetikzlibrary{positioning,calc}
 \usetikzlibrary{arrows}
-\usepackage{amsmath}
 \usepackage{tkz-euclide}
 \usetkzobj{all}
-\renewcommand{\familydefault}{\sfdefault}
 
 \tikzset{
-  mynode/.style = {align = center, text width = 3.7cm}}
+  mynode/.style = {draw, minimum width = .4cm, minimum height = 2cm}}
 
 \begin{document}
 \begin{tikzpicture}[>=stealth', thick]
@@ -110,66 +108,12 @@
     % % \draw 
     % % \draw 
 
-\node (train) at (-2, -2) [draw, fill = blue!3!white, anchor = south west, minimum width = 15.5cm, minimum height = 7cm] {};
-\node at (1, 4.5) [scale = 2] {{TRAINING PHASE}};
 
-
-\node [draw, anchor = center, minimum height = 3cm, minimum width = 3cm] (raw_train) {};
-\node [mynode, align = center, anchor = north, below = .1cm of raw_train.north] {Raw training \\ data (input)};
-
-\node [draw, dashed, anchor = south, above = of raw_train.north, text width = 3.5cm, align = center] (train_output) {Training output \\ {(\large{$ \mathbf{y}_{\text{train}}$}})};
-
-\node [anchor = south, above = 0.2cm of raw_train.south] {\includegraphics[width = 2.7cm]{raw_data.pdf}};
-
-\node [draw, anchor = south, minimum height = 1cm, minimum width = 4cm, mynode] (prior) at (8, 3.5) {Prior knowledge \\ about data};
-
-\node (fea) [mynode, draw, anchor = west, right =of raw_train.east, minimum width = 3cm, minimum height = 3cm, text width = 2.5cm, fill =green!15] {Feature Extraction \\ (Feature Engineering)};
-
-
-
-\node (ex_fea) [draw, anchor = west, right = of fea.east, minimum width = 2.5cm, minimum height = 3cm] {};
-\node [anchor = north, below=0cm of ex_fea.north, text width = 1.5cm, align = center] {Extracted features \\ ($\mathbf{X}_{\text{train}}$)};
-\node [anchor = south, above=0cm of ex_fea.south] {\includegraphics[width = 1.7cm]{feature.pdf}};
-
-\node (ml) [draw, anchor = west, right =of ex_fea.east, minimum width = 3cm, text width = 2.5cm, minimum height = 3cm, align = center, fill = green!15] {Classification, Regression, Clustering,... Algorithms};
-
-%% arroww 
-\draw [ultra thick, ->] (raw_train) -- (fea);
-\draw [ultra thick, ->, dashed] (train_output) -| (fea);
-\draw [ultra thick, ->, dashed] (train_output) -| (ml);
-\draw [ultra thick, ->] (prior) -- (fea);
-\draw [ultra thick, ->] (prior) -- (ml);
-\draw [ultra thick, ->] (fea) -- (ex_fea);
-\draw [ultra thick, ->] (ex_fea) -- (ml);
-
-%%%%%%%%%%%%%%%%%%%
-\node (test) at (-2, -9) [draw, fill = blue!3!white, anchor = south west, minimum width = 15.5cm, minimum height = 6cm] {};
-\node at (1, -8) [scale = 2] {{TESTING PHASE}};
-
-\node [draw, anchor = center, minimum height = 3cm, minimum width = 3cm] (raw_test) at (0, -5) {};
-\node [mynode, align = center, anchor = north, below = .1cm of raw_test.north] {Raw test \\ data};
-
-\node [anchor = south, above = 0.2cm of raw_test.south] {\includegraphics[width = 2.7cm]{raw_test_data.pdf}};
-
-
-\node (fea_test) [mynode, draw, anchor = west, right =of raw_test.east, minimum width = 3cm, minimum height = 3cm, text width = 2.5cm, fill =red!15] {Feature Extraction \\ (Feature Engineering)};
-
-
-\node (ex_test_fea) [draw, anchor = west, right = of fea_test.east, minimum width = 2.5cm, minimum height = 3cm] {};
-\node [anchor = north, below=0cm of ex_test_fea.north, text width = 1.5cm, align = center] {Extracted features ($\mathbf{X}_{\text{test}}$)};
-\node [anchor = south, above=0cm of ex_test_fea.south] {\includegraphics[width = 1.8cm]{feature_test.pdf}};
-
-\node (ml_test) [draw, anchor = west, right =of ex_test_fea.east, minimum width = 3cm, text width = 2.5cm, minimum height = 3cm, align = center, fill = red!15] {Classification, Regression, Clustering,... Algorithms};
-
-\node (output) [draw, anchor = north, below =of ml_test, minimum width = 3cm, text width = 2cm, align = center,  minimum height = 1.2cm] {Test output \\ (\large{$\mathbf{y}_{\text{test}}$})};
-
-\draw [ultra thick,->, blue, dashed](fea) -- (fea_test);
-\draw [ultra thick,->, blue, dashed](ml) -- (ml_test);
-\draw [ultra thick,->] (raw_test) -- (fea_test);
-\draw [ultra thick,->] (fea_test) -- (ex_test_fea);
-\draw [ultra thick,->] (ex_test_fea) -- (ml_test);
-\draw [ultra thick, ->] (ml_test) -- (output);
-
-
+% \node [lable=below:a, draw] at (10, 10);
+\node[mynode, fill = blue!50!black] (n1) {};
+\node[mynode, fill = red!50!black, anchor = west, right=.1cm of n1.east] (n2) {};
+\node[mynode, fill = green!50!black, anchor = west, right=.1cm of n2.east] (n3) {};
+\node[mynode, fill = yellow!50!black, anchor = west, right=.1cm of n3.east] (n4) {};
+\node[mynode, fill = purple!50!black, anchor = west, right=.1cm of n4.east] (n5) {};
 \end{tikzpicture}
 \end{document}
