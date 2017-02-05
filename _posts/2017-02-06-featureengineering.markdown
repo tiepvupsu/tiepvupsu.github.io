@@ -207,7 +207,7 @@ Ví dụ với mặt người, các patch nên đủ lớn để chứa được
 
 <div class="imgcap">
 <img src ="\assets\FeatureEngineering\bow_face.png" align = "center" width = "800">
-<div class = "thecap">Hình 3: Bag of Words cho ảnh chứa mặt người.</div>
+<div class = "thecap">Hình 3: Bag of Words cho ảnh chứa mặt người. (Nguồn <a href="http://www.robots.ox.ac.uk/~az/icvss08_az_bow.pdf"> Bag of visual words model: recognizing object categories</a>)</div>
 </div> 
 
 Tương tự thế, với ảnh là ô tô, các patch thu được có thể là bánh xe, khung xe, cửa xe, ... như hàng trên trong hình dưới đây. 
