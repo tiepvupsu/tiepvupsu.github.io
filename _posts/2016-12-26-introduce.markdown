@@ -6,6 +6,7 @@ date:   2016-12-26 15:22:00
 permalink: 2016/12/26/introduce/
 mathjax: true
 tags: General
+categories: General
 sc_project: 11213301
 sc_security: 8d50f6a5
 img: /assets/introduce/aimldl.png

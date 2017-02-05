@@ -5,6 +5,7 @@ title:  "Bài 2: Phân nhóm các thuật toán Machine Learning"
 date:   2016-12-27 15:22:00
 mathjax: true
 tags: General
+categories: General
 sc_project: 11213327
 sc_security: 02b75c79
 permalink: /2016/12/27/categories/
