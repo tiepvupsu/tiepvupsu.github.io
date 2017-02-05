@@ -9,7 +9,7 @@ category: General
 sc_project: 11243833
 sc_security: bf1d62ec
 img: \assets\FeatureEngineering\ML_models.png
-summary: Giới thiệu về các phương pháp tiền xử lý để tạo cá vector đặc trưng cho các bài toán Machine Learning. 
+summary: Giới thiệu về các phương pháp tiền xử lý để tạo các vector đặc trưng cho các bài toán Machine Learning. 
 ---
 **Trong trang này:**
 
