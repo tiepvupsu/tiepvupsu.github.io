@@ -53,6 +53,7 @@ Các bài toán NLP (Natural Language Processing - Xử lý ngôn ngữ tự nhi
 Khi làm việc với các bài toán Machine Learning thực tế, nhìn chung chúng ta chỉ có được dữ liệu thô (raw) chưa qua chỉnh sửa, chọn lọc. Chúng ta cần phải tìm một phép biến đổi để loại ra những dữ liệu nhiễu (noise), và để đưa dữ liệu thô với số chiều khác nhau về cùng một chuẩn (cùng là các vector hoặc ma trận). Dữ liệu chuẩn mới này phải đảm bảo giữ được những thông tin đặc trưng (features) cho dữ liệu thô ban đầu. Không những thế, tùy vào từng bài toán, ta cần _thiết kế_ những phép biến đổi để có những features phù hợp. Quá trình quan trọng này được gọi là _Feature Extraction_, hoặc _Feature Engineering_, một số tài liệu tiếng Việt gọi nó là _trích chọn đặc trưng_. 
 
 Tôi xin trích một câu nói của thầy Andrew Ng và xin phép thêm không dịch ra tiếng Việt (Nguồn [Feature Engineering - wiki](https://en.wikipedia.org/wiki/Feature_engineering)):
+
 > Coming up with features is difficult, time-consuming, requires expert knowledge. "Applied machine learning" is basically feature engineering.
 
 Để giúp các bạn có cái nhìn tổng quan hơn, trong phần tiếp theo tôi xin đặt bước Feature Engineering này trong một bức tranh lớn hơn.
