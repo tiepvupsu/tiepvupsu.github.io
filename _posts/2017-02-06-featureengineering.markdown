@@ -6,8 +6,8 @@ date:   2017-02-06 15:22:00
 mathjax: true
 tags: General Feature-extraction
 category: General
-sc_project: 
-sc_security: 
+sc_project: 11243833
+sc_security: bf1d62ec
 img: \assets\FeatureEngineering\ML_models.png
 summary: Giới thiệu về một phương pháp Regression với hàm activation có những tính chất thú vị. 
 ---
