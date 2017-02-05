@@ -121,7 +121,7 @@
 
 \node [anchor = south, above = 0.2cm of raw_train.south] {\includegraphics[width = 2.7cm]{raw_data.pdf}};
 
-\node [draw, anchor = south, minimum height = 1cm, minimum width = 4cm, mynode] (prior) at (8, 3.5) {Prior knowledge \\ about data};
+\node [draw, dashed, anchor = south, minimum height = 1cm, minimum width = 4cm, mynode] (prior) at (8, 3.5) {Prior knowledge \\ about data};
 
 \node (fea) [mynode, draw, anchor = west, right =of raw_train.east, minimum width = 3cm, minimum height = 3cm, text width = 2.5cm, fill =green!15] {Feature Extraction \\ (Feature Engineering)};
 
@@ -137,8 +137,8 @@
 \draw [ultra thick, ->] (raw_train) -- (fea);
 \draw [ultra thick, ->, dashed] (train_output) -| (fea);
 \draw [ultra thick, ->, dashed] (train_output) -| (ml);
-\draw [ultra thick, ->] (prior) -- (fea);
-\draw [ultra thick, ->] (prior) -- (ml);
+\draw [ultra thick, ->, dashed] (prior) -- (fea);
+\draw [ultra thick, ->, dashed] (prior) -- (ml);
 \draw [ultra thick, ->] (fea) -- (ex_fea);
 \draw [ultra thick, ->] (ex_fea) -- (ml);
 
@@ -147,7 +147,7 @@
 \node at (1, -8) [scale = 2] {{TESTING PHASE}};
 
 \node [draw, anchor = center, minimum height = 3cm, minimum width = 3cm] (raw_test) at (0, -5) {};
-\node [mynode, align = center, anchor = north, below = .1cm of raw_test.north] {Raw test \\ data};
+\node [mynode, align = center, anchor = north, below = .1cm of raw_test.north] {Raw test \\ data (input)};
 
 \node [anchor = south, above = 0.2cm of raw_test.south] {\includegraphics[width = 2.7cm]{raw_test_data.pdf}};
 

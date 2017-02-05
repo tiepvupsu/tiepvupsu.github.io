@@ -1,8 +1,8 @@
 # Fdb version 3
-["pdflatex"] 1486228194 "ML_models.tex" "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/ML_models.pdf" "ML_models" 1486228194
+["pdflatex"] 1486235006 "ML_models.tex" "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/ML_models.pdf" "ML_models" 1486235010
   "/dev/null" 1486172887 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/etc/texmf/web2c/texmf.cnf" 1476924511 1101 af7716885e081ab43982cab7b4672c1a ""
-  "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/ML_models.aux" 1486228194 8 a94a2480d3289e625eea47cd1b285758 ""
+  "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/ML_models.aux" 1486235007 8 a94a2480d3289e625eea47cd1b285758 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -219,15 +219,15 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1458942643 31351 b32c45dce4a01cb7b53ed90c546614ca ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1476924582 1863403 f3ff9a4253bcb5fb9a9baaf0c572cb01 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1476924597 3856431 f9c94138039199b86e883dc1c4eb6c05 ""
-  "ML_models.aux" 1486228194 8 a94a2480d3289e625eea47cd1b285758 ""
-  "ML_models.tex" 1486228193 8748 d0af8d411f6a92e8260badcbd364cbfc ""
+  "ML_models.aux" 1486235007 8 a94a2480d3289e625eea47cd1b285758 ""
+  "ML_models.tex" 1486235006 8780 48c4154e43f8811377693ecbeb72685e ""
   "feature.pdf" 1486227925 1227 8e8d067a4b12be4e1c01799b81293830 ""
   "feature_test.pdf" 1486226783 1226 212e2dce954dc5198c5430df480408f6 ""
   "raw_data.pdf" 1486226810 1255 781926f1a47a0a436b5f7e43bf4955a7 ""
   "raw_test_data.pdf" 1486226800 1249 a17ed7fcb8fc4d6ab6abb43501d3384b ""
   (generated)
-  "ML_models.pdf"
-  "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/ML_models.log"
   "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/ML_models.pdf"
+  "ML_models.pdf"
   "ML_models.aux"
+  "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/ML_models.log"
   "ML_models.log"
