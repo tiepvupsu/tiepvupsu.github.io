@@ -9,7 +9,7 @@ category: General
 sc_project: 11243833
 sc_security: bf1d62ec
 img: \assets\FeatureEngineering\ML_models.png
-summary: Giới thiệu về một phương pháp Regression với hàm activation có những tính chất thú vị. 
+summary: Giới thiệu về các phương pháp tiền xử lý để tạo cá vector đặc trưng cho các bài toán Machine Learning. 
 ---
 **Trong trang này:**
 
@@ -44,7 +44,7 @@ summary: Giới thiệu về một phương pháp Regression với hàm activati
 
 ## 1. Giới thiệu 
 
-Cho tới lúc này, tôi đã trình bày 5 thuật toán Machine Learning cơ bản: [Linear Regression](/2016/12/28/linearregression/), [K-means Clusterning](/2017/01/01/kmeans/), [K-nearest neighbors](/2017/01/08/knn/), [Perceptron Learning Algorithm](/2017/01/21/perceptron/) và [Logistic Regression](/2017/01/27/logisticregression/). Trong tất cả các thuật toán này, tôi đều giả sử các điểm dữ liệu được biểu diễ bằng các vector, được gọi là _feature vector_ hay _vector đặc trưng_, có độ dài bằng nhau, và cùng là vector cột hoặc vector hàng. Tuy nhiên, trong các bài toán thực tế, mọi chuyện không được tốt đẹp như vậy!
+Cho tới lúc này, tôi đã trình bày 5 thuật toán Machine Learning cơ bản: [Linear Regression](/2016/12/28/linearregression/), [K-means Clusterning](/2017/01/01/kmeans/), [K-nearest neighbors](/2017/01/08/knn/), [Perceptron Learning Algorithm](/2017/01/21/perceptron/) và [Logistic Regression](/2017/01/27/logisticregression/). Trong tất cả các thuật toán này, tôi đều giả sử các điểm dữ liệu được biểu diễn bằng các vector, được gọi là _feature vector_ hay _vector đặc trưng_, có độ dài bằng nhau, và cùng là vector cột hoặc vector hàng. Tuy nhiên, trong các bài toán thực tế, mọi chuyện không được tốt đẹp như vậy!
 
 Với các bài toán về Computer Vision, các bức ảnh là các ma trận có kích thước khác nhau. Thậm chí để nhận dạng vật thể trong ảnh, ta cần thêm một bước nữa là _object detection_, tức là tìm cái khung chứa vật thể chúng ta cần dự đoán. Ví dụ, trong bài toán nhận dạng khuôn mặt, chúng ta cần tìm được vị trí các khuôn mặt trong ảnh và _crop_ các khuôn mặt đó trước khi làm các bước tiếp theo. Ngay cả khi đã xác định được các khung chứa các khuôn mặt (và có thể resize các khung đó về cùng một kích thước), ta vẫn phải làm rất nhiều việc nữa vì hình ảnh của khuôn mặt còn phụ thưộc vào góc chụp, ánh sáng, ... và rất nhiều yếu tố khác nữa. 
 
