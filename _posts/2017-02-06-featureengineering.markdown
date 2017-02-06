@@ -79,6 +79,7 @@ Có hai khối có nền màu xanh lục chúng ta cần phải thiết kế:
 
 #### Feature Extractor 
 **ĐẦU RA**
+
 Tôi xin đề cập đầu ra của khối này trước vì mục đích của Feature Engineering là tạo ra một Feature Extractor biến dữ liệu thô ban đầu thành dữ liệu phù hợp với từng mục đích khác nhau. 
 
 **ĐẦU VÀO**
