@@ -201,9 +201,9 @@ Có hai class ảnh, một class là ảnh các khu rừng, một class là ản
 
 **Ví dụ 2:**
 
-Trên thực tế, các bài toán xử lý ảnh không đơn giản như ví dụ 1 trên đây. Mắt người thực ra nhạy với các đường nét, hình dáng hơn là màu sắc. Một cái (ảnh) cây dù không có màu vẫn là một cái (ảnh) cây! Vì vậy, xem xét gía trị từng điểm ảnh một không mang lại kết quả khả quan vì lượng thông tin bị mất quá nhiều. 
+Trên thực tế, các bài toán xử lý ảnh không đơn giản như ví dụ 1 trên đây. Mắt người thực ra nhạy với các đường nét, hình dáng hơn là màu sắc. Một cái (ảnh) cây dù không có màu vẫn là một cái (ảnh) cây! Vì vậy, xem xét giá trị từng điểm ảnh một không mang lại kết quả khả quan vì lượng thông tin bị mất quá nhiều. 
 
-Có một cách khắc phục là thay vì xem xét một điểm ảnh, ta xem xét một _cửa sổ_ nhỏ trong ảnh (trong Computer Vision, cửa sổ này được gọi là patch) là một hình chữa nhật chứa nhiều điểm ảnh gần nhau. Cửa sổ này đủ lớn để có thể chứa được các bộ phận có thể mô tả được vật thể trong ảnh. 
+Có một cách khắc phục là thay vì xem xét một điểm ảnh, ta xem xét một _cửa sổ_ nhỏ trong ảnh (trong Computer Vision, cửa sổ này được gọi là patch) là một hình chữ nhật chứa nhiều điểm ảnh gần nhau. Cửa sổ này đủ lớn để có thể chứa được các bộ phận có thể mô tả được vật thể trong ảnh. 
 
 Ví dụ với mặt người, các patch nên đủ lớn để chứa được các phần của khuôn mặt như mắt, mũi, miệng như hình dưới đây. 
 
