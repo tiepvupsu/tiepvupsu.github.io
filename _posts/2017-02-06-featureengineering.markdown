@@ -191,7 +191,7 @@ Xét các ví dụ sau:
 
 **Ví dụ 1:**
 
-Có hai class ảnh, một là ảnh các khu rừng, một là ảnh các sa mạc. Phân loại một bức ảnh là rừng hay sa mạc (giả sử ta biết rằng nó thuộc một trong hai loại này) một cách trực quan nhất là dựa vào màu sắc. Màu xanh nhiều thì là rừng, màu đỏ và vàng nhiều thì là sa mạc. Vậy chúng ta có thể có một mô hình đơn giản để trích chọn đặc trưng như sau:
+Có hai class ảnh, một class là ảnh các khu rừng, một class là ảnh các sa mạc. Phân loại một bức ảnh là rừng hay sa mạc (giả sử ta biết rằng nó thuộc một trong hai loại này) một cách trực quan nhất là dựa vào màu sắc. Màu xanh nhiều thì là rừng, màu đỏ và vàng nhiều thì là sa mạc. Vậy chúng ta có thể có một mô hình đơn giản để trích chọn đặc trưng như sau:
 
 * Với một bức ảnh, chuẩn bị một vector \\(\mathbf{x}\\) có số chiều bằng 3, đại diện cho 3 màu xanh (\\(x\_1\\)), đỏ (\\(x\_2\\)), và vàng (\\(x\_3\\)). 
 
