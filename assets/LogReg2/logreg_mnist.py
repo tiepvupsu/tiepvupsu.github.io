@@ -2,15 +2,21 @@
 import numpy as np 
 from mnist import MNIST
 import matplotlib.pyplot as plt
-from sklearn.preprocessing import normalize
-
+# from sklearn.preprocessing import normalize
+from sklearn import linear_model
+from sklearn.metrics import accuracy_score
 from display_network import *
 
-mndata = MNIST('../MNIST/')
-mndata.load_training()
-X = np.asarray(mndata.train_images)
-y = np.array(mndata.train_labels.tolist())
+print('hello')
+mntrain = MNIST('../MNIST/')
+mntrain.load_training()
+Xtrain_all = np.asarray(mntrain.train_images)
+ytrain_all = np.array(mntrain.train_labels.tolist())
 
+mntest = MNIST('../MNIST/')
+mntest.load_testing()
+Xtest_all = np.asarray(mntest.test_images)
+ytest_all = np.array(mntest.test_labels.tolist())
 
 def extract_data(X, y, classes):
     """
@@ -32,43 +38,43 @@ def extract_data(X, y, classes):
         y_res_id = np.hstack((y_res_id, np.where(y == i)[0]))
     n1 = len(y_res_id) - n0 
     y_res_id = y_res_id.astype(int)
-    X_res = X[y_res_id, :]/255.0
-
+    X_res = X[y_res_id, :]
     y_res = np.asarray([0]*n0 + [1]*n1)
     return (X_res, y_res)
 
-cls = [[7], [1]]
-(X_train, y_train) = extract_data(X, y, cls)
+cls = [[0], [1]]
+# extract data for training 
+(X_train, y_train) = extract_data(Xtrain_all, ytrain_all, cls)
 
-
-print(X_train.shape, type(X_train))
-
-from sklearn import linear_model
-
-logreg = linear_model.LogisticRegression(C=1e5)
-logreg.fit(X_train, y_train)
-
-mndata.load_testing()
-Xtest_all = np.asarray(mndata.test_images)
-ytest_all = np.array(mndata.test_labels.tolist())
+# data for test 
 (X_test, y_test) = extract_data(Xtest_all, ytest_all, cls)
 
-y_pred = logreg.predict(X_test)
+# train the logistic regression model 
+logreg = linear_model.LogisticRegression(C=1e5) # just a big number 
+logreg.fit(X_train, y_train)
 
-from sklearn.metrics import accuracy_score
+# predict 
+y_pred = logreg.predict(X_test)
 print "Accuracy: %.2f %%" %(100*accuracy_score(y_test, y_pred.tolist()))
 
-print(y_pred[:30])
-print(y_test[:30])
-print(type(y_pred))
-print(type(y_test))
-print(np.where((y_pred - y_test) != 0))
+# display misclassified image(s)
 mis = np.where((y_pred - y_test) != 0)[0]
 Xmis = X_test[mis, :]
-# print(Xmis.shape)
+print(Xmis.shape)
 
-plt.axis('off')
-A = display_network(Xmis.T)
-f2 = plt.imshow(A, interpolation='nearest' )
-plt.gray()
-plt.show()
+# all 10 
+LogRegs = []
+for i in range(10):
+    cls = [[i], range(i) + range(i+1,10)]
+    print('training for i = %d ...' %i)
+    (X_train, y_train) = extract_data(Xtrain_all, ytrain_all, cls)
+
+    # data for test 
+    (X_test, y_test) = extract_data(Xtest_all, ytest_all, cls)
+
+    # train the logistic regression model 
+    logreg = linear_model.LogisticRegression(C=1e5) # just a big number 
+    logreg.fit(X_train, y_train)
+    
+    LogRegs.append(logred)
+        
