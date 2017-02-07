@@ -388,7 +388,7 @@ Ngoài việc tính toán khoảng cách từ một điểm test data đến t�
 
 ### Try this yourself
 
-Tôi có viết một đoạn code ngắn để thực hiện việc Classification cho cơ sở dữ liệu [MNIST](/2017/01/04/kmeans2/#bo-co-so-du-lieu-mnist). Các bạn hãy chạy thử, comment kết quả và nhận xét của các bạn vào phần Comment bên dưới. Để trả lời cho câu hỏi vì sao tôi không chọn cơ sở dữ liệu này làm ví dụ, bạn đọc có thể tự tìm ra đáp án khi chạy xong đoạn code này.
+Tôi có viết một đoạn code ngắn để thực hiện việc Classification cho cơ sở dữ liệu [MNIST](/2017/01/04/kmeans2/#bo-co-so-du-lieu-mnist). Các bạn hãy download toàn bộ bộ dữ liệu này về vì sau này chúng ta còn dùng nhiều, chạy thử, comment kết quả và nhận xét của các bạn vào phần comment bên dưới. Để trả lời cho câu hỏi vì sao tôi không chọn cơ sở dữ liệu này làm ví dụ, bạn đọc có thể tự tìm ra đáp án khi chạy xong đoạn code này.
 
 Enjoy!
 
