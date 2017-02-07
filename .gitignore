@@ -3,6 +3,7 @@ _site/
 */_site
 assets/MNIST/*
 assets/latex/*
+assets/data/*
 !assets/latex/*.tex
 !assets/latex/iris1.jpg
 !assets/latex/iris2.jpg

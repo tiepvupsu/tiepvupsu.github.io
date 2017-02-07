@@ -10,12 +10,12 @@ from display_network import *
 print('hello')
 mntrain = MNIST('../MNIST/')
 mntrain.load_training()
-Xtrain_all = np.asarray(mntrain.train_images)
+Xtrain_all = np.asarray(mntrain.train_images)/255.0
 ytrain_all = np.array(mntrain.train_labels.tolist())
 
 mntest = MNIST('../MNIST/')
 mntest.load_testing()
-Xtest_all = np.asarray(mntest.test_images)
+Xtest_all = np.asarray(mntest.test_images)/255.0
 ytest_all = np.array(mntest.test_labels.tolist())
 
 def extract_data(X, y, classes):
@@ -55,7 +55,7 @@ logreg.fit(X_train, y_train)
 
 # predict 
 y_pred = logreg.predict(X_test)
-print "Accuracy: %.2f %%" %(100*accuracy_score(y_test, y_pred.tolist()))
+print("Accuracy: %.2f %%" %(100*accuracy_score(y_test, y_pred.tolist())))
 
 # display misclassified image(s)
 mis = np.where((y_pred - y_test) != 0)[0]
@@ -65,7 +65,8 @@ print(Xmis.shape)
 # all 10 
 LogRegs = []
 for i in range(10):
-    cls = [[i], range(i) + range(i+1,10)]
+    # cls = [[i], range(i) + range(i+1,10)]
+    cls = [[i], np.hstack((np.arange(i), np.arange(i+1, 10)))]
     print('training for i = %d ...' %i)
     (X_train, y_train) = extract_data(Xtrain_all, ytrain_all, cls)
 
@@ -76,5 +77,4 @@ for i in range(10):
     logreg = linear_model.LogisticRegression(C=1e5) # just a big number 
     logreg.fit(X_train, y_train)
     
-    LogRegs.append(logred)
-        
+    LogRegs.append(logreg)
