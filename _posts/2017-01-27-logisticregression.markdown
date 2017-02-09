@@ -362,6 +362,10 @@ print(w[-1])
 Với kết quả tìm được, đầu ra \\(y\\) có thể được dự đoán theo công thức: `y = sigmoid(-4.1 + 1.55*x)`. Với dữ liệu trong tập training, kết quả là:
 
 
+<!-- {% highlight python linenos %}
+ import numpy as np 
+{% endhighlight %} -->
+
 ```python
 print(sigmoid(np.dot(w[-1].T, X)))
 ```

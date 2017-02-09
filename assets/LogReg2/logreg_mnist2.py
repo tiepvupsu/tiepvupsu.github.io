@@ -7,6 +7,8 @@ from sklearn import linear_model
 from sklearn.metrics import accuracy_score
 from display_network import *
 
+import time
+
 print('hello')
 mntrain = MNIST('../MNIST/')
 mntrain.load_training()
@@ -19,11 +21,14 @@ Xtest_all = np.asarray(mntest.test_images)/255.0
 ytest_all = np.array(mntest.test_labels.tolist())
 
 
+t1 = time.time()
 logreg = linear_model.LogisticRegression(C=1e5) # just a big number 
 logreg.fit(Xtrain_all, ytrain_all)
 y_pred = logreg.predict(Xtest_all)
 print("Accuracy: %.2f %%" %(100*accuracy_score(ytest_all, y_pred.tolist())))
 
+t2 = time.time()
+print('running time %d' %(t2 - t1))
 # def extract_data(X, y, classes):
 #     """
 #     X: numpy array, matrix of size (N, d), d is data dim

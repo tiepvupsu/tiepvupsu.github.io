@@ -1,0 +1,302 @@
+.codehilite table {padding: 0px; border: 0px; width:100%;
+		/*font-size: 80%;*/
+          height: auto; background-color: #233445;
+          overflow: auto; }
+.codehilite table td { padding: 0px; border: 1px solid #999; 
+	font-size: 10px;
+	background-color: #233445;}
+.codehilite table pre { margin: 0; border: 0px; background-color: #233445; color: #999;}
+.codehilite pre {color: red;}
+/*.codehilite {font-size: 12px;}  */
+
+/*.code {background-color: red;}*/
+
+.lineno {color: #999; border-right:1px solid ; 
+	border-color: #aaa; max-width: 30px; padding: 2px;
+	/*font-size: 96%;*/
+	}
+.codehilite{
+			/*font-size: 80%;*/
+	          width:100%;
+	          height: auto;
+	          overflow: auto;
+          /*background-color: #233445;*/
+        }
+
+
+.codehilite .n, .p{
+	color: #fefefe;
+	font-size: 80%;
+
+}
+
+.codehilite .c, .codehilite .cd {
+	font-size: 80%;
+  color: #3776CE;
+  font-style: italic;
+}
+.codehilite .cm {
+	font-size: 80%;
+  color: #3776CE;
+  font-style: italic;
+}
+.codehilite .c1 {
+	font-size: 80%;
+  color: #3776CE;
+  font-style: italic;
+}
+.codehilite .cp {
+	font-size: 80%;
+  color: #3776CE;
+  font-weight: bold;
+}
+.codehilite .cs {
+	font-size: 80%;
+  color: #3776CE;
+  font-weight: bold;
+  font-style: italic;
+}
+.codehilite .err {
+	font-size: 80%;
+  color: #960050;
+  background-color: #1e0010;
+}
+.codehilite .gi {
+	font-size: 80%;
+  color: #ffffff;
+  background-color: #324932;
+}
+.codehilite .gd {
+	font-size: 80%;
+  color: #ffffff;
+  background-color: #493131;
+}
+.codehilite .ge {
+	font-size: 80%;
+  color: #000000;
+  font-style: italic;
+}
+.codehilite .gr {
+	font-size: 80%;
+  color: #aa0000;
+}
+.codehilite .gt {
+	font-size: 80%;
+  color: #aa0000;
+}
+.codehilite .gh {
+	font-size: 80%;
+  color: #999999;
+}
+.codehilite .go {
+	font-size: 80%;
+  color: #888888;
+}
+.codehilite .gp {
+	font-size: 80%;
+  color: #555555;
+}
+.codehilite .gs {
+	font-size: 80%;
+  font-weight: bold;
+}
+.codehilite .gu {
+	font-size: 80%;
+  color: #aaaaaa;
+}
+.codehilite .k, .codehilite .kv {
+	font-size: 80%;
+  color: #66d9ef;
+  font-weight: bold;
+}
+.codehilite .kc {
+	font-size: 80%;
+
+  color: #66d9ef;
+  font-weight: bold;
+}
+.codehilite .kd {
+	font-size: 80%;
+
+  color: #66d9ef;
+  font-weight: bold;
+}
+.codehilite .kp {
+  color: #66d9ef;
+	font-size: 80%;
+  font-weight: bold;
+}
+.codehilite .kr {
+	font-size: 80%;
+  color: #66d9ef;
+  font-weight: bold;
+}
+.codehilite .kt {
+	font-size: 80%;
+  color: #66d9ef;
+  font-weight: bold;
+}
+.codehilite .kn {
+	font-size: 80%;
+  color: #f92672;
+  font-weight: bold;
+}
+.codehilite .ow {
+	font-size: 80%;
+  color: #f92672;
+  font-weight: bold;
+}
+.codehilite .o {
+	font-size: 80%;
+  color: #f92672;
+  font-weight: bold;
+}
+.codehilite .mf {
+	font-size: 80%;
+  color: #ae81ff;
+}
+.codehilite .mh {
+	font-size: 80%;
+  color: #ae81ff;
+}
+.codehilite .il {
+	font-size: 80%;
+  color: #ae81ff;
+}
+.codehilite .mi {
+	font-size: 80%;
+  color: #ae81ff;
+}
+.codehilite .mo {
+	font-size: 80%;
+  color: #ae81ff;
+}
+.codehilite .m, .codehilite .mb, .codehilite .mx {
+	font-size: 80%;
+  color: #ae81ff;
+}
+
+.codehilite .se {
+	font-size: 80%;
+  color: #ae81ff;
+}
+.codehilite .sb {
+	font-size: 80%;
+  color: #e6db74;
+}
+.codehilite .sc {
+	font-size: 80%;
+  color: #e6db74;
+}
+.codehilite .sd {
+	font-size: 80%;
+  color: #e6db74;
+}
+.codehilite .s2 {
+	font-size: 80%;
+  color: #e6db74;
+}
+.codehilite .sh {
+	font-size: 80%;
+  color: #e6db74;
+}
+.codehilite .si {
+	font-size: 80%;
+  color: #e6db74;
+}
+.codehilite .sx {
+	font-size: 80%;
+  color: #e6db74;
+}
+.codehilite .sr {
+	font-size: 80%;
+  color: #e6db74;
+}
+.codehilite .s1 {
+	font-size: 80%;
+  color: #e6db74;
+}
+.codehilite .ss {
+	font-size: 80%;
+  color: #e6db74;
+}
+.codehilite .s {
+	font-size: 80%;
+  color: #e6db74;
+}
+.codehilite .na {
+	font-size: 80%;
+  color: #a6e22e;
+}
+.codehilite .nc {
+	font-size: 80%;
+  color: #a6e22e;
+  font-weight: bold;
+}
+.codehilite .nd {
+	font-size: 80%;
+  color: #a6e22e;
+  font-weight: bold;
+}
+.codehilite .ne {
+	font-size: 80%;
+  color: #a6e22e;
+  font-weight: bold;
+}
+.codehilite .nf {
+	font-size: 80%;
+  color: #a6e22e;
+  font-weight: bold;
+}
+.codehilite .no {
+	font-size: 80%;
+  color: #66d9ef;
+}
+.codehilite .bp {
+	font-size: 80%;
+  color: #f8f8f2;
+}
+.codehilite .nb {
+	font-size: 80%;
+  color: #f8f8f2;
+}
+.codehilite .ni {
+	font-size: 80%;
+  color: #f8f8f2;
+}
+.codehilite .nn {
+	font-size: 80%;
+  color: #f8f8f2;
+}
+.codehilite .vc {
+	font-size: 80%;
+  color: #f8f8f2;
+}
+.codehilite .vg {
+	font-size: 80%;
+  color: #f8f8f2;
+}
+.codehilite .vi {
+	font-size: 80%;
+  color: #f8f8f2;
+}
+.codehilite .nv {
+	font-size: 80%;
+  color: #f8f8f2;
+}
+.codehilite .w {
+  color: #f8f8f2;
+  font-size: 80%;
+}
+.codehilite .nl {
+  color: #f8f8f2;
+  font-size: 80%;
+  font-weight: bold;
+}
+.codehilite .nt {
+  color: #f92672;
+  font-size: 80%;
+}
+
+
+.code{ color: red; }
