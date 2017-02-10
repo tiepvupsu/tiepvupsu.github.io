@@ -7,8 +7,8 @@ permalink: 2017/02/11/binaryclassifiers/
 mathjax: true
 tags: Neural-nets Supervised-learning Regression Binary-classifier Multi-class
 category: Neural-nets
-sc_project: 
-sc_security: 
+sc_project: 11249723
+sc_security: 88f074fb
 img: \assets\LogReg2\ARgenderResult.png
 summary: Áp dụng Logistic Regression vào một vài bài toán và mở rộng binary classifiers cho các bài toán multi-class. 
 ---
