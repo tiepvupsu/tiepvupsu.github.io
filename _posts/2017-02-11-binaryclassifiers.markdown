@@ -10,7 +10,7 @@ category: Neural-nets
 sc_project: 
 sc_security: 
 img: \assets\LogReg2\ARgenderResult.png
-summary: Một vài ứng dụng của Logistic Regression. Logistic Regression cho các bài toán multi-class classification. 
+summary: Áp dụng Logistic Regression vào một vài bài toán thực tế và mở rộng binary classifiers cho các bài toán multi-class. 
 ---
 
 Cho tới bây giờ, ngoài _thuật toán lười_ [K-nearest neighbors](/2017/01/08/knn/), tôi đã giới thiệu với bạn đọc hai thuật toán cho các bài toán Classification: [Perceptron Learning Algorithm](/2017/01/21/perceptron/) và [Logistic Regression](/2017/01/27/logisticregression/). Hai thuật toán này được xếp vào loại Binary Classifiers vì chúng được xây dựng dựa trên ý tưởng về các bài toán classification với chỉ hai classes. Trong bài viết này, tôi sẽ cùng các bạn làm một vài ví dụ nhỏ về ứng dụng đơn giản (nhưng thú vị) của các binary classifiers, và cách mở rộng chúng để áp dụng cho các bài toán với nhiều classes (multi-class classification problems). 
