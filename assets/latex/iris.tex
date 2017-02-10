@@ -10,9 +10,9 @@
 \begin{tikzpicture}[>=stealth', thick]
 
 
-    \node [label = below: Iris setosa] (n1) at (0, 0) {\includegraphics[height = 100pt]{iris1.jpg}};
-    \node (n2) [anchor = west, right = -5pt of n1.east, label = below: Iris versicolor] {\includegraphics[height = 100pt]{iris2.jpg}};
-    \node (n3) [anchor = west, right = -5pt of n2.east, label = below: Iris virginica] {\includegraphics[height = 100pt]{iris3.jpg}};
+    % \node [label = below: Iris setosa] (n1) at (0, 0) {\includegraphics[height = 100pt]{iris1.jpg}};
+    % \node (n2) [anchor = west, right = -5pt of n1.east, label = below: Iris versicolor] {\includegraphics[height = 100pt]{iris2.jpg}};
+    % \node (n3) [anchor = west, right = -5pt of n2.east, label = below: Iris virginica] {\includegraphics[height = 100pt]{iris3.jpg}};
     % \node at (\xx + 2.2, \xy + .2) {$=$};
     % \node at (\xx+5.5, \xy + .2) {\includegraphics[height = 100px]{digit7.png}};
     % \node at (\yx, \yy + .2) {$\mathbf{y}$};
@@ -33,6 +33,14 @@
     % \draw 
     % \draw 
 
-
+    \begin{bchart}[step=2,max=10]
+        \bcbar{3.4}
+            \smallskip
+        \bcbar{5.6}
+            \medskip
+        \bcbar{7.2}
+            \bigskip
+        \bcbar{9.9}
+    \end{bchart}
 \end{tikzpicture}
 \end{document}
