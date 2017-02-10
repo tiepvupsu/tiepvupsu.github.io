@@ -13,16 +13,16 @@ img: \assets\LogReg2\ARgenderResult.png
 summary: Một vài ứng dụng của Logistic Regression. Logistic Regression cho các bài toán multi-class classification. 
 ---
 
-Cho tới bây giờ, ngoài _thuật toán lười_ [K-nearest neighbors](/2017/01/08/knn/), tôi đã giới thiệu với bạn đọc hai thuật toán cho các bài toán Classification: [Perceptron Learning Algorithm](/2017/01/21/perceptron/) và [Logistic Regression](/2017/01/27/logisticregression/). Hai thuật toán này được xếp vào loại Binary Classifiers vì chúng được xây dựng dựa trên ý tưởng về các bài toán classification với chỉ hai classes. Trong bài viết này, tôi sẽ cùng các bạn làm một vài ví dụ nhỏ về ứng dụng đơn giản (nhưng thú vị) của các binary classifiers, cho cả các bài toán với hai classes, và cách mở rộng chúng để áp dụng cho các bài toán với nhiều classes. 
+Cho tới bây giờ, ngoài _thuật toán lười_ [K-nearest neighbors](/2017/01/08/knn/), tôi đã giới thiệu với bạn đọc hai thuật toán cho các bài toán Classification: [Perceptron Learning Algorithm](/2017/01/21/perceptron/) và [Logistic Regression](/2017/01/27/logisticregression/). Hai thuật toán này được xếp vào loại Binary Classifiers vì chúng được xây dựng dựa trên ý tưởng về các bài toán classification với chỉ hai classes. Trong bài viết này, tôi sẽ cùng các bạn làm một vài ví dụ nhỏ về ứng dụng đơn giản (nhưng thú vị) của các binary classifiers, và cách mở rộng chúng để áp dụng cho các bài toán với nhiều classes (multi-class classification problems). 
 
 
-Vì Logistic Regression không yêu cầu các classes phải [_linearly separable_](/2017/01/21/perceptron/#bai-toan-perceptron) như PLA, nên tôi sẽ sử dụng Logistic Regression để đại diện cho các binary classifiers. _Chú ý rằng, có rất nhiều các thuật toán cho binary classification nữa mà tôi chưa giới thiệu. Tạm thời, với những gì đã viết,tôi chỉ sử dụng Logistic Regression. Các kỹ thuật trong bài viết này hoàn toàn có thể áp dụng cho các binary classifiers khác._
+Vì Logistic Regression chỉ yêu cầu các classes là [_ nearly linearly separable_](/2017/01/21/perceptron/#bai-toan-perceptron) (tức có thể có vài điểm làm phá vỡ tính linear separability), tôi sẽ sử dụng Logistic Regression để đại diện cho các binary classifiers. _Chú ý rằng, có rất nhiều các thuật toán cho binary classification nữa mà tôi chưa giới thiệu. Tạm thời, với những gì đã viết, tôi chỉ sử dụng Logistic Regression cho các ví dụ với code mẫu. Các kỹ thuật trong bài viết này hoàn toàn có thể áp dụng cho các binary classifiers khác._
 
 
 **Trong trang này:** 
 <!-- MarkdownTOC -->
 
-- [Bài toán phân biệt giới tính dựa trên ảnh khuôn mặt](#bai-toan-phan-biet-gioi-tinh-dua-tren-anh-khuon-mat)
+- [1. Bài toán phân biệt giới tính dựa trên ảnh khuôn mặt](#-bai-toan-phan-biet-gioi-tinh-dua-tren-anh-khuon-mat)
     - [Làm việc với Python](#lam-viec-voi-python)
 - [2. Bài toán phân biệt hai chữ số viết tay](#-bai-toan-phan-biet-hai-chu-so-viet-tay)
 - [3. Binary Classifiers cho Multi-class Classification problems](#-binary-classifiers-cho-multi-class-classification-problems)
@@ -30,16 +30,18 @@ Vì Logistic Regression không yêu cầu các classes phải [_linearly separab
     - [Hierarchical \(phân tầng\)](#hierarchical-phan-tang)
     - [Binary coding](#binary-coding)
     - [one-vs-rest hay one-hot coding](#one-vs-rest-hay-one-hot-coding)
+    - [Kết hợp các phương pháp trên](#ket-hop-cac-phuong-phap-tren)
 - [4. Thảo luận](#-thao-luan)
     - [Biểu diễn dưới dạng Neural Networks](#bieu-dien-duoi-dang-neural-networks)
+    - [Hạn chế của one-vs-rest](#han-che-cua-one-vs-rest)
 - [5. Tài liệu tham khảo](#-tai-lieu-tham-khao)
 
 <!-- /MarkdownTOC -->
 
 
-<a name="bai-toan-phan-biet-gioi-tinh-dua-tren-anh-khuon-mat"></a>
+<a name="-bai-toan-phan-biet-gioi-tinh-dua-tren-anh-khuon-mat"></a>
 
-## Bài toán phân biệt giới tính dựa trên ảnh khuôn mặt 
+## 1. Bài toán phân biệt giới tính dựa trên ảnh khuôn mặt 
 Chúng ta cùng bắt đầu với bài toán phân biệt giới tính dựa trên ảnh khuôn mặt. Về ảnh khuôn mặt, bộ cơ sở dữ liệu [AR Face Database](http://www2.ece.ohio-state.edu/~aleix/ARdatabase.html) được sử dụng rộng rãi. 
 
 Bộ cơ sở dữ liệu này bao gồm hơn 4000 ảnh màu tương ứng với khuôn mặt của 126 người (70 nam, 56 nữ). Với mỗi người, 26 bức ảnh được chụp ở các điều kiện ánh sáng khác nhau, sắc thái biểu cảm khuôn mặt khác nhau, và bị che mắt (bởi kính râm) hoặc miệng (bởi khăn); và được chụp tại hai thời điểm khác nhau cách nhau 2 tuần. 
@@ -57,17 +59,17 @@ Bộ cơ sở dữ liệu này bao gồm hơn 4000 ảnh màu tương ứng vớ
 
 * _Có một cách đơn giản và nhanh hơn để lấy được các feature vector (sau bước [Feature Engineering](/general/2017/02/06/featureengineering/))  của cơ sở dữ liệu này mà không cần liên lạc với tác giả. Các bạn có thể tìm  [tại đây](https://www.umiacs.umd.edu/~zhuolin/projectlcksvd.html), phần **Downloads**, mục **Random face features for AR database**._
 
-Mỗi bức ảnh trong AR Face thu gọn được đặt tên dưới dạng `G-xxx-yy.bmp` Trong đó: `G` nhận một trong hai giá trị `M` (man) hoặc `W` (woman); `xxx` là id của người, nhận gía trị từ `001` đến `050`; `yy` là điều kiện chụp, nhận giá trị từ `01` đến `26`, trong đó các góc từ `01` đến `07` và từ `14` đến `20` là các góc không bị che bởi kính hoặc khăn. 
+Mỗi bức ảnh trong AR Face thu gọn được đặt tên dưới dạng `G-xxx-yy.bmp` Trong đó: `G` nhận một trong hai giá trị `M` (man) hoặc `W` (woman); `xxx` là id của người, nhận gía trị từ `001` đến `050`; `yy` là điều kiện chụp, nhận giá trị từ `01` đến `26`, trong đó các điều kiện có số thứ tự từ `01` đến `07` và từ `14` đến `20` là các khuôn mặt không bị che bởi kính hoặc khăn. Tôi tạm gọi mỗi _điều kiện_ này là một _view_.
 
 Để làm ví dụ cho thuật toán Logistic Regression, tôi lấy ảnh của 25 nam và 25 nữ đầu tiên làm tập training set; 25 nam và 25 nữ còn lại làm test set. Với mỗi người, tôi chỉ lấy các khuôn mặt không bị che bởi kính và khăn.
 
-**Feature Extraction**: vì mỗi bức ảnh có kích thước `3x165x120` là một số khá lớn nên ta sẽ làm thực hiện Feature Extraction bằng hai bước đơn giản sau (_bạn đọc được khuyến khích đọc bài [Giới thiệu về Feature Engineering](/general/2017/02/06/featureengineering/)_): 
+**Feature Extraction**: vì mỗi bức ảnh có kích thước `3x165x120` (số channels `3`, chiều cao `165`, chiều rộng `120`) là một số khá lớn nên ta sẽ làm thực hiện Feature Extraction bằng hai bước đơn giản sau (_bạn đọc được khuyến khích đọc bài [Giới thiệu về Feature Engineering](/general/2017/02/06/featureengineering/)_): 
 
 * Chuyển ảnh màu về ảnh xám theo công thức `Y' = 0.299 R + 0.587 G + 0.114 B ` (Xem thêm tại [Grayscale - wiki](https://en.wikipedia.org/wiki/Grayscale#Luma_coding_in_video_systems)). 
 
-* _Kéo dài_ ảnh xám thu được thành 1 vector hàng có số chiều `165x120`, sau đó sử dụng một _random projection matrix_ để giảm số chiều về `500`. Bạn đọc có thể thay giá trị này bằng các số khác. 
+* _Kéo dài_ ảnh xám thu được thành 1 vector hàng có số chiều `165x120`, sau đó sử dụng một _random projection matrix_ để giảm số chiều về `500`. Bạn đọc có thể thay giá trị này bằng các số khác nhỏ hơn `1000`. 
 
-Chúng ta có thể bắt tay làm việc với Python ngay bây giờ. Tôi sẽ sử dụng hàm [sklearn.linear_model.LogisticRegression](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html) trong thư viện `sklearn` cho các ví dụ trong bài này. Nếu không muốn đọc phần này, bạn có thể lấy [source code ở dây](/assets/LogRegs/ARgender.py). 
+Chúng ta có thể bắt đầu làm việc với Python ngay bây giờ. Tôi sẽ sử dụng hàm [sklearn.linear_model.LogisticRegression](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html) trong thư viện `sklearn` cho các ví dụ trong bài này. Nếu không muốn đọc phần này, bạn có thể lấy [source code ở dây](/assets/LogRegs/ARgender.py). 
 
 **Chú ý:** Hàm [sklearn.linear_model.LogisticRegression](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html) nhận dữ liệu ở dạng vector hàng. 
 
@@ -175,9 +177,9 @@ X_test = feature_extraction(X_test_full)
 X_test_full = None 
 ```
 
-**Chú ý:** Trong đoạn code trên tôi có sử dụng phương pháp chuẩn hóa dữ liệu [Standardization](/general/2017/02/06/featureengineering/#standardization). Trong đó `x_mean` và `x_var` lần lượt là vector kỳ vọng và phương sai của toàn bộ dữ liệu training. `X_train_full`, `X_test_full` lần lượt là ma trận dữ liệu đã được giảm số chiều nhưng chưa được chuẩn hóa. Hàm `feature_extraction` giúp chuẩn hóa dữ liệu dựa vào `x_mean` và `x_var` của `X_train_full`.
+**Chú ý:** Trong đoạn code trên tôi có sử dụng phương pháp chuẩn hóa dữ liệu [Standardization](/general/2017/02/06/featureengineering/#standardization). Trong đó `x_mean` và `x_var` lần lượt là vector kỳ vọng và phương sai của toàn bộ dữ liệu training. `X_train_full`, `X_test_full` là các ma trận dữ liệu đã được giảm số chiều nhưng chưa được chuẩn hóa. Hàm `feature_extraction` giúp chuẩn hóa dữ liệu dựa vào `x_mean` và `x_var` của `X_train_full`.
 
-Đoạn code dưới đây thực hiện thuật toán Logistic Regression, dự đoán output của test data và đánh giá kết quả. Một chú ý nhỏ, hàm Logistic Regression trong thư viện sklearn có nhiều biến thể khác nhau. Để sử dụng thuật toán Logistic Regression _thuần_ mà tôi đã giới thiệu trong Bài 10, chúng ta cần đặt giá trị cho `C` là một số lớn (để nghịch đảo của nó gần với 0. Tạm thời các bạn chưa cần quan tâm tới điều này, chỉ cần chọn `C` lớn là được).
+Đoạn code dưới đây thực hiện thuật toán Logistic Regression, dự đoán output của test data và đánh giá kết quả. Một chú ý nhỏ, hàm Logistic Regression trong thư viện sklearn có nhiều biến thể khác nhau. Để sử dụng thuật toán Logistic Regression _thuần_ mà tôi đã giới thiệu trong bài [Logistic Regression](/2017/01/27/logisticregression/), chúng ta cần đặt giá trị cho `C` là một số lớn (để nghịch đảo của nó gần với 0. Tạm thời các bạn chưa cần quan tâm tới điều này, chỉ cần chọn `C` lớn là được).
 
 
 ```python
@@ -240,15 +242,15 @@ Kết quả thu được là xác suất để bức ảnh đó là ảnh của 
 <div class = "thecap">Hình 2: Ví dụ về kết quả tìm được bằng Logistic Regression</div>
 </div> 
 
-Hàng trên gồm các hình được phân loại đúng, hàng dưới gồm các hình bị phân loại sai. Có một vài nhận xét về hàng dưới. Từ hai bức ảnh hàng dưới, chúng ta có thể đoán rằng Logistic Regression quan tâm đến tóc phía sau gáy nhiều hơn là râu! Việc thuật toán dựa trên những đặc trưng nhiều của ảnh phụ thuộc rất nhiều vào training data. Nếu trong training data, hầu hết nam không có râu và hầu hết nữ có tóc dài thì kết quả này là có thể lý giải được. 
+Hàng trên gồm các hình được phân loại đúng, hàng dưới gồm các hình bị phân loại sai. Có một vài nhận xét về hàng dưới. Từ hai bức ảnh hàng dưới, chúng ta có thể đoán rằng Logistic Regression quan tâm đến tóc phía sau gáy nhiều hơn là râu! Việc thuật toán dựa trên những đặc trưng nào của mỗi class phụ thuộc rất nhiều vào training data. Nếu trong training data, hầu hết nam không có râu và hầu hết nữ có tóc dài thì kết quả này là có thể lý giải được. 
 
-__Trong Machine Learning, thuật toán là quan trọng, nhưng thuật toán tốt mà dữ liệu không tốt thì sẽ dẫn đến tác dụng ngược!__
+__Trong Machine Learning, thuật toán là quan trọng, nhưng thuật toán tốt mà dữ liệu không tốt thì sẽ dẫn đến những tác dụng ngược!__
 
 (Source code cho ví dụ này có thể tìm thấy [ở dây](/assets/LogRegs/ARgender.py).)
 <a name="-bai-toan-phan-biet-hai-chu-so-viet-tay"></a>
 
 ## 2. Bài toán phân biệt hai chữ số viết tay 
-Chúng ta cùng sang ví dụ thứ hai về phân biệt hai chữ số trong [bộ cơ sở dữ liệu MNIT](/2017/01/04/kmeans2/#bo-co-so-du-lieu-mnist). Cụ thể, tôi sẽ làm việc với hai chữ số 0 và 1. Bạn đọc hoàn toàn có thể thử với các chữ số khác bằng cách thay đổi một dòng lệnh. Khác với AR Face, bộ dữ liệu này có thể dễ dàng được download về từ [trang chủ](http://yann.lecun.com/exdb/mnist/) của nó.
+Chúng ta cùng sang ví dụ thứ hai về phân biệt hai chữ số trong [bộ cơ sở dữ liệu MNIST](/2017/01/04/kmeans2/#bo-co-so-du-lieu-mnist). Cụ thể, tôi sẽ làm việc với hai chữ số 0 và 1. Bạn đọc hoàn toàn có thể thử với các chữ số khác bằng cách thay đổi một dòng lệnh. Khác với AR Face, bộ dữ liệu này có thể dễ dàng được download về từ [trang chủ](http://yann.lecun.com/exdb/mnist/) của nó.
 
 Chúng ta có thể bắt tay vào làm luôn. 
 
@@ -286,9 +288,9 @@ Sau bưóc này, toàn bộ dữ liệu training data và test data được lư
 cls = [[0], [1]]
 ```
 
-Nếu bạn muốn thử với cặp 3 và 4, chỉ cần thay dòng này bằng `cls = [[3], [4]]`. Nếu bạn muốn phân loại (4, 7) và (5, 6), chỉ cần thay dòng này bằng `cls = [[4, 7], [5, 6]]`. Các cặp bất kỳ khác đều có thể thực hiện bằng cách thay chỉ một dòng này. 
+Nếu bạn muốn thử với cặp `3` và `4`, chỉ cần thay dòng này bằng `cls = [[3], [4]]`. Nếu bạn muốn phân loại `(4, 7)` và `(5, 6)`, chỉ cần thay dòng này bằng `cls = [[4, 7], [5, 6]]`. Các cặp bất kỳ khác đều có thể thực hiện bằng cách thay chỉ một dòng này. 
 
-Đoạn code dưới đây thực hiện việc _extract_ toàn bộ dữ liệu cho các chữ số 0 và 1 trong tập training data và test data. 
+Đoạn code dưới đây thực hiện việc _extract_ toàn bộ dữ liệu cho các chữ số `0` và `1` trong tập training data và test data. 
 
 ```python
 def extract_data(X, y, classes):
@@ -324,7 +326,7 @@ def extract_data(X, y, classes):
 (X_test, y_test) = extract_data(Xtest_all, ytest_all, cls)
 ```
 
-Vì mỗi điểm dữ liệu có số phần tử là 784 (28x28), là một số khá nhỏ, nên ta không cần thêm bước giảm số chiều dữ liệu nữa. Tuy nhiên, tôi có thực hiện thêm một bước chuẩn hóa để đưa dữ liệu về đoạn `[0, 1]` bằng cách chia toàn bộ hai ma trận cho `255.0`.
+Vì mỗi điểm dữ liệu có số phần tử là 784 (28x28), là một số khá nhỏ, nên ta không cần thêm bước giảm số chiều dữ liệu nữa. Tuy nhiên, tôi có thực hiện thêm một bước chuẩn hóa để đưa dữ liệu về đoạn `[0, 1]` bằng cách chia toàn bộ hai ma trận dữ liệu cho `255.0`.
 
 Tới đây ta có thể _train_ mô hình Logistic Regression và đánh giá mô hình này.  
 
@@ -371,7 +373,8 @@ Source code cho ví dụ này có thể được tìm thấy [ở đây](/assets
 
 Có lẽ nhiều bạn đang đặt câu hỏi: Các ví dụ trên đây đều làm với bài toán có hai classes. Vậy nếu có nhiều hơn hai classes, ví dụ như 10 classes của MNIST, thì làm thế nào?
 
-Có nhiều thuật toán khác được xây dựng riêng cho các bài toán với nhiều classes (multi-class classification problems), tôi sẽ giới thiệu sau. Còn bây giờ, chúng ta vẫn có thể sử dụng các _binary classifiers_ để thực hiện công việc này, với một chút thay đổi. Để tiện cho việc diễn giải, tôi sử dụng MNIST làm ví dụ. Các cơ sở dữ liệu khác được suy ra một cách tương tự.
+Có nhiều thuật toán khác được xây dựng riêng cho các bài toán với nhiều classes (multi-class classification problems), tôi sẽ giới thiệu sau. Còn bây giờ, chúng ta vẫn có thể sử dụng các _binary classifiers_ để thực hiện công việc này, với một chút thay đổi. 
+<!-- Để tiện cho việc diễn giải, tôi sử dụng MNIST làm ví dụ. Các cơ sở dữ liệu khác được suy ra một cách tương tự. -->
 
 Có _ít nhất_ bốn cách để áp dụng _binary classifiers_ vào các bài toán multi-class classification:
 
@@ -379,9 +382,9 @@ Có _ít nhất_ bốn cách để áp dụng _binary classifiers_ vào các bà
 
 ### One-vs-one
 
-Xây dựng rất nhiều bộ binary classifiers. Bộ thứ nhất phân biệt class 1 và class 2, bộ thứ hai phân biệt class 1 và class 3, ... Khi có một dữ liệu mới vào, đưa nó vào toàn bộ các bộ binary classifiers trên. Kết quả cuối cùng có thể được xác định bằng cách xem class nào mà điểm dữ liệu đó được phân vào nhiều nhất (major voting). Hoặc với Logistic Regression thì ta có thể tính _tổng các xác suất_ tìm được sau mỗi bộ binary classifiers. 
+Xây dựng rất nhiều bộ binary classifiers cho từng cặp classes. Bộ thứ nhất phân biệt class 1 và class 2, bộ thứ hai phân biệt class 1 và class 3, ... Khi có một dữ liệu mới vào, đưa nó vào toàn bộ các bộ binary classifiers trên. Kết quả cuối cùng có thể được xác định bằng cách xem class nào mà điểm dữ liệu đó được phân vào nhiều nhất (major voting). Hoặc với Logistic Regression thì ta có thể tính _tổng các xác suất_ tìm được sau mỗi bộ binary classifier. 
  
-Như vậy, nếu có \\(C\\) classes thì tổng số binary classifiers phải dùng là \\(\frac{n(n-1)}{2}\\). Đây là một con số lớn, cách làm này không lợi về tính toán. Hơn nữa, nếu một chữ số thực ra là chữ số `1`, nhưng lại được đưa vào bộ phân lớp giữa các chữ số `5` và `6`, thì cả hai khả năng tìm được (là `5` hoặc `6`) đều không có lý!
+Như vậy, nếu có \\(C\\) classes thì tổng số binary classifiers phải dùng là \\(\frac{n(n-1)}{2}\\). Đây là một con số lớn, cách làm này không lợi về tính toán. Hơn nữa, nếu một chữ số thực ra là chữ số `1`, nhưng lại được đưa vào bộ phân lớp giữa các chữ số `5` và `6`, thì cả hai khả năng tìm được (là `5` hoặc `6`) đều không hợp lý!
 
 <a name="hierarchical-phan-tang"></a>
 
@@ -399,7 +402,7 @@ Hạn chế lớn nhất của nó là việc nếu chỉ một binary classifie
 ### Binary coding
 Có một cách giảm số binary classifiers hơn nữa là **binary coding**, tức _mã hóa_ output của mỗi class bằng một số nhị phân. Ví dụ, nếu có 4 classes thì class thứ nhất được mã hóa là `00`, ba class kia được mã hóa lần lượt là `01, 10` và `11`. Với cách làm này, số bộ binary classifiers phải thực hiện chỉ là \\(m = \left\lceil\log_2(C)\right\rceil\\) trong đó \\(C\\) là số lượng class, \\(\left\lceil a \right\rceil\\) là _số nguyên nhỏ nhất không nhỏ hơn_ \\(a\\). Class thứ nhất sẽ đi tìm bit đầu tiên của output (đã được mã hóa nhị phân), class thứ hai sẽ đi tìm bit thứ hai, ...
 
-Cách làm này sử dụng một số lượng nhỏ nhất các bộ _binary classifiers_. Nó cũng có một hạn chế rất lớn là chỉ cần một bit bị phân loại sai sẽ dẫn đến dữ liệu bị phân loại sai. Hơn nữa, nếu số classes không phải là lũy thừa của hai, mã nhị phân nhận được có thể là một giá trị không tương ứng với class nào!
+Cách làm này sử dụng một số lượng nhỏ nhất các bộ _binary classifiers_. Nhưng nó có một hạn chế rất lớn là chỉ cần một bit bị phân loại sai sẽ dẫn đến dữ liệu bị phân loại sai. Hơn nữa, nếu số classes không phải là lũy thừa của hai, mã nhị phân nhận được có thể là một giá trị không tương ứng với class nào!
 
 <a name="one-vs-rest-hay-one-hot-coding"></a>
 
@@ -408,7 +411,7 @@ Phương pháp được sử dụng nhiều nhất là **one-vs-rest** (một s�
 
 Phương pháp này còn được gọi là **one-hot coding** (được sử dụng nhiều nên có rất nhiều tên) vì với cách mã hóa trên, giả sử có 4 classes, class 1, 2, 3, 4 sẽ lần lượt được mã hóa dưới dạng nhị phân bởi `1000, 0100, 0010` hoặc `0001`. One-hot vì chỉ có _one_ bit là _hot_ (bằng `1`). 
 
-Hàm Logistic Regression trong thư viện sklearn có thể được dùng để trực tiếp áp dụng vào các bài toán multi-class classification. Với bài toán MNIST như nêu ở phần 2, ta có thể thêm ba dòng lệnh sau để chạy trên toàn bộ 10 classes:
+Hàm Logistic Regression trong thư viện sklearn có thể được dùng trực tiếp để áp dụng vào các bài toán multi-class classification với phương pháp **one-vs-rest**. Với bài toán MNIST như nêu ở phần 2, ta có thể thêm ba dòng lệnh sau để chạy trên toàn bộ 10 classes:
 
 ```
 logreg.fit(Xtrain_all, ytrain_all)
@@ -416,10 +419,38 @@ y_pred = logreg.predict(Xtest_all)
 print "Accuracy: %.2f %%" %(100*accuracy_score(ytest_all, y_pred.tolist()))
 ```
 
-Kết quả thu được khoảng 91% sau hơn 20 phút chạy (tùy thuộc vào máy). Đây vẫn là một kết quả quá thấp so với con số 99.7%. 
+Kết quả thu được khoảng 91% sau hơn 20 phút chạy (tùy thuộc vào máy). Đây vẫn là một kết quả quá thấp so với con số 99.7%. Thậm chí phương pháp học máy _không học gì_ như [K-neareast neighbors cũng đã đạt hơn 96%](/2017/01/08/knn/#try-this-yourself) với thời gian chạy ngắn hơn một chút. 
 
-Một chú ý nhỏ: phương pháp mặc định cho các bài toán multi-class của hàm này được xác định bởi biến `multi_class`. Có hai lựa chọn cho biến này, trong đó lựa chọn mặc định là `ovr` tức **one-vs-rest**, lựa chọn còn lại sẽ được tôi đề cập trong một bài gần đây. Lựa chọn thứ hai không phải cho binary classifiers nên tôi không đề cập trong bài này. (Xem thêm [`sklearn.linear_model.LogisticRegression`](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html))
+Một chú ý nhỏ: phương pháp mặc định cho các bài toán multi-class của hàm này được xác định bởi biến `multi_class`. Có hai lựa chọn cho biến này, trong đó lựa chọn mặc định là `ovr` tức **one-vs-rest**, lựa chọn còn lại sẽ được tôi đề cập trong một bài gần đây. Lựa chọn thứ hai không phải cho binary classifiers nên tôi không đề cập trong bài này, có thể sau một vài bài nữa (Xem thêm [`sklearn.linear_model.LogisticRegression`](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html))
 
+<a name="ket-hop-cac-phuong-phap-tren"></a>
+
+### Kết hợp các phương pháp trên
+
+Nhắc lại rằng các linear binary classifiers tôi đã trình bày yêu cầu dữ liệu là _linearly separable_ hoặc _nearly linearly separable_. Ta cũng có thể mở rộng định nghĩa này cho các bài toán multi-class. Nếu hai class bất kỳ là _linearly separable_ thì ta coi dữ liệu đó là _linearly separable_. 
+
+Thế nhưng, có những loại dữ liệu _linearly separable_ mà chỉ một số trong 4 phương pháp trên đây là phù hợp, hoặc có những loại dữ liệu yêu cầu phải kết hợp nhiều phương pháp mới thực hiện được. Xét ba ví dụ sau:
+
+<div class="imgcap">
+<img src ="\assets\LogReg2\dist.png" align = "center" width = "800">
+<div class = "thecap">Hình 4: Một số ví dụ về phân phối của các classes trong bài toàn multi-class</div>
+</div> 
+
+* Hình 4a): cả 4 phương pháp trên đây đều có thể áp dụng được.
+
+* Hình 4b): one-vs-rest không phù hợp vì class màu xanh lục và class _rest_ (hợp của xanh lam và đỏ) là không _linearly separable_. Lúc này, one-vs-one hoặc hierarchical phù hợp hơn. 
+
+* Hình 4c): Tương tự như trên, ba class lam, lục, đỏ thẳng hàng nên sẽ không dùng được one-vs-rét. one-vs-one vẫn làm việc vì từng đôi class một là _linearly separable_. Tương tự hierarchical cũng làm việc nếu ta phân chia các nhóm một cách hợp lý. Hoặc chúng ta có thể kết hợp nhiều phương pháp. Ví dụ: dùng one-vs-rest để tìm _đỏ_ vs _không đỏ_. Nếu một điểm dữ liệu là _không đỏ_, với 3 class còn lại, chúng ta lại quay lại trường hợp Hình 4a) và có thể dùng các phương pháp khác. Nhưng khó khăn vẫn nằm ở việc phân nhóm như thế nào, liệu rằng những class nào có thể cho vào cùng một nhóm? Với những dữ liệu đơn giản, [K-means clustering](/2017/01/01/kmeans/) có thể là một giải pháp!
+
+Bạn đọc có thể xem thêm ví dụ áp dụng Logistic Regression cho cơ sở dữ liệu [Iris](/2017/01/08/knn/#bo-co-so-du-lieu-iris-iris-flower-dataset) trong [link này](http://scikit-learn.org/stable/auto_examples/linear_model/plot_iris_logistic.html)
+<a name="-thao-luan"></a>
+
+
+
+<div class="imgcap">
+<img src ="http://scikit-learn.org/stable/_images/sphx_glr_plot_iris_logistic_001.png" align = "center" width = "500">
+<div class = "thecap">Hình 5: Logistic Regression với Iris database. (Nguồn: <a href="http://scikit-learn.org/stable/auto_examples/linear_model/plot_iris_logistic.html"><Logistic Regression 3-class Classifier</a>)</div>
+</div> 
 
 <a name="-thao-luan"></a>
 
@@ -427,7 +458,36 @@ Một chú ý nhỏ: phương pháp mặc định cho các bài toán multi-clas
 <a name="bieu-dien-duoi-dang-neural-networks"></a>
 
 ### Biểu diễn dưới dạng Neural Networks
-Lấy ví dụ với bài toán có 4 classes 0, 1, 2, 3 và bộ binary classifier được sử dụng là Logistic Regression, ta có thể biểu diễn các mô hình được đề cập trong phần 3 dưới dạng sau đây (giả sử input có số chiều là 5, vì mục đích minh họa):
+Lấy ví dụ với bài toán có 4 classes 1, 2, 3, 4; ta có thể biểu diễn các mô hình được đề cập trong phần 3 dưới dạng sau đây (giả sử input có số chiều là 7 và node output màu đỏ biểu diễn chung cho cả PLA, Logistic Regression và các networks với activation function khác): 
+
+<div class="imgcap">
+<img src ="\assets\LogReg2\binaryclassifiers.png" align = "center" width = "800">
+<div class = "thecap">Hình 6: Mô hình neural networks cho các phương pháp đề cập trong bài</div>
+</div> 
+
+Lúc này, thay vì chỉ có 1 node output như [các phương pháp tôi đề cập trước đây](/2017/01/27/logisticregression/#-thao-luan) (Linear Regression, Perceptron Learning Algorithm, Logistic Regression), chúng ta thấy rằng các networks này đều có nhiều outputs. Và một vector trọng số \\(\mathbf{w}\\) bây giờ đã trở thành _ma trận trọng số_ \\(\mathbf{W}\\) mà mỗi cột của nó tương ứng với vector trọng số của một node output. Việc tối ưu đồng thời các binary classifiers trong mỗi network cũng được tổng quát lên nhớ các phép tính với ma trận. 
+
+Lấy ví dụ với công thức cập nhật của [logistic sigmoid regression ](/2017/01/27/logisticregression/#cong-thuc-cap-nhat-cho-logistic-sigmoid-regression):
+
+\\[
+\mathbf{w} = \mathbf{w} + \eta(y\_i - z\_i)\mathbf{x}\_i
+\\]
+
+Có thể tổng quát thành:
+\\[
+\mathbf{W} = \mathbf{W} + \eta(\mathbf{y}\_i - \mathbf{z}\_i)\mathbf{x}\_i
+\\]
+
+Với \\(\mathbf{W}, \mathbf{y}\_i, \mathbf{z}\_i\\) lần lượt là ma trận trọng số, vector output _thật_ với toàn bộ các binary classifiers tương ứng với điểm dữ liệu \\(\mathbf{x}\_i\\), và vector output tìm được của networks tại thời điểm đang xét nếu đầu vào mỗi network là \\(\mathbf{x}\_i\\). Chú ý rằng với Logistic Regression, vector \\(\mathbf{y}\_i\\) là một binary vector, vector \\(\mathbf{z}\_i\\) gồm các phần tử nằm trong khoảng \\((0, 1)\\). 
+
+<a name="han-che-cua-one-vs-rest"></a>
+
+### Hạn chế của one-vs-rest
+Xem xét lại phương pháp one-vs-rest theo góc nhìn xác suất, một điểm dữ liệu có thể được dự đoán thuộc vào class \\(1, 2, \dots, C\\) với xác suất lần lượt là \\(p_1, p_2, \dots, p_C\\). Tuy nhiên, tổng các xác suất này có thể không bằng 1! Có một phương pháp có thể làm cho nó _hợp lý hơn_, tức _ép_ tổng các xác suất này bằng 1. Khi đó, với 1 điểm dữ liệu ta có thể nói xác suất nó rơi vào mỗi class là bao nhiêu. Phương pháp hấp dẫn này sẽ được đề cập không lâu sau bài viết này. Mời bạn đón đọc.
+
+<a name="han-che-chung-cua-cac-linear-binary-classifiers"></a>
+
+
 
 
 <a name="-tai-lieu-tham-khao"></a>
@@ -435,4 +495,6 @@ Lấy ví dụ với bài toán có 4 classes 0, 1, 2, 3 và bộ binary classif
 ## 5. Tài liệu tham khảo
 
 
-[Multiclass classification - wiki](https://en.wikipedia.org/wiki/Multiclass_classification)
+[1] [Multiclass classification - wiki](https://en.wikipedia.org/wiki/Multiclass_classification)
+
+[2] [Logistic Regression 3-class Classifier](http://scikit-learn.org/stable/auto_examples/linear_model/plot_iris_logistic.html)
