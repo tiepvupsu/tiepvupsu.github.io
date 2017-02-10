@@ -480,7 +480,7 @@ Có thể tổng quát thành:
 \mathbf{W} = \mathbf{W} + \eta(\mathbf{y}\_i - \mathbf{z}\_i)\mathbf{x}\_i
 \\]
 
-Với \\(\mathbf{W}, \mathbf{y}\_i, \mathbf{z}\_i\\) lần lượt là ma trận trọng số, vector output _thật_ với toàn bộ các binary classifiers tương ứng với điểm dữ liệu \\(\mathbf{x}\_i\\), và vector output tìm được của networks tại thời điểm đang xét nếu đầu vào mỗi network là \\(\mathbf{x}\_i\\). Chú ý rằng với Logistic Regression, vector \\(\mathbf{y}\_i\\) là một binary vector, vector \\(\mathbf{z}\_i\\) gồm các phần tử nằm trong khoảng \\((0, 1)\\). 
+Với \\(\mathbf{W}, \mathbf{y}\_i, \mathbf{z}\_i\\) lần lượt là ma trận trọng số, vector (cột) output _thật_ với toàn bộ các binary classifiers tương ứng với điểm dữ liệu \\(\mathbf{x}\_i\\), và vector output tìm được của networks tại thời điểm đang xét nếu đầu vào mỗi network là \\(\mathbf{x}\_i\\). Chú ý rằng với Logistic Regression, vector \\(\mathbf{y}\_i\\) là một binary vector, vector \\(\mathbf{z}\_i\\) gồm các phần tử nằm trong khoảng \\((0, 1)\\). 
 
 <a name="han-che-cua-one-vs-rest"></a>
 
