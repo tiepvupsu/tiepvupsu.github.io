@@ -469,7 +469,7 @@ Lấy ví dụ với bài toán có 4 classes 1, 2, 3, 4; ta có thể biểu di
 
 Lúc này, thay vì chỉ có 1 node output như [các phương pháp tôi đề cập trước đây](/2017/01/27/logisticregression/#-thao-luan) (Linear Regression, Perceptron Learning Algorithm, Logistic Regression), chúng ta thấy rằng các networks này đều có nhiều outputs. Và một vector trọng số \\(\mathbf{w}\\) bây giờ đã trở thành _ma trận trọng số_ \\(\mathbf{W}\\) mà mỗi cột của nó tương ứng với vector trọng số của một node output. Việc tối ưu đồng thời các binary classifiers trong mỗi network cũng được tổng quát lên nhớ các phép tính với ma trận. 
 
-Lấy ví dụ với công thức cập nhật của [logistic sigmoid regression ](/2017/01/27/logisticregression/#cong-thuc-cap-nhat-cho-logistic-sigmoid-regression):
+<!-- Lấy ví dụ với công thức cập nhật của [logistic sigmoid regression ](/2017/01/27/logisticregression/#cong-thuc-cap-nhat-cho-logistic-sigmoid-regression):
 
 \\[
 \mathbf{w} = \mathbf{w} + \eta(y\_i - z\_i)\mathbf{x}\_i
@@ -480,7 +480,7 @@ Có thể tổng quát thành:
 \mathbf{W} = \mathbf{W} + \eta(\mathbf{y}\_i - \mathbf{z}\_i)\mathbf{x}\_i
 \\]
 
-Với \\(\mathbf{W}, \mathbf{y}\_i, \mathbf{z}\_i\\) lần lượt là ma trận trọng số, vector (cột) output _thật_ với toàn bộ các binary classifiers tương ứng với điểm dữ liệu \\(\mathbf{x}\_i\\), và vector output tìm được của networks tại thời điểm đang xét nếu đầu vào mỗi network là \\(\mathbf{x}\_i\\). Chú ý rằng với Logistic Regression, vector \\(\mathbf{y}\_i\\) là một binary vector, vector \\(\mathbf{z}\_i\\) gồm các phần tử nằm trong khoảng \\((0, 1)\\). 
+Với \\(\mathbf{W}, \mathbf{y}\_i, \mathbf{z}\_i\\) lần lượt là ma trận trọng số, vector (cột) output _thật_ với toàn bộ các binary classifiers tương ứng với điểm dữ liệu \\(\mathbf{x}\_i\\), và vector output tìm được của networks tại thời điểm đang xét nếu đầu vào mỗi network là \\(\mathbf{x}\_i\\). Chú ý rằng với Logistic Regression, vector \\(\mathbf{y}\_i\\) là một binary vector, vector \\(\mathbf{z}\_i\\) gồm các phần tử nằm trong khoảng \\((0, 1)\\).  -->
 
 <a name="han-che-cua-one-vs-rest"></a>
 
