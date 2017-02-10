@@ -30,8 +30,8 @@ Vì Logistic Regression chỉ yêu cầu các classes là [_ nearly linearly sep
     - [Hierarchical \(phân tầng\)](#hierarchical-phan-tang)
     - [Binary coding](#binary-coding)
     - [one-vs-rest hay one-hot coding](#one-vs-rest-hay-one-hot-coding)
-    - [Kết hợp các phương pháp trên](#ket-hop-cac-phuong-phap-tren)
 - [4. Thảo luận](#-thao-luan)
+    - [Kết hợp các phương pháp trên](#ket-hop-cac-phuong-phap-tren)
     - [Biểu diễn dưới dạng Neural Networks](#bieu-dien-duoi-dang-neural-networks)
     - [Hạn chế của one-vs-rest](#han-che-cua-one-vs-rest)
 - [5. Tài liệu tham khảo](#-tai-lieu-tham-khao)
@@ -423,6 +423,10 @@ Kết quả thu được khoảng 91% sau hơn 20 phút chạy (tùy thuộc và
 
 Một chú ý nhỏ: phương pháp mặc định cho các bài toán multi-class của hàm này được xác định bởi biến `multi_class`. Có hai lựa chọn cho biến này, trong đó lựa chọn mặc định là `ovr` tức **one-vs-rest**, lựa chọn còn lại sẽ được tôi đề cập trong một bài gần đây. Lựa chọn thứ hai không phải cho binary classifiers nên tôi không đề cập trong bài này, có thể sau một vài bài nữa (Xem thêm [`sklearn.linear_model.LogisticRegression`](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html))
 
+
+<a name="-thao-luan"></a>
+
+## 4. Thảo luận 
 <a name="ket-hop-cac-phuong-phap-tren"></a>
 
 ### Kết hợp các phương pháp trên
@@ -452,9 +456,7 @@ Bạn đọc có thể xem thêm ví dụ áp dụng Logistic Regression cho cơ
 <div class = "thecap">Hình 5: Logistic Regression với Iris database. (Nguồn: <a href="http://scikit-learn.org/stable/auto_examples/linear_model/plot_iris_logistic.html"><Logistic Regression 3-class Classifier</a>)</div>
 </div> 
 
-<a name="-thao-luan"></a>
 
-## 4. Thảo luận 
 <a name="bieu-dien-duoi-dang-neural-networks"></a>
 
 ### Biểu diễn dưới dạng Neural Networks
