@@ -453,7 +453,7 @@ Bạn đọc có thể xem thêm ví dụ áp dụng Logistic Regression cho cơ
 
 <div class="imgcap">
 <img src ="http://scikit-learn.org/stable/_images/sphx_glr_plot_iris_logistic_001.png" align = "center" width = "500">
-<div class = "thecap">Hình 5: Logistic Regression với Iris database. (Nguồn: <a href="http://scikit-learn.org/stable/auto_examples/linear_model/plot_iris_logistic.html"><Logistic Regression 3-class Classifier</a>)</div>
+<div class = "thecap">Hình 5: Logistic Regression với Iris database. (Nguồn: <a href="http://scikit-learn.org/stable/auto_examples/linear_model/plot_iris_logistic.html">Logistic Regression 3-class Classifier</a>)</div>
 </div> 
 
 
