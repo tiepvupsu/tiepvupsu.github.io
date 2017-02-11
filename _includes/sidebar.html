@@ -52,7 +52,7 @@
             <ul>
               {% for category in site.categories %}
                 {% if category[0] == page.category %}
-                  {% for post in category[1] offset:1 limit:5 %}
+                  {% for post in category[1] offset:0 limit:5 %}
                     <li><a style="text-align: left; font-family: 'Roboto Condensed', sans-serif; color: #204081;" href="{{ post.url }}">{{ post.title }}</a></li>
                   {% endfor %}
                 {% endif %}
