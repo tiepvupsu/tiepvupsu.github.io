@@ -8,14 +8,14 @@ np.random.seed(1)                          # for fixing random values
 
 
 # randomly generate data 
-N = 10 # number of training sample 
-d = 5 # data dimension 
-C = 3 # number of classes 
+N = 1000 # number of training sample 
+d = 784 # data dimension 
+C = 10 # number of classes 
 
 X = np.random.randn(d, N)
 y = np.random.randint(0, C, (N,))
 
-print(y)
+# print(y)
 
 def convert_labels(y):
     """
@@ -33,20 +33,15 @@ def convert_labels(y):
     return Y 
 
 Y = convert_labels(y)
-print(convert_labels(y))
+# print(convert_labels(y))
 
 def softmax(x):
     """Compute softmax values for each sets of scores in x."""
     # pass  # TODO: Compute and return softmax(x)
-    x2 = x
+    x2 = x - np.amax(x)
     return np.exp(x2)/ np.sum(np.exp(x2), axis = 0)
 
 
-# scores = [3.0, 1.0, 0.2]
-# print(softmax(scores))
-    
-
-# cost 
 def cost(X, Y, W):
     Z = softmax(W.T.dot(X))
     return -np.sum(Y*np.log(Z))
@@ -56,7 +51,6 @@ W_init = np.random.randn(d, C)
 def grad(X, Y, W):
     Z = softmax(W.T.dot(X))
     V = Z - Y
-    # import pdb; pdb.set_trace()  # breakpoint 1876e40b //
     return X.dot(V.T)
     
 def numerical_grad(X, Y, W, cost):
@@ -77,6 +71,7 @@ def numerical_grad(X, Y, W, cost):
 g1 = grad(X, Y, W_init)
 g2 = numerical_grad(X, Y, W_init, cost)
 
-print(g1)
-print('')
-print(g2)
+print(np.linalg.norm(g1 - g2))
+# print(g1)
+# print('')
+# print(g2)
