@@ -41,7 +41,6 @@ Vì Logistic Regression chỉ yêu cầu các classes là [_ nearly linearly sep
 
 <a name="-bai-toan-phan-biet-gioi-tinh-dua-tren-anh-khuon-mat"></a>
 
-<a name="-bai-toan-phan-biet-gioi-tinh-dua-tren-anh-khuon-mat"></a>
 ## 1. Bài toán phân biệt giới tính dựa trên ảnh khuôn mặt 
 Chúng ta cùng bắt đầu với bài toán phân biệt giới tính dựa trên ảnh khuôn mặt. Về ảnh khuôn mặt, bộ cơ sở dữ liệu [AR Face Database](http://www2.ece.ohio-state.edu/~aleix/ARdatabase.html) được sử dụng rộng rãi. 
 
@@ -76,7 +75,6 @@ Chúng ta có thể bắt đầu làm việc với Python ngay bây giờ. Tôi 
 
 <a name="lam-viec-voi-python"></a>
 
-<a name="lam-viec-voi-python"></a>
 ### Làm việc với Python
 
 Khai báo thư viện
@@ -251,7 +249,6 @@ __Trong Machine Learning, thuật toán là quan trọng, nhưng thuật toán t
 (Source code cho ví dụ này có thể tìm thấy [ở dây](/assets/LogRegs/ARgender.py).)
 <a name="-bai-toan-phan-biet-hai-chu-so-viet-tay"></a>
 
-<a name="-bai-toan-phan-biet-hai-chu-so-viet-tay"></a>
 ## 2. Bài toán phân biệt hai chữ số viết tay 
 Chúng ta cùng sang ví dụ thứ hai về phân biệt hai chữ số trong [bộ cơ sở dữ liệu MNIST](/2017/01/04/kmeans2/#bo-co-so-du-lieu-mnist). Cụ thể, tôi sẽ làm việc với hai chữ số 0 và 1. Bạn đọc hoàn toàn có thể thử với các chữ số khác bằng cách thay đổi một dòng lệnh. Khác với AR Face, bộ dữ liệu này có thể dễ dàng được download về từ [trang chủ](http://yann.lecun.com/exdb/mnist/) của nó.
 
@@ -372,7 +369,6 @@ Source code cho ví dụ này có thể được tìm thấy [ở đây](/assets
 
 <a name="-binary-classifiers-cho-multi-class-classification-problems"></a>
 
-<a name="-binary-classifiers-cho-multi-class-classification-problems"></a>
 ## 3. Binary Classifiers cho Multi-class Classification problems 
 
 Có lẽ nhiều bạn đang đặt câu hỏi: Các ví dụ trên đây đều làm với bài toán có hai classes. Vậy nếu có nhiều hơn hai classes, ví dụ như 10 classes của MNIST, thì làm thế nào?
@@ -384,7 +380,6 @@ Có _ít nhất_ bốn cách để áp dụng _binary classifiers_ vào các bà
 
 <a name="one-vs-one"></a>
 
-<a name="one-vs-one"></a>
 ### One-vs-one
 
 Xây dựng rất nhiều bộ binary classifiers cho từng cặp classes. Bộ thứ nhất phân biệt class 1 và class 2, bộ thứ hai phân biệt class 1 và class 3, ... Khi có một dữ liệu mới vào, đưa nó vào toàn bộ các bộ binary classifiers trên. Kết quả cuối cùng có thể được xác định bằng cách xem class nào mà điểm dữ liệu đó được phân vào nhiều nhất (major voting). Hoặc với Logistic Regression thì ta có thể tính _tổng các xác suất_ tìm được sau mỗi bộ binary classifier. 
@@ -393,7 +388,6 @@ Như vậy, nếu có \\(C\\) classes thì tổng số binary classifiers phải
 
 <a name="hierarchical-phan-tang"></a>
 
-<a name="hierarchical-phan-tang"></a>
 ### Hierarchical (phân tầng)
 Các làm như **one-vs-one** sẽ mất rất nhiều thời gian training vì có quá nhiều bộ phân lớp cần được xây dựng. Một cách khác giúp _tiết kiệm_ số binary classifiers hơn đó là **hierarchical**. Ý tưởng như sau:
 
@@ -405,7 +399,6 @@ Hạn chế lớn nhất của nó là việc nếu chỉ một binary classifie
 
 <a name="binary-coding"></a>
 
-<a name="binary-coding"></a>
 ### Binary coding
 Có một cách giảm số binary classifiers hơn nữa là **binary coding**, tức _mã hóa_ output của mỗi class bằng một số nhị phân. Ví dụ, nếu có 4 classes thì class thứ nhất được mã hóa là `00`, ba class kia được mã hóa lần lượt là `01, 10` và `11`. Với cách làm này, số bộ binary classifiers phải thực hiện chỉ là \\(m = \left\lceil\log_2(C)\right\rceil\\) trong đó \\(C\\) là số lượng class, \\(\left\lceil a \right\rceil\\) là _số nguyên nhỏ nhất không nhỏ hơn_ \\(a\\). Class thứ nhất sẽ đi tìm bit đầu tiên của output (đã được mã hóa nhị phân), class thứ hai sẽ đi tìm bit thứ hai, ...
 
@@ -413,7 +406,6 @@ Cách làm này sử dụng một số lượng nhỏ nhất các bộ _binary c
 
 <a name="one-vs-rest-hay-one-hot-coding"></a>
 
-<a name="one-vs-rest-hay-one-hot-coding"></a>
 ### one-vs-rest hay one-hot coding
 Phương pháp được sử dụng nhiều nhất là **one-vs-rest** (một số tài liệu gọi là **ove-vs-all**, **one-against-rest**, hoặc **one-against-all**) . Cụ thể, nếu có \\(C\\) classes thì ta sẽ xây dựng \\(C\\) classifiers, mỗi classifier tương ứng với một class. Classifier thứ nhất giúp phân biệt `class 1` vs `not class 1`, tức xem một điểm có thuộc class 1 hay không, hoặc xác suất để một điểm rơi vào class 1 là bao nhiêu. Tương tự như thế, classifier thứ hai sẽ phân biệt `class 2` vs `not class 2`, ... Kết quả cuối cùng có thể được xác định bằng cách xác định class mà một điểm rơi vào với xác suất cao nhất. 
 
@@ -434,11 +426,9 @@ Một chú ý nhỏ: phương pháp mặc định cho các bài toán multi-clas
 
 <a name="-thao-luan"></a>
 
-<a name="-thao-luan"></a>
 ## 4. Thảo luận 
 <a name="ket-hop-cac-phuong-phap-tren"></a>
 
-<a name="ket-hop-cac-phuong-phap-tren"></a>
 ### Kết hợp các phương pháp trên
 
 Nhắc lại rằng các linear binary classifiers tôi đã trình bày yêu cầu dữ liệu là _linearly separable_ hoặc _nearly linearly separable_. Ta cũng có thể mở rộng định nghĩa này cho các bài toán multi-class. Nếu hai class bất kỳ là _linearly separable_ thì ta coi dữ liệu đó là _linearly separable_. 
@@ -469,7 +459,6 @@ Bạn đọc có thể xem thêm ví dụ áp dụng Logistic Regression cho cơ
 
 <a name="bieu-dien-duoi-dang-neural-networks"></a>
 
-<a name="bieu-dien-duoi-dang-neural-networks"></a>
 ### Biểu diễn dưới dạng Neural Networks
 Lấy ví dụ với bài toán có 4 classes 1, 2, 3, 4; ta có thể biểu diễn các mô hình được đề cập trong phần 3 dưới dạng sau đây (giả sử input có số chiều là 7 và node output màu đỏ biểu diễn chung cho cả PLA, Logistic Regression và các networks với activation function khác): 
 
@@ -495,18 +484,11 @@ Với \\(\mathbf{W}, \mathbf{y}\_i, \mathbf{z}\_i\\) lần lượt là ma trận
 
 <a name="han-che-cua-one-vs-rest"></a>
 
-<a name="han-che-cua-one-vs-rest"></a>
 ### Hạn chế của one-vs-rest
 Xem xét lại phương pháp one-vs-rest theo góc nhìn xác suất, một điểm dữ liệu có thể được dự đoán thuộc vào class \\(1, 2, \dots, C\\) với xác suất lần lượt là \\(p_1, p_2, \dots, p_C\\). Tuy nhiên, tổng các xác suất này có thể không bằng 1! Có một phương pháp có thể làm cho nó _hợp lý hơn_, tức _ép_ tổng các xác suất này bằng 1. Khi đó, với 1 điểm dữ liệu ta có thể nói xác suất nó rơi vào mỗi class là bao nhiêu. Phương pháp hấp dẫn này sẽ được đề cập không lâu sau bài viết này. Mời bạn đón đọc.
 
-<a name="han-che-chung-cua-cac-linear-binary-classifiers"></a>
-
-
-
-
 <a name="-tai-lieu-tham-khao"></a>
 
-<a name="-tai-lieu-tham-khao"></a>
 ## 5. Tài liệu tham khảo
 
 
