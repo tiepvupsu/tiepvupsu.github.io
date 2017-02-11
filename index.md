@@ -6,6 +6,11 @@ permalink: /index/
 
 * [arg min](/2017/01/01/kmeans/#ham-mat-mat-va-bai-toan-toi-uu)
 * [Bag of Words](/general/2017/02/06/featureengineering/#bag-of-words)
+* [Binary classifiers](/2017/02/11/binaryclassifiers/)
+    - [one-vs-one](/2017/02/11/binaryclassifiers/#one-vs-one)
+    - [Hierarchical](/2017/02/11/binaryclassifiers/#hierarchical-phan-tang)
+    - [Binary coding](/2017/02/11/binaryclassifiers/#binary-coding)
+    - [one-vs-rest or one-hot coding](/2017/02/11/binaryclassifiers/#one-vs-rest-hay-one-hot-coding) ([2](/2017/01/01/kmeans/#one-hot))
 * [Classification](/2016/12/27/categories/#classification-phan-loai)
 * [Clustering](/2016/12/27/categories/#clustering-phan-nhom)    
     - [K-means Clustering](/2017/01/01/kmeans/)

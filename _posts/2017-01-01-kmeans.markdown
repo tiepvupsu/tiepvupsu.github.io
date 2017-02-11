@@ -98,6 +98,7 @@ Giả sử có \\(N\\) điểm dữ liệu là \\( \mathbf{X} = [\mathbf{x}_1, \
 
 **Lưu ý về ký hiệu toán học:** *trong các bài viết của tôi, các số vô hướng được biểu diễn bởi các chữ cái viết ở dạng không in đậm, có thể viết hoa, ví dụ \\(x_1, N, y, k\\). Các vector được biểu diễn bằng các chữ cái thường in đậm, ví dụ \\(\mathbf{m}, \mathbf{x}_1 \\). Các ma trận được biểu diễn bởi các chữ viết hoa in đậm, ví dụ \\(\mathbf{X, M, Y} \\). Lưu ý này đã được nêu ở bài <a href = "/2016/12/28/linearregression/">Linear Regression</a>. Tôi xin được không nhắc lại trong các bài tiếp theo.*
 
+<a name="one-hot"></a>
 Với mỗi điểm dữ liệu \\( \mathbf{x}\_i \\) đặt \\(\mathbf{y}\_i = [y\_{i1}, y\_{i1}, \dots, y\_{iK}]\\) là label vector của nó, trong đó nếu \\( \mathbf{x}\_i \\) được phân vào cluster \\(k\\) thì  \\(y\_{ik} = 1\\) và \\(y\_{ij} = 0, \forall j \neq k \\). Điều này có nghĩa là có đúng một phần tử của vector \\(\mathbf{y}\_i\\) là bằng 1 (tương ứng với cluster của \\(\mathbf{x}\_i \\)), các phần tử còn lại bằng 0. Ví dụ: nếu một điểm dữ liệu có label vector là \\([1,0,0,\dots,0]\\) thì nó thuộc vào cluster 1, là \\([0,1,0,\dots,0]\\) thì nó thuộc vào cluster 2, \\(\dots\\). Cách mã hóa label của dữ liệu như thế này được goi là biểu diễn [_one-hot_](https://en.wikipedia.org/wiki/One-hot). Chúng ta sẽ thấy cách biểu diễn one-hot này rất phổ biến trong Machine Learning ở các bài tiếp theo. 
 
 Ràng buộc của \\(\mathbf{y}\_i \\) có thể viết dưới dạng toán học như sau:
