@@ -32,7 +32,7 @@ Có hai cách phổ biến phân nhóm các thuật toán Machine learning. Mộ
     - [Classification Algorithms](#classification-algorithms)
     - [Instance-based Algorithms](#instance-based-algorithms)
     - [Regularization Algorithms](#regularization-algorithms)
-    - [Baysian Algorithms](#baysian-algorithms)
+    - [Bayesian Algorithms](#bayesian-algorithms)
     - [Clustering Algorithms](#clustering-algorithms)
     - [Artificial Neural Network Algorithms](#artificial-neural-network-algorithms)
     - [Dimensionality Reduction Algorithms](#dimensionality-reduction-algorithms)
@@ -205,9 +205,9 @@ Có một cách phân nhóm thứ hai dựa trên chức năng của các thuậ
 3. Least-Angle Regression (LARS)
 
 <!-- ========================== New Heading ==================== -->
-<a name="baysian-algorithms"></a>
+<a name="bayesian-algorithms"></a>
 
-### Baysian Algorithms
+### Bayesian Algorithms
 
 1. Naive Bayes
 2. Gausian Naive Bayes 
