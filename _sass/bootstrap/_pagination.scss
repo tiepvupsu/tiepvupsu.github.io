@@ -3,12 +3,15 @@
 // --------------------------------------------------
 .pagination {
   display: inline-block;
-  padding-left: 0;
+  align-content: center;
+  /*padding-left: 0;*/
+  padding: 3px;
   margin: $line-height-computed 0;
   border-radius: $border-radius-base;
 
   > li {
     display: inline; // Remove list-style and block-level defaults
+    /*border: 1px solid $myblue;*/
     > a,
     > span {
       position: relative;
@@ -58,6 +61,8 @@
       cursor: default;
     }
   }
+
+
 
   > .disabled {
     > span,

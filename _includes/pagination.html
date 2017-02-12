@@ -1,0 +1,25 @@
+{% if paginator.total_pages > 1 %}
+<div class="pagination" style="align-content: center"> 
+  {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" class="mypagination" >&laquo; Newer</a>
+  {% else %}
+    <span class="mypagination">&laquo; Newer</span>
+  {% endif %}
+
+  {% for page in (1..paginator.total_pages) %}
+    {% if page == paginator.page %}
+      <a href="#" class="mypagination myactive" style="background-color: #014B81; color: #fff; border: 1px solid; padding: 10px 15px 10px 15px ">{{ page }}</a>
+    {% elsif page == 1 %}
+      <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" class="mypagination">{{ page }}</a>
+    {% else %}
+      <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}" class="mypagination" ">{{ page }}</a>
+    {% endif %}
+  {% endfor %}
+
+  {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}" class="mypagination">Older &raquo;</a>
+  {% else %}
+    <span class="mypagination">Older &raquo;</span>
+  {% endif %}
+</div>
+{% endif %}

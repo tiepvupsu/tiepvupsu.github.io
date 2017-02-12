@@ -220,3 +220,18 @@ ul.nav li a:hover, ul.nav li a:active {
 ul.nav li.active a {
     color: red !important;
 }*/
+
+/*.pagination{
+  background-color: #014B81;
+  color: #fff;
+}*/
+
+.mypagination{
+  border: 1px solid #014B81; 
+  padding: 10px 15px 10px 15px;
+}
+
+.mypagination .myactive{
+  background-color: #014B81;
+  color: #fff;
+}
