@@ -182,7 +182,7 @@ Thuật toán Newton's method được mô tả trong hình động minh họa d
 
 Đó là ý nghĩa hình học của Newton's method, chúng ta cần một công thức để có thể dựa vào đó để lập trình. Việc này không quá phức tạp với các bạn thi đại học môn toán ở VN. Thật vậy, phương trình tiếp tuyến với đồ thị của hàm \\(f(x)\\) tại điểm có hoành độ \\(x_t\\) là:
 \\[
-y = f'(x)(x - x_t) + f(x_t)
+y = f'(x_t)(x - x_t) + f(x_t)
 \\]
 Giao điểm của đường thẳng này với trục \\(x\\) tìm được bằng cách giải phương trình vế phải của biểu thức trên bằng 0, tức là:
 \\[
