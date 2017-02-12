@@ -1,14 +1,16 @@
+<!-- <span style="text-align:  center"> -->
 {% if paginator.total_pages > 1 %}
-<div class="pagination" style="align-content: center"> 
+
+<div class="text-center" > 
   {% if paginator.previous_page %}
     <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" class="mypagination" >&laquo; Newer</a>
   {% else %}
-    <span class="mypagination">&laquo; Newer</span>
+    <span class="myhiddenpagination">&laquo; Newer</span>
   {% endif %}
 
   {% for page in (1..paginator.total_pages) %}
     {% if page == paginator.page %}
-      <a href="#" class="mypagination myactive" style="background-color: #014B81; color: #fff; border: 1px solid; padding: 10px 15px 10px 15px ">{{ page }}</a>
+      <a href="#" class="mypagination mypaginationactive" style = "background-color: #204081;" >{{ page }}</a>
     {% elsif page == 1 %}
       <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" class="mypagination">{{ page }}</a>
     {% else %}
@@ -19,7 +21,8 @@
   {% if paginator.next_page %}
     <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}" class="mypagination">Older &raquo;</a>
   {% else %}
-    <span class="mypagination">Older &raquo;</span>
+    <span class="myhiddenpagination">Older &raquo;</span>
   {% endif %}
 </div>
 {% endif %}
+<!-- </span> -->
