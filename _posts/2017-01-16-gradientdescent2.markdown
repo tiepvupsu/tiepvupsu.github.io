@@ -29,9 +29,9 @@ Trong [phần 1](/2017/01/12/gradientdescent/) của Gradient Descent (GD), tôi
         - [Gradient Descent với Momentum](#gradient-descent-voi-momentum)
         - [Một ví dụ nhỏ](#mot-vi-du-nho)
     - [1.2. Nesterov accelerated gradient \(NAG\)](#-nesterov-accelerated-gradient-nag)
-    - [Ý tưởng chính](#y-tuong-chinh)
-    - [Công thức cập nhật](#cong-thuc-cap-nhat)
-    - [Ví dụ minh họa](#vi-du-minh-hoa)
+        - [Ý tưởng chính](#y-tuong-chinh)
+        - [Công thức cập nhật](#cong-thuc-cap-nhat)
+        - [Ví dụ minh họa](#vi-du-minh-hoa)
     - [1.3. Các thuật toán khác](#-cac-thuat-toan-khac)
 - [2. Biến thể của Gradient Descent](#-bien-the-cua-gradient-descent)
     - [2.1. Batch Gradient Descent](#-batch-gradient-descent)
@@ -171,7 +171,7 @@ Momentum giúp _hòn bi_ vượt qua được _dốc locaminimum_, tuy nhiên, c
 
 <a name="y-tuong-chinh"></a>
 
-### Ý tưởng chính 
+#### Ý tưởng chính 
 
 Ý tưởng cơ bản là _dự đoán hướng đi trong tương lai_, tức nhìn trước một bước! Cụ thể, nếu sử dụng số hạng _momentum_ \\(\gamma v\_{t-1}\\) để cập nhật thì ta có thể _xấp xỉ_ được vị trí tiếp theo của hòn bi là \\(\theta - \gamma v\_{t-1}\\) (chúng ta không đính kèm phần gradient ở đây vì sẽ sử dụng nó trong bước cuối cùng). Vậy, thay vì sử dụng gradient của điểm hiện tại, NAG _đi trước một bước_, sử dụng gradient của điểm tiếp theo. Theo dõi hình dưới đây:
 
@@ -186,7 +186,7 @@ Momentum giúp _hòn bi_ vượt qua được _dốc locaminimum_, tuy nhiên, c
 
 <a name="cong-thuc-cap-nhat"></a>
 
-### Công thức cập nhật
+#### Công thức cập nhật
 
 Công thức cập nhật của NAG được cho như sau:
 
@@ -201,7 +201,7 @@ v\_{t} &=& \gamma v\_{t-1} + \eta \nabla_{\theta}J(\theta - \gamma v\_{t-1}) \\\
 
 <a name="vi-du-minh-hoa"></a>
 
-### Ví dụ minh họa 
+#### Ví dụ minh họa 
 
 Dưới đây là ví dụ so sánh Momentum và NAG cho bài toán Linear Regression:
 
