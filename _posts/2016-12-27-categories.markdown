@@ -257,6 +257,7 @@ Và còn rất nhiều các thuật toán khác.
 
 ## 3. Tài liệu tham khảo 
 1. [A Tour of Machine Learning Algorithms](http://machinelearningmastery.com/a-tour-of-machine-learning-algorithms/)
+
 2. [Điểm qua các thuật toán Machine Learning hiện đại](https://ongxuanhong.wordpress.com/2015/10/22/diem-qua-cac-thuat-toan-machine-learning-hien-dai/)
 
 
