@@ -28,10 +28,7 @@ Trong [phần 1](/2017/01/12/gradientdescent/) của Gradient Descent (GD), tôi
         - [Gradient dưới góc nhìn vật lý](#gradient-duoi-goc-nhin-vat-ly)
         - [Gradient Descent với Momentum](#gradient-descent-voi-momentum)
         - [Một ví dụ nhỏ](#mot-vi-du-nho)
-    - [1.2. Newton's method](#-newtons-method)
-        - [Newton's method cho giải phương trình \\\(f\(x\) = 0\\\)](#newtons-method-cho-giai-phuong-trinh-\\fx--\\)
-        - [Newton's method trong bài toán tìm local minimun](#newtons-method-trong-bai-toan-tim-local-minimun)
-        - [Hạn chế của Newton's method](#han-che-cua-newtons-method)
+    - [1.2. Nesterov accelerated gradient \(NAG\)](#-nesterov-accelerated-gradient-nag)
     - [1.3. Các thuật toán khác](#-cac-thuat-toan-khac)
 - [2. Biến thể của Gradient Descent](#-bien-the-cua-gradient-descent)
     - [2.1. Batch Gradient Descent](#-batch-gradient-descent)
@@ -39,8 +36,12 @@ Trong [phần 1](/2017/01/12/gradientdescent/) của Gradient Descent (GD), tôi
         - [Ví dụ với bài toán Linear Regression](#vi-du-voi-bai-toan-linear-regression)
     - [2.3. Mini-batch Gradient Descent](#-mini-batch-gradient-descent)
 - [3. Stopping Criteria \(điều kiện dừng\)](#-stopping-criteria-dieu-kien-dung)
-- [4. Kết luận](#-ket-luan)
-- [5. Tài liệu tham khảo](#-tai-lieu-tham-khao)
+- [4. Một phương pháp tối ưu khác: Newton's method](#-mot-phuong-phap-toi-uu-khac-newtons-method)
+    - [Newton's method cho giải phương trình \\\(f\(x\) = 0\\\)](#newtons-method-cho-giai-phuong-trinh-\\fx--\\)
+    - [Newton's method trong bài toán tìm local minimun](#newtons-method-trong-bai-toan-tim-local-minimun)
+    - [Hạn chế của Newton's method](#han-che-cua-newtons-method)
+- [5. Kết luận](#-ket-luan)
+- [6. Tài liệu tham khảo](#-tai-lieu-tham-khao)
 
 <!-- /MarkdownTOC -->
 
@@ -159,74 +160,50 @@ def GD_momentum(theta_init, grad, eta, gamma):
     # use `return theta[-1]`
 ```
 
-<a name="-newtons-method"></a>
+<a name="-nesterov-accelerated-gradient-nag"></a>
 
-### 1.2. Newton's method
-Nhắc lại rằng, cho tới thời điểm này, chúng ta luôn giải phương trình đạo hàm của hàm mất mát bằng 0 để tìm các điểm local minimun. (Và trong nhiều trường hợp, coi nghiệm tìm được là nghiệm của bài toán tìm giá trị nhỏ nhất của hàm mất mát). Có một thuật toán nối tiếng giúp giải bài toán \\(f(x) = 0\\), thuật toán đó có tên là Newton's method.
+### 1.2. Nesterov accelerated gradient (NAG)
 
+Momentum giúp _hòn bi_ vượt qua được _dốc locaminimum_, tuy nhiên, có một hạn chế chúng ta có thể thấy trong ví dụ trên: Khi tới gần _đích_, momemtum vẫn mất khá nhiều thời gian trước khi dừng lại. Lý do lại cũng chính là vì có _đà_. Có một phương pháp khác tiếp tục giúp khắc phục điều này, phương pháp đó mang tên Nesterov accelerated gradient (NAG), giúp cho thuật toán hội tụ nhanh hơn. 
 
-<a name="newtons-method-cho-giai-phuong-trinh-\\fx--\\"></a>
-
-#### Newton's method cho giải phương trình \\(f(x) = 0\\)
-
-Thuật toán Newton's method được mô tả trong hình động minh họa dưới đây:
+Ý tưởng cơ bản là _dự đoán hướng đi trong tương lai_, tức nhìn trước một bước! Cụ thể, nếu tính số hạng _momentum_ \\(\gamma v\_{t-1}\\) thì ta có thể _xấp xỉ_ được vị trí tiếp theo của hòn bi là \\(\theta - \gamma v\_{t-1}\\) (chúng ta không đính kèm phần gradient ở đây vì sẽ sử dụng nó trong bước cuối cùng). Vậy, thay vì sử dụng gradient của điểm hiện tại, NAG _đi trước một bước_, sử dụng gradient của điểm tiếp theo. Theo dõi hình dưới đây:
 
 <div class="imgcap">
- <img src ="https://upload.wikimedia.org/wikipedia/commons/e/e0/NewtonIteration_Ani.gif" align = "center" width = "500">
- <div class = "thecap"> Hình 3: Minh họa thuật toán Newton's method trong giải phương trình. (  Nguồn: <a href = "https://en.wikipedia.org/wiki/Newton's_method"> Newton's method - Wikipedia</a>).</div>
+ <img src ="/assets/GD/nesterov.jpeg" align = "center" width = "800">
+ <div class = "thecap"> Ý tưởng của Nesterov accelerated gradient. (Nguồn: <a href="http://cs231n.github.io/neural-networks-3/">CS231n Stanford: Convolutional Neural Networks for Visual Recognition</a>) </div>
 </div>
 
+* Với momentum thông thường: _lượng thay đổi_ là tổng của hai vector: momentum vector và gradient ở thời điểm hiện tại.
 
-Ý tưởng giải bài toán \\(f(x) = 0\\) bằng phương pháp Newton's method như sau. Xuất phát từ một điểm \\(x\_0\\) được cho là gần với nghiệm \\(x^\*\\). Sau đó vẽ đường tiếp tuyến (mặt tiếp tuyến trong không gian nhiều chiều) với đồ thị hàm số \\(y = f(x)\\) tại điểm trên đồ thị có hoành độ \\(x\_0\\). Giao điểm \\(x\_1\\) của đường tiếp tuyến này với trục hoành được xem là gần với nghiệm \\(x^\*\\) hơn. Thuật toán lặp lại với điểm mới \\(x\_1\\) và cứ như vậy đến khi ta được \\(f(x\_t) \approx 0\\).
+* Với Nesterove momentum: _lượng thay đổi_ là tổng của hai vector: momentum vector và gradient ở thời điểm được xấp xỉ là điểm tiếp theo. 
 
+Công thức cập nhật:
 
-Đó là ý nghĩa hình học của Newton's method, chúng ta cần một công thức để có thể dựa vào đó để lập trình. Việc này không quá phức tạp với các bạn thi đại học môn toán ở VN. Thật vậy, phương trình tiếp tuyến với đồ thị của hàm \\(f(x)\\) tại điểm có hoành độ \\(x_t\\) là:
 \\[
-y = f'(x_t)(x - x_t) + f(x_t)
-\\]
-Giao điểm của đường thẳng này với trục \\(x\\) tìm được bằng cách giải phương trình vế phải của biểu thức trên bằng 0, tức là:
-\\[
-x = x\_t - \frac{f(x\_t)}{f'(x\_t)} \triangleq x\_{t+1}
-\\]
-
-<a name="newtons-method-trong-bai-toan-tim-local-minimun"></a>
-
-#### Newton's method trong bài toán tìm local minimun
-Áp dụng phương pháp này cho việc giải phương trình \\(f'(x) = 0\\) ta có:
-\\[
-x\_{t+1} = x\_t -(f"(x_t))^{-1}{f'(x_t)}
+\begin{eqnarray}
+v\_{t} &=& \gamma v\_{t-1} + \eta \nabla_{\theta}J(\theta - \gamma v\_{t-1}) \\\
+\theta &=& \theta -  v\_{t}
+\end{eqnarray}
 \\]
 
-Và trong không gian nhiều chiều với \\(\theta\\) là biến:
-\\[
-\theta = \theta - \mathbf{H}(J(\theta))^{-1} \nabla\_{\theta} J(\theta)
-\\]
-trong đó \\(\mathbf{H}(J(\theta))\\) là đạo hàm bậc hai của hàm mất mất (còn gọi là [Hessian matrix](https://en.wikipedia.org/wiki/Hessian_matrix)). Biểu thức này là một ma trận nếu \\(\theta\\) là một vector. Và \\(\mathbf{H}(J(\theta))^{-1}\\) chính là nghịch đảo của ma trận đó. 
+Dưới đây là ví dụ so sánh Momentum và NAG cho bài toán Linear Regression:
 
-<!-- Bạn đọc có thể nhận thấy rằng đây chính là trường hợp đặc biệt của Gradient Descent với learning rate được tính chính xác:
-\\[
-\eta = \frac{1}{\|\nabla^2\_{\theta} J(\theta)\|}
-\\] -->
-
-<!-- Nếu có một phương pháp hiệu quả để tính \\(\mathbf{H}(J(\theta))^{-1}\\), Newton's method thường cho nghiệm sau ít vòng lặp hơn so với GD vì tại mỗi vòng lặp, nó cho biết chính xác _quãng đường cần di chuyển_. -->
-
-<a name="han-che-cua-newtons-method"></a>
-
-#### Hạn chế của Newton's method
-* Điểm khởi tạo phải *rất* gần với nghiệm \\(x^\*\\).
-Ý tưởng sâu xa hơn của Newton's method là dựa trên khai triển Taylor của hàm số \\(f(x)\\) tới đạo hàm thứ nhất:
-\\[
-0 = f(x^\*) \approx f(x\_t) + f'(x\_t)(x\_t - x^\*)
-\\]
-Từ đó suy ra: \\(x^\* \approx x_t - \frac{f(x_t)}{f'(x_t)}\\). 
-Một điểm rất quan trọng, khai triển Taylor chỉ đúng nếu \\(x_t\\) rất gần với \\(x^\*\\)!
-Dưới đây là một ví dụ kinh điển trên Wikipedia về việc Newton's method cho một dãy số phân kỳ (divergence).
-<div class="imgcap">
- <img src ="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/NewtonsMethodConvergenceFailure.svg/300px-NewtonsMethodConvergenceFailure.svg.png" align = "center" width = "400">
- <div class = "thecap"> Hình 4: Nghiệm là một điểm gần -2. Tiếp tuyến của đồ thị hàm số tại điểm có hoành độ bằng 0 cắt trục hoành tại 1, và ngược lại. Trong trường hợp này, Newton's method không bao giờ hội tụ. (Nguồn: <a href = "https://en.wikipedia.org/wiki/Newton's_method">Wikipedia</a>). </div>
+<div>
+<table width = "100%" style = "border: 0px solid white">
+   <tr >
+        <td width="40%" style = "border: 0px solid white"> 
+        <img style="display:block;" width = "100%" src = "/assets/GD/LR_momentum_contours.gif">
+         </td>
+        <td width="40%" style = "border: 0px solid white">
+        <img style="display:block;" width = "100%" src = "/assets/GD/LR_NAG_contours.gif">
+        </td>
+    </tr>
+</table> 
+<div class = "thecap"> Minh họa thuật toán GD với Momentum và NAG. </div>
 </div>
-* Nhận thấy rằng trong việc giải phương trình \\(f(x) = 0\\), chúng ta có đạo hàm ở mẫu số. Khi đạo hàm này gần với 0, ta sẽ được một đường thằng song song hoặc gần song song với trục hoành. Ta sẽ hoặc không tìm được giao điểm, hoặc được một giao điểm ở vô cùng. Đặc biệt, khi nghiệm chính là điểm có đạo hàm bằng 0, thuật toán gần như sẽ không tìm được nghiệm!
-* Khi áp dụng Newton's method cho thuật toán GD trong bài toán ở không gian nhiều chiều, chúng ta cần tính nghịch đảo của Hessian matrix. Khi số chiều và số điểm dữ liệu lớn, đạo hàm bậc hai của hàm mất mát sẽ là một ma trận rất lớn, ảnh hưởng tới cả memory và tốc độ tính toán của hệ thống. 
+
+Hình bên trái là đường đi của nghiệm với phương pháp Momentum. nghiệm đi khá là _zigzag_ và mất nhiều vòng lặp hơn. Hình bên phải là đường đi của nghiệm với phương pháp NAG, nghiệm hội tụ nhanh hơn, và đường đi ít _zigzag_ hơn. 
+
 
 
 <a name="-cac-thuat-toan-khac"></a>
@@ -335,6 +312,7 @@ def SGD(w_init, grad, eta):
 
 Kết quả được cho như hình dưới đây ([với dữ liệu được tạo giống như ở phần 1](/2017/01/12/gradientdescent/#quay-lai-voi-bai-toan-linear-regression)).
 
+<div>
 <table width = "100%" style = "border: 0px solid white">
    <tr >
         <td width="40%" style = "border: 0px solid white"> 
@@ -345,6 +323,8 @@ Kết quả được cho như hình dưới đây ([với dữ liệu được t
         </td>
     </tr>
 </table> 
+<div class = "thecap"> Trái: đường đi của nghiệm với SGD. Phải: giá trị của loss function tại 50 vòng lặp đầu tiên. </div>
+</div>
 
 Hình bên trái mô tả đường đi của nghiệm. Chúng ta thấy rằng đường đi khá là _zigzag_ chứ không _mượt_ như khi sử dụng GD. Điều này là dễ hiểu vì một điểm dữ liệu không thể đại diện cho toàn bộ dữ liệu được. Tuy nhiên, chúng ta cũng thấy rằng thuật toán hội tụ khá nhanh đến vùng lân cận của nghiệm. Với 1000 điểm dữ liệu, SGD chỉ cần gần 3 epoches (2911 tương ứng với 2911 lần cập nhật, mỗi lần lấy 1 điểm). Nếu so với con số 49 vòng lặp (epoches) như kết quả tốt nhất có được bằng GD, thì kết quả này lợi hơn rất nhiều. 
 
@@ -388,18 +368,95 @@ Trong thực nghiệm, có một vài phương pháp như dưới đây:
 4. Trong SGD và mini-batch GD, cách thường dùng là so sánh nghiệm sau một vài lần cập nhật. Trong đoạn code Python phía trên về SGD, tôi áp dụng việc so sánh này mỗi khi nghiệm được cập nhật 10 lần. Việc làm này cũng tỏ ra khá hiệu quả. 
 
 
+
+<a name="-newtons-method"></a>
+
+
+<a name="-mot-phuong-phap-toi-uu-khac-newtons-method"></a>
+
+## 4. Một phương pháp tối ưu khác: Newton's method
+
+Nhân tiện đang nói về một phương pháp tối ưu, tôi xin giới thiệu một phương pháp nữa có cách giải thích đơn giản: Newton's method. Các phương pháp GD còn được gọi là first-order methods, vì lời giải tìm được dựa trên đạo hàm bậc nhất của hàm số. Newton's method là một second-order method, tức lời giải yêu cầu tính đến đạo hàm bậc hai.
+
+
+Nhắc lại rằng, cho tới thời điểm này, chúng ta luôn giải phương trình đạo hàm của hàm mất mát bằng 0 để tìm các điểm local minimun. (Và trong nhiều trường hợp, coi nghiệm tìm được là nghiệm của bài toán tìm giá trị nhỏ nhất của hàm mất mát). Có một thuật toán nối tiếng giúp giải bài toán \\(f(x) = 0\\), thuật toán đó có tên là Newton's method.
+
+
+<a name="newtons-method-cho-giai-phuong-trinh-\\fx--\\"></a>
+
+### Newton's method cho giải phương trình \\(f(x) = 0\\)
+
+Thuật toán Newton's method được mô tả trong hình động minh họa dưới đây:
+
+<div class="imgcap">
+ <img src ="https://upload.wikimedia.org/wikipedia/commons/e/e0/NewtonIteration_Ani.gif" align = "center" width = "500">
+ <div class = "thecap"> Hình 3: Minh họa thuật toán Newton's method trong giải phương trình. (  Nguồn: <a href = "https://en.wikipedia.org/wiki/Newton's_method"> Newton's method - Wikipedia</a>).</div>
+</div>
+
+
+Ý tưởng giải bài toán \\(f(x) = 0\\) bằng phương pháp Newton's method như sau. Xuất phát từ một điểm \\(x\_0\\) được cho là gần với nghiệm \\(x^\*\\). Sau đó vẽ đường tiếp tuyến (mặt tiếp tuyến trong không gian nhiều chiều) với đồ thị hàm số \\(y = f(x)\\) tại điểm trên đồ thị có hoành độ \\(x\_0\\). Giao điểm \\(x\_1\\) của đường tiếp tuyến này với trục hoành được xem là gần với nghiệm \\(x^\*\\) hơn. Thuật toán lặp lại với điểm mới \\(x\_1\\) và cứ như vậy đến khi ta được \\(f(x\_t) \approx 0\\).
+
+
+Đó là ý nghĩa hình học của Newton's method, chúng ta cần một công thức để có thể dựa vào đó để lập trình. Việc này không quá phức tạp với các bạn thi đại học môn toán ở VN. Thật vậy, phương trình tiếp tuyến với đồ thị của hàm \\(f(x)\\) tại điểm có hoành độ \\(x_t\\) là:
+\\[
+y = f'(x_t)(x - x_t) + f(x_t)
+\\]
+Giao điểm của đường thẳng này với trục \\(x\\) tìm được bằng cách giải phương trình vế phải của biểu thức trên bằng 0, tức là:
+\\[
+x = x\_t - \frac{f(x\_t)}{f'(x\_t)} \triangleq x\_{t+1}
+\\]
+
+<a name="newtons-method-trong-bai-toan-tim-local-minimun"></a>
+
+### Newton's method trong bài toán tìm local minimun
+Áp dụng phương pháp này cho việc giải phương trình \\(f'(x) = 0\\) ta có:
+\\[
+x\_{t+1} = x\_t -(f"(x_t))^{-1}{f'(x_t)}
+\\]
+
+Và trong không gian nhiều chiều với \\(\theta\\) là biến:
+\\[
+\theta = \theta - \mathbf{H}(J(\theta))^{-1} \nabla\_{\theta} J(\theta)
+\\]
+trong đó \\(\mathbf{H}(J(\theta))\\) là đạo hàm bậc hai của hàm mất mất (còn gọi là [Hessian matrix](https://en.wikipedia.org/wiki/Hessian_matrix)). Biểu thức này là một ma trận nếu \\(\theta\\) là một vector. Và \\(\mathbf{H}(J(\theta))^{-1}\\) chính là nghịch đảo của ma trận đó. 
+
+
+<a name="han-che-cua-newtons-method"></a>
+
+### Hạn chế của Newton's method
+* Điểm khởi tạo phải *rất* gần với nghiệm \\(x^\*\\).
+Ý tưởng sâu xa hơn của Newton's method là dựa trên khai triển Taylor của hàm số \\(f(x)\\) tới đạo hàm thứ nhất:
+\\[
+0 = f(x^\*) \approx f(x\_t) + f'(x\_t)(x\_t - x^\*)
+\\]
+Từ đó suy ra: \\(x^\* \approx x_t - \frac{f(x_t)}{f'(x_t)}\\). 
+Một điểm rất quan trọng, khai triển Taylor chỉ đúng nếu \\(x_t\\) rất gần với \\(x^\*\\)!
+Dưới đây là một ví dụ kinh điển trên Wikipedia về việc Newton's method cho một dãy số phân kỳ (divergence).
+<div class="imgcap">
+ <img src ="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/NewtonsMethodConvergenceFailure.svg/300px-NewtonsMethodConvergenceFailure.svg.png" align = "center" width = "400">
+ <div class = "thecap"> Hình 4: Nghiệm là một điểm gần -2. Tiếp tuyến của đồ thị hàm số tại điểm có hoành độ bằng 0 cắt trục hoành tại 1, và ngược lại. Trong trường hợp này, Newton's method không bao giờ hội tụ. (Nguồn: <a href = "https://en.wikipedia.org/wiki/Newton's_method">Wikipedia</a>). </div>
+</div>
+* Nhận thấy rằng trong việc giải phương trình \\(f(x) = 0\\), chúng ta có đạo hàm ở mẫu số. Khi đạo hàm này gần với 0, ta sẽ được một đường thằng song song hoặc gần song song với trục hoành. Ta sẽ hoặc không tìm được giao điểm, hoặc được một giao điểm ở vô cùng. Đặc biệt, khi nghiệm chính là điểm có đạo hàm bằng 0, thuật toán gần như sẽ không tìm được nghiệm!
+* Khi áp dụng Newton's method cho bài toán tối ưu trong không gian nhiều chiều, chúng ta cần tính nghịch đảo của Hessian matrix. Khi số chiều và số điểm dữ liệu lớn, đạo hàm bậc hai của hàm mất mát sẽ là một ma trận rất lớn, ảnh hưởng tới cả memory và tốc độ tính toán của hệ thống.
+
+
 <a name="-ket-luan"></a>
 
-## 4. Kết luận
+## 5. Kết luận
 Qua hai bài viết về Gradient Descent này, tôi hy vọng các bạn đã hiểu và làm quen với một thuật toán tối ưu được sử dụng nhiều nhất trong Machine Learning và đặc biệt là Deep Learning. Còn nhiều biến thể khác khá thú vị về GD (mà rất có thể tôi chưa biết tới), nhưng tôi xin phép được dừng chuỗi bài về GD tại đây và tiếp tục chuyển sang các thuật toán thú vị khác. 
 
 Hy vọng bài viết có ích với các bạn.
 
 <a name="-tai-lieu-tham-khao"></a>
 
-## 5. Tài liệu tham khảo
+## 6. Tài liệu tham khảo
 
-1. [Newton's method - Wikipedia](https://en.wikipedia.org/wiki/Newton's_method)
-2. [An overview of gradient descent optimization algorithms](http://sebastianruder.com/optimizing-gradient-descent/index.html#stochasticgradientdescent)
-3. [Stochastic Gradient Descent - Wikipedia](https://en.wikipedia.org/wiki/Stochastic_gradient_descent)
-4. [Stochastic Gradient Descen - Andrew Ng](https://www.youtube.com/watch?v=UfNU3Vhv5CA) 
+[1] [Newton's method - Wikipedia](https://en.wikipedia.org/wiki/Newton's_method)
+
+[2] [An overview of gradient descent optimization algorithms](http://sebastianruder.com/optimizing-gradient-descent/index.html#stochasticgradientdescent)
+
+[3] [Stochastic Gradient Descent - Wikipedia](https://en.wikipedia.org/wiki/Stochastic_gradient_descent)
+
+[4] [Stochastic Gradient Descen - Andrew Ng](https://www.youtube.com/watch?v=UfNU3Vhv5CA) 
+
+[5] Nesterov, Y. (1983). A method for unconstrained convex minimization problem with the rate of convergence o(1/k2). Doklady ANSSSR (translated as Soviet.Math.Docl.), vol. 269, pp. 543– 547.
