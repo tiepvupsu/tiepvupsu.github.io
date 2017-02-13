@@ -29,6 +29,9 @@ Trong [phần 1](/2017/01/12/gradientdescent/) của Gradient Descent (GD), tôi
         - [Gradient Descent với Momentum](#gradient-descent-voi-momentum)
         - [Một ví dụ nhỏ](#mot-vi-du-nho)
     - [1.2. Nesterov accelerated gradient \(NAG\)](#-nesterov-accelerated-gradient-nag)
+    - [Ý tưởng chính](#y-tuong-chinh)
+    - [Công thức cập nhật](#cong-thuc-cap-nhat)
+    - [Ví dụ minh họa](#vi-du-minh-hoa)
     - [1.3. Các thuật toán khác](#-cac-thuat-toan-khac)
 - [2. Biến thể của Gradient Descent](#-bien-the-cua-gradient-descent)
     - [2.1. Batch Gradient Descent](#-batch-gradient-descent)
@@ -166,7 +169,11 @@ def GD_momentum(theta_init, grad, eta, gamma):
 
 Momentum giúp _hòn bi_ vượt qua được _dốc locaminimum_, tuy nhiên, có một hạn chế chúng ta có thể thấy trong ví dụ trên: Khi tới gần _đích_, momemtum vẫn mất khá nhiều thời gian trước khi dừng lại. Lý do lại cũng chính là vì có _đà_. Có một phương pháp khác tiếp tục giúp khắc phục điều này, phương pháp đó mang tên Nesterov accelerated gradient (NAG), giúp cho thuật toán hội tụ nhanh hơn. 
 
-Ý tưởng cơ bản là _dự đoán hướng đi trong tương lai_, tức nhìn trước một bước! Cụ thể, nếu tính số hạng _momentum_ \\(\gamma v\_{t-1}\\) thì ta có thể _xấp xỉ_ được vị trí tiếp theo của hòn bi là \\(\theta - \gamma v\_{t-1}\\) (chúng ta không đính kèm phần gradient ở đây vì sẽ sử dụng nó trong bước cuối cùng). Vậy, thay vì sử dụng gradient của điểm hiện tại, NAG _đi trước một bước_, sử dụng gradient của điểm tiếp theo. Theo dõi hình dưới đây:
+<a name="y-tuong-chinh"></a>
+
+### Ý tưởng chính 
+
+Ý tưởng cơ bản là _dự đoán hướng đi trong tương lai_, tức nhìn trước một bước! Cụ thể, nếu sử dụng số hạng _momentum_ \\(\gamma v\_{t-1}\\) để cập nhật thì ta có thể _xấp xỉ_ được vị trí tiếp theo của hòn bi là \\(\theta - \gamma v\_{t-1}\\) (chúng ta không đính kèm phần gradient ở đây vì sẽ sử dụng nó trong bước cuối cùng). Vậy, thay vì sử dụng gradient của điểm hiện tại, NAG _đi trước một bước_, sử dụng gradient của điểm tiếp theo. Theo dõi hình dưới đây:
 
 <div class="imgcap">
  <img src ="/assets/GD/nesterov.jpeg" align = "center" width = "800">
@@ -177,7 +184,11 @@ Momentum giúp _hòn bi_ vượt qua được _dốc locaminimum_, tuy nhiên, c
 
 * Với Nesterove momentum: _lượng thay đổi_ là tổng của hai vector: momentum vector và gradient ở thời điểm được xấp xỉ là điểm tiếp theo. 
 
-Công thức cập nhật:
+<a name="cong-thuc-cap-nhat"></a>
+
+### Công thức cập nhật
+
+Công thức cập nhật của NAG được cho như sau:
 
 \\[
 \begin{eqnarray}
@@ -185,6 +196,12 @@ v\_{t} &=& \gamma v\_{t-1} + \eta \nabla_{\theta}J(\theta - \gamma v\_{t-1}) \\\
 \theta &=& \theta -  v\_{t}
 \end{eqnarray}
 \\]
+
+Để ý một chút các bạn sẽ thấy điểm được tính đạo hàm đã thay đổi. 
+
+<a name="vi-du-minh-hoa"></a>
+
+### Ví dụ minh họa 
 
 Dưới đây là ví dụ so sánh Momentum và NAG cho bài toán Linear Regression:
 
@@ -204,12 +221,12 @@ Dưới đây là ví dụ so sánh Momentum và NAG cho bài toán Linear Regre
 
 Hình bên trái là đường đi của nghiệm với phương pháp Momentum. nghiệm đi khá là _zigzag_ và mất nhiều vòng lặp hơn. Hình bên phải là đường đi của nghiệm với phương pháp NAG, nghiệm hội tụ nhanh hơn, và đường đi ít _zigzag_ hơn. 
 
-
+(Source code cho [hình bên trái](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/GD/LR%20Momentum.ipynb) và [ hình bên phải](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/GD/LR%20NAG.ipynb)).
 
 <a name="-cac-thuat-toan-khac"></a>
 
 ### 1.3. Các thuật toán khác
-Ngoài hai thuật toán trên, có rất nhiều thuật toán nâng cao khác được sử dụng trong các bài toán thực tế, đặc biệt là các bài toán Deep Learning. Có thể nêu một vài từ khóa như Nesterov accelerated gradient, Adagrad, Adam, RMSprop,... Tôi sẽ không đề cập đến các thuật toán đó trong bài này mà sẽ dành thời gian nói tới nếu có dịp trong tương lai, khi blog đã đủ lớn và đã trang bị cho các bạn một lượng kiến thức nhất định. 
+Ngoài hai thuật toán trên, có rất nhiều thuật toán nâng cao khác được sử dụng trong các bài toán thực tế, đặc biệt là các bài toán Deep Learning. Có thể nêu một vài từ khóa như Adagrad, Adam, RMSprop,... Tôi sẽ không đề cập đến các thuật toán đó trong bài này mà sẽ dành thời gian nói tới nếu có dịp trong tương lai, khi blog đã đủ lớn và đã trang bị cho các bạn một lượng kiến thức nhất định. 
 
 Tuy nhiên, bạn đọc nào muốn đọc thêm có thể tìm được rất nhiều thông tin hữu ích trong bài này:
 [An overview of gradient descent optimization algorithms ](http://sebastianruder.com/optimizing-gradient-descent/index.html#stochasticgradientdescent).
