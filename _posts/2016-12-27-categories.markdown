@@ -20,8 +20,8 @@ Có hai cách phổ biến phân nhóm các thuật toán Machine learning. Mộ
 
 - [1. Phân nhóm dựa trên phương thức học](#-phan-nhom-dua-tren-phuong-thuc-hoc)
     - [Supervised Learning \(Học có giám sát\)](#supervised-learning-hoc-co-giam-sat)
-        - [**Classification** \(Phân loại\)](#classification-phan-loai)
-        - [**Regression** \(Hồi quy\)](#regression-hoi-quy)
+        - [Classification \(Phân loại\)](#classification-phan-loai)
+        - [Regression \(Hồi quy\)](#regression-hoi-quy)
     - [Unsupervised Learning \(Học không giám sát\)](#unsupervised-learning-hoc-khong-giam-sat)
         - [**Clustering** \(phân nhóm\)](#clustering-phan-nhom)
         - [**Association**](#association)
@@ -44,7 +44,6 @@ Có hai cách phổ biến phân nhóm các thuật toán Machine learning. Mộ
 <!-- ========================== New Heading ==================== -->
 <a name="-phan-nhom-dua-tren-phuong-thuc-hoc"></a>
 
-<a name="-phan-nhom-dua-tren-phuong-thuc-hoc"></a>
 ## 1. Phân nhóm dựa trên phương thức học
 
 Theo phương thức học, các thuật toán Machine Learning thường được chia làm 4 nhóm: Supervise learning, Unsupervised learning, Semi-supervised lerning và Reinforcement learning. _Có một số cách phân nhóm không có Semi-supervised learning hoặc Reinforcement learning._
@@ -52,7 +51,6 @@ Theo phương thức học, các thuật toán Machine Learning thường đư�
 <!-- ========================== New Heading ==================== -->
 <a name="supervised-learning-hoc-co-giam-sat"></a>
 
-<a name="supervised-learning-hoc-co-giam-sat"></a>
 ### Supervised Learning (Học có giám sát) 
 Supervised learning là thuật toán dự đoán đầu ra (outcome) của một dữ liệu mới (new input) dựa trên các cặp (_input, outcome_) đã biết từ trước. Cặp dữ liệu này còn được gọi là (_data. label_), tức (_dữ liệu, nhãn_). Supervised learning là nhóm phổ biến nhất trong các thuật toán Machine Learning. 
 
@@ -85,17 +83,13 @@ Thuật toán supervised learning còn được tiếp tục chia nhỏ ra thàn
 <!-- ========================== New Heading ==================== -->
 <a name="classification-phan-loai"></a>
 
-<a name="classification-phan-loai"></a>
-#### **Classification** (Phân loại)
+#### Classification (Phân loại)
  Một bài toán được gọi là _classification_ nếu các _label_ của _input data_ được chia thành một số hữu hạn nhóm. Ví dụ: Gmail xác định xem một email có phải là spam hay không; các hãng tín dụng xác định xem một khách hàng có khả năng thanh toán nợ hay không. Ba ví dụ phía trên được chia vào loại này. 
-
-<a name = "regression"></a>
 
 <!-- ========================== New Heading ==================== -->
 <a name="regression-hoi-quy"></a>
 
-<a name="regression-hoi-quy"></a>
-#### **Regression** (Hồi quy)
+#### Regression (Hồi quy)
 (tiếng Việt dịch là _Hồi quy_, tôi không thích cách dịch này vì bản thân không hiểu nó nghĩa là gì)
 
 Nếu _label_ không được chia thành các nhóm mà là một giá trị thực cụ thể. Ví dụ: một căn nhà rộng \\(x ~ \text{m}^2\\), có \\(y\\) phòng ngủ và cách trung tâm thành phố \\(z~ \text{km}\\) sẽ có giá là bao nhiêu?
@@ -105,7 +99,6 @@ Gần đây [Microsoft có một ứng dụng dự đoán giới tính và tuổ
 <!-- ========================== New Heading ==================== -->
 <a name="unsupervised-learning-hoc-khong-giam-sat"></a>
 
-<a name="unsupervised-learning-hoc-khong-giam-sat"></a>
 ### Unsupervised Learning (Học không giám sát)
 Trong thuật toán này, chúng ta không biết được _outcome_ hay _nhãn_ mà chỉ có dữ liệu đầu vào. Thuật toán unsupervised learning sẽ dựa vào cấu trúc của dữ liệu để thực hiện một công việc nào đó, ví dụ như phân nhóm (clustering) hoặc giảm số chiều của dữ liệu (dimention reduction) để thuận tiện trong việc lưu trữ và tính toán.
 
@@ -118,21 +111,18 @@ Các bài toán Unsupervised learning được tiếp tục chia nhỏ thành ha
 <!-- ========================== New Heading ==================== -->
 <a name="clustering-phan-nhom"></a>
 
-<a name="clustering-phan-nhom"></a>
 #### **Clustering** (phân nhóm)
 Một bài toán phân nhóm toàn bộ dữ liệu \\(\mathcal{X}\\) thành các nhóm nhỏ dựa trên sự liên quan giữa các dữ liệu trong mỗi nhóm. Ví dụ: phân nhóm khách hàng dựa trên hành vi mua hàng. Điều này cũng giống như việc ta đưa cho một đứa trẻ rất nhiều mảnh ghép với các hình thù và màu sắc khác nhau, ví dụ tam giác, vuông, tròn với màu xanh và đỏ, sau đó yêu cẩu trẻ phân chúng thành từng nhóm. Mặc dù không cho trẻ biết mảnh nào tương ứng với hình nào hoặc màu nào, nhiều khả năng chúng vẫn có thể phân loại các mảnh ghép theo màu hoặc hình dạng. 
 
 <!-- ========================== New Heading ==================== -->
 <a name="association"></a>
 
-<a name="association"></a>
 #### **Association**
 Là bài toán khi chúng ta muốn khám phá ra một quy luật dựa trên nhiều dữ liệu cho trước. Ví dụ: những khách hàng nam mua quần áo thường có xu hướng mua thêm đồng hồ hoặc thắt lưng; những khán giả xem phim Spider Man thường có xu hướng xem thêm phim Bat Man, dựa vào đó tạo ra một hệ thống gợi ý khách hàng (Recommendation System), thúc đẩy nhu cầu mua sắm. 
 
 <!-- ========================== New Heading ==================== -->
 <a name="semi-supervised-learning-hoc-ban-giam-sat"></a>
 
-<a name="semi-supervised-learning-hoc-ban-giam-sat"></a>
 ### Semi-Supervised Learning (Học bán giám sát)
 Các bài toán khi chúng ta có một lượng lớn dữ liệu \\(\mathcal{X}\\) nhưng chỉ một phần trong chúng được gán nhãn được gọi là Semi-Supervised Learning. Những bài toán thuộc nhóm này nằm giữa hai nhóm được nêu bên trên. 
 
@@ -142,7 +132,6 @@ Một ví dụ điển hình của nhóm này là chỉ có một phần ảnh h
 <!-- ========================== New Heading ==================== -->
 <a name="reinforcement-learning-hoc-cung-co"></a>
 
-<a name="reinforcement-learning-hoc-cung-co"></a>
 ### Reinforcement Learning (Học Củng Cố)
 Reinforcement learning là các bài toán giúp cho một hệ thống tự động xác định hành vi dựa trên hoàn cảnh để đạt được lợi ích cao nhất (maximizing the performance). Hiện tại, Reinforcement learning chủ yếu được áp dụng vào Lý Thuyết Trò Chơi (Game Theory), các thuật toán cần xác định nưóc đi tiếp theo để đạt được điểm số cao nhất.
 
@@ -179,7 +168,6 @@ Reinforcement learning là các bài toán giúp cho một hệ thống tự đ�
 <!-- ========================== New Heading ==================== -->
 <a name="-phan-nhom-dua-tren-chuc-nang"></a>
 
-<a name="-phan-nhom-dua-tren-chuc-nang"></a>
 ## 2. Phân nhóm dựa trên chức năng 
 
 Có một cách phân nhóm thứ hai dựa trên chức năng của các thuật toán. Trong phần này, tôi xin chỉ liệt kê các thuật toán. Thông tin cụ thể sẽ được trình bày trong các bài viết khác tại blog này. Trong quá trình viết, tôi có thể sẽ thêm bớt một số thuật toán. 
@@ -187,7 +175,6 @@ Có một cách phân nhóm thứ hai dựa trên chức năng của các thuậ
 <!-- ========================== New Heading ==================== -->
 <a name="regression-algorithms"></a>
 
-<a name="regression-algorithms"></a>
 ### Regression Algorithms
 
 1. [Linear Regression](/2016/12/28/linearregression/)
@@ -197,7 +184,6 @@ Có một cách phân nhóm thứ hai dựa trên chức năng của các thuậ
 <!-- ========================== New Heading ==================== -->
 <a name="classification-algorithms"></a>
 
-<a name="classification-algorithms"></a>
 ### Classification Algorithms 
 
 1. Linear Classifier 
@@ -208,7 +194,6 @@ Có một cách phân nhóm thứ hai dựa trên chức năng của các thuậ
 <!-- ========================== New Heading ==================== -->
 <a name="instance-based-algorithms"></a>
 
-<a name="instance-based-algorithms"></a>
 ### Instance-based Algorithms 
 
 1. [k-Nearest Neighbor (kNN)](/2017/01/08/knn/)
@@ -217,7 +202,6 @@ Có một cách phân nhóm thứ hai dựa trên chức năng của các thuậ
 <!-- ========================== New Heading ==================== -->
 <a name="regularization-algorithms"></a>
 
-<a name="regularization-algorithms"></a>
 ### Regularization Algorithms 
 
 1. Ridge Regression 
@@ -227,7 +211,6 @@ Có một cách phân nhóm thứ hai dựa trên chức năng của các thuậ
 <!-- ========================== New Heading ==================== -->
 <a name="bayesian-algorithms"></a>
 
-<a name="bayesian-algorithms"></a>
 ### Bayesian Algorithms
 
 1. Naive Bayes
@@ -236,7 +219,6 @@ Có một cách phân nhóm thứ hai dựa trên chức năng của các thuậ
 <!-- ========================== New Heading ==================== -->
 <a name="clustering-algorithms"></a>
 
-<a name="clustering-algorithms"></a>
 ### Clustering Algorithms
 
 1. [k-Means clustering](/2017/01/01/kmeans/) 
@@ -246,7 +228,6 @@ Có một cách phân nhóm thứ hai dựa trên chức năng của các thuậ
 <!-- ========================== New Heading ==================== -->
 <a name="artificial-neural-network-algorithms"></a>
 
-<a name="artificial-neural-network-algorithms"></a>
 ### Artificial Neural Network Algorithms 
 
 1. [Perceptron](/2017/01/21/perceptron/)
@@ -255,7 +236,6 @@ Có một cách phân nhóm thứ hai dựa trên chức năng của các thuậ
 <!-- ========================== New Heading ==================== -->
 <a name="dimensionality-reduction-algorithms"></a>
 
-<a name="dimensionality-reduction-algorithms"></a>
 ### Dimensionality Reduction Algorithms 
 
 1. Principal Component Analysis (PCA)
@@ -264,7 +244,6 @@ Có một cách phân nhóm thứ hai dựa trên chức năng của các thuậ
 <!-- ========================== New Heading ==================== -->
 <a name="ensemble-algorithms"></a>
 
-<a name="ensemble-algorithms"></a>
 ### Ensemble Algorithms 
 
 1. Boosting
@@ -276,7 +255,6 @@ Và còn rất nhiều các thuật toán khác.
 <!-- ========================== New Heading ==================== -->
 <a name="-tai-lieu-tham-khao"></a>
 
-<a name="-tai-lieu-tham-khao"></a>
 ## 3. Tài liệu tham khảo 
 1. [A Tour of Machine Learning Algorithms](http://machinelearningmastery.com/a-tour-of-machine-learning-algorithms/)
 2. [Điểm qua các thuật toán Machine Learning hiện đại](https://ongxuanhong.wordpress.com/2015/10/22/diem-qua-cac-thuat-toan-machine-learning-hien-dai/)
