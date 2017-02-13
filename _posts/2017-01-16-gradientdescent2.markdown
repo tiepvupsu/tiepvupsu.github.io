@@ -39,7 +39,7 @@ Trong [phần 1](/2017/01/12/gradientdescent/) của Gradient Descent (GD), tôi
         - [Ví dụ với bài toán Linear Regression](#vi-du-voi-bai-toan-linear-regression)
     - [2.3. Mini-batch Gradient Descent](#-mini-batch-gradient-descent)
 - [3. Stopping Criteria \(điều kiện dừng\)](#-stopping-criteria-dieu-kien-dung)
-- [4. Một phương pháp tối ưu khác: Newton's method](#-mot-phuong-phap-toi-uu-khac-newtons-method)
+- [4. Một phương pháp tối ưu đơn giản khác: Newton's method](#-mot-phuong-phap-toi-uu-don-gian-khac-newtons-method)
     - [Newton's method cho giải phương trình \\\(f\(x\) = 0\\\)](#newtons-method-cho-giai-phuong-trinh-\\fx--\\)
     - [Newton's method trong bài toán tìm local minimun](#newtons-method-trong-bai-toan-tim-local-minimun)
     - [Hạn chế của Newton's method](#han-che-cua-newtons-method)
@@ -386,14 +386,11 @@ Trong thực nghiệm, có một vài phương pháp như dưới đây:
 
 
 
-<a name="-newtons-method"></a>
+<a name="-mot-phuong-phap-toi-uu-don-gian-khac-newtons-method"></a>
 
+## 4. Một phương pháp tối ưu đơn giản khác: Newton's method
 
-<a name="-mot-phuong-phap-toi-uu-khac-newtons-method"></a>
-
-## 4. Một phương pháp tối ưu khác: Newton's method
-
-Nhân tiện đang nói về một phương pháp tối ưu, tôi xin giới thiệu một phương pháp nữa có cách giải thích đơn giản: Newton's method. Các phương pháp GD còn được gọi là first-order methods, vì lời giải tìm được dựa trên đạo hàm bậc nhất của hàm số. Newton's method là một second-order method, tức lời giải yêu cầu tính đến đạo hàm bậc hai.
+Nhân tiện đang nói về tối ưu, tôi xin giới thiệu một phương pháp nữa có cách giải thích đơn giản: Newton's method. Các phương pháp GD tôi đã trình bày còn được gọi là first-order methods, vì lời giải tìm được dựa trên đạo hàm bậc nhất của hàm số. Newton's method là một second-order method, tức lời giải yêu cầu tính đến đạo hàm bậc hai.
 
 
 Nhắc lại rằng, cho tới thời điểm này, chúng ta luôn giải phương trình đạo hàm của hàm mất mát bằng 0 để tìm các điểm local minimun. (Và trong nhiều trường hợp, coi nghiệm tìm được là nghiệm của bài toán tìm giá trị nhỏ nhất của hàm mất mát). Có một thuật toán nối tiếng giúp giải bài toán \\(f(x) = 0\\), thuật toán đó có tên là Newton's method.
@@ -453,7 +450,9 @@ Dưới đây là một ví dụ kinh điển trên Wikipedia về việc Newton
  <img src ="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/NewtonsMethodConvergenceFailure.svg/300px-NewtonsMethodConvergenceFailure.svg.png" align = "center" width = "400">
  <div class = "thecap"> Hình 4: Nghiệm là một điểm gần -2. Tiếp tuyến của đồ thị hàm số tại điểm có hoành độ bằng 0 cắt trục hoành tại 1, và ngược lại. Trong trường hợp này, Newton's method không bao giờ hội tụ. (Nguồn: <a href = "https://en.wikipedia.org/wiki/Newton's_method">Wikipedia</a>). </div>
 </div>
+
 * Nhận thấy rằng trong việc giải phương trình \\(f(x) = 0\\), chúng ta có đạo hàm ở mẫu số. Khi đạo hàm này gần với 0, ta sẽ được một đường thằng song song hoặc gần song song với trục hoành. Ta sẽ hoặc không tìm được giao điểm, hoặc được một giao điểm ở vô cùng. Đặc biệt, khi nghiệm chính là điểm có đạo hàm bằng 0, thuật toán gần như sẽ không tìm được nghiệm!
+
 * Khi áp dụng Newton's method cho bài toán tối ưu trong không gian nhiều chiều, chúng ta cần tính nghịch đảo của Hessian matrix. Khi số chiều và số điểm dữ liệu lớn, đạo hàm bậc hai của hàm mất mát sẽ là một ma trận rất lớn, ảnh hưởng tới cả memory và tốc độ tính toán của hệ thống.
 
 
