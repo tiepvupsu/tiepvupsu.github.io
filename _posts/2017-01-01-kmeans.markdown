@@ -463,8 +463,11 @@ hoặc thậm chí cho chúng ta nghiệm không chính xác (chỉ là local mi
 </div>
 
 Có một vài cách khắc phục đó là:
+
 * Chạy K-means clustering nhiều lần với các center ban đầu khác nhau rồi chọn cách có hàm mất mát cuối cùng đạt giá trị nhỏ nhất. 
+
 * [K-means++ -Improve initialization algorithm - wiki](https://en.wikipedia.org/wiki/K-means%2B%2B#Improved_initialization_algorithm).
+
 * Bạn nào muốn tìm hiểu sâu hơn có thể xem bài báo khoa học [Cluster center initialization algorithm for K-means clustering](http://www.sciencedirect.com/science/article/pii/S0167865504000996).
 
 <!-- ========================== New Heading ==================== -->

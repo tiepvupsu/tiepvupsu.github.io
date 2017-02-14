@@ -23,8 +23,8 @@ Có hai cách phổ biến phân nhóm các thuật toán Machine learning. Mộ
         - [Classification \(Phân loại\)](#classification-phan-loai)
         - [Regression \(Hồi quy\)](#regression-hoi-quy)
     - [Unsupervised Learning \(Học không giám sát\)](#unsupervised-learning-hoc-khong-giam-sat)
-        - [**Clustering** \(phân nhóm\)](#clustering-phan-nhom)
-        - [**Association**](#association)
+        - [Clustering \(phân nhóm\)](#clustering-phan-nhom)
+        - [Association](#association)
     - [Semi-Supervised Learning \(Học bán giám sát\)](#semi-supervised-learning-hoc-ban-giam-sat)
     - [Reinforcement Learning \(Học Củng Cố\)](#reinforcement-learning-hoc-cung-co)
 - [2. Phân nhóm dựa trên chức năng](#-phan-nhom-dua-tren-chuc-nang)
@@ -111,13 +111,13 @@ Các bài toán Unsupervised learning được tiếp tục chia nhỏ thành ha
 <!-- ========================== New Heading ==================== -->
 <a name="clustering-phan-nhom"></a>
 
-#### **Clustering** (phân nhóm)
+#### Clustering (phân nhóm)
 Một bài toán phân nhóm toàn bộ dữ liệu \\(\mathcal{X}\\) thành các nhóm nhỏ dựa trên sự liên quan giữa các dữ liệu trong mỗi nhóm. Ví dụ: phân nhóm khách hàng dựa trên hành vi mua hàng. Điều này cũng giống như việc ta đưa cho một đứa trẻ rất nhiều mảnh ghép với các hình thù và màu sắc khác nhau, ví dụ tam giác, vuông, tròn với màu xanh và đỏ, sau đó yêu cẩu trẻ phân chúng thành từng nhóm. Mặc dù không cho trẻ biết mảnh nào tương ứng với hình nào hoặc màu nào, nhiều khả năng chúng vẫn có thể phân loại các mảnh ghép theo màu hoặc hình dạng. 
 
 <!-- ========================== New Heading ==================== -->
 <a name="association"></a>
 
-#### **Association**
+#### Association
 Là bài toán khi chúng ta muốn khám phá ra một quy luật dựa trên nhiều dữ liệu cho trước. Ví dụ: những khách hàng nam mua quần áo thường có xu hướng mua thêm đồng hồ hoặc thắt lưng; những khán giả xem phim Spider Man thường có xu hướng xem thêm phim Bat Man, dựa vào đó tạo ra một hệ thống gợi ý khách hàng (Recommendation System), thúc đẩy nhu cầu mua sắm. 
 
 <!-- ========================== New Heading ==================== -->
