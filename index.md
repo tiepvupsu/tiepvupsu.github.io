@@ -24,6 +24,7 @@ permalink: /index/
     - [Momentum](/2017/01/16/gradientdescent2/#-momentum)
     - [Nesterov accelerated gradient (NAG)](https://tiepvupsu.github.io/2017/01/16/gradientdescent2/#-nesterov-accelerated-gradient-nag)
     - [Stochastic Gradient Descent (SGD)](/2017/01/16/gradientdescent2/#-stochastic-gradient-descent)
+* [Ground truth](/2017/01/08/knn/#ground-truth)
 * [K-nearest neighbors](/2017/01/08/knn/)
 * [Large-sclae problem](/2017/01/12/gradientdescent/#large-scale)
 * [Level sets](/2017/01/12/gradientdescent/#duong-dong-muc-level-sets)

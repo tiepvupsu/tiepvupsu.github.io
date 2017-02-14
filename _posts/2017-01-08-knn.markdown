@@ -245,8 +245,8 @@ print "Ground truth    : ", y_test[20:40]
     Predicted labels:  [2 1 2 2 1 2 2 0 2 0 2 0 1 0 0 2 2 0 2 0]
     Ground truth    :  [2 1 2 2 1 2 2 0 2 0 1 0 1 0 0 2 1 0 2 0]
 
-
-Kết quả cho thấy label dự đoán gần giống với label thật của test data, chỉ có 2 điểm trong số 20 điểm được hiển thị có kết quả sai lệch. Ở đây chúng ta làm quen với khái niệm mới: _ground truth_. Một cách đơn giản, _ground truth_ chính là dữ liệu _thực sự_ của các điểm trong test data. Khái niệm này được dùng nhiều trong Machine Learning, hy vọng lần tới các bạn gặp thì sẽ nhớ ngay nó là gì. 
+<a name = "ground-truth"></a>
+Kết quả cho thấy label dự đoán gần giống với label thật của test data, chỉ có 2 điểm trong số 20 điểm được hiển thị có kết quả sai lệch. Ở đây chúng ta làm quen với khái niệm mới: _ground truth_. Một cách đơn giản, _ground truth_ chính là nhãn/label/đầu ra _thực sự_ của các điểm trong test data. Khái niệm này được dùng nhiều trong Machine Learning, hy vọng lần tới các bạn gặp thì sẽ nhớ ngay nó là gì. 
 
 
 <a name="phuong-phap-danh-gia-evaluation-method"></a>
