@@ -58,7 +58,7 @@ Trong [phần 1](/2017/01/12/gradientdescent/) của Gradient Descent (GD), tôi
 <a name="nhac-lai-thuat-toan-gradient-descent"></a>
 
 #### Nhắc lại thuật toán Gradient Descent
-Dành cho các bạn chưa đọc [phần 1](/2017/01/12/gradientdescent/) của Gradient Descent. Để giải bài toán tìm điểm _global optimal_ của hàm mất mát \\(J(\theta)\\) (Hàm mất mát cũng thường được ký hiệu là \\(J()\\) với \\(\theta\\) là tập hợp các tham số của mô hình, thuật tóan GD được phát biểu như sau:
+Dành cho các bạn chưa đọc [phần 1](/2017/01/12/gradientdescent/) của Gradient Descent. Để giải bài toán tìm điểm _global optimal_ của hàm mất mát \\(J(\theta)\\) (Hàm mất mát cũng thường được ký hiệu là \\(J()\\) với \\(\theta\\) là tập hợp các tham số của mô hình), tôi xin nhắc lại thuật toán GD:
 
 -------------
 **Thuật toán Gradient Descent:**
