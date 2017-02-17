@@ -25,6 +25,9 @@ summary: Gradient Descent một trong những thuật toán quan trọng nhất 
     - [Quay lại với bài toán Linear Regression](#quay-lai-voi-bai-toan-linear-regression)
     - [Sau đây là ví dụ trên Python và một vài lưu ý khi lập trình](#sau-day-la-vi-du-tren-python-va-mot-vai-luu-y-khi-lap-trinh)
         - [Kiểm tra đạo hàm](#kiem-tra-dao-ham)
+            - [Giải thích bằng hình học](#giai-thich-bang-hinh-hoc)
+            - [Giải thích bằng giải tích](#giai-thich-bang-giai-tich)
+            - [Với hàm nhiều biến](#voi-ham-nhieu-bien)
         - [Đường đồng mức \(level sets\)](#duong-dong-muc-level-sets)
 - [4. Một ví dụ khác](#-mot-vi-du-khac)
 - [5. Thảo luận](#-thao-luan)
@@ -308,6 +311,56 @@ f'(x) \approx \frac{f(x + \varepsilon) - f(x - \varepsilon)}{2\varepsilon} ~~~~ 
 
 Cách tính này được gọi là _numerical gradient_.
 
+**Câu hỏi: Tại sao công thức xấp xỉ hai phía trên đây lại được sử dụng rộng rãi, sao không sử dụng công thức xấp xỉ đạo hàm bên phải hoặc bên trái?**
+
+Có hai các giải thích cho vấn đề này, một bằng hình học, một bằng giải tích. 
+
+<a name="giai-thich-bang-hinh-hoc"></a>
+
+##### Giải thích bằng hình học 
+Quan sát hình dưới đây:
+
+<div class="imgcap">
+ <img src ="/assets/GD/check_grad.png" align = "center" width = "600">
+</div>
+<br>
+Trong hình, vector màu đỏ là đạo hàm *chính xác* của hàm số tại điểm có hoành độ bằng \\(x_0\\). Vector màu xanh lam (có vẻ là hơi tím sau khi convert từ .pdf sang .png) thể hiện cách xấp xỉ đạo hàm phía phải. Vector màu xanh lục thể hiện cách xấp xỉ đạo hàm phía trái. Vector màu nâu thể hiện cách xấp xỉ đạo hàm hai phía. Trong ba vector xấp xỉ đó, vector xấp xỉ hai phía màu nâu là gần với vector đỏ nhất nếu xét theo hướng. 
+
+Sự khác biệt giữa các cách xấp xỉ còn lớn hơn nữa nếu tại điểm x, hàm số bị *bẻ cong* mạnh hơn. Khi đó, xấp xỉ trái và phải sẽ khác nhau rất nhiều. Xấp xỉ hai bên sẽ *ổn định* hơn.
+
+<a name="giai-thich-bang-giai-tich"></a>
+
+##### Giải thích bằng giải tích
+Chúng ta cùng quay lại một chút với Giải tích I năm thứ nhất đại học: [Khai triển Taylor](http://mathworld.wolfram.com/TaylorSeries.html). 
+
+Với \\(\varepsilon\\) rất nhỏ, ta có hai xấp xỉ sau: 
+
+\\[
+f(x + \varepsilon) \approx f(x) + f'(x)\varepsilon + \frac{f"(x)}{2} \varepsilon^2 + \dots
+\\]
+
+và:
+\\[
+f(x - \varepsilon) \approx f(x) - f'(x)\varepsilon + \frac{f"(x)}{2} \varepsilon^2 - \dots
+\\]
+
+Từ đó ta có: 
+\\[
+\frac{f(x + \varepsilon) - f(x)}{\varepsilon} \approx f'(x) + \frac{f"(x)}{2}\varepsilon + \dots =  f'(x) + O(\varepsilon) ~~ (3)
+\\]
+
+\\[
+\frac{f(x + \varepsilon) - f(x - \varepsilon)}{2\varepsilon} \approx f'(x) + \frac{f^{(3)}(x)}{6}\varepsilon^2 + \dots =  f'(x) + O(\varepsilon^2) ~~(4)
+\\]
+
+trong đó \\(O()\\) là [Big O notation](https://en.wikipedia.org/wiki/Big_O_notation). 
+
+Từ đó, nếu xấp xỉ đạo hàm bằng công thức \\((3)\\) (xấp xỉ đạo hàm phải), sai số sẽ là \\(O(\varepsilon)\\). Trong khi đó, nếu xấp xỉ đạo hàm bằng công thức \\((4)\\) (xấp xỉ đạo hàm hai phía), sai số sẽ là \\(O(\varepsilon^2) \ll O(\varepsilon)\\) nếu \\(\varepsilon\\) nhỏ. 
+
+Cả hai cách giải thích trên đây đều cho chúng ta thấy rằng, xấp xỉ đạo hàm hai phía là xấp xỉ tốt hơn. 
+<a name="voi-ham-nhieu-bien"></a>
+
+##### Với hàm nhiều biến
 Với hàm nhiều biến, công thức \\((2)\\) được áp dụng cho từng biến khi các biến khác cố định. Cách tính này thường cho giá trị khá chính xác. Tuy nhiên, cách này không được sử dụng để tính đạo hàm vì độ phức tạp quá cao so với cách tính trực tiếp. Khi so sánh đạo hàm này với đạo hàm chính xác tính theo công thức, người ta thường giảm số chiều dữ liệu và giảm số điểm dữ liệu để thuận tiện cho tính toán. Một khi đạo hàm tính được rất gần với _numerical gradient_, chúng ta có thể tự tin rằng đạo hàm tính được là chính xác.
 
 Dưới đây là một đoạn code đơn giản để kiểm tra đạo hàm và có thể áp dụng với một hàm số (của một vector) bất kỳ với `cost` và `grad` đã tính ở phía trên. 
