@@ -485,7 +485,7 @@ Với \\(\mathbf{W}, \mathbf{y}\_i, \mathbf{z}\_i\\) lần lượt là ma trận
 <a name="han-che-cua-one-vs-rest"></a>
 
 ### Hạn chế của one-vs-rest
-Xem xét lại phương pháp one-vs-rest theo góc nhìn xác suất, một điểm dữ liệu có thể được dự đoán thuộc vào class \\(1, 2, \dots, C\\) với xác suất lần lượt là \\(p_1, p_2, \dots, p_C\\). Tuy nhiên, tổng các xác suất này có thể không bằng 1! Có một phương pháp có thể làm cho nó _hợp lý hơn_, tức _ép_ tổng các xác suất này bằng 1. Khi đó, với 1 điểm dữ liệu ta có thể nói xác suất nó rơi vào mỗi class là bao nhiêu. Phương pháp hấp dẫn này sẽ được đề cập không lâu sau bài viết này. Mời bạn đón đọc.
+Xem xét lại phương pháp one-vs-rest theo góc nhìn xác suất, một điểm dữ liệu có thể được dự đoán thuộc vào class \\(1, 2, \dots, C\\) với xác suất lần lượt là \\(p_1, p_2, \dots, p_C\\). Tuy nhiên, tổng các xác suất này có thể không bằng 1! Có một phương pháp có thể làm cho nó _hợp lý hơn_, tức _ép_ tổng các xác suất này bằng 1. Khi đó, với 1 điểm dữ liệu ta có thể nói xác suất nó rơi vào mỗi class là bao nhiêu. Phương pháp hấp dẫn này sẽ được đề cập trong bài [Softmax Regression](/2017/02/16/softmax/). Mời bạn đón đọc.
 
 <a name="-tai-lieu-tham-khao"></a>
 
