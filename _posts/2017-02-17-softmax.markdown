@@ -148,7 +148,7 @@ Có một vài quan sát như sau:
 
 * Cột 4: Nếu \\(v\_1 = v\_2\\), thì \\(z\_1 = z\_2\\).
 
-Bạn đọc có thể thử với các giá trị khác trực tiếp trên trình duyệt bằng trong [link này](http://neuralnetworksanddeeplearning.com/chap3.html), kéo xuống phần Softmax. 
+Bạn đọc có thể thử với các giá trị khác trực tiếp trên trình duyệt trong [link này](http://neuralnetworksanddeeplearning.com/chap3.html), kéo xuống phần Softmax. 
 
 <a name="-phien-ban-on-dinh-hon-cua-softmax-function"></a>
 
