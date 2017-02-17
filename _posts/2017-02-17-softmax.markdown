@@ -45,6 +45,7 @@ Các bài toán classification thực tế thường có rất nhiều classes (
 - [6. Thảo luận](#-thao-luan)
     - [6.1 Boundary tạo bởi Softmax Regression là linear](#-boundary-tao-boi-softmax-regression-la-linear)
     - [6.2. Softmax Regression là một trong hai classifiers phổ biến nhất](#-softmax-regression-la-mot-trong-hai-classifiers-pho-bien-nhat)
+    - [6.3. Source code](#-source-code)
 - [Tài liệu tham khảo](#tai-lieu-tham-khao)
 
 <!-- /MarkdownTOC -->
@@ -612,7 +613,11 @@ Thật vậy, dựa vào hàm softmax thì một điểm dữ liệu \\(\mathbf{
 ### 6.2. Softmax Regression là một trong hai classifiers phổ biến nhất
 Softmax Regression cùng với Support Vector Machine (tôi sẽ trình bày sau vài bài nữa) là hai classifier phổ biến nhất được dùng hiện nay. Softmax Regression đặc biệt được sử dụng nhiều trong các mạng Neural có nhiều lớp (Deep Neural Networks hay DNN). Những lớp phía trước có thể được coi như một bộ [Feature Extractor](/general/2017/02/06/featureengineering/#feature-extractor), lớp cuối cùng của DNN cho bài toán classification thường là Softmax Regression. 
 
+<a name="-source-code"></a>
 
+### 6.3. Source code 
+
+Các bạn có thể tìm thấy source code trong [jupyter notebook này](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/13_softmax/Softmax%20Regression.ipynb).
 <a name="tai-lieu-tham-khao"></a>
 
 ## Tài liệu tham khảo 
