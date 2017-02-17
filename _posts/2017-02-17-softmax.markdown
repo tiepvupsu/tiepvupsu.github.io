@@ -525,7 +525,7 @@ Phân bố của các dữ liệu được cho như hình dưới:
 
 <div class="imgcap">
 <img src ="\assets\13_softmax\ex1_1.png" align = "center" width = "500">
-<div class = "thecap">Hình </div>
+<div class = "thecap">Hình 5: Phân bố dữ liệu của các class.</div>
 </div> 
 
 **Thực hiện Softmax Regression**
@@ -544,7 +544,7 @@ print(W[-1])
 
 <div class="imgcap">
 <img src ="\assets\13_softmax\ex1_2.png" align = "center" width = "500">
-<div class = "thecap">Hình </div>
+<div class = "thecap">Hình 6: Ranh giới giữa các class tìm được bằng Softmax Regression. </div>
 </div> 
 
 Ta thấy rằng Softmax Regression đã tạo ra các vùng cho mỗi class. Kết quả này là chấp nhận được. Từ hình trên ta cũng thấy rằng _đường ranh giới_ giữa các classes là đường thẳng. Tôi sẽ chứng minh điều này ở phần sau. 
