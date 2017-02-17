@@ -148,6 +148,8 @@ Có một vài quan sát như sau:
 
 * Cột 4: Nếu \\(v\_1 = v\_2\\), thì \\(z\_1 = z\_2\\).
 
+Bạn đọc có thể thử với các giá trị khác trực tiếp trên trình duyệt bằng trong [link này](http://neuralnetworksanddeeplearning.com/chap3.html), kéo xuống phần Softmax. 
+
 <a name="-phien-ban-on-dinh-hon-cua-softmax-function"></a>
 
 ### 2.4. Phiên bản ổn định hơn của softmax function 
@@ -627,5 +629,5 @@ Các bạn có thể tìm thấy source code trong [jupyter notebook này](https
 
 [3] [Softmax function - Wikipedia](https://en.wikipedia.org/wiki/Softmax_function)
 
-
+[4] [Improving the way neural networks learn](http://neuralnetworksanddeeplearning.com/chap3.html)
 
