@@ -68,6 +68,6 @@ import matplotlib.animation as animation
 from matplotlib.animation import FuncAnimation 
 
 anim = FuncAnimation(fig, update, frames=np.arange(0, it), interval=500)
-anim.save(file_name, dpi=100, writer='imagemagick')
+# anim.save(file_name, dpi=100, writer='imagemagick')
 plt.show()
 

@@ -188,5 +188,5 @@ def update(ii):
     return animlist, ax
 
 anim = FuncAnimation(fig, update, frames=np.arange(0, 2*it), interval=1000)
-anim.save('kmeans.gif', dpi=200, writer='imagemagick')
+# anim.save('kmeans.gif', dpi=200, writer='imagemagick')
 plt.show()
