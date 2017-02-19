@@ -10,7 +10,7 @@ category: Neural-nets
 sc_project: 11257386
 sc_security: 69612f05
 img: \assets\13_softmax\softmax_nn.png
-summary: Áp dụng Logistic Regression vào một vài bài toán và mở rộng binary classifiers cho các bài toán multi-class. 
+summary: Một trong hai classifiers được sử dụng phổ biến nhất. 
 ---
 
 
