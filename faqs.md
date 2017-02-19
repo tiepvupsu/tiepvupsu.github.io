@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Frequently Asked Questions
-permalink: /index/
+permalink: /faqs/
 ---
 <!-- MarkdownTOC -->
 
@@ -20,10 +20,10 @@ Mới bạn đọc bài [Blog và các bài viết được tạo như thế nà
 
 ## 2. Các kiến thức cần thiết để học Machine Learning? 
 
-* Toán: bạn cần nắm vững các môn Giải Tích, Đại Số Tuyến Tính, Xác Suất Thông Kê. Nếu biết thêm về Toán Tối Ưu nữa thì rất tốt. 
+* **Toán**: bạn cần nắm vững các môn Giải Tích, Đại Số Tuyến Tính, Xác Suất Thông Kê. Nếu biết thêm về Toán Tối Ưu nữa thì rất tốt. 
 
-* Lập trình: bạn có thể dùng Matlab, Python, R. Hiện tại tôi thấy Python được sử dụng rộng rãi nhất vì có nhiều thư viện hỗ trợ, và cũng free nữa. 
+* **Lập trình**: bạn có thể dùng Matlab, Python, R. Hiện tại tôi thấy Python được sử dụng rộng rãi nhất vì có nhiều thư viện hỗ trợ, và cũng free nữa. 
 
-* Tiếng Anh, ít nhất là kỹ năng đọc, các bạn nên trau dồi càng sớm càng tốt. Đọc dần các tài liệu tiếng Anh để luyện cả tiếng và đọc thêm kiến thức mới. 
+* **Tiếng Anh**: ít nhất là kỹ năng đọc, các bạn nên trau dồi càng sớm càng tốt. Đọc dần các tài liệu tiếng Anh để luyện cả tiếng và đọc thêm kiến thức mới. 
 
 
