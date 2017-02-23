@@ -1,0 +1,65 @@
+---
+layout: post
+comments: true
+title:  "Bài 14: Giới thiệu về Deep Networks"
+date:   2017-02-17 15:22:00
+permalink: 2017/02/24/mlp/
+mathjax: true
+tags: Neural-nets Multi-layer
+category: Neural-nets
+sc_project: 
+sc_security: 
+img: \assets\13_softmax\softmax_nn.png
+summary: Giới thiệu về Neural Networks nhiều lớp (multi-layer perceptrons)
+---
+
+<!-- MarkdownTOC -->
+
+- [Giới thiệu](#gioi-thieu)
+
+<!-- /MarkdownTOC -->
+
+<a name="gioi-thieu"></a>
+
+## Giới thiệu
+
+Bài toán [Supervised Learning](/2016/12/27/categories/#supervised-learning-hoc-co-giam-sat), nói một cách ngắn gọn, là việc đi tìm một hàm số để với mỗi _input_, ta sử dụng hàm số đó để dự đoán _output_. Hàm số này được xây dựng dựa trên các cặp dữ liệu \\((\mathbf{x}\_1, \mathbf{y}\_i)\\) trong _training set_. _Đầu ra dự đoán_(predicted output) gần với _đầu ra thực sự_(ground truth) thì đó được gọi là một thuật toán tốt (nhưng khi _đầu ra dự đoán_ quá giống với _đầu ra thực sự_ thì không hẳn đã tốt, tôi sẽ đề cập kỹ về hiện tượng trong bài tiếp theo).
+
+Chúng ta cùng xét khả năng biểu diễn (representation) của [Perceptron Learning Algorithm (PLA)](/2017/01/21/perceptron/) cho các bài toán binary vô cùng đơn giản: biểu diễn các hàm số logic NOT, AND, OR, và [XOR](https://en.wikipedia.org/wiki/Exclusive_or) (output bằng 1 nếu và chỉ nếu hai input khác nhau). Để có thể sử dụng PLA (output là 1 hoặc -1), chúng ta sẽ thay các giá trị bằng 0 của output của các hàm này bởi -1. Trong hàng trên của Hình 1 dưới đây, các điểm hình vuông màu xanh là các điểm có label bằng 1, các điểm hình tròn màu đỏ là các điểm có label bằng -1. Hàng dưới của Hình 1 là các mô hình perceptron với các hệ số tương ứng.
+
+<hr>
+<div class="imgcap">
+ <img src ="/assets/14_mlp/logic_nn.png" align = "center" width = "800">
+ <div class = "thecap"> Hình 1: PLA biểu diễn các hàm logic đơn giản. </div>
+</div>
+<hr>
+ Nhận thấy rằng với các bài toán OR, AND, và OR, dữ liệu là [_linearly separable_](/2017/01/21/perceptron/#bai-toan-perceptron), vì vậy ta có thể tìm được các hệ số cho perceptron giúp biểu diễn chính xác cho mỗi hàm số. Xem ví dụ với hàm NOT, khi \\(x_1 = 0\\), ta có \\(z = \text{sgn}(-2*0+1) = 1\\). Khi \\(x_1 = 1\\), \\(z = \text{sgn}(-2*1 + 1) = -1\\). Trong cả hai trường hợp, predicted output đều giống với [ground truth](/2017/01/08/knn/#ground-truth). Bạn đọc có thể tự kiểm chứng các hệ số trong hình với hàm AND và OR.
+
+Với hàm XOR, vì dữ liệu không _linearly separable_, tức không thể tìm được 1 đường thằng giúp phân chia hai lớp xanh đỏ, nên bài toán vô nghiệm. Nếu thay PLA bằng [Logistic Regression](/2017/01/27/logisticregression/), tức thay hàm activation function từ _sgn_ sang [_sigmoid_](/2017/01/27/logisticregression/#sigmoid-function), ta cũng không tìm được các hệ số thỏa mãn, vì về bản chất, [Logistic Regression cũng chỉ tạo ra các đường biên có dạng tuyến tính](/2017/01/27/logisticregression/#boundary-tao-boi-logistic-regression-co-dang-tuyen-tinh). Như vậy là các mô hình Neural Network chúng ta đã biết không thể biểu diễn được hàm số logic đơn giản này. 
+
+Nhận thấy rằng nếu cho phép sử dụng hai đường thẳng, bài toán biểu diễn hàm XOR sẽ được giải quyết như Hình 2 (trái) dưới đây:
+
+<hr>
+<div class="imgcap">
+ <img src ="/assets/14_mlp/xor_nn.png" align = "center" width = "800">
+ <div class = "thecap">Hình 2: Multilayer Perceptron biểu diễn hàm XOR</div>
+</div>
+<hr>
+
+Các hệ số tương ứng với hai đường thẳng trong Hình 2 (trái) được minh họa trên Hình 2 (phải) tại các node màu lục và lam. Đầu ra \\(v\_1\\) bằng 1 với các điểm nằm về phía (+) của đường thẳng \\(-2x\_1 -2x\_2 +3 = 0\\), bằng -1 với các điểm nằm về phía (-). Tương tự, đầu ra \\(v\_2\\) bằng 1 với các điểm nằm về phía (+) của đường thẳng \\(2x\_1 + 2x\_2 + 1 = 0\\). Như vậy, hai đường thằng này tạo ra hai _đầu ra_ tại các node \\(v\_1, v\_2\\). Vì hàm XOR chỉ có một đầu ra nên ta cần làm thêm một bước nữa: coi \\(v\_1, v\_2\\) như là input của một PLA khác. Trong PLA mới này, input là các node màu lam (đừng quên node bias có giá trị bằng 1), output là các node màu đỏ. Các hệ số được cho trên Hình. Kiểm tra lại một chút, với các điểm hình vuông xanh, \\(v\_1 = v\_2 = 1\\), khi đó \\(z = \text{sgn}(1 + 1 - 1) = 1\\). Với các điểm hình tròn đỏ, \\(v\_1 = -v\_2\\), vậy nên \\(z = \text{sgn}(v\_1 + v\_2 - 1) = \text{sgn}(-1) = -1\\). Trong cả hai trường hợp, predicted ouput đều giống với ground truth. Vậy, nếu ta sử dụng 3 PLA (tương ứng với các output \\(v\_1, v\_2, z\\), ta sẽ biểu diễn được hàm XOR. 
+
+Ba PLA kể trên được xếp vào hai _layers_. Layer thứ nhất: input - lục, output - lam. Layer thứ hai: input - lam, output - đỏ. Ở đây, output của layer thứ nhất chính là input của layer thứ hai. Tổng hợp lại ta được một mô hình mà ngoài layer input (lục) và output (đỏ), ta còn có một layer nữa (lam). Mô hình này có tên gọi là Multilayer Perceptron. Layer trung gian ở giữa còn được gọi là _hidden layer_. 
+
+**Chú ý:** 
+
+* Perceptron Learing Algorithm là một trường hợp của _single-layer neural network_ với [_activation fucntion_](/2017/01/27/logisticregression/#nhac-lai-hai-mo-hinh-tuyen-tinh) là hàm _sgn_. Trong khi đó, Perceptron là tên chung để chỉ các Neural Network với chỉ một input laer và một output layer.
+
+* Các _activation function_ có thể là các nonlinear function khác, ví dụ như _sigmoid function_ hoặc [_tanh function_](/2017/01/27/logisticregression/#tanh-function). Các _activation function_ phải là nonlinear (phi tuyến), vì nếu không, nhiều layer hay một layer cũng là như nhau. Ví dụ với hai layer trong Hình 2, nếu _activation function_ là một hàm linear (giả sử hàm \\(y = x\\)), thì cả hai layer có thể được thay bằng một layer với ma trận hệ số \\(\mathbf{W} = \mathbf{W}^{(2)}\mathbf{W}^{(1)}\\). 
+
+
+<hr>
+<div class="imgcap">
+ <img src ="/assets/14_mlp/multi_layers.png" align = "center" width = "400">
+ <div class = "thecap">Hình 3: Hai layers</div>
+</div>
+<hr>

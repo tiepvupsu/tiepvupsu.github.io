@@ -4,6 +4,7 @@ title: Index
 permalink: /index/
 ---
 
+* [activation function](/2017/01/27/logisticregression/#nhac-lai-hai-mo-hinh-tuyen-tinh)
 * [arg min](/2017/01/01/kmeans/#ham-mat-mat-va-bai-toan-toi-uu)
 * [Bag of Words](/general/2017/02/06/featureengineering/#bag-of-words)
 * [Binary classifiers](/2017/02/11/binaryclassifiers/)
@@ -29,6 +30,7 @@ permalink: /index/
 * [K-nearest neighbors](/2017/01/08/knn/)
 * [Large-sclae problem](/2017/01/12/gradientdescent/#large-scale)
 * [Level sets](/2017/01/12/gradientdescent/#duong-dong-muc-level-sets)
+* [Linearly separable](/2017/01/21/perceptron/#bai-toan-perceptron)
 * [Logistic Regression](/2017/01/27/logisticregression/)
 * [Loss function (Hàm mất mát)](/2016/12/28/linearregression/#ham-mat-mat) ([2](/2017/01/01/kmeans/#ham-mat-mat-va-bai-toan-toi-uu))
 * [Neural Networks](/2017/01/21/perceptron/#-mo-hinh-neural-network-dau-tien)

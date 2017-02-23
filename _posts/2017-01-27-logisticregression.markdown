@@ -48,7 +48,7 @@ Hai mô hình tuyến tính (linear models) [Linear Regression](/2016/12/28/line
 y = f(\mathbf{w}^T\mathbf{x})
 \\]
 
-trong đó \\(f()\\) được gọi là activation function, và \\(\mathbf{x}\\) được hiểu là dữ liệu mở rộng với \\(x\_0 = 1\\) được thêm vào để thuận tiện cho việc tính toán. Với linear regression thì \\(f(s) = s\\), với PLA thì \\(f(s) = \text{sgn}(s)\\). Trong linear regression, tích vô hướng \\(\mathbf{w}^T\mathbf{x}\\) được trực tiếp sử dụng để dự đoán output \\(y\\), loại này phù hợp nếu chúng ta cần dự đoán một giá trị thực của đầu ra không bị chặn trên và dưới. Trong PLA, đầu ra chỉ nhận một trong hai giá trị \\(1\\) hoặc \\(-1 \\), phù hợp với các bài toán _binary classification_. 
+trong đó \\(f()\\) được gọi là _activation function_, và \\(\mathbf{x}\\) được hiểu là dữ liệu mở rộng với \\(x\_0 = 1\\) được thêm vào để thuận tiện cho việc tính toán. Với linear regression thì \\(f(s) = s\\), với PLA thì \\(f(s) = \text{sgn}(s)\\). Trong linear regression, tích vô hướng \\(\mathbf{w}^T\mathbf{x}\\) được trực tiếp sử dụng để dự đoán output \\(y\\), loại này phù hợp nếu chúng ta cần dự đoán một giá trị thực của đầu ra không bị chặn trên và dưới. Trong PLA, đầu ra chỉ nhận một trong hai giá trị \\(1\\) hoặc \\(-1 \\), phù hợp với các bài toán _binary classification_. 
 
 Trong bài này, tôi sẽ giới thiệu mô hình thứ ba với một activation khác, được sử dụng cho các bài toán _flexible_ hơn. Trong dạng này, đầu ra có thể được thể hiện dưới dạng xác suất (probability). Ví dụ: xác suất thi đỗ nếu biết thời gian ôn thi, xác suất ngày mai có mưa dựa trên những thông tin đo được trong ngày hôm nay,... Mô hình mới này của chúng ta có tên là _logistic regression_. Mô hình này giống với linear regression ở khía cạnh đầu ra là số thực, và giống với PLA ở việc đầu ra bị chặn (trong đoạn \\([0, 1]\\)). Mặc dù trong tên có chứa từ _regression_, logistic regression thường được sử dụng nhiều hơn cho các bài toán classification.
 
@@ -146,6 +146,8 @@ f(s) = \frac{1}{1 + e^{-s}} \triangleq \sigma(s)
 \end{eqnarray}
 \\]
 Công thức đạo hàm đơn giản thế này giúp hàm số này được sử dụng rộng rãi. Ở phần sau, tôi sẽ lý giải việc _người ta đã tìm ra hàm số đặc biệt này như thế nào_.
+
+<a name = "tanh-function"></a>
 
 Ngoài ra, hàm _tanh_ cũng hay được sử dụng: 
 \\[
