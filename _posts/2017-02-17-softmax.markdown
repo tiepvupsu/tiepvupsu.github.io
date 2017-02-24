@@ -55,7 +55,6 @@ Các bài toán classification thực tế thường có rất nhiều classes (
 Nếu có điểm nào khó hiểu, bạn đọc được khuyến khích đọc lại các bài trước, trong đó quan trọng nhất là [Bài 10: Logistic Regression](/2017/01/27/logisticregression/).
 <a name="-gioi-thieu"></a>
 
-<a name="-gioi-thieu"></a>
 ## 1. Giới thiệu 
 Tôi xin phép được bắt đầu từ mô hình [**one-vs-rest**](/2017/02/11/binaryclassifiers/#one-vs-rest-hay-one-hot-coding) được trình bày trong bài trước. Output layer (màu đỏ nhạt) có thể phân tách thành hai _sublayer_ như hình dưới đây:
 
@@ -77,11 +76,9 @@ tham số \\(\mathbf{w}\_i\\) ứng với từng node. Lúc này, ta có _ma tr�
 
 <a name="-softmax-function"></a>
 
-<a name="-softmax-function"></a>
 ## 2. Softmax function 
 <a name="-cong-thuc-cua-softmax-function"></a>
 
-<a name="-cong-thuc-cua-softmax-function"></a>
 ### 2.1. Công thức của Softmax function
 Chúng ta cần một mô hình xác suất sao cho với mỗi input \\(\mathbf{x}\\), \\(z_i\\) thể hiện xác suất để input đó rơi vào class \\(i\\). Vậy điều kiện cần là các \\(z_i\\) phải dương và tổng của chúng bằng 1. Để có thể thỏa mãn điều kiện này, chúng ta cần _nhìn vào_ mọi giá trị \\(v_i\\) và dựa trên quan hệ giữa các \\(v\_i\\) này để tính toán giá trị của \\(z\_i\\). Ngoài các điều kiện \\(z\_i\\) lớn hơn 0 và có tổng bằng 1, chúng ta sẽ thêm một điều kiện cũng rất tự nhiên nữa, đó là: giá trị \\(v\_i = \mathbf{w}\_i^T\mathbf{x}\\) càng lớn thì xác suất dữ liệu rơi vào class \\(i\\) càng cao. Điều kiện cuối này chỉ ra rằng chúng ta cần một hàm đồng biến ở đây.
 
@@ -114,7 +111,6 @@ Hình vẽ dưới đây thể hiện mạng Softmax Regression dưới dạng n
 
 <a name="-softmax-function-trong-python"></a>
 
-<a name="-softmax-function-trong-python"></a>
 ### 2.2. Softmax function trong Python 
 Dưới đây là một đoạn code viết hàm softmax. Đầu vào là một ma trận với mỗi cột là một vector \\(\mathbf{v}\\), đầu ra cũng là một ma trận mà mỗi cột có giá trị là \\(\mathbf{z} = \text{softmax}(\mathbf{v})\\). Các giá trị của \\(\mathbf{v}\\) còn được gọi là **scores**.
 
@@ -133,7 +129,6 @@ def softmax(V):
 
 <a name="-mot-vai-vi-du"></a>
 
-<a name="-mot-vai-vi-du"></a>
 ### 2.3. Một vài ví dụ 
 
 Hình 3 dưới đây là một vài ví dụ về mối quan hệ giữa đầu vào và đầu ra của hàm softmax. Hàng trên màu xanh nhạt thể hiện các scores \\(v\_i\\) với giả sử rằng số classes là 3. Hàng dưới màu đỏ nhạt thể hiện các giá trị đầu ra \\(z\_i\\) của hàm softmax.
@@ -157,7 +152,6 @@ Bạn đọc có thể thử với các giá trị khác trực tiếp trên tr�
 
 <a name="-phien-ban-on-dinh-hon-cua-softmax-function"></a>
 
-<a name="-phien-ban-on-dinh-hon-cua-softmax-function"></a>
 ### 2.4. Phiên bản ổn định hơn của softmax function 
 
 Khi một trong các \\(v\_i\\) quá lớn, việc tính toán \\(\exp(v\_i)\\) có thể gây ra hiện tượng tràn số (overflow), ảnh hưởng lớn tới kết quả của hàm softmax. Có một cách khắc phục hiện tượng này bằng cách dựa trên quan sát sau: 
@@ -191,12 +185,10 @@ trong đó `axis = 0` nghĩa là lấy `max` theo cột (`axis = 1` sẽ lấy m
 
 <a name="-ham-mat-mat-va-phuong-phap-toi-uu"></a>
 
-<a name="-ham-mat-mat-va-phuong-phap-toi-uu"></a>
 ## 3. Hàm mất mát và phương pháp tối ưu 
 
 <a name="-one-hot-coding"></a>
 
-<a name="-one-hot-coding"></a>
 ### 3.1. One hot coding 
 Với cách biểu diễn network như trên, mỗi output sẽ không còn là một giá trị tương ứng với mỗi class nữa mà sẽ là một vector có đúng 1 phần tử bằng 1, các phần tử còn lại bằng 0. Phần tử bằng 1 năm ở vị trí tương ứng với class đó, thể hiện rằng điểm dữ liệu đang xét rơi vào class này với xác suất bằng 1 (_sự thật_ là như thế, không cần dự đoán). Cách _mã hóa_ output này chính là _one-hot coding_ mà tôi đã đề cập trong bài [K-means clustering](/2017/01/01/kmeans/) và [bài trước](/2017/02/11/binaryclassifiers/#one-vs-rest-hay-one-hot-coding). 
 
@@ -211,7 +203,6 @@ J(\mathbf{W}) = \sum_{i=1}^N \|\|\mathbf{z}\_i - \mathbf{y}\_i\|\|_2^2
 
 <a name="-cross-entropy"></a>
 
-<a name="-cross-entropy"></a>
 ### 3.2. Cross Entropy 
 Cross entropy giữa hai phân phối \\(\mathbf{p}\\) và \\(\mathbf{q}\\) được định nghĩa là:
 \\[
@@ -270,7 +261,6 @@ Với \\(y\_{ji}\\) và \\( z\_{ji}\\) lần lượt là là phần tử thứ \
 
 <a name="-ham-mat-mat-cho-softmax-regression"></a>
 
-<a name="-ham-mat-mat-cho-softmax-regression"></a>
 ### 3.3. Hàm mất mát cho Softmax Regression 
 Kết hợp tất cả các cặp dữ liệu \\(\mathbf{x}\_i, \mathbf{y}\_i, i = 1, 2, \dots, N\\), chúng ta sẽ có hàm mất mát cho Softmax Regression như sau:
 
@@ -285,7 +275,6 @@ Với ma trận trọng số \\(\mathbf{W}\\) là biến cần tối ưu. Hàm m
 
 <a name="-toi-uu-ham-mat-mat"></a>
 
-<a name="-toi-uu-ham-mat-mat"></a>
 ### 3.4. Tối ưu hàm mất mát 
 
 Một lần nữa, chúng ta lại sử dụng [Stochastic Gradient Descent (SGD)](/2017/01/16/gradientdescent2/#-stochastic-gradient-descent) ở đây. 
@@ -316,7 +305,7 @@ Trong đó, gradient theo từng cột có thể tính được dựa theo \\((3
 \frac{\partial J\_i(\mathbf{W})}{\partial \mathbf{w}\_j} &=& -y\_{ji}\mathbf{x}\_i + 
 \frac{\exp(\mathbf{w}\_j^T\mathbf{x}\_i)}{\sum\_{k = 1}^C \exp(\mathbf{w}\_k^T\mathbf{x}\_i)}\mathbf{x}\_i \\\
 &=& \-y\_{ji}\mathbf{x}\_i + z\_{ji} \mathbf{x}\_i = \mathbf{x}\_i (z\_{ji} - y\_{ji}) \\\
-&=& u\_{ji}\mathbf{x}\_{i} ~(\text{where}~ u\_{ji} = z\_{ji} - v\_{ji}) ~~(5)
+&=& u\_{ji}\mathbf{x}\_{i} ~(\text{where}~ u\_{ji} = z\_{ji} - y\_{ji}) ~~(5)
 \end{eqnarray}
 \\]
 
@@ -343,7 +332,6 @@ Thực ra:
 
 <a name="-logistic-regression-la-mot-truong-hop-dat-biet-cua-softmax-regression"></a>
 
-<a name="-logistic-regression-la-mot-truong-hop-dat-biet-cua-softmax-regression"></a>
 ### 3.5. Logistic Regression là một trường hợp đặt biệt của Softmax Regression 
 
 Khi \\(C = 2\\), Softmax Regression và Logistic Regression là giống nhau. Thật vậy, đầu ra dự đoán của Softmax Regression với \\(C= 2\\) có thể được viết dưới dạng: 
@@ -359,12 +347,10 @@ z\_1 &=& \frac{\exp(\mathbf{w}\_1\mathbf{x})} {\exp(\mathbf{w}\_1^T\mathbf{x}) +
 Softmax Regression còn có các tên gọi khác là Multinomial Logistic Regression, Maximum Entropy Classifier, hay rất nhiều tên khác nữa. Xem thêm [Multinomial logistic regression - Wikipedia](https://en.wikipedia.org/wiki/Multinomial_logistic_regression)
 <a name="-mot-vai-luu-y-khi-lap-trinh-voi-python"></a>
 
-<a name="-mot-vai-luu-y-khi-lap-trinh-voi-python"></a>
 ## 4. Một vài lưu ý khi lập trình với Python 
 
 <a name="-bat-dau-voi-du-lieu-nho"></a>
 
-<a name="-bat-dau-voi-du-lieu-nho"></a>
 ### 4.1. Bắt đầu với dữ liệu nhỏ
 Các bài toán Machine Learning thường có độ phức tạp cao với lượng dữ liệu lớn và nhiều chiều. Để có thể áp dụng một thuật toán vào một bài toán cụ thể, trước tiên chúng ta cần áp dụng thuật toán đó vào _simulated data_ (dữ liệu giả) với số chiều và số điểm dữ liệu nhỏ hơn. _Simulated data_ này thường được tạo ngẫu nhiên (có thể thêm vài ràng buộc tùy vào đặc thù của dữ liệu). Với _simulated data_ nhỏ, chúng ta có thể debug nhanh hơn và thử với nhiều trường hợp _simulated data_ khác nhau. Khi nào thấy thuật toán chạy đúng chúng ta mới đưa _dữ liệu thật_ vào. 
 
@@ -385,7 +371,6 @@ Trong ví dụ đơn giản này, số điểm dữ liệu chỉ là `N = 2`, s�
 
 <a name="-ma-tran-one-hot-coding"></a>
 
-<a name="-ma-tran-one-hot-coding"></a>
 ### 4.2. Ma trận one-hot coding 
 Có một bước quan trọng nữa trong Softmax Regression là phải chuyển đổi mỗi label \\(y\_i\\) thành một vector \\(\mathbf{y}\_i\\) dưới dạng one-hot coding. Trong đó, chỉ có đúng một phần tử của \\(\mathbf{y}\_i\\) bằng 1, các phần tử còn lại bằng 0. Như vậy, với \\(N\\) điểm dữ liệu và \\(C\\) classes, chúng ta sẽ có một ma trận có kích thước \\(C \times N\\) trong đó mỗi cột chỉ có đúng 1 phần tử bằng 1, còn lại bằng 0. Nếu chúng ta lưu toàn bộ dữ liệu này thì sẽ bị lãng phí bộ nhớ. 
 
@@ -416,7 +401,6 @@ def convert_labels(y, C = C):
 
 <a name="-kiem-tra-dao-ham"></a>
 
-<a name="-kiem-tra-dao-ham"></a>
 ### 4.3. Kiểm tra đạo hàm 
 Điều cốt lõi trong cách tối ưu hàm mất mát là tính gradient. Với biểu thức toán trông _khá rối mắt_ như trên, rất dễ để các bạn nhầm lẫn ở một bước nào đó. Softmax Regression vẫn là một thuật toán đơn giản, sau này các bạn sẽ thấy nhưng biểu thức phức tạp hơn nhiều. Rất khó để có thể tính toán đúng gradient ở ngay lần thử đầu tiên. 
 
@@ -461,7 +445,6 @@ Như vậy, sự khác biệt giữa hai đạo hàm là rất nhỏ. Nếu các
 Chú ý rằng, nếu `N, C, d` quá lớn, việc tính toán `numerical_grad` trở nên cực kỳ tốn thời gian và bộ nhớ. Chúng ta chỉ nên kiểm tra với những dữ liệu nhỏ.
 <a name="-ham-chinh-cho-training-softmax-regression"></a>
 
-<a name="-ham-chinh-cho-training-softmax-regression"></a>
 ### 4.4. Hàm chính cho training Softmax Regression
 
 Sau khi đã có những hàm cần thiết và gradient được tính đúng, chúng ta có thể viết hàm chính có training Softmax Regression (theo SGD) như sau:
@@ -500,7 +483,6 @@ W = softmax_regression(X, Y, W_init, eta)
 
 <a name="-ham-du-doan-class-cho-du-lieu-moi"></a>
 
-<a name="-ham-du-doan-class-cho-du-lieu-moi"></a>
 ### 4.5. Hàm dự đoán class cho dữ liệu mới 
 
 Sau khi train Softmax Regression và tính được ma trận hệ số `W`, class của một dữ liệu mới có thể tìm được bằng cách xác định vị trí của giá trị lớn nhất ở đầu ra dự đoán (tương ứng với xác suất điểm dữ liệu rơi vào class đó là lớn nhất). Chú ý rằng, các class được đánh số là `0, 1, 2, ..., C`. 
@@ -518,11 +500,9 @@ def pred(W, X):
 
 <a name="-vi-du-voi-python"></a>
 
-<a name="-vi-du-voi-python"></a>
 ## 5. Ví dụ với Python
 <a name="-simulated-data"></a>
 
-<a name="-simulated-data"></a>
 ### 5.1. Simulated data
 Để minh họa cách áp dụng Softmax Regression, tôi tiếp tục làm trên _simulated data_. 
 
@@ -573,7 +553,6 @@ Ta thấy rằng Softmax Regression đã tạo ra các vùng cho mỗi class. K�
 
 <a name="-softmax-regression-cho-mnist"></a>
 
-<a name="-softmax-regression-cho-mnist"></a>
 ### 5.2. Softmax Regression cho MNIST
 Các ví dụ trên đây được trình bày để giúp bạn đọc hiểu rõ Softmax Regression hoạt động như thế nào. Khi làm việc với các bài toán thực tế, chúng ta nên sử dụng các thư viện có sẵn, trừ khi bạn có thêm bớt vài số hạng nữa trong hàm mất mat. 
 
@@ -620,11 +599,9 @@ So với kết quả hơn 91% của one-vs-rest Logistic Regression thì Softmax
 
 <a name="-thao-luan"></a>
 
-<a name="-thao-luan"></a>
 ## 6. Thảo luận 
 <a name="-boundary-tao-boi-softmax-regression-la-linear"></a>
 
-<a name="-boundary-tao-boi-softmax-regression-la-linear"></a>
 ### 6.1 Boundary tạo bởi Softmax Regression là linear
 Thật vậy, dựa vào hàm softmax thì một điểm dữ liệu \\(\mathbf{x}\\) được dự đoán là rơi vào class \\(j\\) nếu \\(z\_{j} \geq z\_{k}, ~\forall k \neq j\\). Bạn đọc có thể chứng minh được rằng \\(z\_{j} \geq z\_{k} \Leftrightarrow v\_{j} \geq v\_{k}\\), hay nói cách khác: 
 \\[
@@ -635,19 +612,16 @@ Thật vậy, dựa vào hàm softmax thì một điểm dữ liệu \\(\mathbf{
 
 <a name="-softmax-regression-la-mot-trong-hai-classifiers-pho-bien-nhat"></a>
 
-<a name="-softmax-regression-la-mot-trong-hai-classifiers-pho-bien-nhat"></a>
 ### 6.2. Softmax Regression là một trong hai classifiers phổ biến nhất
 Softmax Regression cùng với Support Vector Machine (tôi sẽ trình bày sau vài bài nữa) là hai classifier phổ biến nhất được dùng hiện nay. Softmax Regression đặc biệt được sử dụng nhiều trong các mạng Neural có nhiều lớp (Deep Neural Networks hay DNN). Những lớp phía trước có thể được coi như một bộ [Feature Extractor](/general/2017/02/06/featureengineering/#feature-extractor), lớp cuối cùng của DNN cho bài toán classification thường là Softmax Regression. 
 
 <a name="-source-code"></a>
 
-<a name="-source-code"></a>
 ### 6.3. Source code 
 
 Các bạn có thể tìm thấy source code trong [jupyter notebook này](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/13_softmax/Softmax%20Regression.ipynb).
 <a name="tai-lieu-tham-khao"></a>
 
-<a name="tai-lieu-tham-khao"></a>
 ## Tài liệu tham khảo 
 [1] [Softmax Regression](http://ufldl.stanford.edu/tutorial/supervised/SoftmaxRegression/)
 

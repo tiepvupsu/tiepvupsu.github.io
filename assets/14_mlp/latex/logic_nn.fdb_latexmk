@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1487823214 "logic_nn.tex" "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/14_mlp/latex/logic_nn.pdf" "logic_nn" 1487823215
+["pdflatex"] 1487823214 "logic_nn.tex" "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/14_mlp/latex/logic_nn.pdf" "logic_nn" 1487869367
   "../AND.png" 1487815213 91620 b88abd7985c0ef46b983497661bd061f ""
   "../NOT.png" 1487823175 49802 70f0944f7dccc1082de72ada96e34481 ""
   "../OR.png" 1487815293 84382 fabd0c454de583079902894aa69d531a ""
@@ -119,7 +119,7 @@
   "logic_nn.tex" 1487823214 5929 f32104ccb374557120794d553520cd3f ""
   (generated)
   "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/14_mlp/latex/logic_nn.log"
-  "logic_nn.aux"
-  "logic_nn.pdf"
-  "logic_nn.log"
   "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/14_mlp/latex/logic_nn.pdf"
+  "logic_nn.aux"
+  "logic_nn.log"
+  "logic_nn.pdf"
