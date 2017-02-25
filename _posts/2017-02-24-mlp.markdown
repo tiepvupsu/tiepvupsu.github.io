@@ -229,8 +229,8 @@ Giả sử \\(J(\mathbf{W, b, X, Y})\\) là một hàm mất mát của bài to�
 Một ví dụ của hàm mất mát là hàm Mean Square Error (MSE) tức _trung bình của bình phương lỗi_.
 \\[
 \begin{eqnarray}
-J(\mathbf{W, b, X, Y}) &=& \frac{1}{N}\sum\_{i=1}^N \|\| \mathbf{y}\_i - \mathbf{\hat{y}}\_i\|\|\_2^2 \\\
-&=&\frac{1}{N}\sum\_{i=1}^N \|\| \mathbf{y}_i - \mathbf{z}\_i^{(L)}\|\|\_2^2
+J(\mathbf{W, b, X, Y}) &=& \frac{1}{N}\sum\_{n=1}^N \|\| \mathbf{y}\_n - \mathbf{\hat{y}}\_n\|\|\_2^2 \\\
+&=&\frac{1}{N}\sum\_{n=1}^N \|\| \mathbf{y}_n - \mathbf{z}\_n^{(L)}\|\|\_2^2
 \end{eqnarray}
 \\]
 Với \\(N\\) là số cặp dữ liệu \\((\mathbf{x}, \mathbf{y})\\) trong tập training.
@@ -248,7 +248,7 @@ Stochastic Gradient Descent có thể được sử dụng để tính gradient 
 \end{eqnarray}
 \\]
 
-Trong đó \\(e_i^{(L)} = \frac{\partial J}{\partial z_i^{(L)}} \\) thường là một đạilượng dễ tính toán và \\(\frac{\partial z_i^{(L)}}{\partial w_{ij}^{(L)}}  = a_j^{(L-1)}\\) vì \\(z_i^{(L)} = \mathbf{w}_i^{(L-1)T}\mathbf{a}^{(L-1)} + b_i^{(L-1)}\\).
+Trong đó \\(e_i^{(L)} = \frac{\partial J}{\partial z_i^{(L)}} \\) thường là một đạilượng _dễ tính toán_ và \\(\frac{\partial z_i^{(L)}}{\partial w_{ij}^{(L)}}  = a_j^{(L-1)}\\) vì \\(z_i^{(L)} = \mathbf{w}_i^{(L-1)T}\mathbf{a}^{(L-1)} + b_i^{(L-1)}\\).
 
 Tương tự như thế, đạo hàm của hàm mất mat theo bias của layer cuối cùng là:
 \\[
@@ -258,40 +258,40 @@ Tương tự như thế, đạo hàm của hàm mất mat theo bias của layer 
 Với đạo hàm theo hệ số ở các lớp \\(l\\) _thấp hơn_, chúng ta hay xem hình dưới đây. Ở đây, tại mỗi unit, tôi đã viết riêng đầu vào \\(z\\) và đầu ra \\(a\\) để các bạn tiện theo dõi.
 <hr>
 <div class="imgcap">
- <img src ="/assets/14_mlp/backpropagation.png" align = "center" width = "600">
+ <img src ="/assets/14_mlp/backpropagation.png" align = "center" width = "800">
  <div class = "thecap">Hình : Backpropagation.</div>
 </div>
 <hr>
 
-Dựa vào hính trên , ta có thể tính được:
+Dựa vào hính trên, ta có thể tính được:
 
 \\[
 \begin{eqnarray}
-\frac{\partial J}{\partial w_{ij}^{(l)}} &=& \frac{\partial J}{\partial z_i^{(l)}}. \frac{\partial z_i^{(l)}}{\partial w_{ij}^{(l)}} \\\
-&=& e_i^{(l)} a_j^{(l-1)}
+\frac{\partial J}{\partial w_{ij}^{(l)}} &=& \frac{\partial J}{\partial z_j^{(l)}}. \frac{\partial z_j^{(l)}}{\partial w_{ij}^{(l)}} \\\
+&=& e_j^{(l)} a_i^{(l-1)}
 \end{eqnarray}
 \\]
 với:
 
 \\[
 \begin{eqnarray}
-e_i^{(l)} &=& \frac{\partial J}{\partial z_i^{(l)}} = \frac{\partial J}{\partial a_i^{(l)}} . \frac{\partial a_i^{(l)}}{\partial z_i^{(l)}} \\\
-&=& \left( \sum_{k = 1}^{d^{(l+1)}} \frac{\partial J}{\partial z_k^{(l+1)}} .\frac{\partial z_k^{(l+1)}}{\partial a_i^{(l)}} \right) f'(z_i^{(l)}) \\\
- &=&\left( \sum_{k = 1}^{d^{(l+1)}} e_k^{(l+1)} w_{ki}^{(l+1)} \right) f'(z_i^{(l)}) \\\
- &=&\left( \mathbf{w}_i^{(l+1)T} \mathbf{e}^{(l+1)} \right) f'(z_i^{(l)}) \\\
+e_j^{(l)} &=& \frac{\partial J}{\partial z_j^{(l)}} = \frac{\partial J}{\partial a_j^{(l)}} . \frac{\partial a_j^{(l)}}{\partial z_j^{(l)}} \\\
+&=& \left( \sum_{k = 1}^{d^{(l+1)}} \frac{\partial J}{\partial z_k^{(l+1)}} .\frac{\partial z_k^{(l+1)}}{\partial a_j^{(l)}} \right) f'(z_j^{(l)}) \\\
+ &=&\left( \sum_{k = 1}^{d^{(l+1)}} e_k^{(l+1)} w_{kj}^{(l+1)} \right) f'(z_j^{(l)}) \\\
+ &=&\left( \mathbf{w}_j^{(l+1)T} \mathbf{e}^{(l+1)} \right) f'(z_j^{(l)}) \\\
 \end{eqnarray}
 \\]
 
 trong đó \\(\mathbf{e}^{(l+1)} = [e_1^{(l+1)}, e_2^{(l+1)}, ..., e_{d^{(l+1)}}^{(l+1)}]^T \in \mathbb{R}^{d^{(l+1)}\times 1} \\).
 
-Dấu sigma tính tổng ở hàng thứ hai trong phép tính trên xuất hiện vì \\(a_{i}^{(l)}\\) _đóng góp_ vào việc tính tất cả các \\(z_k^{(l+1)}\\). Biểu thức đạo hàm ngoài căn đơn giản là vì \\(a_i^{(l)}  = f(z_i^{(l)})\\). Tới đây, ta có thể thấy rằng việc activation function có đạo hàm đơn giản sẽ có ích rất nhiều trong việc tính toán.
+Dấu sigma tính tổng ở hàng thứ hai trong phép tính trên xuất hiện vì \\(a_{j}^{(l)}\\) _đóng góp_ vào việc tính tất cả các \\(z_k^{(l+1)}\\). Biểu thức đạo hàm ngoài dấu ngoặc lớn là vì \\(a_j^{(l)}  = f(z_j^{(l)})\\). Tới đây, ta có thể thấy rằng việc activation function có đạo hàm đơn giản sẽ có ích rất nhiều trong việc tính toán.
 
 Với cách làm tương tự, bạn đọc có thể suy ra:
 \\[
-\frac{\partial J}{\partial b_i^{(l)}} = e_i^{(l)}
+\frac{\partial J}{\partial b_j^{(l)}} = e_j^{(l)}
 \\]
 
-Nhận thấy rằng trong các công thức trên đây, việc tính các \\(e_i^{(k)}\\) đóng một vài trò quan trọng. Hơn nữa, để tính được giá trị này, ta cần tính được các \\(e_k^{(l+1)}\\). Nói cách khác, ta cần tính _ngược_ các giá trị này từ cuối. Cái tên _backpropagation_ cũng xuất phát từ việc này.
+Nhận thấy rằng trong các công thức trên đây, việc tính các \\(e_j^{(k)}\\) đóng một vài trò quan trọng. Hơn nữa, để tính được giá trị này, ta cần tính được các \\(e_k^{(l+1)}\\). Nói cách khác, ta cần tính _ngược_ các giá trị này từ cuối. Cái tên _backpropagation_ cũng xuất phát từ việc này.
 
 Việc tính toán các đạo hàm khi sử dụng SGD có thể tóm tắt như sau:
 
@@ -302,28 +302,28 @@ Việc tính toán các đạo hàm khi sử dụng SGD có thể tóm tắt nh�
 #### Đạo hàm theo từng hệ số \\(w_{ij}^{(l)}, b_{i}^{(l)}\\)
 <hr>
 1. Bước feedforward: Với 1 giá trị đầu vào \\(\mathbf{x}\\), tính giá trị đầu ra của network, trong quá trình tính toán, lưu lại các _activation_ \\(\mathbf{a}^{(l)}\\) tại mỗi layer.
-
-2. Với mỗi unit ở output layer, tính \\(e_i^{(L)} = \frac{\partial J}{\partial z_i^{(L)}}\\). Từ đó suy ra:
-
+2. Với mỗi unit ở output layer, tính \\[e_j^{(L)} = \frac{\partial J}{\partial z_j^{(L)}}\\]
+3. Từ đó suy ra:
 \\[
 \begin{eqnarray}
-\frac{\partial J}{\partial w_{ij}^{(L)}} &=& e_i^{(L)} a_j^{(L-1)}\\\
-\frac{\partial J}{\partial b_{i}^{(L)}} &=& e_i^{(L)}
+\frac{\partial J}{\partial w_{ij}^{(L)}} &=& a_i^{(L-1)}e_j^{(L)} \\\
+\frac{\partial J}{\partial b_{j}^{(L)}} &=& e_j^{(L)}
 \end{eqnarray}
 \\]
-3. Với \\(l = L-1, L-2, ..., 1\\), tính:
+4. Với \\(l = L-1, L-2, ..., 1\\), tính:
 \\[
-e_i^{(l)} = \left( \mathbf{w}_i^{(l+1)T} \mathbf{e}^{(l+1)} \right) f'(z_i^{(l)})
+e_j^{(l)} = \left( \mathbf{w}_j^{(l+1)T} \mathbf{e}^{(l+1)} \right) f'(z_j^{(l)})
 \\]
-4. Cập nhật đạo hàm cho từng hệ số trong các layer trước:
+5. Cập nhật đạo hàm cho từng hệ số trong các layer trước:
 \\[
 \begin{eqnarray}
-\frac{\partial J}{\partial w_{ij}^{(l)}} &=& e_i^{(l)} a_j^{(l-1)}\\\
-\frac{\partial J}{\partial b_{i}^{(l)}} &=& e_i^{(l)}
+\frac{\partial J}{\partial w_{ij}^{(l)}} &=& a_i^{(l-1)} e_j^{(l)} \\\
+\frac{\partial J}{\partial b_{j}^{(l)}} &=& e_j^{(l)}
 \end{eqnarray}
 \\]
 
 <hr>
+
 
 #### Đạo hàm theo ma trận \\(\mathbf{W}^{(l)}, \mathbf{b}^{(l)}\\)
 Việc tính toán theo từng hệ số như trên chỉ phù hợp cho việc hiểu nguyên lý tính toán, trong khi lập trình, ta cần tìm cách thu gọn chúng về dạng vector và ma trận để tăng tốc độ cho thuật toán. Đặt \\(\mathbf{e}^{(l)} = [e_1^{(l)}, e_2^{(l)}, ..., e_{d^{(l)}}^{(l)}]^T \in \mathbb{R}^{d^{(l)}\times 1} \\). Ta sẽ có quy tắc tính như sau:
@@ -331,61 +331,113 @@ Việc tính toán theo từng hệ số như trên chỉ phù hợp cho việc 
 <hr>
 1. Bước feedforward: Với 1 giá trị đầu vào \\(\mathbf{x}\\), tính giá trị đầu ra của network, trong quá trình tính toán, lưu lại các _activation_ \\(\mathbf{a}^{(l)}\\) tại mỗi layer.
 2. Với mỗi unit ở output layer, tính: \\[\mathbf{e}^{(L)} = \frac{\partial J}{\partial \mathbf{z}^{(L)}}\\]
-Từ đó suy ra:
+3. Từ đó suy ra:
 \\[
 \begin{eqnarray}
-\frac{\partial J}{\partial \mathbf{W}^{(L)}} &=& \mathbf{e}^{(L)} \mathbf{a}^{(L-1)T}\\\
-\frac{\partial J}{\partial b_{i}^{(L)}} &=&  \mathbf{e}^{(L)}
+\frac{\partial J}{\partial \mathbf{W}^{(L)}} &=& \mathbf{a}^{(L-1)}\mathbf{e}^{(L)T}\\\
+\frac{\partial J}{\partial \mathbf{b}^{(L)}} &=&  \mathbf{e}^{(L)}
 \end{eqnarray}
 \\]
-3. Với \\(l = L-1, L-2, ..., 1\\), tính:
+4. Với \\(l = L-1, L-2, ..., 1\\), tính:
 \\[
 \mathbf{e}^{(l)} = \left( \mathbf{W}^{(l+1)T} \mathbf{e}^{(l+1)} \right) \odot f'(\mathbf{z}^{(l)})
 \\]
 trong đó \\(\odot\\) là _element-wise product_ hay _Hadamard product_ tức lấy từng thành phần của hai vector nhân với nhau để được vector kết quả.
-4. Cập nhật đạo hàm cho ma trận trọng số và vector biases:
+5. Cập nhật đạo hàm cho ma trận trọng số và vector biases:
 \\[
 \begin{eqnarray}
-\frac{\partial J}{\partial \mathbf{W}^{(l)}} &=& \mathbf{e}^{(l)T}\mathbf{a}^{(l-1)}\\\
+\frac{\partial J}{\partial \mathbf{W}^{(l)}} &=& \mathbf{a}^{(l-1)}\mathbf{e}^{(l)T}\\\
 \frac{\partial J}{\partial \mathbf{b}^{(l)}} &=& \mathbf{e}^{(l)}
 \end{eqnarray}
 \\]
 
 <hr>
 
+**Chú ý:** Biểu thức tính đạo hàm trong bước 3 có thể khiến bạn đặt câu hỏi, tại sao lại là \\(\mathbf{a}^{(L-1)}\mathbf{e}^{(L)T}\\) mà không phải là \\(\mathbf{a}^{(L-1)T}\mathbf{e}^{(L)}\\), \\(\mathbf{e}^{(L)T}\mathbf{a}^{(L-1)}\\), hay \\(\mathbf{e}^{(L)}\mathbf{a}^{(L-1)T}\\). _Quy tắc bỏ túi_ cần nhớ là **chiều của hai ma trận ở hai vế phải như nhau**. Thử một chút, vế trái là đạo hàm theo \\(\mathbf{W}^{(L)}\\) là một đại lượng có chiều (_dimension_, not _afternoon_) bằng chiều của ma trận này, tức chiều là \\(\mathbb{R}^{d^{(L-1)}\times d^{(L)}}\\). Vế phải, \\(\mathbf{e}^{(L)} \in \mathbf{R}^{d^{(L)} \times 1}, \mathbf{a}^{(L-1)} \in \mathbb{R}^{d^{(L-1)} \times 1}\\). Để hai vế có số chiều bằng nhau thì ta phải lấy \\(\mathbf{a}^{(L-1)} \mathbf{e}^{(L)T}\\). Cũng chú ý thêm **rằng đạo hàm theo một ma trận của một hàm số nhận giá trị thực (scalar) sẽ có số chiều bằng với số chiều của ma trận đó!!**
+
 ### Backpropagation cho Batch (mini-batch) Gradient Descent
 
 Nếu chúng ta muốn thực hiện Batch hoặc mini-batch Gradient Descent thì sao (trong thực tế, mini-batch) GD được sử dụng nhiều nhất.
 
-Khi đó, cặp (input, output) sẽ ở dạng ma trận \\((\mathbf{X, Y}\\). Giả sử rằng mỗi lần tính toán, ta lấy \\(N\\) dữ liệu để tính toán. Khi đó, \\(\mathbf{X} \in \mathbb{R}^{d \times N}, \mathbf{Y} \in \mathbf{d^{(L)}\times N\\). Với \\(d\\) là số chiều của dữ liệu đầu vào (không tính bias).
+Khi đó, cặp (input, output) sẽ ở dạng ma trận \\((\mathbf{X, Y}\\). Giả sử rằng mỗi lần tính toán, ta lấy \\(N\\) dữ liệu để tính toán. Khi đó, \\(\mathbf{X} \in \mathbb{R}^{d \times N}, \mathbf{Y} \in \mathbb{R}^{d^{(L)}\times N}\\). Với \\(d\\) là số chiều của dữ liệu đầu vào (không tính bias).
 
  Khi đó các activation sau mỗi layer sẽ có dạng \\(\mathbf{A}^{(l)} \in \mathbb{R}^{d^{(l)} \times N}\\). Tương tự thế, \\(\mathbf{E}^{(l)} \in \mathbb{R}^{d^{(l)}\times N}\\). Và ta cũng có thể suy ra công thức cập nhật như sau.
 
  <hr>
  1. Bước feedforward: Với toàn bộ dữ liệu (batch) hoặc một nhóm dữ liệu (mini-batch) đầu vào \\(\mathbf{X}\\), tính giá trị đầu ra của network, trong quá trình tính toán, lưu lại các _activation_ \\(\mathbf{A}^{(l)}\\) tại mỗi layer.
  2. Với mỗi unit ở output layer, tính: \\[\mathbf{E}^{(L)} = \frac{\partial J}{\partial \mathbf{Z}^{(L)}}\\]
- Từ đó suy ra:
+ 3. Từ đó suy ra:
  \\[
  \begin{eqnarray}
- \frac{\partial J}{\partial \mathbf{W}^{(L)}} &=& \mathbf{E}^{(L)T} \mathbf{A}^{(L-1)}\\\
- \frac{\partial J}{\partial b_{i}^{(L)}} &=&  \sum_{i=1}^N \mathbf{e}_i^{(L)}
+ \frac{\partial J}{\partial \mathbf{W}^{(L)}} &=&  \mathbf{A}^{(L-1)}\mathbf{E}^{(L)T}\\\
+ \frac{\partial J}{\partial \mathbf{b}^{(L)}} &=&  \mathbf{E}^{(L)}
  \end{eqnarray}
  \\]
- 3. Với \\(l = L-1, L-2, ..., 1\\), tính:
+ 4. Với \\(l = L-1, L-2, ..., 1\\), tính:
  \\[
- \mathbf{e}^{(l)} = \left( \mathbf{W}^{(l+1)T} \mathbf{e}^{(l+1)} \right) \odot f'(\mathbf{z}^{(l)})
+ \mathbf{E}^{(l)} = \left( \mathbf{W}^{(l+1)T} \mathbf{E}^{(l+1)} \right) \odot f'(\mathbf{Z}^{(l)})
  \\]
- trong đó \\(\odot\\) là _element-wise product_ hay _Hadamard product_ tức lấy từng thành phần của hai vector nhân với nhau để được vector kết quả.
- 4. Cập nhật đạo hàm cho ma trận trọng số và vector biases:
+ trong đó \\(\odot\\) là _element-wise product_ hay _Hadamard product_ tức lấy từng thành phần của hai ma trận nhân với nhau để được ma trận kết quả.
+ 5. Cập nhật đạo hàm cho ma trận trọng số và vector biases:
  \\[
  \begin{eqnarray}
- \frac{\partial J}{\partial \mathbf{W}^{(l)}} &=& \mathbf{e}^{(l)T}\mathbf{a}^{(l-1)}\\\
- \frac{\partial J}{\partial \mathbf{b}^{(l)}} &=& \mathbf{e}^{(l)}
+ \frac{\partial J}{\partial \mathbf{W}^{(l)}} &=&  \mathbf{A}^{(l-1)}\mathbf{E}^{(l)T}\\\
+ \frac{\partial J}{\partial \mathbf{b}^{(l)}} &=&  \mathbf{E}^{(l)}
  \end{eqnarray}
  \\]
 
  <hr>
+
+ (_Phù!_)
+
+ Mặc dù khi làm thực nghiệm, các công cụ có hỗ trợ việc tự động tính Backpropagation, tôi vẫn không muốn bỏ qua phần này. Hiểu backpropagation rất quan trọng! Xem thêm [Yes you should understand backprop](https://medium.com/@karpathy/yes-you-should-understand-backprop-e2f06eab496b#.g76s9xxzc)
+
 <a name="tai-lieu-tham-khao"></a>
+
+## Ví dụ trên Python
+Để kiểm chứng lại những gì tôi viết trên đây có đúng không, chúng ta cùng xem một ví dụ. Ý tưởng trong ví dụ này được lấy từ [CS231n Convolutional Neural Networks for Visual Recognition](http://cs231n.github.io/neural-networks-case-study/), phần code dưới đây tôi viết lại cho phù hợp với những tính toán và ký hiệu phía trên.
+
+Trước hết, ta tạo dữ liệu cho 3 classes mà không có hai class nào là _linearly separable_:
+```python
+# To support both python 2 and python 3
+from __future__ import division, print_function, unicode_literals
+import math
+import numpy as np
+import matplotlib.pyplot as plt
+
+N = 100 # number of points per class
+D = 2 # dimensionality
+K = 3 # number of classes
+X = np.zeros((N*K,D)) # data matrix (each row = single example)
+y = np.zeros(N*K, dtype='uint8') # class labels
+for j in xrange(K):
+  ix = range(N*j,N*(j+1))
+  r = np.linspace(0.0,1,N) # radius
+  t = np.linspace(j*4,(j+1)*4,N) + np.random.randn(N)*0.2 # theta
+  X[ix] = np.c_[r*np.sin(t), r*np.cos(t)]
+  y[ix] = j
+
+# lets visualize the data:
+# plt.scatter(X[:N, 0], X[:N, 1], c=y[:N], s=40, cmap=plt.cm.Spectral)
+plt.plot(X[:N, 0], X[:N,1], 'bs', markersize = 7);
+plt.plot(X[N:2*N, 0], X[N:2*N,1], 'ro', markersize = 7);
+plt.plot(X[2*N:, 0], X[2*N:,1], 'g^', markersize = 7);
+# plt.axis('off')
+plt.xlim([-1.5, 1.5])
+plt.ylim([-1.5, 1.5])
+cur_axes = plt.gca()
+cur_axes.axes.get_xaxis().set_ticks([])
+cur_axes.axes.get_yaxis().set_ticks([])
+
+plt.show()
+```
+
+<hr>
+<div class="imgcap">
+ <img src ="/assets/14_mlp/EX.png" align = "center" width = "600">
+ <div class = "thecap">Hình : Phân bố dữ liệu theo class.</div>
+</div>
+<hr>
 
 ## Tài liệu tham khảo
 
