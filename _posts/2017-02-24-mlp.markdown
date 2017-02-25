@@ -5,7 +5,7 @@ title:  "Bài 14: Multi-layer Perceptron và Backpropagation"
 date:   2017-02-24 15:22:00
 permalink: 2017/02/24/mlp/
 mathjax: true
-tags: Neural-nets Multi-layer
+tags: Neural-nets Multi-layer Backpropagation
 category: Neural-nets
 sc_project: 11266516
 sc_security: f2c8f1b8
