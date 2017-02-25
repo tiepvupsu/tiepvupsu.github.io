@@ -482,7 +482,7 @@ plt.show()
 </div>
 <hr>
 
-Với dữ liệu được phân bố thế này, Softmax Regression không thể thực hiện được vì [Bounray giữa các class tạo bởi Softmax Regression có dạng linear](/2017/02/17/softmax/#-boundary-tao-boi-softmax-regression-la-linear). Chúng ta hãy làm một thí nghiệm nhỏ bằng cách thêm một _Hidden layer_ vào giữa Input layer vả output layer của Softmax Regression. Activation function của Hidden layer là hàm ReLU: \\(f(s) = \max(s, 0), f'(s) = 0 ~~\text{if}~ s \leq 0, f'(s) = 1 ~\text{otherwise}\\).
+Với dữ liệu được phân bố thế này, Softmax Regression không thể thực hiện được vì [Bounray giữa các class tạo bởi Softmax Regression có dạng linear](/2017/02/17/softmax/#-boundary-tao-boi-softmax-regression-la-linear). Chúng ta hãy làm một thí nghiệm nhỏ bằng cách thêm một _Hidden layer_ vào giữa Input layer vả output layer của Softmax Regression. Activation function của Hidden layer là hàm ReLU: \\(f(s) = \max(s, 0)\\), \\(f'(s) = 0 ~~\text{if}~ s \leq 0\\), \\(f'(s) = 1 ~\text{otherwise}\\).
 
 <hr>
 <div class="imgcap">
