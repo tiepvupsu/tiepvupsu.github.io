@@ -567,7 +567,6 @@ b1 = np.zeros((d1, 1))
 W2 = 0.01*np.random.randn(d1, d2)
 b2 = np.zeros((d2, 1))
 
-# X = X.T # each column of X is a data point
 Y = convert_labels(y, C)
 N = X.shape[1]
 eta = 1 # learning rate
@@ -576,7 +575,6 @@ for i in xrange(10000):
     Z1 = np.dot(W1.T, X) + b1
     A1 = np.maximum(Z1, 0)
     Z2 = np.dot(W2.T, A1) + b2
-    # import pdb; pdb.set_trace()  # breakpoint 035ab9b5 //
     Yhat = softmax(Z2)
 
     # compute the loss: average cross-entropy loss
@@ -596,7 +594,6 @@ for i in xrange(10000):
     db1 = np.sum(E1, axis = 1, keepdims = True)
 
     # Gradient Descent update
-    # import pdb; pdb.set_trace()  # breakpoint 47741f63 //
     W1 += -eta*dW1
     b1 += -eta*db1
     W2 += -eta*dW2
