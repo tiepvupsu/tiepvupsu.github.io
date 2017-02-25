@@ -514,7 +514,7 @@ J \triangleq J(\mathbf{W, b}; \mathbf{X, Y}) = -\frac{1}{N}\sum\_{i = 1}^N \sum_
 <a name="-tinh-toan-backpropagation"></a>
 
 ### 4.3. Tính toán Backpropagation
-Áp dụng [quy tắc như đã trình bày ở trên](/2017/02/24/mlp/#backpropagation-cho-batch-mini-batch-gradient-descent) và
+Áp dụng [quy tắc như đã trình bày ở trên](#-backpropagation-cho-batch-mini-batch-gradient-descent) và
 <a name="tai-lieu-tham-khao"></a> và [đạo hàm theo ma trận trọng số của Softmax Regression](/2017/02/17/softmax/#-toi-uu-ham-mat-mat), ta có:
 
 \\[
