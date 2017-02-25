@@ -576,11 +576,10 @@ for i in xrange(10000):
     Z2 = np.dot(W2.T, A1) + b2
     Yhat = softmax(Z2)
 
-    # compute the loss: average cross-entropy loss
-    loss = cost(Y, Yhat)
-
     # print loss after each 1000 iterations
     if i %1000 == 0:
+        # compute the loss: average cross-entropy loss
+        loss = cost(Y, Yhat)
         print("iter %d, loss: %f" %(i, loss))
 
     # backpropagation
