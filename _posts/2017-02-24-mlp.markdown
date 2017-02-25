@@ -675,7 +675,7 @@ Có một vài nhận xét như sau:
 
 * Với `d1 = 5`, đường phân định giữa ba classes gần như là đường thẳng.
 
-* Với `d1 = 15`, mặc dù kết quả đã đạt 99.33%, vẫn có một vùng đỏ nhỏ nằm giữa nhánh màu lục và màu lam. Khi dữ liệu test rơi vào vùng này, nó sẽ bị phân loại sai.
+* Với `d1 = 15`, mặc dù kết quả đã đạt 99.33%, vẫn có một vùng đỏ nhỏ nằm giữa nhánh màu lục và màu lam, và một vùng màu lam khá lớn giữa màu đỏ và lục. Khi một điểm dữ liệu test rơi vào những vùng này, nó sẽ bị phân loại sai.
 
 * Với `d1 = 20`, kết quả nhận được đã tương đối giống với `d1 = 100`. Mặc dù các đường boundary không được trơn tru cho lắm.
 
