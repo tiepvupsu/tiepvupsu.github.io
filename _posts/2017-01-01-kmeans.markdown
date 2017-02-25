@@ -323,7 +323,7 @@ Viết các hàm:
 ```python
 def kmeans_init_centers(X, k):
     # randomly pick k rows of X as initial centers
-    return X[np.random.choice(X.shape[0], k)]
+    return X[np.random.choice(X.shape[0], k, replace=False)]
 
 def kmeans_assign_labels(X, centers):
     # calculate pairwise distances btw data and centers
