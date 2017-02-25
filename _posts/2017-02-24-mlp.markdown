@@ -420,7 +420,6 @@ Khi đó, cặp (input, output) sẽ ở dạng ma trận \\((\mathbf{X, Y})\\).
 
  <hr>
 
- (_Phù!_)
 
  Mặc dù khi làm thực nghiệm, các công cụ có hỗ trợ việc tự động tính Backpropagation, tôi vẫn không muốn bỏ qua phần này. Hiểu backpropagation rất quan trọng! Xem thêm [Yes you should understand backprop](https://medium.com/@karpathy/yes-you-should-understand-backprop-e2f06eab496b#.g76s9xxzc).
 
