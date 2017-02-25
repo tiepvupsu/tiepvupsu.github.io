@@ -705,7 +705,7 @@ Có một vài nhận xét như sau:
 
 [3] [Lecture Notes on Sparse Autoencoders - Andrew Ng](https://web.stanford.edu/class/cs294a/sparseAutoencoder_2011new.pdf)
 
-[4][Yes you should understand backprop](https://medium.com/@karpathy/yes-you-should-understand-backprop-e2f06eab496b#.g76s9xxzc)
+[4] [Yes you should understand backprop](https://medium.com/@karpathy/yes-you-should-understand-backprop-e2f06eab496b#.g76s9xxzc)
 
 [5] [Backpropagation, Intuitions - Andrej Karpathy](http://cs231n.github.io/optimization-2/)
 
