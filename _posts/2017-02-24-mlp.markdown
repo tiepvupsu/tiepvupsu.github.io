@@ -26,13 +26,21 @@ summary: Giới thiệu về Neural Networks nhiều lớp (multi-layer perceptr
     - [Activation functions](#activation-functions)
         - [Hàm _sgn_ không được sử dụng trong MLP](#ham-sgn-khong-duoc-su-dung-trong-mlp)
         - [Sigmoid và tanh](#sigmoid-va-tanh)
-    - [ReLU](#relu)
+        - [ReLU](#relu)
         - [Một vài lưu ý](#mot-vai-luu-y)
 - [Backpropagation](#backpropagation)
-    - [Backpropagation cho một cặp điểm dữ liệu](#backpropagation-cho-mot-cap-diem-du-lieu)
+    - [Backpropagation cho Stochastic Gradient Descent](#backpropagation-cho-stochastic-gradient-descent)
+        - [Đạo hàm theo từng hệ số \\\(w_{ij}^{\(l\)}, b_{i}^{\(l\)}\\\)](#dao-ham-theo-tung-he-so-\\wij^l-bi^l\\)
+        - [Đạo hàm theo ma trận \\\(\mathbf{W}^{\(l\)}, \mathbf{b}^{\(l\)}\\\)](#dao-ham-theo-ma-tran-\\\mathbfw^l-\mathbfb^l\\)
+    - [Backpropagation cho Batch \(mini-batch\) Gradient Descent](#backpropagation-cho-batch-mini-batch-gradient-descent)
+- [Ví dụ trên Python](#vi-du-tren-python)
+    - [Tạo dữ liệu giả](#tao-du-lieu-gia)
+    - [Feedforward](#feedforward)
 - [Tài liệu tham khảo](#tai-lieu-tham-khao)
 
 <!-- /MarkdownTOC -->
+
+Vì bài này sử dụng khá nhiều công thức toán, bạn đọc được khuyến khích đọc [Lưu ý về ký hiệu toán học](/math/#luu-y-ve-ky-hieu).
 
 <a name="gioi-thieu"></a>
 
@@ -171,7 +179,7 @@ Hàm _tanh_ cũng có nhược điểm tương tự về việc gradient rất n
 
 <a name="relu"></a>
 
-### ReLU
+#### ReLU
 
 <hr>
 <div>
@@ -202,7 +210,7 @@ Hàm ReLU có nhiều biến thể khác như [Noisy ReLU, Leaky ReLu, ELUs](htt
 
 #### Một vài lưu ý
 
-* Output layer nhiều khi không có activation function mà sử dụng trực tiếp giá trị đầu vào \\(z_i^{(l)}\\) của mỗi unit. Hoặc nói một cách khác, activation function chính là hàm _identity_, tức đầu ra bằng đầu vào.
+* Output layer nhiều khi không có activation function mà sử dụng trực tiếp giá trị đầu vào \\(z_i^{(l)}\\) của mỗi unit. Hoặc nói một cách khác, activation function chính là hàm _identity_, tức đầu ra bằng đầu vào. Với các bài toán classification, output layer thường là một [Softmax Regression](/2017/02/17/softmax/) layer giúp tính xác suất để một điểm dữ liệu rơi vào mỗi class.
 
 * Mặc dù activation function cho mỗi unit có thể khác nhau, trong cùng một network, activation như nhau thường được sử dụng. Điều này giúp cho việc tính toán được đơn giản.
 
@@ -210,6 +218,8 @@ Hàm ReLU có nhiều biến thể khác như [Noisy ReLU, Leaky ReLu, ELUs](htt
 <a name="backpropagation"></a>
 
 ## Backpropagation
+_Phần này khá nặng về Đại Số Tuyến Tính, bạn đọc không muốn hiểu backpropagation có thể bỏ qua để đọc tiếp phần [Ví dụ với Python](#vi-du-tren-python)._
+
 Phương pháp phổ biến nhất để tối ưu MLP vẫn là Gradient Descent (GD). Để áp dụng GD, chúng ta cần tính được gradient của hàm mất mát theo từng ma trận trọng số \\(\mathbf{W}^{(l)}\\) và vector bias \\(\mathbf{b}^{(l)}\\). Trước hết, chúng ta cần tính _predicted output_ \\( \mathbf{\hat{y}}\\)  với một input \\(\mathbf{x}\\):
 \\[
 \begin{eqnarray}
@@ -295,9 +305,11 @@ Nhận thấy rằng trong các công thức trên đây, việc tính các \\(e
 
 Việc tính toán các đạo hàm khi sử dụng SGD có thể tóm tắt như sau:
 
-<a name="backpropagation-cho-mot-cap-diem-du-lieu"></a>
+<a name="backpropagation-cho-stochastic-gradient-descent"></a>
 
 ### Backpropagation cho Stochastic Gradient Descent
+
+<a name="dao-ham-theo-tung-he-so-\\wij^l-bi^l\\"></a>
 
 #### Đạo hàm theo từng hệ số \\(w_{ij}^{(l)}, b_{i}^{(l)}\\)
 <hr>
@@ -324,6 +336,8 @@ e_j^{(l)} = \left( \mathbf{w}_j^{(l+1)T} \mathbf{e}^{(l+1)} \right) f'(z_j^{(l)}
 
 <hr>
 
+
+<a name="dao-ham-theo-ma-tran-\\\mathbfw^l-\mathbfb^l\\"></a>
 
 #### Đạo hàm theo ma trận \\(\mathbf{W}^{(l)}, \mathbf{b}^{(l)}\\)
 Việc tính toán theo từng hệ số như trên chỉ phù hợp cho việc hiểu nguyên lý tính toán, trong khi lập trình, ta cần tìm cách thu gọn chúng về dạng vector và ma trận để tăng tốc độ cho thuật toán. Đặt \\(\mathbf{e}^{(l)} = [e_1^{(l)}, e_2^{(l)}, ..., e_{d^{(l)}}^{(l)}]^T \in \mathbb{R}^{d^{(l)}\times 1} \\). Ta sẽ có quy tắc tính như sau:
@@ -355,6 +369,8 @@ trong đó \\(\odot\\) là _element-wise product_ hay _Hadamard product_ tức l
 
 **Chú ý:** Biểu thức tính đạo hàm trong bước 3 có thể khiến bạn đặt câu hỏi, tại sao lại là \\(\mathbf{a}^{(L-1)}\mathbf{e}^{(L)T}\\) mà không phải là \\(\mathbf{a}^{(L-1)T}\mathbf{e}^{(L)}\\), \\(\mathbf{e}^{(L)T}\mathbf{a}^{(L-1)}\\), hay \\(\mathbf{e}^{(L)}\mathbf{a}^{(L-1)T}\\). _Quy tắc bỏ túi_ cần nhớ là **chiều của hai ma trận ở hai vế phải như nhau**. Thử một chút, vế trái là đạo hàm theo \\(\mathbf{W}^{(L)}\\) là một đại lượng có chiều (_dimension_, not _afternoon_) bằng chiều của ma trận này, tức chiều là \\(\mathbb{R}^{d^{(L-1)}\times d^{(L)}}\\). Vế phải, \\(\mathbf{e}^{(L)} \in \mathbf{R}^{d^{(L)} \times 1}, \mathbf{a}^{(L-1)} \in \mathbb{R}^{d^{(L-1)} \times 1}\\). Để hai vế có số chiều bằng nhau thì ta phải lấy \\(\mathbf{a}^{(L-1)} \mathbf{e}^{(L)T}\\). Cũng chú ý thêm **rằng đạo hàm theo một ma trận của một hàm số nhận giá trị thực (scalar) sẽ có số chiều bằng với số chiều của ma trận đó!!**
 
+<a name="backpropagation-cho-batch-mini-batch-gradient-descent"></a>
+
 ### Backpropagation cho Batch (mini-batch) Gradient Descent
 
 Nếu chúng ta muốn thực hiện Batch hoặc mini-batch Gradient Descent thì sao (trong thực tế, mini-batch) GD được sử dụng nhiều nhất.
@@ -370,7 +386,7 @@ Khi đó, cặp (input, output) sẽ ở dạng ma trận \\((\mathbf{X, Y}\\). 
  \\[
  \begin{eqnarray}
  \frac{\partial J}{\partial \mathbf{W}^{(L)}} &=&  \mathbf{A}^{(L-1)}\mathbf{E}^{(L)T}\\\
- \frac{\partial J}{\partial \mathbf{b}^{(L)}} &=&  \mathbf{E}^{(L)}
+ \frac{\partial J}{\partial \mathbf{b}^{(L)}} &=&  \sum_{n=1}^N\mathbf{e}_n^{(L)}
  \end{eqnarray}
  \\]
  4. Với \\(l = L-1, L-2, ..., 1\\), tính:
@@ -382,7 +398,7 @@ Khi đó, cặp (input, output) sẽ ở dạng ma trận \\((\mathbf{X, Y}\\). 
  \\[
  \begin{eqnarray}
  \frac{\partial J}{\partial \mathbf{W}^{(l)}} &=&  \mathbf{A}^{(l-1)}\mathbf{E}^{(l)T}\\\
- \frac{\partial J}{\partial \mathbf{b}^{(l)}} &=&  \mathbf{E}^{(l)}
+ \frac{\partial J}{\partial \mathbf{b}^{(l)}} &=&  \sum_{n=1}^N\mathbf{e}_n^{(l)}
  \end{eqnarray}
  \\]
 
@@ -392,10 +408,14 @@ Khi đó, cặp (input, output) sẽ ở dạng ma trận \\((\mathbf{X, Y}\\). 
 
  Mặc dù khi làm thực nghiệm, các công cụ có hỗ trợ việc tự động tính Backpropagation, tôi vẫn không muốn bỏ qua phần này. Hiểu backpropagation rất quan trọng! Xem thêm [Yes you should understand backprop](https://medium.com/@karpathy/yes-you-should-understand-backprop-e2f06eab496b#.g76s9xxzc)
 
-<a name="tai-lieu-tham-khao"></a>
+<a name="vi-du-tren-python"></a>
 
 ## Ví dụ trên Python
 Để kiểm chứng lại những gì tôi viết trên đây có đúng không, chúng ta cùng xem một ví dụ. Ý tưởng trong ví dụ này được lấy từ [CS231n Convolutional Neural Networks for Visual Recognition](http://cs231n.github.io/neural-networks-case-study/), phần code dưới đây tôi viết lại cho phù hợp với những tính toán và ký hiệu phía trên.
+
+<a name="tao-du-lieu-gia"></a>
+
+### Tạo dữ liệu giả
 
 Trước hết, ta tạo dữ liệu cho 3 classes mà không có hai class nào là _linearly separable_:
 ```python
@@ -435,6 +455,59 @@ plt.show()
 <hr>
 <div class="imgcap">
  <img src ="/assets/14_mlp/EX.png" align = "center" width = "600">
+ <div class = "thecap">Hình : Phân bố dữ liệu theo class.</div>
+</div>
+<hr>
+
+Với dữ liệu được phân bố thế này, Softmax Regression không thể thực hiện được vì [Bounray giữa các class tạo bởi Softmax Regression có dạng linear](/2017/02/17/softmax/#-boundary-tao-boi-softmax-regression-la-linear). Chúng ta hãy làm một thí nghiệm nhỏ bằng cách thêm một _Hidden layer_ vào giữa Input layer vả output layer của Softmax Regression. Activation function của Hidden layer là hàm ReLU: \\(f(s) = \max(s, 0), f'(s) = 0 ~~\text{if}~ s \leq 0, f'(s) = 1 ~\text{otherwise}\\).
+
+<hr>
+<div class="imgcap">
+ <img src ="/assets/14_mlp/ex_nn.png" align = "center" width = "600">
+ <div class = "thecap">Hình : 2-layer Neural Networks.</div>
+</div>
+<hr>
+
+Bây giờ chúng ta sẽ áp dụng Batch Gradient Descent cho bài toán này. Trước hết cần thực tìm công thức tính các activation và output.
+<a name="feedforward"></a>
+
+### Feedforward
+\\[
+\begin{eqnarray}
+\mathbf{Z}^{(1)} &=& \mathbf{W}^{(1)T}\mathbf{X} \\\
+\mathbf{A}^{(1)} &=& \max(\mathbf{Z}^{(1)}, \mathbf{0}) \\\
+\mathbf{Z}^{(2)} &=& \mathbf{W}^{(2)T}\mathbf{A}^{(1)} \\\
+\mathbf{\hat{Y}} = \mathbf{A}^{(2)} &=& \text{softmax}(\mathbf{Z}^{(2)})
+\end{eqnarray}
+\\]
+
+[Hàm mất mát được tính như sau:](/2017/02/17/softmax/#-ham-mat-mat-cho-softmax-regression)
+
+\\[
+J \triangleq J(\mathbf{W, b}; \mathbf{X, Y}) = -\frac{1}{N}\sum\_{i = 1}^N \sum_{j = 1}^C y\_{ji}\log(\hat{y}\_{ji})
+\\]
+(Tôi đã cho thêm thừa số \\(\frac{1}{N}\\) để tránh hiện tượng tổng quá lớn với Batch GD. Về mặt toán học, thừa số này không làm thay đổi nghiệm của bài toán)
+
+Áp dụng [quy tắc như đã trình bày ở trên](/2017/02/24/mlp/#backpropagation-cho-batch-mini-batch-gradient-descent) và
+<a name="tai-lieu-tham-khao"></a> và [đạo hàm theo ma trận trọng số của Softmax Regression](/2017/02/17/softmax/#-toi-uu-ham-mat-mat), ta có:
+
+\\[
+\begin{eqnarray}
+\mathbf{E}^{(2)} &=& \frac{\partial J}{\partial \mathbf{Z}^{(2)}} = \mathbf{\hat{Y}} - \mathbf{Y} \\\
+\frac{\partial J}{\partial \mathbf{W}^{(2)}} &=& \mathbf{A}^{(1)}  \mathbf{E}^{(2)T} \\\
+\frac{\partial J}{\partial \mathbf{b}^{(2)}} &=& \sum_{n=1}^N\mathbf{e}\_n^{(2)} \\\
+\mathbf{E}^{(1)} &=& \left(\mathbf{W}^{(2)T}\mathbf{E}^{(2)}\right) \odot f'(\mathbf{Z}^{(1)}) \\\
+\frac{\partial J}{\partial \mathbf{W}^{(1)}} &=& \mathbf{A}^{(1)}  \mathbf{E}^{(1)T} \\\
+\frac{\partial J}{\partial \mathbf{b}^{(1)}} &=& \sum_{n=1}^N\mathbf{e}\_n^{(1)} \\\
+\end{eqnarray}
+\\]
+
+Từ đó ta có chương trình như sau:
+
+
+<hr>
+<div class="imgcap">
+ <img src ="/assets/14_mlp/ex_res.png" align = "center" width = "600">
  <div class = "thecap">Hình : Phân bố dữ liệu theo class.</div>
 </div>
 <hr>

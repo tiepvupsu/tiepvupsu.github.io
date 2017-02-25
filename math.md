@@ -36,6 +36,7 @@ Trong các bài viết của tôi, các số vô hướng được biểu diễn
 
 Tương tự, trong ma trận, \\(\mathbf{X} = [\mathbf{x}\_1, \mathbf{x}\_2, \dots, \mathbf{x}_n]\\) được hiểu là các vector \\(\mathbf{x}\_j\\) được đặt cạnh nhau theo thứ tự từ trái qua phải để tạo ra ma trận \\(\mathbf{X}\\). Trong khi \\(\mathbf{X} = [\mathbf{x}\_1; \mathbf{x}_2; \dots; \mathbf{x}_m]\\) được hiểu là các vector \\(\mathbf{x}_i\\) được đặt chồng lên nhau theo thứ tự từ trên xuống dưới dể tạo ra ma trận \\(\mathbf{X}\\). Các vector được ngầm hiểu là có kích thước phù hợp để có thể xếp cạnh hoặc xếp chồng lên nhau.
 
+Cho một ma trận \\(\mathbf{W}\\), nếu không giải thích gì thêm, chúng ta hiểu rằng \\(\mathbf{w}\_i\\) là **vector cột** thứ \\(i\\) của ma trận đó. Chú ý sự tương ứng giữa ký tự viết hoa và viết thường. 
 <!-- ========================== New Heading ==================== -->
 <a name="dai-so-tuyen-tinh"></a>
 
