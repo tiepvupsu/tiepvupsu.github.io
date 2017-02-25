@@ -232,7 +232,7 @@ Hàm ReLU có nhiều biến thể khác như [Noisy ReLU, Leaky ReLu, ELUs](htt
 <a name="-backpropagation"></a>
 
 ## 3. Backpropagation
-_Phần này khá nặng về Đại Số Tuyến Tính, bạn đọc không muốn hiểu backpropagation có thể bỏ qua để đọc tiếp phần [Ví dụ với Python](#vi-du-tren-python)._
+_Phần này khá nặng về Đại Số Tuyến Tính, bạn đọc không muốn hiểu backpropagation có thể bỏ qua để đọc tiếp phần [Ví dụ với Python](#-vi-du-tren-python)._
 
 Phương pháp phổ biến nhất để tối ưu MLP vẫn là Gradient Descent (GD). Để áp dụng GD, chúng ta cần tính được gradient của hàm mất mát theo từng ma trận trọng số \\(\mathbf{W}^{(l)}\\) và vector bias \\(\mathbf{b}^{(l)}\\). Trước hết, chúng ta cần tính _predicted output_ \\( \mathbf{\hat{y}}\\)  với một input \\(\mathbf{x}\\):
 \\[
