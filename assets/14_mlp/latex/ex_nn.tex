@@ -93,7 +93,7 @@
         %%%%%% input - hidden 1%%%%%%
         \foreach \source in {1,...,\nze}
             \foreach \dest in {1,...,\non}
-                \draw [thick, ->](I-\source) -- (H-\dest);
+                \draw [thick, ->](I-\source.east) -- (H-\dest.west);
 
         % %%%%%% hidden 1 - hidden 2%%%%%%
         % \foreach \source in {1,...,\non}

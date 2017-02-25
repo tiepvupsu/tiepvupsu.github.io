@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.19)  24 FEB 2017 20:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.19)  25 FEB 2017 14:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -521,13 +521,13 @@ Here is how much of TeX's memory you used:
  16059 multiletter control sequences out of 15000+600000
  6571 words of font info for 26 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,7n,68p,427b,817s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,7n,68p,427b,812s stack positions out of 5000i,500n,10000p,200000b,80000s
 </
 usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sh
 are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb>
 Output written on /home/tiepvu/myProjects/tiepvupsu.github.io/assets/14_mlp/lat
-ex/ex_nn.pdf (1 page, 27483 bytes).
+ex/ex_nn.pdf (1 page, 27444 bytes).
 PDF statistics:
  23 PDF objects out of 1000 (max. 8388607)
  16 compressed objects within 1 object stream
