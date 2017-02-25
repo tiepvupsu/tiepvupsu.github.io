@@ -1,9 +1,9 @@
 # Fdb version 3
-["pdflatex"] 1487956625 "multi_layers.tex" "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/14_mlp/latex/multi_layers.pdf" "multi_layers" 1487997465
+["pdflatex"] 1488051172 "multi_layers.tex" "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/14_mlp/latex/multi_layers.pdf" "multi_layers" 1488051173
   "../../definitions.tex" 1487956534 11689 b7f9900e58a61f7d508fc89c029b437e ""
   "/dev/null" 1487979093 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/etc/texmf/web2c/texmf.cnf" 1476924511 1101 af7716885e081ab43982cab7b4672c1a ""
-  "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/14_mlp/latex/multi_layers.aux" 1487956625 8 a94a2480d3289e625eea47cd1b285758 ""
+  "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/14_mlp/latex/multi_layers.aux" 1488051173 8 a94a2480d3289e625eea47cd1b285758 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -121,11 +121,11 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1458942643 31351 b32c45dce4a01cb7b53ed90c546614ca ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1476924582 1863403 f3ff9a4253bcb5fb9a9baaf0c572cb01 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1476924597 3856431 f9c94138039199b86e883dc1c4eb6c05 ""
-  "multi_layers.aux" 1487956625 8 a94a2480d3289e625eea47cd1b285758 ""
-  "multi_layers.tex" 1487956624 10334 4609dd35e3eea1a55d813319a2318aa5 ""
+  "multi_layers.aux" 1488051173 8 a94a2480d3289e625eea47cd1b285758 ""
+  "multi_layers.tex" 1488051172 10364 d448059bab849aff1aea756ba7aa84f4 ""
   (generated)
+  "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/14_mlp/latex/multi_layers.pdf"
   "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/14_mlp/latex/multi_layers.log"
   "multi_layers.aux"
   "multi_layers.pdf"
-  "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/14_mlp/latex/multi_layers.pdf"
   "multi_layers.log"

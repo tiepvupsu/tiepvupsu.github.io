@@ -92,17 +92,17 @@
         %%%%%% input - hidden 1%%%%%%
         \foreach \source in {1,...,\nze}
             \foreach \dest in {1,...,\non}
-                \draw [thick, ->](I-\source) -- (H1-\dest);
+                \draw [thick, ->](I-\source.east) -- (H1-\dest.west);
 
         %%%%%% hidden 1 - hidden 2%%%%%%
         \foreach \source in {1,...,\non}
             \foreach \dest in {1,...,\ntw}
-                \draw [thick, ->](H1-\source) -- (H2-\dest);
+                \draw [thick, ->](H1-\source.east) -- (H2-\dest.west);
 
         %%%%%% hidden 2 - output%%%%%%
         \foreach \source in {1,...,\ntw}
             \foreach \dest in {1,...,\nth}
-                \draw [thick, ->](H2-\source) -- (O-\dest);
+                \draw [thick, ->](H2-\source.east) -- (O-\dest.west);
 
         %%%%%%%%%%%%%%%% Namming %%%%%%%%%%%%%%%%%%%%%%
         % \node at (0, 0) {.};
