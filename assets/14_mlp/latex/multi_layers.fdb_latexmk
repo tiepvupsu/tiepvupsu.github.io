@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1487956625 "multi_layers.tex" "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/14_mlp/latex/multi_layers.pdf" "multi_layers" 1487987062
+["pdflatex"] 1487956625 "multi_layers.tex" "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/14_mlp/latex/multi_layers.pdf" "multi_layers" 1487997465
   "../../definitions.tex" 1487956534 11689 b7f9900e58a61f7d508fc89c029b437e ""
   "/dev/null" 1487979093 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/etc/texmf/web2c/texmf.cnf" 1476924511 1101 af7716885e081ab43982cab7b4672c1a ""
@@ -124,8 +124,8 @@
   "multi_layers.aux" 1487956625 8 a94a2480d3289e625eea47cd1b285758 ""
   "multi_layers.tex" 1487956624 10334 4609dd35e3eea1a55d813319a2318aa5 ""
   (generated)
+  "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/14_mlp/latex/multi_layers.log"
   "multi_layers.aux"
+  "multi_layers.pdf"
   "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/14_mlp/latex/multi_layers.pdf"
   "multi_layers.log"
-  "multi_layers.pdf"
-  "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/14_mlp/latex/multi_layers.log"

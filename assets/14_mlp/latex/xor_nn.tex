@@ -51,7 +51,7 @@
         \node at (-3.5, -2) {\includegraphics[width=5cm]{../XOR2.png}};
 
         % %%%%%%%%%%%%%% INPUT LAYER %%%%%%%%%%%%%%%%%%%%%%
-        \draw [white, fill = green!15] (-\pad, -4 - 2*\pad) rectangle (\pad, 2*\pad);
+        \draw [white, fill = green!15] (-\pad, -4 - 2*\pad) rectangle (\pad, -2+2*\pad);
         \node at (0, 2.5*\pad) {Input layer};
 
         \node[input neuron, opacity = .5, label = below:{$x_0$}] (I-0) at (0,0) {1};
@@ -65,7 +65,7 @@
         \node [scale = 1.5] at (0.5*\layersep, 0) {$\mathbf{b}^{(1)}$};
         \node at (\layersep, 2.5*\pad) {Hidden layer};
         \draw [white, fill = cyan!15] (-\pad + \layersep, -4 - 2*\pad) 
-                            rectangle ( \pad + \layersep , 2*\pad);
+                            rectangle ( \pad + \layersep , -2+2*\pad);
 
         \foreach \name / \y in {1, 2}
             \path[yshift=0cm] node[sign neuron, hidden neuron, label = below:{$a^{(1)}_\name$}] (H-\name) at (\layersep,-2*\y cm) {};
@@ -96,11 +96,11 @@
 
         %%%%%%%%%%% layer 
     \draw [thin] (-1, -5.75) -- ++ (0, 7.5);
-    \draw (-6, -5.75) rectangle (12, 1.75);
+    \draw (-6, -5.75) rectangle (12.5, 1.75);
     \end{scope}
 
     \begin{scope}[xshift = 8.2cm, yshift = 1cm ]
-        \node [anchor = west] at (-1, 0) {$\bW^{(1)} = \bmt -2 & 2 \\ -2 &2 \emt; ~~ \bb^{(1)} = \bmt 3 \\ 1\emt$};
+        \node [anchor = west] at (-1, 0) {$\bW^{(1)} = \bmt -2 & 2 \\ -2 &2 \emt; ~~ \bb^{(1)} = \bmt 3 \\ -1\emt$};
         \node [anchor = west] at (-1, -1.5) {$\bW^{(2)} = \bmt 1 \\ 1 \emt; ~~ \bb^{(2)} = \bmt -1 \emt$};
         \node [anchor = west] at (-1, -2.75) {$\bx = \bmt x_1 \\ x_2\emt; \ba^{(1)} = \bmt a^{(1)}_1 \\ a^{(1)}_2 \emt$}; 
         % \node [anchor = west] at (-1, -2.5) {$a_0 = 1$ (bias, don't forget!)};

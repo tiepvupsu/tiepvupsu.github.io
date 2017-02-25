@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.19)  24 FEB 2017 12:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.19)  24 FEB 2017 23:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -520,10 +520,10 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <../XOR2.png>]
 (/home/tiepvu/myProjects/tiepvupsu.github.io/assets/14_mlp/latex/xor_nn.aux) ) 
 Here is how much of TeX's memory you used:
- 12777 strings out of 493029
- 252664 string characters out of 6136233
- 308107 words of memory out of 5000000
- 16063 multiletter control sequences out of 15000+600000
+ 12778 strings out of 493029
+ 252679 string characters out of 6136233
+ 308113 words of memory out of 5000000
+ 16064 multiletter control sequences out of 15000+600000
  7171 words of font info for 28 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,11n,68p,428b,1064s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -537,7 +537,7 @@ nts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type
 1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
 ic/amsfonts/cm/cmsy10.pfb>
 Output written on /home/tiepvu/myProjects/tiepvupsu.github.io/assets/14_mlp/lat
-ex/xor_nn.pdf (1 page, 171332 bytes).
+ex/xor_nn.pdf (1 page, 171341 bytes).
 PDF statistics:
  46 PDF objects out of 1000 (max. 8388607)
  32 compressed objects within 1 object stream
