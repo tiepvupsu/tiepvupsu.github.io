@@ -10,7 +10,7 @@ category: Neural-nets
 sc_project: 11266516
 sc_security: f2c8f1b8
 img: \assets\14_mlp\multi_layers.png
-summary: Giới thiệu về Neural Networks nhiều lớp (multi-layer perceptrons)
+summary: Giới thiệu về Neural Network nhiều lớp và phương pháp tối ưu. 
 ---
 
 **Trong trang này:**
