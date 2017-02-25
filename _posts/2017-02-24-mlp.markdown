@@ -7,8 +7,8 @@ permalink: 2017/02/24/mlp/
 mathjax: true
 tags: Neural-nets Multi-layer
 category: Neural-nets
-sc_project:
-sc_security:
+sc_project: 11266516
+sc_security: f2c8f1b8
 img: \assets\14_mlp\multi_layers.png
 summary: Giới thiệu về Neural Networks nhiều lớp (multi-layer perceptrons)
 ---
@@ -427,6 +427,8 @@ Khi đó, cặp (input, output) sẽ ở dạng ma trận \\((\mathbf{X, Y})\\).
 <a name="-vi-du-tren-python"></a>
 
 ## 4. Ví dụ trên Python
+Source code cho ví dụ này có thể được xem [tại đây](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/14_mlp/Example%20.ipynb).
+
 Để kiểm chứng lại những gì tôi viết trên đây có đúng không, chúng ta cùng xem một ví dụ. Ý tưởng trong ví dụ này được lấy từ [CS231n Convolutional Neural Networks for Visual Recognition](http://cs231n.github.io/neural-networks-case-study/), phần code dưới đây tôi viết lại cho phù hợp với những tính toán và ký hiệu phía trên.
 
 <a name="-tao-du-lieu-gia"></a>
