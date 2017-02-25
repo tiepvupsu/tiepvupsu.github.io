@@ -644,6 +644,7 @@ Vậy là chỉ thêm 1 hidden layer, Neural Network đã có thể xây dựng 
 
 Kết quả bên trên được thực hiện khi số lượng units trong hidden layer là `d1 = 100`. Chúng ta thử thay đổi giá trị này bởi `d1 = 5, 10, 15, 20` xem kết quả khác nhau như thế nào. Dưới đây là hình mình họa:
 
+<hr>
 <div>
 <table width = "100%" style = "border: 0px solid white">
    <tr >
@@ -666,6 +667,7 @@ Kết quả bên trên được thực hiện khi số lượng units trong hidd
 </table>
 <div class = "thecap"> Hình Kết quả với số lượng units trong hidden layer là khác nhau. </div>
 </div>
+<hr>
 
 Có một vài nhận xét như sau:
 
