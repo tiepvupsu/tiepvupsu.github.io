@@ -477,7 +477,7 @@ plt.show()
 <hr>
 <div class="imgcap">
  <img src ="/assets/14_mlp/EX.png" align = "center" width = "600">
- <div class = "thecap">Hình : Phân bố dữ liệu theo class.</div>
+ <div class = "thecap">Hình 7: Phân bố dữ liệu theo class.</div>
 </div>
 <hr>
 
@@ -486,7 +486,7 @@ Với dữ liệu được phân bố thế này, Softmax Regression không th�
 <hr>
 <div class="imgcap">
  <img src ="/assets/14_mlp/ex_nn.png" align = "center" width = "600">
- <div class = "thecap">Hình : 2-layer Neural Networks.</div>
+ <div class = "thecap">Hình 8: 2-layer Neural Networks.</div>
 </div>
 <hr>
 
@@ -632,7 +632,7 @@ Vậy là trong 300 điểm, chỉ có 2 điểm bị phân loại sai! Dưới 
 <hr>
 <div class="imgcap">
  <img src ="/assets/14_mlp/ex_res100.png" align = "center" width = "600">
- <div class = "thecap">Hình : Phân bố dữ liệu theo class.</div>
+ <div class = "thecap">Hình 9: Kết quả khi sử dụng 1 hidden layer với 100 units.</div>
 </div>
 <hr>
 
@@ -665,7 +665,7 @@ Kết quả bên trên được thực hiện khi số lượng units trong hidd
      </tr>
 
 </table>
-<div class = "thecap"> Hình Kết quả với số lượng units trong hidden layer là khác nhau. </div>
+<div class = "thecap"> Hình 10: Kết quả với số lượng units trong hidden layer là khác nhau. </div>
 </div>
 <hr>
 
