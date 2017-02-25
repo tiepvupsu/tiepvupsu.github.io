@@ -123,7 +123,7 @@ Số lượng layer trong một MLP được tính bằng số hidden layers c�
 ### 2.2. Units
 Một _node_ hình tròn trong một layer được gọi là một unit. Unit ở các input layer, hidden layers, và output layer được lần lượt gọi là input unit, hidden unit, và output unit. Đầu vào của các hidden layer được ký hiệu bởi \\(z\\), đầu ra của mỗi unit thường được ký hiệu là \\(a\\) (thể hiện _activation_, tức giá trị của mỗi unit sau khi ta áp dụng activation function lên \\(z\\)). Đầu ra của unit thứ \\(i\\) trong layer thứ \\(l\\) được ký hiệu là \\(a_i^{(l)}\\). Giả sử thêm rằng số unit trong layer thứ \\(l)\\) (không tính bias) là \\(d^{(l)}\\). Vector biểu diễn output của layer thứ \\(l\\) được ký hiệu là \\(\mathbf{a}^{(l)} \in \mathbb{R}^{d^{(l)}}\\).
 
-_Khi làm việc với những Neural Networks phức tạp, các tốt nhất để hạn chế lỗi là viết cụ thể chiều của mỗi ma trận hay vector ra, bạn sẽ thấy cụ thể hơn trong phần sau._
+_Khi làm việc với những Neural Networks phức tạp, cách tốt nhất để hạn chế lỗi là viết cụ thể chiều của mỗi ma trận hay vector ra, bạn sẽ thấy rõ hơn trong phần sau._
 
 
 <hr>
