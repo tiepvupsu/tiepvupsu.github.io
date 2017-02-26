@@ -82,7 +82,7 @@ Cũng giống như các thuật toán lặp trong [K-means Clustering](/2017/01/
 ### Một số ký hiệu
 Giả sử \\(\mathbf{X} = [\mathbf{x}\_1, \mathbf{x}\_2, \dots, \mathbf{x}\_N] \in \mathbb{R}^{d \times N}\\) là ma trận chứa các điểm dữ liệu mà mỗi cột \\(\mathbf{x}\_i \in \mathbb{R}^{d\times 1}\\) là một điểm dữ liệu trong không gian \\(d\\) chiều. (_Chú ý: khác với các bài trước tôi thường dùng các vector hàng để mô tả dữ liệu, trong bài này tôi dùng vector cột để biểu diễn. Việc biểu diễn dữ liệu ở dạng hàng hay cột tùy thuộc vào từng bài toán, miễn sao cách biễu diễn toán học của nó khiến cho người đọc thấy dễ hiểu_).
 
-Giả sử thêm các nhãn tương ứng với từng điểm dữ liệu được lưu trong một vector hàng \\(\mathbf{y} = [y\_1, y\_2, \dots, y_N] \in \mathbb{R}^{1\times d}\\), với \\(y_i = 1\\) nếu \\(\mathbf{x}_i\\) thuộc class 1 (xanh) và \\(y_i = -1\\) nếu \\(\mathbf{x}_i\\) thuộc class 2 (đỏ).
+Giả sử thêm các nhãn tương ứng với từng điểm dữ liệu được lưu trong một vector hàng \\(\mathbf{y} = [y\_1, y\_2, \dots, y_N] \in \mathbb{R}^{1\times N}\\), với \\(y_i = 1\\) nếu \\(\mathbf{x}_i\\) thuộc class 1 (xanh) và \\(y_i = -1\\) nếu \\(\mathbf{x}_i\\) thuộc class 2 (đỏ).
 
 Tại một thời điểm, giả sử ta tìm được boundary là đường phẳng có phương trình:
 \\[
