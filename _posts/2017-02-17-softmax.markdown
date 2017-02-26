@@ -18,6 +18,7 @@ summary: Một trong hai classifiers được sử dụng phổ biến nhất.
 Các bài toán classification thực tế thường có rất nhiều classes (multi-class), các [binary classifiers mặc dù có thể áp dụng cho các bài toán multi-class](/2017/02/11/binaryclassifiers/#-binary-classifiers-cho-multi-class-classification-problems), chúng vẫn có những hạn chế nhất định. Với binary classifiers, kỹ thuật được sử dụng nhiều nhất [**one-vs-rest**](/2017/02/11/binaryclassifiers/#one-vs-rest-hay-one-hot-coding) có [một hạn chế về tổng các xác suất](/2017/02/11/binaryclassifiers/#han-che-cua-one-vs-rest). Trong post này, một phương pháp mở rộng của Logistic Regression sẽ được giới thiệu giúp khắc phục hạn chế trên. Một lần nữa, dù là Softmax **Regression**, phương pháp này được sử dụng rộng rãi như một phương pháp classification. 
 
 
+
 **Trong trang này:**
 <!-- MarkdownTOC -->
 
