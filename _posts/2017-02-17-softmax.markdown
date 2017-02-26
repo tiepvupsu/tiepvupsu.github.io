@@ -106,14 +106,14 @@ Hình vẽ dưới đây thể hiện mạng Softmax Regression dưới dạng n
 <div class = "thecap">Hình 2: Mô hình Softmax Regression dưới dạng Neural network.</div>
 </div> 
 
-Ở phần bên phải, hàm tuyến tính \\(\Sigma\\) và hàm softmax (activation function) được tách riêng ra để phục vụ cho mục đích minh họa. Dạng _short form_ ở bên phải là dạng hay được sử dụng trong các Neural Networks, lớp \\(\mathbf{a}\\) được ngầm hiểu là bao gồm cả lớp \\(\mathbf{v}\\).
+Ở phần bên phải, hàm tuyến tính \\(\Sigma\\) và hàm softmax (activation function) được tách riêng ra để phục vụ cho mục đích minh họa. Dạng _short form_ ở bên phải là dạng hay được sử dụng trong các Neural Networks, lớp \\(\mathbf{a}\\) được ngầm hiểu là bao gồm cả lớp \\(\mathbf{z}\\).
 
 
 
 <a name="-softmax-function-trong-python"></a>
 
 ### 2.2. Softmax function trong Python 
-Dưới đây là một đoạn code viết hàm softmax. Đầu vào là một ma trận với mỗi cột là một vector \\(\mathbf{v}\\), đầu ra cũng là một ma trận mà mỗi cột có giá trị là \\(\mathbf{a} = \text{softmax}(\mathbf{v})\\). Các giá trị của \\(\mathbf{v}\\) còn được gọi là **scores**.
+Dưới đây là một đoạn code viết hàm softmax. Đầu vào là một ma trận với mỗi cột là một vector \\(\mathbf{z}\\), đầu ra cũng là một ma trận mà mỗi cột có giá trị là \\(\mathbf{a} = \text{softmax}(\mathbf{z})\\). Các giá trị của \\(\mathbf{z}\\) còn được gọi là **scores**.
 
 ```python
 import numpy as np 
