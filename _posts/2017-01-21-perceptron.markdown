@@ -87,7 +87,7 @@ Giả sử thêm các nhãn tương ứng với từng điểm dữ liệu đư�
 Tại một thời điểm, giả sử ta tìm được boundary là đường phẳng có phương trình:
 \\[
 \begin{eqnarray}
-f_{\mathbf{w}}(\mathbf{x}) &=& w_1x_1 + \dots + w_Nx_N + w_0 \\\ 
+f_{\mathbf{w}}(\mathbf{x}) &=& w_1x_1 + \dots + w_dx_d + w_0 \\\ 
 &=&\mathbf{w}^T\mathbf{\bar{x}} = 0
 \end{eqnarray}
 \\]
