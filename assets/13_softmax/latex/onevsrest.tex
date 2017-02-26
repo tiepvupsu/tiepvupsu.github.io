@@ -87,27 +87,27 @@
 
     % Draw the output layer nodes
     \foreach \name / \y in {1, ..., 4}
-        \path[yshift=-1.5cm]
-            node[output neuron] (O-\name) at (\layersep,-\y cm) {$\Sigma$};
-            % node[output neuron, label={[label distance=-1mm]90:$v_\name$}] (O-\name) at (\layersep,-\y cm) {$\Sigma$};
+        \path[yshift=-.5cm]
+            node[output neuron] (O-\name) at (\layersep,-1.5*\y cm) {$\Sigma$};
+            % node[output neuron, label={[label distance=-1mm]90:$z_\name$}] (O-\name) at (\layersep,-\y cm) {$\Sigma$};
 
-    \node[label={[label distance=1mm]90:$v_1$}]  at (\layersep,-2.5) {};
-    \node[label={[label distance=1mm]90:$v_2$}]  at (\layersep,-3.5) {};
-    \node[label={[label distance=1mm]90:$v_C$}]  at (\layersep,-5.5) {};
+    \node[label={[label distance=1mm]90:$z_1$}]  at (\layersep,-3) {};
+    \node[label={[label distance=1mm]90:$z_2$}]  at (\layersep,-4.5) {};
+    \node[label={[label distance=1mm]90:$z_C$}]  at (\layersep,-7.5) {};
 
 
-    \node [scale = 1.5, below=1mm of O-4.south] {$\mathbf{v}$};
+    \node [scale = 1.5, below=5mm of O-4.south] {$\mathbf{z}$};
 
     % Draw the output layer nodes
     \foreach \name / \y in {1, ..., 4}
-        \path[yshift=-1.5cm]
-            node[sigmoid neuron] (O2-\name) at (2*\layersep,-\y cm) {};
+        \path[yshift=-.5cm]
+            node[sigmoid neuron] (O2-\name) at (2*\layersep,-1.5*\y cm) {};
     
-    \node[label={[label distance=1mm]90:$z_1$}]  at (2*\layersep,-2.5) {};
-    \node[label={[label distance=1mm]90:$z_2$}]  at (2*\layersep,-3.5) {};
-    \node[label={[label distance=1mm]90:$z_C$}]  at (2*\layersep,-5.5) {};
+    \node[label={[label distance=1mm]90:$a_1$}]  at (2*\layersep,-3) {};
+    \node[label={[label distance=1mm]90:$a_2$}]  at (2*\layersep,-4.5) {};
+    \node[label={[label distance=1mm]90:$a_C$}]  at (2*\layersep,-7.5) {};
 
-    \node [scale = 1.5, below=1mm of O2-4.south] {$\mathbf{z}$};
+    \node [scale = 1.5, below=5mm of O2-4.south] {$\mathbf{a}$};
 
 
     % Draw the output layer node
@@ -123,13 +123,13 @@
         % \foreach \dest in {1,...,4}
             \draw [thick, ->](O-\source.east) -- (O2-\source.west);
    
-    \node at (2.5*\layersep, -2.5) { 1 vs  rest};
+    \node at (2.5*\layersep, -2) { 1 vs  rest};
     \node at (2.5*\layersep, -3.5) { 2 vs  rest};
-    \node at (2.5*\layersep, -5.5) { C vs  rest};
+    \node at (2.5*\layersep, -6.5) { C vs  rest};
    \begin{scope}[xshift = 9cm]
     % \node [input neuron] (ii) at (0, 0) {};
-    \node[input neuron, label = left:$x_i$] (ii) at (0,-.5) {};
-    \node[output neuron, label = above:$v_j$] (oo) at (\layersep,-.5) {$\Sigma$};
+    \node[input neuron, label = left:$x_i$] (ii) at (0,0) {};
+    \node[output neuron, label = below:$z_j$] (oo) at (\layersep,0) {$\Sigma$};
 
     \draw [thick, ->] (ii.east) -- node[midway, fill = white, yshift = -2pt] {$w_{ij}$} (oo.west); 
 
@@ -139,15 +139,15 @@
 
     \def\offset{-3.5}
     \def\d{.7}
-    \node [text width= 4cm, anchor = west] at (-1, \offset + 3*\d) {$w_{i0}$: biases, don't forget!};
+    \node [text width= 4cm, anchor = west] at (-1, \offset + 3*\d) {$w_{0j}$: biases, don't forget!};
     \node [text width= 4cm, anchor = west] at (-1, \offset + 2*\d) {$d$: data dimension};
     \node [text width= 4cm, anchor = west] at (-1, \offset + \d) {$C$: number of classes};
     \node [text width= 4cm, anchor = west] at (-1, \offset) {$\mathbf{x} \in \R^{d+1}$};
     \node [text width= 4cm, anchor = west] at (-1, \offset - \d) {$\mathbf{W} \in \R^{(d+1)\times C}$};
-    \node [text width= 4cm, anchor = west] at (-1, \offset - 2*\d) {$v_i = \mathbf{w}_i^T\mathbf{x} $};
-    \node [text width= 4cm, anchor = west] at (-1, \offset - 3*\d) {$\mathbf{v} = \mathbf{W}^T\mathbf{x} \in \R^{C}$};
-    \node [text width= 4cm, anchor = west] at (-1, \offset - 4*\d) {$z_i = \text{sigmoid}(v_i) \in \R$};
-    \node [text width= 4cm, anchor = west] at (-1, \offset - 5.2*\d) {$0 < z_i < 1$};
+    \node [text width= 4cm, anchor = west] at (-1, \offset - 2*\d) {$z_i = \mathbf{w}_i^T\mathbf{x} $};
+    \node [text width= 4cm, anchor = west] at (-1, \offset - 3*\d) {$\mathbf{z} = \mathbf{W}^T\mathbf{x} \in \R^{C}$};
+    \node [text width= 4cm, anchor = west] at (-1, \offset - 4*\d) {$a_i = \text{sigmoid}(z_i) \in \R$};
+    \node [text width= 4cm, anchor = west] at (-1, \offset - 5.2*\d) {$0 < a_i < 1$};
    \end{scope}
 
    % \begin{scope}[xshift = 12cm, yshift = 0cm]
@@ -162,9 +162,9 @@
    %          \foreach \dest in {1,...,4}
    %              \draw [thick, ->](I-\source.east) -- (O2-\dest.west);
    %      \node [anchor = west, align = left, scale = 1.5, below= 0mm of I-7.south] {$\mathbf{x} (\mathbf{\bar{x}})$};
-   %      \node [anchor = west, align = left, scale = 1.5, below= 1mm of O2-4.south] {$\mathbf{z}$};
+   %      \node [anchor = west, align = left, scale = 1.5, below= 1mm of O2-4.south] {$\mathbf{a}$};
 
-   %      \node [draw] at (1, 0) {$\mathbf{z} = \text{softmax}(\mathbf{W}^T \mathbf{\bar{x}})$};
+   %      \node [draw] at (1, 0) {$\mathbf{a} = \text{softmax}(\mathbf{W}^T \mathbf{\bar{x}})$};
    %      % \node [scale = 1.5, below= 1mm of I-7.south] {$\mathbf{z = \text{softmax}(\)}$};
 
    %      \draw [scale = 2, ->, ultra thick] (-1.4, -2.1) -- node[above] {short form} ++(1, 0);

@@ -64,13 +64,13 @@ Tôi xin phép được bắt đầu từ mô hình [**one-vs-rest**](/2017/02/1
 <div class = "thecap">Hình 1: Multi-class classification với Logistic Regression và one-vs-rest.</div>
 </div> 
 
-Dữ liệu \\(\mathbf{x}\\) có số chiều là \\((d +1)\\) vì có phần tử 1 được thêm vào phía trước, thể hiện hệ số tự do trong hàm tuyến tính. Hệ số tự do \\(w\_{i0}\\) còn được gọi là bias. 
+Dữ liệu \\(\mathbf{x}\\) có số chiều là \\((d +1)\\) vì có phần tử 1 được thêm vào phía trước, thể hiện hệ số tự do trong hàm tuyến tính. Hệ số tự do \\(w\_{0j}\\) còn được gọi là bias. 
 
 Giả sử số classes là \\(C\\). Với one-vs-rest, chúng ta cần xây dựng \\(C\\) Logistic Regression khác nhau. Các _đầu ra dự đoán_ được tính theo hàm sigmoid:
 \\[
-z\_i = \text{sigmoid}(v\_i) = \text{sigmoid}(\mathbf{w}\_i^T\mathbf{x})
+a\_i = \text{sigmoid}(z\_i) = \text{sigmoid}(\mathbf{w}\_i^T\mathbf{x})
 \\]
-Trong kỹ thuật này, các phần tử \\(z\_i, i = 1, 2, \dots, C\\) được suy ra trực tiếp chỉ với \\(v\_i\\). Vì vậy, không có mối quan hệ chặt chẽ nào giữa các \\(z\_i\\), tức tổng của chúng có thể nhỏ hơn hoặc lớn hơn 1. Nếu ta có thể khai thác được mỗi quan hệ giữa các \\(v\_i\\) thì kết quả của bài toán classification có thể tốt hơn. 
+Trong kỹ thuật này, các phần tử \\(a\_i, i = 1, 2, \dots, C\\) được suy ra trực tiếp chỉ với \\(z\_i\\). Vì vậy, không có mối quan hệ chặt chẽ nào giữa các \\(a\_i\\), tức tổng của chúng có thể nhỏ hơn hoặc lớn hơn 1. Nếu ta có thể khai thác được mỗi quan hệ giữa các \\(z\_i\\) thì kết quả của bài toán classification có thể tốt hơn. 
 
 Chú ý rằng các mô hình Linear Regression, PLA, Logistic Regression chỉ có 1 node ở output layer. Trong các trường hợp đó, tham số mô hình chỉ là 1 vector \\(\mathbf{w}\\). Trong trường hợp output layer có nhiều hơn 1 node, tham số mô hình sẽ là tập hợp 
 tham số \\(\mathbf{w}\_i\\) ứng với từng node. Lúc này, ta có _ma trận trọng số_ \\(\mathbf{W} = [\mathbf{w}\_1, \mathbf{w}\_2, \dots, \mathbf{w}\_C]\\).
@@ -81,20 +81,20 @@ tham số \\(\mathbf{w}\_i\\) ứng với từng node. Lúc này, ta có _ma tr�
 <a name="-cong-thuc-cua-softmax-function"></a>
 
 ### 2.1. Công thức của Softmax function
-Chúng ta cần một mô hình xác suất sao cho với mỗi input \\(\mathbf{x}\\), \\(z_i\\) thể hiện xác suất để input đó rơi vào class \\(i\\). Vậy điều kiện cần là các \\(z_i\\) phải dương và tổng của chúng bằng 1. Để có thể thỏa mãn điều kiện này, chúng ta cần _nhìn vào_ mọi giá trị \\(v_i\\) và dựa trên quan hệ giữa các \\(v\_i\\) này để tính toán giá trị của \\(z\_i\\). Ngoài các điều kiện \\(z\_i\\) lớn hơn 0 và có tổng bằng 1, chúng ta sẽ thêm một điều kiện cũng rất tự nhiên nữa, đó là: giá trị \\(v\_i = \mathbf{w}\_i^T\mathbf{x}\\) càng lớn thì xác suất dữ liệu rơi vào class \\(i\\) càng cao. Điều kiện cuối này chỉ ra rằng chúng ta cần một hàm đồng biến ở đây.
+Chúng ta cần một mô hình xác suất sao cho với mỗi input \\(\mathbf{x}\\), \\(a_i\\) thể hiện xác suất để input đó rơi vào class \\(i\\). Vậy điều kiện cần là các \\(a_i\\) phải dương và tổng của chúng bằng 1. Để có thể thỏa mãn điều kiện này, chúng ta cần _nhìn vào_ mọi giá trị \\(z_i\\) và dựa trên quan hệ giữa các \\(z\_i\\) này để tính toán giá trị của \\(a\_i\\). Ngoài các điều kiện \\(a\_i\\) lớn hơn 0 và có tổng bằng 1, chúng ta sẽ thêm một điều kiện cũng rất tự nhiên nữa, đó là: giá trị \\(z\_i = \mathbf{w}\_i^T\mathbf{x}\\) càng lớn thì xác suất dữ liệu rơi vào class \\(i\\) càng cao. Điều kiện cuối này chỉ ra rằng chúng ta cần một hàm đồng biến ở đây.
 
-Chú ý rằng \\(v\_i \\) có thể nhận giá trị cả âm và dương. Một hàm số _mượt_ đơn giản có thể chắc chắn biến  \\(v\_i \\) thành một giá trị dương, và hơn nữa, đồng biến, là hàm \\(\exp(v\_i) = e^{v\_i}\\). Điều kiện _mượt_ để thuận lợi hơn trong việc tính đạo hàm sau này. Điều kiện cuối cùng, tổng các \\(z\_i\\) bằng 1 có thể được đảm bảo nếu:
+Chú ý rằng \\(z\_i \\) có thể nhận giá trị cả âm và dương. Một hàm số _mượt_ đơn giản có thể chắc chắn biến  \\(z\_i \\) thành một giá trị dương, và hơn nữa, đồng biến, là hàm \\(\exp(z\_i) = e^{z\_i}\\). Điều kiện _mượt_ để thuận lợi hơn trong việc tính đạo hàm sau này. Điều kiện cuối cùng, tổng các \\(a\_i\\) bằng 1 có thể được đảm bảo nếu:
 
 \\[
-z\_i = \frac{\exp(v\_i)}{\sum\_{j=1}^C \exp(v\_j)}, ~~ \forall i = 1, 2, \dots, C
+a\_i = \frac{\exp(z\_i)}{\sum\_{j=1}^C \exp(z\_j)}, ~~ \forall i = 1, 2, \dots, C
 \\]
 
-Hàm số này, tính tất cả các \\(z\_i\\) dựa vào tất cả các \\(v\_i\\), thõa mãn tất cả các điều kiện đã xét: dương, tổng bằng 1, giữ được _thứ tự_ của \\(v\_i\\). Hàm số này được gọi là _softmax function_. Chú ý rằng với cách định nghĩa này, không có xác suất \\(z\_i\\) nào tuyệt đối bằng 0 hoặc tuyệt đối bằng 1, mặc dù chúng có thể rất gần 0 hoặc 1 khi \\(v\_i\\) rất nhỏ hoặc rất lớn khi so sánh với các \\(v\_j, j \neq i\\).
+Hàm số này, tính tất cả các \\(a\_i\\) dựa vào tất cả các \\(z\_i\\), thõa mãn tất cả các điều kiện đã xét: dương, tổng bằng 1, giữ được _thứ tự_ của \\(z\_i\\). Hàm số này được gọi là _softmax function_. Chú ý rằng với cách định nghĩa này, không có xác suất \\(a\_i\\) nào tuyệt đối bằng 0 hoặc tuyệt đối bằng 1, mặc dù chúng có thể rất gần 0 hoặc 1 khi \\(z\_i\\) rất nhỏ hoặc rất lớn khi so sánh với các \\(z\_j, j \neq i\\).
 
 Lúc này, ta có thể giả sử rằng:
 
 \\[
-P(y\_k = i | \mathbf{x}\_k; \mathbf{W}) = z\_i
+P(y\_k = i | \mathbf{x}\_k; \mathbf{W}) = a\_i
 \\]
 
 Trong đó, \\(P(y = i \| \mathbf{x}; \mathbf{W})\\) được hiểu là xác suất để một điểm dữ liệu \\(\mathbf{x}\\) rơi vào class thứ \\(i\\) nếu biết tham số mô hình (ma trận trọng số) là \\(\mathbf{W}\\). 
@@ -106,14 +106,14 @@ Hình vẽ dưới đây thể hiện mạng Softmax Regression dưới dạng n
 <div class = "thecap">Hình 2: Mô hình Softmax Regression dưới dạng Neural network.</div>
 </div> 
 
-Ở phần bên phải, hàm tuyến tính \\(\Sigma\\) và hàm softmax (activation function) được tách riêng ra để phục vụ cho mục đích minh họa. Dạng _short form_ ở bên phải là dạng hay được sử dụng trong các Neural Networks, lớp \\(\mathbf{z}\\) được ngầm hiểu là bao gồm cả lớp \\(\mathbf{v}\\).
+Ở phần bên phải, hàm tuyến tính \\(\Sigma\\) và hàm softmax (activation function) được tách riêng ra để phục vụ cho mục đích minh họa. Dạng _short form_ ở bên phải là dạng hay được sử dụng trong các Neural Networks, lớp \\(\mathbf{a}\\) được ngầm hiểu là bao gồm cả lớp \\(\mathbf{v}\\).
 
 
 
 <a name="-softmax-function-trong-python"></a>
 
 ### 2.2. Softmax function trong Python 
-Dưới đây là một đoạn code viết hàm softmax. Đầu vào là một ma trận với mỗi cột là một vector \\(\mathbf{v}\\), đầu ra cũng là một ma trận mà mỗi cột có giá trị là \\(\mathbf{z} = \text{softmax}(\mathbf{v})\\). Các giá trị của \\(\mathbf{v}\\) còn được gọi là **scores**.
+Dưới đây là một đoạn code viết hàm softmax. Đầu vào là một ma trận với mỗi cột là một vector \\(\mathbf{v}\\), đầu ra cũng là một ma trận mà mỗi cột có giá trị là \\(\mathbf{a} = \text{softmax}(\mathbf{v})\\). Các giá trị của \\(\mathbf{v}\\) còn được gọi là **scores**.
 
 ```python
 import numpy as np 
@@ -132,7 +132,7 @@ def softmax(V):
 
 ### 2.3. Một vài ví dụ 
 
-Hình 3 dưới đây là một vài ví dụ về mối quan hệ giữa đầu vào và đầu ra của hàm softmax. Hàng trên màu xanh nhạt thể hiện các scores \\(v\_i\\) với giả sử rằng số classes là 3. Hàng dưới màu đỏ nhạt thể hiện các giá trị đầu ra \\(z\_i\\) của hàm softmax.
+Hình 3 dưới đây là một vài ví dụ về mối quan hệ giữa đầu vào và đầu ra của hàm softmax. Hàng trên màu xanh nhạt thể hiện các scores \\(z\_i\\) với giả sử rằng số classes là 3. Hàng dưới màu đỏ nhạt thể hiện các giá trị đầu ra \\(a\_i\\) của hàm softmax.
 
 <div class="imgcap">
 <img src ="\assets\13_softmax\softmax_ex.png" align = "center" width = "600">
@@ -141,13 +141,13 @@ Hình 3 dưới đây là một vài ví dụ về mối quan hệ giữa đầu
 
 Có một vài quan sát như sau: 
 
-* Cột 1: Nếu các \\(v\_i\\) bằng nhau, thì các \\(z\_i\\) cũng bằng nhau và bằng 1/3. 
+* Cột 1: Nếu các \\(z\_i\\) bằng nhau, thì các \\(a\_i\\) cũng bằng nhau và bằng 1/3. 
 
-* Cột 2: Nếu giá trị lớn nhất trong các \\(v\_i\\) là \\(v\_1\\) vẫn bằng 2, nhưng các giá trị khác thay đổi, thì mặc dù xác suất tương ứng \\(z\_1\\) vẫn là lớn nhất, nhưng nó đã thay đổi lên hơn 0.5. Đây chính là một lý do mà tên của hàm này có từ _soft_. (_max_ vì phẩn từ lớn nhất vẫn là phần tử lớn nhất).
+* Cột 2: Nếu giá trị lớn nhất trong các \\(z\_i\\) là \\(z\_1\\) vẫn bằng 2, nhưng các giá trị khác thay đổi, thì mặc dù xác suất tương ứng \\(a\_1\\) vẫn là lớn nhất, nhưng nó đã thay đổi lên hơn 0.5. Đây chính là một lý do mà tên của hàm này có từ _soft_. (_max_ vì phẩn từ lớn nhất vẫn là phần tử lớn nhất).
 
-* Cột 3: Khi các giá trị \\(v\_i\\) là âm thì các giá trị \\(z\_i\\) vẫn là dương và thứ tự vẫn được đảm bảo. 
+* Cột 3: Khi các giá trị \\(z\_i\\) là âm thì các giá trị \\(a\_i\\) vẫn là dương và thứ tự vẫn được đảm bảo. 
 
-* Cột 4: Nếu \\(v\_1 = v\_2\\), thì \\(z\_1 = z\_2\\).
+* Cột 4: Nếu \\(z\_1 = z\_2\\), thì \\(a\_1 = a\_2\\).
 
 Bạn đọc có thể thử với các giá trị khác trực tiếp trên trình duyệt trong [link này](http://neuralnetworksanddeeplearning.com/chap3.html), kéo xuống phần Softmax. 
 
@@ -155,17 +155,17 @@ Bạn đọc có thể thử với các giá trị khác trực tiếp trên tr�
 
 ### 2.4. Phiên bản ổn định hơn của softmax function 
 
-Khi một trong các \\(v\_i\\) quá lớn, việc tính toán \\(\exp(v\_i)\\) có thể gây ra hiện tượng tràn số (overflow), ảnh hưởng lớn tới kết quả của hàm softmax. Có một cách khắc phục hiện tượng này bằng cách dựa trên quan sát sau: 
+Khi một trong các \\(z\_i\\) quá lớn, việc tính toán \\(\exp(z\_i)\\) có thể gây ra hiện tượng tràn số (overflow), ảnh hưởng lớn tới kết quả của hàm softmax. Có một cách khắc phục hiện tượng này bằng cách dựa trên quan sát sau: 
 
 \\[
 \begin{eqnarray}
-\frac{\exp(v\_i)}{\sum\_{j=1}^C \exp(v\_j)} &=& \frac{\exp(-a)\exp(v\_i)}{\exp(-a)\sum\_{j=1}^C \exp(v\_j)}\\\
-&=& \frac{\exp(v\_i-a)}{\sum\_{j=1}^C \exp(v\_j-a)}
+\frac{\exp(z\_i)}{\sum\_{j=1}^C \exp(z\_j)} &=& \frac{\exp(-c)\exp(z\_i)}{\exp(-c)\sum\_{j=1}^C \exp(z\_j)}\\\
+&=& \frac{\exp(z\_i-c)}{\sum\_{j=1}^C \exp(z\_j-c)}
 \end{eqnarray}
 \\]
-với \\(a\\) là một hằng số bất kỳ. 
+với \\(c\\) là một hằng số bất kỳ. 
 
-Vậy một phương pháp đơn giản giúp khắc phục hiện tượng overflow là trừ tất cả các \\(v\_i\\) đi một giá trị đủ lớn. Trong thực nghiệm, giá trị đủ lớn này thường được chọn là \\(a = \max\_i v\_i\\). Vậy chúng ta có thể sửa đoạn code cho hàm `softmax` phía trên bằng cách trừ mỗi cột của ma trận đầu vào `V` đi giá trị lớn nhất trong cột đó. Ta có phiên bản ổn định hơn là `softmax_stable`:
+Vậy một phương pháp đơn giản giúp khắc phục hiện tượng overflow là trừ tất cả các \\(z\_i\\) đi một giá trị đủ lớn. Trong thực nghiệm, giá trị đủ lớn này thường được chọn là \\(c = \max\_i z\_i\\). Vậy chúng ta có thể sửa đoạn code cho hàm `softmax` phía trên bằng cách trừ mỗi cột của ma trận đầu vào `V` đi giá trị lớn nhất trong cột đó. Ta có phiên bản ổn định hơn là `softmax_stable`:
 
 ```python 
 def softmax_stable(V):
@@ -193,12 +193,12 @@ trong đó `axis = 0` nghĩa là lấy `max` theo cột (`axis = 1` sẽ lấy m
 ### 3.1. One hot coding 
 Với cách biểu diễn network như trên, mỗi output sẽ không còn là một giá trị tương ứng với mỗi class nữa mà sẽ là một vector có đúng 1 phần tử bằng 1, các phần tử còn lại bằng 0. Phần tử bằng 1 năm ở vị trí tương ứng với class đó, thể hiện rằng điểm dữ liệu đang xét rơi vào class này với xác suất bằng 1 (_sự thật_ là như thế, không cần dự đoán). Cách _mã hóa_ output này chính là _one-hot coding_ mà tôi đã đề cập trong bài [K-means clustering](/2017/01/01/kmeans/) và [bài trước](/2017/02/11/binaryclassifiers/#one-vs-rest-hay-one-hot-coding). 
 
-Khi sử dụng mô hình Softmax Regression, với mỗi đầu vào \\(\mathbf{x}\\), ta sẽ có _đầu ra dự đoán_ là \\(\mathbf{z} = \text{softmax}(\mathbf{W}^T\mathbf{x})\\). Trong khi đó, _đầu ra thực sự_ chúng ta có là vector \\(\mathbf{y}\\) được biểu diễn dưới dạng one-hot coding. 
+Khi sử dụng mô hình Softmax Regression, với mỗi đầu vào \\(\mathbf{x}\\), ta sẽ có _đầu ra dự đoán_ là \\(\mathbf{a} = \text{softmax}(\mathbf{W}^T\mathbf{x})\\). Trong khi đó, _đầu ra thực sự_ chúng ta có là vector \\(\mathbf{y}\\) được biểu diễn dưới dạng one-hot coding. 
 
-Hàm mất mát sẽ được xây dựng để tối thiểu sự khác nhau giữa _đầu ra dự đoán_ \\(\mathbf{z}\\) và _đầu ra thực sự_ \\(\mathbf{y}\\). Một lựa chọn đầu tiên ta có thể nghĩ tới là:
+Hàm mất mát sẽ được xây dựng để tối thiểu sự khác nhau giữa _đầu ra dự đoán_ \\(\mathbf{a}\\) và _đầu ra thực sự_ \\(\mathbf{y}\\). Một lựa chọn đầu tiên ta có thể nghĩ tới là:
 
 \\[
-J(\mathbf{W}) = \sum_{i=1}^N \|\|\mathbf{z}\_i - \mathbf{y}\_i\|\|_2^2
+J(\mathbf{W}) = \sum_{i=1}^N \|\|\mathbf{a}\_i - \mathbf{y}\_i\|\|_2^2
 \\]
 **Tuy nhiên đây chưa phải là một lựa chọn tốt**. Khi đánh giá sự khác nhau (hay khoảng cách) giữa hai phân bố xác suất (probability distributions), chúng ta có một đại lượng đo đếm khác hiệu quả hơn. Đại lượng đó có tên là [**cross entropy**](https://en.wikipedia.org/wiki/Cross_entropy).
 
@@ -210,7 +210,7 @@ Cross entropy giữa hai phân phối \\(\mathbf{p}\\) và \\(\mathbf{q}\\) đư
 H(\mathbf{p}, \mathbf{q}) = \mathbf{E_p}[-\log \mathbf{q}]
 \\]
 
-Với \\(\mathbf{p}\\) và \\(\mathbf{q}\\) là rời rạc (như \\(\mathbf{y}\\) và \\(\mathbf{z}\\) trong bài toán của chúng ta), công thức này được viết dưới dạng: 
+Với \\(\mathbf{p}\\) và \\(\mathbf{q}\\) là rời rạc (như \\(\mathbf{y}\\) và \\(\mathbf{a}\\) trong bài toán của chúng ta), công thức này được viết dưới dạng: 
 
 \\[
 H(\mathbf{p}, \mathbf{q}) =-\sum\_{i=1}^C p\_i \log q\_i ~~~ (1)
@@ -246,9 +246,9 @@ Hai tính chất trên đây khiến cho cross entropy được sử dụng rộ
 **Chú ý:** Hàm cross entropy không có tính đối xứng \\(H(\mathbf{p}, \mathbf{q}) \neq H(\mathbf{q}, \mathbf{p})\\). Điều này có thể dễ dàng nhận ra ở việc các thành phần của \\(\mathbf{p}\\) trong công thức \\((1)\\) có thể nhận giá trị bằng 0, trong khi đó các thành phần của \\(\mathbf{q}\\) phải là dương vì \\(\log(0)\\) không xác định. Chính vì vậy, khi sử dụng cross entropy trong các bài toán supervised learning, \\(\mathbf{p}\\) thường là _đầu ra thực sự_ vì đầu ra thực sự chỉ có 1 thành phần bằng 1, còn lại bằng 0 (one-hot), \\(\mathbf{q}\\) thường là _đầu ra dự đoán_, khi mà không có xác suất nào tuyệt đối bằng 1 hoặc tuyệt đối bằng 0 cả. 
 
 
-Trong [Logistic Regression](http://127.0.0.1:4000/2017/01/27/logisticregression/), chúng ta cũng có hai phân phối đơn giản. (i) _Đầu ra thực sự_ của điểm dữ liệu đầu vào \\(\mathbf{x}\_i\\) có phân phối xác suất là \\([y\_i; 1 - y\_i]\\) với \\(y\_i\\) là xác suất để điểm dữ liệu đầu vào rơi vào class thứ nhất (bằng 1 nếu \\(y\_i = 1\\), bằng 0 nếu \\(y\_i = 0\\)). (ii). _Đầu ra dự đoán_ của điểm dữ liệu đó là \\(z\_i = \text{sigmoid}(\mathbf{w}^T\mathbf{x})\\) là xác suất để điểm đó rơi vào class thứ nhất. Xác suất để điểm đó rơi vào class thứ hai có thể được dễ dàng suy ra lf \\(1 - z\_i\\). Vì vậy, hàm mất mát trong Logistic Regression:
+Trong [Logistic Regression](http://127.0.0.1:4000/2017/01/27/logisticregression/), chúng ta cũng có hai phân phối đơn giản. (i) _Đầu ra thực sự_ của điểm dữ liệu đầu vào \\(\mathbf{x}\_i\\) có phân phối xác suất là \\([y\_i; 1 - y\_i]\\) với \\(y\_i\\) là xác suất để điểm dữ liệu đầu vào rơi vào class thứ nhất (bằng 1 nếu \\(y\_i = 1\\), bằng 0 nếu \\(y\_i = 0\\)). (ii). _Đầu ra dự đoán_ của điểm dữ liệu đó là \\(a\_i = \text{sigmoid}(\mathbf{w}^T\mathbf{x})\\) là xác suất để điểm đó rơi vào class thứ nhất. Xác suất để điểm đó rơi vào class thứ hai có thể được dễ dàng suy ra lf \\(1 - a\_i\\). Vì vậy, hàm mất mát trong Logistic Regression:
 \\[
-J(\mathbf{w}) = -\sum\_{i=1}^N(y\_i \log {z}\_i + (1-y\_i) \log (1 - {z}\_i))
+J(\mathbf{w}) = -\sum\_{i=1}^N(y\_i \log {a}\_i + (1-y\_i) \log (1 - {a}\_i))
 \\]
 chính là một trường hợp đặc biệt của Cross Entropy. (\\(N\\) được dùng để thể hiện số điểm dữ liệu trong tập training).
 
@@ -256,9 +256,9 @@ chính là một trường hợp đặc biệt của Cross Entropy. (\\(N\\) đ�
 
 Với Softmax Regression, trong trường hợp có \\(C\\) classes, _loss_ giữa đầu ra dự đoán và đầu ra thực sự của một điểm dữ liệu \\(\mathbf{x}_i\\) được tính bằng:
 \\[
-J(\mathbf{W};\mathbf{x}\_i, \mathbf{y}\_i) = -\sum\_{j=1}^C y\_{ji}\log(z\_{ji})
+J(\mathbf{W};\mathbf{x}\_i, \mathbf{y}\_i) = -\sum\_{j=1}^C y\_{ji}\log(a\_{ji})
 \\]
-Với \\(y\_{ji}\\) và \\( z\_{ji}\\) lần lượt là là phần tử thứ \\(j\\) của vector (xác suất) \\(\mathbf{y}\_i\\) và \\(\mathbf{z}\_i\\). Nhắc lại rằng đầu ra \\(\mathbf{z}\_i\\) phụ thuộc vào đầu vào \\(\mathbf{x}\_i\\) và ma trận trọng số \\(\mathbf{W}\\).
+Với \\(y\_{ji}\\) và \\( a\_{ji}\\) lần lượt là là phần tử thứ \\(j\\) của vector (xác suất) \\(\mathbf{y}\_i\\) và \\(\mathbf{a}\_i\\). Nhắc lại rằng đầu ra \\(\mathbf{a}\_i\\) phụ thuộc vào đầu vào \\(\mathbf{x}\_i\\) và ma trận trọng số \\(\mathbf{W}\\).
 
 <a name="-ham-mat-mat-cho-softmax-regression"></a>
 
@@ -267,7 +267,7 @@ Kết hợp tất cả các cặp dữ liệu \\(\mathbf{x}\_i, \mathbf{y}\_i, i
 
 \\[
 \begin{eqnarray}
-J(\mathbf{W}; \mathbf{X}, \mathbf{Y}) = -\sum\_{i = 1}^N \sum_{j = 1}^C y\_{ji}\log(z\_{ji}) \\\
+J(\mathbf{W}; \mathbf{X}, \mathbf{Y}) = -\sum\_{i = 1}^N \sum_{j = 1}^C y\_{ji}\log(a\_{ji}) \\\
 = -\sum\_{i = 1}^N \sum_{j = 1}^C y\_{ji}\log\left(\frac{\exp(\mathbf{w}\_j^T\mathbf{x}\_i)}{\sum\_{k=1}^C \exp(\mathbf{w}\_k^T\mathbf{x}\_i)}\right)
 \end{eqnarray}
 \\]
@@ -305,26 +305,28 @@ Trong đó, gradient theo từng cột có thể tính được dựa theo \\((3
 \begin{eqnarray}
 \frac{\partial J\_i(\mathbf{W})}{\partial \mathbf{w}\_j} &=& -y\_{ji}\mathbf{x}\_i + 
 \frac{\exp(\mathbf{w}\_j^T\mathbf{x}\_i)}{\sum\_{k = 1}^C \exp(\mathbf{w}\_k^T\mathbf{x}\_i)}\mathbf{x}\_i \\\
-&=& \-y\_{ji}\mathbf{x}\_i + z\_{ji} \mathbf{x}\_i = \mathbf{x}\_i (z\_{ji} - y\_{ji}) \\\
-&=& u\_{ji}\mathbf{x}\_{i} ~(\text{where}~ u\_{ji} = z\_{ji} - y\_{ji}) ~~(5)
+&=& \-y\_{ji}\mathbf{x}\_i + a\_{ji} \mathbf{x}\_i = \mathbf{x}\_i (a\_{ji} - y\_{ji}) \\\
+&=& e\_{ji}\mathbf{x}\_{i} ~(\text{where}~ e\_{ji} = a\_{ji} - y\_{ji}) ~~(5)
 \end{eqnarray}
 \\]
 
+Giá trị \\(e\_{ji} = a\_{ji} - y\_{ji} \\) có thể được coi là _sai số dự đoán_.
+
 Đến đây ta đã được biểu thức rất đẹp rồi. Kết hợp \\((4)\\) và \\((5)\\) ta có: 
 \\[
-\frac{\partial J\_i(\mathbf{W})}{\partial \mathbf{W}} = \mathbf{x}\_i [u\_{1i}, u\_{2i}, \dots, u\_{Ci}] = \mathbf{x}\_i\mathbf{u}\_i^T
+\frac{\partial J\_i(\mathbf{W})}{\partial \mathbf{W}} = \mathbf{x}\_i [e\_{1i}, e\_{2i}, \dots, e\_{Ci}] = \mathbf{x}\_i\mathbf{e}\_i^T
 \\]
 <a name="vi-du-va-luu-y-khi-lap-trinh-voi-python"></a>
 
 Từ đây ta cũng có thể suy ra rằng:
 \\[
-\frac{\partial J(\mathbf{W})}{\partial \mathbf{W}} = \sum\_{i=1}^N \mathbf{x}\_i\mathbf{u}\_i^T = \mathbf{X}\mathbf{U}^T
+\frac{\partial J(\mathbf{W})}{\partial \mathbf{W}} = \sum\_{i=1}^N \mathbf{x}\_i\mathbf{e}\_i^T = \mathbf{X}\mathbf{E}^T
 \\]
-với \\(\mathbf{U} = \mathbf{Z - Y}\\). Công thức tính gradient đơn giản thế này giúp cho cả [Batch Gradient Descent, Stochastic Gradient Descent (SGD), và Mini-batch Gradient Descent](/2017/01/16/gradientdescent2/#-bien-the-cua-gradient-descent) đều có thể dễ dàng được áp dụng. 
+với \\(\mathbf{E} = \mathbf{A - Y}\\). Công thức tính gradient đơn giản thế này giúp cho cả [Batch Gradient Descent, Stochastic Gradient Descent (SGD), và Mini-batch Gradient Descent](/2017/01/16/gradientdescent2/#-bien-the-cua-gradient-descent) đều có thể dễ dàng được áp dụng. 
 
 Giả sử rằng chúng ta sử dụng SGD, công thức cập nhật cho ma trận trọng số \\(\mathbf{W}\\) sẽ là: 
 \\[
-\mathbf{W} = \mathbf{W} +\eta \mathbf{x}\_{i}(\mathbf{y}\_i - \mathbf{z}\_i)^T
+\mathbf{W} = \mathbf{W} +\eta \mathbf{x}\_{i}(\mathbf{y}\_i - \mathbf{a}\_i)^T
 \\]
 
 Bạn có thấy công thức này giống với [công thức cập nhật của Logistic Regression](http://127.0.0.1:4000/2017/01/27/logisticregression/#cong-thuc-cap-nhat-cho-logistic-sigmoid-regression) không!
@@ -338,7 +340,7 @@ Thực ra:
 Khi \\(C = 2\\), Softmax Regression và Logistic Regression là giống nhau. Thật vậy, đầu ra dự đoán của Softmax Regression với \\(C= 2\\) có thể được viết dưới dạng: 
 \\[
 \begin{eqnarray}
-z\_1 &=& \frac{\exp(\mathbf{w}\_1\mathbf{x})} {\exp(\mathbf{w}\_1^T\mathbf{x}) + \exp(\mathbf{w}\_2^T\mathbf{x})} \\\
+a\_1 &=& \frac{\exp(\mathbf{w}\_1\mathbf{x})} {\exp(\mathbf{w}\_1^T\mathbf{x}) + \exp(\mathbf{w}\_2^T\mathbf{x})} \\\
 &=& \frac{1}{1 + \exp((\mathbf{w}\_2 - \mathbf{w}\_1)^T\mathbf{x})}
 \end{eqnarray}
 \\]
@@ -412,13 +414,15 @@ Việc kiểm tra đạo hàm được thực hiện như sau:
 ```python
 # cost or loss function  
 def cost(X, Y, W):
-    Z = softmax(W.T.dot(X))
-    return -np.sum(Y*np.log(Z))
+    A = softmax(W.T.dot(X))
+    return -np.sum(Y*np.log(A))
+
+W_init = np.random.randn(d, C)
 
 def grad(X, Y, W):
-    Z = softmax((W.T.dot(X)))
-    U = Z - Y
-    return X.dot(U.T)
+    A = softmax((W.T.dot(X)))
+    E = A - Y
+    return X.dot(E.T)
     
 def numerical_grad(X, Y, W, cost):
     eps = 1e-6
@@ -451,12 +455,14 @@ Chú ý rằng, nếu `N, C, d` quá lớn, việc tính toán `numerical_grad` 
 Sau khi đã có những hàm cần thiết và gradient được tính đúng, chúng ta có thể viết hàm chính có training Softmax Regression (theo SGD) như sau:
 
 ```python
-def softmax_regression(X, Y, W_init, eta, tol = 1e-4, max_count = 10000):
+def softmax_regression(X, y, W_init, eta, tol = 1e-4, max_count = 10000):
     W = [W_init]    
+    C = W_init.shape[1]
+    Y = convert_labels(y, C)
     it = 0
     N = X.shape[1]
     d = X.shape[0]
-    C = Y.shape[0]
+    
     count = 0
     check_w_after = 20
     while count < max_count:
@@ -465,8 +471,8 @@ def softmax_regression(X, Y, W_init, eta, tol = 1e-4, max_count = 10000):
         for i in mix_id:
             xi = X[:, i].reshape(d, 1)
             yi = Y[:, i].reshape(C, 1)
-            zi = softmax(np.dot(W[-1].T, xi))
-            W_new = W[-1] + eta*xi.dot((yi - zi).T)
+            ai = softmax(np.dot(W[-1].T, xi))
+            W_new = W[-1] + eta*xi.dot((yi - ai).T)
             count += 1
             # stopping criteria
             if count%check_w_after == 0:                
@@ -478,7 +484,7 @@ eta = .05
 d = X.shape[0]
 W_init = np.random.randn(d, C)
 
-W = softmax_regression(X, Y, W_init, eta)
+W = softmax_regression(X, y, W_init, eta)
 # W[-1] is the solution, W is all history of weights
 ```
 
@@ -493,10 +499,10 @@ def pred(W, X):
     """
     predict output of each columns of X
     Class of each x_i is determined by location of max probability
-    Note that classes are indexed by [0, 1, 2, ...., C-1]
+    Note that class are indexed by [0, 1, 2, ...., C-1]
     """
-    Z = softmax_stable(W.T.dot(X))
-    return np.amax(Z, axis = 0)
+    A = softmax_stable(W.T.dot(X))
+    return np.argmax(A, axis = 0)
 ```
 
 <a name="-vi-du-voi-python"></a>
@@ -604,7 +610,7 @@ So với kết quả hơn 91% của one-vs-rest Logistic Regression thì Softmax
 <a name="-boundary-tao-boi-softmax-regression-la-linear"></a>
 
 ### 6.1 Boundary tạo bởi Softmax Regression là linear
-Thật vậy, dựa vào hàm softmax thì một điểm dữ liệu \\(\mathbf{x}\\) được dự đoán là rơi vào class \\(j\\) nếu \\(z\_{j} \geq z\_{k}, ~\forall k \neq j\\). Bạn đọc có thể chứng minh được rằng \\(z\_{j} \geq z\_{k} \Leftrightarrow v\_{j} \geq v\_{k}\\), hay nói cách khác: 
+Thật vậy, dựa vào hàm softmax thì một điểm dữ liệu \\(\mathbf{x}\\) được dự đoán là rơi vào class \\(j\\) nếu \\(a\_{j} \geq a\_{k}, ~\forall k \neq j\\). Bạn đọc có thể chứng minh được rằng \\(a\_{j} \geq a\_{k} \Leftrightarrow z\_{j} \geq z\_{k}\\), hay nói cách khác: 
 \\[
 \mathbf{w}_j^T \mathbf{x} \geq \mathbf{w}\_k^T\mathbf{x}\\\
 \Leftrightarrow (\mathbf{w}\_j - \mathbf{w}\_k)^T\mathbf{x} \geq 0

@@ -1,8 +1,8 @@
 # Fdb version 3
-["pdflatex"] 1487981654 "onevsrest.tex" "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/softmax/onevsrest.pdf" "onevsrest" 1487981655
+["pdflatex"] 1488132513 "onevsrest.tex" "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/13_softmax/latex/onevsrest.pdf" "onevsrest" 1488132514
   "/dev/null" 1487979093 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/etc/texmf/web2c/texmf.cnf" 1476924511 1101 af7716885e081ab43982cab7b4672c1a ""
-  "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/softmax/onevsrest.aux" 1487981655 8 a94a2480d3289e625eea47cd1b285758 ""
+  "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/13_softmax/latex/onevsrest.aux" 1488132514 8 a94a2480d3289e625eea47cd1b285758 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -172,11 +172,13 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1458942643 31351 b32c45dce4a01cb7b53ed90c546614ca ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1476924582 1863403 f3ff9a4253bcb5fb9a9baaf0c572cb01 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1476924597 3856431 f9c94138039199b86e883dc1c4eb6c05 ""
-  "onevsrest.aux" 1487981655 8 a94a2480d3289e625eea47cd1b285758 ""
-  "onevsrest.tex" 1487981653 6625 f0675438ad9a72be3c62db292454f1c1 ""
+  "onevsrest.aux" 1488132514 8 a94a2480d3289e625eea47cd1b285758 ""
+  "onevsrest.tex" 1488132513 6621 8503c1df8fff7c78369171005dfeb98a ""
   (generated)
-  "onevsrest.pdf"
   "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/softmax/onevsrest.log"
-  "onevsrest.aux"
-  "onevsrest.log"
+  "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/13_softmax/latex/onevsrest.log"
+  "onevsrest.pdf"
   "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/softmax/onevsrest.pdf"
+  "onevsrest.aux"
+  "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/13_softmax/latex/onevsrest.pdf"
+  "onevsrest.log"

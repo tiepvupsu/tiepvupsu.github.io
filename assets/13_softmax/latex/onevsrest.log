@@ -1,10 +1,11 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.19)  24 FEB 2017 19:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.19)  26 FEB 2017 13:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **onevsrest.tex
 
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/softmax/onevsrest.tex
+(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/13_softmax/latex/onevsrest.
+tex
 LaTeX2e <2016/02/01>
 Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/standalone/standalone.cls
@@ -566,8 +567,8 @@ Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/softmax/onevsrest.aux
-)
+(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/13_softmax/latex/onevsrest.
+aux)
 \openout1 = `onevsrest.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 69.
@@ -652,27 +653,27 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/softmax/onevsrest.aux
-) ) 
+(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/13_softmax/latex/onevsrest.
+aux) ) 
 Here is how much of TeX's memory you used:
- 22291 strings out of 493029
- 571265 string characters out of 6136233
+ 22310 strings out of 493029
+ 571685 string characters out of 6136233
  760541 words of memory out of 5000000
- 25438 multiletter control sequences out of 15000+600000
+ 25457 multiletter control sequences out of 15000+600000
  7171 words of font info for 28 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,9n,77p,738b,1117s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/symbols/msbm10.pfb>
-Output written on /home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/soft
-max/onevsrest.pdf (1 page, 73516 bytes).
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/symbols/msbm10.pfb>
+Output written on /home/tiepvu/myProjects/tiepvupsu.github.io/assets/13_softmax
+/latex/onevsrest.pdf (1 page, 74645 bytes).
 PDF statistics:
  47 PDF objects out of 1000 (max. 8388607)
  34 compressed objects within 1 object stream
