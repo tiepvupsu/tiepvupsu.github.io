@@ -118,14 +118,14 @@ Dưới đây là một đoạn code viết hàm softmax. Đầu vào là một 
 ```python
 import numpy as np 
 
-def softmax(V):
+def softmax(Z):
     """
     Compute softmax values for each sets of scores in V.
     each column of V is a set of score.    
     """
-    e_V = np.exp(V)
-    Z = e_V / e_V.sum(axis = 0)
-    return Z
+    e_Z = np.exp(Z)
+    A = e_Z / e_Z.sum(axis = 0)
+    return A
 ```
 
 <a name="-mot-vai-vi-du"></a>
@@ -168,14 +168,14 @@ với \\(c\\) là một hằng số bất kỳ.
 Vậy một phương pháp đơn giản giúp khắc phục hiện tượng overflow là trừ tất cả các \\(z\_i\\) đi một giá trị đủ lớn. Trong thực nghiệm, giá trị đủ lớn này thường được chọn là \\(c = \max\_i z\_i\\). Vậy chúng ta có thể sửa đoạn code cho hàm `softmax` phía trên bằng cách trừ mỗi cột của ma trận đầu vào `V` đi giá trị lớn nhất trong cột đó. Ta có phiên bản ổn định hơn là `softmax_stable`:
 
 ```python 
-def softmax_stable(V):
+def softmax_stable(Z):
     """
     Compute softmax values for each sets of scores in V.
-    each column of V is a set of score. 
+    each column of V is a set of score.    
     """
-    e_V = np.exp(V - np.max(V, axis = 0, keepdims = True))
-    Z = e_V / e_V.sum(axis = 0)
-    return Z
+    e_Z = np.exp(Z - np.max(Z, axis = 0, keepdims = True))
+    A = e_Z / e_Z.sum(axis = 0)
+    return A
 ```
 
 trong đó `axis = 0` nghĩa là lấy `max` theo cột (`axis = 1` sẽ lấy max theo hàng), `keepdims = True` để đảm bảo phép trừ giữa ma trận `V` và vector  thực hiện được. 
