@@ -74,7 +74,7 @@ plt.plot(x0, z0, 'r-')
 
 plt.axis([0, 1, -.5, 6])
 ax.text(0.1, .5, r'$(q - 0.8)^2$', fontsize=14, color = 'red')
-ax.set_title("$p = 0.1$")
+ax.set_title("$p = 0.8$")
 plt.plot(p, ce(p, p), 'go', markersize= 5)
 plt.plot(p, dist(p, p), 'go', markersize= 5)
 plt.savefig('crossentropy3.png', bbox_inches='tight', dpi = 300)
