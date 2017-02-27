@@ -4,6 +4,7 @@ sass:
 permalink: /:year/:month/:day/:title.html
 
 url: http://tiepvupsu.github.io
+
 future: true
 debug: false
 
