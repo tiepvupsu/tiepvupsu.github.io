@@ -560,7 +560,7 @@ def cost(Y, Yhat):
 d0 = 2
 d1 = h = 100 # size of hidden layer
 d2 = C = 3
-# initialize parameters randomely
+# initialize parameters randomly
 W1 = 0.01*np.random.randn(d0, d1)
 b1 = np.zeros((d1, 1))
 W2 = 0.01*np.random.randn(d1, d2)
