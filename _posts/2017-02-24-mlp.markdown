@@ -67,7 +67,7 @@ Chúng ta cùng xét khả năng biểu diễn (representation) của [Perceptro
  <div class = "thecap"> Hình 1: PLA biểu diễn các hàm logic đơn giản. </div>
 </div>
 <hr>
- Nhận thấy rằng với các bài toán OR, AND, và OR, dữ liệu là [_linearly separable_](/2017/01/21/perceptron/#bai-toan-perceptron), vì vậy ta có thể tìm được các hệ số cho perceptron giúp biểu diễn chính xác mỗi hàm số. Xem ví dụ với hàm NOT, khi \\(x_1 = 0\\), ta có \\(z = \text{sgn}(-2 \times 0+1) = 1\\). Khi \\(x_1 = 1\\), \\(z = \text{sgn}(-2\times 1 + 1) = -1\\). Trong cả hai trường hợp, predicted output đều giống với [ground truth](/2017/01/08/knn/#ground-truth). Bạn đọc có thể tự kiểm chứng các hệ số trong hình với hàm AND và OR.
+ Nhận thấy rằng với các bài toán OR, AND, và OR, dữ liệu là [_linearly separable_](/2017/01/21/perceptron/#bai-toan-perceptron), vì vậy ta có thể tìm được các hệ số cho perceptron giúp biểu diễn chính xác mỗi hàm số. Xem ví dụ với hàm NOT, khi \\(x_1 = 0\\), ta có \\(a = \text{sgn}(-2 \times 0+1) = 1\\). Khi \\(x_1 = 1\\), \\(a = \text{sgn}(-2\times 1 + 1) = -1\\). Trong cả hai trường hợp, predicted output đều giống với [ground truth](/2017/01/08/knn/#ground-truth). Bạn đọc có thể tự kiểm chứng các hệ số trong hình với hàm AND và OR.
 
 <a name="-bieu-dien-ham-xor-voi-neural-network"></a>
 

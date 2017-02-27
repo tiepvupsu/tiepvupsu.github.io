@@ -58,13 +58,13 @@
         % Draw the output layer nodes
         \foreach \name / \y in {3}
             \path[yshift=1.5cm]
-                node[sign neuron, label = below:{$z$}] (O-\name) at (\layersep,-\y cm) {};
+                node[sign neuron, label = below:{$a$}] (O-\name) at (\layersep,-\y cm) {};
 
         \draw [thick, ->](I-0) -- node[midway, fill = white, yshift = -2pt] {$-3$} (O-3);
         \draw [thick, ->](I-1) -- node[midway, fill = white, yshift = -2pt] {$2$} (O-3);
         \draw [thick, ->](I-2) -- node[midway, fill = white, yshift = -2pt] {$2$} (O-3);
 
-        \node [anchor = west] at (-1, -3) {$\displaystyle z = \text{sgn}(2x_1 + 2x_2 - 3)$};
+        \node [anchor = west] at (-1, -3) {$\displaystyle a = \text{sgn}(2x_1 + 2x_2 - 3)$};
 
 
     \end{scope}
@@ -82,13 +82,13 @@
         % Draw the output layer nodes
         \foreach \name / \y in {3}
             \path[yshift=1.5cm]
-                node[sign neuron, label = below:{$z$}] (O-\name) at (\layersep,-\y cm) {};
+                node[sign neuron, label = below:{$a$}] (O-\name) at (\layersep,-\y cm) {};
 
         \draw [thick, ->](I-0) -- node[midway, fill = white, yshift = -2pt] {$-1$} (O-3);
         \draw [thick, ->](I-1) -- node[midway, fill = white, yshift = -2pt] {$2$} (O-3);
         \draw [thick, ->](I-2) -- node[midway, fill = white, yshift = -2pt] {$2$} (O-3);
 
-        \node [anchor = west] at (-1, -3) {$\displaystyle z = \text{sgn}(2x_1 + 2x_2 - 1)$};
+        \node [anchor = west] at (-1, -3) {$\displaystyle a = \text{sgn}(2x_1 + 2x_2 - 1)$};
     \end{scope}
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%% NOT %%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -105,13 +105,13 @@
         % Draw the output layer nodes
         \foreach \name / \y in {3}
             \path[yshift=2cm]
-                node[sign neuron, label = below:{$z$}] (O-\name) at (\layersep,-\y cm) {};
+                node[sign neuron, label = below:{$a$}] (O-\name) at (\layersep,-\y cm) {};
 
         \draw [thick, ->](I-0) -- node[midway, fill = white, yshift = -2pt] {$1$} (O-3);
         \draw [thick, ->](I-1) -- node[midway, fill = white, yshift = -2pt] {$-2$} (O-3);
         % \draw [thick, ->](I-2) -- node[midway, fill = white, yshift = -2pt] {$2$} (O-3);
 
-        \node [anchor = west] at (-1, -3) {$\displaystyle z = \text{sgn}(-2x_1 + 1)$};
+        \node [anchor = west] at (-1, -3) {$\displaystyle a = \text{sgn}(-2x_1 + 1)$};
     \end{scope}
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%% XOR %%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -128,7 +128,7 @@
         % Draw the output layer nodes
         \foreach \name / \y in {3}
             \path[yshift=1.5cm]
-                node[sign neuron, label = below:{$z$}] (O-\name) at (\layersep,-\y cm) {};
+                node[sign neuron, label = below:{$a$}] (O-\name) at (\layersep,-\y cm) {};
 
         \draw [thick, ->](I-0) -- node[midway, fill = white, yshift = -2pt] {$?$} (O-3);
         \draw [thick, ->](I-1) -- node[midway, fill = white, yshift = -2pt] {$?$} (O-3);

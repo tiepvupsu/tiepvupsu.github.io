@@ -1,12 +1,12 @@
 # Fdb version 3
-["pdflatex"] 1487997782 "logic_nn.tex" "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/14_mlp/latex/logic_nn.pdf" "logic_nn" 1487997783
+["pdflatex"] 1488224533 "logic_nn.tex" "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/14_mlp/latex/logic_nn.pdf" "logic_nn" 1488224535
   "../AND.png" 1487815213 91620 b88abd7985c0ef46b983497661bd061f ""
   "../NOT.png" 1487823175 49802 70f0944f7dccc1082de72ada96e34481 ""
   "../OR.png" 1487815293 84382 fabd0c454de583079902894aa69d531a ""
   "../XOR.png" 1487797631 60784 518713beb00b69aeccefe8348d83ab71 ""
-  "/dev/null" 1487979093 0 d41d8cd98f00b204e9800998ecf8427e ""
+  "/dev/null" 1488211020 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/etc/texmf/web2c/texmf.cnf" 1476924511 1101 af7716885e081ab43982cab7b4672c1a ""
-  "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/14_mlp/latex/logic_nn.aux" 1487997783 8 a94a2480d3289e625eea47cd1b285758 ""
+  "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/14_mlp/latex/logic_nn.aux" 1488224535 8 a94a2480d3289e625eea47cd1b285758 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmss10.tfm" 1136768653 1316 b636689f1933f24d1294acdf6041daaa ""
@@ -115,11 +115,11 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1458942643 31351 b32c45dce4a01cb7b53ed90c546614ca ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1476924582 1863403 f3ff9a4253bcb5fb9a9baaf0c572cb01 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1476924597 3856431 f9c94138039199b86e883dc1c4eb6c05 ""
-  "logic_nn.aux" 1487997783 8 a94a2480d3289e625eea47cd1b285758 ""
-  "logic_nn.tex" 1487997781 5929 62b73ae6ca06330a4c9c2a3dce6e0476 ""
+  "logic_nn.aux" 1488224535 8 a94a2480d3289e625eea47cd1b285758 ""
+  "logic_nn.tex" 1488224533 5929 1fb3bc0d2954f44de1ef725c9a9a1651 ""
   (generated)
-  "logic_nn.log"
-  "logic_nn.pdf"
-  "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/14_mlp/latex/logic_nn.pdf"
   "logic_nn.aux"
+  "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/14_mlp/latex/logic_nn.pdf"
+  "logic_nn.pdf"
+  "logic_nn.log"
   "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/14_mlp/latex/logic_nn.log"
