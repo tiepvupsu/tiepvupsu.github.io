@@ -231,7 +231,9 @@ Có một cách phân nhóm thứ hai dựa trên chức năng của các thuậ
 ### Artificial Neural Network Algorithms 
 
 1. [Perceptron](/2017/01/21/perceptron/)
-2. Back-Propagation 
+2. [Softmax Regression](/2017/02/17/softmax/)
+3. [Multi-layer Perceptron](/2017/02/24/mlp/)
+4. [Back-Propagation ](/2017/02/24/mlp/#-backpropagation)
 
 <!-- ========================== New Heading ==================== -->
 <a name="dimensionality-reduction-algorithms"></a>
