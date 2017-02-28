@@ -274,7 +274,7 @@ Stochastic Gradient Descent có thể được sử dụng để tính gradient 
 \end{eqnarray}
 \\]
 
-Trong đó \\(e_j^{(L)} = \frac{\partial J}{\partial z_j^{(L)}} \\) thường là một đạilượng _dễ tính toán_ và \\(\frac{\partial z_j^{(L)}}{\partial w_{ij}^{(L)}}  = a_i^{(L-1)}\\) vì \\(z_j^{(L)} = \mathbf{w}_j^{(L-1)T}\mathbf{a}^{(L-1)} + b_j^{(L-1)}\\).
+Trong đó \\(e_j^{(L)} = \frac{\partial J}{\partial z_j^{(L)}} \\) thường là một đạilượng _dễ tính toán_ và \\(\frac{\partial z_j^{(L)}}{\partial w_{ij}^{(L)}}  = a_i^{(L-1)}\\) vì \\(z_j^{(L)} = \mathbf{w}_j^{(L)T}\mathbf{a}^{(L-1)} + b_j^{(L)}\\).
 
 Tương tự như thế, đạo hàm của hàm mất mát theo bias của layer cuối cùng là:
 \\[
