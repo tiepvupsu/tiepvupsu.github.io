@@ -239,5 +239,5 @@ Bây giờ, các bạn đã có thể chạy thử 1 vài ví dụ trên trang M
 
 ## 5. Các sách tham khảo?
 
-Mời bạn [xem tại đây](/2017/02/02/howdoIcreatethisblog/#main-refernces).
+Mời bạn [xem tại đây](/2017/02/02/howdoIcreatethisblog/#main-references).
 [Về đầu trang](/faqs/).
