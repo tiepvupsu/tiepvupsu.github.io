@@ -14,16 +14,6 @@ summary: Trong bài này, tôi sẽ giới thiệu một trong những thuật t
 ---
 
 
-<!-- <div class="imgcap">
-<div >
-<a href = "/2016/12/28/linearregression/">
-    <img src ="/assets/LR/output_5_1.png"  width = "800"></a>
-</div>
-<div class="thecap"> Linear Regression <br></div>
-</div>
-
- -->
-
 Trong bài này, tôi sẽ giới thiệu một trong những thuật toán cơ bản nhất (và đơn giản nhất) của Machine Learning. Đây là một thuật toán _Supervised learning_ có tên **Linear Regression** (Hồi Quy Tuyến Tính). Bài toán này đôi khi được gọi là _Linear Fitting_ (trong thống kê) hoặc _Linear Least Square_.
 **Trong trang này:**
 <!-- MarkdownTOC -->

@@ -23,7 +23,6 @@ Những năm gần đây, khi mà khả năng tính toán của các máy tính 
 
 <div class="imgcap">
 <div >
-    <a href = "/2016/12/26/introduce/">
     <img src="/assets/introduce/aimldl.png" width = "800"></a>
     <!-- <img src="/assets/rl/mdp.png" height="206"> -->
 </div>
