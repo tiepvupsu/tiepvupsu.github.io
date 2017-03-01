@@ -24,13 +24,21 @@ will be:
 
 ```latex
 \subsection{Dạng của Linear Regression}
-\label{sub:linearregression#dang-cua-linear-regression}
+\label{sub:linearregression_dang-cua-linear-regression}
 ```
 
 3. `\\(` -> `$` 
 4. `\\)` -> `$` 
-5. `\\[` -> `$$` 
-6. `\\]` -> `$$` 
-Nếu sau `\\[` là `\begin{eqnarray}` thì bỏ `\\[` và `\\]` tương ứng sau `\end{eqnarray}`
 
-7. Links 
+5. Nếu sau `\\[` là `\begin{eqnarray}` thì bỏ `\\[` và `\\]` tương ứng sau `\end{eqnarray}`
+
+6. Links 
+[Display name](http...) -> \href{http...}{Display name}
+
+7. Table (difficult)
+
+8. Figures 
+
+
+9. Codes 
+
