@@ -1,0 +1,542 @@
+Trong bài này, tôi sẽ giới thiệu một trong những thuật toán cơ bản nhất
+(và đơn giản nhất) của Machine Learning. Đây là một thuật toán
+\emph{Supervised learning} có tên \textbf{Linear Regression} (Hồi Quy
+Tuyến Tính). Bài toán này đôi khi được gọi là \emph{Linear Fitting}
+(trong thống kê) hoặc \emph{Linear Least Square}. \textbf{Trong trang
+này:}
+
+\begin{itemize}
+\tightlist
+\item
+  \protect\hyperlink{-gioi-thieu}{1. Giới thiệu}
+\item
+  \protect\hyperlink{-phan-tich-toan-hoc}{2. Phân tích toán học}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \protect\hyperlink{dang-cua-linear-regression}{Dạng của Linear
+    Regression}
+  \item
+    \protect\hyperlink{sai-so-du-doan}{Sai số dự đoán}
+  \item
+    \protect\hyperlink{ham-mat-mat}{Hàm mất mát}
+  \item
+    \protect\hyperlink{nghiem-cho-bai-toan-linear-regression}{Nghiệm cho
+    bài toán Linear Regression}
+  \end{itemize}
+\item
+  \protect\hyperlink{-vi-du-tren-python}{3. Ví dụ trên Python}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \protect\hyperlink{bai-toan}{Bài toán}
+  \item
+    \protect\hyperlink{hien-thi-du-lieu-tren-do-thi}{Hiển thị dữ liệu
+    trên đồ thị}
+  \item
+    \protect\hyperlink{nghiem-theo-cong-thuc}{Nghiệm theo công thức}
+  \item
+    \protect\hyperlink{nghiem-theo-thu-vien-scikit-learn}{Nghiệm theo
+    thư viện scikit-learn}
+  \end{itemize}
+\item
+  \protect\hyperlink{-thao-luan}{4. Thảo luận}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \protect\hyperlink{cac-bai-toan-co-the-giai-bang-linear-regression}{Các
+    bài toán có thể giải bằng Linear Regression}
+  \item
+    \protect\hyperlink{han-che-cua-linear-regression}{Hạn chế của Linear
+    Regression}
+  \item
+    \protect\hyperlink{cac-phuong-phap-toi-uu}{Các phương pháp tối ưu}
+  \end{itemize}
+\item
+  \protect\hyperlink{-tai-lieu-tham-khao}{5. Tài liệu tham khảo}
+\end{itemize}
+
+\subsection{1. Giới thiệu}\label{giux1edbi-thiux1ec7u}
+
+Quay lại \href{/2016/12/27/categories/\#regression}{ví dụ đơn giản được
+nêu trong bài trước}: một căn nhà rộng \textbackslash{}(x\_1
+\textasciitilde{} \text{m}\^{}2\textbackslash{}), có
+\textbackslash{}(x\_2\textbackslash{}) phòng ngủ và cách trung tâm thành
+phố \textbackslash{}(x\_3\textasciitilde{} \text{km}\textbackslash{}) có
+giá là bao nhiêu. Giả sử chúng ta đã có số liệu thống kê từ 1000 căn nhà
+trong thành phố đó, liệu rằng khi có một căn nhà mới với các thông số về
+diện tích, số phòng ngủ và khoảng cách tới trung tâm, chúng ta có thể dự
+đoán được giá của căn nhà đó không? Nếu có thì hàm dự đoán
+\textbackslash{}(y = f(\mathbf{x}) \textbackslash{}) sẽ có dạng như thế
+nào. Ở đây \textbackslash{}(\mathbf{x} = {[}x\_1, x\_2, x\_3{]}
+\textbackslash{}) là một vector hàng chứa thông tin \emph{input},
+\textbackslash{}(y\textbackslash{}) là một số vô hướng (scalar) biểu
+diễn \emph{output} (tức giá của căn nhà trong ví dụ này).
+
+\textbf{Lưu ý về ký hiệu toán học:} \_trong các bài viết của tôi, các số
+vô hướng được biểu diễn bởi các chữ cái viết ở dạng không in đậm, có thể
+viết hoa, ví dụ \textbackslash{}(x\_1, N, y, k\textbackslash{}). Các
+vector được biểu diễn bằng các chữ cái thường in đậm, ví dụ
+\textbackslash{}(\mathbf{y}, \mathbf{x}\emph{1 \textbackslash{}). Các ma
+trận được biểu diễn bởi các chữ viết hoa in đậm, ví dụ
+\textbackslash{}(\mathbf{X, Y, W} \textbackslash{}).}
+
+Một cách đơn giản nhất, chúng ta có thể thấy rằng: i) diện tích nhà càng
+lớn thì giá nhà càng cao; ii) số lượng phòng ngủ càng lớn thì giá nhà
+càng cao; iii) càng xa trung tâm thì giá nhà càng giảm. Một hàm số đơn
+giản nhất có thể mô tả mối quan hệ giữa giá nhà và 3 đại lượng đầu vào
+là:
+
+\textbackslash{}{[}y \approx  f(\mathbf{x}) = \hat{y}\textbackslash{}{]}
+\textbackslash{}{[}f(\mathbf{x}) =w\_1 x\_1 + w\_2 x\_2 + w\_3 x\_3 +
+w\_0 \textasciitilde{}\textsubscript{\textasciitilde{}}
+(1)\textbackslash{}{]} trong đó, \textbackslash{}(w\_1, w\_2, w\_3,
+w\_0\textbackslash{}) là các hằng số,
+\textbackslash{}(w\_0\textbackslash{}) còn được gọi là bias. Mối quan hệ
+\textbackslash{}(y \approx f(\mathbf{x})\textbackslash{}) bên trên là
+một mối quan hệ tuyến tính (linear). Bài toán chúng ta đang làm là một
+bài toán thuộc loại regression. Bài toán đi tìm các hệ số tối ưu
+\textbackslash{}( \textbackslash{}\{w\_1, w\_2, w\_3, w\_0
+\textbackslash{}\}\textbackslash{}) chính vì vậy được gọi là bài toán
+Linear Regression.
+
+\textbf{Chú ý 1:} \textbackslash{}(y\textbackslash{}) là giá trị thực
+của \emph{outcome} (dựa trên số liệu thống kê chúng ta có trong tập
+\emph{training data}), trong khi
+\textbackslash{}(\hat{y}\textbackslash{}) là giá trị mà mô hình Linear
+Regression dự đoán được. Nhìn chung, \textbackslash{}(y\textbackslash{})
+và \textbackslash{}(\hat{y}\textbackslash{}) là hai giá trị khác nhau do
+có sai số mô hình, tuy nhiên, chúng ta mong muốn rằng sự khác nhau này
+rất nhỏ.
+
+\textbf{Chú ý 2:} \emph{Linear} hay \emph{tuyến tính} hiểu một cách đơn
+giản là \emph{thẳng, phẳng}. Trong không gian hai chiều, một hàm số được
+gọi là \emph{tuyến tính} nếu đồ thị của nó có dạng một \emph{đường
+thẳng}. Trong không gian ba chiều, một hàm số được goi là \emph{tuyến
+tính} nếu đồ thị của nó có dạng một \emph{mặt phẳng}. Trong không gian
+nhiều hơn 3 chiều, khái niệm \emph{mặt phẳng} không còn phù hợp nữa,
+thay vào đó, một khái niệm khác ra đời được gọi là \emph{siêu mặt phẳng}
+(\emph{hyperplane}). Các hàm số tuyến tính là các hàm đơn giản nhất, vì
+chúng thuận tiện trong việc hình dung và tính toán. Chúng ta sẽ được
+thấy trong các bài viết sau, \emph{tuyến tính} rất quan trọng và hữu ích
+trong các bài toán Machine Learning. Kinh nghiệm cá nhân tôi cho thấy,
+trước khi hiểu được các thuật toán \emph{phi tuyến} (non-linear, không
+phẳng), chúng ta cần nắm vững các kỹ thuật cho các mô hình \emph{tuyến
+tính}.
+
+\subsection{2. Phân tích toán
+học}\label{phuxe2n-tuxedch-touxe1n-hux1ecdc}
+
+\subsubsection{Dạng của Linear
+Regression}\label{dux1ea1ng-cux1ee7a-linear-regression}
+
+Trong phương trình \textbackslash{}((1)\textbackslash{}) phía trên, nếu
+chúng ta đặt \textbackslash{}(\mathbf{w} = {[}w\_0, w\_1, w\_2,
+w\_3{]}\^{}T = \textbackslash{}) là vector (cột) hệ số cần phải tối ưu
+và \textbackslash{}(\mathbf{\bar{x}} = {[}1, x\_1, x\_2,
+x\_3{]}\textbackslash{}) (đọc là \emph{x bar} trong tiếng Anh) là vector
+(hàng) dữ liệu đầu vào \emph{mở rộng}. Số
+\textbackslash{}(1\textbackslash{}) ở đầu được thêm vào để phép tính đơn
+giản hơn và thuận tiện cho việc tính toán. Khi đó, phương trình (1) có
+thể được viết lại dưới dạng:
+
+\textbackslash{}{[}y \approx \mathbf{\bar{x}}\mathbf{w} =
+\hat{y}\textbackslash{}{]}
+
+Chú ý rằng \textbackslash{}(\mathbf{\bar{x}}\textbackslash{}) là một
+vector hàng. (\href{/math/\#luu-y-ve-ky-hieu}{Xem thêm về ký hiệu vector
+hàng và cột tại đây})
+
+\subsubsection{Sai số dự đoán}\label{sai-sux1ed1-dux1ef1-ux111ouxe1n}
+
+Chúng ta mong muốn rằng sự sai khác \textbackslash{}(e\textbackslash{})
+giữa giá trị thực \textbackslash{}(y\textbackslash{}) và giá trị dự đoán
+\textbackslash{}(\hat{y}\textbackslash{}) (đọc là \emph{y hat} trong
+tiếng Anh) là nhỏ nhất. Nói cách khác, chúng ta muốn giá trị sau đây
+càng nhỏ càng tốt:
+
+\textbackslash{}{[} \frac{1}{2}e\^{}2 = \frac{1}{2}(y - \hat{y})\^{}2 =
+\frac{1}{2}(y - \mathbf{\bar{x}}\mathbf{w})\^{}2 \textbackslash{}{]}
+
+trong đó hệ số \textbackslash{}(\frac{1}{2} \textbackslash{})
+(\emph{lại}) là để thuận tiện cho việc tính toán (khi tính đạo hàm thì
+số \textbackslash{}(\frac{1}{2} \textbackslash{}) sẽ bị triệt tiêu).
+Chúng ta cần \textbackslash{}(e\^{}2\textbackslash{}) vì
+\textbackslash{}(e = y - \hat{y} \textbackslash{}) có thể là một số âm,
+việc nói \textbackslash{}(e\textbackslash{}) nhỏ nhất sẽ không đúng vì
+khi \textbackslash{}(e = - \infty\textbackslash{}) là rất nhỏ nhưng sự
+sai lệch là rất lớn. Bạn đọc có thể tự đặt câu hỏi: \textbf{tại sao
+không dùng trị tuyệt đối \textbackslash{}( \textbar{}e\textbar{}
+\textbackslash{}) mà lại dùng bình phương
+\textbackslash{}(e\^{}2\textbackslash{}) ở đây?} Câu trả lời sẽ có ở
+phần sau.
+
+\subsubsection{Hàm mất mát}\label{huxe0m-mux1ea5t-muxe1t}
+
+Điều tương tự xảy ra với tất cả các cặp \emph{(input, outcome)}
+\textbackslash{}( (\mathbf{x}\_i, y\_i), i = 1, 2, \dots, N
+\textbackslash{}), với \textbackslash{}(N\textbackslash{}) là số lượng
+dữ liệu quan sát được. Điều chúng ta muốn, tổng sai số là nhỏ nhất,
+tương đương với việc tìm \textbackslash{}( \mathbf{w} \textbackslash{})
+để hàm số sau đạt giá trị nhỏ nhất:
+
+\textbackslash{}{[} \mathcal{L}(\mathbf{w}) =
+\frac{1}{2}\sum\_\{i=1\}\^{}N (y\_i -
+\mathbf{\bar{x}\_i}\mathbf{w})\^{}2
+\textsubscript{\textasciitilde{}}\textasciitilde{}\textasciitilde{}(2)
+\textbackslash{}{]}
+
+Hàm số \textbackslash{}(\mathcal{L}(\mathbf{w}) \textbackslash{}) được
+gọi là \textbf{hàm mất mát} (loss function) của bài toán Linear
+Regression. Chúng ta luôn mong muốn rằng sự mất mát (sai số) là nhỏ
+nhất, điều đó đồng nghĩa với việc tìm vector hệ số \textbackslash{}(
+\mathbf{w} \textbackslash{}) sao cho giá trị của hàm mất mát này càng
+nhỏ càng tốt. Giá trị của \textbackslash{}(\mathbf{w}\textbackslash{})
+làm cho hàm mất mát đạt giá trị nhỏ nhất được gọi là \emph{điểm tối ưu}
+(optimal point), ký hiệu:
+
+\textbackslash{}{[} \mathbf{w}\^{}* = \arg\min\_\{\mathbf{w}\}
+\mathcal{L}(\mathbf{w}) \textbackslash{}{]}
+
+Trước khi đi tìm lời giải, chúng ta đơn giản hóa phép toán trong phương
+trình hàm mất mát \textbackslash{}((2)\textbackslash{}). Đặt
+\textbackslash{}(\mathbf{y} = {[}y\_1; y\_2; \dots;
+y\_N{]}\textbackslash{}) là một vector cột chứa tất cả các \emph{output}
+của \emph{training data}; \textbackslash{}( \mathbf{\bar{X}} =
+{[}\mathbf{\bar{x}}\_1; \mathbf{\bar{x}}\_2; \dots; \mathbf{\bar{x}}\_N
+{]} \textbackslash{}) là ma trận dữ liệu đầu vào (mở rộng) mà mỗi hàng
+của nó là một điểm dữ liệu. Khi đó hàm số mất mát
+\textbackslash{}(\mathcal{L}(\mathbf{w})\textbackslash{}) được viết dưới
+dạng ma trận đơn giản hơn:
+
+\textbackslash{}{[} \mathcal{L}(\mathbf{w}) =
+\frac{1}{2}\sum\_\{i=1\}\^{}N (y\_i -
+\mathbf{\bar{x}}\_i\mathbf{w})\^{}2 \textbackslash{}{]}
+\textbackslash{}{[} = \frac{1}{2} \textbackslash{}\textbar{}\mathbf{y} -
+\mathbf{\bar{X}}\mathbf{w} \textbackslash{}\textbar{}\_2\^{}2
+\textsubscript{\textasciitilde{}}(3) \textbackslash{}{]}
+
+với \textbackslash{}( \textbackslash{}\textbar{} \mathbf{z}
+\textbackslash{}\textbar{}\_2 \textbackslash{}) là Euclidean norm (chuẩn
+Euclid, hay khoảng cách Euclid), nói cách khác \textbackslash{}(
+\textbackslash{}\textbar{} \mathbf{z} \textbackslash{}\textbar{}\_2\^{}2
+\textbackslash{}) là tổng của bình phương mỗi phần tử của vector
+\textbackslash{}(\mathbf{z}\textbackslash{}). Tới đây, ta đã có một dạng
+đơn giản của hàm mất mát được viết như phương trình
+\textbackslash{}((3)\textbackslash{}).
+
+\subsubsection{Nghiệm cho bài toán Linear
+Regression}\label{nghiux1ec7m-cho-buxe0i-touxe1n-linear-regression}
+
+\textbf{Cách phổ biến nhất để tìm nghiệm cho một bài toán tối ưu (chúng
+ta đã biết từ khi học cấp 3) là giải phương trình đạo hàm (gradient)
+bằng 0!} Tất nhiên đó là khi việc tính đạo hàm và việc giải phương trình
+đạo hàm bằng 0 không quá phức tạp. Thật may mắn, với các mô hình tuyến
+tính, hai việc này là khả thi.
+
+Đạo hàm theo \textbackslash{}(\mathbf{w} \textbackslash{}) của hàm mất
+mát là: \textbackslash{}{[}
+\frac{\partial{\mathcal{L}(\mathbf{w})}}{\partial{\mathbf{w}}} =
+\mathbf{\bar{X}}\^{}T(\mathbf{\bar{X}}\mathbf{w} - \mathbf{y})
+\textbackslash{}{]}
+
+Các bạn có thể tham khảo bảng đạo hàm theo vector hoặc ma trận của một
+hàm số trong
+\href{https://ccrma.stanford.edu/~dattorro/matrixcalc.pdf}{mục D.2 của
+tài liệu này}. \emph{Đến đây tôi xin quay lại câu hỏi ở phần
+\protect\hyperlink{saiux5cux2520soux5cux2520duux5cux2520doan}{Sai số dự
+đoán} phía trên về việc tại sao không dùng trị tuyệt đối mà lại dùng
+bình phương. Câu trả lời là hàm bình phương có đạo hàm tại mọi nơi,
+trong khi hàm trị tuyệt đối thì không (đạo hàm không xác định tại 0)}.
+
+Phương trình đạo hàm bằng 0 tương đương với: \textbackslash{}{[}
+\mathbf{\bar{X}}\^{}T\mathbf{\bar{X}}\mathbf{w} =
+\mathbf{\bar{X}}\^{}T\mathbf{y} \triangleq \mathbf{b}
+\textsubscript{\textasciitilde{}} (4) \textbackslash{}{]} (ký hiệu
+\textbackslash{}(\mathbf{\bar{X}}\^{}T\mathbf{y} \triangleq \mathbf{b}
+\textbackslash{}) nghĩa là \emph{đặt}
+\textbackslash{}(\mathbf{\bar{X}}\^{}T\mathbf{y}\textbackslash{})
+\emph{bằng} \textbackslash{}(\mathbf{b}\textbackslash{}) ).
+
+Nếu ma trận vuông \textbackslash{}( \mathbf{A}
+\triangleq \mathbf{\bar{X}}\^{}T\mathbf{\bar{X}}\textbackslash{}) khả
+nghịch (non-singular hay inversable) thì phương trình
+\textbackslash{}((4)\textbackslash{}) có nghiệm duy nhất:
+\textbackslash{}( \mathbf{w} = \mathbf{A}\^{}\{-1\}\mathbf{b}
+\textbackslash{}).
+
+Vậy nếu ma trận \textbackslash{}(\mathbf{A} \textbackslash{}) không khả
+nghịch (có định thức bằng 0) thì sao? Nếu các bạn vẫn nhớ các kiến thức
+về hệ phương trình tuyến tính, trong trường hợp này thì hoặc phương
+trinh \textbackslash{}( (4) \textbackslash{}) vô nghiệm, hoặc làp nó có
+vô số nghiệm. Khi đó, chúng ta sử dụng khái niệm
+\href{https://vi.wikipedia.org/wiki/Giả_nghịch_đảo_Moore–Penrose}{\emph{giả
+nghịch đảo}} \textbackslash{}( \mathbf{A}\^{}\{\dagger\}
+\textbackslash{}) (đọc là \emph{A dagger} trong tiếng Anh). (\emph{Giả
+nghịch đảo (pseudo inverse) là trường hợp tổng quát của nghịch đảo khi
+ma trận không khả nghịch hoặc thậm chí không vuông. Trong khuôn khổ bài
+viết này, tôi xin phép được lược bỏ phần này, nếu các bạn thực sự quan
+tâm, tôi sẽ viết một bài khác chỉ nói về giả nghịch đảo. Xem thêm:
+\href{http://www.sci.utah.edu/~gerig/CS6640-F2012/Materials/pseudoinverse-cis61009sl10.pdf}{Least
+Squares, Pseudo-Inverses, PCA \& SVD}.})
+
+Với khái niệm giả nghịch đảo, điểm tối ưu của bài toán Linear Regression
+có dạng:
+
+\textbackslash{}{[} \mathbf{w} = \mathbf{A}\^{}\{\dagger\}\mathbf{b} =
+(\mathbf{\bar{X}}\textsuperscript{T\mathbf{\bar{X}})}\{\dagger\}
+\mathbf{\bar{X}}\^{}T\mathbf{y} \textsubscript{\textasciitilde{}} (5)
+\textbackslash{}{]}
+
+\subsection{3. Ví dụ trên Python}\label{vuxed-dux1ee5-truxean-python}
+
+\subsubsection{Bài toán}\label{buxe0i-touxe1n}
+
+Trong phần này, tôi sẽ chọn một ví dụ đơn giản về việc giải bài toán
+Linear Regression trong Python. Tôi cũng sẽ so sánh nghiệm của bài toán
+khi giải theo phương trình \textbackslash{}((5) \textbackslash{}) và
+nghiệm tìm được khi dùng thư viện
+\href{http://scikit-learn.org/stable/}{scikit-learn} của Python.
+(\emph{Đây là thư viện Machine Learning được sử dụng rộng rãi trong
+Python}). Trong ví dụ này, dữ liệu đầu vào chỉ có 1 giá trị (1 chiều) để
+thuận tiện cho việc minh hoạ trong mặt phẳng.
+
+Chúng ta có 1 bảng dữ liệu về chiều cao và cân nặng của 15 người như
+dưới đây:
+
+\begin{longtable}[]{@{}cccc@{}}
+\toprule
+Chiều cao (cm) & Cân nặng (km) & Chiều cao (cm) & Cân nặng
+(kg)\tabularnewline
+\midrule
+\endhead
+147 & 49 & 168 & 60\tabularnewline
+150 & 50 & 170 & 72\tabularnewline
+153 & 51 & 173 & 63\tabularnewline
+155 & 52 & 175 & 64\tabularnewline
+158 & 54 & 178 & 66\tabularnewline
+160 & 56 & 180 & 67\tabularnewline
+163 & 58 & 183 & 68\tabularnewline
+165 & 59 & &\tabularnewline
+\bottomrule
+\end{longtable}
+
+Bài toán đặt ra là: liệu có thể dự đoán cân nặng của một người dựa vào
+chiều cao của họ không? (\emph{Trên thực tế, tất nhiên là không, vì cân
+nặng còn phụ thuộc vào nhiều yếu tố khác nữa, thể tích chẳng hạn}). Vì
+blog này nói về các thuật toán Machine Learning đơn giản nên tôi sẽ giả
+sử rằng chúng ta có thể dự đoán được.
+
+Chúng ta có thể thấy là cân nặng sẽ tỉ lệ thuận với chiều cao (càng cao
+càng nặng), nên có thể sử dụng Linear Regression model cho việc dự đoán
+này. Để kiểm tra độ chính xác của model tìm được, chúng ta sẽ giữ lại
+cột 155 và 160 cm để kiểm thử, các cột còn lại được sử dụng để huấn
+luyện (train) model.
+
+\subsubsection{Hiển thị dữ liệu trên đồ
+thị}\label{hiux1ec3n-thux1ecb-dux1eef-liux1ec7u-truxean-ux111ux1ed3-thux1ecb}
+
+Trước tiên, chúng ta cần có hai thư viện
+\href{http://www.numpy.org/}{numpy} cho đại số tuyến tính và
+\href{http://matplotlib.org/}{matplotlib} cho việc vẽ hình.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# To support both python 2 and python 3}
+\ImportTok{from}\NormalTok{ __future__ }\ImportTok{import}\NormalTok{ division, print_function, unicode_literals}
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np }
+\ImportTok{import}\NormalTok{ matplotlib.pyplot }\ImportTok{as}\NormalTok{ plt}
+\end{Highlighting}
+\end{Shaded}
+
+Tiếp theo, chúng ta khai báo và biểu diễn dữ liệu trên một đồ thị.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# height (cm)}
+\NormalTok{X }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{147}\NormalTok{, }\DecValTok{150}\NormalTok{, }\DecValTok{153}\NormalTok{, }\DecValTok{158}\NormalTok{, }\DecValTok{163}\NormalTok{, }\DecValTok{165}\NormalTok{, }\DecValTok{168}\NormalTok{, }\DecValTok{170}\NormalTok{, }\DecValTok{173}\NormalTok{, }\DecValTok{175}\NormalTok{, }\DecValTok{178}\NormalTok{, }\DecValTok{180}\NormalTok{, }\DecValTok{183}\NormalTok{]]).T}
+\CommentTok{# weight (kg)}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ np.array([[ }\DecValTok{49}\NormalTok{, }\DecValTok{50}\NormalTok{, }\DecValTok{51}\NormalTok{,  }\DecValTok{54}\NormalTok{, }\DecValTok{58}\NormalTok{, }\DecValTok{59}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{62}\NormalTok{, }\DecValTok{63}\NormalTok{, }\DecValTok{64}\NormalTok{, }\DecValTok{66}\NormalTok{, }\DecValTok{67}\NormalTok{, }\DecValTok{68}\NormalTok{]]).T}
+\CommentTok{# Visualize data }
+\NormalTok{plt.plot(X, y, }\StringTok{'ro'}\NormalTok{)}
+\NormalTok{plt.axis([}\DecValTok{140}\NormalTok{, }\DecValTok{190}\NormalTok{, }\DecValTok{45}\NormalTok{, }\DecValTok{75}\NormalTok{])}
+\NormalTok{plt.xlabel(}\StringTok{'Height (cm)'}\NormalTok{)}
+\NormalTok{plt.ylabel(}\StringTok{'Weight (kg)'}\NormalTok{)}
+\NormalTok{plt.show()}
+\end{Highlighting}
+\end{Shaded}
+
+Từ đồ thị này ta thấy rằng dữ liệu được sắp xếp gần như theo 1 đường
+thẳng, vậy mô hình Linear Regression nhiều khả năng sẽ cho kết quả tốt:
+
+(cân nặng) = w\_1*(chiều cao) + w\_0
+
+\subsubsection{Nghiệm theo công
+thức}\label{nghiux1ec7m-theo-cuxf4ng-thux1ee9c}
+
+Tiếp theo, chúng ta sẽ tính toán các hệ số w\_1 và w\_0 dựa vào công
+thức \textbackslash{}((5)\textbackslash{}). Chú ý: giả nghịch đảo của
+một ma trận \texttt{A} trong Python sẽ được tính bằng
+\texttt{numpy.linalg.pinv(A)}, \texttt{pinv} là từ viết tắt của
+\emph{pseudo inverse}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Building Xbar }
+\NormalTok{one }\OperatorTok{=}\NormalTok{ np.ones((X.shape[}\DecValTok{0}\NormalTok{], }\DecValTok{1}\NormalTok{))}
+\NormalTok{Xbar }\OperatorTok{=}\NormalTok{ np.concatenate((one, X), axis }\OperatorTok{=} \DecValTok{1}\NormalTok{)}
+
+\CommentTok{# Calculating weights of the fitting line }
+\NormalTok{A }\OperatorTok{=}\NormalTok{ np.dot(Xbar.T, Xbar)}
+\NormalTok{b }\OperatorTok{=}\NormalTok{ np.dot(Xbar.T, y)}
+\NormalTok{w }\OperatorTok{=}\NormalTok{ np.dot(np.linalg.pinv(A), b)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{'w = '}\NormalTok{, w)}
+\CommentTok{# Preparing the fitting line }
+\NormalTok{w_0 }\OperatorTok{=}\NormalTok{ w[}\DecValTok{0}\NormalTok{][}\DecValTok{0}\NormalTok{]}
+\NormalTok{w_1 }\OperatorTok{=}\NormalTok{ w[}\DecValTok{1}\NormalTok{][}\DecValTok{0}\NormalTok{]}
+\NormalTok{x0 }\OperatorTok{=}\NormalTok{ np.linspace(}\DecValTok{145}\NormalTok{, }\DecValTok{185}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\NormalTok{y0 }\OperatorTok{=}\NormalTok{ w_0 }\OperatorTok{+}\NormalTok{ w_1}\OperatorTok{*}\NormalTok{x0}
+
+\CommentTok{# Drawing the fitting line }
+\NormalTok{plt.plot(X.T, y.T, }\StringTok{'ro'}\NormalTok{)     }\CommentTok{# data }
+\NormalTok{plt.plot(x0, y0)               }\CommentTok{# the fitting line}
+\NormalTok{plt.axis([}\DecValTok{140}\NormalTok{, }\DecValTok{190}\NormalTok{, }\DecValTok{45}\NormalTok{, }\DecValTok{75}\NormalTok{])}
+\NormalTok{plt.xlabel(}\StringTok{'Height (cm)'}\NormalTok{)}
+\NormalTok{plt.ylabel(}\StringTok{'Weight (kg)'}\NormalTok{)}
+\NormalTok{plt.show()}
+\end{Highlighting}
+\end{Shaded}
+
+w = {[}{[}-33.73541021{]}{[} 0.55920496{]}{]}
+
+Từ đồ thị bên trên ta thấy rằng các điểm dữ liệu màu đỏ nằm khá gần
+đường thẳng dự đoán màu xanh. Vậy mô hình Linear Regression hoạt động
+tốt với tập dữ liệu \emph{training}. Bây giờ, chúng ta sử dụng mô hình
+này để dự đoán cân nặng của hai người có chiều cao 155 và 160 cm mà
+chúng ta đã không dùng khi tính toán nghiệm.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y1 }\OperatorTok{=}\NormalTok{ w_1}\OperatorTok{*}\DecValTok{155} \OperatorTok{+}\NormalTok{ w_0}
+\NormalTok{y2 }\OperatorTok{=}\NormalTok{ w_1}\OperatorTok{*}\DecValTok{160} \OperatorTok{+}\NormalTok{ w_0}
+
+\BuiltInTok{print}\NormalTok{( }\StringTok{u'Dự đoán cân nặng của người có chiều cao 155 cm: }\SpecialCharTok{%.2f}\StringTok{ (kg), số liệu thật: 52 (kg)'}  \OperatorTok{%}\NormalTok{(y1) )}
+\BuiltInTok{print}\NormalTok{( }\StringTok{u'Dự đoán cân nặng của người có chiều cao 160 cm: }\SpecialCharTok{%.2f}\StringTok{ (kg), số liệu thật: 56 (kg)'}  \OperatorTok{%}\NormalTok{(y2) )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Dự đoán cân nặng của người có chiều cao 155 cm: 52.94 (kg), số liệu thật: 52 (kg)
+Dự đoán cân nặng của người có chiều cao 160 cm: 55.74 (kg), số liệu thật: 56 (kg)
+\end{verbatim}
+
+Chúng ta thấy rằng kết quả dự đoán khá gần với số liệu thực tế.
+
+\subsubsection{Nghiệm theo thư viện
+scikit-learn}\label{nghiux1ec7m-theo-thux1b0-viux1ec7n-scikit-learn}
+
+Tiếp theo, chúng ta sẽ sử dụng thư viện scikit-learn của Python để tìm
+nghiệm.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ sklearn }\ImportTok{import}\NormalTok{ datasets, linear_model}
+
+\CommentTok{# fit the model by Linear Regression}
+\NormalTok{regr }\OperatorTok{=}\NormalTok{ linear_model.LinearRegression(fit_intercept}\OperatorTok{=}\VariableTok{False}\NormalTok{) }\CommentTok{# fit_intercept = False for calculating the bias}
+\NormalTok{regr.fit(Xbar, y)}
+
+\CommentTok{# Compare two results}
+\BuiltInTok{print}\NormalTok{( }\StringTok{u'Nghiệm tìm được bằng scikit-learn  : '}\NormalTok{, regr.coef_ )}
+\BuiltInTok{print}\NormalTok{( }\StringTok{u'Nghiệm tìm được từ phương trình (5): '}\NormalTok{, w.T)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Nghiệm tìm được bằng scikit-learn  :  [[  -33.73541021 0.55920496]]
+Nghiệm tìm được từ phương trình (5):  [[  -33.73541021 0.55920496 ]]
+\end{verbatim}
+
+Chúng ta thấy rằng hai kết quả thu được như nhau! (\emph{Nghĩa là tôi đã
+không mắc lỗi nào trong cách tìm nghiệm ở phần trên})
+
+\href{https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/LR/LR.ipynb}{Source
+code Jupyter Notebook cho bài này.}
+
+\subsection{4. Thảo luận}\label{thux1ea3o-luux1eadn}
+
+\subsubsection{Các bài toán có thể giải bằng Linear
+Regression}\label{cuxe1c-buxe0i-touxe1n-cuxf3-thux1ec3-giux1ea3i-bux1eb1ng-linear-regression}
+
+Hàm số \textbackslash{}(y \approx f(\mathbf{x})=
+\mathbf{w}\^{}T\mathbf{x}\textbackslash{}) là một hàm tuyến tính theo cả
+\textbackslash{}( \mathbf{w}\textbackslash{}) và
+\textbackslash{}(\mathbf{x}\textbackslash{}). Trên thực tế, Linear
+Regression có thể áp dụng cho các mô hình chỉ cần tuyến tính theo
+\textbackslash{}(\mathbf{w}\textbackslash{}). Ví dụ: \textbackslash{}{[}
+y \approx w\_1 x\_1 + w\_2 x\_2 + w\_3 x\_1\^{}2 + \textbackslash{}{]}
+\textbackslash{}{[} +w\_4 \sin(x\_2) + w\_5 x\_1x\_2 + w\_0
+\textbackslash{}{]} là một hàm tuyến tính theo
+\textbackslash{}(\mathbf{w}\textbackslash{}) và vì vậy cũng có thể được
+giải bằng Linear Regression. Với mỗi dữ liệu đầu vào
+\textbackslash{}(\mathbf{x}={[}x\_1; x\_2{]} \textbackslash{}), chúng ta
+tính toán dữ liệu mới \textbackslash{}(\tilde{\mathbf{x}} = {[}x\_1,
+x\_2, x\_1\^{}2, \sin(x\_2), x\_1x\_2{]}\textbackslash{}) (đọc là
+\emph{x tilde} trong tiếng Anh) rồi áp dụng Linear Regression với dữ
+liệu mới này.
+
+Xem thêm ví dụ về
+\href{http://www.varsitytutors.com/hotmath/hotmath_help/topics/quadratic-regression}{Quadratic
+Regression} (Hồi Quy Bậc Hai).
+
+Quadratic Regression (Nguồn: Quadratic Regression)
+
+\subsubsection{Hạn chế của Linear
+Regression}\label{hux1ea1n-chux1ebf-cux1ee7a-linear-regression}
+
+Hạn chế đầu tiên của Linear Regression là nó rất \textbf{nhạy cảm với
+nhiễu} (sensitive to noise). Trong ví dụ về mối quan hệ giữa chiều cao
+và cân nặng bên trên, nếu có chỉ một cặp dữ liệu \emph{nhiễu} (150 cm,
+90kg) thì kết quả sẽ sai khác đi rất nhiều. Xem hình dưới đây:
+
+Vì vậy, trước khi thực hiện Linear Regression, các nhiễu
+(\emph{outlier}) cần phải được loại bỏ. Bước này được gọi là tiền xử lý
+(pre-processing).
+
+Hạn chế thứ hai của Linear Regression là nó \textbf{không biễu diễn được
+các mô hình phức tạp}. Mặc dù trong phần trên, chúng ta thấy rằng phương
+pháp này có thể được áp dụng nếu quan hệ giữa \emph{outcome} và
+\emph{input} không nhất thiết phải là tuyến tính, nhưng mối quan hệ này
+vẫn đơn giản nhiều so với các mô hình thực tế. Hơn nữa, chúng ta sẽ tự
+hỏi: làm thế nào để xác định được các hàm \textbackslash{}(x\_1\^{}2,
+\sin(x\_2), x\_1x\_2\textbackslash{}) như ở trên?!
+
+\subsubsection{Các phương pháp tối
+ưu}\label{cuxe1c-phux1b0ux1a1ng-phuxe1p-tux1ed1i-ux1b0u}
+
+Linear Regression là một mô hình đơn giản, lời giải cho phương trình đạo
+hàm bằng 0 cũng khá đơn giản. \emph{Trong hầu hết các trường hợp, chúng
+ta không thể giải được phương trình đạo hàm bằng 0.}
+
+Nhưng có một điều chúng ta nên nhớ, \textbf{còn tính được đạo hàm là còn
+có cơ hội}.
+
+\subsection{5. Tài liệu tham
+khảo}\label{tuxe0i-liux1ec7u-tham-khux1ea3o}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \href{https://en.wikipedia.org/wiki/Linear_regression}{Linear
+  Regression - Wikipedia}
+\item
+  \href{http://machinelearningmastery.com/simple-linear-regression-tutorial-for-machine-learning/}{Simple
+  Linear Regression Tutorial for Machine Learning}
+\item
+  \href{http://www.sci.utah.edu/~gerig/CS6640-F2012/Materials/pseudoinverse-cis61009sl10.pdf}{Least
+  Squares, Pseudo-Inverses, PCA \& SVD}
+\end{enumerate}

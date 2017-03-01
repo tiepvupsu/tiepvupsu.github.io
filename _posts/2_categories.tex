@@ -1,6 +1,82 @@
-%!TEX root = book.tex
-\chapter{Phân nhóm các thuật toán Machine Learning}
-\section{1. Phân nhóm dựa trên phương thức
+Có hai cách phổ biến phân nhóm các thuật toán Machine learning. Một là
+dựa trên phương thức học (learning style), hai là dựa trên chức năng
+(function) (của mỗi thuật toán).
+
+\textbf{Trong trang này:}
+
+\begin{itemize}
+\tightlist
+\item
+  \protect\hyperlink{-phan-nhom-dua-tren-phuong-thuc-hoc}{1. Phân nhóm
+  dựa trên phương thức học}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \protect\hyperlink{supervised-learning-hoc-co-giam-sat}{Supervised
+    Learning (Học có giám sát)}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \protect\hyperlink{classification-phan-loai}{Classification (Phân
+      loại)}
+    \item
+      \protect\hyperlink{regression-hoi-quy}{Regression (Hồi quy)}
+    \end{itemize}
+  \item
+    \protect\hyperlink{unsupervised-learning-hoc-khong-giam-sat}{Unsupervised
+    Learning (Học không giám sát)}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \protect\hyperlink{clustering-phan-nhom}{Clustering (phân nhóm)}
+    \item
+      \protect\hyperlink{association}{Association}
+    \end{itemize}
+  \item
+    \protect\hyperlink{semi-supervised-learning-hoc-ban-giam-sat}{Semi-Supervised
+    Learning (Học bán giám sát)}
+  \item
+    \protect\hyperlink{reinforcement-learning-hoc-cung-co}{Reinforcement
+    Learning (Học Củng Cố)}
+  \end{itemize}
+\item
+  \protect\hyperlink{-phan-nhom-dua-tren-chuc-nang}{2. Phân nhóm dựa
+  trên chức năng}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \protect\hyperlink{regression-algorithms}{Regression Algorithms}
+  \item
+    \protect\hyperlink{classification-algorithms}{Classification
+    Algorithms}
+  \item
+    \protect\hyperlink{instance-based-algorithms}{Instance-based
+    Algorithms}
+  \item
+    \protect\hyperlink{regularization-algorithms}{Regularization
+    Algorithms}
+  \item
+    \protect\hyperlink{bayesian-algorithms}{Bayesian Algorithms}
+  \item
+    \protect\hyperlink{clustering-algorithms}{Clustering Algorithms}
+  \item
+    \protect\hyperlink{artificial-neural-network-algorithms}{Artificial
+    Neural Network Algorithms}
+  \item
+    \protect\hyperlink{dimensionality-reduction-algorithms}{Dimensionality
+    Reduction Algorithms}
+  \item
+    \protect\hyperlink{ensemble-algorithms}{Ensemble Algorithms}
+  \end{itemize}
+\item
+  \protect\hyperlink{-tai-lieu-tham-khao}{3. Tài liệu tham khảo}
+\end{itemize}
+
+\subsection{1. Phân nhóm dựa trên phương thức
 học}\label{phuxe2n-nhuxf3m-dux1ef1a-truxean-phux1b0ux1a1ng-thux1ee9c-hux1ecdc}
 
 Theo phương thức học, các thuật toán Machine Learning thường được chia
@@ -8,7 +84,7 @@ làm 4 nhóm: Supervise learning, Unsupervised learning, Semi-supervised
 lerning và Reinforcement learning. \emph{Có một số cách phân nhóm không
 có Semi-supervised learning hoặc Reinforcement learning.}
 
-\subsection{Supervised Learning (Học có giám
+\subsubsection{Supervised Learning (Học có giám
 sát)}\label{supervised-learning-hux1ecdc-cuxf3-giuxe1m-suxe1t}
 
 Supervised learning là thuật toán dự đoán đầu ra (outcome) của một dữ
@@ -18,27 +94,27 @@ trước. Cặp dữ liệu này còn được gọi là (\emph{data. label}), t
 các thuật toán Machine Learning.
 
 Một cách toán học, Supervised learning là khi chúng ra có một tập hợp
-biến đầu vào $ \mathcal{X} =
-\{\mathbf{x}_1, \mathbf{x}_2, \dots,
-\mathbf{x}_N\} $ và một tập hợp nhãn
-tương ứng $ \mathcal{Y} =
-\{\mathbf{y}_1, \mathbf{y}_2, \dots,
-\mathbf{y}_N\} $, trong đó
-$ \mathbf{x}_i, \mathbf{y}_i $ là các
-vector. Các cặp dữ liệu biết trước $ (\mathbf{x}_i,
-\mathbf{y}_i) \in \mathcal{X} \times \mathcal{Y} $ được
+biến đầu vào \textbackslash{}( \mathcal{X} =
+\textbackslash{}\{\mathbf{x}\_1, \mathbf{x}\_2, \dots,
+\mathbf{x}\_N\textbackslash{}\} \textbackslash{}) và một tập hợp nhãn
+tương ứng \textbackslash{}( \mathcal{Y} =
+\textbackslash{}\{\mathbf{y}\_1, \mathbf{y}\_2, \dots,
+\mathbf{y}\_N\textbackslash{}\} \textbackslash{}), trong đó
+\textbackslash{}( \mathbf{x}\_i, \mathbf{y}\_i \textbackslash{}) là các
+vector. Các cặp dữ liệu biết trước \textbackslash{}( (\mathbf{x}\_i,
+\mathbf{y}\_i) \in \mathcal{X} \times \mathcal{Y} \textbackslash{}) được
 gọi là tập \emph{training data} (dữ liệu huấn luyện). Từ tập traing data
 này, chúng ta cần tạo ra một hàm số ánh xạ mỗi phần tử từ tập
-$\mathcal{X}$ sang một phần tử (xấp xỉ)
-tương ứng của tập $\mathcal{Y}$:
+\textbackslash{}(\mathcal{X}\textbackslash{}) sang một phần tử (xấp xỉ)
+tương ứng của tập \textbackslash{}(\mathcal{Y}\textbackslash{}):
 
-$$ \mathbf{y}_i \approx f(\mathbf{x}_i),
- \forall i = 1, 2, \dots,
-N$$ Mục đích là xấp xỉ hàm số
-$f$ thật tốt để khi có một dữ liệu
-$\mathbf{x}$ mới, chúng ta có thể tính
-được nhãn tương ứng của nó $ \mathbf{y} = f(\mathbf{x})
-$.
+\textbackslash{}{[} \mathbf{y}\_i \approx f(\mathbf{x}\_i),
+\textasciitilde{}\textasciitilde{} \forall i = 1, 2, \dots,
+N\textbackslash{}{]} Mục đích là xấp xỉ hàm số
+\textbackslash{}(f\textbackslash{}) thật tốt để khi có một dữ liệu
+\textbackslash{}(\mathbf{x}\textbackslash{}) mới, chúng ta có thể tính
+được nhãn tương ứng của nó \textbackslash{}( \mathbf{y} = f(\mathbf{x})
+\textbackslash{}).
 
 \textbf{Ví dụ 1:} trong nhận dạng chữ viết tay, ta có ảnh của hàng nghìn
 ví dụ của mỗi chữ số được viết bởi nhiều người khác nhau. Chúng ta đưa
@@ -78,7 +154,7 @@ mặt của những người khác nhau.
 Thuật toán supervised learning còn được tiếp tục chia nhỏ ra thành hai
 loại chính:
 
-\subsubsection{Classification (Phân
+\paragraph{Classification (Phân
 loại)}\label{classification-phuxe2n-loux1ea1i}
 
 Một bài toán được gọi là \emph{classification} nếu các \emph{label} của
@@ -87,15 +163,16 @@ Một bài toán được gọi là \emph{classification} nếu các \emph{label
 xem một khách hàng có khả năng thanh toán nợ hay không. Ba ví dụ phía
 trên được chia vào loại này.
 
-\subsubsection{Regression (Hồi quy)}\label{regression-hux1ed3i-quy}
+\paragraph{Regression (Hồi quy)}\label{regression-hux1ed3i-quy}
 
 (tiếng Việt dịch là \emph{Hồi quy}, tôi không thích cách dịch này vì bản
 thân không hiểu nó nghĩa là gì)
 
 Nếu \emph{label} không được chia thành các nhóm mà là một giá trị thực
-cụ thể. Ví dụ: một căn nhà rộng $x \text{m}^{2}$, có $y$
+cụ thể. Ví dụ: một căn nhà rộng \textbackslash{}(x \textasciitilde{}
+\text{m}\^{}2\textbackslash{}), có \textbackslash{}(y\textbackslash{})
 phòng ngủ và cách trung tâm thành phố
-$z \text{km}$ sẽ có giá
+\textbackslash{}(z\textasciitilde{} \text{km}\textbackslash{}) sẽ có giá
 là bao nhiêu?
 
 Gần đây \href{http://how-old.net/}{Microsoft có một ứng dụng dự đoán
@@ -105,7 +182,7 @@ thuật toán \textbf{Regression}. \emph{Chú ý rằng phần dự đoán tuổ
 có thể coi là \textbf{Classification} nếu ta coi tuổi là một số nguyên
 dương không lớn hơn 150, chúng ta sẽ có 150 class (lớp) khác nhau.}
 
-\subsection{Unsupervised Learning (Học không giám
+\subsubsection{Unsupervised Learning (Học không giám
 sát)}\label{unsupervised-learning-hux1ecdc-khuxf4ng-giuxe1m-suxe1t}
 
 Trong thuật toán này, chúng ta không biết được \emph{outcome} hay
@@ -115,8 +192,8 @@ như phân nhóm (clustering) hoặc giảm số chiều của dữ liệu (dime
 reduction) để thuận tiện trong việc lưu trữ và tính toán.
 
 Một cách toán học, Unsupervised learning là khi chúng ta chỉ có dữ liệu
-vào $\mathcal{X} $ mà không biết
-\emph{nhãn} $\mathcal{Y}$ tương ứng.
+vào \textbackslash{}(\mathcal{X} \textbackslash{}) mà không biết
+\emph{nhãn} \textbackslash{}(\mathcal{Y}\textbackslash{}) tương ứng.
 
 Những thuật toán loại này được gọi là Unsupervised learning vì không
 giống như Supervised learning, chúng ta không biết câu trả lời chính xác
@@ -127,10 +204,10 @@ chỉ cho ta biết đó là chữ A hay chữ B. Cụm \emph{không giám sát}
 Các bài toán Unsupervised learning được tiếp tục chia nhỏ thành hai
 loại:
 
-\subsubsection{Clustering (phân nhóm)}\label{clustering-phuxe2n-nhuxf3m}
+\paragraph{Clustering (phân nhóm)}\label{clustering-phuxe2n-nhuxf3m}
 
 Một bài toán phân nhóm toàn bộ dữ liệu
-$\mathcal{X}$ thành các nhóm nhỏ dựa
+\textbackslash{}(\mathcal{X}\textbackslash{}) thành các nhóm nhỏ dựa
 trên sự liên quan giữa các dữ liệu trong mỗi nhóm. Ví dụ: phân nhóm
 khách hàng dựa trên hành vi mua hàng. Điều này cũng giống như việc ta
 đưa cho một đứa trẻ rất nhiều mảnh ghép với các hình thù và màu sắc khác
@@ -139,7 +216,7 @@ phân chúng thành từng nhóm. Mặc dù không cho trẻ biết mảnh nào 
 với hình nào hoặc màu nào, nhiều khả năng chúng vẫn có thể phân loại các
 mảnh ghép theo màu hoặc hình dạng.
 
-\subsubsection{Association}\label{association}
+\hypertarget{association}{\paragraph{Association}\label{association}}
 
 Là bài toán khi chúng ta muốn khám phá ra một quy luật dựa trên nhiều dữ
 liệu cho trước. Ví dụ: những khách hàng nam mua quần áo thường có xu
@@ -148,11 +225,11 @@ Man thường có xu hướng xem thêm phim Bat Man, dựa vào đó tạo ra m
 thống gợi ý khách hàng (Recommendation System), thúc đẩy nhu cầu mua
 sắm.
 
-\subsection{Semi-Supervised Learning (Học bán giám
+\subsubsection{Semi-Supervised Learning (Học bán giám
 sát)}\label{semi-supervised-learning-hux1ecdc-buxe1n-giuxe1m-suxe1t}
 
 Các bài toán khi chúng ta có một lượng lớn dữ liệu
-$\mathcal{X}$ nhưng chỉ một phần trong
+\textbackslash{}(\mathcal{X}\textbackslash{}) nhưng chỉ một phần trong
 chúng được gán nhãn được gọi là Semi-Supervised Learning. Những bài toán
 thuộc nhóm này nằm giữa hai nhóm được nêu bên trên.
 
@@ -166,7 +243,7 @@ cần phải có chuyên gia mới gán nhãn được (ảnh y học chẳng h�
 lại, dữ liệu chưa có nhãn có thể được thu thập với chi phí thấp từ
 internet.
 
-\subsection{Reinforcement Learning (Học Củng
+\subsubsection{Reinforcement Learning (Học Củng
 Cố)}\label{reinforcement-learning-hux1ecdc-cux1ee7ng-cux1ed1}
 
 Reinforcement learning là các bài toán giúp cho một hệ thống tự động xác
@@ -184,10 +261,10 @@ Reinforcement learning. (Nguồn: AlphaGo AI Defeats Sedol Again, With
 gần đây nổi tiếng với việc chơi cờ vây thắng cả con người}.
 \href{https://www.tastehit.com/blog/google-deepmind-alphago-how-it-works/}{Cờ
 vây được xem là có độ phức tạp cực kỳ cao} với tổng số nước đi là xấp xỉ
-$10^{761} $, so với cờ vua là
-$10^{120} $ và tổng số nguyên tử
+\textbackslash{}(10\^{}\{761\} \textbackslash{}), so với cờ vua là
+\textbackslash{}(10\^{}\{120\} \textbackslash{}) và tổng số nguyên tử
 trong toàn vũ trụ là khoảng
-$10^{80}$!! Vì vậy, thuật toán phải
+\textbackslash{}(10\^{}\{80\}\textbackslash{})!! Vì vậy, thuật toán phải
 chọn ra 1 nước đi tối ưu trong số hàng nhiều tỉ tỉ lựa chọn, và tất
 nhiên, không thể áp dụng thuật toán tương tự như
 \href{https://en.wikipedia.org/wiki/Deep_Blue_(chess_computer)}{IBM Deep
@@ -222,7 +299,7 @@ công chúa.
 
 Huấn luyện cho máy tính chơi game Mario
 
-\section{2. Phân nhóm dựa trên chức
+\subsection{2. Phân nhóm dựa trên chức
 năng}\label{phuxe2n-nhuxf3m-dux1ef1a-truxean-chux1ee9c-nux103ng}
 
 Có một cách phân nhóm thứ hai dựa trên chức năng của các thuật toán.
@@ -230,12 +307,12 @@ Trong phần này, tôi xin chỉ liệt kê các thuật toán. Thông tin cụ
 được trình bày trong các bài viết khác tại blog này. Trong quá trình
 viết, tôi có thể sẽ thêm bớt một số thuật toán.
 
-\hypertarget{regression-algorithms}{\subsection{Regression
+\hypertarget{regression-algorithms}{\subsubsection{Regression
 Algorithms}\label{regression-algorithms}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-
+\tightlist
 \item
   \href{/2016/12/28/linearregression/}{Linear Regression}
 \item
@@ -245,12 +322,12 @@ Algorithms}\label{regression-algorithms}}
   Stepwise Regression
 \end{enumerate}
 
-\hypertarget{classification-algorithms}{\subsection{Classification
+\hypertarget{classification-algorithms}{\subsubsection{Classification
 Algorithms}\label{classification-algorithms}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-
+\tightlist
 \item
   Linear Classifier
 \item
@@ -261,24 +338,24 @@ Algorithms}\label{classification-algorithms}}
   Sparse Represntation-based classification (SRC)
 \end{enumerate}
 
-\hypertarget{instance-based-algorithms}{\subsection{Instance-based
+\hypertarget{instance-based-algorithms}{\subsubsection{Instance-based
 Algorithms}\label{instance-based-algorithms}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-
+\tightlist
 \item
   \href{/2017/01/08/knn/}{k-Nearest Neighbor (kNN)}
 \item
   Learnin Vector Quantization (LVQ)
 \end{enumerate}
 
-\hypertarget{regularization-algorithms}{\subsection{Regularization
+\hypertarget{regularization-algorithms}{\subsubsection{Regularization
 Algorithms}\label{regularization-algorithms}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-
+\tightlist
 \item
   Ridge Regression
 \item
@@ -287,24 +364,24 @@ Algorithms}\label{regularization-algorithms}}
   Least-Angle Regression (LARS)
 \end{enumerate}
 
-\hypertarget{bayesian-algorithms}{\subsection{Bayesian
+\hypertarget{bayesian-algorithms}{\subsubsection{Bayesian
 Algorithms}\label{bayesian-algorithms}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-
+\tightlist
 \item
   Naive Bayes
 \item
   Gausian Naive Bayes
 \end{enumerate}
 
-\hypertarget{clustering-algorithms}{\subsection{Clustering
+\hypertarget{clustering-algorithms}{\subsubsection{Clustering
 Algorithms}\label{clustering-algorithms}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-
+\tightlist
 \item
   \href{/2017/01/01/kmeans/}{k-Means clustering}
 \item
@@ -313,12 +390,12 @@ Algorithms}\label{clustering-algorithms}}
   Expectation Maximisation (EM)
 \end{enumerate}
 
-\hypertarget{artificial-neural-network-algorithms}{\subsection{Artificial
+\hypertarget{artificial-neural-network-algorithms}{\subsubsection{Artificial
 Neural Network Algorithms}\label{artificial-neural-network-algorithms}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-
+\tightlist
 \item
   \href{/2017/01/21/perceptron/}{Perceptron}
 \item
@@ -329,24 +406,24 @@ Neural Network Algorithms}\label{artificial-neural-network-algorithms}}
   \href{/2017/02/24/mlp/\#-backpropagation}{Back-Propagation}
 \end{enumerate}
 
-\hypertarget{dimensionality-reduction-algorithms}{\subsection{Dimensionality
+\hypertarget{dimensionality-reduction-algorithms}{\subsubsection{Dimensionality
 Reduction Algorithms}\label{dimensionality-reduction-algorithms}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-
+\tightlist
 \item
   Principal Component Analysis (PCA)
 \item
   Linear Discriminant Analysis (LDA)
 \end{enumerate}
 
-\hypertarget{ensemble-algorithms}{\subsection{Ensemble
+\hypertarget{ensemble-algorithms}{\subsubsection{Ensemble
 Algorithms}\label{ensemble-algorithms}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-
+\tightlist
 \item
   Boosting
 \item
@@ -357,7 +434,7 @@ Algorithms}\label{ensemble-algorithms}}
 
 Và còn rất nhiều các thuật toán khác.
 
-\section{3. Tài liệu tham
+\subsection{3. Tài liệu tham
 khảo}\label{tuxe0i-liux1ec7u-tham-khux1ea3o}
 
 \begin{enumerate}
