@@ -1,44 +1,16 @@
-`filename = 2016-12-28-linearregression.markdown`
-1. ## -> section 
-```markdown
-<a name="-gioi-thieu"></a>
+# italic 
 
-## 1. Giới thiệu
-```
+INPUT: `_italic_` or `*italic*`
+OUTPUT: `\textit{italic}
 
-will be: 
+# bold 
 
-```latex 
-\section{Giới thiệu}
-\label{sec:linearregression#-gioi-thieu}
-```
+INPUT: `__bold__` or `**bold**`
+OUTPUT: `\textbf{bold}
 
-2. ### -> subsection 
-```markdown
-<a name="dang-cua-linear-regression"></a>
+# links 
 
-### Dạng của Linear Regression 
-```
+INPUT: `[displayname _A_](link_a_)`
+OUTPUT: `\href{link_a_}{displayname \textif{A}}
 
-will be: 
-
-```latex
-\subsection{Dạng của Linear Regression}
-\label{sub:linearregression_dang-cua-linear-regression}
-```
-
-3. `\\(` -> `$` 
-4. `\\)` -> `$` 
-
-5. Nếu sau `\\[` là `\begin{eqnarray}` thì bỏ `\\[` và `\\]` tương ứng sau `\end{eqnarray}`
-
-6. Links 
-[Display name](http...) -> \href{http...}{Display name}
-
-7. Table (difficult)
-
-8. Figures 
-
-
-9. Codes 
-
+# mathmode 

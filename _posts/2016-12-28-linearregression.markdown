@@ -42,7 +42,7 @@ Trong bài này, tôi sẽ giới thiệu một trong những thuật toán cơ 
 
 ## 1. Giới thiệu
 
-Quay lại [ví dụ đơn giản được nêu trong bài trước](/2016/12/27/categories/#regression): một căn nhà rộng \\(x_1 ~ \text{m}^2\\), có \\(x_2\\) phòng ngủ và cách trung tâm thành phố \\(x_3~ \text{km}\\) có giá là bao nhiêu. Giả sử chúng ta đã có số liệu thống kê từ 1000 căn nhà trong thành phố đó, liệu rằng khi có một căn nhà mới với các thông số về diện tích, số phòng ngủ và khoảng cách tới trung tâm, chúng ta có thể dự đoán được giá của căn nhà đó không? Nếu có thì hàm dự đoán \\(y = f(\mathbf{x}) \\) sẽ có dạng như thế nào. Ở đây \\(\mathbf{x} = [x_1, x_2, x_3] \\) là một vector hàng chứa thông tin _input_, \\(y\\) là một số vô hướng (scalar) biểu diễn _output_ (tức giá của căn nhà trong ví dụ này).
+Quay lại [ví dụ đơn giản được nêu trong bài trước](/2016/12/27/categories/#regression-hoi-quy): một căn nhà rộng \\(x_1 ~ \text{m}^2\\), có \\(x_2\\) phòng ngủ và cách trung tâm thành phố \\(x_3~ \text{km}\\) có giá là bao nhiêu. Giả sử chúng ta đã có số liệu thống kê từ 1000 căn nhà trong thành phố đó, liệu rằng khi có một căn nhà mới với các thông số về diện tích, số phòng ngủ và khoảng cách tới trung tâm, chúng ta có thể dự đoán được giá của căn nhà đó không? Nếu có thì hàm dự đoán \\(y = f(\mathbf{x}) \\) sẽ có dạng như thế nào. Ở đây \\(\mathbf{x} = [x_1, x_2, x_3] \\) là một vector hàng chứa thông tin _input_, \\(y\\) là một số vô hướng (scalar) biểu diễn _output_ (tức giá của căn nhà trong ví dụ này).
 
 **Lưu ý về ký hiệu toán học:** _trong các bài viết của tôi, các số vô hướng được biểu diễn bởi các chữ cái viết ở dạng không in đậm, có thể viết hoa, ví dụ \\(x_1, N, y, k\\). Các vector được biểu diễn bằng các chữ cái thường in đậm, ví dụ \\(\mathbf{y}, \mathbf{x}_1 \\). Các ma trận được biểu diễn bởi các chữ viết hoa in đậm, ví dụ \\(\mathbf{X, Y, W} \\)._
 
@@ -152,8 +152,7 @@ Nếu ma trận vuông \\( \mathbf{A} \triangleq \mathbf{\bar{X}}^T\mathbf{\bar{
 
 Vậy nếu ma trận \\(\mathbf{A} \\) không khả nghịch (có định thức bằng 0) thì sao? Nếu các bạn vẫn nhớ các kiến thức về hệ phương trình tuyến tính, trong trường hợp này thì hoặc phương trinh \\( (4) \\) vô nghiệm, hoặc làp 
 nó
-có vô số nghiệm. Khi đó, chúng ta sử dụng khái niệm [_giả nghịch đảo_](https://vi.wikipedia.org/wiki/Giả_nghịch_đảo_Moore–Penrose) \\( \mathbf{A}^{\dagger} \\) (đọc là _A dagger_ trong tiếng Anh). (_Giả nghịch đảo (pseudo inverse) là trường hợp tổng quát của nghịch đảo khi ma trận không khả nghịch hoặc thậm chí không vuông. Trong khuôn khổ bài viết này, tôi xin phép được lược bỏ phần này, nếu các bạn thực sự quan tâm, tôi sẽ viết một bài khác chỉ nói về giả nghịch đảo. Xem thêm: [Least Squares, Pseudo-Inverses, PCA
-& SVD](http://www.sci.utah.edu/~gerig/CS6640-F2012/Materials/pseudoinverse-cis61009sl10.pdf)._)
+có vô số nghiệm. Khi đó, chúng ta sử dụng khái niệm [_giả nghịch đảo_](https://vi.wikipedia.org/wiki/Giả_nghịch_đảo_Moore–Penrose) \\( \mathbf{A}^{\dagger} \\) (đọc là _A dagger_ trong tiếng Anh). (_Giả nghịch đảo (pseudo inverse) là trường hợp tổng quát của nghịch đảo khi ma trận không khả nghịch hoặc thậm chí không vuông. Trong khuôn khổ bài viết này, tôi xin phép được lược bỏ phần này, nếu các bạn thực sự quan tâm, tôi sẽ viết một bài khác chỉ nói về giả nghịch đảo. Xem thêm: [Least Squares, Pseudo-Inverses, PCA & SVD](http://www.sci.utah.edu/~gerig/CS6640-F2012/Materials/pseudoinverse-cis61009sl10.pdf)._)
 
 Với khái niệm giả nghịch đảo, điểm tối ưu của bài toán Linear Regression có dạng:
 
@@ -235,14 +234,14 @@ plt.show()
 
 Từ đồ thị này ta thấy rằng dữ liệu được sắp xếp gần như theo 1 đường thẳng, vậy mô hình Linear Regression nhiều khả năng sẽ cho kết quả tốt:
 
-(cân nặng) = w_1*(chiều cao) + w_0
+(cân nặng) = `w_1`*(chiều cao) + `w_0`
 
 <!-- ========================== New Heading ==================== -->
 <a name="nghiem-theo-cong-thuc"></a>
 
 ### Nghiệm theo công thức
 
-Tiếp theo, chúng ta sẽ tính toán các hệ số w_1 và w_0 dựa vào công thức \\((5)\\). Chú ý: giả nghịch đảo của một ma trận `A` trong Python sẽ được tính bằng `numpy.linalg.pinv(A)`, `pinv` là từ viết tắt của _pseudo inverse_.
+Tiếp theo, chúng ta sẽ tính toán các hệ số `w_1` và `w_0` dựa vào công thức \\((5)\\). Chú ý: giả nghịch đảo của một ma trận `A` trong Python sẽ được tính bằng `numpy.linalg.pinv(A)`, `pinv` là từ viết tắt của _pseudo inverse_.
 
 ```python
 # Building Xbar 
@@ -287,12 +286,12 @@ Từ đồ thị bên trên ta thấy rằng các điểm dữ liệu màu đỏ
 y1 = w_1*155 + w_0
 y2 = w_1*160 + w_0
 
-print( u'Dự đoán cân nặng của người có chiều cao 155 cm: %.2f (kg), số liệu thật: 52 (kg)'  %(y1) )
-print( u'Dự đoán cân nặng của người có chiều cao 160 cm: %.2f (kg), số liệu thật: 56 (kg)'  %(y2) )
+print( u'Predict weight of person with height 155 cm: %.2f (kg), real number: 52 (kg)'  %(y1) )
+print( u'Predict weight of person with height 160 cm: %.2f (kg), real number: 56 (kg)'  %(y2) )
 ```
 
-    Dự đoán cân nặng của người có chiều cao 155 cm: 52.94 (kg), số liệu thật: 52 (kg)
-    Dự đoán cân nặng của người có chiều cao 160 cm: 55.74 (kg), số liệu thật: 56 (kg)
+    Predict weight of person with height 155 cm: 52.94 (kg), real number: 52 (kg)
+    Predict weight of person with height 160 cm: 55.74 (kg), real number: 56 (kg)
 
 
 
@@ -348,7 +347,6 @@ là một hàm tuyến tính theo \\(\mathbf{w}\\) và vì vậy cũng có thể
 Xem thêm ví dụ về [Quadratic Regression](http://www.varsitytutors.com/hotmath/hotmath_help/topics/quadratic-regression) (Hồi Quy Bậc Hai).
 <div class="imgcap">
 <div >
-<a href = "http://www.varsitytutors.com/hotmath/hotmath_help/topics/quadratic-regression">
     <img src ="http://www.varsitytutors.com/assets/vt-hotmath-legacy/hotmath_help/topics/quadratic-regression/f-qr-1-1.gif"  width = "300"></a>
 </div>
 <div class="thecap"> Quadratic Regression (Nguồn: <a href = "http://www.varsitytutors.com/hotmath/hotmath_help/topics/quadratic-regression"> Quadratic Regression</a>) <br></div>
