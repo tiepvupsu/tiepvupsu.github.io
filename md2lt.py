@@ -60,6 +60,23 @@ def convert_links(string):
 	return str2 + '\\href{' + link + '}{' + \
 		display_name + '}' + convert_links(string[id1 + id2 + id3+2:])
 
+str0 = 'alsfd `ksf` lkf `jksdf `'
+
+
+def inlinecode(str0):
+	id1 = str0.find('`')
+	if id1 == -1:
+		return str0 
+
+	str1 = str0[id1 + 1:]
+	id2 = str1.find('`')
+	if id2 == -1:
+		return str0 
+
+	return str0[:id1] + '\\pythoninline{'+str0[id1+1:id1+id2+1] + '}' + \
+			inlinecode(str0[id1+id2+2:])
+
+print(inlinecode(str0))
 
 
 for line in f:
@@ -73,7 +90,7 @@ for line in f:
 	if '```' in new_line:
 		in_code_mode = not in_code_mode 
 		if in_code_mode: 
-			new_line = ' \\begin{lstlisting}[language=Python}\r'
+			new_line = ' \\begin{lstlisting}[language=Python]\r'
 			file.write(new_line[1:]+'\n')
 			continue 
 		else: 
@@ -84,10 +101,12 @@ for line in f:
 		file.write(new_line[1:]+'\n')
 		continue 
 
+	new_line = inlinecode(new_line)
 
 	new_line = new_line.replace('\\\(', '$')
 	new_line = new_line.replace('\\\[', '$$')
 	new_line = new_line.replace('\\\]', '$$')
+	new_line = new_line.replace('\\\|', '\\|')
 	new_line = new_line.replace('\\\)', '$')
 	new_line = new_line.replace('\\_', '_')
 	new_line = new_line.replace(' **', ' \\textbf{')

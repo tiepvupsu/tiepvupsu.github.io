@@ -68,7 +68,7 @@
   captionpos=b,                    
   keepspaces=true,                 
   showspaces=true,                
-  showstringspaces=false,
+  showstringspaces=true,
   showtabs=false,                  
   tabsize=2, 
   basicstyle=\footnotesize\ttfamily,
@@ -125,7 +125,7 @@ showstringspaces=false            %
 \lstinputlisting[#1]{#2}}}
 
 % Python for inline
-\newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
+\newcommand\pythoninline[1]{{\color{deepred}\pythonstyle\lstinline!#1!}}
 
 
 
@@ -186,6 +186,7 @@ def incmatrix(genl1,genl2):
     return M
 \end{lstlisting}
 
+\pythoninline{asdf}
 
 %\include{chapter}
 %\appendix

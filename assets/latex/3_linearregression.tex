@@ -1,7 +1,12 @@
+%!TEX root = book.tex
 \chapter{Linear Regression }
+
+ 
+Trong bài này, tôi sẽ giới thiệu một trong những thuật toán cơ bản nhất (và đơn giản nhất) của Machine Learning. Đây là một thuật toán \textit{Supervised learning} có tên \textbf{Linear Regression} (Hồi Quy Tuyến Tính). Bài toán này đôi khi được gọi là \textit{Linear Fitting} (trong thống kê) hoặc \textit{Linear Least Square}. 
+
 \section{Giới thiệu}
  
-Quay lại \href{/2016/12/27/categories/#regression}{ví dụ đơn giản được nêu trong bài trước}: một căn nhà rộng $x_1 ~ \text{m}^2$, có $x_2$ phòng ngủ và cách trung tâm thành phố $x_3~ \text{km}$ có giá là bao nhiêu. Giả sử chúng ta đã có số liệu thống kê từ 1000 căn nhà trong thành phố đó, liệu rằng khi có một căn nhà mới với các thông số về diện tích, số phòng ngủ và khoảng cách tới trung tâm, chúng ta có thể dự đoán được giá của căn nhà đó không? Nếu có thì hàm dự đoán $y = f(\mathbf{x}) $ sẽ có dạng như thế nào. Ở đây $\mathbf{x} = [x_1, x_2, x_3] $ là một vector hàng chứa thông tin \textit{input}, $y$ là một số vô hướng (scalar) biểu diễn \textit{output} (tức giá của căn nhà trong ví dụ này). 
+Quay lại \href{http://machinelearningcoban.com/2016/12/27/categories/#regression-hoi-quy}{ví dụ đơn giản được nêu trong bài trước}: một căn nhà rộng $x_1 ~ \text{m}^2$, có $x_2$ phòng ngủ và cách trung tâm thành phố $x_3~ \text{km}$ có giá là bao nhiêu. Giả sử chúng ta đã có số liệu thống kê từ 1000 căn nhà trong thành phố đó, liệu rằng khi có một căn nhà mới với các thông số về diện tích, số phòng ngủ và khoảng cách tới trung tâm, chúng ta có thể dự đoán được giá của căn nhà đó không? Nếu có thì hàm dự đoán $y = f(\mathbf{x}) $ sẽ có dạng như thế nào. Ở đây $\mathbf{x} = [x_1, x_2, x_3] $ là một vector hàng chứa thông tin \textit{input}, $y$ là một số vô hướng (scalar) biểu diễn \textit{output} (tức giá của căn nhà trong ví dụ này). 
  
 \textbf{Lưu ý về ký hiệu toán học:} \textit{trong các bài viết của tôi, các số vô hướng được biểu diễn bởi các chữ cái viết ở dạng không in đậm, có thể viết hoa, ví dụ $x_1, N, y, k$. Các vector được biểu diễn bằng các chữ cái thường in đậm, ví dụ $\mathbf{y}, \mathbf{x}_1 $. Các ma trận được biểu diễn bởi các chữ viết hoa in đậm, ví dụ $\mathbf{X, Y, W} $.} 
  
@@ -31,7 +36,7 @@ Trong phương trình $(1)$ phía trên, nếu chúng ta đặt $\mathbf{w} = [w
  
 $$y \approx \mathbf{\bar{x}}\mathbf{w} = \hat{y}$$ 
  
-Chú ý rằng $\mathbf{\bar{x}}$ là một vector hàng. (\href{/math/#luu-y-ve-ky-hieu}{Xem thêm về ký hiệu vector hàng và cột tại đây}) 
+Chú ý rằng $\mathbf{\bar{x}}$ là một vector hàng. (\href{http://machinelearningcoban.com/math/#luu-y-ve-ky-hieu}{Xem thêm về ký hiệu vector hàng và cột tại đây}) 
  
  
  
@@ -87,7 +92,7 @@ $$
 = \mathbf{\bar{X}}^T(\mathbf{\bar{X}}\mathbf{w} - \mathbf{y})  
 $$ 
  
-Các bạn có thể tham khảo bảng đạo hàm theo vector hoặc ma trận của một hàm số trong \href{https://ccrma.stanford.edu/~dattorro/matrixcalc.pdf}{mục D.2 của tài liệu này}. \textit{Đến đây tôi xin quay lại câu hỏi ở phần \href{sai so du doan}{Sai số dự đoán} phía trên về việc tại sao không dùng trị tuyệt đối mà lại dùng bình phương. Câu trả lời là hàm bình phương có đạo hàm tại mọi nơi, trong khi hàm trị tuyệt đối thì không (đạo hàm không xác định tại 0)}. 
+Các bạn có thể tham khảo bảng đạo hàm theo vector hoặc ma trận của một hàm số trong \href{https://ccrma.stanford.edu/~dattorro/matrixcalc.pdf}{mục D.2 của tài liệu này}. \textit{Đến đây tôi xin quay lại câu hỏi ở phần Sai số dự đoán phía trên về việc tại sao không dùng trị tuyệt đối mà lại dùng bình phương. Câu trả lời là hàm bình phương có đạo hàm tại mọi nơi, trong khi hàm trị tuyệt đối thì không (đạo hàm không xác định tại 0)}. 
  
 Phương trình đạo hàm bằng 0 tương đương với:  
 $$ 
@@ -144,17 +149,17 @@ Chúng ta có thể thấy là cân nặng sẽ tỉ lệ thuận với chiều 
 Trước tiên, chúng ta cần có hai thư viện \href{http://www.numpy.org/}{numpy} cho đại số tuyến tính và \href{http://matplotlib.org/}{matplotlib} cho việc vẽ hình.  
  
  
-\begin{python}
+\begin{lstlisting}[language=Python]
 # To support both python 2 and python 3 
-from \textbf{future} import division, print_function, unicode_literals 
+from __future__ import division, print_function, unicode_literals 
 import numpy as np  
 import matplotlib.pyplot as plt 
-\end{python}
+\end{lstlisting}
  
 Tiếp theo, chúng ta khai báo và biểu diễn dữ liệu trên một đồ thị. 
  
  
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
 # height (cm) 
 X = np.array([[147, 150, 153, 158, 163, 165, 168, 170, 173, 175, 178, 180, 183]]).T 
 # weight (kg) 
@@ -168,18 +173,25 @@ plt.show()
 \end{lstlisting}
  
  
+% <div class="imgcap"> 
+% <img src ="/assets/LR/output_3_0.png" align = "center"> 
+% </div> 
  
+ \begin{figure}
+ 	\centering	
+ 	\includegraphics[width = \textwidth]{../LR/output_3_0.png}
+ \end{figure}
  
 Từ đồ thị này ta thấy rằng dữ liệu được sắp xếp gần như theo 1 đường thẳng, vậy mô hình Linear Regression nhiều khả năng sẽ cho kết quả tốt: 
  
-(cân nặng) = w\_1*(chiều cao) + w\_0 
+(cân nặng) = \pythoninline{w\_1}*(chiều cao) + \pythoninline{w\_0} 
  
  
 \subsection{Nghiệm theo công thức}
  
-Tiếp theo, chúng ta sẽ tính toán các hệ số \texttt{w\_1} và \texttt{w\_0} dựa vào công thức $(5)$. Chú ý: giả nghịch đảo của một ma trận `A` trong Python sẽ được tính bằng `numpy.linalg.pinv(A)`, `pinv` là từ viết tắt của \textit{pseudo inverse}. 
+Tiếp theo, chúng ta sẽ tính toán các hệ số \pythoninline{w_1} và \pythoninline{w_0} dựa vào công thức $(5)$. Chú ý: giả nghịch đảo của một ma trận \pythoninline{A} trong Python sẽ được tính bằng \pythoninline{numpy.linalg.pinv(A)}, \pythoninline{pinv} là từ viết tắt của \textit{pseudo inverse}. 
  
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
 # Building Xbar  
 one = np.ones((X.shape[0], 1)) 
 Xbar = np.concatenate((one, X), axis = 1) 
@@ -205,24 +217,32 @@ plt.show()
  
 \end{lstlisting}
  
+\begin{lstlisting}[language=Python]
 w =  [[-33.73541021] 
  [  0.55920496]] 
+\end{lstlisting}
  
  
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width = \textwidth]{../LR/output_5_1.png}
+\end{figure}
  
 Từ đồ thị bên trên ta thấy rằng các điểm dữ liệu màu đỏ nằm khá gần đường thẳng dự đoán màu xanh. Vậy mô hình Linear Regression hoạt động tốt với tập dữ liệu \textit{training}. Bây giờ, chúng ta sử dụng mô hình này để dự đoán cân nặng của hai người có chiều cao 155 và 160 cm mà chúng ta đã không dùng khi tính toán nghiệm. 
  
  
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
 y1 = w_1*155 + w_0 
 y2 = w_1*160 + w_0 
  
-print(  155 cm:%%)
-print( asdf ) 
+print( 'Predict weight of person with height 155 cm: %.2f (kg), real number: 52 (kg)'  %(y1) ) 
+print( 'Predict weight of person with height 160 cm: %.2f (kg), real number: 56 (kg)'  %(y2) ) 
 \end{lstlisting}
  
-    Dự đoán cân nặng của người có chiều cao 155 cm: 52.94 (kg), số liệu thật: 52 (kg) 
-    Dự đoán cân nặng của người có chiều cao 160 cm: 55.74 (kg), số liệu thật: 56 (kg) 
+    Predict weight of person with height 155 cm: 52.94 (kg), real number: 52 (kg) 
+    Predict weight of person with height 160 cm: 55.74 (kg), real number: 56 (kg) 
  
  
  
@@ -234,7 +254,7 @@ Chúng ta thấy rằng kết quả dự đoán khá gần với số liệu th�
 Tiếp theo, chúng ta sẽ sử dụng thư viện scikit-learn của Python để tìm nghiệm.  
  
  
-\begin{lstlisting}
+\begin{lstlisting}[language=Python]
 from sklearn import datasets, linear_model 
  
 # fit the model by Linear Regression 
@@ -242,13 +262,14 @@ regr = linear_model.LinearRegression(fit_intercept=False) # fit_intercept = Fals
 regr.fit(Xbar, y) 
  
 # Compare two results 
-print( '  : ', regr.coef} ) 
-print( '': ', w.T) 
+print( 'Solution found by scikit-learn  : ', regr.coef_ ) 
+print( 'Solution found by (5): ', w.T) 
 \end{lstlisting}
  
-    Nghiệm tìm được bằng scikit-learn  :  [[  -33.73541021 0.55920496]] 
-    Nghiệm tìm được từ phương trình (5):  [[  -33.73541021 0.55920496 ]] 
- 
+\begin{lstlisting}[language=Python]
+    Solution found by scikit-learn  :  [[  -33.73541021 0.55920496]] 
+    Solution found by (5):  [[  -33.73541021 0.55920496 ]] 
+\end{lstlisting}
  
 Chúng ta thấy rằng hai kết quả thu được như nhau! (\textit{Nghĩa là tôi đã không mắc lỗi nào trong cách tìm nghiệm ở phần trên}) 
  
@@ -262,22 +283,32 @@ Chúng ta thấy rằng hai kết quả thu được như nhau! (\textit{Nghĩa 
 \subsection{Các bài toán có thể giải bằng Linear Regression}
 Hàm số $y \approx f(\mathbf{x})= \mathbf{w}^T\mathbf{x}$ là một hàm tuyến tính theo cả $ \mathbf{w}$ và $\mathbf{x}$. Trên thực tế, Linear Regression có thể áp dụng cho các mô hình chỉ cần tuyến tính theo $\mathbf{w}$. Ví dụ: 
 $$ 
-y \approx w_1 x_1 + w_2 x_2 + w_3 x_1^2 +  
-$$ 
-$$ 
-+w_4 \sin(x_2) + w_5 x_1x_2 + w_0 
+y \approx w_1 x_1 + w_2 x_2 + w_3 x_1^2 +  w_4 \sin(x_2) + w_5 x_1x_2 + w_0 
 $$ 
 là một hàm tuyến tính theo $\mathbf{w}$ và vì vậy cũng có thể được giải bằng Linear Regression. Với mỗi dữ liệu đầu vào $\mathbf{x}=[x_1; x_2] $, chúng ta tính toán dữ liệu mới $\tilde{\mathbf{x}} = [x_1, x_2, x_1^2, \sin(x_2), x_1x_2]$ (đọc là \textit{x tilde} trong tiếng Anh) rồi áp dụng Linear Regression với dữ liệu mới này.  
  
 Xem thêm ví dụ về \href{http://www.varsitytutors.com/hotmath/hotmath_help/topics/quadratic-regression}{Quadratic Regression} (Hồi Quy Bậc Hai). 
-
+% <div class="imgcap"> 
+% <div > 
+%     <img src ="http://www.varsitytutors.com/assets/vt-hotmath-legacy/hotmath_help/topics/quadratic-regression/f-qr-1-1.gif"  width = "300"></a> 
+% </div> 
+% <div class="thecap"> Quadratic Regression (Nguồn: <a href = "http://www.varsitytutors.com/hotmath/hotmath_help/topics/quadratic-regression"> Quadratic Regression</a>) <br></div> 
+% </div> 
  
+ a figre should be here 
  
 \subsection{Hạn chế của Linear Regression}
  
 Hạn chế đầu tiên của Linear Regression là nó rất \textbf{nhạy cảm với nhiễu} (sensitive to noise). Trong ví dụ về mối quan hệ giữa chiều cao và cân nặng bên trên, nếu có chỉ 
 một cặp dữ liệu \textit{nhiễu} (150 cm, 90kg) thì kết quả sẽ sai khác đi rất nhiều. Xem hình dưới đây: 
-
+% <div class="imgcap"> 
+% <img src ="/assets/LR/output_13_1.png" align = "center"> 
+% </div> 
+ 
+ \begin{figure}
+ 	\centering
+ 	\includegraphics[width = .6\textwidth]{../LR/output_13_1.png}
+ \end{figure}
 Vì vậy, trước khi thực hiện Linear Regression, các nhiễu (\textit{outlier}) cần 
  phải được loại bỏ. Bước này được gọi là tiền xử lý (pre-processing). 
  

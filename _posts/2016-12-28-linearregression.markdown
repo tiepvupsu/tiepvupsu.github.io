@@ -269,9 +269,10 @@ plt.show()
 
 ```
 
+```
 w =  [[-33.73541021]
  [  0.55920496]]
-
+```
 
 
 <!-- ![pnet/asset/LR/output_5_1.png) -->
@@ -313,13 +314,14 @@ regr = linear_model.LinearRegression(fit_intercept=False) # fit_intercept = Fals
 regr.fit(Xbar, y)
 
 # Compare two results
-print( u'Nghiệm tìm được bằng scikit-learn  : ', regr.coef_ )
-print( u'Nghiệm tìm được từ phương trình (5): ', w.T)
+print( 'Solution found by scikit-learn  : ', regr.coef_ )
+print( 'Solution found by (5): ', w.T)
 ```
 
-    Nghiệm tìm được bằng scikit-learn  :  [[  -33.73541021 0.55920496]]
-    Nghiệm tìm được từ phương trình (5):  [[  -33.73541021 0.55920496 ]]
-
+```
+    Solution found by scikit-learn  :  [[  -33.73541021 0.55920496]]
+    Solution found by (5):  [[  -33.73541021 0.55920496 ]]
+```
 
 Chúng ta thấy rằng hai kết quả thu được như nhau! (_Nghĩa là tôi đã không mắc lỗi nào trong cách tìm nghiệm ở phần trên_)
 
