@@ -99,9 +99,8 @@ Phương trình đạo hàm bằng 0 tương đương với:
  
 Nếu ma trận vuông $ \mathbf{A} \triangleq \mathbf{\bar{X}}^T\mathbf{\bar{X}}$ khả nghịch (non-singular hay inversable) thì phương trình $(4)$ có nghiệm duy nhất: $ \mathbf{w} = \mathbf{A}^{-1}\mathbf{b}  $. 
  
-Vậy nếu ma trận $\mathbf{A} $ không khả nghịch (có định thức bằng 0) thì sao? Nếu các bạn vẫn nhớ các kiến thức về hệ phương trình tuyến tính, trong trường hợp này thì hoặc phương trinh \eqref{eqn:linearregression_gradient} vô nghiệm, hoặc làp  
-nó 
-có vô số nghiệm. Khi đó, chúng ta sử dụng khái niệm \href{https://vi.wikipedia.org/wiki/Giả_nghịch_đảo_Moore–Penrose}{\textit{giả nghịch đảo}} $ \mathbf{A}^{\dagger} $ (đọc là \textit{A dagger} trong tiếng Anh). (\textit{Giả nghịch đảo (pseudo inverse) là trường hợp tổng quát của nghịch đảo khi ma trận không khả nghịch hoặc thậm chí không vuông. Trong khuôn khổ bài viết này, tôi xin phép được lược bỏ phần này, nếu các bạn thực sự quan tâm, tôi sẽ viết một bài khác chỉ nói về giả nghịch đảo. Xem thêm: \href{http://www.sci.utah.edu/~gerig/CS6640-F2012/Materials/pseudoinverse-cis61009sl10.pdf}{Least Squares, Pseudo-Inverses, PCA \& SVD}.}) 
+\index{pseudo inverse}
+Vậy nếu ma trận $\mathbf{A} $ không khả nghịch (có định thức bằng 0) thì sao? Nếu các bạn vẫn nhớ các kiến thức về hệ phương trình tuyến tính, trong trường hợp này thì hoặc phương trinh \eqref{eqn:linearregression_gradient} vô nghiệm, hoặc là nó có vô số nghiệm. Khi đó, chúng ta sử dụng khái niệm \href{https://vi.wikipedia.org/wiki/Giả_nghịch_đảo_Moore–Penrose}{\textit{giả nghịch đảo}} $ \mathbf{A}^{\dagger} $ (đọc là \textit{A dagger} trong tiếng Anh). (\textit{Giả nghịch đảo (pseudo inverse) là trường hợp tổng quát của nghịch đảo khi ma trận không khả nghịch hoặc thậm chí không vuông. Trong khuôn khổ bài viết này, tôi xin phép được lược bỏ phần này, nếu các bạn thực sự quan tâm, tôi sẽ viết một bài khác chỉ nói về giả nghịch đảo. Xem thêm: \href{http://www.sci.utah.edu/~gerig/CS6640-F2012/Materials/pseudoinverse-cis61009sl10.pdf}{Least Squares, Pseudo-Inverses, PCA \& SVD}.})
  
 Với khái niệm giả nghịch đảo, điểm tối ưu của bài toán Linear Regression có dạng: 
 \begin{equation}
