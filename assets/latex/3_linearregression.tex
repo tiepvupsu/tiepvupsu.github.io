@@ -1,8 +1,9 @@
 %!TEX root = book.tex
-\chapter{Linear Regression }
+\chapter{Linear Regression}
 
+\index{Linear Regression}
  
-Trong bài này, tôi sẽ giới thiệu một trong những thuật toán cơ bản nhất (và đơn giản nhất) của Machine Learning. Đây là một thuật toán \textit{Supervised learning} có tên \textbf{Linear Regression} (Hồi Quy Tuyến Tính). Bài toán này đôi khi được gọi là \textit{Linear Fitting} (trong thống kê) hoặc \textit{Linear Least Square}. 
+Trong bài này, tôi sẽ giới thiệu một trong những thuật toán cơ bản nhất (và đơn giản nhất) của Machine Learning. Đây là một thuật toán \textit{Supervised learning} có tên {\textbf{Linear Regression}} (Hồi Quy Tuyến Tính). Bài toán này đôi khi được gọi là \textit{Linear Fitting} (trong thống kê) hoặc \textit{Linear Least Square}. 
 
 \section{Giới thiệu}
  
@@ -11,10 +12,10 @@ Quay lại \href{http://machinelearningcoban.com/2016/12/27/categories/#regressi
 \textbf{Lưu ý về ký hiệu toán học:} \textit{trong các bài viết của tôi, các số vô hướng được biểu diễn bởi các chữ cái viết ở dạng không in đậm, có thể viết hoa, ví dụ $x_1, N, y, k$. Các vector được biểu diễn bằng các chữ cái thường in đậm, ví dụ $\mathbf{y}, \mathbf{x}_1 $. Các ma trận được biểu diễn bởi các chữ viết hoa in đậm, ví dụ $\mathbf{X, Y, W} $.} 
  
 Một cách đơn giản nhất, chúng ta có thể thấy rằng: i) diện tích nhà càng lớn thì giá nhà càng cao; ii) số lượng phòng ngủ càng lớn thì giá nhà càng cao; iii) càng xa trung tâm thì giá nhà càng giảm. Một hàm số đơn giản nhất có thể mô tả mối quan hệ giữa giá nhà và 3 đại lượng đầu vào là:  
- 
- 
-$$y \approx  f(\mathbf{x}) = \hat{y}$$ 
-$$f(\mathbf{x}) =w_1 x_1 + w_2 x_2 + w_3 x_3 + w_0 ~~~~ (1)$$ 
+\begin{equation}
+\label{eqn:linearregression}
+y \approx   \hat{y} = f(\mathbf{x}) =w_1 x_1 + w_2 x_2 + w_3 x_3 + w_0 
+\end{equation}
 trong đó, $w_1, w_2, w_3, w_0$ là các hằng số,  $w_0$ còn được gọi là bias. Mối quan hệ $y \approx f(\mathbf{x})$ bên trên là một mối quan hệ tuyến tính (linear). Bài toán chúng ta đang làm là một bài toán thuộc loại regression. Bài toán đi tìm các hệ số tối ưu $ \\{w_1, w_2, w_3, w_0 \\}$ chính vì vậy được gọi là bài toán Linear Regression.  
  
 \textbf{Chú ý 1:} $y$ là giá trị thực của \textit{outcome} (dựa trên số liệu thống kê chúng ta có trong tập \textit{training data}), trong khi $\hat{y}$ là giá trị mà mô hình Linear Regression dự đoán được. Nhìn chung, $y$ và $\hat{y}$ là hai giá trị khác nhau do có sai số mô hình, tuy nhiên, chúng ta mong muốn rằng sự khác nhau này rất nhỏ. 
@@ -33,7 +34,6 @@ trong đó, $w_1, w_2, w_3, w_0$ là các hằng số,  $w_0$ còn được gọ
 \subsection{Dạng của Linear Regression }
  
 Trong phương trình $(1)$ phía trên, nếu chúng ta đặt $\mathbf{w} = [w_0, w_1, w_2, w_3]^T = $ là vector (cột) hệ số cần phải tối ưu và $\mathbf{\bar{x}} = [1, x_1, x_2, x_3]$ (đọc là \textit{x bar} trong tiếng Anh) là vector (hàng) dữ liệu đầu vào \textit{mở rộng}. Số $1$ ở đầu được thêm vào để phép tính đơn giản hơn và thuận tiện cho việc tính toán. Khi đó, phương trình (1) có thể được viết lại dưới dạng: 
- 
 $$y \approx \mathbf{\bar{x}}\mathbf{w} = \hat{y}$$ 
  
 Chú ý rằng $\mathbf{\bar{x}}$ là một vector hàng. (\href{http://machinelearningcoban.com/math/#luu-y-ve-ky-hieu}{Xem thêm về ký hiệu vector hàng và cột tại đây}) 
@@ -43,12 +43,10 @@ Chú ý rằng $\mathbf{\bar{x}}$ là một vector hàng. (\href{http://machinel
 \subsection{Sai số dự đoán }
  
 Chúng ta mong muốn rằng sự sai khác $e$ giữa giá trị thực $y$ và giá trị dự đoán $\hat{y}$ (đọc là \textit{y hat} trong tiếng Anh) là nhỏ nhất. Nói cách khác, chúng ta muốn giá trị sau đây càng nhỏ càng tốt:  
- 
-$$ 
+ \begin{equation*}
 \frac{1}{2}e^2 = \frac{1}{2}(y - \hat{y})^2 = \frac{1}{2}(y - \mathbf{\bar{x}}\mathbf{w})^2 
-$$ 
- 
-trong đó hệ số $\frac{1}{2} $ (\textit{lại}) là để thuận tiện cho việc tính toán (khi tính đạo hàm thì số $\frac{1}{2} $ sẽ bị triệt tiêu). Chúng ta cần $e^2$ vì $e = y - \hat{y} $ có thể là một số âm, việc nói $e$ nhỏ nhất sẽ không đúng vì khi $e = - \infty$ là rất nhỏ nhưng sự sai lệch là rất lớn. Bạn đọc có thể tự đặt câu hỏi: \textbf{tại sao không dùng trị tuyệt đối $ \|e\| $ mà lại dùng bình phương $e^2$ ở đây?} Câu trả lời sẽ có ở phần sau.  
+\end{equation*}
+ trong đó hệ số $\frac{1}{2} $ (\textit{lại}) là để thuận tiện cho việc tính toán (khi tính đạo hàm thì số $\frac{1}{2} $ sẽ bị triệt tiêu). Chúng ta cần $e^2$ vì $e = y - \hat{y} $ có thể là một số âm, việc nói $e$ nhỏ nhất sẽ không đúng vì khi $e = - \infty$ là rất nhỏ nhưng sự sai lệch là rất lớn. Bạn đọc có thể tự đặt câu hỏi: \textbf{tại sao không dùng trị tuyệt đối $ \|e\| $ mà lại dùng bình phương $e^2$ ở đây?} Câu trả lời sẽ có ở phần sau.  
  
  
  
@@ -58,26 +56,24 @@ trong đó hệ số $\frac{1}{2} $ (\textit{lại}) là để thuận tiện ch
 \subsection{Hàm mất mát}
  
 Điều tương tự xảy ra với tất cả các cặp \textit{(input, outcome)} $ (\mathbf{x}_i, y_i), i = 1, 2, \dots, N $, với $N$ là số lượng dữ liệu quan sát được. Điều chúng ta muốn, tổng sai số là nhỏ nhất, tương đương với việc tìm $ \mathbf{w} $ để hàm số sau đạt giá trị nhỏ nhất: 
- 
-$$ \mathcal{L}(\mathbf{w}) = \frac{1}{2}\sum_{i=1}^N (y_i - \mathbf{\bar{x}_i}\mathbf{w})^2 ~~~~~(2) $$  
+\begin{equation}
+\label{eqn:linearregression_loss} 
+ \mathcal{L}(\mathbf{w}) = \frac{1}{2}\sum_{i=1}^N (y_i - \mathbf{\bar{x}_i}\mathbf{w})^2
+\end{equation}  
  
 Hàm số $\mathcal{L}(\mathbf{w}) $ được gọi là \textbf{hàm mất mát} (loss function) của bài toán Linear Regression. Chúng ta luôn mong muốn rằng sự mất mát (sai số) là nhỏ nhất, điều đó đồng nghĩa với việc  tìm vector hệ số $ \mathbf{w} $  sao cho  
 giá trị của hàm mất mát này càng nhỏ càng tốt. Giá trị của $\mathbf{w}$ làm cho hàm mất mát đạt giá trị nhỏ nhất được gọi là \textit{điểm tối ưu} (optimal point), ký hiệu: 
  
 $$ \mathbf{w}^* = \arg\min_{\mathbf{w}} \mathcal{L}(\mathbf{w})  $$  
  
-Trước khi đi tìm lời giải, chúng ta đơn giản hóa phép toán trong phương trình hàm mất mát $(2)$. Đặt $\mathbf{y} = [y_1; y_2; \dots; y_N]$ là một vector cột chứa tất cả các \textit{output} của \textit{training data}; $ \mathbf{\bar{X}} = [\mathbf{\bar{x}}_1; \mathbf{\bar{x}}_2; \dots; \mathbf{\bar{x}}_N ] $ là ma trận dữ liệu đầu vào (mở rộng) mà mỗi hàng của nó là một điểm dữ liệu. Khi đó hàm số mất mát $\mathcal{L}(\mathbf{w})$ được viết dưới dạng ma trận đơn giản hơn: 
- 
-$$ 
+Trước khi đi tìm lời giải, chúng ta đơn giản hóa phép toán trong phương trình hàm mất mát \eqref{eqn:linearregression_loss}. Đặt $\mathbf{y} = [y_1; y_2; \dots; y_N]$ là một vector cột chứa tất cả các \textit{output} của \textit{training data}; $ \mathbf{\bar{X}} = [\mathbf{\bar{x}}_1; \mathbf{\bar{x}}_2; \dots; \mathbf{\bar{x}}_N ] $ là ma trận dữ liệu đầu vào (mở rộng) mà mỗi hàng của nó là một điểm dữ liệu. Khi đó hàm số mất mát $\mathcal{L}(\mathbf{w})$ được viết dưới dạng ma trận đơn giản hơn: 
+\begin{equation}
+\label{eqn:linearregression_loss_mat}
 \mathcal{L}(\mathbf{w})  
-= \frac{1}{2}\sum_{i=1}^N (y_i - \mathbf{\bar{x}}_i\mathbf{w})^2 $$ 
-$$ 
+= \frac{1}{2}\sum_{i=1}^N (y_i - \mathbf{\bar{x}}_i\mathbf{w})^2 
 = \frac{1}{2} \|\mathbf{y} - \mathbf{\bar{X}}\mathbf{w} \|_2^2  
-~~~(3) 
-$$ 
- 
-với $ \| \mathbf{z} \|_2 $ là Euclidean norm (chuẩn Euclid, hay khoảng cách Euclid), nói cách khác $ \| \mathbf{z} \|_2^2 $ là tổng của bình phương mỗi phần tử của vector $\mathbf{z}$. Tới đây, ta đã có một dạng đơn giản của hàm mất mát được viết như phương trình $(3)$. 
- 
+\end{equation} 
+với $ \| \mathbf{z} \|_2 $ là Euclidean norm (chuẩn Euclid, hay khoảng cách Euclid), nói cách khác $ \| \mathbf{z} \|_2^2 $ là tổng của bình phương mỗi phần tử của vector $\mathbf{z}$. Tới đây, ta đã có một dạng đơn giản của hàm mất mát được viết như phương trình \eqref{eqn:linearregression_loss_mat}. 
  
  
  
@@ -95,26 +91,23 @@ $$
 Các bạn có thể tham khảo bảng đạo hàm theo vector hoặc ma trận của một hàm số trong \href{https://ccrma.stanford.edu/~dattorro/matrixcalc.pdf}{mục D.2 của tài liệu này}. \textit{Đến đây tôi xin quay lại câu hỏi ở phần Sai số dự đoán phía trên về việc tại sao không dùng trị tuyệt đối mà lại dùng bình phương. Câu trả lời là hàm bình phương có đạo hàm tại mọi nơi, trong khi hàm trị tuyệt đối thì không (đạo hàm không xác định tại 0)}. 
  
 Phương trình đạo hàm bằng 0 tương đương với:  
-$$ 
+\begin{equation}
+\label{eqn:linearregression_gradient}
 \mathbf{\bar{X}}^T\mathbf{\bar{X}}\mathbf{w} = \mathbf{\bar{X}}^T\mathbf{y} \triangleq \mathbf{b}  
-~~~ (4) 
-$$ 
+\end{equation}
 (ký hiệu $\mathbf{\bar{X}}^T\mathbf{y} \triangleq \mathbf{b} $ nghĩa là \textit{đặt} $\mathbf{\bar{X}}^T\mathbf{y}$ \textit{bằng} $\mathbf{b}$ ). 
  
 Nếu ma trận vuông $ \mathbf{A} \triangleq \mathbf{\bar{X}}^T\mathbf{\bar{X}}$ khả nghịch (non-singular hay inversable) thì phương trình $(4)$ có nghiệm duy nhất: $ \mathbf{w} = \mathbf{A}^{-1}\mathbf{b}  $. 
  
-Vậy nếu ma trận $\mathbf{A} $ không khả nghịch (có định thức bằng 0) thì sao? Nếu các bạn vẫn nhớ các kiến thức về hệ phương trình tuyến tính, trong trường hợp này thì hoặc phương trinh $ (4) $ vô nghiệm, hoặc làp  
+Vậy nếu ma trận $\mathbf{A} $ không khả nghịch (có định thức bằng 0) thì sao? Nếu các bạn vẫn nhớ các kiến thức về hệ phương trình tuyến tính, trong trường hợp này thì hoặc phương trinh \eqref{eqn:linearregression_gradient} vô nghiệm, hoặc làp  
 nó 
 có vô số nghiệm. Khi đó, chúng ta sử dụng khái niệm \href{https://vi.wikipedia.org/wiki/Giả_nghịch_đảo_Moore–Penrose}{\textit{giả nghịch đảo}} $ \mathbf{A}^{\dagger} $ (đọc là \textit{A dagger} trong tiếng Anh). (\textit{Giả nghịch đảo (pseudo inverse) là trường hợp tổng quát của nghịch đảo khi ma trận không khả nghịch hoặc thậm chí không vuông. Trong khuôn khổ bài viết này, tôi xin phép được lược bỏ phần này, nếu các bạn thực sự quan tâm, tôi sẽ viết một bài khác chỉ nói về giả nghịch đảo. Xem thêm: \href{http://www.sci.utah.edu/~gerig/CS6640-F2012/Materials/pseudoinverse-cis61009sl10.pdf}{Least Squares, Pseudo-Inverses, PCA \& SVD}.}) 
  
 Với khái niệm giả nghịch đảo, điểm tối ưu của bài toán Linear Regression có dạng: 
- 
- 
-$$ 
+\begin{equation}
+\label{eqn:linearregression_solution}
 \mathbf{w} = \mathbf{A}^{\dagger}\mathbf{b} = (\mathbf{\bar{X}}^T\mathbf{\bar{X}})^{\dagger} \mathbf{\bar{X}}^T\mathbf{y} 
-~~~ (5) 
-$$ 
- 
+\end{equation} 
  
  
  
@@ -123,23 +116,29 @@ $$
  
 \subsection{Bài toán}
  
-Trong phần này, tôi sẽ chọn một ví dụ đơn giản về việc giải bài toán Linear Regression trong Python. Tôi cũng sẽ so sánh nghiệm của bài toán khi giải theo phương trình $(5) $ và nghiệm tìm được khi dùng thư viện \href{http://scikit-learn.org/stable/}{scikit-learn} của Python. (\textit{Đây là thư viện Machine Learning được sử dụng rộng rãi trong Python}). Trong ví dụ này, dữ liệu đầu vào chỉ có 1 giá trị (1 chiều) để thuận tiện cho việc minh hoạ trong mặt phẳng.  
+Trong phần này, tôi sẽ chọn một ví dụ đơn giản về việc giải bài toán Linear Regression trong Python. Tôi cũng sẽ so sánh nghiệm của bài toán khi giải theo phương trình \eqref{eqn:linearregression_solution} và nghiệm tìm được khi dùng thư viện \href{http://scikit-learn.org/stable/}{scikit-learn} của Python. (\textit{Đây là thư viện Machine Learning được sử dụng rộng rãi trong Python}). Trong ví dụ này, dữ liệu đầu vào chỉ có 1 giá trị (1 chiều) để thuận tiện cho việc minh hoạ trong mặt phẳng.  
  
-Chúng ta có 1 bảng dữ liệu về chiều cao và cân nặng của 15 người như dưới đây: 
- 
- 
-| Chiều cao (cm)     | Cân nặng (km)     | Chiều cao (cm)     | Cân nặng (kg)     | 
-| :----------------: | :---------------: | :----------------: | :---------------: | 
-| 147                | 49                | 168                | 60                | 
-| 150                | 50                | 170                | 72                | 
-| 153                | 51                | 173                | 63                | 
-| 155                | 52                | 175                | 64                | 
-| 158                | 54                | 178                | 66                | 
-| 160                | 56                | 180                | 67                | 
-| 163                | 58                | 183                | 68                | 
-| 165                | 59                |                    |                   | 
+Chúng ta có 1 bảng dữ liệu về chiều cao và cân nặng của 15 người như trong Bảng \ref{tab:height_weight}. 
  
  
+\begin{table}[h!]
+\centering
+\caption{Bảng dữ liệu về chiều cao và cân nặng của 15 người}
+\label{tab:height_weight}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Chiều cao (cm)} & \textbf{Cân nặng (kg)} & \textbf{Chiều cao (cm)} & \textbf{Cân nặng (kg)} \\ \hline
+147                     & 49                     & 168                     & 60                     \\ \hline
+150                     & 50                     & 170                     & 72                     \\ \hline
+153                     & 51                     & 173                     & 63                     \\ \hline
+155                     & 52                     & 175                     & 64                     \\ \hline
+158                     & 54                     & 178                     & 66                     \\ \hline
+160                     & 56                     & 180                     & 67                     \\ \hline
+163                     & 58                     & 183                     & 68                     \\ \hline
+165                     & 59                     &                         &                        \\ \hline
+\end{tabular}
+\end{table}
+
 Bài toán đặt ra là: liệu có thể dự đoán cân nặng của một người dựa vào chiều cao của họ không? (\textit{Trên thực tế, tất nhiên là không, vì cân nặng còn phụ thuộc vào nhiều yếu tố khác nữa, thể tích chẳng hạn}). Vì blog này nói về các thuật toán Machine Learning đơn giản nên tôi sẽ giả sử rằng chúng ta có thể dự đoán được. 
  
 Chúng ta có thể thấy là cân nặng sẽ tỉ lệ thuận với chiều cao (càng cao càng nặng), nên có thể sử dụng Linear Regression model cho việc dự đoán này. Để kiểm tra độ chính xác của model tìm được, chúng ta sẽ giữ lại cột 155 và 160 cm để kiểm thử, các cột còn lại được sử dụng để huấn luyện (train) model. 
@@ -179,10 +178,12 @@ plt.show()
  
  \begin{figure}
  	\centering	
- 	\includegraphics[width = \textwidth]{../LR/output_3_0.png}
+ 	\includegraphics[width = .6\textwidth]{../LR/output_3_0.png}
+ 	\caption{ Phân bố của dữ liệu trong ví dụ có dạng đường thẳng}
+ 	\label{fig:linearregression_distribution}
  \end{figure}
  
-Từ đồ thị này ta thấy rằng dữ liệu được sắp xếp gần như theo 1 đường thẳng, vậy mô hình Linear Regression nhiều khả năng sẽ cho kết quả tốt: 
+Từ đồ thị trong Hình \ref{fig:linearregression_distribution} ta thấy rằng dữ liệu được sắp xếp gần như theo 1 đường thẳng, vậy mô hình Linear Regression nhiều khả năng sẽ cho kết quả tốt: 
  
 (cân nặng) = \pythoninline{w\_1}*(chiều cao) + \pythoninline{w\_0} 
  
@@ -227,7 +228,8 @@ w =  [[-33.73541021]
 
 \begin{figure}
 	\centering
-	\includegraphics[width = \textwidth]{../LR/output_5_1.png}
+	\includegraphics[width = .6\textwidth]{../LR/output_5_1.png}
+	\caption{Minh họa nghiệm của ví dụ}
 \end{figure}
  
 Từ đồ thị bên trên ta thấy rằng các điểm dữ liệu màu đỏ nằm khá gần đường thẳng dự đoán màu xanh. Vậy mô hình Linear Regression hoạt động tốt với tập dữ liệu \textit{training}. Bây giờ, chúng ta sử dụng mô hình này để dự đoán cân nặng của hai người có chiều cao 155 và 160 cm mà chúng ta đã không dùng khi tính toán nghiệm. 
@@ -237,13 +239,15 @@ Từ đồ thị bên trên ta thấy rằng các điểm dữ liệu màu đỏ
 y1 = w_1*155 + w_0 
 y2 = w_1*160 + w_0 
  
-print( 'Predict weight of person with height 155 cm: %.2f (kg), real number: 52 (kg)'  %(y1) ) 
-print( 'Predict weight of person with height 160 cm: %.2f (kg), real number: 56 (kg)'  %(y2) ) 
+print( 'Predict weight of person 155 cm: %.2f (kg), real number: 52 (kg)'  %(y1) ) 
+print( 'Predict weight of person 160 cm: %.2f (kg), real number: 56 (kg)'  %(y2) ) 
 \end{lstlisting}
  
-    Predict weight of person with height 155 cm: 52.94 (kg), real number: 52 (kg) 
-    Predict weight of person with height 160 cm: 55.74 (kg), real number: 56 (kg) 
- 
+
+\begin{lstlisting}[language=Python]
+Predict weight of person 155 cm: 52.94 (kg), real number: 52 (kg) 
+Predict weight of person 160 cm: 55.74 (kg), real number: 56 (kg) 
+\end{lstlisting}
  
  
 Chúng ta thấy rằng kết quả dự đoán khá gần với số liệu thực tế. 
@@ -295,12 +299,17 @@ Xem thêm ví dụ về \href{http://www.varsitytutors.com/hotmath/hotmath_help/
 % <div class="thecap"> Quadratic Regression (Nguồn: <a href = "http://www.varsitytutors.com/hotmath/hotmath_help/topics/quadratic-regression"> Quadratic Regression</a>) <br></div> 
 % </div> 
  
- a figre should be here 
+ \begin{figure}
+   \centering
+   \includegraphics[width = .4\textwidth]{../LR/qr.png}
+   \caption{Quadratic Regression (Nguồn: \href{http://www.varsitytutors.com/hotmath/hotmath_help/topics/quadratic-regression}{Quadratic Regression})}
+   \label{fig:linearregression_qr}
+ \end{figure}
  
 \subsection{Hạn chế của Linear Regression}
  
 Hạn chế đầu tiên của Linear Regression là nó rất \textbf{nhạy cảm với nhiễu} (sensitive to noise). Trong ví dụ về mối quan hệ giữa chiều cao và cân nặng bên trên, nếu có chỉ 
-một cặp dữ liệu \textit{nhiễu} (150 cm, 90kg) thì kết quả sẽ sai khác đi rất nhiều. Xem hình dưới đây: 
+một cặp dữ liệu \textit{nhiễu} (150 cm, 90kg) thì kết quả sẽ sai khác đi rất nhiều (Xem Hình \ref{fig:linearregression_noise}). 
 % <div class="imgcap"> 
 % <img src ="/assets/LR/output_13_1.png" align = "center"> 
 % </div> 
@@ -308,6 +317,8 @@ một cặp dữ liệu \textit{nhiễu} (150 cm, 90kg) thì kết quả sẽ sa
  \begin{figure}
  	\centering
  	\includegraphics[width = .6\textwidth]{../LR/output_13_1.png}
+ 	\caption{Linear Regression rất nhạy cảm với nhiễu}
+ 	\label{fig:linearregression_noise}
  \end{figure}
 Vì vậy, trước khi thực hiện Linear Regression, các nhiễu (\textit{outlier}) cần 
  phải được loại bỏ. Bước này được gọi là tiền xử lý (pre-processing). 
@@ -324,7 +335,10 @@ Nhưng có một điều chúng ta nên nhớ, \textbf{còn tính được đạ
  
  
 \section{Tài liệu tham khảo}
- 
-1. \href{https://en.wikipedia.org/wiki/Linear_regression}{Linear Regression - Wikipedia} 
-2. \href{http://machinelearningmastery.com/simple-linear-regression-tutorial-for-machine-learning/}{Simple Linear Regression Tutorial for Machine Learning} 
-3. \href{http://www.sci.utah.edu/~gerig/CS6640-F2012/Materials/pseudoinverse-cis61009sl10.pdf}{Least Squares, Pseudo-Inverses, PCA \& SVD} 
+ \begin{enumerate}
+ 	\item  \href{https://en.wikipedia.org/wiki/Linear_regression}{Linear Regression - Wikipedia}
+
+ 	\item  \href{http://machinelearningmastery.com/simple-linear-regression-tutorial-for-machine-learning/}{Simple Linear Regression Tutorial for Machine Learning} 
+
+ 	\item  \href{http://www.sci.utah.edu/~gerig/CS6640-F2012/Materials/pseudoinverse-cis61009sl10.pdf}{Least Squares, Pseudo-Inverses, PCA \& SVD} 
+ \end{enumerate}

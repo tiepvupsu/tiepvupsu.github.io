@@ -55,8 +55,6 @@
 
 \usepackage{courier}
 
-\lstset{columns=flexible}
-
 %Code listing style named "mystyle"
 \lstdefinestyle{mystyle}{
   backgroundcolor=\color{backcolour},   commentstyle=\color{codegreen},
@@ -67,15 +65,15 @@
   breaklines=true,                 
   captionpos=b,                    
   keepspaces=true,                 
-  showspaces=true,                
-  showstringspaces=true,
+  numbers=left,                    
+  numbersep=5pt,                  
+  showspaces=false,                
+  showstringspaces=false,
   showtabs=false,                  
   tabsize=2, 
   basicstyle=\footnotesize\ttfamily,
+  numberstyle=\tiny\color{white},
 }
-\makeatletter
-\def\lst@outputspace{{\ifx\lst@bkgcolor\empty\color{white}\else\lst@bkgcolor\fi\lst@visiblespace}}
-\makeatother
 
 \lstset{basicstyle=\footnotesize\ttfamily,breaklines=true}
 
@@ -86,7 +84,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Default fixed font does not support bold face
-\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{10} % for bold
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{11} % for bold
 \DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{10}  % for normal
 
 % Custom colors
@@ -125,7 +123,7 @@ showstringspaces=false            %
 \lstinputlisting[#1]{#2}}}
 
 % Python for inline
-\newcommand\pythoninline[1]{{\color{deepred}\pythonstyle\lstinline!#1!}}
+\newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
 
 
 
@@ -152,41 +150,6 @@ showstringspaces=false            %
 \include{1_introduce}
 \include{2_categories}
 \include{3_linearregression}
-
-
-\begin{lstlisting}[language=Python, caption=Python example]
-import numpy as np
- 
-def incmatrix(genl1,genl2):
-    m = len(genl1)
-    n = len(genl2)
-    M = None #to become the incidence matrix
-    VT = np.zeros((n*m,1), int)  #dummy variable
- 
-    #compute the bitwise xor matrix
-    M1 = bitxormatrix(genl1)
-    M2 = np.triu(bitxormatrix(genl2),1) 
- 
-    for i in range(m-1):
-        for j in range(i+1, m):
-            [r,c] = np.where(M2 == M1[i,j])
-            for k in range(len(r)):
-                VT[(i)*n + r[k]] = 1;
-                VT[(i)*n + c[k]] = 1;
-                VT[(j)*n + r[k]] = 1;
-                VT[(j)*n + c[k]] = 1;
- 
-                if M is None:
-                    M = np.copy(VT)
-                else:
-                    M = np.concatenate((M, VT), 1)
- 
-                VT = np.zeros((n*m,1), int)
- 
-    return M
-\end{lstlisting}
-
-\pythoninline{asdf}
 
 %\include{chapter}
 %\appendix

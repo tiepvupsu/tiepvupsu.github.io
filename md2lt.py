@@ -104,8 +104,8 @@ for line in f:
 	new_line = inlinecode(new_line)
 
 	new_line = new_line.replace('\\\(', '$')
-	new_line = new_line.replace('\\\[', '$$')
-	new_line = new_line.replace('\\\]', '$$')
+	new_line = new_line.replace('\\\[', '\\begin{equation*}')
+	new_line = new_line.replace('\\\]', '\\end{equation*}')
 	new_line = new_line.replace('\\\|', '\\|')
 	new_line = new_line.replace('\\\)', '$')
 	new_line = new_line.replace('\\_', '_')

@@ -179,7 +179,7 @@ Trong phần này, tôi sẽ chọn một ví dụ đơn giản về việc gi�
 Chúng ta có 1 bảng dữ liệu về chiều cao và cân nặng của 15 người như dưới đây:
 
 
-| Chiều cao (cm)     | Cân nặng (km)     | Chiều cao (cm)     | Cân nặng (kg)     |
+| Chiều cao (cm)     | Cân nặng (kg)     | Chiều cao (cm)     | Cân nặng (kg)     |
 | :----------------: | :---------------: | :----------------: | :---------------: |
 | 147                | 49                | 168                | 60                |
 | 150                | 50                | 170                | 72                |
