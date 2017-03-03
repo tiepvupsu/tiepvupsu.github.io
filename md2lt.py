@@ -84,7 +84,7 @@ for line in f:
 	# print(c)
 	#### math 
 	new_line = ' '+line.rstrip('\r') + ' '
-	line = new_line
+	
 
 	## in code mode 
 	if '```' in new_line:
@@ -103,11 +103,7 @@ for line in f:
 
 	new_line = inlinecode(new_line)
 
-	new_line = new_line.replace('\\\(', '$')
-	new_line = new_line.replace('\\\[', '\\begin{equation*}')
-	new_line = new_line.replace('\\\]', '\\end{equation*}')
-	new_line = new_line.replace('\\\|', '\\|')
-	new_line = new_line.replace('\\\)', '$')
+	
 	new_line = new_line.replace('\\_', '_')
 	new_line = new_line.replace(' **', ' \\textbf{')
 	new_line = new_line.replace('[**', '[\\textbf{')
@@ -119,6 +115,8 @@ for line in f:
 	new_line = new_line.replace('**}', '}}')
 	new_line = new_line.replace('**.', '}.')
 	new_line = new_line.replace('**,', '},')
+	new_line = new_line.replace('**:', '}:')
+	new_line = new_line.replace('**!', '}!')
 	new_line = new_line.replace(' *', ' \\textit{')
 	new_line = new_line.replace('(*', '(\\textit{')
 	new_line = new_line.replace('[*', '[\\textit{')
@@ -155,6 +153,12 @@ for line in f:
 	new_line = new_line.replace('_;', '};')
 	new_line = new_line.replace('_.', '}.')
 
+	new_line = new_line.replace('\\\(', '$')
+	new_line = new_line.replace('\\\[', '\\begin{equation*}')
+	new_line = new_line.replace('\\\]', '\\end{equation*}')
+	new_line = new_line.replace('\\\|', '\\|')
+	new_line = new_line.replace('\\\)', '$')
+
 	## if comment line -> continue 
 	if '<!--' in new_line:
 		in_comment_mode = True 
@@ -173,6 +177,7 @@ for line in f:
 	
 
 	#### Header 
+	line = new_line
 	if line[1] == '#' and not in_code_mode:
 		h = 1
 		while line[h] == '#':

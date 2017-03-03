@@ -54,7 +54,10 @@ summary: Trong thuật toán K-means clustering, chúng ta không biết nhãn (
 <a name="-gioi-thieu"></a>
 
 ## 1. Giới thiệu
-<a href = "/2016/12/28/linearregression/">Trong bài trước</a>, chúng ta đã làm quen với thuật toán Linear Regression - là thuật toán đơn giản nhất trong <a href = "/2016/12/27/categories/#supervised-learning-hoc-co-giam-sat">Supervised learning</a>. Bài này tôi sẽ giới thiệu một trong những thuật toán cơ bản nhất trong <a href = "/2016/12/27/categories/#unsupervised-learning-hoc-khong-giam-sat">Unsupervised learning</a> - thuật toán K-means clustering (phân cụm K-means). 
+
+[Trong bài trước](/2016/12/28/linearregression/), chúng ta đã làm quen với thuật toán Linear Regression - là thuật toán đơn giản nhất trong [Supervised learning](/2016/12/27/categories/#supervised-learning-hoc-co-giam-sat). Bài này tôi sẽ giới thiệu một trong những thuật toán cơ bản nhất trong [Unsupervised learning](/2016/12/27/categories/#unsupervised-learning-hoc-khong-giam-sat) - thuật toán K-means clustering (phân cụm K-means). 
+
+
 
 Trong thuật toán K-means clustering, chúng ta không biết nhãn (label) của từng điểm dữ liệu. Mục đích là làm thể nào để phân dữ liệu thành các cụm (cluster) khác nhau sao cho _dữ liệu trong cùng một cụm có tính chất giống nhau_. 
 

@@ -10,7 +10,7 @@ category: Neural-nets
 sc_project: 11266516
 sc_security: f2c8f1b8
 img: \assets\14_mlp\multi_layers.png
-summary: Giới thiệu về Neural Network nhiều lớp và phương pháp tối ưu. 
+summary: Giới thiệu về Neural Network nhiều lớp và phương pháp tối ưu.
 ---
 
 **Trong trang này:**
@@ -383,7 +383,7 @@ trong đó \\(\odot\\) là _element-wise product_ hay _Hadamard product_ tức l
 
 <hr>
 
-**Chú ý:** Biểu thức tính đạo hàm trong dòng trên của bước 3 có thể khiến bạn đặt câu hỏi: tại sao lại là \\(\mathbf{a}^{(L-1)}\mathbf{e}^{(L)T}\\) mà không phải là \\(\mathbf{a}^{(L-1)T}\mathbf{e}^{(L)}\\), \\(\mathbf{e}^{(L)T}\mathbf{a}^{(L-1)}\\), hay \\(\mathbf{e}^{(L)}\mathbf{a}^{(L-1)T}\\)? _Quy tắc bỏ túi_ cần nhớ là **chiều của hai ma trận ở hai vế phải như nhau**. Thử một chút, vế trái là đạo hàm theo \\(\mathbf{W}^{(L)}\\) là một đại lượng có chiều (_dimension_, not _afternoon_) bằng chiều của ma trận này, tức chiều là \\(\mathbb{R}^{d^{(L-1)}\times d^{(L)}}\\). Vế phải, \\(\mathbf{e}^{(L)} \in \mathbf{R}^{d^{(L)} \times 1}\\), \\(\mathbf{a}^{(L-1)} \in \mathbb{R}^{d^{(L-1)} \times 1}\\). Để hai vế có số chiều bằng nhau thì ta phải lấy \\(\mathbf{a}^{(L-1)} \mathbf{e}^{(L)T}\\). Cũng chú ý thêm **rằng đạo hàm theo một ma trận của một hàm số nhận giá trị thực (scalar) sẽ có số chiều bằng với số chiều của ma trận đó!!**
+**Chú ý:** Biểu thức tính đạo hàm trong dòng trên của bước 3 có thể khiến bạn đặt câu hỏi: tại sao lại là \\(\mathbf{a}^{(L-1)}\mathbf{e}^{(L)T}\\) mà không phải là \\(\mathbf{a}^{(L-1)T}\mathbf{e}^{(L)}\\), \\(\mathbf{e}^{(L)T}\mathbf{a}^{(L-1)}\\), hay \\(\mathbf{e}^{(L)}\mathbf{a}^{(L-1)T}\\)? _Quy tắc bỏ túi_ cần nhớ là **chiều của hai ma trận ở hai vế phải như nhau**. Thử một chút, vế trái là đạo hàm theo \\(\mathbf{W}^{(L)}\\) là một đại lượng có chiều (_dimension_, not _afternoon_) bằng chiều của ma trận này, tức chiều là \\(\mathbb{R}^{d^{(L-1)}\times d^{(L)}}\\). Vế phải, \\(\mathbf{e}^{(L)} \in \mathbf{R}^{d^{(L)} \times 1}\\), \\(\mathbf{a}^{(L-1)} \in \mathbb{R}^{d^{(L-1)} \times 1}\\). Để hai vế có chiều bằng nhau thì ta phải lấy \\(\mathbf{a}^{(L-1)} \mathbf{e}^{(L)T}\\). Cũng chú ý thêm **rằng đạo hàm theo một ma trận của một hàm số nhận giá trị thực (scalar) sẽ có chiều bằng với chiều của ma trận đó!!**
 
 <a name="-backpropagation-cho-batch-mini-batch-gradient-descent"></a>
 
@@ -391,7 +391,7 @@ trong đó \\(\odot\\) là _element-wise product_ hay _Hadamard product_ tức l
 
 Nếu chúng ta muốn thực hiện Batch hoặc mini-batch Gradient Descent thì sao? Trong thực tế, [mini-batch GD](/2017/01/16/gradientdescent2/#-mini-batch-gradient-descent) được sử dụng nhiều nhất. Nếu lượng dữ liệu là nhỏ, [Batch GD](/2017/01/16/gradientdescent2/#-batch-gradient-descent) trực tiếp được sử dụng.
 
-Khi đó, cặp (input, output) sẽ ở dạng ma trận \\((\mathbf{X, Y})\\). Giả sử rằng mỗi lần tính toán, ta lấy \\(N\\) dữ liệu để tính toán. Khi đó, \\(\mathbf{X} \in \mathbb{R}^{d^{(0)} \times N}, \mathbf{Y} \in \mathbb{R}^{d^{(L)}\times N}\\). Với \\(d^{(0)} = d\\) là số chiều của dữ liệu đầu vào (không tính bias).
+Khi đó, cặp (input, output) sẽ ở dạng ma trận \\((\mathbf{X, Y})\\). Giả sử rằng mỗi lần tính toán, ta lấy \\(N\\) dữ liệu để tính toán. Khi đó, \\(\mathbf{X} \in \mathbb{R}^{d^{(0)} \times N}, \mathbf{Y} \in \mathbb{R}^{d^{(L)}\times N}\\). Với \\(d^{(0)} = d\\) là chiều của dữ liệu đầu vào (không tính bias).
 
  Khi đó các activation sau mỗi layer sẽ có dạng \\(\mathbf{A}^{(l)} \in \mathbb{R}^{d^{(l)} \times N}\\). Tương tự thế, \\(\mathbf{E}^{(l)} \in \mathbb{R}^{d^{(l)}\times N}\\). Và ta cũng có thể suy ra công thức cập nhật như sau.
 

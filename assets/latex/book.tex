@@ -4,7 +4,7 @@
 %
 % Use this file as a template for your own input.
 %
-%%%%%%%%%%%%%%%% Springer-Verlag %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%% Springer-Verlag %%%%%%%%%%%%%%%%%%%%%%%%%%`'
 
 
 % RECOMMENDED %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -38,7 +38,7 @@
 \hypersetup{
     colorlinks=true,
     linkcolor=blue,
-    filecolor=magenta,      
+    filecolor=magenta,
     urlcolor=blue,
 }
 
@@ -61,16 +61,16 @@
   keywordstyle=\color{magenta},
   stringstyle=\color{codepurple},
   basicstyle=\footnotesize,
-  breakatwhitespace=false,         
-  breaklines=true,                 
-  captionpos=b,                    
-  keepspaces=true,                 
-  numbers=left,                    
-  numbersep=5pt,                  
-  showspaces=false,                
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  keepspaces=true,
+  numbers=left,
+  numbersep=5pt,
+  showspaces=false,
   showstringspaces=false,
-  showtabs=false,                  
-  tabsize=2, 
+  showtabs=false,
+  tabsize=2,
   basicstyle=\footnotesize\ttfamily,
   numberstyle=\tiny\color{white},
 }
@@ -105,7 +105,7 @@ emph={MyClass,__init__},          % Custom highlighting
 emphstyle=\ttb\color{deepred},    % Custom highlighting style
 stringstyle=\color{deepgreen},
 frame=tb,                         % Any extra options here
-showstringspaces=false            % 
+showstringspaces=false            %
 }}
 
 
@@ -123,7 +123,7 @@ showstringspaces=false            %
 \lstinputlisting[#1]{#2}}}
 
 % Python for inline
-\newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
+\newcommand\pythoninline[1]{{\color{deepred}\pythonstyle\lstinline!#1!}}
 
 
 
@@ -140,8 +140,9 @@ showstringspaces=false            %
 
 % \include{dedic}
 % \include{pref}
-
+% \setcounter{tocdepth}{1}
 \tableofcontents
+
 
 
 \mainmatter%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -150,6 +151,7 @@ showstringspaces=false            %
 \include{1_introduce}
 \include{2_categories}
 \include{3_linearregression}
+\include{4_kmeans}
 
 %\include{chapter}
 %\appendix
@@ -163,8 +165,3 @@ showstringspaces=false            %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \end{document}
-
-
-
-
-
