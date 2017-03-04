@@ -23,14 +23,14 @@ summary: Overfitting không phải là một thuật toán trong Machine Learnin
 - [3. Regularization](#-regularization)
     - [3.1. Early Stopping](#-early-stopping)
     - [3.2. Thêm số hạng vào hàm mất mát](#-them-so-hang-vao-ham-mat-mat)
-    - [\\\(l_2\\\) regularization](#\\l\\-regularization)
+    - [3.3. \\\(l_2\\\) regularization](#-\\l\\-regularization)
         - [Ví dụ về Weight Decay với MLP](#vi-du-ve-weight-decay-voi-mlp)
-    - [Tikhonov regularization](#tikhonov-regularization)
-    - [Regularizers for sparsity](#regularizers-for-sparsity)
-    - [Regularization trong sklearn](#regularization-trong-sklearn)
-- [Các phương pháp khác](#cac-phuong-phap-khac)
-- [Tóm tắt nội dung](#tom-tat-noi-dung)
-- [Tài liệu tham khảo](#tai-lieu-tham-khao)
+    - [3.4. Tikhonov regularization](#-tikhonov-regularization)
+    - [3.5. Regularizers for sparsity](#-regularizers-for-sparsity)
+    - [3.6. Regularization trong sklearn](#-regularization-trong-sklearn)
+- [4. Các phương pháp khác](#-cac-phuong-phap-khac)
+- [5. Tóm tắt nội dung](#-tom-tat-noi-dung)
+- [6. Tài liệu tham khảo](#-tai-lieu-tham-khao)
 
 <!-- /MarkdownTOC -->
 
@@ -202,9 +202,9 @@ Việc tối thiểu _regularized loss function_, nói một cách tương đố
 
 Với các mô hình Neural Networks, một số kỹ thuật regularization thường được sử dụng là:
 
-<a name="\\l\\-regularization"></a>
+<a name="-\\l\\-regularization"></a>
 
-### \\(l_2\\) regularization
+### 3.3. \\(l_2\\) regularization
 Trong kỹ thuật này:
 \\[
 R(\mathbf{w}) = \\|\mathbf{w}\\|_2^2
@@ -303,9 +303,9 @@ Khi \\(\lambda\\) quá lớn, tức ta xem phần _regularization_ quan trọng 
 
 [Sklearn có cung cấp rất nhiều chức năng cho MLP](http://scikit-learn.org/stable/modules/neural_networks_supervised.html), trong đó ta có thể lựa chọn số lượng hidden layers và số lượng hidden units trong mỗi layer, activation functions, weight decay, [learning rate, hệ số momentum, nesterovs_momentum](/2017/01/16/gradientdescent2/), có early stopping hay không, lượng dữ liệu được tách ra làm validation set, và nhiều chức năng khác.
 
-<a name="tikhonov-regularization"></a>
+<a name="-tikhonov-regularization"></a>
 
-### Tikhonov regularization
+### 3.4. Tikhonov regularization
 \\[
 \lambda R(\mathbf{w}) = \\|\Gamma \mathbf{w}\\|_2^2
 \\]
@@ -314,9 +314,9 @@ Với \\(\Gamma\\) (viết hoa của gamma) là một ma trận. Ma trận \\(\G
 
 Khi các phần tử trên đường chéo của \\(\Gamma\\) là khác nhau, ta có một phiên bản gọi là _weighted \\(l_2\\) regularization_, tức đánh trọng số khác nhau cho mỗi phần tử trong \\(\mathbf{w}\\). Phần tử nào càng bị đánh trọng số cao thì nghiệm tương ứng càng nhỏ (để đảm bảo rằng hàm mất mát là nhỏ). Với Polynomial Regression, các phần tử ứng với hệ số bậc cao sẽ được đánh trọng số cao hơn, khiến cho xác suất để chúng gần 0 là lớn hơn.
 
-<a name="regularizers-for-sparsity"></a>
+<a name="-regularizers-for-sparsity"></a>
 
-### Regularizers for sparsity
+### 3.5. Regularizers for sparsity
 
 Trong nhiều trường hợp, ta muốn các hệ số _thực sự_ bằng 0 chứ không phải là _nhỏ gần 0_ như \\(l_2\\) regularization đã làm phía trên. Lúc đó, có một regularization khác được sử dụng, đó là \\(l_0\\) regularization:
 \\[
@@ -336,29 +336,29 @@ Trong Thống Kê, việc sử dụng \\(l_1\\) regularization còn được g�
 
 Khi cả \\(l_2\\) và \\(l_1\\) regularization được sử dụng, ta có mô hình gọi là [Elastic Net Regression](https://en.wikipedia.org/wiki/Elastic_net_regularization).
 
-<a name="regularization-trong-sklearn"></a>
+<a name="-regularization-trong-sklearn"></a>
 
-### Regularization trong sklearn
+### 3.6. Regularization trong sklearn
 
 Trong [sklearn](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html), ví dụ [Logistic Regression](/2017/01/27/logisticregression/), bạn cũng có thể sử dụng các \\(l_1\\) và \\(l_2\\) regularizations bằng cách khai báo biến `penalty='l1'` hoặc `penalty = 'l2'` và biến `C`, trong đó `C` là _nghịch đảo_ của \\(\lambda\\). Trong các bài trước khi chưa nói về  Overfitting và Regularization, tôi có sử dụng `C = 1e5` để chỉ ra rằng \\(\lambda\\) là một số rất nhỏ.
 
-<a name="cac-phuong-phap-khac"></a>
+<a name="-cac-phuong-phap-khac"></a>
 
-## Các phương pháp khác
+## 4. Các phương pháp khác
 Ngoài các phương pháp đã nêu ở trên, với mỗi mô hình, nhiều phương pháp tránh overfitting khác cũng được sử dụng. Điển hình là [Dropout trong Deep Neural Networks mới được đề xuất gần đây](http://jmlr.org/papers/volume15/srivastava14a/srivastava14a.pdf). Một cách ngắn gọn, dropout là một phương pháp _tắt_ ngẫu nhiên các units trong Networks. _Tắt_ tức cho các unit giá trị bằng không và tính toán feedforward và backpropagation bình thường trong khi training. Việc này không những giúp lượng tính toán giảm đi mà còn làm giảm việc overffitng. Tôi xin được quay lại vấn đề này nếu có dịp nói  sâu về Deep Learning trong tương lai.
 
 Bạn đọc có thể tìm đọc thêm với các từ khóa: [pruning](https://en.wikipedia.org/wiki/Pruning_(decision_trees)) (tránh overftting trong Decision Trees), [VC dimension](https://en.wikipedia.org/wiki/VC_dimension) (đo độ phức tạp của mô hình, độ phức tạp càng lớn thì càng dễ bị overfitting).
 
-<a name="tom-tat-noi-dung"></a>
+<a name="-tom-tat-noi-dung"></a>
 
-## Tóm tắt nội dung
+## 5. Tóm tắt nội dung
 * Một mô hình mô tốt là mộ mô hình có _tính tổng quát_, tức mô tả được dữ liệu cả trong lẫn ngoài tập training. Mô hình chỉ mô tả tốt dữ liệu trong tập training được gọi là **overfitting**.
 
 * Để tránh overfitting, có rất nhiều kỹ thuật được sử dụng, điển hình là **cross-validation** và **regularization**. Trong Neural Networks, **weight decay** và **dropout** thường được dùng.
 
-<a name="tai-lieu-tham-khao"></a>
+<a name="-tai-lieu-tham-khao"></a>
 
-## Tài liệu tham khảo
+## 6. Tài liệu tham khảo
 
 [1] [Overfitting - Wikipedia](https://en.wikipedia.org/wiki/Overfitting)
 
