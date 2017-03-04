@@ -9,7 +9,7 @@ tags:
 category: General
 sc_project:
 sc_security:
-img: \assets\15_overfitting\linreg_20.png
+img: \assets\15_overfitting\nnet_reg0.png
 summary: Overfitting không phải là một thuật toán trong Machine Learning. Nó là một hiện tượng không mong muốn thường gặp, người xây dựng mô hình Machine Learning cần nắm được các kỹ thuật để tránh hiện tượng này.
 ---
 
