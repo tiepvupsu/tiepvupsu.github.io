@@ -228,18 +228,18 @@ ul.nav li.active a {
 
 .mypagination{
   border: 1px solid #204081; 
-  padding: 2px 10px 2px 10px;
+  padding: 5px 15px 5px 15px;
 }
 
 .mypaginationactive{
-  padding:2px 10px 2px 10px;
+  padding:5px 15px 5px 15px;
   background-color: #204081;
   /*background-color: red;*/
   border: 1px solid #204081; 
   color: #fff;
 }
 .myhiddenpagination{
-  padding: 2px 10px 2px 10px;
+  padding: 5px 15px 5px 15px;
   border: 1px solid #fff;
   color: #fff;
 }
