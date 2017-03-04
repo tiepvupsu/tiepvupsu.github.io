@@ -7,8 +7,8 @@ permalink: 2017/03/04/overfitting/
 mathjax: true
 tags:
 category: General
-sc_project:
-sc_security:
+sc_project: 11274171
+sc_security: 980b6518
 img: \assets\15_overfitting\nnet_reg0.png
 summary: Overfitting không phải là một thuật toán trong Machine Learning. Nó là một hiện tượng không mong muốn thường gặp, người xây dựng mô hình Machine Learning cần nắm được các kỹ thuật để tránh hiện tượng này.
 ---
