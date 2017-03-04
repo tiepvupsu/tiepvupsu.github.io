@@ -11,18 +11,19 @@ remove the last line [Finised in 0.0s] :D
 
 import csv 
 
-MY_URL = 'https://tiepvupsu.github.io'
+MY_URL = 'http://machinelearningcoban.com'
 def process_link(link):
 	# find all locations of '/'
 	slash_id = [n for n in xrange(len(line[0])) if line[0].find('/', n) == n]
-	print(slash_id)
+	# print(slash_id)
 	old_path = link[:slash_id[2]]
 	if old_path != MY_URL:
 		print(link + ',' + (65 - len(link))*' ' + MY_URL + link[slash_id[2]:])
 	else: 
 		print(link)
 
-with open('disqus_links.csv', 'rb') as csvfile:
+fn ='tiepvu-2017-03-04T03:18:40.438849-links' + '.csv'
+with open(fn, 'rb') as csvfile:
 	csvreader = csv.reader(csvfile, delimiter = ',')
 	for line in csvreader:
 		process_link(line[0])

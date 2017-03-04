@@ -293,7 +293,7 @@ Khi \\(\lambda = 0\\), tức không có regularization, ta nhận thấy gần n
 
 Khi \\(\lambda\\) tăng lên, tức sự ảnh hưởng của regularization tăng lên (xem hàng dưới), đường ranh giới giữa các lớp trở lên tự nhiên hơn. Nói cách khác, với \\(\lambda\\) đủ lớn, weight decay có tác dụng hạn chế overfitting trong MLP.
 
-Bạn đọc hãy thử vào trong [Source code](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/15_overfitting/linreg_4.png), thay \\(\lambda = 1\\) bằng cách thay dòng cuối cùng:
+Bạn đọc hãy thử vào trong [Source code](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/15_overfitting/Weight%20Decay.ipynb), thay \\(\lambda = 1\\) bằng cách thay dòng cuối cùng:
 ```python
 mynet(1)
 ```
