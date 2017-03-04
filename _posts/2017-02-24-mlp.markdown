@@ -9,7 +9,7 @@ tags: Neural-nets Multi-layer Backpropagation
 category: Neural-nets
 sc_project: 11266516
 sc_security: f2c8f1b8
-img: \assets\14_mlp\multi_layers.png
+img: \assets\14_mlp\nnet_reg0.png
 summary: Giới thiệu về Neural Network nhiều lớp và phương pháp tối ưu.
 ---
 
