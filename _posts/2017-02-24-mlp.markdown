@@ -428,6 +428,8 @@ Khi đó, cặp (input, output) sẽ ở dạng ma trận \\((\mathbf{X, Y})\\).
 ## 4. Ví dụ trên Python
 Source code cho ví dụ này có thể được xem [tại đây](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/14_mlp/Example%20.ipynb).
 
+Ví dụ tôi nêu trong mục này mang mục đích giúp các bạn hiểu thực sự cách lập trình cho backpropagation. Khi làm thực nghiệm, chúng ta sử dụng các thư viện sẵn có giúp tính backpropagation. Ví dụ như [Sklearn cho MLP]9http://scikit-learn.org/stable/modules/neural_networks_supervised.html).
+
 Để kiểm chứng lại những gì tôi viết trên đây có đúng không, chúng ta cùng xem một ví dụ. Ý tưởng trong ví dụ này được lấy từ [CS231n Convolutional Neural Networks for Visual Recognition](http://cs231n.github.io/neural-networks-case-study/), phần code dưới đây tôi viết lại cho phù hợp với những tính toán và ký hiệu phía trên.
 
 <a name="-tao-du-lieu-gia"></a>
