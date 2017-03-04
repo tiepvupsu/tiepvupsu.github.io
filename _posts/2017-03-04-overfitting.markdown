@@ -5,7 +5,7 @@ title:  "Bài 15: Overfitting"
 date:   2017-03-04 15:22:00
 permalink: 2017/03/04/overfitting/
 mathjax: true
-tags:
+tags: Overfitting
 category: General
 sc_project: 11274171
 sc_security: 980b6518
