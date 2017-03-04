@@ -3,9 +3,9 @@
 
 <div class="text-center" > 
   {% if paginator.previous_page %}
-    <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" class="mypagination" >&laquo; Newer</a>
+    <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" class="mypagination" >&laquo;</a>
   {% else %}
-    <span class="myhiddenpagination">&laquo; Newer</span>
+    <span class="myhiddenpagination">&laquo;</span>
   {% endif %}
 
   {% for page in (1..paginator.total_pages) %}
@@ -19,9 +19,9 @@
   {% endfor %}
 
   {% if paginator.next_page %}
-    <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}" class="mypagination">Older &raquo;</a>
+    <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}" class="mypagination">&raquo;</a>
   {% else %}
-    <span class="myhiddenpagination">Older &raquo;</span>
+    <span class="myhiddenpagination">&raquo;</span>
   {% endif %}
 </div>
 {% endif %}
