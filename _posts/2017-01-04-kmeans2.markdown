@@ -104,7 +104,7 @@ import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 ```
 
-Để hiện thị nhiều bức ảnh các chữ số cùng một lúc, tôi có dùng thêm hàm số [`display_network.py`](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/kmeans/display_network.py).
+**Để hiện thị nhiều bức ảnh các chữ số cùng một lúc, tôi có dùng thêm hàm số [`display_network.py`](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/kmeans/display_network.py)**.
 
 **Thực hiện thuật toán K-means clustering trên toàn bộ 10k chữ số.**
 
