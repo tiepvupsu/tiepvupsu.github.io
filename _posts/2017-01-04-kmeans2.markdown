@@ -99,7 +99,7 @@ Trước tiên các bạn vào trang chủ của MNIST để [download](http://y
 ```python
 # %reset
 import numpy as np 
-from mnist import MNIST
+from mnist import MNIST # require `pip install python-mnist`
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 ```
