@@ -89,7 +89,7 @@ Trước khi áp dụng thuật toán [K-means clustering](/2017/01/01/kmeans/),
 <a name="lam-viec-tren-python"></a>
 
 ### Làm việc trên Python
-Trước tiên các bạn vào trang chủ của MNIST để [download](http://yann.lecun.com/exdb/mnist/ ) bộ cơ sở dữ liệu này. Trong bài này chúng ta chỉ dùng bộ dữ liệu tét với 10k ảnh và không cần label nên các bạn chỉ cần download file `t10k-images-idx3-ubyte.gz`
+Trước tiên các bạn vào trang chủ của MNIST để [download](http://yann.lecun.com/exdb/mnist/ ) bộ cơ sở dữ liệu này. Mặc dù trong bài này chúng ta chỉ dùng bộ dữ liệu test với 10k ảnh và không cần label, các bạn vẫn cần download cả hai file `t10k-images-idx3-ubyte.gz` và `t10k-labels-idx1-ubyte.gz` vì thư viện `python-mnist` cần cả hai file này để load dữ liệu từ tập test. 
 
 
 **Trước tiên chúng ta cần khai báo một số thư viện:**
