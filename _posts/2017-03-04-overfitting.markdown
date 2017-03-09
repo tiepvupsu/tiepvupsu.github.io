@@ -100,7 +100,7 @@ Vậy, có những kỹ thuật nào giúp tránh Overfitting?
 \\]
 với \\(p\\) [thường bằng 1 hoặc 2](/math/#mot-so-chuan-thuong-dung).
 
-Với Classification, trung bình cộng của [cross entropy](\2017/02/17/softmax/#-cross-entropy) có thể được sử dụng.
+Với Classification, trung bình cộng của [cross entropy](/2017/02/17/softmax/#-cross-entropy) có thể được sử dụng.
 
 **Test error:** Tương tự như trên nhưng áp dụng mô hình tìm được vào **test data**. Chú ý rằng, khi xây dựng mô hình, ta không được sử dụng thông tin trong tập dữ liệu test. Dữ liệu test chỉ được dùng để đánh giá mô hình. Với Regression, đại lượng này thường được định nghĩa:
 \\[
@@ -211,7 +211,7 @@ R(\mathbf{w}) = \\|\mathbf{w}\\|_2^2
 \\]
 tức norm 2 của hệ số.
 
-_Nếu bạn đọc chưa quen thuộc với khái niệm norm, bạn được khuyến khích đọc [phần phụ   lục này](/math/#norms-chuan)_.
+_Nếu bạn đọc chưa quen thuộc với khái niệm norm, bạn được khuyến khích đọc [phần phụ lục này](/math/#norms-chuan)_.
 
 Hàm số này có một vài đặc điểm đang lưu ý:
 

@@ -1,25 +1,6 @@
 %!TEX root = book.tex
 \chapter{Overfitting}
---- 
- 
-\textbf{Trong trang này:} 
- 
-- \href{http://machinelearningcoban.com#-gioi-thieu}{1. Giới thiệu} 
-- \href{http://machinelearningcoban.com#-validation}{2. Validation} 
-    - \href{http://machinelearningcoban.com#-validation-1}{2.1. Validation} 
-    - \href{http://machinelearningcoban.com#-cross-validation}{2.2. Cross-validation} 
-- \href{http://machinelearningcoban.com#-regularization}{3. Regularization} 
-    - \href{http://machinelearningcoban.com#-early-stopping}{3.1. Early Stopping} 
-    - \href{http://machinelearningcoban.com#-them-so-hang-vao-ham-mat-mat}{3.2. Thêm số hạng vào hàm mất mát} 
-    - \href{http://machinelearningcoban.com#-\\l\\-regularization}{3.3. \$l_2\$ regularization} 
-        - \href{http://machinelearningcoban.com#vi-du-ve-weight-decay-voi-mlp}{Ví dụ về Weight Decay với MLP} 
-    - \href{http://machinelearningcoban.com#-tikhonov-regularization}{3.4. Tikhonov regularization} 
-    - \href{http://machinelearningcoban.com#-regularizers-for-sparsity}{3.5. Regularizers for sparsity} 
-    - \href{http://machinelearningcoban.com#-regularization-trong-sklearn}{3.6. Regularization trong sklearn} 
-- \href{http://machinelearningcoban.com#-cac-phuong-phap-khac}{4. Các phương pháp khác} 
-- \href{http://machinelearningcoban.com#-tom-tat-noi-dung}{5. Tóm tắt nội dung} 
-- \href{http://machinelearningcoban.com#-tai-lieu-tham-khao}{6. Tài liệu tham khảo} 
- 
+
  
  
 Overfitting không phải là một thuật toán trong Machine Learning. Nó là một hiện tượng không mong muốn thường gặp, người xây dựng mô hình Machine Learning cần nắm được các kỹ thuật để tránh hiện tượng này. 
@@ -36,33 +17,33 @@ Nhắc lại một chút về Đa thức nội suy Lagrange: Với $N$ cặp đi
  
 Sự thật là nếu một mô hình \textit{quá fit} với dữ liệu thì nó sẽ gây phản tác dụng! Hiện tượng \textit{quá fit} này trong Machine Learning được gọi là \textit{overfitting}, là điều mà khi xây dựng mô hình, chúng ta luôn cần tránh. Để có cái nhìn đầu tiên về overfitting, chúng ta cùng xem Hình dưới đây. Có 50 điểm dữ liệu được tạo bằng một đa thức bậc ba cộng thêm nhiễu. Tập dữ liệu này được chia làm hai, 30 điểm dữ liệu màu đỏ cho training data, 20 điểm dữ liệu màu vàng cho test data. Đồ thị của đa thức bậc ba này được cho bởi đường màu xanh lục. Bài toán của chúng ta là giả sử ta không biết mô hình ban đầu mà chỉ biết các điểm dữ liệu, hãy tìm một mô hình "tốt" để mô tả dữ liệu đã cho. 
  
-<hr> 
-<div> 
-<table width = "100%" style = "border: 0px solid white"> 
-   <tr > 
-        <td width="40%" style = "border: 0px solid white"> 
-        <img style="display:block;" width = "100%" src = "/assets/15_overfitting/linreg_2.png"> 
-         </td> 
-        <td width="40%" style = "border: 0px solid white"> 
-        <img style="display:block;" width = "100%" src = "/assets/15_overfitting/linreg_4.png"> 
-        </td> 
+% <hr> 
+% <div> 
+% <table width = "100%" style = "border: 0px solid white"> 
+%    <tr > 
+%         <td width="40%" style = "border: 0px solid white"> 
+%         <img style="display:block;" width = "100%" src = "/assets/15_overfitting/linreg_2.png"> 
+%          </td> 
+%         <td width="40%" style = "border: 0px solid white"> 
+%         <img style="display:block;" width = "100%" src = "/assets/15_overfitting/linreg_4.png"> 
+%         </td> 
  
-    </tr> 
+%     </tr> 
  
-    <tr > 
-        <td width="40%" style = "border: 0px solid white"> 
-        <img style="display:block;" width = "100%" src = "/assets/15_overfitting/linreg_8.png"> 
-         </td> 
-        <td width="40%" style = "border: 0px solid white"> 
-        <img style="display:block;" width = "100%" src = "/assets/15_overfitting/linreg_16.png"> 
-        </td> 
+%     <tr > 
+%         <td width="40%" style = "border: 0px solid white"> 
+%         <img style="display:block;" width = "100%" src = "/assets/15_overfitting/linreg_8.png"> 
+%          </td> 
+%         <td width="40%" style = "border: 0px solid white"> 
+%         <img style="display:block;" width = "100%" src = "/assets/15_overfitting/linreg_16.png"> 
+%         </td> 
  
-    </tr> 
-</table> 
-<div class = "thecap"> Underfitting và Overfitting với Polynomial Regression (<a href = "https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/15_overfitting/LinReg.ipynb">Source code</a>). 
-</div> 
-</div> 
-<hr> 
+%     </tr> 
+% </table> 
+% <div class = "thecap"> Underfitting và Overfitting với Polynomial Regression (<a href = "https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/15_overfitting/LinReg.ipynb">Source code</a>). 
+% </div> 
+% </div> 
+% <hr> 
  
 Với những gì chúng ta đã biết từ bài \href{http://machinelearningcoban.com/2016/12/28/linearregression/#cac-bai-toan-co-the-giai-bang-linear-regression}{Linear Regression}, với loại dữ liệu này, chúng ta có thể áp dụng \href{https://en.wikipedia.org/wiki/Polynomial_regression}{Polynomial Regression}. Bài toán này hoàn toàn có thể được giải quyết bằng Linear Regression với dữ liệu mở rộng cho một cặp điểm $(x, y)$ là $(\mathbf{x}, y)$ với $\mathbf{x} = [1, x, x^2, x^3, \dots, x^d]^T$ cho đa thức bậc $d$. Điều quan trọng là chúng ta cần tìm bậc $d$ của đa thức cần tìm. 
  
@@ -86,7 +67,7 @@ Vậy, có những kỹ thuật nào giúp tránh Overfitting?
 \end{equation*} 
 với $p$ \href{http://machinelearningcoban.com/math/#mot-so-chuan-thuong-dung}{thường bằng 1 hoặc 2}. 
  
-Với Classification, trung bình cộng của \href{http://machinelearningcoban.com\2017/02/17/softmax/#-cross-entropy}{cross entropy} có thể được sử dụng. 
+Với Classification, trung bình cộng của \href{http://machinelearningcoban.com/2017/02/17/softmax/#-cross-entropy}{cross entropy} có thể được sử dụng. 
  
 \textbf{Test error:} Tương tự như trên nhưng áp dụng mô hình tìm được vào \textbf{test data}. Chú ý rằng, khi xây dựng mô hình, ta không được sử dụng thông tin trong tập dữ liệu test. Dữ liệu test chỉ được dùng để đánh giá mô hình. Với Regression, đại lượng này thường được định nghĩa: 
 \begin{equation*} 
@@ -115,10 +96,10 @@ Thông thường, ta bắt đầu từ mô hình đơn giản, sau đó tăng d�
  
 Hính dưới đây mô tả ví dụ phía trên với bậc của đa thức tăng từ 1 đến 8. Tập validation bao gồm 10 điểm được lấy ra từ tập training ban đầu. 
  
-<div class="imgcap"> 
-<img src ="\assets\15_overfitting\linreg_val.png" align = "center" width = "500"> 
-<div class = "thecap">Hình 2: Lựa chọn mô hình dựa trên validation (<a href = "https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/15_overfitting/LinReg-validation.ipynb">Source code</a>).</div> 
-</div> 
+% <div class="imgcap"> 
+% <img src ="\assets\15_overfitting\linreg_val.png" align = "center" width = "500"> 
+% <div class = "thecap">Hình 2: Lựa chọn mô hình dựa trên validation (<a href = "https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/15_overfitting/LinReg-validation.ipynb">Source code</a>).</div> 
+% </div> 
 Chúng ta hãy tạm chỉ xét hai đường màu lam và đỏ, tương ứng với \textit{train error} và \textit{validation error}. Khi bậc của đa thức tăng lên, \textit{train error} có xu hướng giảm. Điều này dễ hiểu vì đa thức bậc càng cao, dữ liệu càng được \textit{fit}. Quan sát đường màu đỏ, khi bậc của đa thức là 3 hoặc 4 thì \textit{validation error} thấp, sau đó tăng dần lên. Dựa vào \textit{validation error}, ta có thể xác định được bậc cần chọn là 3 hoặc 4. Quan sát tiếp đường màu lục, tương ứng với \textit{test error}, thật là trùng hợp, với bậc bằng 3 hoặc 4, \textit{test error} cũng đạt giá trị nhỏ nhất, sau đó tăng dần lên. Vậy cách làm này ở đây đã tỏ ra hiệu quả. 
  
 Việc không sử dụng \textit{test data} khi lựa chọn mô hình ở trên nhưng vẫn có được kết quả khả quan vì ta giả sử rằng \textit{validation data} và \textit{test data} có chung một đặc điểm nào đó. Và khi cả hai đều là \textit{unseen data}, \textit{error} trên hai tập này sẽ tương đối giống nhau. 
@@ -160,10 +141,12 @@ Vậy dừng khi nào là phù hợp?
  
 Một kỹ thuật thường được sử dụng là tách từ training set ra một tập validation set như trên. Sau một (hoặc một số, ví dụ 50) vòng lặp, ta tính cả \textit{train error} và \textit{validation error}, đến khi \textit{validation error} có chiều hướng tăng lên thì dừng lại, và quay lại sử dụng mô hình tương ứng với điểm và \textit{validation error} đạt giá trị nhỏ. 
  
-<div class="imgcap"> 
-<img src ="\assets\15_overfitting\EarlyStopping.png" align = "center" width = "400"> 
-<div class = "thecap">Hình 3: Early Stopping. Đường màu xanh là <i>train error</i>, đường màu đỏ là <i>validation error</i>. Trục x là số lượng vòng lặp, trục y là error. Mô hình được xác định tại vòng lặp mà <i>validation error</i> đạt giá trị nhỏ nhất.  (<a href = "https://en.wikipedia.org/wiki/Overfitting">Overfitting - Wikipedia</a>).</div> 
-</div> 
+% <div class="imgcap"> 
+% <img src ="\assets\15_overfitting\EarlyStopping.png" align = "center" width = "400"> 
+% <div class = "thecap">Hình 3: Early Stopping. Đường màu xanh là <i>train error</i>, đường màu đỏ là <i>validation error</i>. Trục x là số lượng vòng lặp, trục y là error. Mô hình được xác định tại vòng lặp mà <i>validation error</i> đạt giá trị nhỏ nhất.  (<a href = "https://en.wikipedia.org/wiki/Overfitting">Overfitting - Wikipedia</a>).</div> 
+% </div> 
+
+
 Hình trên đây mô tả cách tìm điểm \textit{stopping}. Chúng ta thấy rằng phương pháp này khá giống với phương pháp tìm bậc của đa thức ở phần trên của bài viết. 
  
  
@@ -189,16 +172,17 @@ Trong kỹ thuật này:
 R(\mathbf{w}) = \|\mathbf{w}\|_2^2 
 \end{equation*} 
 tức norm 2 của hệ số. 
- 
-\textit{Nếu bạn đọc chưa quen thuộc với khái niệm norm, bạn được khuyến khích đọc \href{http://machinelearningcoban.com/math/#norms-chuan}{phần phụ   lục này}}. 
+\textit{Nếu bạn đọc chưa quen thuộc với khái niệm norm, bạn được khuyến khích đọc} \href{http://machinelearningcoban.com/math/#norms-chuan}{phần phụ lục này}.
  
 Hàm số này có một vài đặc điểm đang lưu ý: 
  
-\item Thứ nhất, $\|\mathbf{w}\|_2^2$ là một hàm số \textit{rất mượt}, đạo hàm của nó đơn giản là $\mathbf{w}$, vì vậy đạo hàm của \textit{regularized loss function} cũng rất dễ tính, chúng ta có thể hoàn toàn dùng các phương pháp dựa trên gradient để cập nhật nghiệm. Cụ thể: 
-\begin{equation*} 
-\frac{\partial J_{\text{reg}} }{\partial \mathbf{w}} = \frac{\partial J}{\partial \mathbf{w}} + \lambda \mathbf{w} 
-\end{equation*} 
-\item Thứ hai, việc tối thiểu $\|\mathbf{w}\|_2^2$ đồng nghĩa với việc khiến cho các giá trị của hệ số $\mathbf{w}$ trở nên nhỏ gần với 0. Với Polynomial Regression, việc các hệ số này nhỏ có thể giúp các hệ số ứng với các số hạng bậc cao là nhỏ, giúp tránh overfitting. Với Multi-layer Pereceptron, việc các hệ số này nhỏ giúp cho nhiều hệ số trong các ma trận trọng số là nhỏ. Điều này tương ứng với việc số lượng các hidden units \textit{hoạt động} (khác không) là nhỏ, cũng giúp cho MLP tránh được hiện tượng overfitting. 
+\begin{itemize}
+    \item Thứ nhất, $\|\mathbf{w}\|_2^2$ là một hàm số \textit{rất mượt}, đạo hàm của nó đơn giản là $\mathbf{w}$, vì vậy đạo hàm của \textit{regularized loss function} cũng rất dễ tính, chúng ta có thể hoàn toàn dùng các phương pháp dựa trên gradient để cập nhật nghiệm. Cụ thể: 
+    \begin{equation*} 
+    \frac{\partial J_{\text{reg}} }{\partial \mathbf{w}} = \frac{\partial J}{\partial \mathbf{w}} + \lambda \mathbf{w} 
+    \end{equation*} 
+    \item Thứ hai, việc tối thiểu $\|\mathbf{w}\|_2^2$ đồng nghĩa với việc khiến cho các giá trị của hệ số $\mathbf{w}$ trở nên nhỏ gần với 0. Với Polynomial Regression, việc các hệ số này nhỏ có thể giúp các hệ số ứng với các số hạng bậc cao là nhỏ, giúp tránh overfitting. Với Multi-layer Pereceptron, việc các hệ số này nhỏ giúp cho nhiều hệ số trong các ma trận trọng số là nhỏ. Điều này tương ứng với việc số lượng các hidden units \textit{hoạt động} (khác không) là nhỏ, cũng giúp cho MLP tránh được hiện tượng overfitting. 
+\end{itemize}
  
 $l_2$ regularization là kỹ thuật được sử dụng nhiều nhất để giúp Neural Networks tránh được overfitting. Nó còn có tên gọi khác là \textbf{weight decay}. \textit{Decay} có nghĩa là \textit{tiêu biến}. 
  
@@ -240,33 +224,33 @@ với $\|.\|_F$ là \href{http://machinelearningcoban.com/math/#cho-ma-tran}{Fro
  
 Chú ý rằng weight decay ít khi được áp dụng lên biases. Tôi thay đổi tham số regularization $\lambda$ và nhận được kết quả như sau: 
  
-<hr> 
-<div> 
-<table width = "100%" style = "border: 0px solid white"> 
-   <tr > 
-        <td width="40%" style = "border: 0px solid white"> 
-        <img style="display:block;" width = "100%" src = "/assets/15_overfitting/nnet_reg0.png"> 
-         </td> 
-        <td width="40%" style = "border: 0px solid white"> 
-        <img style="display:block;" width = "100%" src = "/assets/15_overfitting/nnet_reg0.001.png"> 
-        </td> 
+% <hr> 
+% <div> 
+% <table width = "100%" style = "border: 0px solid white"> 
+%    <tr > 
+%         <td width="40%" style = "border: 0px solid white"> 
+%         <img style="display:block;" width = "100%" src = "/assets/15_overfitting/nnet_reg0.png"> 
+%          </td> 
+%         <td width="40%" style = "border: 0px solid white"> 
+%         <img style="display:block;" width = "100%" src = "/assets/15_overfitting/nnet_reg0.001.png"> 
+%         </td> 
  
-    </tr> 
+%     </tr> 
  
-    <tr > 
-        <td width="40%" style = "border: 0px solid white"> 
-        <img style="display:block;" width = "100%" src = "/assets/15_overfitting/nnet_reg0.01.png"> 
-         </td> 
-        <td width="40%" style = "border: 0px solid white"> 
-        <img style="display:block;" width = "100%" src = "/assets/15_overfitting/nnet_reg0.1.png"> 
-        </td> 
+%     <tr > 
+%         <td width="40%" style = "border: 0px solid white"> 
+%         <img style="display:block;" width = "100%" src = "/assets/15_overfitting/nnet_reg0.01.png"> 
+%          </td> 
+%         <td width="40%" style = "border: 0px solid white"> 
+%         <img style="display:block;" width = "100%" src = "/assets/15_overfitting/nnet_reg0.1.png"> 
+%         </td> 
  
-    </tr> 
-</table> 
-<div class = "thecap"> Multi-layer Perceptron với Weight Decay (<a href = "https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/15_overfitting/Weight%20Decay.ipynb">Source code</a>). 
-</div> 
-</div> 
-<hr> 
+%     </tr> 
+% </table> 
+% <div class = "thecap"> Multi-layer Perceptron với Weight Decay (<a href = "https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/15_overfitting/Weight%20Decay.ipynb">Source code</a>). 
+% </div> 
+% </div> 
+% <hr> 
 Khi $\lambda = 0$, tức không có regularization, ta nhận thấy gần như toàn bộ dữ liệu trong tập training được phân lớp đúng. Việc này khiến cho các class bị phân làm nhiều mảnh không được tự nhiên. Khi $\lambda = 0.001$, vẫn là một số nhỏ, các đường phân chia trông tự nhiên hơn, nhưng lớp màu xanh lam vẫn bị chia làm hai bởi lớp màu xanh lục. Đây chính là biểu hiện của overfitting. 
  
 Khi $\lambda$ tăng lên, tức sự ảnh hưởng của regularization tăng lên (xem hàng dưới), đường ranh giới giữa các lớp trở lên tự nhiên hơn. Nói cách khác, với $\lambda$ đủ lớn, weight decay có tác dụng hạn chế overfitting trong MLP. 
@@ -279,7 +263,7 @@ rồi chạy lại toàn bộ code, xem các đường phân lớp trông như t
  
 Khi $\lambda$ quá lớn, tức ta xem phần \textit{regularization} quan trọng hơn phần \textit{loss fucntion}, một hiện tượng xấu xảy ra là các phần tử của $\mathbf{w}$ tiến về 0 để thỏa mãn regularization là nhỏ. 
  
-\href{http://scikit-learn.org/stable/modules/neural_networks_supervised.html}{Sklearn có cung cấp rất nhiều chức năng cho MLP}, trong đó ta có thể lựa chọn số lượng hidden layers và số lượng hidden units trong mỗi layer, activation functions, weight decay, \href{http://machinelearningcoban.com/2017/01/16/gradientdescent2/}{learning rate, hệ số momentum, nesterovs_momentum}, có early stopping hay không, lượng dữ liệu được tách ra làm validation set, và nhiều chức năng khác. 
+\href{http://scikit-learn.org/stable/modules/neural_networks_supervised.html}{Sklearn có cung cấp rất nhiều chức năng cho MLP}, trong đó ta có thể lựa chọn số lượng hidden layers và số lượng hidden units trong mỗi layer, activation functions, weight decay, \href{http://machinelearningcoban.com/2017/01/16/gradientdescent2/}{learning rate, hệ số momentum, nesterovs\_momentum}, có early stopping hay không, lượng dữ liệu được tách ra làm validation set, và nhiều chức năng khác. 
  
  
 \subsection{Tikhonov regularization}
@@ -325,9 +309,12 @@ Bạn đọc có thể tìm đọc thêm với các từ khóa: \href{https://en
  
  
 \section{Tóm tắt nội dung}
-\item Một mô hình mô tốt là mộ mô hình có \textit{tính tổng quát}, tức mô tả được dữ liệu cả trong lẫn ngoài tập training. Mô hình chỉ mô tả tốt dữ liệu trong tập training được gọi là \textbf{overfitting}. 
- 
-\item Để tránh overfitting, có rất nhiều kỹ thuật được sử dụng, điển hình là \textbf{cross-validation} và \textbf{regularization}. Trong Neural Networks, \textbf{weight decay} và \textbf{dropout} thường được dùng. 
+
+\begin{itemize}
+    \item Một mô hình mô tốt là mộ mô hình có \textit{tính tổng quát}, tức mô tả được dữ liệu cả trong lẫn ngoài tập training. Mô hình chỉ mô tả tốt dữ liệu trong tập training được gọi là \textbf{overfitting}. 
+     
+    \item Để tránh overfitting, có rất nhiều kỹ thuật được sử dụng, điển hình là \textbf{cross-validation} và \textbf{regularization}. Trong Neural Networks, \textbf{weight decay} và \textbf{dropout} thường được dùng. 
+\end{itemize}
  
  
 \section{Tài liệu tham khảo}
