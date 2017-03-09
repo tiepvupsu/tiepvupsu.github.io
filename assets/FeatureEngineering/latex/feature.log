@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.19)  8 MAR 2017 23:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.19)  8 MAR 2017 23:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**ML_models.tex
+**feature.tex
 
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/FeatureEngineering/latex/ML
-_models.tex
+(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/FeatureEngineering/latex/fe
+ature.tex
 LaTeX2e <2016/02/01>
 Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/standalone/standalone.cls
@@ -510,65 +510,7 @@ File: tikzlibraryarrows.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1)
 tex
 File: pgflibraryarrows.code.tex 2013/09/23 v3.0.1a (rcs-revision 1.16)
 \arrowsize=\dimen167
-)) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2016/03/03 v2.15a AMS math features
-\@mathmargin=\skip46
-
-For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-Package: amstext 2000/06/29 v2.01 AMS text
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
-File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks32
-\ex@=\dimen168
-))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
-Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen169
-)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
-Package: amsopn 1999/12/14 v2.01 operator names
-)
-\inf@bad=\count121
-LaTeX Info: Redefining \frac on input line 199.
-\uproot@=\count122
-\leftroot@=\count123
-LaTeX Info: Redefining \overline on input line 297.
-\classnum@=\count124
-\DOTSCASE@=\count125
-LaTeX Info: Redefining \ldots on input line 394.
-LaTeX Info: Redefining \dots on input line 397.
-LaTeX Info: Redefining \cdots on input line 518.
-\Mathstrutbox@=\box39
-\strutbox@=\box40
-\big@size=\dimen170
-LaTeX Font Info:    Redeclaring font encoding OML on input line 630.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 631.
-\macc@depth=\count126
-\c@MaxMatrixCols=\count127
-\dotsspace@=\muskip10
-\c@parentequation=\count128
-\dspbrk@lvl=\count129
-\tag@help=\toks33
-\row@=\count130
-\column@=\count131
-\maxfields@=\count132
-\andhelp@=\toks34
-\eqnshift@=\dimen171
-\alignsep@=\dimen172
-\tagshift@=\dimen173
-\tagwidth@=\dimen174
-\totwidth@=\dimen175
-\lineht@=\dimen176
-\@envbody=\toks35
-\multlinegap=\skip47
-\multlinetaggap=\skip48
-\mathdisplay@stack=\toks36
-LaTeX Info: Redefining \[ on input line 2735.
-LaTeX Info: Redefining \] on input line 2736.
-)
-(/usr/share/texlive/texmf-dist/tex/latex/tkz-euclide/tkz-euclide.sty
+)) (/usr/share/texlive/texmf-dist/tex/latex/tkz-euclide/tkz-euclide.sty
 Package: tkz-euclide 2011/06/01 1.16 c for plots 2d 
 
 (/usr/share/texlive/texmf-dist/tex/latex/tkz-base/tkz-base.sty
@@ -576,7 +518,7 @@ Package: tkz-base 2011/06/01 1.16 c tkz-base
 
 (/usr/share/texlive/texmf-dist/tex/latex/etex-pkg/etex.sty
 Package: etex 2016/01/11 v2.6 eTeX basic definition package (PEB,DPC)
-\et@xins=\count133
+\et@xins=\count121
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibraryshapes.misc.code.tex
@@ -602,29 +544,29 @@ Package: numprint 2012/08/20 v1.39 Print numbers (HH)
 
 (/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
 Package: array 2014/10/28 v2.4c Tabular extension package (FMi)
-\col@sep=\dimen177
-\extrarowheight=\dimen178
-\NC@list=\toks37
-\extratabsurround=\skip49
-\backup@length=\skip50
+\col@sep=\dimen168
+\extrarowheight=\dimen169
+\NC@list=\toks32
+\extratabsurround=\skip46
+\backup@length=\skip47
 )
-\c@nprt@mantissa@digitsbefore=\count134
-\c@nprt@mantissa@digitsafter=\count135
-\c@nprt@exponent@digitsbefore=\count136
-\c@nprt@exponent@digitsafter=\count137
-\nprt@digitwidth=\skip51
-\nprt@sepwidth=\skip52
-\nprt@decimalwidth=\skip53
-\nprt@blockwidth=\skip54
-\nprt@digittoks=\toks38
-\nprt@pretoks=\toks39
-\nprt@posttoks=\toks40
-\nprt@thisdigit=\count138
-\nprt@curpos=\count139
-\nprt@rndpos=\count140
-\c@nprt@digitsfirstblock=\count141
-\c@nprt@blockcnt=\count142
-\c@nprt@cntprint=\count143
+\c@nprt@mantissa@digitsbefore=\count122
+\c@nprt@mantissa@digitsafter=\count123
+\c@nprt@exponent@digitsbefore=\count124
+\c@nprt@exponent@digitsafter=\count125
+\nprt@digitwidth=\skip48
+\nprt@sepwidth=\skip49
+\nprt@decimalwidth=\skip50
+\nprt@blockwidth=\skip51
+\nprt@digittoks=\toks33
+\nprt@pretoks=\toks34
+\nprt@posttoks=\toks35
+\nprt@thisdigit=\count126
+\nprt@curpos=\count127
+\nprt@rndpos=\count128
+\c@nprt@digitsfirstblock=\count129
+\c@nprt@blockcnt=\count130
+\c@nprt@cntprint=\count131
 
 No configuration file `numprint.cfg' found.)
 (/usr/share/texlive/texmf-dist/tex/latex/fp/fp.sty
@@ -633,19 +575,19 @@ Package: fp 1995/04/02
 `Fixed Point Package', Version 0.8, April 2, 1995 (C) Michael Mehlich
 (/usr/share/texlive/texmf-dist/tex/latex/fp/defpattern.sty
 Package: defpattern 1994/10/12
-\actioncount=\count144
+\actioncount=\count132
 )
 (/usr/share/texlive/texmf-dist/tex/latex/fp/fp-basic.sty
 Package: fp-basic 1996/05/13
-\FP@xs=\count145
-\FP@xia=\count146
-\FP@xib=\count147
-\FP@xfa=\count148
-\FP@xfb=\count149
-\FP@rega=\count150
-\FP@regb=\count151
-\FP@regs=\count152
-\FP@times=\count153
+\FP@xs=\count133
+\FP@xia=\count134
+\FP@xib=\count135
+\FP@xfa=\count136
+\FP@xfb=\count137
+\FP@rega=\count138
+\FP@regb=\count139
+\FP@regs=\count140
+\FP@times=\count141
 )
 (/usr/share/texlive/texmf-dist/tex/latex/fp/fp-addons.sty
 Package: fp-addons 1995/03/15
@@ -664,7 +606,7 @@ Package: fp-pas 1994/08/29
 )
 (/usr/share/texlive/texmf-dist/tex/latex/fp/fp-random.sty
 Package: fp-random 1995/02/23
-\FPseed=\count154
+\FPseed=\count142
 )
 (/usr/share/texlive/texmf-dist/tex/latex/fp/fp-eqn.sty
 Package: fp-eqn 1995/04/03
@@ -675,17 +617,17 @@ Package: fp-upn 1996/10/21
 (/usr/share/texlive/texmf-dist/tex/latex/fp/fp-eval.sty
 Package: fp-eval 1995/04/03
 ))
-\tkzRadius=\dimen179
-\tkzLength=\dimen180
-\tkz@radi=\dimen181
-\tkz@ax=\dimen182
-\tkz@ay=\dimen183
-\tkz@bx=\dimen184
-\tkz@by=\dimen185
-\tkz@cx=\dimen186
-\tkz@cy=\dimen187
-\tkz@dx=\dimen188
-\tkz@dy=\dimen189
+\tkzRadius=\dimen170
+\tkzLength=\dimen171
+\tkz@radi=\dimen172
+\tkz@ax=\dimen173
+\tkz@ay=\dimen174
+\tkz@bx=\dimen175
+\tkz@by=\dimen176
+\tkz@cx=\dimen177
+\tkz@cy=\dimen178
+\tkz@dx=\dimen179
+\tkz@dy=\dimen180
 
 (/usr/share/texlive/texmf-dist/tex/latex/tkz-base/tkz-tools-utilities.tex)
 (/usr/share/texlive/texmf-dist/tex/latex/tkz-base/tkz-tools-arith.tex
@@ -697,7 +639,7 @@ File: tkz-tool-arith.tex tkz-tool-arith 1.161 c
 (/usr/share/texlive/texmf-dist/tex/latex/tkz-base/tkz-obj-points.tex)
 (/usr/share/texlive/texmf-dist/tex/latex/tkz-base/tkz-obj-segments.tex)
 (/usr/share/texlive/texmf-dist/tex/latex/tkz-base/tkz-obj-marks.tex
-\tkz@cntmk=\count155
+\tkz@cntmk=\count143
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/tkz-euclide/tkz-tools-intersections.te
 x)
@@ -706,28 +648,86 @@ tex) (/usr/share/texlive/texmf-dist/tex/latex/tkz-euclide/tkz-obj-lines.tex)
 (/usr/share/texlive/texmf-dist/tex/latex/tkz-euclide/tkz-lib-symbols.tex)
 (/usr/share/texlive/texmf-dist/tex/latex/tkz-euclide/tkz-obj-circles.tex)
 (/usr/share/texlive/texmf-dist/tex/latex/tkz-euclide/tkz-obj-addpoints.tex))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2016/03/03 v2.15a AMS math features
+\@mathmargin=\skip52
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks36
+\ex@=\dimen181
+))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen182
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count144
+LaTeX Info: Redefining \frac on input line 199.
+\uproot@=\count145
+\leftroot@=\count146
+LaTeX Info: Redefining \overline on input line 297.
+\classnum@=\count147
+\DOTSCASE@=\count148
+LaTeX Info: Redefining \ldots on input line 394.
+LaTeX Info: Redefining \dots on input line 397.
+LaTeX Info: Redefining \cdots on input line 518.
+\Mathstrutbox@=\box39
+\strutbox@=\box40
+\big@size=\dimen183
+LaTeX Font Info:    Redeclaring font encoding OML on input line 630.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 631.
+\macc@depth=\count149
+\c@MaxMatrixCols=\count150
+\dotsspace@=\muskip10
+\c@parentequation=\count151
+\dspbrk@lvl=\count152
+\tag@help=\toks37
+\row@=\count153
+\column@=\count154
+\maxfields@=\count155
+\andhelp@=\toks38
+\eqnshift@=\dimen184
+\alignsep@=\dimen185
+\tagshift@=\dimen186
+\tagwidth@=\dimen187
+\totwidth@=\dimen188
+\lineht@=\dimen189
+\@envbody=\toks39
+\multlinegap=\skip53
+\multlinetaggap=\skip54
+\mathdisplay@stack=\toks40
+LaTeX Info: Redefining \[ on input line 2735.
+LaTeX Info: Redefining \] on input line 2736.
+)
 (/usr/share/texlive/texmf-dist/tex/latex/tkz-euclide/tkz-obj-polygons.tex)
 (/usr/share/texlive/texmf-dist/tex/latex/tkz-euclide/tkz-obj-vectors.tex)
 (/usr/share/texlive/texmf-dist/tex/latex/tkz-euclide/tkz-obj-arcs.tex)
 (/usr/share/texlive/texmf-dist/tex/latex/tkz-euclide/tkz-obj-sectors.tex)
 (/usr/share/texlive/texmf-dist/tex/latex/tkz-euclide/tkz-obj-angles.tex)
 (/usr/share/texlive/texmf-dist/tex/latex/tkz-euclide/tkz-obj-protractor.tex)
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/FeatureEngineering/latex/ML
-_models.aux)
-\openout1 = `ML_models.aux'.
+(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/FeatureEngineering/latex/fe
+ature.aux)
+\openout1 = `feature.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
  ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -785,60 +785,27 @@ e
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
 ick labels; missing features). Consider writing \pgfplotsset{compat=1.13} into 
 your preamble.
- on input line 13.
-
-<raw_data.pdf, id=4, 160.13527pt x 83.31326pt>
-File: raw_data.pdf Graphic file (type pdf)
- <use raw_data.pdf>
-Package pdftex.def Info: raw_data.pdf used on input line 122.
-(pdftex.def)             Requested size: 76.82234pt x 39.96829pt.
-
-<feature.pdf, id=5, 72.28606pt x 57.70558pt>
-File: feature.pdf Graphic file (type pdf)
- <use feature.pdf>
-Package pdftex.def Info: feature.pdf used on input line 132.
-(pdftex.def)             Requested size: 48.36958pt x 38.61322pt.
-
-<raw_test_data.pdf, id=6, 160.13527pt x 63.39685pt>
-File: raw_test_data.pdf Graphic file (type pdf)
- <use raw_test_data.pdf>
-Package pdftex.def Info: raw_test_data.pdf used on input line 152.
-(pdftex.def)             Requested size: 76.82234pt x 30.41368pt.
-
-<feature_test.pdf, id=7, 72.28606pt x 57.70558pt>
-File: feature_test.pdf Graphic file (type pdf)
- <use feature_test.pdf>
-Package pdftex.def Info: feature_test.pdf used on input line 160.
-(pdftex.def)             Requested size: 51.21504pt x 40.88495pt.
+ on input line 12.
 
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} </home/tiepvu/myProjects/ti
-epvupsu.github.io/assets/FeatureEngineering/latex/raw_data.pdf> </home/tiepvu/m
-yProjects/tiepvupsu.github.io/assets/FeatureEngineering/latex/feature.pdf> </ho
-me/tiepvu/myProjects/tiepvupsu.github.io/assets/FeatureEngineering/latex/raw_te
-st_data.pdf> </home/tiepvu/myProjects/tiepvupsu.github.io/assets/FeatureEnginee
-ring/latex/feature_test.pdf>]
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/FeatureEngineering/latex/ML
-_models.aux) ) 
+]
+(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/FeatureEngineering/latex/fe
+ature.aux) ) 
 Here is how much of TeX's memory you used:
- 25600 strings out of 493029
- 639894 string characters out of 6136233
- 799494 words of memory out of 5000000
- 28606 multiletter control sequences out of 15000+600000
- 11171 words of font info for 40 fonts, out of 8000000 for 9000
+ 25460 strings out of 493029
+ 637582 string characters out of 6136233
+ 789549 words of memory out of 5000000
+ 28490 multiletter control sequences out of 15000+600000
+ 3640 words of font info for 14 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,10n,77p,738b,729s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmb
-x10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb>
+ 55i,7n,77p,736b,622s stack positions out of 5000i,500n,10000p,200000b,80000s
+
 Output written on /home/tiepvu/myProjects/tiepvupsu.github.io/assets/FeatureEng
-ineering/latex/ML_models.pdf (1 page, 47129 bytes).
+ineering/latex/feature.pdf (1 page, 1227 bytes).
 PDF statistics:
- 39 PDF objects out of 1000 (max. 8388607)
- 26 compressed objects within 1 object stream
+ 11 PDF objects out of 1000 (max. 8388607)
+ 7 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 33 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

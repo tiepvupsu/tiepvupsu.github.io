@@ -10,8 +10,14 @@ sys.stdin = codecs.getreader('utf_8')(sys.stdin)
 f = codecs.open('test.md', encoding='utf-8').read().splitlines();
 i = -1
 
-file = codecs.open("out.tex", "w", "utf-8")
+file = codecs.open("assets/latex/out.tex", "w", "utf-8")
 # file.write()
+
+############## TITLE #############33
+first_line = "%!TEX root = book.tex"
+file.write(first_line+'\n')
+
+
 
 ########### HEADERS ####################
 HEADERS = [None, None, ' \\section', ' \\subsection', ' \\subsubsection', ' \\textbf']
@@ -79,11 +85,48 @@ def inlinecode(str0):
 print(inlinecode(str0))
 
 
+add_title = False 
+in_layout_mode = False
+ignore_flag = True 
 for line in f:
+	# print(
+	c += 1
+	new_line = ' '+line.rstrip('\r') + ' '
+	print(new_line)
+	# if not in_layout_mode and '---' in new_line:
+	# 	in_layout_mode = True 
+
+	# ############# catch title 
+	# if in_layout_mode:
+	# 	if '---' in new_line:
+	# 		in_layout_mode = False 
+
+	if not add_title:
+		if  'title' in new_line:
+			add_title = True 
+			# first : 
+			id1 = new_line.index(':')
+			str1 = new_line[id1+1:]
+			#second :
+			id2 = str1.index(':')
+			id3 = str1[id2:].index('"')
+			title = str1[id2 + 2:id2 + id3]
+			print(id1, id2, id3, title)
+			file.write('\\chapter{' +title + '}\n')
+	else:
+		if ignore_flag:
+			if '---' in new_line:
+				ignore_flag = False 
+			else:
+				continue 
+
+
+	if ignore_flag:
+		continue
+
 	c += 1 
 	# print(c)
 	#### math 
-	new_line = ' '+line.rstrip('\r') + ' '
 	
 
 	## in code mode 
@@ -117,6 +160,7 @@ for line in f:
 	new_line = new_line.replace('**,', '},')
 	new_line = new_line.replace('**:', '}:')
 	new_line = new_line.replace('**!', '}!')
+	new_line = new_line.replace(' * ', '\t\\item ')
 	new_line = new_line.replace(' *', ' \\textit{')
 	new_line = new_line.replace('(*', '(\\textit{')
 	new_line = new_line.replace('[*', '[\\textit{')
@@ -137,6 +181,7 @@ for line in f:
 	new_line = new_line.replace('__]', '}]')
 	new_line = new_line.replace('__)', '})')
 	new_line = new_line.replace('__}', '}}')
+	new_line = new_line.replace('__:', '}}')
 	new_line = new_line.replace('__.', '}.')
 	new_line = new_line.replace('__,', '},')
 
@@ -149,6 +194,7 @@ for line in f:
 	new_line = new_line.replace('_]', '}]')
 	new_line = new_line.replace('_}', '}}')
 	new_line = new_line.replace('_}', '}}')
+	new_line = new_line.replace('_:', '}:')
 	new_line = new_line.replace('_,', '},')
 	new_line = new_line.replace('_;', '};')
 	new_line = new_line.replace('_.', '}.')
