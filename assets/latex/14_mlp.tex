@@ -396,21 +396,21 @@ plt.show()
  
  
  
-<hr> 
-<div class="imgcap"> 
- <img src ="/assets/14_mlp/EX.png" align = "center" width = "600"> 
- <div class = "thecap">Hình 7: Phân bố dữ liệu theo class.</div> 
-</div> 
-<hr> 
+% <hr> 
+% <div class="imgcap"> 
+%  <img src ="/assets/14_mlp/EX.png" align = "center" width = "600"> 
+%  <div class = "thecap">Hình 7: Phân bố dữ liệu theo class.</div> 
+% </div> 
+% <hr> 
  
 Với dữ liệu được phân bố thế này, Softmax Regression không thể thực hiện được vì \href{http://machinelearningcoban.com/2017/02/17/softmax/#-boundary-tao-boi-softmax-regression-la-linear}{Bounray giữa các class tạo bởi Softmax Regression có dạng linear}. Chúng ta hãy làm một thí nghiệm nhỏ bằng cách thêm một \textit{Hidden layer} vào giữa Input layer vả output layer của Softmax Regression. Activation function của Hidden layer là hàm ReLU: $f(s) = \max(s, 0)$, $f'(s) = 0 ~~\text{if}~ s \leq 0$, $f'(s) = 1 ~\text{otherwise}$. 
  
-<hr> 
-<div class="imgcap"> 
- <img src ="/assets/14_mlp/ex_nn.png" align = "center" width = "600"> 
- <div class = "thecap">Hình 8: 2-layer Neural Networks.</div> 
-</div> 
-<hr> 
+% <hr> 
+% <div class="imgcap"> 
+%  <img src ="/assets/14_mlp/ex_nn.png" align = "center" width = "600"> 
+%  <div class = "thecap">Hình 8: 2-layer Neural Networks.</div> 
+% </div> 
+% <hr> 
  
 Bây giờ chúng ta sẽ áp dụng Batch Gradient Descent cho bài toán này (vì lượng dữ liệu là nhỏ). Trước hết cần thực tìm công thức tính các activation và output. 
  
@@ -540,12 +540,12 @@ print('training accuracy: %.2f %%' % (100*np.mean(predicted_class == y)))
  
 Vậy là trong 300 điểm, chỉ có 2 điểm bị phân loại sai! Dưới đây là hình minh hoạ \textit{khu vực} của mỗi class: 
  
-<hr> 
-<div class="imgcap"> 
- <img src ="/assets/14_mlp/ex_res100.png" align = "center" width = "600"> 
- <div class = "thecap">Hình 9: Kết quả khi sử dụng 1 hidden layer với 100 units.</div> 
-</div> 
-<hr> 
+% <hr> 
+% <div class="imgcap"> 
+%  <img src ="/assets/14_mlp/ex_res100.png" align = "center" width = "600"> 
+%  <div class = "thecap">Hình 9: Kết quả khi sử dụng 1 hidden layer với 100 units.</div> 
+% </div> 
+% <hr> 
  
 Hai điểm bị phân lớp sai có lẽ nằm gần khu vực trung tâm. 
  
@@ -555,56 +555,58 @@ Vậy là chỉ thêm 1 hidden layer, Neural Network đã có thể xây dựng 
  
 Kết quả bên trên được thực hiện khi số lượng units trong hidden layer là \pythoninline{d1 = 100}. Chúng ta thử thay đổi giá trị này bởi \pythoninline{d1 = 5, 10, 15, 20} xem kết quả khác nhau như thế nào. Dưới đây là hình mình họa: 
  
-<hr> 
-<div> 
-<table width = "100%" style = "border: 0px solid white"> 
-   <tr > 
-        <td width="30%" style = "border: 0px solid white"> 
-        <img style="display:block;" width = "100%" src = "/assets/14_mlp/ex_res5.png"> 
-         </td> 
-        <td width="30%" style = "border: 0px solid white"> 
-        <img style="display:block;" width = "100%" src = "/assets/14_mlp/ex_res10.png"> 
-        </td> 
-    </tr> 
-    <tr > 
-         <td width="30%" style = "border: 0px solid white"> 
-         <img style="display:block;" width = "100%" src = "/assets/14_mlp/ex_res15.png"> 
-          </td> 
-         <td width="30%" style = "border: 0px solid white"> 
-         <img style="display:block;" width = "100%" src = "/assets/14_mlp/ex_res20.png"> 
-         </td> 
-     </tr> 
+% <hr> 
+% <div> 
+% <table width = "100%" style = "border: 0px solid white"> 
+%    <tr > 
+%         <td width="30%" style = "border: 0px solid white"> 
+%         <img style="display:block;" width = "100%" src = "/assets/14_mlp/ex_res5.png"> 
+%          </td> 
+%         <td width="30%" style = "border: 0px solid white"> 
+%         <img style="display:block;" width = "100%" src = "/assets/14_mlp/ex_res10.png"> 
+%         </td> 
+%     </tr> 
+%     <tr > 
+%          <td width="30%" style = "border: 0px solid white"> 
+%          <img style="display:block;" width = "100%" src = "/assets/14_mlp/ex_res15.png"> 
+%           </td> 
+%          <td width="30%" style = "border: 0px solid white"> 
+%          <img style="display:block;" width = "100%" src = "/assets/14_mlp/ex_res20.png"> 
+%          </td> 
+%      </tr> 
  
-</table> 
-<div class = "thecap"> Hình 10: Kết quả với số lượng units trong hidden layer là khác nhau. </div> 
-</div> 
-<hr> 
+% </table> 
+% <div class = "thecap"> Hình 10: Kết quả với số lượng units trong hidden layer là khác nhau. </div> 
+% </div> 
+% <hr> 
  
 Có một vài nhận xét như sau: 
- 
-\item Khi số lượng hidden units tăng lên, độ chính xác của mô hình tạo được cũng tăng lên. 
- 
-\item Với \pythoninline{d1 = 5}, đường phân định giữa ba classes gần như là đường thẳng. 
- 
-\item Với \pythoninline{d1 = 15}, mặc dù kết quả đã đạt 99.33%, vẫn có một vùng đỏ nhỏ nằm giữa nhánh màu lục và màu lam, và một vùng màu lam khá lớn giữa màu đỏ và lục. Khi một điểm dữ liệu test rơi vào những vùng này, nó sẽ bị phân loại sai. 
- 
-\item Với \pythoninline{d1 = 20}, kết quả nhận được đã tương đối giống với \pythoninline{d1 = 100}. Mặc dù các đường boundary không được trơn tru cho lắm. 
+\begin{itemize}
+    \item Khi số lượng hidden units tăng lên, độ chính xác của mô hình tạo được cũng tăng lên. 
+     
+    \item Với \pythoninline{d1 = 5}, đường phân định giữa ba classes gần như là đường thẳng. 
+     
+    \item Với \pythoninline{d1 = 15}, mặc dù kết quả đã đạt 99.33%, vẫn có một vùng đỏ nhỏ nằm giữa nhánh màu lục và màu lam, và một vùng màu lam khá lớn giữa màu đỏ và lục. Khi một điểm dữ liệu test rơi vào những vùng này, nó sẽ bị phân loại sai. 
+     
+    \item Với \pythoninline{d1 = 20}, kết quả nhận được đã tương đối giống với \pythoninline{d1 = 100}. Mặc dù các đường boundary không được trơn tru cho lắm. 
+\end{itemize}
  
  
 \section{Thảo luận}
+\begin{itemize}
+    \item \href{http://www.dartmouth.edu/~gvc/Cybenko_MCSS.pdf}{Người ta đã chứng minh được rằng}, với một hàm số liên tục bất kỳ $f(x)$ và một số $\varepsilon >0$, luôn luôn tồn tại một Neural Network với predicted output có dạng $g(x)$ với một hidden layer (với số hidden units đủ lớn và \textit{nonlinear} activation function phù hợp) sao cho với mọi $x, \|f(x) - g(x)\| < \varepsilon$. Nói một cách khác, Neural Network có khả năng xấp xỉ bất kỳ hàm liên tục nào. 
+     
+    \item Trên thực tế, việc tìm ra số lượng hidden units và \textit{nonlinear} activation function nói trên nhiều khi bất khả thi. Thay vào đó, thực nghiệm chứng minh rằng Neural Networks với nhiều hidden layers kết hợp với các \textit{nonlinear} activation function (đơn giản như ReLU) có khả năng xấp xỉ (khả năng biểu diễn) training data tốt hơn. 
+     
+    \item Khi số lượng hidden layers lớn lên, số lượng hệ số cần tối ưu cũng lớn lên và mô hình sẽ trở nên phức tạp. Sự phức tạp này ảnh hưởng tới hai khia cạnh. Thứ nhất, tốc độ tính toán sẽ bị chậm đi rất nhiều. Thứ hai, nếu mô hình quá phức tạp, nó có thể biểu diễn rất tốt training data, nhưng lại không biểu diễn tốt test data. Hiện tượng này gọi là \href{https://en.wikipedia.org/wiki/Overfitting}{Overfitting}, tôi sẽ trình bày trong bài sau. 
+     
+    \item Nếu mọi units của một layer được kết nối với mọi unit của layer tiếp theo (như chúng ta đang xét trong baì này), ta gọi đó là fully connected layer (kết nối hoàn toàn). Neural Networks với toàn fully connected layer ít được sử dụng trong thực tế. Thay vào đó, có nhiều phương pháp giúp làm giảm độ phức tạp của mô hình bằng cách giảm số lượng kết nối bằng cách cho nhiều kết nối bằng 0 (ví dụ, \href{https://web.stanford.edu/class/cs294a/sparseAutoencoder_2011new.pdf}{sparse autoencoder}), hoặc các hệ số được ràng buộc giống nhau (để giảm số hệ số cần tối ưu) (ví dụ, \href{http://cs231n.github.io/convolutional-networks/}{Convolutional Neural Networks (CNNs / ConvNets)}). Bạn đọc muốn tìm hiểu thêm có thể bắt đầu \href{http://deeplearning.net}{tại đây}. 
+     
+    \item Đây là bài cuối cùng trong chuỗi bài về Neural Networks. Viết một bài về Deep Learning sẽ tốn thời gian hơn rất nhiều, trong 1 tuần tôi không đủ khả năng hoàn thành được. Bài tiếp theo tôi sẽ nói về \href{https://en.wikipedia.org/wiki/Overfitting}{Overfitting}, sau đó chuyển sang một phương pháp classification rất phổ biến khác: \href{https://en.wikipedia.org/wiki/Support_vector_machine}{Support Vector Machine}. 
+     
+    \item Về backpropagation, có rất nhiều điều phải nói nữa. Nếu có thể, tôi xin phép được trình bày sau. Bài này cũng đã đủ dài. 
  
-\item \href{http://www.dartmouth.edu/~gvc/Cybenko_MCSS.pdf}{Người ta đã chứng minh được rằng}, với một hàm số liên tục bất kỳ $f(x)$ và một số $\varepsilon >0$, luôn luôn tồn tại một Neural Network với predicted output có dạng $g(x)$ với một hidden layer (với số hidden units đủ lớn và \textit{nonlinear} activation function phù hợp) sao cho với mọi $x, \|f(x) - g(x)\| < \varepsilon$. Nói một cách khác, Neural Network có khả năng xấp xỉ bất kỳ hàm liên tục nào. 
- 
-\item Trên thực tế, việc tìm ra số lượng hidden units và \textit{nonlinear} activation function nói trên nhiều khi bất khả thi. Thay vào đó, thực nghiệm chứng minh rằng Neural Networks với nhiều hidden layers kết hợp với các \textit{nonlinear} activation function (đơn giản như ReLU) có khả năng xấp xỉ (khả năng biểu diễn) training data tốt hơn. 
- 
-\item Khi số lượng hidden layers lớn lên, số lượng hệ số cần tối ưu cũng lớn lên và mô hình sẽ trở nên phức tạp. Sự phức tạp này ảnh hưởng tới hai khia cạnh. Thứ nhất, tốc độ tính toán sẽ bị chậm đi rất nhiều. Thứ hai, nếu mô hình quá phức tạp, nó có thể biểu diễn rất tốt training data, nhưng lại không biểu diễn tốt test data. Hiện tượng này gọi là \href{https://en.wikipedia.org/wiki/Overfitting}{Overfitting}, tôi sẽ trình bày trong bài sau. 
- 
-\item Nếu mọi units của một layer được kết nối với mọi unit của layer tiếp theo (như chúng ta đang xét trong baì này), ta gọi đó là fully connected layer (kết nối hoàn toàn). Neural Networks với toàn fully connected layer ít được sử dụng trong thực tế. Thay vào đó, có nhiều phương pháp giúp làm giảm độ phức tạp của mô hình bằng cách giảm số lượng kết nối bằng cách cho nhiều kết nối bằng 0 (ví dụ, \href{https://web.stanford.edu/class/cs294a/sparseAutoencoder_2011new.pdf}{sparse autoencoder}), hoặc các hệ số được ràng buộc giống nhau (để giảm số hệ số cần tối ưu) (ví dụ, \href{http://cs231n.github.io/convolutional-networks/}{Convolutional Neural Networks (CNNs / ConvNets)}). Bạn đọc muốn tìm hiểu thêm có thể bắt đầu \href{http://deeplearning.net}{tại đây}. 
- 
-\item Đây là bài cuối cùng trong chuỗi bài về Neural Networks. Viết một bài về Deep Learning sẽ tốn thời gian hơn rất nhiều, trong 1 tuần tôi không đủ khả năng hoàn thành được. Bài tiếp theo tôi sẽ nói về \href{https://en.wikipedia.org/wiki/Overfitting}{Overfitting}, sau đó chuyển sang một phương pháp classification rất phổ biến khác: \href{https://en.wikipedia.org/wiki/Support_vector_machine}{Support Vector Machine}. 
- 
-\item Về backpropagation, có rất nhiều điều phải nói nữa. Nếu có thể, tôi xin phép được trình bày sau. Bài này cũng đã đủ dài. 
- 
+\end{itemize}
  
  
 \section{Tài liệu tham khảo}
