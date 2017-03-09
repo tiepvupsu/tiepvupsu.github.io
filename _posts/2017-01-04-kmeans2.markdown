@@ -94,7 +94,7 @@ Trước tiên các bạn vào trang chủ của MNIST để [download](http://y
 
 **Trước tiên chúng ta cần khai báo một số thư viện:**
 
-`numpy` cho các phép toán liên quan đến ma trận. `mnist` để đọc dữ liệu từ MNIST. `matplotlib` để hiển thị hình vẽ. `sklearn` chính là `scikit-learn` mà chúng ta đã làm quen trong các bài trước. (_Về việc cài đặt các thư viện này, tôi hy vọng bạn đọc có thể Google thêm đôi chút. Nếu có khó khăn trong việc cài đặt, hãy để lại comment ở dưới bài. Lưu ý, làm việc trên Windows sẽ khó khăn hơn một chút so với Linux_)
+`numpy` cho các phép toán liên quan đến ma trận. [`mnist`](https://pypi.python.org/pypi/python-mnist/) để đọc dữ liệu từ MNIST. `matplotlib` để hiển thị hình vẽ. `sklearn` chính là `scikit-learn` mà chúng ta đã làm quen trong các bài trước. (_Về việc cài đặt các thư viện này, tôi hy vọng bạn đọc có thể Google thêm đôi chút. Nếu có khó khăn trong việc cài đặt, hãy để lại comment ở dưới bài. Lưu ý, làm việc trên Windows sẽ khó khăn hơn một chút so với Linux_)
 
 ```python
 # %reset
