@@ -9,19 +9,39 @@ permalink: /faqs/
 - [1. Blog được tạo như thế nào?](#-blog-duoc-tao-nhu-the-nao)
 - [2. Các kiến thức cần thiết để học Machine Learning?](#-cac-kien-thuc-can-thiet-de-hoc-machine-learning)
 - [3. Hướng dẫn cài đặt python và các thư viện trên MacOS?](#-huong-dan-cai-dat-python-va-cac-thu-vien-tren-macos)
+    - [3. 1. Đôi nét về thư viện scikit-learn](#--doi-net-ve-thu-vien-scikit-learn)
+    - [3.2. Cài đặt thư viện scikit-learn](#-cai-dat-thu-vien-scikit-learn)
+    - [3.3  Python](#--python)
+    - [3.4  Pip](#--pip)
+    - [3.5. Numpy](#-numpy)
+    - [3.6. Scipy](#-scipy)
+    - [3.7. Matplotlib](#-matplotlib)
+    - [3.8. Scikit-learn](#-scikit-learn)
+    - [3.9 Kiểm tra cài đặt](#-kiem-tra-cai-dat)
+    - [3.10. Tài liệu tham khảo](#-tai-lieu-tham-khao)
 - [4. Hướng dẫn cài đặt python và các thư viện trên Windows?](#-huong-dan-cai-dat-python-va-cac-thu-vien-tren-windows)
+    - [4.1. Cài đặt Python bằng Anaconda.](#-cai-dat-python-bang-anaconda)
+    - [4.2. Kiểm tra Libs](#-kiem-tra-libs)
+    - [4.3. Cài đặt Libs bằng Anaconda](#-cai-dat-libs-bang-anaconda)
+    - [4.4. Chạy thử 1 đoạn code trên python.](#-chay-thu--doan-code-tren-python)
 - [5. Các sách tham khảo?](#-cac-sach-tham-khao)
 
 <!-- /MarkdownTOC -->
 
+**Bạn cũng có thể đặt các câu hỏi và tham gia thảo luận tại:**
+[**Forum Machine Learning cơ bản**](https://www.facebook.com/groups/257768141347267/)
+
+
 
 <a name="-blog-duoc-tao-nhu-the-nao"></a>
 
+<a name="-blog-duoc-tao-nhu-the-nao"></a>
 ## 1. Blog được tạo như thế nào?
 Mới bạn đọc bài [Blog và các bài viết được tạo như thế nào](/2017/02/02/howdoIcreatethisblog/) để hiểu rõ hơn. 
 
 <a name="-cac-kien-thuc-can-thiet-de-hoc-machine-learning"></a>
 
+<a name="-cac-kien-thuc-can-thiet-de-hoc-machine-learning"></a>
 ## 2. Các kiến thức cần thiết để học Machine Learning? 
 
 * **Toán**: bạn cần nắm vững các môn Giải Tích, Đại Số Tuyến Tính, Xác Suất Thông Kê. Nếu biết thêm về Toán Tối Ưu nữa thì rất tốt. 
@@ -34,6 +54,7 @@ Mới bạn đọc bài [Blog và các bài viết được tạo như thế nà
 
 <a name="-huong-dan-cai-dat-python-va-cac-thu-vien-tren-macos"></a>
 
+<a name="-huong-dan-cai-dat-python-va-cac-thu-vien-tren-macos"></a>
 ## 3. Hướng dẫn cài đặt python và các thư viện trên MacOS?
 **Xin cảm ơn facebook Nguyễn Nghĩa về phần hướng dẫn này:**
 
@@ -41,6 +62,7 @@ Nhận thấy có một số bạn gặp khó khắn trong việc sử dụng so
 
 <a name="--doi-net-ve-thu-vien-scikit-learn"></a>
 
+<a name="--doi-net-ve-thu-vien-scikit-learn"></a>
 ### 3. 1. Đôi nét về thư viện scikit-learn
 Theo như tôi biết thì Scikit-learn mà một trong những thư viện mã nguồn mở Machine Learning viết bằng Python và được đông đảo mọi người sử dụng nhất hiện nay. Scikit-learn implement nhiều thuật toán máy học từ các thuật toán cơ bản cho đến các thuật toán phức tạp như DecisonTree, Naive Bayes, K-Nearest Neighbor (KNN), Support Vector Machine (SVM), Artificial Nerual Network (ANN)...
 
@@ -48,6 +70,7 @@ Trang chủ của thư viện: http://scikit-learn.org/
 
 <a name="-cai-dat-thu-vien-scikit-learn"></a>
 
+<a name="-cai-dat-thu-vien-scikit-learn"></a>
 ### 3.2. Cài đặt thư viện scikit-learn
 Thư viện scikit-learn yêu cầu chúng ta phải cài đặt những module như dưới đây:
 * Python (>= 2.6 or >= 3.3),
@@ -56,6 +79,7 @@ Thư viện scikit-learn yêu cầu chúng ta phải cài đặt những module 
 
 <a name="--python"></a>
 
+<a name="--python"></a>
 ### 3.3  Python
 Phiên bản mới nhất của hệ điều hành macOS (Sierra) thì python 2.7 đã được cài đặt sẵn, vì vậy chúng ta không cài đặt lại python. Với những verson khác thì trước khi cài đặt python chúng ta mở **Termial**  và gõ lệnh gõ lệnh python để kiểm tra python đã đượcc cài đặt hay chưa.
 
@@ -78,6 +102,7 @@ brew install python3
 
 <a name="--pip"></a>
 
+<a name="--pip"></a>
 ### 3.4  Pip
 Pip là một công cụ nhỏ gọn giúp chúng ta cài đặt các gói thư viện trong pytho một cách nhanh chóng. Hầu hết mọi thư viện của python đều được cài đặt qua pip. Và để cài đặt được pip chúng ta sử dụng lệnh:
 ```
@@ -86,6 +111,7 @@ sudo easy_install pip
 
 <a name="-numpy"></a>
 
+<a name="-numpy"></a>
 ### 3.5. Numpy
 
 ```
@@ -94,6 +120,7 @@ pip install numpy
 
 <a name="-scipy"></a>
 
+<a name="-scipy"></a>
 ### 3.6. Scipy
 
 ```
@@ -102,6 +129,7 @@ pip install scipy
 
 <a name="-matplotlib"></a>
 
+<a name="-matplotlib"></a>
 ### 3.7. Matplotlib
 Matplotlib là một thư viện python phục vụ cho việc vẽ đồ thị. Lệnh cài đặt matplotlib
 
@@ -111,6 +139,7 @@ pip install matplotlib
 
 <a name="-scikit-learn"></a>
 
+<a name="-scikit-learn"></a>
 ### 3.8. Scikit-learn
 Sau khi đã cài đặt xong các module mà scikit-learn yêu cầu thì chúng ta sử dụng lệnh dưới đây để cài đặt thư viện Machine Learning này.
 
@@ -126,6 +155,7 @@ sudo pip install -U scikit-learn
 
 <a name="-kiem-tra-cai-dat"></a>
 
+<a name="-kiem-tra-cai-dat"></a>
 ### 3.9 Kiểm tra cài đặt
 Sau khi cài đặt đẩy đủ các thư viện thì bước cuối cùng sẽ là thử **import** thư viện để kiểm tra lại quá trình cài đặt có thành công hay không. Hãy thư vào một trường lập trình python bằng cách mở Terminal và gõ lệnh:
 
@@ -142,6 +172,7 @@ Nếu không có thông báo nào nghĩa là chúng ta đã install thành công
 
 <a name="-tai-lieu-tham-khao"></a>
 
+<a name="-tai-lieu-tham-khao"></a>
 ### 3.10. Tài liệu tham khảo
 [1] [Installing scikit-learn](http://scikit-learn.org/stable/install.html)
 
@@ -149,6 +180,7 @@ Nếu không có thông báo nào nghĩa là chúng ta đã install thành công
 
 <a name="-huong-dan-cai-dat-python-va-cac-thu-vien-tren-windows"></a>
 
+<a name="-huong-dan-cai-dat-python-va-cac-thu-vien-tren-windows"></a>
 ## 4. Hướng dẫn cài đặt python và các thư viện trên Windows?
 
 **Cảm ơn facebook Pham Chi Hieu về phần trả lời này:**
@@ -158,6 +190,7 @@ Nếu không có thông báo nào nghĩa là chúng ta đã install thành công
 
 <a name="-cai-dat-python-bang-anaconda"></a>
 
+<a name="-cai-dat-python-bang-anaconda"></a>
 ### 4.1. Cài đặt Python bằng Anaconda.
 Để tải về Python và một số thư viện cần thiết, một cách đơn giản nhất là tải về [Anaconda cho windows](https://docs.continuum.io/anaconda/install#anaconda-for-windows-install/) và cài đặt vào thư mục bạn muốn. Anaconda hỗ trợ rất nhiều thư viện giúp lập trình Python. 
 
@@ -170,6 +203,7 @@ Sau khi cài đặt xong, bạn vào thư mục Scripts trong thư mục Anacond
 
 <a name="-kiem-tra-libs"></a>
 
+<a name="-kiem-tra-libs"></a>
 ### 4.2. Kiểm tra Libs
 Anaconda đã có sẵn khá là nhiều thư viện python như : [Numpy](http://www.numpy.org/), [Scipy](https://www.scipy.org/), [Matplotlib](http://matplotlib.org/) , [sklearn](http://scikit-learn.org/stable/)
 
@@ -198,6 +232,7 @@ Nếu như Python trả về lỗi Import như trên thì có nghĩa trong Anaco
 
 <a name="-cai-dat-libs-bang-anaconda"></a>
 
+<a name="-cai-dat-libs-bang-anaconda"></a>
 ### 4.3. Cài đặt Libs bằng Anaconda
 Ở phần trên python của tôi chưa có thư viện *sklearn*, nên tôi phải đi cài đặt nó. Vì tôi sử dụng Anaconda cho lập trình python nên tôi cần phải *(1) cài đặt thư viện mới vào đường dẫn libs python của Anaconda* hoặc *(2) chỉ cho python của Anaconda biết về đường dẫn tới thư viện mới này*.
 
@@ -227,6 +262,7 @@ Với 1 thư viện chưa có trên Anaconda, cách cài đặt sẽ phức tạ
 
 <a name="-chay-thu--doan-code-tren-python"></a>
 
+<a name="-chay-thu--doan-code-tren-python"></a>
 ### 4.4. Chạy thử 1 đoạn code trên python.
 
 Bây giờ, các bạn đã có thể chạy thử 1 vài ví dụ trên trang Machine Learning cơ bản, ví dụ như [Bài 3: Linear Regression](/2016/12/28/linearregression/)
@@ -237,6 +273,7 @@ Bây giờ, các bạn đã có thể chạy thử 1 vài ví dụ trên trang M
 
 <a name="-cac-sach-tham-khao"></a>
 
+<a name="-cac-sach-tham-khao"></a>
 ## 5. Các sách tham khảo?
 
 Mời bạn [xem tại đây](/2017/02/02/howdoIcreatethisblog/#main-references).

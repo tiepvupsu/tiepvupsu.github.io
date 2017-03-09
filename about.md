@@ -19,3 +19,6 @@ Một lần nữa, tôi xin chân thành cảm ơn.
 <div class="share-page">
     <a href = "https://www.facebook.com/machinelearningbasicvn/" target="_blank" title="Follow us"><img src = "https://simplesharebuttons.com/images/somacro/facebook.png" width="50"></a>
 </div>
+
+<b>Và đặt các câu hỏi, cùng tham gia thảo luận tại:</b> <br>
+[**Forum Machine Learning cơ bản**](https://www.facebook.com/groups/257768141347267/)
