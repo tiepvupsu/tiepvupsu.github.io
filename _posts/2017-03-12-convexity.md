@@ -3,7 +3,7 @@ layout: post
 comments: true
 title:  "Bài 16: Convex sets và convex functions"
 date:   2017-03-12 15:22:00
-permalink: 2017/03/02/convextity/
+permalink: 2017/03/12/convextity/
 mathjax: true
 tags: Convex-sets Convex-functions 
 category: Optimization
