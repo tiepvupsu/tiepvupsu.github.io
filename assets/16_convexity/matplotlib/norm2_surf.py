@@ -70,34 +70,44 @@ import matplotlib.pyplot as plt
 from matplotlib import cm
 import numpy as np 
 
-choose = 2
+choose = 4
 
 fig = plt.figure()
 ax = fig.gca(projection='3d')
 X, Y, Z = axes3d.get_test_data(0.05)
 
-X = np.arange(-2, 2, 0.025)
-Y = np.arange(-2, 2, 0.025)
+X = np.arange(-6, 6, 0.025)
+Y = np.arange(-6, 6, 0.025)
 X, Y = np.meshgrid(X, Y)
 if choose == 1:
 	Z = X**2 + Y**2
 elif choose == 2: 
 	Z = np.abs(X) + np.abs(Y) 
+elif choose == 3: 
+	Z = X**2 - Y**2
+elif choose == 4:
+	Z = 0.1*(X**2 + 2*Y**2 - 2*np.sin(X*Y))
 
 ax.plot_surface(X, Y, Z, rstride=8, cstride=8, alpha=1, cmap=cm.jet)
 cset = ax.contour(X, Y, Z, zdir='z', offset=-1, cmap=cm.coolwarm)
-cset = ax.contour(X, Y, Z, zdir='x', offset=-40, cmap=cm.coolwarm)
-cset = ax.contour(X, Y, Z, zdir='y', offset=40, cmap=cm.coolwarm)
+# cset = ax.contour(X, Y, Z, zdir='x', offset=0, cmap=cm.coolwarm)
+# cset = ax.contour(X, Y, Z, zdir='y', offset=0, cmap=cm.coolwarm)
 
 ax.set_xlabel('$x$', fontsize = 15)
-ax.set_xlim(-2, 2)
+ax.set_xlim(-6, 6)
 ax.set_ylabel('$y$', fontsize =15)
-ax.set_ylim(-2, 2)
+ax.set_ylim(-6, 6)
 if choose == 1:
 	ax.set_zlabel('$f(x, y) = x^2 + y^2$', fontsize = 15)
 elif choose == 2:
 	ax.set_zlabel('$f(x, y) = |x| + |y|$', fontsize = 15)
-ax.set_zlim(-1, 5)
+elif choose == 3:
+	ax.set_zlabel('$f(x, y) = x^2 - y^2$', fontsize = 15)
+elif choose == 4:
+	# ax.set_zlabel('$f(x, y) = \\frac{1}{10}(x^2 + 2y^2 - 2\sin(xy)$', fontsize = 15)
+	ax.set_zlabel('$f(x, y) = \\frac{1}{10}(x^2 + 2y^2 - 2\sin(xy)$', fontsize = 15)
+
+ax.set_zlim(-1, 6)
 
 
 plt.savefig('aa.png')
