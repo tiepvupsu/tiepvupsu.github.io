@@ -5,10 +5,10 @@ title:  "Bài 16: Convex sets và convex functions"
 date:   2017-03-12 15:22:00
 permalink: 2017/03/02/convextity/
 mathjax: true
-tags: Convex-sets Convex-functions Convex-optimization Lagrange-multiplier
+tags: Convex-sets Convex-functions 
 category: Optimization
-sc_project:
-sc_security:
+sc_project: 11281831
+sc_security: f2dfc7eb
 img: \assets\16_convexity\norm2_surf.png
 summary: Giới thiệu về tập hợp lồi và hàm số lồi trong Toán Tối Ưu.
 ---
@@ -29,7 +29,7 @@ _Bài chú yếu nói về toán, nếu bạn đọc không hiểu ngay cũng kh
     - [2.4. Convex combination và Convex hulls](#-convex-combination-va-convex-hulls)
 - [3. Convex functions](#-convex-functions)
     - [3.1. Định nghĩa](#-dinh-nghia-1)
-    - [3.2. Các tính chất cơ bản khác](#-cac-tinh-chat-co-ban-khac)
+    - [3.2. Các tính chất cơ bản](#-cac-tinh-chat-co-ban)
     - [3.3. Ví dụ](#-vi-du-1)
         - [3.3.1. Các hàm một biến](#-cac-ham-mot-bien)
         - [3.3.3. Affine functions](#-affine-functions)
@@ -39,6 +39,8 @@ _Bài chú yếu nói về toán, nếu bạn đọc không hiểu ngay cũng kh
     - [3.5. Kiểm tra tính chất lồi dựa vào đạo hàm.](#-kiem-tra-tinh-chat-loi-dua-vao-dao-ham)
         - [3.5.1. First-order condition](#-first-order-condition)
         - [3.5.2. Second-order condition](#-second-order-condition)
+- [4. Tóm tắt](#-tom-tat)
+- [5. Tài liệu tham khảo](#-tai-lieu-tham-khao)
 
 <!-- /MarkdownTOC -->
 
@@ -315,7 +317,7 @@ Tương tự với định nghĩa **strictly concave**.
 
 Đây là một điểm quan trọng: **Nếu một hàm số là _strictly convex_ và có điểm cực trị, thì điểm cực trị đó là duy nhất và cũng là _global minimum_**.
 
-<a name="-cac-tinh-chat-co-ban-khac"></a>
+<a name="-cac-tinh-chat-co-ban"></a>
 
 ### 3.2. Các tính chất cơ bản
 
@@ -644,6 +646,8 @@ là một ma trận đường chéo với các thành phần trên đường ch�
 
 Ngoài ra còn nhiều tính chất thú vị của các _hàm lồi_, các bạn được khuyến khích đọc thêm Chương 3 của cuốn Convex Optimization trong phần tài liệu tham khảo.
 
+<a name="-tom-tat"></a>
+
 ## 4. Tóm tắt
 
 * Machine Learning và Optimization có quan hệ mật thiết với nhau. Trong Optimization, Convex Optimization là quan trọng nhất. Một bài toán là convex optimization nếu _hàm mục tiêu_ là convex và tập hợp các điểm thỏa mãn các điều kiện ràng buộc là một _convex set_.
@@ -655,6 +659,8 @@ Ngoài ra còn nhiều tính chất thú vị của các _hàm lồi_, các bạ
 * Một hàm số khả vi là _convex_ nếu tập xác định của nó là _convex_ và đường (mặt) tiếp tuyến _không nằm phía trên_ đồ thị (bề mặt) của hàm số đó.
 
 * Các norms là các hàm lồi, được sử dụng nhiều trong tối ưu.
+
+<a name="-tai-lieu-tham-khao"></a>
 
 ## 5. Tài liệu tham khảo
 
