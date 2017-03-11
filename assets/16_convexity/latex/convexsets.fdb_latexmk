@@ -1,8 +1,8 @@
 # Fdb version 3
-["pdflatex"] 1489089298 "convexsets.tex" "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/16_convexity/latex/convexsets.pdf" "convexsets" 1489089299
+["pdflatex"] 1489184608 "convexsets.tex" "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/16_convexity/latex/convexsets.pdf" "convexsets" 1489184608
   "/dev/null" 1489038007 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/etc/texmf/web2c/texmf.cnf" 1476924511 1101 af7716885e081ab43982cab7b4672c1a ""
-  "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/16_convexity/latex/convexsets.aux" 1489089299 8 a94a2480d3289e625eea47cd1b285758 ""
+  "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/16_convexity/latex/convexsets.aux" 1489184608 8 a94a2480d3289e625eea47cd1b285758 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmss10.tfm" 1136768653 1316 b636689f1933f24d1294acdf6041daaa ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb" 1248133631 24457 5cbb7bdf209d5d1ce9892a9b80a307cc ""
@@ -190,11 +190,12 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1458942643 31351 b32c45dce4a01cb7b53ed90c546614ca ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1476924582 1863403 f3ff9a4253bcb5fb9a9baaf0c572cb01 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1476924597 3856431 f9c94138039199b86e883dc1c4eb6c05 ""
-  "convexsets.aux" 1489089299 8 a94a2480d3289e625eea47cd1b285758 ""
-  "convexsets.tex" 1489089298 801 4c50a9192f59dd2e89200f17df0432c9 ""
+  "convexsets.aux" 1489184608 8 a94a2480d3289e625eea47cd1b285758 ""
+  "convexsets.tex" 1489184608 876 c352c82b4cf3e83d8eb80417f9b6a3c6 ""
   (generated)
-  "convexsets.aux"
-  "convexsets.pdf"
-  "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/16_convexity/latex/convexsets.log"
   "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/16_convexity/latex/convexsets.pdf"
+  "convexsets.aux"
+  "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/16_convexity/latex/convexsets.log"
+  "convexsets.pdf"
+  "convexsets.pgf-plot.gnuplot"
   "convexsets.log"
