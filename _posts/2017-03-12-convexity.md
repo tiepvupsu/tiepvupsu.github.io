@@ -549,7 +549,8 @@ Hàng dưới, bên phải, các \\(\alpha-\\) sublevel sets hơi khó tưởng 
 
 Các ví dụ ở hình 10, trừ hình cuối cùng, đều tương ứng với các hàm lồi.
 
-Dưới đây là một ví dụ về việc một hàm số có mọi \\(\alpha-\\) sublevel sets là _lồi_ nhưng không phải _hàm lồi_.
+Một ví dụ về việc một hàm số không _convex_ nhưng mọi \\(\alpha-\\) sublevel sets là _convex_ là hàm \\(f(x, y) = e^{-x-y}\\). Hàm này có mọi \\(\alpha-\\) sublevel sets là nửa mặt phẳng - là _convex_, nhưng nó không phải là _convex_ (trong trường hợp này nó là concave).
+<!-- Dưới đây là một ví dụ về việc một hàm số có mọi \\(\alpha-\\) sublevel sets là _lồi_ nhưng không phải _hàm lồi_.
 <hr>
 <div class="imgcap">
  <img src ="/assets/16_convexity/sin_surf.png" align = "center" width = "800">
@@ -557,7 +558,7 @@ Dưới đây là một ví dụ về việc một hàm số có mọi \\(\alpha
 </div>
 <hr>
 
-Mọi \\(\alpha-\\) sublevel sets của hàm số này đều là các hình tròn - _convex_ nhưng hàm số đó không phải là _lồi_. Vì có thể tìm được hai điểm trên mặt này sao cho đoạn thẳng nối hai điểm nằm hoàn toàn phía dưới của mặt (một điểm ở _cánh_ và 1 điểm ở _đáy_ chẳng hạn).
+Mọi \\(\alpha-\\) sublevel sets của hàm số này đều là các hình tròn - _convex_ nhưng hàm số đó không phải là _lồi_. Vì có thể tìm được hai điểm trên mặt này sao cho đoạn thẳng nối hai điểm nằm hoàn toàn phía dưới của mặt (một điểm ở _cánh_ và 1 điểm ở _đáy_ chẳng hạn). -->
 
 <a name="-kiem-tra-tinh-chat-loi-dua-vao-dao-ham"></a>
 
