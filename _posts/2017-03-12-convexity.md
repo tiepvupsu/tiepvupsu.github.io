@@ -539,7 +539,7 @@ Hàng dưới, bên phải, các \\(\alpha-\\) sublevel sets hơi khó tưởng 
 **Định lý:** Nếu một hàm số là lồi thì _mọi_ \\(\alpha-\\) sublevel sets của nó là lồi. Ngược lại chưa chắc đã đúng, tức nếu các \\(\alpha-\\) sublevel sets của một hàm số là _lồi_ thì hàm số đó chưa chắc đã _lồi_.
 <hr>
 
-Điều này chỉ ra rằng nếu tồn tại một giá trị \\(\alpha-\\) sao cho một \\(\alpha-\\) sublevel set của một hàm số là _không lồi_, thì hàm số đó là _không lồi_ (không lồi nhưng không có nghĩa là _concave_, chú ý). Vậy nên Hyperbolic không phải là hàm lồi.
+Điều này chỉ ra rằng nếu tồn tại một giá trị \\(\alpha\\) sao cho một \\(\alpha-\\) sublevel set của một hàm số là _không lồi_, thì hàm số đó là _không lồi_ (không lồi nhưng không có nghĩa là _concave_, chú ý). Vậy nên Hyperbolic không phải là hàm lồi.
 
 Các ví dụ ở hình 10, trừ hình cuối cùng, đều tương ứng với các hàm lồi.
 
