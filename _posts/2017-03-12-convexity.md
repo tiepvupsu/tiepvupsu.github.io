@@ -238,7 +238,7 @@ Việc chứng minh việc này theo Định nghĩa 2 cũng không khó. Nếu \
 </div>
 <hr>
 
-Từ đó suy ra giao của các siêu nửa mặt phẳng (haflspaces) cũng là một tập lồi. Trong không gian hai chiều, tập lồi này chính là _đa giác lồi_, trong không gian ba chiều, nó có tên là _đa diện lồi_.
+Từ đó suy ra giao của các _haflspaces_ và các _hyperplanes_ cũng là một tập lồi. Trong không gian hai chiều, tập lồi này chính là _đa giác lồi_, trong không gian ba chiều, nó có tên là _đa diện lồi_.
 
 Trong không gian nhiều chiều, giao của các *haflspaces* và *hyperplanes* được gọi là **polyhedra**.
 
