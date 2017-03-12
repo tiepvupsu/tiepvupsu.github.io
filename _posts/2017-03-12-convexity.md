@@ -633,7 +633,7 @@ Với hàm số một biến \\(f(x)\\), điều kiện này tương đương v�
 
 * Hàm _cross entropy_ là một hàm _strictly convex_. Xét ví dụ đơn giản với chỉ hai xác suất \\(x\\) và \\(1 - x\\) với \\(0 < x < 1\\): \\(f(x) = -(a \log(x) + (1 - a) \log(1 - x))\\) có đạo hàm bậc hai là \\(\frac{a}{x^2} + \frac{1 - a}{(1-x)^2}\\) là một số dương.
 
-* Nếu \\(\mathbf{A}\\) là một ma trận xác định dương thì \\(f(\mathbf{x}) = \frac{1}{2}\mathbf{x}^T\mathbf{Ax}\\) là lồi vì Hession của nó chính là \\(\mathbf{A}\\) là một ma trận xác định dương.
+* Nếu \\(\mathbf{A}\\) là một ma trận xác định dương thì \\(f(\mathbf{x}) = \frac{1}{2}\mathbf{x}^T\mathbf{Ax}\\) là lồi vì Heinan của nó chính là \\(\mathbf{A}\\) là một ma trận xác định dương.
 
 * Xét hàm số _negative entropy_ với hai biến: \\(f(x, y) = x \log(x) + y \log(y)
 \\) trên tập các giá trị dương của \\(x\\) và \\(y\\). Hàm số này có đạo hàm bậc nhất là \\([\log(x) + 1, \log(y) + 1]^T\\) và Hessian là:
