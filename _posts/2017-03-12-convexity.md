@@ -229,18 +229,18 @@ Cũng lại nhân tiện, khoảng cách Mahalanobis có liên quan đến *kho�
 ### 2.2.3. Giao của các tập lồi là một tập lồi.
 Việc này có thể nhận dễ nhận thấy với Hình 4 (trái) dưới đây. Giao của hai trong ba hoặc cả ba tập lồi đều là các tập lồi.
 
-Việc chứng minh việc này theo Định nghĩa 2 cũng không khó. Nếu \\(\mathbf{x}_1, \mathbf{x}_2\\) thuộc vào giao của các tập lồi, tức thuộc tất cả các tập lồi đã cho, thì \\(\theta\mathbf{x}_1 + (1 - \theta) \mathbf{x}_2)\\) cũng thuộc vào tất cả các tập lồi, tức thuộc vào giao điểm của chúng!
+Việc chứng minh việc này theo Định nghĩa 2 cũng không khó. Nếu \\(\mathbf{x}_1, \mathbf{x}_2\\) thuộc vào giao của các tập lồi, tức thuộc tất cả các tập lồi đã cho, thì \\(\theta\mathbf{x}_1 + (1 - \theta) \mathbf{x}_2)\\) cũng thuộc vào tất cả các tập lồi, tức thuộc vào giao của chúng!
 
 <hr>
 <div class="imgcap">
  <img src ="/assets/16_convexity/intersection.png" align = "center" width = "800">
- <div class = "thecap">Hình 4. Trái: Giao điểm của các tập lồi là một tập lồi. Phải: giao điểm của các hyperplanes và haflspaces là một tập lồi và được gọi là polyhedra.</div>
+ <div class = "thecap">Hình 4. Trái: Giao của các tập lồi là một tập lồi. Phải: giao của các hyperplanes và haflspaces là một tập lồi và được gọi là polyhedra.</div>
 </div>
 <hr>
 
 Từ đó suy ra giao của các siêu nửa mặt phẳng (haflspaces) cũng là một tập lồi. Trong không gian hai chiều, tập lồi này chính là _đa giác lồi_, trong không gian ba chiều, nó có tên là _đa diện lồi_.
 
-Trong không gian nhiều chiều, giao điểm của các *haflspaces* và *hyperplanes* được gọi là **polyhedra**.
+Trong không gian nhiều chiều, giao của các *haflspaces* và *hyperplanes* được gọi là **polyhedra**.
 
 Giả sử có \\(m\\) *haflspaces* và \\(p\\) *hyperplanes*. Mỗi một *haflspace*, theo như đã trình bày phía trên, có thể viết dưới dạng \\(\mathbf{a}_i^T\mathbf{x} \leq b_i, ~\forall i = 1, 2, \dots, m\\). Mỗi một *hyperplane* có thể viết dưới dạng: \\(\mathbf{c}_i^T\mathbf{x} = d_i, ~\forall i = 1, 2, \dots, p\\).
 
