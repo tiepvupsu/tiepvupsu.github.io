@@ -583,7 +583,7 @@ Dưới đây là ví dụ về _hàm lồi_ và _hàm không lồi_.
 <hr>
 <div class="imgcap">
  <img src ="/assets/16_convexity/first_order.png" align = "center" width = "800">
- <div class = "thecap">Hình 12. Kiểm tra tính convexity dựa vào đạo hàm bậc nhất. Trái: hàm lồi, phải: hàm không lồi.</div>
+ <div class = "thecap">Hình 13. Kiểm tra tính convexity dựa vào đạo hàm bậc nhất. Trái: hàm lồi, phải: hàm không lồi.</div>
 </div>
 <hr>
 Hàm bên trái là một hàm lồi. Hàm bên phải không phải là hàm lồi vì đồ thị của nó vừa nằm trên, vừa nằm dưới tiếp tuyến.
