@@ -110,7 +110,7 @@ Các hình với đường biên màu đen thể hiện việc bao gồm cả bi
 
 Một vài ví dụ thực tế:
 
-* Nếu một căn phòng có dạng hình _lồi_ thì nếu ta đặt một bóng đèn đủ sáng ở bất kỳ vị trí nào trong phòng, mọi điểm trong căn phòng đều được chiếu sáng.
+* Giả sử có một căn phòng có dạng hình _lồi_, nếu ta đặt một bóng đèn đủ sáng ở bất kỳ vị trí nào trong phòng, mọi điểm trong căn phòng đều được chiếu sáng.
 
 * Nếu một đất nước có bản đồ dạng một hình _lồi_ thì đường bay nối giữa hai thành phố bất kỳ trong đất nước đó đều nằm trọn vẹn trong không phận của nước đó. (Không như Việt Nam, muốn bay thẳng Hà Nội - Hồ Chí Minh phải bay qua không phận Campuchia).
 
