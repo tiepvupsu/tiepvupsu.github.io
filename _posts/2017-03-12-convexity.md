@@ -549,7 +549,7 @@ Hàng dưới, bên phải, các \\(\alpha-\\) sublevel sets hơi khó tưởng 
 
 Các ví dụ ở hình 10, trừ hình cuối cùng, đều tương ứng với các hàm lồi.
 
-Một ví dụ về việc một hàm số không _convex_ nhưng mọi \\(\alpha-\\) sublevel sets là _convex_ là hàm \\(f(x, y) = e^{-x-y}\\). Hàm này có mọi \\(\alpha-\\) sublevel sets là nửa mặt phẳng - là _convex_, nhưng nó không phải là _convex_ (trong trường hợp này nó là concave).
+Một ví dụ về việc một hàm số không _convex_ nhưng mọi \\(\alpha-\\) sublevel sets là _convex_ là hàm \\(f(x, y) = -e^{x+y}\\). Hàm này có mọi \\(\alpha-\\) sublevel sets là nửa mặt phẳng - là _convex_, nhưng nó không phải là _convex_ (trong trường hợp này nó là _concave_).
 
 <!--- Dưới đây là một ví dụ về việc một hàm số có mọi \\(\alpha-\\) sublevel sets là _lồi_ nhưng không phải _hàm lồi_.
 <hr>
