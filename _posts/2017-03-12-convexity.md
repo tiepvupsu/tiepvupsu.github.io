@@ -5,7 +5,7 @@ title:  "Bài 16: Convex sets và convex functions"
 date:   2017-03-12 15:22:00
 permalink: 2017/03/12/convexity/
 mathjax: true
-tags: Convex-sets Convex-functions 
+tags: Convex-sets Convex-functions
 category: Optimization
 sc_project: 11281831
 sc_security: f2dfc7eb
@@ -107,6 +107,12 @@ Một vài ví dụ về convex sets:
 <hr>
 
 Các hình với đường biên màu đen thể hiện việc bao gồm cả biên, biên màu trắng thể hiện việc biên đó không nằm trong tập hợp đang xét. Đường hoặc đoạn thằng cũng là một tập lồi theo định nghĩa phía trên.
+
+Một vài ví dụ thực tế:
+
+* Nếu một căn phòng có dạng hình _lồi_ thì nếu ta đặt một bóng đèn đủ sáng ở bất kỳ vị trí nào trong phòng, mọi điểm trong căn phòng đều được chiếu sáng.
+
+* Nếu một đất nước có bản đồ dạng một hình _lồi_ thì đường bay nối giữa hai thành phố bất kỳ trong đất nước đó đều nằm trọn vẹn trong không phận của nước đó. (Không như Việt Nam, muốn bay thẳng Hà Nội - Hồ Chí Minh phải bay qua không phận Campuchia).
 
 Dưới đây là một vài ví dụ về _nonconvex sets_, tức tập hợp mà không phải là lồi:
 
@@ -670,4 +676,4 @@ Ngoài ra còn nhiều tính chất thú vị của các _hàm lồi_, các bạ
 
 ## 5. Tài liệu tham khảo
 
-[1] [Convex Optimization](http://stanford.edu/~boyd/cvxbook/) – Boyd and Vandenberghe, Cambridge University Press, 2004. 
+[1] [Convex Optimization](http://stanford.edu/~boyd/cvxbook/) – Boyd and Vandenberghe, Cambridge University Press, 2004.
