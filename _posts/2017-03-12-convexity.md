@@ -3,7 +3,7 @@ layout: post
 comments: true
 title:  "Bài 16: Convex sets và convex functions"
 date:   2017-03-12 15:22:00
-permalink: 2017/03/12/convextity/
+permalink: 2017/03/12/convexity/
 mathjax: true
 tags: Convex-sets Convex-functions 
 category: Optimization
@@ -47,6 +47,7 @@ _Bài chú yếu nói về toán, nếu bạn đọc không hiểu ngay cũng kh
 
 <a name="-gioi-thieu"></a>
 
+<a name="-gioi-thieu"></a>
 ## 1. Giới thiệu
 Từ đầu đến giờ, chúng ta đã làm quen với rất nhiều bài toán tối ưu. Học Machine Learning là phải học Toán Tối Ưu, và để hiểu hơn về Toán Tối Ưu, với tôi cách tốt nhất là tìm hiểu các thuật toán Machine Learning. Cho tới lúc này, những bài toán tối ưu các bạn đã nhìn thấy trong blog đều là các bài toán tối ưu không ràng buộc (unconstrained optimization problems), tức tối ưu hàm mất mát mà không có điều kiện ràng buộc (constraints) nào về nghiệm cả.
 
@@ -86,10 +87,12 @@ Các bài toán tối ưu, nhìn chung không có cách giải tổng quát, th�
 
 <a name="-convex-sets"></a>
 
+<a name="-convex-sets"></a>
 ## 2. Convex sets
 
 <a name="-dinh-nghia"></a>
 
+<a name="-dinh-nghia"></a>
 ### 2.1. Định nghĩa
 Khái niệm về _convex sets_ có lẽ không xa lạ với các bạn học sinh Việt Nam khi chúng ta đã nghe về _đa giác lồi_. _Lồi_, hiểu đơn giản là _phình ra ngoài_, hoặc _nhô ra ngoài_. Trong toán học, _bằng phẳng_ cũng được coi là _lồi_.
 
@@ -220,6 +223,7 @@ Cũng lại nhân tiện, khoảng cách Mahalanobis có liên quan đến *kho�
 
 <a name="-giao-cua-cac-tap-loi-la-mot-tap-loi"></a>
 
+<a name="-giao-cua-cac-tap-loi-la-mot-tap-loi"></a>
 ### 2.2.3. Giao của các tập lồi là một tập lồi.
 Việc này có thể nhận dễ nhận thấy với Hình 4 (trái) dưới đây. Giao của hai trong ba hoặc cả ba tập lồi đều là các tập lồi.
 
@@ -246,6 +250,7 @@ trong đó \\(\preceq\\) là *element-wise*, tức mỗi phần tử trong vế 
 
 <a name="-convex-combination-va-convex-hulls"></a>
 
+<a name="-convex-combination-va-convex-hulls"></a>
 ### 2.4. Convex combination và Convex hulls
 Một điểm được gọi là **convex combination** (_tổ hợp lồi_) của các điểm \\(\mathbf{x}_1, \mathbf{x}_2, \dots, \mathbf{x}_k\\) nếu nó có thể viết dưới dạng:
 \\[
@@ -277,12 +282,14 @@ Ngoài ra còn nhiều tính chất thú vị của các tập lồi và các ph
 
 <a name="-convex-functions"></a>
 
+<a name="-convex-functions"></a>
 ## 3. Convex functions
 
 Hẳn các bạn đã nghe tới khái niệm này khi ôn thi đại học môn toán. Khái niệm hàm lồi có quan hệ tới đạo hàm bậc hai và [Bất đẳng thức Jensen](https://vi.wikipedia.org/wiki/Bất_đẳng_thức_Jensen) (_nếu bạn chưa nghe tới phần này, không sao, bây giờ bạn sẽ biết_).
 
 <a name="-dinh-nghia-1"></a>
 
+<a name="-dinh-nghia-1"></a>
 ### 3.1. Định nghĩa
 Để trực quan, trước hết ta xem xét các hàm 1 biến, đồ thị của nó là một đường trong một mặt phẳng. Một hàm số được gọi là _lồi_ nếu **tập xác định của nó là một tập lồi** và nếu ta nối hai điểm bất kỳ trên đồ thị hàm số đó, ta được một đoạn thẳng nằm về phía trên hoặc nằm trên đồ thị (xem Hình 5).
 
@@ -319,6 +326,7 @@ Tương tự với định nghĩa **strictly concave**.
 
 <a name="-cac-tinh-chat-co-ban"></a>
 
+<a name="-cac-tinh-chat-co-ban"></a>
 ### 3.2. Các tính chất cơ bản
 
 * Nếu \\(f(\mathbf{x})\\) là _convex_ thì \\(af(\mathbf{x})\\) là _convex_ nếu \\(a > 0\\) và là _concave_ nếu \\(a < 0\\). Điều này có thể suy ra trực tiếp từ định nghĩa.
@@ -340,9 +348,11 @@ cũng là _convex_ trên tập xác định là giao của tất cả các tập
 
 <a name="-vi-du-1"></a>
 
+<a name="-vi-du-1"></a>
 ### 3.3. Ví dụ
 <a name="-cac-ham-mot-bien"></a>
 
+<a name="-cac-ham-mot-bien"></a>
 #### 3.3.1. Các hàm một biến
 **Các ví dụ về các _convex functions_ một biến:**
 
@@ -380,6 +390,7 @@ Dưới đây là đồ thị của một vài _concave functions_:
 
 <a name="-affine-functions"></a>
 
+<a name="-affine-functions"></a>
 #### 3.3.3. Affine functions
 Các hàm số dạng \\(f(\mathbf{x}) = \mathbf{a}^T\mathbf{x} + b \\) vừa là convex, vừa là concave.
 
@@ -391,6 +402,7 @@ trong đó \\(\text{trace}\\) là hàm số tính tổng các giá trị trên �
 
 <a name="-quadratic-forms"></a>
 
+<a name="-quadratic-forms"></a>
 #### 3.3.3. Quadratic forms
 Hàm bậc hai một biến có dạng \\(f(x) = a x^2 + bx + c\\) là convex nếu \\(a > 0\\), là concave nếu \\(a < 0\\).
 
@@ -417,6 +429,7 @@ vì \\(\mathbf{X}^T\mathbf{X}\\) là một ma trận xác định dương, hàm 
 
 <a name="-norms"></a>
 
+<a name="-norms"></a>
 #### 3.3.4. Norms
 Vâng, lại là norms. Một hàm số bất kỳ thỏa mãn [ba điều kiện của norm](/math/#norms-chuan) đều là một _convex function_. Bạn đọc có thể chứng minh điều này bằng định nghĩa.
 
@@ -513,6 +526,7 @@ Các đường màu càng xanh đậm thì tương ứng với các giá trị c
 
 <a name="-\\\alpha-\\-sublevel-sets"></a>
 
+<a name="-\\\alpha-\\-sublevel-sets"></a>
 ### 3.4. \\(\alpha-\\) sublevel sets
 <hr>
 **Định nghĩa:** \\(\alpha-\\)**sublevel set** của một hàm số \\(f : \mathbb{R}^n \rightarrow \mathbb{R}\\) được định nghĩa là:
@@ -549,10 +563,12 @@ Mọi \\(\alpha-\\) sublevel sets của hàm số này đều là các hình tr�
 
 <a name="-kiem-tra-tinh-chat-loi-dua-vao-dao-ham"></a>
 
+<a name="-kiem-tra-tinh-chat-loi-dua-vao-dao-ham"></a>
 ### 3.5. Kiểm tra tính chất lồi dựa vào đạo hàm.
 Có một cách để nhận biết một hàm số khả vi có là hàm lồi hay không dựa vào các đạo hàm bậc nhất hoặc đạo hàm bậc hai của nó.
 <a name="-first-order-condition"></a>
 
+<a name="-first-order-condition"></a>
 #### 3.5.1. First-order condition
 Trước hết chúng ta định nghĩa phương trình đường (mặt) tiếp tuyến của một hàm số \\(f\\) khả vi tại một điểm nằm trên đồ thị (mặt) của hàm số đó \\((\mathbf{x}_0, f(\mathbf{x}_0)\\). Với hàm một biến, bạn đọc đã quen thuộc:
 \\[
@@ -605,6 +621,7 @@ Bất đẳng thức cuối cùng là đúng dựa trên định nghĩa của m�
 _First-order condition_ ít được sử dụng để tìm tính chất lồi của một hàm số, thay vào đó, người ta thường dùng _Second-order condition_ với các hàm có đạo hàm tới bậc hai.
 <a name="-second-order-condition"></a>
 
+<a name="-second-order-condition"></a>
 #### 3.5.2. Second-order condition
 Với hàm nhiều biến, tức biến là một vector, giả sử có chiều là \\(d\\), đạo hàm bậc nhất của nó là một vector cũng có chiều là \\(d\\). Đạo hàm bậc hai của nó là một ma trận vuông có chiều là \\(d\times d\\). Đạo hàm bậc hai của hàm số \\(f(\mathbf{x})\\) được ký hiệu là \\(\nabla^2 f(\mathbf{x})\\). Đạo hàm bậc hai còn được gọi là _Hessian_.
 
@@ -648,6 +665,7 @@ Ngoài ra còn nhiều tính chất thú vị của các _hàm lồi_, các bạ
 
 <a name="-tom-tat"></a>
 
+<a name="-tom-tat"></a>
 ## 4. Tóm tắt
 
 * Machine Learning và Optimization có quan hệ mật thiết với nhau. Trong Optimization, Convex Optimization là quan trọng nhất. Một bài toán là convex optimization nếu _hàm mục tiêu_ là convex và tập hợp các điểm thỏa mãn các điều kiện ràng buộc là một _convex set_.
@@ -662,6 +680,7 @@ Ngoài ra còn nhiều tính chất thú vị của các _hàm lồi_, các bạ
 
 <a name="-tai-lieu-tham-khao"></a>
 
+<a name="-tai-lieu-tham-khao"></a>
 ## 5. Tài liệu tham khảo
 
 [1] [Convex Optimization](http://stanford.edu/~boyd/cvxbook/) – Boyd and Vandenberghe, Cambridge University Press, 2004. 
