@@ -86,7 +86,7 @@ elif choose == 2:
 elif choose == 3: 
 	Z = X**2 - Y**2
 elif choose == 4:
-	Z = 0.1*(X**2 + Y**2 - 30*np.sin(np.sqrt(X**2 + Y**2)))
+	Z = 0.1*(X**2 + Y**2 - 10*np.sin(np.sqrt(X**2 + Y**2)))
 
 ax.plot_surface(X, Y, Z, rstride=8, cstride=8, alpha=1, cmap=cm.jet)
 cset = ax.contour(X, Y, Z, zdir='z', offset=-5, cmap=cm.coolwarm)
@@ -106,7 +106,7 @@ elif choose == 3:
 elif choose == 4:
 	# ax.set_zlabel('$f(x, y) = \\frac{1}{10}(x^2 + 2y^2 - 2\sin(xy)$', fontsize = 20)
 	ax.set_zlabel('$f(x, y)$', fontsize = 20)
-ax.set_title('$f(x, y) = \\frac{1}{10}(x^2 + y^2 - 30\sin(\sqrt{x^2 + y^2})$ (nonconvex)', fontsize = 20)
+ax.set_title('$f(x, y) = \\frac{1}{10}(x^2 + y^2 - 10\sin(\sqrt{x^2 + y^2})$ (nonconvex)', fontsize = 20)
 ax.set_zlim(-5, 6)
 
 
