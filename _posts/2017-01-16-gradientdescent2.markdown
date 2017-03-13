@@ -287,7 +287,7 @@ J(\mathbf{w}; \mathbf{x}\_i; y\_i) = \frac{1}{2}(\mathbf{x}_i \mathbf{w} - y\_i)
 \\]
 Đạo hàm theo \\(\mathbf{w}\\) tương ứng là:
 \\[
-\nabla\_{\mathbf{w}}J(\mathbf{w}; \mathbf{x}\_i; y\_i) = \mathbf{x}\_i^T(\mathbf{x}\_i \mathbf{w} - y_i)^2
+\nabla\_{\mathbf{w}}J(\mathbf{w}; \mathbf{x}\_i; y\_i) = \mathbf{x}\_i^T(\mathbf{x}\_i \mathbf{w} - y_i)
 \\]
 Và dưới đây là hàm số trong python để giải Linear Regression theo SGD:
 
