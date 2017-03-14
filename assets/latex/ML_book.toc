@@ -1,0 +1,7 @@
+\select@language {english}
+\contentsline {chapter}{\numberline {1}Linear Regression}{1}{chapter..1}
+\contentsline {section}{\numberline {1.1}1. Gi\IeC {\'\ohorn }i thi\IeC {\d \ecircumflex }u}{1}{section..1.1}
+\contentsline {section}{\numberline {1.2}2. Ph\IeC {\^a}n t\IeC {\'\i }ch to\IeC {\'a}n h\IeC {\d o}c}{2}{section..1.2}
+\contentsline {subsection}{\numberline {1.2.1}D\IeC {\d a}ng c\IeC {\h u}a Linear Regression}{2}{subsection..1.2.1}
+\contentsline {subsection}{\numberline {1.2.2}Sai s\IeC {\'\ocircumflex } d\IeC {\d \uhorn } \IeC {\dj }o\IeC {\'a}n}{2}{subsection..1.2.2}
+\contentsline {subsection}{\numberline {1.2.3}H\IeC {\`a}m m\IeC {\'\acircumflex }t m\IeC {\'a}t}{3}{subsection..1.2.3}

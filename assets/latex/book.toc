@@ -1,0 +1,282 @@
+\contentsline {chapter}{\numberline {1}Gi\IeC {\'\ohorn }i thi\IeC {\d \ecircumflex }u}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}M\IeC {\d u}c \IeC {\dj }\IeC {\'\i }ch vi\IeC {\'\ecircumflex }t Blog}{2}{section.1.1}
+\contentsline {section}{\numberline {1.2}Tham kh\IeC {\h a}o th\IeC {\^e}m}{3}{section.1.2}
+\contentsline {subsection}{\numberline {1.2.1}C\IeC {\'a}c kh\IeC {\'o}a h\IeC {\d o}c}{3}{subsection.1.2.1}
+\contentsline {subsubsection}{Ti\IeC {\'\ecircumflex }ng Anh}{3}{section*.3}
+\contentsline {subsubsection}{Ti\IeC {\'\ecircumflex }ng Vi\IeC {\d \ecircumflex }t}{3}{section*.4}
+\contentsline {subsection}{\numberline {1.2.2}C\IeC {\'a}c trang Machine Learning ti\IeC {\'\ecircumflex }ng Vi\IeC {\d \ecircumflex }t kh\IeC {\'a}c}{3}{subsection.1.2.2}
+\contentsline {chapter}{\numberline {2}Ph\IeC {\^a}n nh\IeC {\'o}m c\IeC {\'a}c thu\IeC {\d \acircumflex }t to\IeC {\'a}n Machine Learning}{4}{chapter.2}
+\contentsline {section}{\numberline {2.1}Ph\IeC {\^a}n nh\IeC {\'o}m d\IeC {\d \uhorn }a tr\IeC {\^e}n ph\IeC {\uhorn }\IeC {\ohorn }ng th\IeC {\'\uhorn }c h\IeC {\d o}c}{4}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Supervised Learning (H\IeC {\d o}c c\IeC {\'o} gi\IeC {\'a}m s\IeC {\'a}t) }{4}{subsection.2.1.1}
+\contentsline {subsubsection}{Classification (Ph\IeC {\^a}n lo\IeC {\d a}i)}{5}{section*.6}
+\contentsline {subsubsection}{Regression (H\IeC {\`\ocircumflex }i quy)}{6}{section*.7}
+\contentsline {subsection}{\numberline {2.1.2}Unsupervised Learning (H\IeC {\d o}c kh\IeC {\^o}ng gi\IeC {\'a}m s\IeC {\'a}t)}{6}{subsection.2.1.2}
+\contentsline {subsubsection}{Clustering (ph\IeC {\^a}n nh\IeC {\'o}m)}{6}{section*.8}
+\contentsline {subsubsection}{Association}{7}{section*.9}
+\contentsline {subsection}{\numberline {2.1.3}Semi-Supervised Learning (H\IeC {\d o}c b\IeC {\'a}n gi\IeC {\'a}m s\IeC {\'a}t)}{7}{subsection.2.1.3}
+\contentsline {subsection}{\numberline {2.1.4}Reinforcement Learning (H\IeC {\d o}c C\IeC {\h u}ng C\IeC {\'\ocircumflex })}{7}{subsection.2.1.4}
+\contentsline {section}{\numberline {2.2}Ph\IeC {\^a}n nh\IeC {\'o}m d\IeC {\d \uhorn }a tr\IeC {\^e}n ch\IeC {\'\uhorn }c n\IeC {\u a}ng }{8}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Regression Algorithms}{8}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Classification Algorithms }{9}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Instance-based Algorithms }{9}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}Regularization Algorithms }{9}{subsection.2.2.4}
+\contentsline {subsection}{\numberline {2.2.5}Bayesian Algorithms}{9}{subsection.2.2.5}
+\contentsline {subsection}{\numberline {2.2.6}Clustering Algorithms}{9}{subsection.2.2.6}
+\contentsline {subsection}{\numberline {2.2.7}Artificial Neural Network Algorithms }{10}{subsection.2.2.7}
+\contentsline {subsection}{\numberline {2.2.8}Dimensionality Reduction Algorithms }{10}{subsection.2.2.8}
+\contentsline {subsection}{\numberline {2.2.9}Ensemble Algorithms }{10}{subsection.2.2.9}
+\contentsline {section}{\numberline {2.3}T\IeC {\`a}i li\IeC {\d \ecircumflex }u tham kh\IeC {\h a}o }{10}{section.2.3}
+\contentsline {chapter}{\numberline {3}Linear Regression}{11}{chapter.3}
+\contentsline {section}{\numberline {3.1}Gi\IeC {\'\ohorn }i thi\IeC {\d \ecircumflex }u}{11}{section.3.1}
+\contentsline {section}{\numberline {3.2}Ph\IeC {\^a}n t\IeC {\'\i }ch to\IeC {\'a}n h\IeC {\d o}c}{12}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}D\IeC {\d a}ng c\IeC {\h u}a Linear Regression }{12}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Sai s\IeC {\'\ocircumflex } d\IeC {\d \uhorn } \IeC {\dj }o\IeC {\'a}n }{12}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}H\IeC {\`a}m m\IeC {\'\acircumflex }t m\IeC {\'a}t}{13}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.4}Nghi\IeC {\d \ecircumflex }m cho b\IeC {\`a}i to\IeC {\'a}n Linear Regression}{13}{subsection.3.2.4}
+\contentsline {section}{\numberline {3.3}V\IeC {\'\i } d\IeC {\d u} tr\IeC {\^e}n Python}{14}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}B\IeC {\`a}i to\IeC {\'a}n}{14}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Hi\IeC {\h \ecircumflex }n th\IeC {\d i} d\IeC {\~\uhorn } li\IeC {\d \ecircumflex }u tr\IeC {\^e}n \IeC {\dj }\IeC {\`\ocircumflex } th\IeC {\d i}}{15}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.3}Nghi\IeC {\d \ecircumflex }m theo c\IeC {\^o}ng th\IeC {\'\uhorn }c}{16}{subsection.3.3.3}
+\contentsline {subsection}{\numberline {3.3.4}Nghi\IeC {\d \ecircumflex }m theo th\IeC {\uhorn } vi\IeC {\d \ecircumflex }n scikit-learn}{17}{subsection.3.3.4}
+\contentsline {section}{\numberline {3.4}Th\IeC {\h a}o lu\IeC {\d \acircumflex }n}{18}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}C\IeC {\'a}c b\IeC {\`a}i to\IeC {\'a}n c\IeC {\'o} th\IeC {\h \ecircumflex } gi\IeC {\h a}i b\IeC {\`\abreve }ng Linear Regression}{18}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}H\IeC {\d a}n ch\IeC {\'\ecircumflex } c\IeC {\h u}a Linear Regression}{18}{subsection.3.4.2}
+\contentsline {subsection}{\numberline {3.4.3}C\IeC {\'a}c ph\IeC {\uhorn }\IeC {\ohorn }ng ph\IeC {\'a}p t\IeC {\'\ocircumflex }i \IeC {\uhorn }u}{19}{subsection.3.4.3}
+\contentsline {section}{\numberline {3.5}T\IeC {\`a}i li\IeC {\d \ecircumflex }u tham kh\IeC {\h a}o}{19}{section.3.5}
+\contentsline {chapter}{\numberline {4}K-means Clustering}{20}{chapter.4}
+\contentsline {section}{\numberline {4.1}Gi\IeC {\'\ohorn }i thi\IeC {\d \ecircumflex }u}{20}{section.4.1}
+\contentsline {section}{\numberline {4.2}Ph\IeC {\^a}n t\IeC {\'\i }ch to\IeC {\'a}n h\IeC {\d o}c }{21}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}M\IeC {\d \ocircumflex }t s\IeC {\'\ocircumflex } k\IeC {\'y} hi\IeC {\d \ecircumflex }u to\IeC {\'a}n h\IeC {\d o}c}{21}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}H\IeC {\`a}m m\IeC {\'\acircumflex }t m\IeC {\'a}t v\IeC {\`a} b\IeC {\`a}i to\IeC {\'a}n t\IeC {\'\ocircumflex }i \IeC {\uhorn }u}{22}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Thu\IeC {\d \acircumflex }t to\IeC {\'a}n t\IeC {\'\ocircumflex }i \IeC {\uhorn }u h\IeC {\`a}m m\IeC {\'\acircumflex }t m\IeC {\'a}t}{23}{subsection.4.2.3}
+\contentsline {subsubsection}{C\IeC {\'\ocircumflex } \IeC {\dj }\IeC {\d i}nh $\mathbf {M} $, t\IeC {\`\i }m $\mathbf {Y}$ }{23}{section*.16}
+\contentsline {subsubsection}{C\IeC {\'\ocircumflex } \IeC {\dj }\IeC {\d i}nh $\mathbf {Y} $, t\IeC {\`\i }m $\mathbf {M}$ }{24}{section*.17}
+\contentsline {subsection}{\numberline {4.2.4}T\IeC {\'o}m t\IeC {\'\abreve }t thu\IeC {\d \acircumflex }t to\IeC {\'a}n}{25}{subsection.4.2.4}
+\contentsline {section}{\numberline {4.3}V\IeC {\'\i } d\IeC {\d u} tr\IeC {\^e}n Python}{25}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Gi\IeC {\'\ohorn }i thi\IeC {\d \ecircumflex }u b\IeC {\`a}i to\IeC {\'a}n}{25}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Hi\IeC {\h \ecircumflex }n th\IeC {\d i} d\IeC {\~\uhorn } li\IeC {\d \ecircumflex }u tr\IeC {\^e}n \IeC {\dj }\IeC {\`\ocircumflex } th\IeC {\d i}}{26}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}C\IeC {\'a}c h\IeC {\`a}m s\IeC {\'\ocircumflex } c\IeC {\`\acircumflex }n thi\IeC {\'\ecircumflex }t cho K-means clustering }{27}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}K\IeC {\'\ecircumflex }t qu\IeC {\h a} t\IeC {\`\i }m \IeC {\dj }\IeC {\uhorn }\IeC {\d \ohorn }c b\IeC {\`\abreve }ng th\IeC {\uhorn } vi\IeC {\d \ecircumflex }n scikit-learn}{28}{subsection.4.3.4}
+\contentsline {section}{\numberline {4.4}Th\IeC {\h a}o lu\IeC {\d \acircumflex }n}{28}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}H\IeC {\d a}n ch\IeC {\'\ecircumflex }}{28}{subsection.4.4.1}
+\contentsline {subsubsection}{Ch\IeC {\'u}ng ta c\IeC {\`\acircumflex }n bi\IeC {\'\ecircumflex }t s\IeC {\'\ocircumflex } l\IeC {\uhorn }\IeC {\d \ohorn }ng cluster c\IeC {\`\acircumflex }n clustering}{29}{section*.18}
+\contentsline {subsubsection}{Nghi\IeC {\d \ecircumflex }m cu\IeC {\'\ocircumflex }i c\IeC {\`u}ng ph\IeC {\d u} thu\IeC {\d \ocircumflex }c v\IeC {\`a}o c\IeC {\'a}c centers \IeC {\dj }\IeC {\uhorn }\IeC {\d \ohorn }c kh\IeC {\h \ohorn }i t\IeC {\d a}o ban \IeC {\dj }\IeC {\`\acircumflex }u}{29}{section*.19}
+\contentsline {subsubsection}{C\IeC {\'a}c cluster c\IeC {\`\acircumflex }n c\IeC {\'o} s\IeC {\'o} l\IeC {\uhorn }\IeC {\d \ohorn }ng \IeC {\dj }i\IeC {\h \ecircumflex }m g\IeC {\`\acircumflex }n b\IeC {\`\abreve }ng nhau}{29}{section*.20}
+\contentsline {subsubsection}{C\IeC {\'a}c cluster c\IeC {\`\acircumflex }n c\IeC {\'o} d\IeC {\d a}ng h\IeC {\`\i }nh tr\IeC {\`o}n }{29}{section*.21}
+\contentsline {subsubsection}{Khi m\IeC {\d \ocircumflex }t cluster n\IeC {\`\abreve }m ph\IeC {\'\i }a trong 1 cluster kh\IeC {\'a}c}{29}{section*.22}
+\contentsline {section}{\numberline {4.5}T\IeC {\`a}i li\IeC {\d \ecircumflex }u tham kh\IeC {\h a}o}{30}{section.4.5}
+\contentsline {chapter}{\numberline {5}K-means Clustering: Simple Applications}{31}{chapter.5}
+\contentsline {section}{\numberline {5.1}Ph\IeC {\^a}n nh\IeC {\'o}m ch\IeC {\~\uhorn } s\IeC {\'\ocircumflex } vi\IeC {\'\ecircumflex }t tay }{31}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}B\IeC {\d \ocircumflex } c\IeC {\ohorn } s\IeC {\h \ohorn } d\IeC {\~\uhorn } li\IeC {\d \ecircumflex }u MNIST }{31}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}B\IeC {\`a}i to\IeC {\'a}n ph\IeC {\^a}n nh\IeC {\'o}m gi\IeC {\h a} \IeC {\dj }\IeC {\d i}nh}{31}{subsection.5.1.2}
+\contentsline {subsection}{\numberline {5.1.3}L\IeC {\`a}m vi\IeC {\d \ecircumflex }c tr\IeC {\^e}n Python}{32}{subsection.5.1.3}
+\contentsline {section}{\numberline {5.2}Object Segmentation (t\IeC {\'a}ch v\IeC {\d \acircumflex }t th\IeC {\h \ecircumflex } trong \IeC {\h a}nh)}{34}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}\IeC {\DJ }\IeC {\d \abreve }t v\IeC {\'\acircumflex }n \IeC {\dj }\IeC {\`\ecircumflex }}{34}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}L\IeC {\^e}n \IeC {\'y} t\IeC {\uhorn }\IeC {\h \ohorn }ng }{34}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.3}L\IeC {\`a}m vi\IeC {\d \ecircumflex }c tr\IeC {\^e}n Python}{34}{subsection.5.2.3}
+\contentsline {section}{\numberline {5.3}Image Compression (n\IeC {\'e}n \IeC {\h a}nh v\IeC {\`a} n\IeC {\'e}n d\IeC {\~\uhorn } li\IeC {\d \ecircumflex }u n\IeC {\'o}i chung)}{35}{section.5.3}
+\contentsline {section}{\numberline {5.4}Th\IeC {\h a}o lu\IeC {\d \acircumflex }n}{36}{section.5.4}
+\contentsline {section}{\numberline {5.5}Souce code}{36}{section.5.5}
+\contentsline {section}{\numberline {5.6}T\IeC {\`a}i li\IeC {\d \ecircumflex }u tham kh\IeC {\h a}o }{36}{section.5.6}
+\contentsline {chapter}{\numberline {6}K-nearest neighbors}{37}{chapter.6}
+\contentsline {section}{\numberline {6.1}Gi\IeC {\'\ohorn }i thi\IeC {\d \ecircumflex }u}{37}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}M\IeC {\d \ocircumflex }t c\IeC {\^a}u chuy\IeC {\d \ecircumflex }n vui}{37}{subsection.6.1.1}
+\contentsline {subsection}{\numberline {6.1.2}K-nearest neighbor }{38}{subsection.6.1.2}
+\contentsline {subsection}{\numberline {6.1.3}Kho\IeC {\h a}ng c\IeC {\'a}ch trong kh\IeC {\^o}ng gian vector}{39}{subsection.6.1.3}
+\contentsline {section}{\numberline {6.2}Ph\IeC {\^a}n t\IeC {\'\i }ch to\IeC {\'a}n h\IeC {\d o}c}{39}{section.6.2}
+\contentsline {section}{\numberline {6.3}V\IeC {\'\i } d\IeC {\d u} tr\IeC {\^e}n Python}{39}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}B\IeC {\d \ocircumflex } c\IeC {\ohorn } s\IeC {\h \ohorn } d\IeC {\~\uhorn } li\IeC {\d \ecircumflex }u Iris (Iris flower dataset).}{39}{subsection.6.3.1}
+\contentsline {subsection}{\numberline {6.3.2}Th\IeC {\'\i } nghi\IeC {\d \ecircumflex }m}{39}{subsection.6.3.2}
+\contentsline {subsubsection}{T\IeC {\'a}ch training v\IeC {\`a} test sets}{40}{section*.23}
+\contentsline {subsubsection}{Ph\IeC {\uhorn }\IeC {\ohorn }ng ph\IeC {\'a}p \IeC {\dj }\IeC {\'a}nh gi\IeC {\'a} (evaluation method)}{41}{section*.24}
+\contentsline {subsubsection}{\IeC {\DJ }\IeC {\'a}nh tr\IeC {\d o}ng s\IeC {\'\ocircumflex } cho c\IeC {\'a}c \IeC {\dj }i\IeC {\h \ecircumflex }m l\IeC {\^a}n c\IeC {\d \acircumflex }n}{42}{section*.25}
+\contentsline {section}{\numberline {6.4}Th\IeC {\h a}o lu\IeC {\d \acircumflex }n}{43}{section.6.4}
+\contentsline {subsection}{\numberline {6.4.1}KNN cho Regression}{43}{subsection.6.4.1}
+\contentsline {subsection}{\numberline {6.4.2}Chu\IeC {\h \acircumflex }n h\IeC {\'o}a d\IeC {\~\uhorn } li\IeC {\d \ecircumflex }u}{43}{subsection.6.4.2}
+\contentsline {subsection}{\numberline {6.4.3}S\IeC {\h \uhorn } d\IeC {\d u}ng c\IeC {\'a}c ph\IeC {\'e}p \IeC {\dj }o kho\IeC {\h a}ng c\IeC {\'a}ch kh\IeC {\'a}c nhau}{43}{subsection.6.4.3}
+\contentsline {subsection}{\numberline {6.4.4}\IeC {\UHORN }u \IeC {\dj }i\IeC {\h \ecircumflex }m c\IeC {\h u}a KNN}{43}{subsection.6.4.4}
+\contentsline {subsection}{\numberline {6.4.5}Nh\IeC {\uhorn }\IeC {\d \ohorn }c \IeC {\dj }i\IeC {\h \ecircumflex }m c\IeC {\h u}a KNN}{44}{subsection.6.4.5}
+\contentsline {subsection}{\numberline {6.4.6}T\IeC {\u a}ng t\IeC {\'\ocircumflex }c cho KNN}{44}{subsection.6.4.6}
+\contentsline {subsection}{\numberline {6.4.7}Try this yourself}{44}{subsection.6.4.7}
+\contentsline {subsection}{\numberline {6.4.8}Source code}{45}{subsection.6.4.8}
+\contentsline {section}{\numberline {6.5}T\IeC {\`a}i li\IeC {\d \ecircumflex }u tham kh\IeC {\h a}o}{45}{section.6.5}
+\contentsline {chapter}{\numberline {7}Gradient Descent (ph\IeC {\`\acircumflex }n 1/2)}{46}{chapter.7}
+\contentsline {section}{\numberline {7.1}Gi\IeC {\'\ohorn }i thi\IeC {\d \ecircumflex }u}{46}{section.7.1}
+\contentsline {subsection}{\numberline {7.1.1}Gradient Descent}{46}{subsection.7.1.1}
+\contentsline {section}{\numberline {7.2}Gradient Descent cho h\IeC {\`a}m 1 bi\IeC {\'\ecircumflex }n}{47}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}V\IeC {\'\i } d\IeC {\d u} \IeC {\dj }\IeC {\ohorn }n gi\IeC {\h a}n v\IeC {\'\ohorn }i Python}{48}{subsection.7.2.1}
+\contentsline {subsubsection}{\IeC {\DJ }i\IeC {\h \ecircumflex }m kh\IeC {\h \ohorn }i t\IeC {\d a}o kh\IeC {\'a}c nhau}{48}{section*.26}
+\contentsline {subsubsection}{Learning rate kh\IeC {\'a}c nhau}{49}{section*.27}
+\contentsline {section}{\numberline {7.3}Gradient Descent cho h\IeC {\`a}m nhi\IeC {\`\ecircumflex }u bi\IeC {\'\ecircumflex }n}{49}{section.7.3}
+\contentsline {subsection}{\numberline {7.3.1}Quay l\IeC {\d a}i v\IeC {\'\ohorn }i b\IeC {\`a}i to\IeC {\'a}n Linear Regression}{50}{subsection.7.3.1}
+\contentsline {subsection}{\numberline {7.3.2}Sau \IeC {\dj }\IeC {\^a}y l\IeC {\`a} v\IeC {\'\i } d\IeC {\d u} tr\IeC {\^e}n Python v\IeC {\`a} m\IeC {\d \ocircumflex }t v\IeC {\`a}i l\IeC {\uhorn }u \IeC {\'y} khi l\IeC {\d \acircumflex }p tr\IeC {\`\i }nh}{50}{subsection.7.3.2}
+\contentsline {subsubsection}{Ki\IeC {\h \ecircumflex }m tra \IeC {\dj }\IeC {\d a}o h\IeC {\`a}m}{51}{section*.28}
+\contentsline {subsubsection}{\IeC {\DJ }\IeC {\uhorn }\IeC {\`\ohorn }ng \IeC {\dj }\IeC {\`\ocircumflex }ng m\IeC {\'\uhorn }c (level sets)}{54}{section*.29}
+\contentsline {section}{\numberline {7.4}M\IeC {\d \ocircumflex }t v\IeC {\'\i } d\IeC {\d u} kh\IeC {\'a}c}{55}{section.7.4}
+\contentsline {section}{\numberline {7.5}Th\IeC {\h a}o lu\IeC {\d \acircumflex }n}{55}{section.7.5}
+\contentsline {section}{\numberline {7.6}T\IeC {\`a}i li\IeC {\d \ecircumflex }u tham kh\IeC {\h a}o}{55}{section.7.6}
+\contentsline {chapter}{\numberline {8}Gradient Descent (ph\IeC {\`\acircumflex }n 2/2)}{56}{chapter.8}
+\contentsline {section}{\numberline {8.1}C\IeC {\'a}c thu\IeC {\d \acircumflex }t to\IeC {\'a}n t\IeC {\'\ocircumflex }i \IeC {\uhorn }u Gradient Descent}{56}{section.8.1}
+\contentsline {subsection}{\numberline {8.1.1}Momentum}{56}{subsection.8.1.1}
+\contentsline {subsubsection}{Nh\IeC {\'\abreve }c l\IeC {\d a}i thu\IeC {\d \acircumflex }t to\IeC {\'a}n Gradient Descent}{56}{section*.30}
+\contentsline {subsubsection}{Gradient d\IeC {\uhorn }\IeC {\'\ohorn }i g\IeC {\'o}c nh\IeC {\`\i }n v\IeC {\d \acircumflex }t l\IeC {\'y} }{57}{section*.31}
+\contentsline {subsubsection}{Gradient Descent v\IeC {\'\ohorn }i Momentum}{57}{section*.32}
+\contentsline {subsubsection}{M\IeC {\d \ocircumflex }t v\IeC {\'\i } d\IeC {\d u} nh\IeC {\h o}}{58}{section*.33}
+\contentsline {subsection}{\numberline {8.1.2}Nesterov accelerated gradient (NAG)}{59}{subsection.8.1.2}
+\contentsline {subsubsection}{\IeC {\'Y} t\IeC {\uhorn }\IeC {\h \ohorn }ng ch\IeC {\'\i }nh }{59}{section*.34}
+\contentsline {subsubsection}{C\IeC {\^o}ng th\IeC {\'\uhorn }c c\IeC {\d \acircumflex }p nh\IeC {\d \acircumflex }t}{60}{section*.36}
+\contentsline {subsubsection}{V\IeC {\'\i } d\IeC {\d u} minh h\IeC {\d o}a }{60}{section*.37}
+\contentsline {subsection}{\numberline {8.1.3}C\IeC {\'a}c thu\IeC {\d \acircumflex }t to\IeC {\'a}n kh\IeC {\'a}c}{60}{subsection.8.1.3}
+\contentsline {section}{\numberline {8.2}Bi\IeC {\'\ecircumflex }n th\IeC {\h \ecircumflex } c\IeC {\h u}a Gradient Descent}{60}{section.8.2}
+\contentsline {subsection}{\numberline {8.2.1}Batch Gradient Descent }{61}{subsection.8.2.1}
+\contentsline {subsection}{\numberline {8.2.2}Stochastic Gradient Descent.}{61}{subsection.8.2.2}
+\contentsline {subsubsection}{V\IeC {\'\i } d\IeC {\d u} v\IeC {\'\ohorn }i b\IeC {\`a}i to\IeC {\'a}n Linear Regression}{62}{section*.38}
+\contentsline {subsection}{\numberline {8.2.3}Mini-batch Gradient Descent}{63}{subsection.8.2.3}
+\contentsline {section}{\numberline {8.3}Stopping Criteria (\IeC {\dj }i\IeC {\`\ecircumflex }u ki\IeC {\d \ecircumflex }n d\IeC {\`\uhorn }ng)}{64}{section.8.3}
+\contentsline {section}{\numberline {8.4}M\IeC {\d \ocircumflex }t ph\IeC {\uhorn }\IeC {\ohorn }ng ph\IeC {\'a}p t\IeC {\'\ocircumflex }i \IeC {\uhorn }u \IeC {\dj }\IeC {\ohorn }n gi\IeC {\h a}n kh\IeC {\'a}c: Newton's method}{64}{section.8.4}
+\contentsline {subsection}{\numberline {8.4.1}Newton's method cho gi\IeC {\h a}i ph\IeC {\uhorn }\IeC {\ohorn }ng tr\IeC {\`\i }nh $f(x) = 0$}{65}{subsection.8.4.1}
+\contentsline {subsection}{\numberline {8.4.2}Newton's method trong b\IeC {\`a}i to\IeC {\'a}n t\IeC {\`\i }m local minimun}{65}{subsection.8.4.2}
+\contentsline {subsection}{\numberline {8.4.3}H\IeC {\d a}n ch\IeC {\'\ecircumflex } c\IeC {\h u}a Newton's method}{65}{subsection.8.4.3}
+\contentsline {section}{\numberline {8.5}K\IeC {\'\ecircumflex }t lu\IeC {\d \acircumflex }n}{66}{section.8.5}
+\contentsline {section}{\numberline {8.6}T\IeC {\`a}i li\IeC {\d \ecircumflex }u tham kh\IeC {\h a}o}{66}{section.8.6}
+\contentsline {chapter}{\numberline {9}Perceptron Learning Algorithm}{67}{chapter.9}
+\contentsline {section}{\numberline {9.1}Gi\IeC {\'\ohorn }i thi\IeC {\d \ecircumflex }u}{67}{section.9.1}
+\contentsline {subsection}{\numberline {9.1.1}B\IeC {\`a}i to\IeC {\'a}n Perceptron }{68}{subsection.9.1.1}
+\contentsline {section}{\numberline {9.2}Thu\IeC {\d \acircumflex }t to\IeC {\'a}n Perceptron (PLA)}{68}{section.9.2}
+\contentsline {subsection}{\numberline {9.2.1}M\IeC {\d \ocircumflex }t s\IeC {\'\ocircumflex } k\IeC {\'y} hi\IeC {\d \ecircumflex }u}{68}{subsection.9.2.1}
+\contentsline {subsection}{\numberline {9.2.2}X\IeC {\^a}y d\IeC {\d \uhorn }ng h\IeC {\`a}m m\IeC {\'\acircumflex }t m\IeC {\'a}t}{69}{subsection.9.2.2}
+\contentsline {subsection}{\numberline {9.2.3}T\IeC {\'o}m t\IeC {\'\abreve }t PLA }{71}{subsection.9.2.3}
+\contentsline {section}{\numberline {9.3}V\IeC {\'\i } d\IeC {\d u} tr\IeC {\^e}n Python}{71}{section.9.3}
+\contentsline {subsection}{\numberline {9.3.1}Load th\IeC {\uhorn } vi\IeC {\d \ecircumflex }n v\IeC {\`a} t\IeC {\d a}o d\IeC {\~\uhorn } li\IeC {\d \ecircumflex }u}{71}{subsection.9.3.1}
+\contentsline {subsection}{\numberline {9.3.2}C\IeC {\'a}c h\IeC {\`a}m s\IeC {\'\ocircumflex } cho PLA}{72}{subsection.9.3.2}
+\contentsline {section}{\numberline {9.4}Ch\IeC {\'\uhorn }ng minh h\IeC {\d \ocircumflex }i t\IeC {\d u}}{73}{section.9.4}
+\contentsline {section}{\numberline {9.5}M\IeC {\^o} h\IeC {\`\i }nh Neural Network \IeC {\dj }\IeC {\`\acircumflex }u ti\IeC {\^e}n}{73}{section.9.5}
+\contentsline {section}{\numberline {9.6}Th\IeC {\h a}o Lu\IeC {\d \acircumflex }n}{74}{section.9.6}
+\contentsline {subsection}{\numberline {9.6.1}PLA c\IeC {\'o} th\IeC {\h \ecircumflex } cho v\IeC {\^o} s\IeC {\'\ocircumflex } nghi\IeC {\d \ecircumflex }m kh\IeC {\'a}c nhau }{74}{subsection.9.6.1}
+\contentsline {subsection}{\numberline {9.6.2}PLA \IeC {\dj }\IeC {\`o}i h\IeC {\h o}i d\IeC {\~\uhorn } li\IeC {\d \ecircumflex }u linearly separable}{75}{subsection.9.6.2}
+\contentsline {subsection}{\numberline {9.6.3}Pocket Algorithm}{75}{subsection.9.6.3}
+\contentsline {section}{\numberline {9.7}K\IeC {\'\ecircumflex }t lu\IeC {\d \acircumflex }n}{76}{section.9.7}
+\contentsline {section}{\numberline {9.8}T\IeC {\`a}i li\IeC {\d \ecircumflex }u tham kh\IeC {\h a}o}{76}{section.9.8}
+\contentsline {chapter}{\numberline {10}Logistic Regression}{77}{chapter.10}
+\contentsline {section}{\numberline {10.1}Gi\IeC {\'\ohorn }i thi\IeC {\d \ecircumflex }u}{77}{section.10.1}
+\contentsline {subsection}{\numberline {10.1.1}Nh\IeC {\'\abreve }c l\IeC {\d a}i hai m\IeC {\^o} h\IeC {\`\i }nh tuy\IeC {\'\ecircumflex }n t\IeC {\'\i }nh}{77}{subsection.10.1.1}
+\contentsline {subsection}{\numberline {10.1.2}M\IeC {\d \ocircumflex }t v\IeC {\'\i } d\IeC {\d u} nh\IeC {\h o} }{77}{subsection.10.1.2}
+\contentsline {subsection}{\numberline {10.1.3}M\IeC {\^o} h\IeC {\`\i }nh Logistic Regression}{78}{subsection.10.1.3}
+\contentsline {subsection}{\numberline {10.1.4}Sigmoid function}{79}{subsection.10.1.4}
+\contentsline {section}{\numberline {10.2}H\IeC {\`a}m m\IeC {\'\acircumflex }t m\IeC {\'a}t v\IeC {\`a} ph\IeC {\uhorn }\IeC {\ohorn }ng ph\IeC {\'a}p t\IeC {\'\ocircumflex }i \IeC {\uhorn }u}{80}{section.10.2}
+\contentsline {subsection}{\numberline {10.2.1}X\IeC {\^a}y d\IeC {\d \uhorn }ng h\IeC {\`a}m m\IeC {\'\acircumflex }t m\IeC {\'a}t}{80}{subsection.10.2.1}
+\contentsline {subsection}{\numberline {10.2.2}T\IeC {\'\ocircumflex }i \IeC {\uhorn }u h\IeC {\`a}m m\IeC {\'\acircumflex }t m\IeC {\'a}t}{81}{subsection.10.2.2}
+\contentsline {subsection}{\numberline {10.2.3}C\IeC {\^o}ng th\IeC {\'\uhorn }c c\IeC {\d \acircumflex }p nh\IeC {\d \acircumflex }t cho logistic sigmoid regression}{82}{subsection.10.2.3}
+\contentsline {section}{\numberline {10.3}V\IeC {\'\i } d\IeC {\d u} v\IeC {\'\ohorn }i Python}{83}{section.10.3}
+\contentsline {subsection}{\numberline {10.3.1}V\IeC {\'\i } d\IeC {\d u} v\IeC {\'\ohorn }i d\IeC {\~\uhorn } li\IeC {\d \ecircumflex }u 1 chi\IeC {\`\ecircumflex }u}{83}{subsection.10.3.1}
+\contentsline {subsection}{\numberline {10.3.2}C\IeC {\'a}c h\IeC {\`a}m c\IeC {\`\acircumflex }n thi\IeC {\'\ecircumflex }t cho logistic sigmoid regression}{83}{subsection.10.3.2}
+\contentsline {subsection}{\numberline {10.3.3}V\IeC {\'\i } d\IeC {\d u} v\IeC {\'\ohorn }i d\IeC {\~\uhorn } li\IeC {\d \ecircumflex }u 2 chi\IeC {\`\ecircumflex }u}{84}{subsection.10.3.3}
+\contentsline {section}{\numberline {10.4}M\IeC {\d \ocircumflex }t v\IeC {\`a}i t\IeC {\'\i }nh ch\IeC {\'\acircumflex }t c\IeC {\h u}a Logistic Regression}{85}{section.10.4}
+\contentsline {subsection}{\numberline {10.4.1}Logistic Regression th\IeC {\d \uhorn }c ra \IeC {\dj }\IeC {\uhorn }\IeC {\d \ohorn }c s\IeC {\h \uhorn } d\IeC {\d u}ng nhi\IeC {\`\ecircumflex }u trong c\IeC {\'a}c b\IeC {\`a}i to\IeC {\'a}n Classification.}{85}{subsection.10.4.1}
+\contentsline {subsection}{\numberline {10.4.2}Boundary t\IeC {\d a}o b\IeC {\h \ohorn }i Logistic Regression c\IeC {\'o} d\IeC {\d a}ng tuy\IeC {\'\ecircumflex }n t\IeC {\'\i }nh}{85}{subsection.10.4.2}
+\contentsline {section}{\numberline {10.5}Th\IeC {\h a}o lu\IeC {\d \acircumflex }n }{85}{section.10.5}
+\contentsline {section}{\numberline {10.6}T\IeC {\`a}i li\IeC {\d \ecircumflex }u tham kh\IeC {\h a}o}{86}{section.10.6}
+\contentsline {chapter}{\numberline {11}Gi\IeC {\'\ohorn }i thi\IeC {\d \ecircumflex }u v\IeC {\`\ecircumflex } Feature Engineering}{87}{chapter.11}
+\contentsline {section}{\numberline {11.1}Gi\IeC {\'\ohorn }i thi\IeC {\d \ecircumflex }u }{87}{section.11.1}
+\contentsline {section}{\numberline {11.2}M\IeC {\^o} h\IeC {\`\i }nh chung cho c\IeC {\'a}c b\IeC {\`a}i to\IeC {\'a}n Machine Learning }{88}{section.11.2}
+\contentsline {subsection}{\numberline {11.2.1}TRAINING PHASE }{88}{subsection.11.2.1}
+\contentsline {subsubsection}{Feature Extractor }{88}{section*.40}
+\contentsline {subsubsection}{Main Algorithms }{90}{section*.41}
+\contentsline {subsection}{\numberline {11.2.2}TESTING PHASE }{90}{subsection.11.2.2}
+\contentsline {section}{\numberline {11.3}M\IeC {\d \ocircumflex }t s\IeC {\'\ocircumflex } v\IeC {\'\i } d\IeC {\d u} v\IeC {\`\ecircumflex } Feature Engineering}{91}{section.11.3}
+\contentsline {subsection}{\numberline {11.3.1}Tr\IeC {\d \uhorn }c ti\IeC {\'\ecircumflex }p l\IeC {\'\acircumflex }y raw data }{91}{subsection.11.3.1}
+\contentsline {subsection}{\numberline {11.3.2}Feature selection }{91}{subsection.11.3.2}
+\contentsline {subsection}{\numberline {11.3.3}Dimensionality reduction }{91}{subsection.11.3.3}
+\contentsline {subsection}{\numberline {11.3.4}Bag-of-words }{92}{subsection.11.3.4}
+\contentsline {subsection}{\numberline {11.3.5}Bag-of-Words trong Computer Vision }{93}{subsection.11.3.5}
+\contentsline {subsection}{\numberline {11.3.6}Feature Scaling and Normalization}{95}{subsection.11.3.6}
+\contentsline {subsubsection}{Rescaling }{95}{section*.42}
+\contentsline {subsubsection}{Standardization }{95}{section*.43}
+\contentsline {subsubsection}{Scaling to unit length }{96}{section*.44}
+\contentsline {section}{\numberline {11.4}Th\IeC {\h a}o lu\IeC {\d \acircumflex }n}{96}{section.11.4}
+\contentsline {section}{\numberline {11.5}T\IeC {\`a}i li\IeC {\d \ecircumflex }u tham kh\IeC {\h a}o }{96}{section.11.5}
+\contentsline {chapter}{\numberline {12}Binary Classifiers cho c\IeC {\'a}c b\IeC {\`a}i to\IeC {\'a}n Classification}{97}{chapter.12}
+\contentsline {section}{\numberline {12.1}B\IeC {\`a}i to\IeC {\'a}n ph\IeC {\^a}n bi\IeC {\d \ecircumflex }t gi\IeC {\'\ohorn }i t\IeC {\'\i }nh d\IeC {\d \uhorn }a tr\IeC {\^e}n \IeC {\h a}nh khu\IeC {\^o}n m\IeC {\d \abreve }t }{97}{section.12.1}
+\contentsline {subsection}{\numberline {12.1.1}L\IeC {\`a}m vi\IeC {\d \ecircumflex }c v\IeC {\'\ohorn }i Python}{98}{subsection.12.1.1}
+\contentsline {section}{\numberline {12.2}B\IeC {\`a}i to\IeC {\'a}n ph\IeC {\^a}n bi\IeC {\d \ecircumflex }t hai ch\IeC {\~\uhorn } s\IeC {\'\ocircumflex } vi\IeC {\'\ecircumflex }t tay }{102}{section.12.2}
+\contentsline {section}{\numberline {12.3}Binary Classifiers cho Multi-class Classification problems }{104}{section.12.3}
+\contentsline {subsection}{\numberline {12.3.1}One-vs-one}{104}{subsection.12.3.1}
+\contentsline {subsection}{\numberline {12.3.2}Hierarchical (ph\IeC {\^a}n t\IeC {\`\acircumflex }ng)}{104}{subsection.12.3.2}
+\contentsline {subsection}{\numberline {12.3.3}Binary coding}{105}{subsection.12.3.3}
+\contentsline {subsection}{\numberline {12.3.4}one-vs-rest hay one-hot coding}{105}{subsection.12.3.4}
+\contentsline {section}{\numberline {12.4}Th\IeC {\h a}o lu\IeC {\d \acircumflex }n }{106}{section.12.4}
+\contentsline {subsection}{\numberline {12.4.1}K\IeC {\'\ecircumflex }t h\IeC {\d \ohorn }p c\IeC {\'a}c ph\IeC {\uhorn }\IeC {\ohorn }ng ph\IeC {\'a}p tr\IeC {\^e}n}{106}{subsection.12.4.1}
+\contentsline {subsection}{\numberline {12.4.2}Bi\IeC {\h \ecircumflex }u di\IeC {\~\ecircumflex }n d\IeC {\uhorn }\IeC {\'\ohorn }i d\IeC {\d a}ng Neural Networks}{106}{subsection.12.4.2}
+\contentsline {subsection}{\numberline {12.4.3}H\IeC {\d a}n ch\IeC {\'\ecircumflex } c\IeC {\h u}a one-vs-rest}{107}{subsection.12.4.3}
+\contentsline {section}{\numberline {12.5}T\IeC {\`a}i li\IeC {\d \ecircumflex }u tham kh\IeC {\h a}o}{107}{section.12.5}
+\contentsline {chapter}{\numberline {13}Softmax Regression}{108}{chapter.13}
+\contentsline {section}{\numberline {13.1}Gi\IeC {\'\ohorn }i thi\IeC {\d \ecircumflex }u }{108}{section.13.1}
+\contentsline {section}{\numberline {13.2}Softmax function }{109}{section.13.2}
+\contentsline {subsection}{\numberline {13.2.1}C\IeC {\^o}ng th\IeC {\'\uhorn }c c\IeC {\h u}a Softmax function}{109}{subsection.13.2.1}
+\contentsline {subsection}{\numberline {13.2.2}Softmax function trong Python }{110}{subsection.13.2.2}
+\contentsline {subsection}{\numberline {13.2.3}M\IeC {\d \ocircumflex }t v\IeC {\`a}i v\IeC {\'\i } d\IeC {\d u} }{110}{subsection.13.2.3}
+\contentsline {subsection}{\numberline {13.2.4}Phi\IeC {\^e}n b\IeC {\h a}n \IeC {\h \ocircumflex }n \IeC {\dj }\IeC {\d i}nh h\IeC {\ohorn }n c\IeC {\h u}a softmax function }{111}{subsection.13.2.4}
+\contentsline {section}{\numberline {13.3}H\IeC {\`a}m m\IeC {\'\acircumflex }t m\IeC {\'a}t v\IeC {\`a} ph\IeC {\uhorn }\IeC {\ohorn }ng ph\IeC {\'a}p t\IeC {\'\ocircumflex }i \IeC {\uhorn }u }{111}{section.13.3}
+\contentsline {subsection}{\numberline {13.3.1}One hot coding }{111}{subsection.13.3.1}
+\contentsline {subsection}{\numberline {13.3.2}Cross Entropy }{112}{subsection.13.3.2}
+\contentsline {subsection}{\numberline {13.3.3}H\IeC {\`a}m m\IeC {\'\acircumflex }t m\IeC {\'a}t cho Softmax Regression }{113}{subsection.13.3.3}
+\contentsline {subsection}{\numberline {13.3.4}T\IeC {\'\ocircumflex }i \IeC {\uhorn }u h\IeC {\`a}m m\IeC {\'\acircumflex }t m\IeC {\'a}t }{113}{subsection.13.3.4}
+\contentsline {subsection}{\numberline {13.3.5}Logistic Regression l\IeC {\`a} m\IeC {\d \ocircumflex }t tr\IeC {\uhorn }\IeC {\`\ohorn }ng h\IeC {\d \ohorn }p \IeC {\dj }\IeC {\d \abreve }t bi\IeC {\d \ecircumflex }t c\IeC {\h u}a Softmax Regression }{115}{subsection.13.3.5}
+\contentsline {section}{\numberline {13.4}M\IeC {\d \ocircumflex }t v\IeC {\`a}i l\IeC {\uhorn }u \IeC {\'y} khi l\IeC {\d \acircumflex }p tr\IeC {\`\i }nh v\IeC {\'\ohorn }i Python }{115}{section.13.4}
+\contentsline {subsection}{\numberline {13.4.1}B\IeC {\'\abreve }t \IeC {\dj }\IeC {\`\acircumflex }u v\IeC {\'\ohorn }i d\IeC {\~\uhorn } li\IeC {\d \ecircumflex }u nh\IeC {\h o}}{115}{subsection.13.4.1}
+\contentsline {subsection}{\numberline {13.4.2}Ma tr\IeC {\d \acircumflex }n one-hot coding }{116}{subsection.13.4.2}
+\contentsline {subsection}{\numberline {13.4.3}Ki\IeC {\h \ecircumflex }m tra \IeC {\dj }\IeC {\d a}o h\IeC {\`a}m }{117}{subsection.13.4.3}
+\contentsline {subsection}{\numberline {13.4.4}H\IeC {\`a}m ch\IeC {\'\i }nh cho training Softmax Regression}{118}{subsection.13.4.4}
+\contentsline {subsection}{\numberline {13.4.5}H\IeC {\`a}m d\IeC {\d \uhorn } \IeC {\dj }o\IeC {\'a}n class cho d\IeC {\~\uhorn } li\IeC {\d \ecircumflex }u m\IeC {\'\ohorn }i }{118}{subsection.13.4.5}
+\contentsline {section}{\numberline {13.5}V\IeC {\'\i } d\IeC {\d u} v\IeC {\'\ohorn }i Python}{119}{section.13.5}
+\contentsline {subsection}{\numberline {13.5.1}Simulated data}{119}{subsection.13.5.1}
+\contentsline {subsection}{\numberline {13.5.2}Softmax Regression cho MNIST}{119}{subsection.13.5.2}
+\contentsline {section}{\numberline {13.6}Th\IeC {\h a}o lu\IeC {\d \acircumflex }n }{120}{section.13.6}
+\contentsline {subsection}{\numberline {13.6.1}Boundary t\IeC {\d a}o b\IeC {\h \ohorn }i Softmax Regression l\IeC {\`a} linear}{120}{subsection.13.6.1}
+\contentsline {subsection}{\numberline {13.6.2}Softmax Regression l\IeC {\`a} m\IeC {\d \ocircumflex }t trong hai classifiers ph\IeC {\h \ocircumflex } bi\IeC {\'\ecircumflex }n nh\IeC {\'\acircumflex }t}{121}{subsection.13.6.2}
+\contentsline {subsection}{\numberline {13.6.3}Source code }{121}{subsection.13.6.3}
+\contentsline {section}{\numberline {13.7}T\IeC {\`a}i li\IeC {\d \ecircumflex }u tham kh\IeC {\h a}o }{121}{section.13.7}
+\contentsline {chapter}{\numberline {14}Multi-layer Perceptron v\IeC {\`a} Backpropagation}{122}{chapter.14}
+\contentsline {section}{\numberline {14.1}Gi\IeC {\'\ohorn }i thi\IeC {\d \ecircumflex }u}{122}{section.14.1}
+\contentsline {subsection}{\numberline {14.1.1}PLA cho c\IeC {\'a}c h\IeC {\`a}m logic c\IeC {\ohorn } b\IeC {\h a}n}{122}{subsection.14.1.1}
+\contentsline {subsection}{\numberline {14.1.2}Bi\IeC {\h \ecircumflex }u di\IeC {\~\ecircumflex }n h\IeC {\`a}m XOR v\IeC {\'\ohorn }i Neural Network.}{123}{subsection.14.1.2}
+\contentsline {section}{\numberline {14.2}C\IeC {\'a}c k\IeC {\'y} hi\IeC {\d \ecircumflex }u v\IeC {\`a} kh\IeC {\'a}i ni\IeC {\d \ecircumflex }m}{124}{section.14.2}
+\contentsline {subsection}{\numberline {14.2.1}Layers}{124}{subsection.14.2.1}
+\contentsline {subsection}{\numberline {14.2.2}Units}{124}{subsection.14.2.2}
+\contentsline {subsection}{\numberline {14.2.3}Weights v\IeC {\`a} Biases}{124}{subsection.14.2.3}
+\contentsline {subsection}{\numberline {14.2.4}Activation functions}{125}{subsection.14.2.4}
+\contentsline {subsubsection}{H\IeC {\`a}m \textit {sgn} kh\IeC {\^o}ng \IeC {\dj }\IeC {\uhorn }\IeC {\d \ohorn }c s\IeC {\h \uhorn } d\IeC {\d u}ng trong MLP}{125}{section*.45}
+\contentsline {subsubsection}{Sigmoid v\IeC {\`a} tanh}{125}{section*.46}
+\contentsline {subsubsection}{ReLU}{126}{section*.47}
+\contentsline {subsubsection}{M\IeC {\d \ocircumflex }t v\IeC {\`a}i l\IeC {\uhorn }u \IeC {\'y}}{126}{section*.48}
+\contentsline {section}{\numberline {14.3}Backpropagation}{126}{section.14.3}
+\contentsline {subsection}{\numberline {14.3.1}Backpropagation cho Stochastic Gradient Descent}{129}{subsection.14.3.1}
+\contentsline {subsubsection}{\IeC {\DJ }\IeC {\d a}o h\IeC {\`a}m theo t\IeC {\`\uhorn }ng h\IeC {\d \ecircumflex } s\IeC {\'\ocircumflex } $w_{ij}^{(l)}, b_{i}^{(l)}$}{129}{section*.49}
+\contentsline {subsubsection}{\IeC {\DJ }\IeC {\d a}o h\IeC {\`a}m theo ma tr\IeC {\d \acircumflex }n $\mathbf {W}^{(l)}, \mathbf {b}^{(l)}$}{130}{section*.50}
+\contentsline {subsection}{\numberline {14.3.2}Backpropagation cho Batch (mini-batch) Gradient Descent}{130}{subsection.14.3.2}
+\contentsline {section}{\numberline {14.4}V\IeC {\'\i } d\IeC {\d u} tr\IeC {\^e}n Python}{131}{section.14.4}
+\contentsline {subsection}{\numberline {14.4.1}T\IeC {\d a}o d\IeC {\~\uhorn } li\IeC {\d \ecircumflex }u gi\IeC {\h a}}{132}{subsection.14.4.1}
+\contentsline {subsection}{\numberline {14.4.2}T\IeC {\'\i }nh to\IeC {\'a}n Feedforward}{133}{subsection.14.4.2}
+\contentsline {subsection}{\numberline {14.4.3}T\IeC {\'\i }nh to\IeC {\'a}n Backpropagation}{133}{subsection.14.4.3}
+\contentsline {subsection}{\numberline {14.4.4}M\IeC {\d \ocircumflex }t s\IeC {\'\ocircumflex } h\IeC {\`a}m ph\IeC {\d u} tr\IeC {\d \ohorn }}{134}{subsection.14.4.4}
+\contentsline {subsection}{\numberline {14.4.5}Ph\IeC {\`\acircumflex }n ch\IeC {\uhorn }\IeC {\ohorn }ng tr\IeC {\`\i }nh ch\IeC {\'\i }nh}{134}{subsection.14.4.5}
+\contentsline {subsection}{\numberline {14.4.6}K\IeC {\'\ecircumflex }t qu\IeC {\h a}}{135}{subsection.14.4.6}
+\contentsline {section}{\numberline {14.5}Th\IeC {\h a}o lu\IeC {\d \acircumflex }n}{136}{section.14.5}
+\contentsline {section}{\numberline {14.6}T\IeC {\`a}i li\IeC {\d \ecircumflex }u tham kh\IeC {\h a}o}{136}{section.14.6}
+\contentsline {chapter}{\numberline {15}Overfitting}{138}{chapter.15}
+\contentsline {section}{\numberline {15.1}Gi\IeC {\'\ohorn }i thi\IeC {\d \ecircumflex }u}{138}{section.15.1}
+\contentsline {section}{\numberline {15.2}Validation}{140}{section.15.2}
+\contentsline {subsection}{\numberline {15.2.1}Validation}{140}{subsection.15.2.1}
+\contentsline {subsection}{\numberline {15.2.2}Cross-validation}{141}{subsection.15.2.2}
+\contentsline {section}{\numberline {15.3}Regularization}{142}{section.15.3}
+\contentsline {subsection}{\numberline {15.3.1}Early Stopping}{142}{subsection.15.3.1}
+\contentsline {subsection}{\numberline {15.3.2}Th\IeC {\^e}m s\IeC {\'\ocircumflex } h\IeC {\d a}ng v\IeC {\`a}o h\IeC {\`a}m m\IeC {\'\acircumflex }t m\IeC {\'a}t}{143}{subsection.15.3.2}
+\contentsline {subsection}{\numberline {15.3.3}$l_2$ regularization}{143}{subsection.15.3.3}
+\contentsline {subsubsection}{V\IeC {\'\i } d\IeC {\d u} v\IeC {\`\ecircumflex } Weight Decay v\IeC {\'\ohorn }i MLP}{144}{section*.51}
+\contentsline {subsection}{\numberline {15.3.4}Tikhonov regularization}{145}{subsection.15.3.4}
+\contentsline {subsection}{\numberline {15.3.5}Regularizers for sparsity}{145}{subsection.15.3.5}
+\contentsline {subsection}{\numberline {15.3.6}Regularization trong sklearn}{146}{subsection.15.3.6}
+\contentsline {section}{\numberline {15.4}C\IeC {\'a}c ph\IeC {\uhorn }\IeC {\ohorn }ng ph\IeC {\'a}p kh\IeC {\'a}c}{146}{section.15.4}
+\contentsline {section}{\numberline {15.5}T\IeC {\'o}m t\IeC {\'\abreve }t n\IeC {\d \ocircumflex }i dung}{147}{section.15.5}
+\contentsline {section}{\numberline {15.6}T\IeC {\`a}i li\IeC {\d \ecircumflex }u tham kh\IeC {\h a}o}{147}{section.15.6}
+\contentsline {chapter}{Index}{149}{chapter*.52}
