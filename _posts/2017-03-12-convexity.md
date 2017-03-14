@@ -261,7 +261,7 @@ trong đó \\(\preceq\\) là *element-wise*, tức mỗi phần tử trong vế 
 ### 2.4. Convex combination và Convex hulls
 Một điểm được gọi là **convex combination** (_tổ hợp lồi_) của các điểm \\(\mathbf{x}_1, \mathbf{x}_2, \dots, \mathbf{x}_k\\) nếu nó có thể viết dưới dạng:
 \\[
-\mathbf{x} = \theta_1 \mathbf{x}_1 + \theta_2 \mathbf{x}_2 + \dots  + \theta_k \mathbf{x}_k, ~~ \text{with} \theta_1 + \theta_2 + \dots + \theta_k = 1
+\mathbf{x} = \theta_1 \mathbf{x}_1 + \theta_2 \mathbf{x}_2 + \dots  + \theta_k \mathbf{x}_k, ~~ \text{with} ~~ \theta_1 + \theta_2 + \dots + \theta_k = 1
 \\]
 
 **Convex hull** của một **tập hợp bất kỳ** là tập hợp tất cả các điểm à _convex combination_ của tập hợp đó. *Convex hull* là một _convex set_. *Convexhull* của một _convex set_ là chính nó. Một cách dễ nhớ, _convex hull_ của một tập hợp là một _convex set_ **nhỏ nhất** chứa tập hợp đó. Khái niệm **nhỏ nhất** rất khó định nghĩa, nhưng nó cũng là một cách nhớ trực quan.
