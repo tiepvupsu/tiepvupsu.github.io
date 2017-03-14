@@ -278,7 +278,7 @@ Trong hình trên, convex hull của các điểm màu xanh là vùng màu xám 
 <hr>
 **Separating hyperplane theorem:** Định lý này nói rằng nếu hai _tập lồi không rỗng_ \\(\mathcal{C}, \mathcal{D}\\) là _disjoint_ (không giao nhau), thì tồn tại vector \\(\mathbf{a}\\) và số \\(b\\) sao cho:
 \\[
-\mathbf{a}^T\mathbf{x} \leq b, \forall \mathbf{x} \in \mathcal{C}, ~~ \text{and} \mathbf{a}^T\mathbf{x} \geq b, \forall \mathbf{x} \in \mathcal{D}
+\mathbf{a}^T\mathbf{x} \leq b, \forall \mathbf{x} \in \mathcal{C}, ~~ \text{and}~~ \mathbf{a}^T\mathbf{x} \geq b, \forall \mathbf{x} \in \mathcal{D}
 \\]
 Tập hợp tất cả các điểm \\(\mathbf{x}\\) thỏa mãn \\(\mathbf{a}^T\mathbf{x} = b\\) chính là một hyperplane. Hyperplan này được gọi là _separating hyperplane_.
 <hr>
