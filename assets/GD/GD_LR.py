@@ -159,7 +159,7 @@ def update2(ii):
 
 
 anim1 = FuncAnimation(fig, update2, frames=np.arange(0, it3), interval=200)
-anim1.save('t2.gif', dpi=200, writer='imagemagick')
+anim1.save('t2.gif', dpi=80, writer='imagemagick')
 # anim1.save('t2.gif', dpi=80, writer='ffmpeg', extra_args=['-vcodec', 'libxvid'])
 plt.show()
 # fig, ax1 = plt.subplots()
