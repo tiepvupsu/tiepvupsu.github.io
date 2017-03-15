@@ -679,3 +679,5 @@ Ngoài ra còn nhiều tính chất thú vị của các _hàm lồi_, các bạ
 ## 5. Tài liệu tham khảo
 
 [1] [Convex Optimization](http://stanford.edu/~boyd/cvxbook/) – Boyd and Vandenberghe, Cambridge University Press, 2004.
+
+
