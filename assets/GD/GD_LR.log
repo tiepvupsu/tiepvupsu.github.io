@@ -1,0 +1,29 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  14 MAR 2017 18:53
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**/Users/tiepvu/Downloads/test/myProjects/tiepvupsu.github.io/assets/GD/GD_LR.p
+y
+
+(/Users/tiepvu/Downloads/test/myProjects/tiepvupsu.github.io/assets/GD/GD_LR.py
+LaTeX2e <2016/03/31>
+Babel <3.9r> and hyphenation patterns for 83 language(s) loaded.
+! You can't use `macro parameter character #' in vertical mode.
+l.1 #
+      To support both python 2 and python 3
+? 
+! Emergency stop.
+l.1 #
+      To support both python 2 and python 3
+End of file on the terminal!
+
+ 
+Here is how much of TeX's memory you used:
+ 7 strings out of 493014
+ 328 string characters out of 6133351
+ 53601 words of memory out of 5000000
+ 3648 multiletter control sequences out of 15000+600000
+ 3640 words of font info for 14 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 5i,0n,1p,120b,8s stack positions out of 5000i,500n,10000p,200000b,80000s
+!  ==> Fatal error occurred, no output PDF file produced!
