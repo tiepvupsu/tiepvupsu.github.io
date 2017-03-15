@@ -47,7 +47,6 @@ _Bài chú yếu nói về toán, nếu bạn đọc không hiểu ngay cũng kh
 
 <a name="-gioi-thieu"></a>
 
-<a name="-gioi-thieu"></a>
 ## 1. Giới thiệu
 Từ đầu đến giờ, chúng ta đã làm quen với rất nhiều bài toán tối ưu. Học Machine Learning là phải học Toán Tối Ưu, và để hiểu hơn về Toán Tối Ưu, với tôi cách tốt nhất là tìm hiểu các thuật toán Machine Learning. Cho tới lúc này, những bài toán tối ưu các bạn đã nhìn thấy trong blog đều là các bài toán tối ưu không ràng buộc (unconstrained optimization problems), tức tối ưu hàm mất mát mà không có điều kiện ràng buộc (constraints) nào về nghiệm cả.
 
@@ -87,12 +86,10 @@ Các bài toán tối ưu, nhìn chung không có cách giải tổng quát, th�
 
 <a name="-convex-sets"></a>
 
-<a name="-convex-sets"></a>
 ## 2. Convex sets
 
 <a name="-dinh-nghia"></a>
 
-<a name="-dinh-nghia"></a>
 ### 2.1. Định nghĩa
 Khái niệm về _convex sets_ có lẽ không xa lạ với các bạn học sinh Việt Nam khi chúng ta đã nghe về _đa giác lồi_. _Lồi_, hiểu đơn giản là _phình ra ngoài_, hoặc _nhô ra ngoài_. Trong toán học, _bằng phẳng_ cũng được coi là _lồi_.
 
