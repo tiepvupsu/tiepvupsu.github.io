@@ -632,7 +632,7 @@ Với hàm số một biến \\(f(x)\\), điều kiện này tương đương v�
 
 **Ví dụ:**
 
-* Hàm _negative entropy_ \\(f(x) = x\log(x)\\) là _stricly convex_ vì tập xác định là \\(x > 0\\) là một tập lồi vì \\(f"(x) = 1/x\\) là một số dương với mọi \\(x\\) thuộc tập xác định.
+* Hàm _negative entropy_ \\(f(x) = x\log(x)\\) là _stricly convex_ vì tập xác định là \\(x > 0\\) là một tập lồi và \\(f"(x) = 1/x\\) là một số dương với mọi \\(x\\) thuộc tập xác định.
 
 * Hàm \\(f(x) = x^2 + 5\sin(x)\\) không là hàm lồi vì đạo hàm bậc hai \\(f"(x) = 2 - 5\sin(x)\\) có thể nhận giá trị âm.
 
