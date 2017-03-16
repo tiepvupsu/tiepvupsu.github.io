@@ -52,7 +52,7 @@ Theo phương thức học, các thuật toán Machine Learning thường đư�
 <a name="supervised-learning-hoc-co-giam-sat"></a>
 
 ### Supervised Learning (Học có giám sát) 
-Supervised learning là thuật toán dự đoán đầu ra (outcome) của một dữ liệu mới (new input) dựa trên các cặp (_input, outcome_) đã biết từ trước. Cặp dữ liệu này còn được gọi là (_data. label_), tức (_dữ liệu, nhãn_). Supervised learning là nhóm phổ biến nhất trong các thuật toán Machine Learning. 
+Supervised learning là thuật toán dự đoán đầu ra (outcome) của một dữ liệu mới (new input) dựa trên các cặp (_input, outcome_) đã biết từ trước. Cặp dữ liệu này còn được gọi là (_data, label_), tức (_dữ liệu, nhãn_). Supervised learning là nhóm phổ biến nhất trong các thuật toán Machine Learning. 
 
 Một cách toán học, Supervised learning là khi chúng ra có một tập hợp biến đầu vào \\( \mathcal{X} = \\{\mathbf{x}\_1, \mathbf{x}\_2, \dots, \mathbf{x}\_N\\} \\) và một tập hợp nhãn tương ứng \\( \mathcal{Y} = \\{\mathbf{y}\_1, \mathbf{y}\_2, \dots, \mathbf{y}\_N\\} \\), trong đó \\( \mathbf{x}\_i, \mathbf{y}\_i \\) là các vector. 
 Các cặp dữ liệu biết trước \\( (\mathbf{x}\_i, \mathbf{y}\_i) \in \mathcal{X} \times \mathcal{Y} \\) 
@@ -76,7 +76,7 @@ Ví dụ này khá giống với cách học của con người khi còn nhỏ. 
 
 **Ví dụ 2:** Thuật toán dò các khuôn mặt trong một bức ảnh đã được phát triển từ rất lâu. Thời gian đầu, facebook sử dụng thuật toán này để chỉ ra các khuôn mặt trong một bức ảnh và yêu cầu người dùng _tag friends_ - tức gán nhãn cho mỗi khuôn mặt. Số lượng cặp dữ liệu (_khuôn mặt, tên người_) càng lớn, độ chính xác ở những lần tự động _tag_ tiếp theo sẽ càng lớn.
 
-**Ví dụ 3:** Bản thân thuật toán dò tìm các khuôn mặt trong 1 bức ảnh cũng là một thuật toán Supervised learning với training data (dữ liệu học) là hàng ngàn cặp (_ảnh, mặt người_) và (_ảnh, không phải mặt người_) được đưa vào. Chú ý là dữ liệu này chỉ phân biệt _mặt người_ và _không phải mặt ngưòi_ mà không phân biệt khuôn mặt của những người khác nhau.
+**Ví dụ 3:** Bản thân thuật toán dò tìm các khuôn mặt trong 1 bức ảnh cũng là một thuật toán Supervised learning với training data (dữ liệu học) là hàng ngàn cặp (_ảnh, mặt người_) và (_ảnh, không phải mặt người_) được đưa vào. Chú ý là dữ liệu này chỉ phân biệt _mặt người_ và _không phải mặt người_ mà không phân biệt khuôn mặt của những người khác nhau.
 
 Thuật toán supervised learning còn được tiếp tục chia nhỏ ra thành hai loại chính: 
 
@@ -100,7 +100,7 @@ Gần đây [Microsoft có một ứng dụng dự đoán giới tính và tuổ
 <a name="unsupervised-learning-hoc-khong-giam-sat"></a>
 
 ### Unsupervised Learning (Học không giám sát)
-Trong thuật toán này, chúng ta không biết được _outcome_ hay _nhãn_ mà chỉ có dữ liệu đầu vào. Thuật toán unsupervised learning sẽ dựa vào cấu trúc của dữ liệu để thực hiện một công việc nào đó, ví dụ như phân nhóm (clustering) hoặc giảm số chiều của dữ liệu (dimention reduction) để thuận tiện trong việc lưu trữ và tính toán.
+Trong thuật toán này, chúng ta không biết được _outcome_ hay _nhãn_ mà chỉ có dữ liệu đầu vào. Thuật toán unsupervised learning sẽ dựa vào cấu trúc của dữ liệu để thực hiện một công việc nào đó, ví dụ như phân nhóm (clustering) hoặc giảm số chiều của dữ liệu (dimension reduction) để thuận tiện trong việc lưu trữ và tính toán.
 
 Một cách toán học, Unsupervised learning là khi chúng ta chỉ có dữ liệu vào \\(\mathcal{X} \\) mà không biết _nhãn_ \\(\mathcal{Y}\\) tương ứng. 
 
@@ -112,7 +112,7 @@ Các bài toán Unsupervised learning được tiếp tục chia nhỏ thành ha
 <a name="clustering-phan-nhom"></a>
 
 #### Clustering (phân nhóm)
-Một bài toán phân nhóm toàn bộ dữ liệu \\(\mathcal{X}\\) thành các nhóm nhỏ dựa trên sự liên quan giữa các dữ liệu trong mỗi nhóm. Ví dụ: phân nhóm khách hàng dựa trên hành vi mua hàng. Điều này cũng giống như việc ta đưa cho một đứa trẻ rất nhiều mảnh ghép với các hình thù và màu sắc khác nhau, ví dụ tam giác, vuông, tròn với màu xanh và đỏ, sau đó yêu cẩu trẻ phân chúng thành từng nhóm. Mặc dù không cho trẻ biết mảnh nào tương ứng với hình nào hoặc màu nào, nhiều khả năng chúng vẫn có thể phân loại các mảnh ghép theo màu hoặc hình dạng. 
+Một bài toán phân nhóm toàn bộ dữ liệu \\(\mathcal{X}\\) thành các nhóm nhỏ dựa trên sự liên quan giữa các dữ liệu trong mỗi nhóm. Ví dụ: phân nhóm khách hàng dựa trên hành vi mua hàng. Điều này cũng giống như việc ta đưa cho một đứa trẻ rất nhiều mảnh ghép với các hình thù và màu sắc khác nhau, ví dụ tam giác, vuông, tròn với màu xanh và đỏ, sau đó yêu cầu trẻ phân chúng thành từng nhóm. Mặc dù không cho trẻ biết mảnh nào tương ứng với hình nào hoặc màu nào, nhiều khả năng chúng vẫn có thể phân loại các mảnh ghép theo màu hoặc hình dạng. 
 
 <!-- ========================== New Heading ==================== -->
 <a name="association"></a>
@@ -126,14 +126,14 @@ Là bài toán khi chúng ta muốn khám phá ra một quy luật dựa trên n
 ### Semi-Supervised Learning (Học bán giám sát)
 Các bài toán khi chúng ta có một lượng lớn dữ liệu \\(\mathcal{X}\\) nhưng chỉ một phần trong chúng được gán nhãn được gọi là Semi-Supervised Learning. Những bài toán thuộc nhóm này nằm giữa hai nhóm được nêu bên trên. 
 
-Một ví dụ điển hình của nhóm này là chỉ có một phần ảnh hoặc văn bản được gán nhãn (ví dụ bức ảnh về người, động vật hoặc các văn bản khoa học, chính trị) và phần lớn các bức ảnh/văn bản khác chưa được gán nhãn được thu thập từ internet. Thực tế cho thấy rất nhiều các bài toàn Machine Learning thuộc vào nhóm này vì việc thu thập dữ liệu có nhãn tốn rất nhiều thời gian và có chi phí cao. Rất nhiều loại dữ liệu thậm chí cần phải có chuyên gia mới gán nhãn được (ảnh y học chẳng hạn). Ngược lại, dữ liệu chưa có nhãn có thể được thu thập với chi phí thấp từ internet. 
+Một ví dụ điển hình của nhóm này là chỉ có một phần ảnh hoặc văn bản được gán nhãn (ví dụ bức ảnh về người, động vật hoặc các văn bản khoa học, chính trị) và phần lớn các bức ảnh/văn bản khác chưa được gán nhãn được thu thập từ internet. Thực tế cho thấy rất nhiều các bài toán Machine Learning thuộc vào nhóm này vì việc thu thập dữ liệu có nhãn tốn rất nhiều thời gian và có chi phí cao. Rất nhiều loại dữ liệu thậm chí cần phải có chuyên gia mới gán nhãn được (ảnh y học chẳng hạn). Ngược lại, dữ liệu chưa có nhãn có thể được thu thập với chi phí thấp từ internet. 
 
 
 <!-- ========================== New Heading ==================== -->
 <a name="reinforcement-learning-hoc-cung-co"></a>
 
 ### Reinforcement Learning (Học Củng Cố)
-Reinforcement learning là các bài toán giúp cho một hệ thống tự động xác định hành vi dựa trên hoàn cảnh để đạt được lợi ích cao nhất (maximizing the performance). Hiện tại, Reinforcement learning chủ yếu được áp dụng vào Lý Thuyết Trò Chơi (Game Theory), các thuật toán cần xác định nưóc đi tiếp theo để đạt được điểm số cao nhất.
+Reinforcement learning là các bài toán giúp cho một hệ thống tự động xác định hành vi dựa trên hoàn cảnh để đạt được lợi ích cao nhất (maximizing the performance). Hiện tại, Reinforcement learning chủ yếu được áp dụng vào Lý Thuyết Trò Chơi (Game Theory), các thuật toán cần xác định nước đi tiếp theo để đạt được điểm số cao nhất.
 
 <div class="imgcap">
 <div >
@@ -189,7 +189,7 @@ Có một cách phân nhóm thứ hai dựa trên chức năng của các thuậ
 1. Linear Classifier 
 2. Support Vector Machine (SVM)
 3. Kernel SVM 
-4. Sparse Represntation-based classification (SRC)
+4. Sparse Representation-based classification (SRC)
 
 <!-- ========================== New Heading ==================== -->
 <a name="instance-based-algorithms"></a>
@@ -197,7 +197,7 @@ Có một cách phân nhóm thứ hai dựa trên chức năng của các thuậ
 ### Instance-based Algorithms 
 
 1. [k-Nearest Neighbor (kNN)](/2017/01/08/knn/)
-2. Learnin Vector Quantization (LVQ)
+2. Learning Vector Quantization (LVQ)
 
 <!-- ========================== New Heading ==================== -->
 <a name="regularization-algorithms"></a>
@@ -205,7 +205,7 @@ Có một cách phân nhóm thứ hai dựa trên chức năng của các thuậ
 ### Regularization Algorithms 
 
 1. Ridge Regression 
-2. Least Absolute Shringkage and Selection Operator (LASSO)
+2. Least Absolute Shrinkage and Selection Operator (LASSO)
 3. Least-Angle Regression (LARS)
 
 <!-- ========================== New Heading ==================== -->
@@ -214,7 +214,7 @@ Có một cách phân nhóm thứ hai dựa trên chức năng của các thuậ
 ### Bayesian Algorithms
 
 1. Naive Bayes
-2. Gausian Naive Bayes 
+2. Gaussian Naive Bayes 
 
 <!-- ========================== New Heading ==================== -->
 <a name="clustering-algorithms"></a>
@@ -223,7 +223,7 @@ Có một cách phân nhóm thứ hai dựa trên chức năng của các thuậ
 
 1. [k-Means clustering](/2017/01/01/kmeans/) 
 2. k-Medians 
-3. Expectation Maximisation (EM) 
+3. Expectation Maximization (EM) 
 
 <!-- ========================== New Heading ==================== -->
 <a name="artificial-neural-network-algorithms"></a>

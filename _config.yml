@@ -27,8 +27,6 @@ paginate_path: "/page:num/"
 
 # `gems: [jekyll-paginate]`
 
-
-
 gems:
   - jekyll-sitemap
   - jekyll-paginate
