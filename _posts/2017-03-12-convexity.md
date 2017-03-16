@@ -636,7 +636,7 @@ Với hàm số một biến \\(f(x)\\), điều kiện này tương đương v�
 
 * Hàm \\(f(x) = x^2 + 5\sin(x)\\) không là hàm lồi vì đạo hàm bậc hai \\(f"(x) = 2 - 5\sin(x)\\) có thể nhận giá trị âm.
 
-* Hàm _cross entropy_ là một hàm _strictly convex_. Xét ví dụ đơn giản với chỉ hai xác suất \\(x\\) và \\(1 - x\\) với \\(0 < x < 1\\): \\(f(x) = -(a \log(x) + (1 - a) \log(1 - x))\\) có đạo hàm bậc hai là \\(\frac{a}{x^2} + \frac{1 - a}{(1-x)^2}\\) là một số dương.
+* Hàm _cross entropy_ là một hàm _strictly convex_. Xét ví dụ đơn giản với chỉ hai xác suất \\(x\\) và \\(1 - x\\) với \\(a\\) là một hằng số thuộc đoạn \\([0, 1]\\) và \\(0 < x < 1\\): \\(f(x) = -(a \log(x) + (1 - a) \log(1 - x))\\) có đạo hàm bậc hai là \\(\frac{a}{x^2} + \frac{1 - a}{(1-x)^2}\\) là một số dương.
 
 * Nếu \\(\mathbf{A}\\) là một ma trận xác định dương thì \\(f(\mathbf{x}) = \frac{1}{2}\mathbf{x}^T\mathbf{Ax}\\) là lồi vì Heinan của nó chính là \\(\mathbf{A}\\) là một ma trận xác định dương.
 
