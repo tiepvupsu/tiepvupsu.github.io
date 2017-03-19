@@ -1,0 +1,36 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  18 MAR 2017 00:27
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**/Users/tiepvu/PROJECTS/tiepvupsu.github.io/assets/17_convexopt/testLP.py
+(/Users/tiepvu/PROJECTS/tiepvupsu.github.io/assets/17_convexopt/testLP.py
+LaTeX2e <2016/03/31>
+Babel <3.9r> and hyphenation patterns for 83 language(s) loaded.
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1 c
+      = [-1, 4]
+? 
+! Emergency stop.
+ ...                                              
+                                                  
+l.1 c
+      = [-1, 4]
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+ 
+Here is how much of TeX's memory you used:
+ 8 strings out of 493014
+ 444 string characters out of 6133351
+ 53601 words of memory out of 5000000
+ 3648 multiletter control sequences out of 15000+600000
+ 3640 words of font info for 14 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 5i,0n,4p,86b,14s stack positions out of 5000i,500n,10000p,200000b,80000s
+!  ==> Fatal error occurred, no output PDF file produced!

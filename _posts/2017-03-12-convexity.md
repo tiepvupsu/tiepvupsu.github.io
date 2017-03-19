@@ -558,6 +558,17 @@ Dưới đây là một ví dụ khác về việc một hàm số có mọi \\(
 
 Mọi \\(\alpha-\\) sublevel sets của hàm số này đều là các hình tròn - _convex_ nhưng hàm số đó không phải là _lồi_. Vì có thể tìm được hai điểm trên mặt này sao cho đoạn thẳng nối hai điểm nằm hoàn toàn phía dưới của mặt (một điểm ở _cánh_ và 1 điểm ở _đáy_ chẳng hạn). 
 
+Những hàm số có tập xác định là một _tập lồi_ và có mọi có \\(\alpha-\\) sublevel sets là _lồi_ được gọi chung là _quasiconvex_. Mọi _convex function_ đều là _quasiconvex_ nhưng ngược lại không đúng. Định nghĩa chính thức của _quasiconvex function_ được phát biểu như sau: 
+<a name = "quasiconvex">
+<hr>
+**Quasiconvex function:**
+Một hàm số \\(f: \mathcal{C} \rightarrow \mathbb{R}\\) với \\(\mathcal{C}\\) là một tập con _lồi_ của \\(\mathbb{R}^n\\) được gọi là _quasiconvex_ nếu với mọi \\(\mathbf{x}, \mathbf{y}) \in \mathcal{C}\\) và mọi \\(\theta \in [0, 1]\\), ta có: 
+\\[
+f(\theta\mathbf{x} + (1 - \theta)\mathbf{y}) \leq \max\\{f(\mathbf{x}, f(\mathbf{y}))\\}
+\\]
+<hr> 
+Định nghĩa này khác với định nghĩa về _convex function_ một chút. 
+
 <a name="-kiem-tra-tinh-chat-loi-dua-vao-dao-ham"></a>
 
 ### 3.5. Kiểm tra tính chất lồi dựa vào đạo hàm.

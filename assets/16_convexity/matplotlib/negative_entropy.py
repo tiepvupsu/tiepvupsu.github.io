@@ -26,7 +26,7 @@ ax.axis('off')
 frame1 = plt.gca()
 
 
-filename = 'NE.pdf'
+filename = 'NE2.pdf'
 with PdfPages(filename) as pdf:
 # with PdfPages('multipage_pdf.pdf') as pdf:
     plt.figure(figsize=(3, 3))
