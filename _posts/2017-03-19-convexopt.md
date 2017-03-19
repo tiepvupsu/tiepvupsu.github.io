@@ -7,9 +7,9 @@ permalink: 2017/03/19/convexopt/
 mathjax: true
 tags: Convex-sets Convex-functions
 category: Optimization
-sc_project:
-sc_security:
-img: \assets\16_convexity\norm2_surf.png
+sc_project: 11288928
+sc_security: 0edaf8bc
+img: \assets\17_\optimalitycondition.png
 summary: Giới thiệu về các bài toán Convex Optimization
 ---
 <!-- MarkdownTOC depth=2 -->
