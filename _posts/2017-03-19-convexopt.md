@@ -9,7 +9,7 @@ tags: Convex-sets Convex-functions
 category: Optimization
 sc_project: 11288928
 sc_security: 0edaf8bc
-img: \assets\17_convexopt\optimalitycondition.png
+img: /assets/17_convexopt/optimalitycondition.png
 summary: Giới thiệu về các bài toán Convex Optimization
 ---
 <!-- MarkdownTOC depth=2 -->
