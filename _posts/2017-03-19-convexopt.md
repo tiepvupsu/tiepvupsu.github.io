@@ -12,14 +12,35 @@ sc_security: 0edaf8bc
 img: /assets/17_convexopt/optimalitycondition.png
 summary: Giới thiệu về các bài toán Convex Optimization
 ---
-<!-- MarkdownTOC depth=2 -->
+<!-- MarkdownTOC depth = 3 -->
 
 - [1. Giới thiệu](#-gioi-thieu)
+    - [1.1. Bài toán nhà xuất bản](#-bai-toan-nha-xuat-ban)
+    - [1.2. Bài toán canh tác](#-bai-toan-canh-tac)
+    - [1.3. Bài toán đóng thùng](#-bai-toan-dong-thung)
 - [2. Nhắc lại bài toán tối ưu](#-nhac-lai-bai-toan-toi-uu)
+    - [2.1. Các khái niệm cơ bản](#-cac-khai-niem-co-ban)
+    - [2.2. Optimal and locally optimal points](#-optimal-and-locally-optimal-points)
+    - [2.3. Một vài lưu ý](#-mot-vai-luu-y)
 - [3. Bài toán tối ưu lồi](#-bai-toan-toi-uu-loi)
+    - [3.1. Định nghĩa](#-dinh-nghia)
+    - [3.2. Cực tiểu của bài toán tối ưu lồi chính là điểm tối ưu.](#-cuc-tieu-cua-bai-toan-toi-uu-loi-chinh-la-diem-toi-uu)
+    - [3.3. Điều kiện tối ưu cho hàm mục tiêu khả vi](#-dieu-kien-toi-uu-cho-ham-muc-tieu-kha-vi)
+    - [3.4. Giới thiệu thư viện CVXOPT](#-gioi-thieu-thu-vien-cvxopt)
 - [4. Linear Programming](#-linear-programming)
+    - [4.1. Dạng tổng quát của LP](#-dang-tong-quat-cua-lp)
+    - [4.2. Dạng tiêu chuẩn của LP](#-dang-tieu-chuan-cua-lp)
+    - [4.3. Minh hoạ bằng hình học của bài toán LP](#-minh-hoa-bang-hinh-hoc-cua-bai-toan-lp)
+    - [Giải LP bằng CVXOPT](#giai-lp-bang-cvxopt)
 - [5. Quadratic Programming](#-quadratic-programming)
+    - [5.1. Định nghĩa bài toán Quadratic Programming](#-dinh-nghia-bai-toan-quadratic-programming)
+    - [Ví dụ về QP](#vi-du-ve-qp)
+    - [5.3. Ví dụ về giải QP bằng CVXOPT](#-vi-du-ve-giai-qp-bang-cvxopt)
 - [6. Geometric Programming](#-geometric-programming)
+    - [6.1. Monomials và posynomials](#-monomials-va-posynomials)
+    - [6.2. Geometric Programming](#-geometric-programming-1)
+    - [6.3. Biến đổi GP về dạng convex](#-bien-doi-gp-ve-dang-convex)
+    - [6.4. Giải GP bằng CVXOPT](#-giai-gp-bang-cvxopt)
 - [7. Tóm tắt](#-tom-tat)
 - [8. Tài liệu tham khảo](#-tai-lieu-tham-khao)
 
