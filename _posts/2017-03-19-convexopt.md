@@ -16,8 +16,14 @@ summary: Giới thiệu về các bài toán Convex Optimization
 
 - [1. Giới thiệu](#-gioi-thieu)
     - [1.1. Bài toán nhà xuất bản](#-bai-toan-nha-xuat-ban)
+        - [Bài toán](#bai-toan)
+        - [Phân tích](#phan-tich)
     - [1.2. Bài toán canh tác](#-bai-toan-canh-tac)
+        - [Bài toán](#bai-toan-1)
+        - [Phân tích](#phan-tich-1)
     - [1.3. Bài toán đóng thùng](#-bai-toan-dong-thung)
+        - [Bài toán](#bai-toan-2)
+        - [Phân tích](#phan-tich-2)
 - [2. Nhắc lại bài toán tối ưu](#-nhac-lai-bai-toan-toi-uu)
     - [2.1. Các khái niệm cơ bản](#-cac-khai-niem-co-ban)
     - [2.2. Optimal and locally optimal points](#-optimal-and-locally-optimal-points)
@@ -212,7 +218,7 @@ Tôi xin nhắc lại bài toán tối ưu ở dạng tổng quát:
 \\[
 \begin{eqnarray}
 \mathbf{x}^* &=& \arg\min_{\mathbf{x}} f_0(\mathbf{x}) \\\
-\text{subject to:}~ && f_i(\mathbf{x}) \leq b_i, ~~ i = 1, 2, \dots, m ~~~(15)\\\
+\text{subject to:}~ && f_i(\mathbf{x}) \leq 0, ~~ i = 1, 2, \dots, m ~~~(15)\\\
 && h_j(\mathbf{x}) = 0, ~~ j = 1, 2, \dots, p
 \end{eqnarray}
 \\]
