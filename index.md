@@ -6,7 +6,7 @@ permalink: /index/
 
 * [activation function](/2017/01/27/logisticregression/#nhac-lai-hai-mo-hinh-tuyen-tinh)
 * [Affine function](/2017/03/12/convexity/#-affine-functions)
-* [\\(alpha\\)-sublevel set](/2017/03/12/convexity/#-\\\alpha-\\-sublevel-sets)
+* [\\(\alpha\\)-sublevel set](/2017/03/12/convexity/#-\\\alpha-\\-sublevel-sets)
 * [arg min](/2017/01/01/kmeans/#ham-mat-mat-va-bai-toan-toi-uu)
 * [Backpropagation](/2017/02/24/mlp/#-backpropagation)
 * [Bag of Words](/general/2017/02/06/featureengineering/#bag-of-words)
