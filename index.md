@@ -23,7 +23,7 @@ permalink: /index/
     - [First-order condition](/2017/03/12/convexity/#-first-order-condition)
     - [Second-order condition](/2017/03/12/convexity/#-second-order-condition)
 * [Convex hull](/2017/03/12/convexity/#-convex-combination-va-convex-hulls)
-* [Convex optimization problems]
+* [Convex optimization problems](/2017/03/19/convexopt/)
 * [Convex sets](/2017/03/12/convexity/#-convex-sets)
 * [Cross entropy](/2017/02/17/softmax/#-cross-entropy)
 * [Feature Engineering](/general/2017/02/06/featureengineering/)
