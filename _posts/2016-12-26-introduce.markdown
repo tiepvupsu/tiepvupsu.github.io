@@ -24,14 +24,9 @@ Những năm gần đây, khi mà khả năng tính toán của các máy tính 
 <div class="imgcap">
 <div >
     <img src="/assets/introduce/aimldl.png" width = "800"></a>
-    <!-- <img src="/assets/rl/mdp.png" height="206"> -->
 </div>
 <div class="thecap">Mối quan hệ giữa AI, Machine Learning và Deep Learning. <br> (Nguồn: <a href="https://blogs.nvidia.com/blog/2016/07/29/whats-difference-artificial-intelligence-machine-learning-deep-learning-ai/">What’s the Difference Between Artificial Intelligence, Machine Learning, and Deep Learning?</a>)</div>
 </div>
-<!-- <div style="display:inline-block">
-    <img src="/assets/introduce/aimldl.png">
-</div>
- -->
 
 
 
