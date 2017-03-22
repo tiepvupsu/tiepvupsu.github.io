@@ -217,7 +217,7 @@ Hiểu một cách đơn giản, đạo hàm của một hàm số (có đầu r
 
 Đạo hàm bậc hai theo \\(\mathbf{x}\\), hay _Hessian_ là: 
 \\[
-\nabla^2 f(\mathbf{x}) 
+\nabla^2 f(\mathbf{x}) = 
 \left\[
 \begin{matrix}
     \frac{\partial^2 f(\mathbf{x})}{\partial x_1^2} & \frac{\partial f^2(\mathbf{x})}{\partial x_1x_2} \\\
@@ -382,7 +382,7 @@ Thêm nữa, vì \\(\mathbf{a}^T\mathbf{x} = \mathbf{x}^T\mathbf{a}\\) nên:
 #### \\(f(\mathbf{x}) = \mathbf{Ax}\\)
 Đây là một _vector-valued function_ \\(f: \mathbb{R}^n \rightarrow \mathbb{R}^{m} \\) với \\(\mathbf{x} \in \mathbb{R}^n, \mathbf{A} \in \mathbb{R}^{m\times n}\\). Giả sử rằng \\(\mathbf{a}\_i\\) là **hàng** thứ \\(i\\) của ma trận \\(\mathbf{A}\\). Ta có: 
 \\[
-\mathbf{A}  = 
+\mathbf{Ax}  = 
 \left\[
 \begin{matrix}
     \mathbf{a}\_1\mathbf{x} \\\
