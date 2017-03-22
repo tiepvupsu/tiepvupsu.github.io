@@ -33,6 +33,7 @@ Một số kiến thức về Đại Số Tuyến Tính, Xác Suất Thống Kê
     - [3.5. Bảng các đạo hàm thường gặp](#-bang-cac-dao-ham-thuong-gap)
         - [Cho vector](#cho-vector)
         - [Cho ma trận](#cho-ma-tran)
+    - [3.6. Tài liệu tham khảo](#-tai-lieu-tham-khao)
 
 <!-- /MarkdownTOC -->
 
@@ -503,7 +504,10 @@ trong đây tôi đã sử dụng tính chất \\(\mathbf{y}^T\mathbf{z} = \math
 | \\( \mathbf{a}^T \mathbf{X} \mathbf{Y}^T \mathbf{b}\\) | \\( \mathbf{a}\mathbf{b}^T\mathbf{Y}         \\)               |
 | \\( \mathbf{a}^T \mathbf{X}^T \mathbf{Y} \mathbf{b}\\) | \\( \mathbf{Y}\mathbf{b}\mathbf{a}^T         \\)               |
 
+<a name="-tai-lieu-tham-khao"></a>
 
+### 3.6. Tài liệu tham khảo 
+[1] [Matrix calculus](https://ccrma.stanford.edu/~dattorro/matrixcalc.pdf)
 
 
 
