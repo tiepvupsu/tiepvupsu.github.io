@@ -484,7 +484,8 @@ trong đây tôi đã sử dụng tính chất \\(\mathbf{y}^T\mathbf{z} = \math
 
 | \\(f(\mathbf{x}) \\)           | \\( \nabla f(\mathbf{x}) \\)     |         
 | :----------------------:       | :------------------------------------------------------------: |         
-| \\(\mathbf{a}^T \mathbf{x} \\) | \\(\mathbf{a}\\)                                               |         
+| \\(\mathbf{a}^T \mathbf{x} \\) | \\(\mathbf{a}\\)                                               |  
+| \\(\mathbf{x}^T\mathbf{Ax}\\)  | \\(\mathbf{A} + \mathbf{A}^T) \mathbf{x}\\)|       
 | \\(\mathbf{x}^T \mathbf{x} =  \\| \\|\mathbf{x} \\|\\|_2^2 \\)  | \\(2\mathbf{x}  \\)     |
 | \\( \|\|\mathbf{Ax-b} \|\|_2^2 \\)  | \\( 2\mathbf{A}^T (\mathbf{Ax - b})\\)      |         
 | \\(\mathbf{a}^T\mathbf{x}^T\mathbf{xb} \\) |  \\(2\mathbf{a}^T\mathbf{bx} \\) |
