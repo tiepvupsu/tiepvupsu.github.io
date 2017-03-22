@@ -169,7 +169,7 @@ Các halfspace cũng là các tập lồi, bạn đọc có thể dễ dàng nh�
 B(\mathbf{x}_c, r) = \\{\mathbf{x} ~\big|~ \|\|\mathbf{x} - \mathbf{x}_c\|\|_2 \leq r \\} = \\{\mathbf{x}_c + r\mathbf{u} ~\big|~ \|\|\mathbf{u}\|\|_2 \leq 1\\}
 \\]
 
-Theo Định nghĩa 1, chúng ta có thể _thấy_ Euclidean balls là các tập lồi, nếu phải chứng minh, ta dùng Định nghĩa 2 và [các tính chất của norms](/math/#norms-chuan). Với \\(\mathbf{x}_1, \mathbf{x}_2\\) bất kỳ thuộc \\(B(\mathbf{x}_c, r)\\) và \\(0 \leq \theta \leq 1\\) bất kỳ:
+Theo Định nghĩa 1, chúng ta có thể _thấy_ Euclidean balls là các tập lồi, nếu phải chứng minh, ta dùng Định nghĩa 2 và [các tính chất của norms](/math/#-norms-chuan). Với \\(\mathbf{x}_1, \mathbf{x}_2\\) bất kỳ thuộc \\(B(\mathbf{x}_c, r)\\) và \\(0 \leq \theta \leq 1\\) bất kỳ:
 \\[
 \begin{eqnarray}
 \|\|\mathbf{x}\_{\theta} - \mathbf{x}_c\|\|_2 &=& \|\|\theta(\mathbf{x}_1 - \mathbf{x}_c)  + (1 - \theta) (\mathbf{x}_2 - \mathbf{x}_c)\|\|_2 \\\
@@ -427,7 +427,7 @@ vì \\(\mathbf{X}^T\mathbf{X}\\) là một ma trận xác định dương, hàm 
 <a name="-norms"></a>
 
 #### 3.3.4. Norms
-Vâng, lại là norms. Một hàm số bất kỳ thỏa mãn [ba điều kiện của norm](/math/#norms-chuan) đều là một _convex function_. Bạn đọc có thể chứng minh điều này bằng định nghĩa.
+Vâng, lại là norms. Một hàm số bất kỳ thỏa mãn [ba điều kiện của norm](/math/#-norms-chuan) đều là một _convex function_. Bạn đọc có thể chứng minh điều này bằng định nghĩa.
 
 Dưới đây là hai ví dụ về norm 1 (trái) và norm 2 (phải) với số chiều là 2 (chiều thứ ba trong hình dưới đây là giá trị của hàm số).
 <hr>

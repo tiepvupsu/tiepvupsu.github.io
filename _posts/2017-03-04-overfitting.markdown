@@ -211,7 +211,7 @@ R(\mathbf{w}) = \\|\mathbf{w}\\|_2^2
 \\]
 tức norm 2 của hệ số.
 
-_Nếu bạn đọc chưa quen thuộc với khái niệm norm, bạn được khuyến khích đọc [phần phụ lục này](/math/#norms-chuan)_.
+_Nếu bạn đọc chưa quen thuộc với khái niệm norm, bạn được khuyến khích đọc [phần phụ lục này](/math/#-norms-chuan)_.
 
 Hàm số này có một vài đặc điểm đang lưu ý:
 
@@ -323,7 +323,7 @@ Trong nhiều trường hợp, ta muốn các hệ số _thực sự_ bằng 0 c
 R(\mathbf{W}) = \\|\mathbf{w}\\|_0
 \\]
 
-Norm 0 không phải là một norm thực sự mà là giả norm. (Bạn được khuyến khích đọc thêm về [norms (chuẩn)](/math/#norms-chuan)). Norm 0 của một vector là số các phần tử khác không của vector đó. Khi norm 0 nhỏ, tức rất nhiều phần tử trong vector đó bằng 0, ta nói vector đó là _sparse_.
+Norm 0 không phải là một norm thực sự mà là giả norm. (Bạn được khuyến khích đọc thêm về [norms (chuẩn)](/math/#-norms-chuan)). Norm 0 của một vector là số các phần tử khác không của vector đó. Khi norm 0 nhỏ, tức rất nhiều phần tử trong vector đó bằng 0, ta nói vector đó là _sparse_.
 
 Việc giải bài toán tổi thiểu norm 0 nhìn chung là khó vì hàm số này không _convex_, không liên tục. Thay vào đó, norm 1 thường được sử dụng:
 \\[

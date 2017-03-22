@@ -50,7 +50,7 @@ permalink: /index/
 * [Multi-layer Perceptron](/2017/02/24/mlp/)
 * [Neural Networks](/2017/01/21/perceptron/#-mo-hinh-neural-network-dau-tien)
 * [Newton's Method](/2017/01/16/gradientdescent2/#-mot-phuong-phap-toi-uu-don-gian-khac-newtons-method)
-* [Norms (chuẩn)](https://tiepvupsu.github.io/math/#norms-chuan)
+* [Norms (chuẩn)](https://tiepvupsu.github.io/math/#-norms-chuan)
 * [Norm balls](/2017/03/12/convexity/#-norm-balls)
 * [Objective function](/2017/03/12/convexity/#-gioi-thieu)
 * [Online Learning](/2017/01/16/gradientdescent2/#online-learning)
