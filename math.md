@@ -156,10 +156,11 @@ Trong mục này, chúng ta sẽ giả sử rằng các đạo hàm tồn tại.
 \frac{\partial f(\mathbf{x})}{\partial x_1} \\\
 \frac{\partial f(\mathbf{x})}{\partial x_2} \\\
 \vdots \\\
-\frac{\partial f(\mathbf{x})}{\partial x_2}
+\frac{\partial f(\mathbf{x})}{\partial x_n}
 \end{matrix}
 \right\] \in \mathbb{R}^n ~~~ (6)
 \\]
+trong đó \\(\frac{\partial f(\mathbf{x})}{\partial x_i}\\) là đạo hàm của hàm số theo thành phần thứ \\(i\\) của vector \\(\mathbf{x}\\). Đạo hàm này được lấy khi giả sử tất cả các biến còn lại là hằng số.
 
 Nếu không có thêm biến nào trong hàm số, \\(\nabla_{\mathbf{x}}f(\mathbf{x})\\) thường được viết gọn là \\(\nabla f(\mathbf{x})\\).
 
