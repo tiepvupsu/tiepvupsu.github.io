@@ -9,6 +9,7 @@ mathjax: true
 Một số kiến thức về Đại Số Tuyến Tính, Xác Suất Thống Kê, Toán Tối Ưu cần thiết cho Machine Learning.
 
 Bạn có thể download bản pdf [tại đây](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/latex/appendix.pdf).
+
 (_đang trong thời gian xây dựng, cập nhật theo bài_)
 
 **Trong trang này:**
@@ -142,6 +143,7 @@ Với một ma trận \\(\mathbf{A} \in \mathbb{R}^{m\times n}\\), chuẩn thư�
 
 ## 3. Đạo hàm của hàm nhiều biến 
 (Bạn có thể download bản pdf [tại đây](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/latex/appendix.pdf).)
+
 Trong mục này, chúng ta sẽ giả sử rằng các đạo hàm tồn tại. Chúng ta sẽ xét hai trường hợp: i) Hàm số nhận giá trị là ma trận (vector) và cho giá trị là một số thực vô hướng; và ii) Hàm số nhận giá trị là một số vô hướng hoặc vector và cho giá trị là một vector. 
 <!-- Biến của các hàm số có thể là một số vô hướng, một vector, hoặc một ma trận, nhưng đầu ra của các hàm số đều là các số vô hướng.  -->
 
