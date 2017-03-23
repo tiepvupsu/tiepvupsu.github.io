@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1490231440 "appendix.tex" "appendix.pdf" "appendix" 1490231440
+["pdflatex"] 1490232573 "appendix.tex" "appendix.pdf" "appendix" 1490232574
   "/usr/local/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -117,16 +117,16 @@
   "/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1489522183 1888048 f2c5faed5981a516f406b2ccc20bff71 ""
   "/usr/local/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt" 1463979169 3873397 413fbfbbedb8e719ddc392043a7add02 ""
   "/usr/local/texlive/2016/texmf.cnf" 1463979140 577 2938757e76f31531e65cc647e3507693 ""
-  "appendix.aux" 1490231440 5921 1a26c6d7ba08acb12bf56984c437b8c1 ""
-  "appendix.out" 1490231440 1542 3f78c3cfefad7d6bc97dbccf2627d055 ""
-  "appendix.tex" 1490231440 26530 a031ec7a121d72216443f040b86572d7 ""
+  "appendix.aux" 1490232574 5921 1a26c6d7ba08acb12bf56984c437b8c1 ""
+  "appendix.out" 1490232574 1542 3f78c3cfefad7d6bc97dbccf2627d055 ""
+  "appendix.tex" 1490232573 26522 97212aa984503b6601b5492a2e357f3a ""
   "definitions.tex" 1489550085 11636 f8b9b221a3d46c3f1684a17887677248 ""
   "norm12.pdf" 1489550085 46181 5a5b19be65778555483c2d5dabeffe29 ""
   (generated)
-  "0_math.aux"
-  "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/appendix.pdf"
-  "appendix.aux"
   "appendix.pdf"
-  "appendix.log"
   "appendix.out"
   "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/appendix.log"
+  "appendix.log"
+  "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/appendix.pdf"
+  "0_math.aux"
+  "appendix.aux"
