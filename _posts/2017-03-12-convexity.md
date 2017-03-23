@@ -61,7 +61,7 @@ Trong Tối Ưu, một bài toán có ràng buộc thường được viết dư
 \\[
 \begin{eqnarray}
 \mathbf{x}^* &=& \arg\min_{\mathbf{x}} f_0(\mathbf{x})\\\
-\text{subject to:}~ && f_i(\mathbf{x}) \leq b_i, ~~ i = 1, 2, \dots, m \\\
+\text{subject to:}~ && f_i(\mathbf{x}) \leq 0, ~~ i = 1, 2, \dots, m \\\
 && h_j(\mathbf{x}) = 0, ~~ j = 1, 2, \dots, p
 \end{eqnarray}
 \\]

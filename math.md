@@ -408,7 +408,7 @@ Theo định nghĩa \\((13.2)\\), và công thức \\((17)\\), ta có thể suy 
 
 Từ đây ta có thể suy ra đạo hàm của hàm số \\(f(\mathbf{x}) = \mathbf{x} = \mathbf{Ix}\\), với \\(\mathbf{I}\\) là ma trận đơn vị với chiều phù hợp, là:
 \\[
-\nabla \mathbf{x} = \mathbf{I} ~~~ (19)
+\nabla \mathbf{x} = \mathbf{I} 
 \\]
 <a name="\\f\mathbfx--\mathbfx^t\mathbfa-\mathbfx\\"></a>
 
