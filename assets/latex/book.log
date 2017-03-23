@@ -1,12 +1,12 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.19)  9 MAR 2017 00:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  22 MAR 2017 20:19
 entering extended mode
- restricted \write18 enabled.
+ \write18 enabled.
  %&-line parsing enabled.
 **book.tex
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/book.tex
-LaTeX2e <2016/02/01>
-Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/mysvmono.cls
+(./book.tex
+LaTeX2e <2016/03/31>
+Babel <3.9r> and hyphenation patterns for 83 language(s) loaded.
+(./mysvmono.cls
 
 LaTeX Warning: You have requested document class `mysvmono',
                but the document class provides `svmono'.
@@ -15,9 +15,9 @@ Document Class: svmono 2006/10/31 v4.17
 Springer Verlag global LaTeX document class for monographs
 Class Springer-SVMono Info: extra/valid Springer sub-package 
 (Springer-SVMono)           not found in option list - using "global" style.
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/size12.clo
 File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -68,23 +68,17 @@ LaTeX Font Info:    Redeclaring math symbol \Omega on input line 642.
 \figcapgap=\dimen122
 \tabcapgap=\dimen123
 \c@merk=\count90
-)
-(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+) (/usr/local/texlive/2016/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2010/09/12 v5.6 Page Geometry
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks14
-)
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
-Package ifpdf Info: pdfTeX in PDF mode is detected.
-)
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifvtex.sty
-Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+) (/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2016/05/14 v3.1 Provides the ifpdf switch
+) (/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
-)
-(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+) (/usr/local/texlive/2016/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
 \Gm@cnth=\count91
@@ -99,32 +93,26 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layouthoffset=\dimen130
 \Gm@layoutvoffset=\dimen131
 \Gm@dimlist=\toks15
-)
-(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+) (/usr/local/texlive/2016/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
-
-(/usr/share/texlive/texmf-dist/tex/latex/vntex/t5enc.def
+(/usr/local/texlive/2016/texmf-dist/tex/latex/vntex/t5enc.def
 File: t5enc.def 2006/11/21 v1.4 Vietnamese T5 encoding
 )
 LaTeX Font Info:    Try loading font information for T5+cmr on input line 105.
-
-(/usr/share/texlive/texmf-dist/tex/latex/vntex/t5cmr.fd
+(/usr/local/texlive/2016/texmf-dist/tex/latex/vntex/t5cmr.fd
 File: t5cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-))
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+)) (/usr/local/texlive/2016/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2015/03/17 v1.2c Input encoding file
 \inpenc@prehook=\toks16
 \inpenc@posthook=\toks17
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2015/12/03 v1.1r UTF-8 support for inputenc
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2016/02/28 v1.1s UTF-8 support for inputenc
 Now handling font encoding OML ...
 ... no UTF-8 mapping file for font encoding OML
 Now handling font encoding T1 ...
 ... processing UTF-8 mapping file for font encoding T1
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.dfu
-File: t1enc.dfu 2015/12/03 v1.1r UTF-8 support for inputenc
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/t1enc.dfu
+File: t1enc.dfu 2016/02/28 v1.1s UTF-8 support for inputenc
    defining Unicode char U+00A0 (decimal 160)
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -336,11 +324,15 @@ File: t1enc.dfu 2015/12/03 v1.1r UTF-8 support for inputenc
    defining Unicode char U+0219 (decimal 537)
    defining Unicode char U+021A (decimal 538)
    defining Unicode char U+021B (decimal 539)
-   defining Unicode char U+01E02 (decimal 7682)
-   defining Unicode char U+01E03 (decimal 7683)
+   defining Unicode char U+1E02 (decimal 7682)
+   defining Unicode char U+1E03 (decimal 7683)
    defining Unicode char U+200C (decimal 8204)
+   defining Unicode char U+2010 (decimal 8208)
+   defining Unicode char U+2011 (decimal 8209)
+   defining Unicode char U+2012 (decimal 8210)
    defining Unicode char U+2013 (decimal 8211)
    defining Unicode char U+2014 (decimal 8212)
+   defining Unicode char U+2015 (decimal 8213)
    defining Unicode char U+2018 (decimal 8216)
    defining Unicode char U+2019 (decimal 8217)
    defining Unicode char U+201A (decimal 8218)
@@ -355,9 +347,8 @@ File: t1enc.dfu 2015/12/03 v1.1r UTF-8 support for inputenc
 )
 Now handling font encoding OT1 ...
 ... processing UTF-8 mapping file for font encoding OT1
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/ot1enc.dfu
-File: ot1enc.dfu 2015/12/03 v1.1r UTF-8 support for inputenc
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/ot1enc.dfu
+File: ot1enc.dfu 2016/02/28 v1.1s UTF-8 support for inputenc
    defining Unicode char U+00A0 (decimal 160)
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -396,9 +387,8 @@ File: ot1enc.dfu 2015/12/03 v1.1r UTF-8 support for inputenc
 )
 Now handling font encoding OMS ...
 ... processing UTF-8 mapping file for font encoding OMS
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/omsenc.dfu
-File: omsenc.dfu 2015/12/03 v1.1r UTF-8 support for inputenc
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/omsenc.dfu
+File: omsenc.dfu 2016/02/28 v1.1s UTF-8 support for inputenc
    defining Unicode char U+00A7 (decimal 167)
    defining Unicode char U+00B6 (decimal 182)
    defining Unicode char U+00B7 (decimal 183)
@@ -412,8 +402,7 @@ Now handling font encoding U ...
 ... no UTF-8 mapping file for font encoding U
 Now handling font encoding T5 ...
 ... processing UTF-8 mapping file for font encoding T5
-
-(/usr/share/texlive/texmf-dist/tex/latex/vntex/t5enc.dfu
+(/usr/local/texlive/2016/texmf-dist/tex/latex/vntex/t5enc.dfu
 File: t5enc.dfu 2006/08/19 v1.1 UTF8 support for Vietnamese
    defining Unicode char U+00AB (decimal 171)
    defining Unicode char U+00BB (decimal 187)
@@ -577,26 +566,21 @@ File: t5enc.dfu 2006/08/19 v1.1 UTF8 support for Vietnamese
    defining Unicode char U+2026 (decimal 8230)
    defining Unicode char U+2122 (decimal 8482)
    defining Unicode char U+2423 (decimal 9251)
-))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2016/03/03 v2.15a AMS math features
+)) (/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2016/03/10 v2.15b AMS math features
 \@mathmargin=\skip43
-
 For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01 AMS text
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks18
 \ex@=\dimen132
-))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+)) (/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen133
-)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
-Package: amsopn 1999/12/14 v2.01 operator names
+) (/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
 )
 \inf@bad=\count94
 LaTeX Info: Redefining \frac on input line 199.
@@ -611,9 +595,8 @@ LaTeX Info: Redefining \cdots on input line 518.
 \Mathstrutbox@=\box26
 \strutbox@=\box27
 \big@size=\dimen134
-LaTeX Font Info:    Redeclaring font encoding OML on input line 630.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 631.
-
+LaTeX Font Info:    Redeclaring font encoding OML on input line 634.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 635.
 
 Package amsmath Warning: Unable to redefine math accent \vec.
 
@@ -637,51 +620,41 @@ Package amsmath Warning: Unable to redefine math accent \vec.
 \multlinegap=\skip44
 \multlinetaggap=\skip45
 \mathdisplay@stack=\toks22
-LaTeX Info: Redefining \[ on input line 2735.
-LaTeX Info: Redefining \] on input line 2736.
-) (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+LaTeX Info: Redefining \[ on input line 2739.
+LaTeX Info: Redefining \] on input line 2740.
+) (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-))
-(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty
+)) (/usr/local/texlive/2016/texmf-dist/tex/latex/base/makeidx.sty
 Package: makeidx 2014/09/29 v1.0m Standard LaTeX package
-)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+) (/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2016/01/03 v1.0q Standard LaTeX Graphics (DPC,SPQR)
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2016/05/09 v1.0r Standard LaTeX Graphics (DPC,SPQR)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+) (/usr/local/texlive/2016/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/01/02 v1.10 sample graphics configuration
 )
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
-File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
-)
-Package graphics Info: Driver file: pdftex.def on input line 95.
-
-(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+Package graphics Info: Driver file: pdftex.def on input line 96.
+(/usr/local/texlive/2016/texmf-dist/tex/latex/pdftex-def/pdftex.def
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
-Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
-)
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
-Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+) (/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count106
 ))
 \Gin@req@height=\dimen141
 \Gin@req@width=\dimen142
-)
-(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty
-Package: multicol 2015/08/19 v1.8n multicolumn formatting (FMi)
+) (/usr/local/texlive/2016/texmf-dist/tex/latex/tools/multicol.sty
+Package: multicol 2016/04/07 v1.8p multicolumn formatting (FMi)
 \c@tracingmulticols=\count107
 \mult@box=\box28
 \multicol@leftmargin=\dimen143
@@ -728,8 +701,7 @@ Package: multicol 2015/08/19 v1.8n multicolumn formatting (FMi)
 \mult@nat@firstbox=\box52
 \colbreak@box=\box53
 \mc@col@check@num=\count115
-)
-(/usr/share/texlive/texmf-dist/tex/latex/footmisc/footmisc.sty
+) (/usr/local/texlive/2016/texmf-dist/tex/latex/footmisc/footmisc.sty
 Package: footmisc 2011/06/06 v5.5b a miscellany of footnote facilities
 \FN@temptoken=\toks23
 \footnotemargin=\dimen152
@@ -746,113 +718,103 @@ Package footmisc Info: Declaring symbol style lamport*-robust on input line 924
 \@indexfile=\write3
 \openout3 = `book.idx'.
 
-
 Writing index file book.idx
-(/usr/share/texlive/texmf-dist/tex/latex/cite/cite.sty
+(/usr/local/texlive/2016/texmf-dist/tex/latex/cite/cite.sty
 LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 332.
 Package: cite 2015/02/27  v 5.5
-)
-(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
+) (/usr/local/texlive/2016/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip11
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
-)
-(/usr/share/texlive/texmf-dist/tex/latex/tools/bm.sty
-Package: bm 2014/10/28 v1.1c Bold Symbol Support (DPC/FMi)
+) (/usr/local/texlive/2016/texmf-dist/tex/latex/tools/bm.sty
+Package: bm 2016/02/27 v1.2a Bold Symbol Support (DPC/FMi)
 \symboldoperators=\mathgroup6
 \symboldletters=\mathgroup7
 \symboldsymbols=\mathgroup8
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 141.
-LaTeX Info: Redefining \bm on input line 207.
-)
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
-Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 142.
+LaTeX Info: Redefining \bm on input line 208.
+) (/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2016/05/05 v6.83n Hypertext links for LaTeX
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
 
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
-Package: hobsub-hyperref 2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
-
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
-Package: hobsub-generic 2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
-Package: hobsub 2012/05/28 v1.13 Construct package bundles (HO)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
 Package hobsub Info: Skipping package `infwarerr' (already loaded).
 Package hobsub Info: Skipping package `ltxcmds' (already loaded).
-Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
 Package hobsub Info: Skipping package `ifvtex' (already loaded).
-Package: intcalc 2007/09/27 v1.1 Expandable calculations with integers (HO)
+Package: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
 Package hobsub Info: Skipping package `ifpdf' (already loaded).
-Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
 Package etexcmds Info: Could not find \expanded.
 (etexcmds)             That can mean that you are not using pdfTeX 1.50 or
 (etexcmds)             that some package has redefined \expanded.
 (etexcmds)             In the latter case, load this package earlier.
-Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
-Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
-Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+Package: pdftexcmds 2016/05/10 v0.21 Utility functions of pdfTeX for LuaTeX (HO
 )
 Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
-Package: pdfescape 2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
-Package: bigintcalc 2012/04/08 v1.3 Expandable calculations on big integers (HO
+Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO
 )
-Package: bitset 2011/01/30 v1.1 Handle bit-vector datatype (HO)
-Package: uniquecounter 2011/01/30 v1.2 Provide unlimited unique counter (HO)
+Package: bitset 2016/05/16 v1.2 Handle bit-vector datatype (HO)
+Package: uniquecounter 2016/05/16 v1.3 Provide unlimited unique counter (HO)
 )
 Package hobsub Info: Skipping package `hobsub' (already loaded).
-Package: letltxmacro 2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
-Package: hopatch 2012/05/28 v1.2 Wrapper for package hooks (HO)
-Package: xcolor-patch 2011/01/30 xcolor patch
-Package: atveryend 2011/06/30 v1.8 Hooks at the very end of document (HO)
+Package: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
+Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
+Package: xcolor-patch 2016/05/16 xcolor patch
+Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
 Package atveryend Info: \enddocument detected (standard20110627).
-Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
-Package: refcount 2011/10/16 v3.4 Data extraction from label references (HO)
-Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
-)
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/auxhook.sty
-Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
-)
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+Package: atbegshi 2016/05/16 v1.17 At begin shipout hook (HO)
+Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
+Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
+) (/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/auxhook.sty
+Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
+) (/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 )
 \@linkdim=\dimen153
 \Hy@linkcounter=\count117
 \Hy@pagecounter=\count118
-
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
-File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2016/05/05 v6.83n Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 )
 \Hy@SavedSpaceFactor=\count119
-
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+(/usr/local/texlive/2016/texmf-dist/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
-Package hyperref Info: Hyper figures OFF on input line 4443.
-Package hyperref Info: Link nesting OFF on input line 4448.
-Package hyperref Info: Hyper index ON on input line 4451.
-Package hyperref Info: Plain pages OFF on input line 4458.
-Package hyperref Info: Backreferencing OFF on input line 4463.
+Package hyperref Info: Hyper figures OFF on input line 4446.
+Package hyperref Info: Link nesting OFF on input line 4451.
+Package hyperref Info: Hyper index ON on input line 4454.
+Package hyperref Info: Plain pages OFF on input line 4461.
+Package hyperref Info: Backreferencing OFF on input line 4466.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
-Package hyperref Info: Bookmarks ON on input line 4688.
+Package hyperref Info: Bookmarks ON on input line 4691.
 \c@Hy@tempcnt=\count120
-LaTeX Info: Redefining \url on input line 5041.
+LaTeX Info: Redefining \url on input line 5044.
 \XeTeXLinkMargin=\dimen154
 \Fld@menulength=\count121
 \Field@Width=\dimen155
 \Fld@charsize=\dimen156
-Package hyperref Info: Hyper figures OFF on input line 6295.
-Package hyperref Info: Link nesting OFF on input line 6300.
-Package hyperref Info: Hyper index ON on input line 6303.
-Package hyperref Info: backreferencing OFF on input line 6310.
-Package hyperref Info: Link coloring OFF on input line 6315.
-Package hyperref Info: Link coloring with OCG OFF on input line 6320.
-Package hyperref Info: PDF/A mode OFF on input line 6325.
-LaTeX Info: Redefining \ref on input line 6365.
-LaTeX Info: Redefining \pageref on input line 6369.
+Package hyperref Info: Hyper figures OFF on input line 6298.
+Package hyperref Info: Link nesting OFF on input line 6303.
+Package hyperref Info: Hyper index ON on input line 6306.
+Package hyperref Info: backreferencing OFF on input line 6313.
+Package hyperref Info: Link coloring OFF on input line 6318.
+Package hyperref Info: Link coloring with OCG OFF on input line 6323.
+Package hyperref Info: PDF/A mode OFF on input line 6328.
+LaTeX Info: Redefining \ref on input line 6368.
+LaTeX Info: Redefining \pageref on input line 6372.
 \Hy@abspage=\count122
 \c@Item=\count123
 \c@Hfootnote=\count124
@@ -860,21 +822,19 @@ LaTeX Info: Redefining \pageref on input line 6369.
 
 Package hyperref Message: Driver (autodetected): hpdftex.
 
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
-File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
+(/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2016/05/05 v6.83n Hyperref driver for pdfTeX
 \Fld@listcount=\count125
 \c@bookmark@seq@number=\count126
-
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
-Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
 \Hy@SectionHShift=\skip48
 )
 Package hyperref Info: Option `colorlinks' set `true' on input line 43.
-
-(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+(/usr/local/texlive/2016/texmf-dist/tex/latex/listings/listings.sty
 \lst@mode=\count127
 \lst@gtempboxa=\box54
 \lst@token=\toks24
@@ -887,33 +847,26 @@ Package hyperref Info: Option `colorlinks' set `true' on input line 43.
 \lst@newlines=\count131
 \lst@lineno=\count132
 \lst@maxwidth=\dimen160
-
-(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+(/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 \c@lstnumber=\count133
 \lst@skipnumbers=\count134
 \lst@framebox=\box55
-)
-(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
+) (/usr/local/texlive/2016/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2015/06/04 1.6 listings configuration
 ))
 Package: listings 2015/06/04 1.6 (Carsten Heinz)
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
-Package: color 2016/01/03 v1.1b Standard LaTeX Color (DPC)
-
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
-File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2016/05/09 v1.1c Standard LaTeX Color (DPC)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
-Package color Info: Driver file: pdftex.def on input line 143.
-)
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/courier.sty
+Package color Info: Driver file: pdftex.def on input line 144.
+) (/usr/local/texlive/2016/texmf-dist/tex/latex/psnfss/courier.sty
 Package: courier 2005/04/12 PSNFSS-v9.2a (WaS) 
-)
-(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+) (/usr/local/texlive/2016/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
-
-(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
+(/usr/local/texlive/2016/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2016/02/04 v1.7-139 caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 67.
 \captionmargin=\dimen161
@@ -942,32 +895,17 @@ Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 )
 LaTeX Font Info:    Try loading font information for T1+txtt on input line 87.
- (/usr/share/texlive/texmf-dist/tex/latex/txfonts/t1txtt.fd
+(/usr/local/texlive/2016/texmf-dist/tex/latex/txfonts/t1txtt.fd
 File: t1txtt.fd 2000/12/15 v3.1
-)
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/book.aux
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/1_introduce.aux)
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/2_categories.aux)
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/3_linearregression.au
-x) (/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/4_kmeans.aux)
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/5_kmeans2.aux)
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/6_knn.aux)
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/7_gradientdescent.aux
-)
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/8_gradientdescent2.au
-x) (/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/9_perceptron.aux)
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/10_logisticregression
-.aux)
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/11_featureengineering
-.aux
+) (./book.aux (./1_introduce.aux) (./2_categories.aux) (./3_linearregression.au
+x) (./4_kmeans.aux) (./5_kmeans2.aux) (./6_knn.aux) (./7_gradientdescent.aux) (
+./8_gradientdescent2.aux) (./9_perceptron.aux) (./10_logisticregression.aux) (.
+/11_featureengineering.aux
 
 LaTeX Warning: Label `fig:' multiply defined.
 
-)
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/12_binaryclassifiers.
-aux) (/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/13_softmax.aux)
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/14_mlp.aux)
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/15_overfitting.aux))
+) (./12_binaryclassifiers.aux) (./13_softmax.aux) (./14_mlp.aux) (./15_overfitt
+ing.aux))
 \openout1 = `book.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 130.
@@ -986,7 +924,6 @@ LaTeX Font Info:    Checking defaults for T5/cmr/m/n on input line 130.
 LaTeX Font Info:    ... okay on input line 130.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 130.
 LaTeX Font Info:    ... okay on input line 130.
-
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -1021,7 +958,7 @@ LaTeX Font Info:    ... okay on input line 130.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+(/usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count136
 \scratchdimen=\dimen168
@@ -1034,38 +971,32 @@ LaTeX Font Info:    ... okay on input line 130.
 \MPnumerator=\count140
 \makeMPintoPDFobject=\count141
 \everyMPtoPDFconversion=\toks26
-) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
-
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
-Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+) (/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+(/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
 )
 Package grfext Info: Graphics extension search list:
 (grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
 G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 452.
-
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+(grfext)             \AppendGraphicsExtensions on input line 456.
+(/usr/local/texlive/2016/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box57
 Package hyperref Info: Link coloring ON on input line 130.
-
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
-Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count142
 )
 LaTeX Info: Redefining \ref on input line 130.
 LaTeX Info: Redefining \pageref on input line 130.
 LaTeX Info: Redefining \nameref on input line 130.
-
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/book.out)
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/book.out)
+(./book.out) (./book.out)
 \@outlinefile=\write4
 \openout4 = `book.out'.
 
@@ -1073,20 +1004,17 @@ LaTeX Info: Redefining \nameref on input line 130.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 LaTeX Font Info:    Try loading font information for T5+pcr on input line 143.
-
-(/usr/share/texlive/texmf-dist/tex/latex/vntex/t5pcr.fd
+(/usr/local/texlive/2016/texmf-dist/tex/latex/vntex/t5pcr.fd
 File: t5ucr.fd 2005/08/24 Fontinst v1.929 font definitions for T5/pcr.
 )
 LaTeX Font Info:    Font shape `T5/pcr/bx/n' in size <9> not available
 (Font)              Font shape `T5/pcr/b/n' tried instead on input line 143.
 LaTeX Font Info:    Try loading font information for U+msa on input line 143.
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 143.
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 Underfull \hbox (badness 10000) in paragraph at lines 143--143
@@ -1105,19 +1033,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 143--143
 
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/book.toc [5
+{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./book
+.toc [5
 
 
 ])
 \tf@toc=\write5
 \openout5 = `book.toc'.
 
-
 [6]
 \openout2 = `1_introduce.aux'.
 
- (/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/1_introduce.tex
+(./1_introduce.tex
 Chapter 1.
 
 Package hyperref Warning: Composite letter `\textacute+\ohorn'
@@ -1139,7 +1066,6 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 
 <../introduce/aimldl.png, id=110, 260.172pt x 165.4983pt>
 File: ../introduce/aimldl.png Graphic file (type png)
-
 <use ../introduce/aimldl.png>
 Package pdftex.def Info: ../introduce/aimldl.png used on input line 21.
 (pdftex.def)             Requested size: 469.75502pt x 298.83357pt.
@@ -1156,8 +1082,7 @@ l.36
 ] [2 <../introduce/aimldl.png>]) [3]
 \openout2 = `2_categories.aux'.
 
-
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/2_categories.tex
+(./2_categories.tex
 Chapter 2.
 
 Package hyperref Warning: Composite letter `\textdotbelow+\acircumflex'
@@ -1170,28 +1095,23 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 
 <../categories/mnist.png, id=151, 983.675pt x 421.575pt>
 File: ../categories/mnist.png Graphic file (type png)
-
 <use ../categories/mnist.png>
 Package pdftex.def Info: ../categories/mnist.png used on input line 31.
 (pdftex.def)             Requested size: 328.82707pt x 140.92776pt.
- [4
+[4
 
 
 
-] [5 <../categories/mnist.png (PNG copy)>]
-[6] <../categories/alphago.jpeg, id=186, 1011.78pt x 569.4876pt>
+] [5 <../categories/mnist.png (PNG copy)>] [6] <../categories/alphago.jpeg, id=
+186, 1011.78pt x 569.4876pt>
 File: ../categories/alphago.jpeg Graphic file (type jpg)
-
 <use ../categories/alphago.jpeg>
 Package pdftex.def Info: ../categories/alphago.jpeg used on input line 96.
 (pdftex.def)             Requested size: 328.82707pt x 185.08127pt.
- [7] [8 <../categories/alphago.jpeg>] [9])
-[10]
+[7] [8 <../categories/alphago.jpeg>] [9]) [10]
 \openout2 = `3_linearregression.aux'.
 
-
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/3_linearregression.te
-x
+(./3_linearregression.tex
 Chapter 3.
 [11
 
@@ -1201,40 +1121,33 @@ Chapter 3.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[14] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+[14] (/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
-)
-<../LR/output_3_0.png, id=315, 391.7034pt x 272.4579pt>
+) <../LR/output_3_0.png, id=315, 391.7034pt x 272.4579pt>
 File: ../LR/output_3_0.png Graphic file (type png)
-
 <use ../LR/output_3_0.png>
 Package pdftex.def Info: ../LR/output_3_0.png used on input line 180.
 (pdftex.def)             Requested size: 281.85587pt x 196.05727pt.
- [15]
-<../LR/output_5_1.png, id=343, 391.7034pt x 272.4579pt>
+[15] <../LR/output_5_1.png, id=343, 391.7034pt x 272.4579pt>
 File: ../LR/output_5_1.png Graphic file (type png)
-
 <use ../LR/output_5_1.png>
 Package pdftex.def Info: ../LR/output_5_1.png used on input line 230.
 (pdftex.def)             Requested size: 281.85587pt x 196.05727pt.
- [16 <../LR/output_3_0.png>] [17 <../LR/output_5_1.png>] <../LR/qr.png, id=409,
- 301.125pt x 301.125pt>
+[16 <../LR/output_3_0.png>] [17 <../LR/output_5_1.png>] <../LR/qr.png, id=409, 
+301.125pt x 301.125pt>
 File: ../LR/qr.png Graphic file (type png)
- <use ../LR/qr.png>
+<use ../LR/qr.png>
 Package pdftex.def Info: ../LR/qr.png used on input line 303.
 (pdftex.def)             Requested size: 187.89914pt x 187.90399pt.
-
 <../LR/output_13_1.png, id=413, 391.7034pt x 267.399pt>
 File: ../LR/output_13_1.png Graphic file (type png)
-
 <use ../LR/output_13_1.png>
 Package pdftex.def Info: ../LR/output_13_1.png used on input line 318.
 (pdftex.def)             Requested size: 281.85587pt x 192.41696pt.
- [18 <../LR/qr.png>]) [19 <../LR/output_13_1.png>]
+[18 <../LR/qr.png>]) [19 <../LR/output_13_1.png>]
 \openout2 = `4_kmeans.aux'.
 
-
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/4_kmeans.tex
+(./4_kmeans.tex
 Chapter 4.
 [20
 
@@ -1243,17 +1156,15 @@ Chapter 4.
 ] [21] [22] [23] [24] [25] [26] [27] [28]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 367.
 
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 367.
- [29]) [30]
+[29]) [30]
 \openout2 = `5_kmeans2.aux'.
 
-
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/5_kmeans2.tex
+(./5_kmeans2.tex
 Chapter 5.
 [31
 
@@ -1262,8 +1173,7 @@ Chapter 5.
 ] [32] [33] [34] [35]) [36]
 \openout2 = `6_knn.aux'.
 
-
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/6_knn.tex
+(./6_knn.tex
 Chapter 6.
 [37
 
@@ -1272,8 +1182,7 @@ Chapter 6.
 ] [38] [39] [40] [41] [42] [43] [44]) [45]
 \openout2 = `7_gradientdescent.aux'.
 
-
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/7_gradientdescent.tex
+(./7_gradientdescent.tex
 Chapter 7.
 
 Package hyperref Warning: Composite letter `\textasciigrave+\acircumflex'
@@ -1309,9 +1218,7 @@ rithms[][] 2. [][]http://www.benfrederickson.com/numerical-
 [55]
 \openout2 = `8_gradientdescent2.aux'.
 
-
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/8_gradientdescent2.te
-x
+(./8_gradientdescent2.tex
 Chapter 8.
 
 Package hyperref Warning: Composite letter `\textasciigrave+\acircumflex'
@@ -1328,16 +1235,13 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 
 ] [57] [58] <../GD/nesterov.jpeg, id=1112, 803.0pt x 254.9525pt>
 File: ../GD/nesterov.jpeg Graphic file (type jpg)
-
 <use ../GD/nesterov.jpeg>
 Package pdftex.def Info: ../GD/nesterov.jpeg used on input line 136.
 (pdftex.def)             Requested size: 469.75502pt x 149.15244pt.
- [59 <../GD/nesterov.jpeg>] [60] [61] [62] [63]
-[64] [65]) [66]
+[59 <../GD/nesterov.jpeg>] [60] [61] [62] [63] [64] [65]) [66]
 \openout2 = `9_perceptron.aux'.
 
-
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/9_perceptron.tex
+(./9_perceptron.tex
 Chapter 9.
 [67
 
@@ -1346,9 +1250,7 @@ Chapter 9.
 ] [68] [69] [70] [71] [72] [73] [74] [75]) [76]
 \openout2 = `10_logisticregression.aux'.
 
-
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/10_logisticregression
-.tex
+(./10_logisticregression.tex
 Chapter 10.
 [77
 
@@ -1357,9 +1259,7 @@ Chapter 10.
 ] [78] [79] [80] [81] [82] [83] [84] [85]) [86]
 \openout2 = `11_featureengineering.aux'.
 
-
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/11_featureengineering
-.tex
+(./11_featureengineering.tex
 Chapter 11.
 
 Package hyperref Warning: Composite letter `\textacute+\ohorn'
@@ -1399,13 +1299,11 @@ File: ../FeatureEngineering/latex/ML_models.pdf Graphic file (type pdf)
 Package pdftex.def Info: ../FeatureEngineering/latex/ML_models.pdf used on inpu
 t line 32.
 (pdftex.def)             Requested size: 469.75502pt x 421.87248pt.
- [88] [89 <../FeatureEngineering/latex/ML_models.pdf>] [90] [91] [92] [93] [94]
- [95]) [96]
+[88] [89 <../FeatureEngineering/latex/ML_models.pdf>] [90] [91] [92] [93] [94] 
+[95]) [96]
 \openout2 = `12_binaryclassifiers.aux'.
 
-
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/12_binaryclassifiers.
-tex
+(./12_binaryclassifiers.tex
 Chapter 12.
 [97
 
@@ -1420,30 +1318,27 @@ i s³ sû döng h m [][]sklearn.linear_model.LogisticRegression[][]
 [98] [99] [100] [101] [102] [103] [104] [105] [106]) [107]
 \openout2 = `13_softmax.aux'.
 
-
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/13_softmax.tex
+(./13_softmax.tex
 Chapter 13.
 [108
 
 
 
-] [109] [110] [111] [112] [113] [114] [115] [116] [117] [118] [119]
-[120]) [121]
+] [109] [110] [111] [112] [113] [114] [115] [116] [117] [118] [119] [120]) [121
+]
 \openout2 = `14_mlp.aux'.
 
-
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/14_mlp.tex
+(./14_mlp.tex
 Chapter 14.
 [122
 
 
 
-] [123] [124] [125] [126] [127] [128] [129] [130] [131] [132] [133]
-[134] [135] [136]) [137]
+] [123] [124] [125] [126] [127] [128] [129] [130] [131] [132] [133] [134] [135]
+[136]) [137]
 \openout2 = `15_overfitting.aux'.
 
-
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/15_overfitting.tex
+(./15_overfitting.tex
 Chapter 15.
 
 Overfull \hbox (34.05484pt too wide) in paragraph at lines 16--17
@@ -1462,83 +1357,67 @@ it/12 x[]; y[]\OT1/cmr/m/n/12 )$
 
 
 
-]
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/book.ind [149
+] (./book.ind [149
 
 ])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 187.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 187.
-
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/book.aux
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/1_introduce.aux)
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/2_categories.aux)
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/3_linearregression.au
-x) (/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/4_kmeans.aux)
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/5_kmeans2.aux)
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/6_knn.aux)
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/7_gradientdescent.aux
-)
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/8_gradientdescent2.au
-x) (/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/9_perceptron.aux)
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/10_logisticregression
-.aux)
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/11_featureengineering
-.aux)
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/12_binaryclassifiers.
-aux) (/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/13_softmax.aux)
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/14_mlp.aux)
-(/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/15_overfitting.aux))
+(./book.aux (./1_introduce.aux) (./2_categories.aux) (./3_linearregression.aux)
+(./4_kmeans.aux) (./5_kmeans2.aux) (./6_knn.aux) (./7_gradientdescent.aux) (./8
+_gradientdescent2.aux) (./9_perceptron.aux) (./10_logisticregression.aux) (./11
+_featureengineering.aux) (./12_binaryclassifiers.aux) (./13_softmax.aux) (./14_
+mlp.aux) (./15_overfitting.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 187.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 187.
 Package rerunfilecheck Info: File `book.out' has not changed.
 (rerunfilecheck)             Checksum: 9FC1E78E9201D57BFCD3C919B1A57C00;999.
-
 
 LaTeX Warning: There were multiply-defined labels.
 
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 187.
  ) 
 Here is how much of TeX's memory you used:
- 13581 strings out of 493029
- 194450 string characters out of 6136233
- 458039 words of memory out of 5000000
- 15256 multiletter control sequences out of 15000+600000
+ 13585 strings out of 493014
+ 189171 string characters out of 6133351
+ 458078 words of memory out of 5000000
+ 15267 multiletter control sequences out of 15000+600000
  33302 words of font info for 76 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,11n,52p,2160b,2012s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/vntex/t5.enc}</usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/
-cmmib8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txf
-onts/t1xbtt.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/t1xtt
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/urwvn/ucrb8v.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/vntex/urwvn/ucrr8v.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/vntex/vnr/vnbx12.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/vntex/vnr/vnbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr
-/vnbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnr12.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnr17.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/vntex/vnr/vnr6.pfb></usr/share/texlive/texmf-dist/font
-s/type1/vntex/vnr/vnr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr
-/vnr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnti12.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnti9.pfb>
-Output written on /home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/book
-.pdf (152 pages, 1744594 bytes).
+ 36i,11n,52p,2160b,2010s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/vntex/t5.enc}</usr/local/
+texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/t
+exlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/te
+xlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texl
+ive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texli
+ve/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texliv
+e/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/
+2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/20
+16/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/20
+16/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/local/texliv
+e/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/
+2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/201
+6/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2016/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2016/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/local/texlive/2016/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2016/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2016/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2016/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2016/texmf-dist
+/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2016/texmf-
+dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2016/te
+xmf-dist/fonts/type1/public/txfonts/t1xbtt.pfb></usr/local/texlive/2016/texmf-d
+ist/fonts/type1/public/txfonts/t1xtt.pfb></usr/local/texlive/2016/texmf-dist/fo
+nts/type1/vntex/urwvn/ucrb8v.pfb></usr/local/texlive/2016/texmf-dist/fonts/type
+1/vntex/urwvn/ucrr8v.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/vntex/
+vnr/vnbx12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/vntex/vnr/vnbx9.
+pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/vntex/vnr/vnbxti10.pfb></us
+r/local/texlive/2016/texmf-dist/fonts/type1/vntex/vnr/vnr12.pfb></usr/local/tex
+live/2016/texmf-dist/fonts/type1/vntex/vnr/vnr17.pfb></usr/local/texlive/2016/t
+exmf-dist/fonts/type1/vntex/vnr/vnr6.pfb></usr/local/texlive/2016/texmf-dist/fo
+nts/type1/vntex/vnr/vnr8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/vn
+tex/vnr/vnr9.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/vntex/vnr/vnti
+12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/vntex/vnr/vnti9.pfb>
+Output written on book.pdf (152 pages, 1744588 bytes).
 PDF statistics:
  2998 PDF objects out of 3580 (max. 8388607)
  2759 compressed objects within 28 object streams

@@ -52,9 +52,9 @@
  
 Trong các bài viết của tôi, các số vô hướng được biểu diễn bởi các chữ cái viết ở dạng không in đậm, có thể viết hoa, ví dụ $x_1, N, y, k$. Các vector được biểu diễn bằng các chữ cái thường in đậm, ví dụ $\mathbf{y}, \mathbf{x}_1 $. Nếu không giải thích gì thêm, các vector được mặc định hiểu là các vector cột. Các ma trận được biểu diễn bởi các chữ viết hoa in đậm, ví dụ $\mathbf{X, Y, W} $. 
  
-Đối với vector, $\mathbf{x} = [x_1, x_2, \dots, x_n]$ được hiểu là một vector hàng. Trong khi $\mathbf{x} = [x_1; x_2; \dots; x_n] $ được hiểu là vector cột. Chú ý sự khác nhau giữa dầu phẩy ($,$) và dấu chấm phẩy ($;$). Đây chính là ký hiệu mà được Matlab sử dụng. 
+Đối với vector, $\mathbf{x} = [x_1, x_2, \dots, x_n]$ được hiểu là một vector hàng. Trong khi $\mathbf{x} = [x_1; x_2; \dots; x_n] $ được hiểu là vector cột. Chú ý sự khác nhau giữa dầu phẩy ($,$) và dấu chấm phẩy ($;$). Đây chính là ký hiệu được Matlab sử dụng. 
  
-Tương tự, trong ma trận, $\mathbf{X} = [\mathbf{x}_1, \mathbf{x}_2, \dots, \mathbf{x}_n]$ được hiểu là các vector $\mathbf{x}_j$ được đặt cạnh nhau theo thứ tự từ trái qua phải để tạo ra ma trận $\mathbf{X}$. Trong khi $\mathbf{X} = [\mathbf{x}_1; \mathbf{x}_2; \dots; \mathbf{x}_m]$ được hiểu là các vector $\mathbf{x}_i$ được đặt chồng lên nhau theo thứ tự từ trên xuống dưới dể tạo ra ma trận $\mathbf{X}$. Các vector được ngầm hiểu là có kích thước phù hợp để có thể xếp cạnh hoặc xếp chồng lên nhau. 
+Tương tự, trong ma trận, $\mathbf{X} = [\mathbf{x}_1, \mathbf{x}_2, \dots, \mathbf{x}_n]$ được hiểu là các vector cột $\mathbf{x}_j$ được đặt cạnh nhau theo thứ tự từ trái qua phải để tạo ra ma trận $\mathbf{X}$. Trong khi $\mathbf{X} = [\mathbf{x}_1; \mathbf{x}_2; \dots; \mathbf{x}_m]$ được hiểu là các vector $\mathbf{x}_i$ được đặt chồng lên nhau theo thứ tự từ trên xuống dưới dể tạo ra ma trận $\mathbf{X}$. Các vector được ngầm hiểu là có kích thước phù hợp để có thể xếp cạnh hoặc xếp chồng lên nhau. 
  
 Cho một ma trận $\mathbf{W}$, nếu không giải thích gì thêm, chúng ta hiểu rằng $\mathbf{w}_i$ là \textbf{vector cột} thứ $i$ của ma trận đó. Chú ý sự tương ứng giữa ký tự viết hoa và viết thường. 
  
@@ -271,28 +271,30 @@ v(x) =
 \begin{matrix} 
     \frac{\partial v_1(x)}{\partial x} & \frac{\partial v_2(x)}{\partial x} & \dots & \frac{\partial v_n(x)}{\partial x} 
 \end{matrix} 
-\right] ~~~ (11) 
+\right]
 \end{equation} 
 Đạo hàm bậc hai của hàm số này có dạng: 
  
-\begin{equation*} 
-\nabla^2 v(x) \triangleq  
-\left[ 
-\begin{matrix} 
-    \frac{\partial^2 v_1(x)}{\partial x^2} & \frac{\partial^2 v_2(x)}{\partial x^2} & \dots & \frac{\partial^2 v_n(x)}{\partial x^2} 
-\end{matrix} 
-\right] ~~~(12) 
-\end{equation*} 
+\begin{equation} 
+	\label{eqn:hessianvectorvalued}
+	\nabla^2 v(x) \triangleq  
+	\left[ 
+	\begin{matrix} 
+	    \frac{\partial^2 v_1(x)}{\partial x^2} & \frac{\partial^2 v_2(x)}{\partial x^2} & \dots & \frac{\partial^2 v_n(x)}{\partial x^2} 
+	\end{matrix} 
+	\right] 
+\end{equation} 
  
 \textbf{Ví dụ:} Cho vector $\mathbf{a} \in \mathbb{R}^n$ và \textit{vector-valued function} $v(x) = x\mathbf{a}$, thế thì: 
-\begin{equation*} 
+\begin{equation} 
 \nabla v(x) = \mathbf{a}^T, ~~~ \nabla^2 v(x) = \mathbf{0} \in \mathbb{R}^{n\times n} 
-\end{equation*} 
+\end{equation} 
 với $\mathbf{0}$ là ma trận với các thành phần đều là 0.  
 <hr> 
  
 Xét một \textit{vector-valued function} với \textbf{đầu vào là một vector} $h(\mathbf{x}):\mathbb{R}^k \rightarrow \mathbb{R}^n$, đạo hàm bậc nhất của nó là: 
-\begin{eqnarray*} 
+\begin{eqnarray} 
+\label{eqn:gdvectorvector}
 \nabla h(\mathbf{x}) &\triangleq & 
 \left[ 
 \begin{matrix} 
@@ -301,14 +303,15 @@ Xét một \textit{vector-valued function} với \textbf{đầu vào là một v
     \vdots & \vdots & \ddots & \vdots \\\ 
     \frac{\partial h_1(\mathbf{x})}{\partial x_k} & \frac{\partial h_2(\mathbf{x})}{\partial x_k} & \dots & \frac{\partial h_n(\mathbf{x})}{\partial x_k} 
 \end{matrix} 
-\right]~~~(13.1)\\\ 
+\right]\\
+\label{eqn:gdvectorvector_short}
 & = &  
 \left[ 
 \begin{matrix} 
     \nabla h_1(\mathbf{x}) & \nabla h_2(\mathbf{x}) & \dots & \nabla h_n(\mathbf{x}) 
 \end{matrix} 
-\right] \in \mathbf{R}^{k\times n} ~~~ (13.2) 
-\end{eqnarray*} 
+\right] \in \mathbf{R}^{k\times n} 
+\end{eqnarray} 
  
  
 \textbf{Một quy tắc dễ nhớ ở đây là nếu một hàm số} $g: \mathbb{R}^m \rightarrow \mathbb{R}^n$ \textbf{thì đạo hàm của nó là một ma trận thuộc} $\mathbb{R}^{m \times n}$. 
@@ -328,9 +331,10 @@ Trước khi đến phần tính đạo hàm của các hàm số thường gặ
 \subsubsection{Product rules}
 Để cho tổng quát, ta giả sử biến đầu vào là một ma trận (vector và số thực là các trường hợp đặt biệt của ma trận). Giả sử rằng các hàm số có chiều phù hợp để các phép nhân thực hiện được. Ta có:  
  
-\begin{equation*} 
-\nabla\left( f(\mathbf{X})^Tg(\mathbf{X}) \right) = \left(\nabla f(\mathbf{X})\right) g(\mathbf{X}) + \left(\nabla g(\mathbf{X})\right) f(\mathbf{X}) ~~~ (14) 
-\end{equation*} 
+\begin{equation} 
+\label{eqn:productrules}
+\nabla\left( f(\mathbf{X})^Tg(\mathbf{X}) \right) = \left(\nabla f(\mathbf{X})\right) g(\mathbf{X}) + \left(\nabla g(\mathbf{X})\right) f(\mathbf{X})  
+\end{equation} 
  
 Biểu thức này giống như biểu thức chúng ta đã quá quen thuộc: 
 \begin{equation*} 
@@ -341,9 +345,10 @@ Chú ý rằng với vector và ma trận, chúng ta không được sử dụng
  
 \subsubsection{Chain rules }
 Khi có các hàm hợp thì: 
-\begin{equation*} 
+\begin{equation} 
+\label{eqn:chainrules}
 \nabla_{\mathbf{X}} g(f(\mathbf{X})) = \nabla_{\mathbf{X}} f^T \nabla_{f}g ~~~ (15) 
-\end{equation*} 
+\end{equation} 
  
 Quy tắc này cũng giống với quy tắc trong hàm một biến:  
 \begin{equation*} 
@@ -396,39 +401,44 @@ Thêm nữa, vì $\mathbf{a}^T\mathbf{x} = \mathbf{x}^T\mathbf{a}$ nên:
 \right] 
 \end{equation*} 
 Theo định nghĩa $(13.2)$, và công thức $(17)$, ta có thể suy ra: 
-\begin{equation*} 
+\begin{equation} 
+\label{eqn:gdAx}
 \nabla_{\mathbf{x}} (\mathbf{Ax}) =  
 \left[ 
 \begin{matrix} 
     \mathbf{a}_1^T & \mathbf{a}_2^T & \dots & \mathbf{a}_m^T 
 \end{matrix} 
-\right] = \mathbf{A}^T ~~~ (18) 
-\end{equation*} 
+\right] = \mathbf{A}^T 
+\end{equation} 
  
 Từ đây ta có thể suy ra đạo hàm của hàm số $f(\mathbf{x}) = \mathbf{x} = \mathbf{Ix}$, với $\mathbf{I}$ là ma trận đơn vị với chiều phù hợp, là: 
 \begin{equation*} 
-\nabla \mathbf{x} = \mathbf{I} ~~~ (19) 
+\nabla \mathbf{x} = \mathbf{I} 
 \end{equation*} 
  
 \subsubsection{$f(\mathbf{x}) = \mathbf{x}^T\mathbf{A} \mathbf{x}$}
 với $\mathbf{x} \in \mathbb{R}^n, \mathbf{A} \in \mathbb{R}^{n\times n}$. Áp dụng Product rules $(14)$ ta có: 
 \begin{eqnarray} 
-\nabla f(\mathbf{x}) &=& \nabla \left(\left(\mathbf{x}^T\right) \left(\mathbf{Ax}\right)\right) \\\ 
+	\nonumber
+	\nabla f(\mathbf{x}) &=& \nabla \left(\left(\mathbf{x}^T\right) \left(\mathbf{Ax}\right)\right) \\\ 
+				\nonumber
                      &=& \left(\nabla (\mathbf{x})\right) \mathbf{Ax} + \left(\nabla (\mathbf{Ax})\right)\mathbf{x} \\\  
+					\nonumber
                      & = & \mathbf{IAx} + \mathbf{A}^T\mathbf{x} \\\ 
+                     \label{eqn:gdxTAx}
                      & = & (\mathbf{A} + \mathbf{A}^T)\mathbf{x} 
-\end{eqnarray} ~~~ (19) 
+\end{eqnarray} 
  
  
-Từ $(19)$ và $(18)$, ta có thể suy ra: 
+Từ \eqref{eqn:gdxTAx} và \eqref{eqn:gdAx}, ta có thể suy ra: 
 \begin{equation*} 
-\nabla^2 \mathbf{x}^T\mathbf{Ax} = \mathbf{A}^T + \mathbf{A} ~~~ (20) 
+\nabla^2 \mathbf{x}^T\mathbf{Ax} = \mathbf{A}^T + \mathbf{A} 
 \end{equation*} 
  
 Nếu $\mathbf{A}$ là một ma trận đối xứng, ta sẽ có: 
 \begin{eqnarray} 
-\nabla \mathbf{x}^T\mathbf{A}\mathbf{x} &=& 2\mathbf{Ax}~~~(21)\\\ 
-\nabla^2 \mathbf{x}^T\mathbf{Ax} &=& 2\mathbf{A} ~~~(22) 
+\nabla \mathbf{x}^T\mathbf{A}\mathbf{x} &=& 2\mathbf{Ax}\\\ 
+\nabla^2 \mathbf{x}^T\mathbf{Ax} &=& 2\mathbf{A} 
 \end{eqnarray} 
  
 Nếu $\mathbf{A}$ là ma trận đơn vị, tức $f(\mathbf{x}) = \mathbf{x}^T\mathbf{Ix} = \mathbf{x}^T\mathbf{x} = \|\mathbf{x}\|_2^2$, ta có: 
@@ -444,9 +454,11 @@ Có hai cách tính đạo hàm của hàm số này:
 \textbf{Cách 1:} 
 Trước hết, biến đổi: 
 \begin{eqnarray} 
-f(\mathbf{x}) &=& \|\mathbf{Ax} - \mathbf{b}\|_2^2 = (\mathbf{Ax} - \mathbf{b})^T(\mathbf{Ax} - \mathbf{b}) \\\ 
-&=& (\mathbf{x}^T\mathbf{A}^T - \mathbf{b}^T) (\mathbf{Ax} - \mathbf{b}) \\\ 
-&=& \mathbf{x}^T\mathbf{A}^T\mathbf{Ax} - 2 \mathbf{b}^T\mathbf{Ax} + \mathbf{b}^T\mathbf{b} 
+	\nonumber
+	f(\mathbf{x}) &=& \|\mathbf{Ax} - \mathbf{b}\|_2^2 = (\mathbf{Ax} - \mathbf{b})^T(\mathbf{Ax} - \mathbf{b}) \\\ 
+	\nonumber
+	&=& (\mathbf{x}^T\mathbf{A}^T - \mathbf{b}^T) (\mathbf{Ax} - \mathbf{b}) \\\ \nonumber
+	&=& \mathbf{x}^T\mathbf{A}^T\mathbf{Ax} - 2 \mathbf{b}^T\mathbf{Ax} + \mathbf{b}^T\mathbf{b} 
 \end{eqnarray} 
 Lấy đạo hàm cho từng số hạng rồi cộng lại ta có:  
 \begin{equation*} 
@@ -454,16 +466,14 @@ Lấy đạo hàm cho từng số hạng rồi cộng lại ta có:
 \end{equation*} 
  
 \textbf{Cách 2:} Dùng Chain rule. 
-Sử dụng $\nabla (\mathbf{Ax} - \mathbf{b}) = \mathbf{A}^T$ và $\nabla \|\mathbf{x}\|_2^2 = 2\mathbf{x}$ và công thức $(15)$, ta sẽ thu được kết quả tương tự.  
+Sử dụng $\nabla (\mathbf{Ax} - \mathbf{b}) = \mathbf{A}^T$ và $\nabla \|\mathbf{x}\|_2^2 = 2\mathbf{x}$ và công thức chain rules \eqref{eqn:chainrules}, ta sẽ thu được kết quả tương tự.  
  
  
 \subsubsection{$f(\mathbf{x}) = \mathbf{a}^T\mathbf{x}\mathbf{x}^T\mathbf{b}$}
 Bằng cách viết lại $f(\mathbf{x}) = (\mathbf{a}^T\mathbf{x})(\mathbf{x}^T\mathbf{b})$, ta có thể dùng Product rules $(14)$ và ra kết quả:  
-\begin{eqnarray} 
-\nabla (\mathbf{a}^T\mathbf{x}\mathbf{x}^T\mathbf{b}) &=& \mathbf{a} \mathbf{x}^T\mathbf{b} +  \mathbf{b}\mathbf{a}^T\mathbf{x} \\\ 
-&=& \mathbf{ab}^T\mathbf{x} + \mathbf{b}\mathbf{a}^T\mathbf{x}\\\ 
-&=& (\mathbf{ab}^T + \mathbf{ba}^T)\mathbf{x} 
-\end{eqnarray} 
+\begin{equation*} 
+	\nabla (\mathbf{a}^T\mathbf{x}\mathbf{x}^T\mathbf{b}) = \mathbf{a} \mathbf{x}^T\mathbf{b} +  \mathbf{b}\mathbf{a}^T\mathbf{x} = \mathbf{ab}^T\mathbf{x} + \mathbf{b}\mathbf{a}^T\mathbf{x}= (\mathbf{ab}^T + \mathbf{ba}^T)\mathbf{x} 
+\end{equation*} 
 trong đây tôi đã sử dụng tính chất $\mathbf{y}^T\mathbf{z} = \mathbf{z}^T\mathbf{y}$ và tích của một số thực với một vector cũng bằng tích của vector và số thực đó.  
  
  
@@ -471,28 +481,44 @@ trong đây tôi đã sử dụng tính chất $\mathbf{y}^T\mathbf{z} = \mathbf
  
 \subsubsection{Cho vector }
  
-| $f(\mathbf{x}) $           | $ \nabla f(\mathbf{x}) $     |          
-| :----------------------:       | :------------------------------------------------------------: |          
-| $\mathbf{a}^T \mathbf{x} $ | $\mathbf{a}$                                               |   
-| $\mathbf{x}^T\mathbf{Ax}$  | $\mathbf{A} + \mathbf{A}^T) \mathbf{x}$|        
-| $\mathbf{x}^T \mathbf{x} =  \| \|\mathbf{x} \|_2^2 $  | $2\mathbf{x}  $     | 
-| $ \|\mathbf{Ax-b} \|_2^2 $  | $ 2\mathbf{A}^T (\mathbf{Ax - b})$      |          
-| $\mathbf{a}^T\mathbf{x}^T\mathbf{xb} $ |  $2\mathbf{a}^T\mathbf{bx} $ | 
-| $\mathbf{a}^T\mathbf{x}\mathbf{x}^T\mathbf{b} $ |  $ (\mathbf{a}\mathbf{b}^T + \mathbf{b}\mathbf{a}^T) \mathbf{x} $ | 
- 
+\begin{table}[h!]
+\centering
+\caption{Đạo hàm theo vector}
+\label{my-label}
+\begin{tabular}{|c|c|}
+\hline
+$f(\mathbf{x}) $                                                                          & $ \nabla f(\mathbf{x}) $                                         \\ \hline
+$\mathbf{a}^T \mathbf{x} $                                                                & $\mathbf{a}$                                                     \\ \hline
+$\mathbf{x}^T\mathbf{Ax}$                                                                 & $\mathbf{A} + \mathbf{A}^T) \mathbf{x}$                          \\ \hline
+$\mathbf{x}^T \mathbf{x} = \|\mathbf{x}\|_2^2 $ & $2\mathbf{x}$                                                   \\ \hline
+$ \|\mathbf{Ax-b} \|_2^2 $                                                                & $ 2\mathbf{A}^T (\mathbf{Ax - b})$                               \\ \hline
+$\mathbf{a}^T\mathbf{x}^T\mathbf{xb} $                                                    & $2\mathbf{a}^T\mathbf{bx} $                                      \\ \hline
+$\mathbf{a}^T\mathbf{x}\mathbf{x}^T\mathbf{b} $                                           & $ (\mathbf{a}\mathbf{b}^T + \mathbf{b}\mathbf{a}^T) \mathbf{x} $ \\ \hline
+\end{tabular}
+\end{table}
+
+
  
 \subsubsection{Cho ma trận}
  
-| $f(\mathbf{X}) $                                   | $ \nabla f(\mathbf{X}) $                                   | 
-| :----------------------:                               | :------------------------------------------------------------: | 
-| $ \mathbf{a}^T \mathbf{X}^T \mathbf{Xb}$           | $ \mathbf{X}(\mathbf{ab}^T + \mathbf{ba}^T)        $       | 
-| $ \mathbf{a}^T \mathbf{X} \mathbf{X}^T \mathbf{b}$ | $ (\mathbf{ab}^T + \mathbf{ba}^T)\mathbf{X}        $       | 
-| $ \mathbf{a}^T \mathbf{Y} \mathbf{X}^T \mathbf{b}$ | $ \mathbf{b}\mathbf{a}^T \mathbf{Y}        $               | 
-| $ \mathbf{a}^T \mathbf{Y}^T \mathbf{X} \mathbf{b}$ | $ \mathbf{Y}\mathbf{a}\mathbf{b}^T         $               | 
-| $ \mathbf{a}^T \mathbf{X} \mathbf{Y}^T \mathbf{b}$ | $ \mathbf{a}\mathbf{b}^T\mathbf{Y}         $               | 
-| $ \mathbf{a}^T \mathbf{X}^T \mathbf{Y} \mathbf{b}$ | $ \mathbf{Y}\mathbf{b}\mathbf{a}^T         $               | 
- 
- 
+
+ \begin{table}[h!]
+\centering
+\caption{Đạo hàm theo ma trận}
+\label{my-label}
+\begin{tabular}{|c|c|}
+\hline
+$f(\mathbf{X}) $                                   & $ \nabla f(\mathbf{X}) $                      \\ \hline
+$ \mathbf{a}^T \mathbf{X}^T \mathbf{Xb}$           & $ \mathbf{X}(\mathbf{ab}^T + \mathbf{ba}^T)$ \\ \hline
+$ \mathbf{a}^T \mathbf{X} \mathbf{X}^T \mathbf{b}$ & $ (\mathbf{ab}^T + \mathbf{ba}^T)\mathbf{X},$ \\ \hline
+$ \mathbf{a}^T \mathbf{Y} \mathbf{X}^T \mathbf{b}$ & $ \mathbf{b}\mathbf{a}^T \mathbf{Y}$         \\ \hline
+$ \mathbf{a}^T \mathbf{Y}^T \mathbf{X} \mathbf{b}$ & $ \mathbf{Y}\mathbf{a}\mathbf{b}^T$          \\ \hline
+$ \mathbf{a}^T \mathbf{X} \mathbf{Y}^T \mathbf{b}$ & $ \mathbf{a}\mathbf{b}^T\mathbf{Y}$          \\ \hline
+$ \mathbf{a}^T \mathbf{X}^T \mathbf{Y} \mathbf{b}$ & $ \mathbf{Y}\mathbf{b}\mathbf{a}^T$          \\ \hline
+\end{tabular}
+\end{table}
+
+
 \subsection{Tài liệu tham khảo }
 [1] \href{https://ccrma.stanford.edu/~dattorro/matrixcalc.pdf}{Matrix calculus} 
  
