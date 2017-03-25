@@ -489,5 +489,5 @@ Dựa trên GD, có rất nhiều thuật toán phức tạp và hiệu quả h�
 
 ## 6. Tài liệu tham khảo
 1. [An overview of gradient descent optimization algorithms](http://sebastianruder.com/optimizing-gradient-descent/)
-2. [http://www.benfrederickson.com/numerical-optimization/](An Interactive Tutorial on Numerical Optimization)
+2. [An Interactive Tutorial on Numerical Optimization](http://www.benfrederickson.com/numerical-optimization/)
 3. [Gradient Descent by Andrew NG](https://www.youtube.com/watch?v=eikJboPQDT0)
