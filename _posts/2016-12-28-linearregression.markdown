@@ -374,7 +374,7 @@ Hạn chế thứ hai của Linear Regression là nó **không biễu diễn đ�
 ### Các phương pháp tối ưu
 Linear Regression là một mô hình đơn giản, lời giải cho phương trình đạo hàm bằng 0 cũng khá đơn giản. _Trong hầu hết các trường hợp, chúng ta không thể giải được phương trình đạo hàm bằng 0._
 
-Nhưng có một điều chúng ta nên nhớ, **còn tính được đạo hàm là còn có cơ hội**.
+Nhưng có một điều chúng ta nên nhớ, **còn tính được đạo hàm là còn có hy vọng**.
 
 
 
