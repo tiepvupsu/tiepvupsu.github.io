@@ -314,6 +314,7 @@ với mọi \\(\mathbf{x, y} \in \text{dom}f, 0 \leq \theta \leq 1\\).
 </div>
 <hr>
 
+<a name="concave-function"></a>
 Một hàm số \\(f\\) được gọi là **concave** (nếu bạn muốn dịch là _lõm_ cũng được, tôi không thích cách dịch này) nếu \\(-f\\) là **convex**. Một hàm số có thể không thuộc hai loại trên. Các hàm tuyến tính vừa *convex*, vừa *concave*.
 <hr>
 **Định nghĩa strictly convex function:** (tiếng Việt có một số tài liệu gọi là _hàm lồi mạnh_, _hàm lồi chặt_) Một hàm số \\(f: \mathbb{R}^n \rightarrow \mathbb{R} \\) được gọi là _strictly convex_  nếu \\(\text{dom} f\\) là một _tập lồi_, và:
