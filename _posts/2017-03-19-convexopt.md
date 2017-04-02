@@ -5,7 +5,7 @@ title:  "Bài 17: Convex Optimization Problems"
 date:   2017-03-19 15:22:00
 permalink: 2017/03/19/convexopt/
 mathjax: true
-tags: Convex-sets Convex-functions
+tags: Convex Optimization
 category: Optimization
 sc_project: 11288928
 sc_security: 0edaf8bc
