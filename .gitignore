@@ -6,4 +6,5 @@ assets/latex/*.tex
 !assets/latex/iris2.jpg
 !assets/latex/iris3.jpg
 !assets/latex/book.pdf
-assets/data/INRIAPerson
+#assets/data/INRIAPerson
+assets/data
