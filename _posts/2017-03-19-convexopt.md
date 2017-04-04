@@ -558,7 +558,7 @@ Một dạng Convex Optimization mà các bạn sẽ gặp rất nhiều trong c
 \end{eqnarray}
 \\]
 <hr>
-Trong đó \\(\mathbf{P} \in \mathbb{S}_+^n\\) (tập các ma trận vuông nửa xác định dương có số cột là \\(n\\)), \\(\mathbf{G}\in \mathbb{R}^{m\times n}, \mathbf{A}\in\mathbb{R}^{p \times n}\\). [Điều kiện \\(\mathbf{P}\\) là _nửa xác định dương_ để đảm bảo hàm mục tiêu là _convex_](http://machinelearningcoban.com/2017/03/12/convexity/#-quadratic-forms).
+Trong đó \\(\mathbf{P} \in \mathbb{S}\_+^n\\) (tập các ma trận vuông nửa xác định dương có số cột là \\(n\\)), \\(\mathbf{G}\in \mathbb{R}^{m\times n}, \mathbf{A}\in\mathbb{R}^{p \times n}\\). [Điều kiện \\(\mathbf{P}\\) là _nửa xác định dương_ để đảm bảo hàm mục tiêu là _convex_](http://machinelearningcoban.com/2017/03/12/convexity/#-quadratic-forms).
 
 Chúng ta có thể thấy rằng LP chính là một trường hợp đặc biệt của QP với \\(\mathbf{P} = \mathbf{0}\\).
 
