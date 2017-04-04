@@ -40,7 +40,7 @@ summary: Giới thiệu về các bài toán Convex Optimization
     - [Giải LP bằng CVXOPT](#giai-lp-bang-cvxopt)
 - [5. Quadratic Programming](#-quadratic-programming)
     - [5.1. Định nghĩa bài toán Quadratic Programming](#-dinh-nghia-bai-toan-quadratic-programming)
-    - [Ví dụ về QP](#vi-du-ve-qp)
+    - [5.2. Ví dụ về QP](#-vi-du-ve-qp)
     - [5.3. Ví dụ về giải QP bằng CVXOPT](#-vi-du-ve-giai-qp-bang-cvxopt)
 - [6. Geometric Programming](#-geometric-programming)
     - [6.1. Monomials và posynomials](#-monomials-va-posynomials)
@@ -570,9 +570,9 @@ Diễn đạt bằng lời: trong QP, chúng ta tối thiểu một hàm quadrat
 </div>
 <hr>
 
-<a name="vi-du-ve-qp"></a>
+<a name="-vi-du-ve-qp"></a>
 
-### Ví dụ về QP
+### 5.2. Ví dụ về QP
 Bài toán vui: Có một hòn đảo mà hình dạng của nó có dạng một đa giác lồi. Một con thuyền ở ngoài biển thì cần đi theo hướng nào để tới đảo nhanh nhất, giả sử rằng tốc độ của sóng và gió bằng 0.
 
 <!-- (_polyhedron_ - đa giác trong không gian nhiều chiều, _polyhedra_ - số nhiều của _polyhedron_.) -->
