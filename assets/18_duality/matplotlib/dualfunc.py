@@ -34,6 +34,7 @@ with PdfPages('dual_func.pdf') as pdf:
 	plt.plot(x, y1, 'r:', label = '$f_0(x) + \lambda f_1(x)$')   
 	plt.ylim([-30, 40])
 	plt.legend(loc = "best", fontsize = 17)
+	plt.xlabel('$x$', fontsize = 20)
 	pdf.savefig()  # saves the current figure into a pdf page 
 
 	plt.show()
@@ -69,6 +70,7 @@ with PdfPages('dual_func2.pdf') as pdf:
     plt.plot([0, 8], [p, p], 'b--', linewidth = 4, label = '$p^*$')
     plt.legend(loc = "best", fontsize = 17)
     plt.ylim([-8, 12])
+    plt.xlabel('$\lambda$', fontsize = 20)
     pdf.savefig() 
 
     plt.show()    
