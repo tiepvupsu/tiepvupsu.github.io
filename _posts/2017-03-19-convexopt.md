@@ -389,7 +389,7 @@ Trong phần còn lại của bài viết, tôi sẽ giới thiệu 3 bài toán
 <a name="-linear-programming"></a>
 
 ## 4. Linear Programming
-Chúng ta cùng bắt đầu với lớp các bài toán đơn giản nhất trong Convex Optimization - Linear Programming (LP, một số tài liệu cũng gọi là _Linear Program_), trong đó hàm mục tiêu \\(f_0\\) và hàm bất đẳng thức ràng buộc \\(f_i, i = 1, \dots, m\\) đều là các hàm tuyến tính cộng với một hằng số (tức [hàm _affine_](http://127.0.0.1:4000/2017/03/19/convexopt/#-linear-programming)).
+Chúng ta cùng bắt đầu với lớp các bài toán đơn giản nhất trong Convex Optimization - Linear Programming (LP, một số tài liệu cũng gọi là _Linear Program_), trong đó hàm mục tiêu \\(f_0\\) và hàm bất đẳng thức ràng buộc \\(f_i, i = 1, \dots, m\\) đều là các hàm tuyến tính cộng với một hằng số (tức [hàm _affine_](/2017/03/19/convexopt/#-linear-programming)).
 
 <a name="-dang-tong-quat-cua-lp"></a>
 

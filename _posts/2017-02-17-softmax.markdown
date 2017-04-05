@@ -329,7 +329,7 @@ Giả sử rằng chúng ta sử dụng SGD, công thức cập nhật cho ma tr
 \mathbf{W} = \mathbf{W} +\eta \mathbf{x}\_{i}(\mathbf{y}\_i - \mathbf{a}\_i)^T
 \\]
 
-Bạn có thấy công thức này giống với [công thức cập nhật của Logistic Regression](http://127.0.0.1:4000/2017/01/27/logisticregression/#cong-thuc-cap-nhat-cho-logistic-sigmoid-regression) không!
+Bạn có thấy công thức này giống với [công thức cập nhật của Logistic Regression](/2017/01/27/logisticregression/#cong-thuc-cap-nhat-cho-logistic-sigmoid-regression) không!
 
 Thực ra:
 
