@@ -158,7 +158,7 @@ Vùng màu xám có dạng _polyhedron_ (trong trường hợp này là đa giá
 
 Có thể nhận thấy nghiệm của bài toán chính là điểm màu xanh là giao điểm của hai đường thẳng \\(x + y = 10\\) và \\(2x + y = 16\\). Giải hệ phương trình này ta có \\(x^\* = 6\\) và \\(y^\* = 4\\). Tức anh nông dân nên trồng 6ha cà phê và 4ha hồ tiêu. Lúc đó lợi nhuận thu được là \\(5x^\* + 3y^\* = 42 \\) triệu đồng, trong khi anh chỉ mất thời gian là 22 ngày. (_Chịu tính toán cái là khác ngay, làm ít, hưởng nhiều_).
 
-Đây chính là cách giải trong sách toán lớp 10 (ngày tôi họp lớp 10).
+Đây chính là cách giải trong sách toán lớp 10 (ngày tôi học lớp 10).
 
 Với nhiều biến hơn và nhiều ràng buộc hơn, chúng ta liệu có thể vẽ được hình như thế này để nhìn ra nghiệm hay không? Câu trả lời của tôi là nên tìm một công cụ để với nhiều biến hơn và với các ràng buộc khác nhau, chúng ta có thể tìm ra nghiệm gần như ngay lập tức.
 <a name="-bai-toan-dong-thung"></a>
