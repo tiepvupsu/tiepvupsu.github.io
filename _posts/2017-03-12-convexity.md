@@ -238,7 +238,7 @@ Việc chứng minh việc này theo Định nghĩa 2 cũng không khó. Nếu \
 <hr>
 <div class="imgcap">
  <img src ="/assets/16_convexity/intersection.png" align = "center" width = "800">
- <div class = "thecap">Hình 4. Trái: Giao của các tập lồi là một tập lồi. Phải: giao của các hyperplanes và haflspaces là một tập lồi và được gọi là polyhedra.</div>
+ <div class = "thecap">Hình 4. Trái: Giao của các tập lồi là một tập lồi. Phải: giao của các hyperplanes và haflspaces là một tập lồi và được gọi là polyhedron (số nhiều là polyhedra).</div>
 </div>
 <hr>
 

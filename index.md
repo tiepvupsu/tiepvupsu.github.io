@@ -56,6 +56,7 @@ permalink: /index/
 * [Online Learning](/2017/01/16/gradientdescent2/#online-learning)
 * [Perceptron Learning Algorithm](/2017/01/21/perceptron/)
 * [Pocket Algorithm](/2017/01/21/perceptron/#pocket-algorithm)
+* [Positive Semidefinite Matrices]()
 * [Quadratic form](/2017/03/12/convexity/#-quadratic-forms)
 * [Quadratic programming](/2017/03/19/convexopt/#-quadratic-programming)
 * [Regression](/2016/12/27/categories/#regression-hoi-quy)
