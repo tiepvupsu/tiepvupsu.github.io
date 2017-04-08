@@ -7,7 +7,7 @@ window.__ga__ = function() {
         }
     }
 };
-window.__ga__.q = [["create", "UA-56790914-1", {"cookieDomain": "auto", "siteSpeedSampleRate": 10}],
+window.__ga__.q = [["create", "UA-xxxxxxxx-y", {"cookieDomain": "auto", "siteSpeedSampleRate": 10}],
                    ["set", "forceSSL", true]];
 window.__ga__.l = Date.now();
 
