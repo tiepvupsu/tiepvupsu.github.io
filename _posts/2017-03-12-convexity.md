@@ -218,6 +218,7 @@ Với \\(\mathbf{A}\\) là một ma trận thỏa mãn:
 \\]
 Khi một ma trận \\(\mathbf{A}\\) thỏa mãn điều kiện \\((2)\\), ta nói ma trận đó *xác định dương* (*positive definite*). Một ma trận là *xác định dương* nếu các *trị riêng* (eigenvalues) của nó là dương.
 
+<a name="positive-semidefinite"></a>
 Nhân tiện, một ma trận \\(\mathbf{B}\\) được gọi là **nửa** *xác định dương* (*positive semidefinite*) nếu các *trị riêng* của nó là không âm. Khi đó \\(\mathbf{x}^T \mathbf{Bx} \geq 0, \forall \mathbf{x}\\). Nếu dấu bằng xảy ra khi và chỉ khi \\(\mathbf{x} = 0\\) thì ta nói ma trận đó *xác định dương*. Trong biểu thức \\((2)\\), vì ma trận \\(\mathbf{A}\\) có nghịch đảo nên mọi *trị riêng* của nó phải khác không. Vì vậy, \\(\mathbf{A}\\) là một ma trận *xác định dương*.
 
 Một ma trận \\(\mathbf{A}\\) là _xác định dương_ hoặc _nửa xác định dương_ sẽ được ký hiệu lần lượt như sau:
