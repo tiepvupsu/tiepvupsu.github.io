@@ -61,7 +61,7 @@ Trong Machine Learning nói riêng và Toán Tối Ưu nói chung, chúng ta th�
 
 Các điểm local minimum là nghiệm của phương trình đạo hàm bằng 0. Nếu bằng một cách nào đó có thể tìm được toàn bộ (hữu hạn) các điểm cực tiểu, ta chỉ cần thay từng điểm local minimum đó vào hàm số rồi tìm điểm làm cho hàm có giá trị nhỏ nhất (_đoạn này nghe rất quen thuộc, đúng không?_). Tuy nhiên, trong hầu hết các trường hợp, việc giải phương trình đạo hàm bằng 0 là bất khả thi. Nguyên nhân có thể đến từ sự phức tạp của dạng của đạo hàm, từ việc các điểm dữ liệu có số chiều lớn, hoặc từ việc có quá nhiều điểm dữ liệu. 
 
-Hướng tiếp cận phổ biến nhất là xuất phát từ một điểm mà chúng ta coi là _gần_ với nghiệm của bài toán, sau đó dùng một phép toán lặp để _tiến dần_ đến điểm cần tìm, tức đến khi đạo hàm gần với 0. (Đây cũng chính là lý do phương pháp này được gọi là Gradient Descent - tức giảm _độ lớn_ của đạo hàm). Gradient Descent (viết gọn là GD) và các biến thể của nó là một trong những phương pháp được dùng nhiều nhất. 
+Hướng tiếp cận phổ biến nhất là xuất phát từ một điểm mà chúng ta coi là _gần_ với nghiệm của bài toán, sau đó dùng một phép toán lặp để _tiến dần_ đến điểm cần tìm, tức đến khi đạo hàm gần với 0. Gradient Descent (viết gọn là GD) và các biến thể của nó là một trong những phương pháp được dùng nhiều nhất. 
 
 <a name="large-scale"></a>
 Vì kiến thức về GD khá rộng nên tôi xin phép được chia thành hai phần. Phần 1 này giới thiệu ý tưởng phía sau thuật toán GD và một vài ví dụ đơn giản giúp các bạn làm quen với thuật toán này và vài khái niệm mới. Phần 2 sẽ nói về các phương pháp cải tiến GD và các biến thể của GD trong các bài toán mà số chiều và số điểm dữ liệu lớn. Những bài toán như vậy được gọi là _large-scale_. 
@@ -87,7 +87,7 @@ Hai nhận xét phía trên cho chúng ta một cách cập nhật đơn giản 
 x\_{t+1} = x_\{t} - \eta f'(x_\{t})
 \\]
 
-Trong đó \\(\eta\\) (đọc là _eta_) là một số dương được gọi là _learning rate_ (tốc độ học). Dấu trừ thể hiện việc chúng ta phải đi ngược với đạo hàm. Các quan sát đơn giản phía trên, mặc dù không phải đúng cho tất cả các bài toán, là nên tảng cho rất nhiều phương pháp tối ưu nói chung và thuật toán Machine Learning nói riêng. 
+Trong đó \\(\eta\\) (đọc là _eta_) là một số dương được gọi là _learning rate_ (tốc độ học). Dấu trừ thể hiện việc chúng ta phải _đi ngược_ với đạo hàm (Đây cũng chính là lý do phương pháp này được gọi là Gradient Descent - _descent_ nghĩa là _đi ngược_). Các quan sát đơn giản phía trên, mặc dù không phải đúng cho tất cả các bài toán, là nên tảng cho rất nhiều phương pháp tối ưu nói chung và thuật toán Machine Learning nói riêng. 
 
 <a name="vi-du-don-gian-voi-python"></a>
 
