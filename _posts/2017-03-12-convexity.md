@@ -566,7 +566,7 @@ Những hàm số có tập xác định là một _tập lồi_ và có mọi c
 **Quasiconvex function:**
 Một hàm số \\(f: \mathcal{C} \rightarrow \mathbb{R}\\) với \\(\mathcal{C}\\) là một tập con _lồi_ của \\(\mathbb{R}^n\\) được gọi là _quasiconvex_ nếu với mọi \\(\mathbf{x}, \mathbf{y}) \in \mathcal{C}\\) và mọi \\(\theta \in [0, 1]\\), ta có: 
 \\[
-f(\theta\mathbf{x} + (1 - \theta)\mathbf{y}) \leq \max\\{f(\mathbf{x}, f(\mathbf{y}))\\}
+f(\theta\mathbf{x} + (1 - \theta)\mathbf{y}) \leq \max\\{f(\mathbf{x}), f(\mathbf{y})\\}
 \\]
 <hr> 
 Định nghĩa này khác với định nghĩa về _convex function_ một chút. 
