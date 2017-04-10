@@ -2,6 +2,7 @@
 layout: post
 comments: true
 title:  "Bài 9: Perceptron Learning Algorithm"
+title2:  "9. Perceptron Learning Algorithm"
 date:   2017-01-21 15:22:00
 permalink: 2017/01/21/perceptron/
 mathjax: true

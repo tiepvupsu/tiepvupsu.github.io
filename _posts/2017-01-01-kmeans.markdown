@@ -2,6 +2,7 @@
 layout: post
 comments: true
 title:  "Bài 4: K-means Clustering"
+title2:  "4. K-means Clustering"
 date:   2017-01-01 15:22:00
 permalink: 2017/01/01/kmeans/
 mathjax: true

@@ -2,6 +2,7 @@
 layout: post
 comments: true
 title:  "Bài 11: Giới thiệu về Feature Engineering"
+title2:  "11. Feature Engineering"
 date:   2017-02-06 15:22:00
 mathjax: true
 tags: General Feature-extraction

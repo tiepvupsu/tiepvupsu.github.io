@@ -2,6 +2,7 @@
 layout: post
 comments: true
 title:  "Bài 10: Logistic Regression"
+title2:  "10. Logistic Regression"
 date:   2017-01-27 15:22:00
 permalink: 2017/01/27/logisticregression/
 mathjax: true

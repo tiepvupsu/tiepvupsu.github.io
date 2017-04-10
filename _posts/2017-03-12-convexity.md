@@ -2,6 +2,7 @@
 layout: post
 comments: true
 title:  "Bài 16: Convex sets và convex functions"
+title2:  "16. Convex sets và convex functions"
 date:   2017-03-12 15:22:00
 permalink: 2017/03/12/convexity/
 mathjax: true

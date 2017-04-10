@@ -2,6 +2,7 @@
 layout: post
 comments: true
 title:  "Bài 12: Binary Classifiers cho các bài toán Classification"
+title2:  "12. Binary Classifiers"
 date:   2017-02-11 15:22:00
 permalink: 2017/02/11/binaryclassifiers/
 mathjax: true

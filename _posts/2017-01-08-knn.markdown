@@ -2,6 +2,7 @@
 layout: post
 comments: true
 title:  "Bài 6: K-nearest neighbors"
+title2:  "6. K-nearest neighbors"
 permalink: /2017/01/08/knn/
 mathjax: true
 published: true

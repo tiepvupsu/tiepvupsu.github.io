@@ -38,7 +38,7 @@ class MarkdowntocInsert(sublime_plugin.TextCommand):
                 toc += TOCTAG_END + "\n"
 
                 self.view.insert(edit, sel.begin(), toc)
-                log('inserted TOC')
+                self.log('inserted TOC')
 
         # TODO: process to add another toc when tag exists
 
@@ -92,23 +92,20 @@ class MarkdowntocInsert(sublime_plugin.TextCommand):
                         toc_start.end(), toc_close.begin())
                     if toc:
                         self.view.replace(edit, tocRegion, "\n" + toc + "\n")
-                        log('refresh TOC content')
+                        self.log('refresh TOC content')
                         return True
                     else:
                         self.view.replace(edit, tocRegion, "\n")
-                        log('TOC is empty')
+                        self.log('TOC is empty')
                         return False
-        log('cannot find TOC tags')
+        self.log('cannot find TOC tags')
         return False
 
     # TODO: add "end" parameter
     def get_toc(self, attrs, begin, edit):
 
         # Search headings in docment
-        if int(attrs['depth']) == 0:
-            pattern_hash = "^#+?[^#]"
-        else:
-            pattern_hash = "^#{1," + str(attrs['depth']) + "}[^#]"
+        pattern_hash = "^#+?[^#]"
         headings = self.view.find_all(
             "%s|%s" % (pattern_h1_h2_equal_dash, pattern_hash))
 
@@ -141,6 +138,11 @@ class MarkdowntocInsert(sublime_plugin.TextCommand):
 
         # Shape TOC  ------------------
         items = format(items)
+
+        # Depth limit  ------------------
+        _depth = int(attrs['depth'])
+        if 0 < _depth:
+            items = list(filter((lambda i: i[0] <= _depth), items))
 
         # Create TOC  ------------------
         toc = ''
@@ -232,12 +234,8 @@ class MarkdowntocInsert(sublime_plugin.TextCommand):
                 else:
                     # anchor_region = v.line(item[2] - 1)  # -1 to get to previous line
                     new_anchor = '\n<a name="{0}"></a>\n'.format(item[3])
-                    v.insert(edit, blank_line.end(), new_anchor)
+                    # v.insert(edit, blank_line.end(), new_anchor)
                     v.insert(edit, anchor_region_1.end(), new_anchor)
-
-            else:
-                if is_update:
-                    v.erase(edit, sublime.Region(anchor_region.begin(), anchor_region.end() + 1))
 
     def get_setting(self, attr):
         settings = sublime.load_settings('MarkdownTOC.sublime-settings')
@@ -289,6 +287,12 @@ class MarkdowntocInsert(sublime_plugin.TextCommand):
                 _str = _str.replace(_target, _substitute)
         return _str
 
+    def log(self, arg):
+        if self.get_setting('logging') == True:
+            arg = str(arg)
+            sublime.status_message(arg)
+            pp.pprint(arg)
+
 def is_out_of_areas(num, areas):
     for area in areas:
         if area[0] < num and num < area[1]:
@@ -312,11 +316,6 @@ def format(items):
     for i, item in enumerate(items):
         item[0] = headings[i]
     return items
-
-def log(arg):
-    arg = str(arg)
-    sublime.status_message(arg)
-    pp.pprint(arg)
 
 def strtobool(val):
     """pick out from 'distutils.util' module"""
@@ -349,4 +348,3 @@ class AutoRunner(sublime_plugin.EventListener):
         ext = ext.lower()
         if ext in [".md", ".markdown", ".mdown", ".mdwn", ".mkdn", ".mkd", ".mark"]:
             view.run_command('markdowntoc_update')
-

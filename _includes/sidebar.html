@@ -33,7 +33,7 @@
               {% for category in site.categories %}
                 {% if category[0] == page.category %}
                   {% for post in category[1] offset:0 limit:5 %}
-                    <li><a style="text-align: left; font-family: 'Open Sans Condensed', sans-serif; color: #204081;" href="{{ post.url }}">{{ post.title }}</a></li>
+                    <li><a style="text-align: left; color: #204081;" href="{{ post.url }}">{{ post.title2 }}</a></li>
                   {% endfor %}
                 {% endif %}
               {% endfor %}
@@ -45,8 +45,8 @@
 
           <nav>
             <div class="header">Latest</div>
-              {% for post in site.posts limit:20 %}
-                <li><a style="text-align: left; font-family: 'Open Sans Condensed', sans-serif;color: #204081"  href="{{ post.url }}">{{ post.title }}</a></li>
+              {% for post in site.posts limit:200 %}
+                <li><a style="text-align: left; color: #204081"  href="{{ post.url }}">{{ post.title2 }}</a></li>
               {% endfor %}
             </ul>
           </nav>

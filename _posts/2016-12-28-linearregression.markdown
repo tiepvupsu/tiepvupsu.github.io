@@ -2,6 +2,7 @@
 layout: post
 comments: true
 title:  "Bài 3: Linear Regression"
+title2:  "3. Linear Regression"
 date:   2016-12-28 15:22:00
 permalink: 2016/12/28/linearregression/
 mathjax: true

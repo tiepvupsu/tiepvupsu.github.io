@@ -2,6 +2,7 @@
 layout: post
 comments: true
 title:  "Bài 15: Overfitting"
+title2:  "15. Overfitting"
 date:   2017-03-04 15:22:00
 permalink: 2017/03/04/overfitting/
 mathjax: true

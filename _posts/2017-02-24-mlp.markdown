@@ -2,6 +2,7 @@
 layout: post
 comments: true
 title:  "Bài 14: Multi-layer Perceptron và Backpropagation"
+title2:  "14. Multi-layer Perceptron và Backpropagation"
 date:   2017-02-24 15:22:00
 permalink: 2017/02/24/mlp/
 mathjax: true

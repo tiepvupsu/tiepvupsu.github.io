@@ -2,6 +2,7 @@
 layout: post
 comments: true
 title:  "Bài 17: Convex Optimization Problems"
+title2:  "17. Convex Optimization Problems"
 date:   2017-03-19 15:22:00
 permalink: 2017/03/19/convexopt/
 mathjax: true

@@ -2,6 +2,7 @@
 layout: post
 comments: true
 title:  "Bài 8: Gradient Descent (phần 2/2)"
+title2:  "8. Gradient Descent (2/2)"
 date:   2017-01-16 15:22:00
 permalink: 2017/01/16/gradientdescent2/
 mathjax: true
