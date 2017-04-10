@@ -12,7 +12,7 @@
     {% if page == paginator.page %}
       <a href="#" class="mypagination mypaginationactive" style = "background-color: #204081;" >{{ page }}</a>
     {% elsif page == 1 %}
-      <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" class="mypagination">{{ page }}</a>
+      <a href="{{ site.baseurl }}/" class="mypagination">{{ page }}</a>
     {% else %}
       <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}" class="mypagination" ">{{ page }}</a>
     {% endif %}
