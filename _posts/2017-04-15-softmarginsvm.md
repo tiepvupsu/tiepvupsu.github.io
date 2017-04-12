@@ -8,8 +8,8 @@ permalink: 2017/04/13/smv/
 mathjax: true
 tags: Linear-models
 category: Support-Vector-Machine
-sc_project: 
-sc_security: 
+sc_project: 11314318
+sc_security: a223ce2c
 img: /assets/20_softmarginsvm/ssvm3.png
 summary: 
 ---
@@ -495,6 +495,7 @@ Trong mục này, chúng ta cùng làm hai thí nghiệm nhỏ. Thứ nghiệm t
 
 ### 5.1. Giải bài toán Soft Margin bằng 3 cách khác nhau
 
+Source code cho phần này có thể được tìm thấy [tại đây]([Source code](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/20_softmarginsvm/plt/softmargin%20SVM%20Example.ipynb).
 <a name="-khai-bao-thu-vien-va-tao-du-lieu-gia"></a>
 
 #### 5.1.1. Khai báo thư viện và tạo dữ liệu giả 
@@ -797,6 +798,7 @@ Chúng ta nhận thấy rằng khi \(C\) càng lớn thì biên càng nhỏ đi.
 
 * Trong Soft Margin SVM, có một hằng số phải được chọn, đó là \\(C\\). Hướng tiếp cận này còn được gọi là C-SVM. Ngoài ra, còn có một hướng tiếp cận khác cũng hay được sử dụng, gọi là \\(\nu\\)-SVM, bạn đọc có thể đọc thêm [tại đây](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.94.2928&rep=rep1&type=pdf). 
 
+* [Source code](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/20_softmarginsvm/plt/softmargin%20SVM%20Example.ipynb)
 <a name="-tai-lieu-tham-khao"></a>
 
 ## 7. Tài liệu tham khảo 
