@@ -4,7 +4,7 @@ comments: true
 title:  "Bài 20: Soft margin Support Vector Machine"
 title2:  "20. Soft Margin SVM"
 date:   2017-04-13 15:22:00
-permalink: 2017/04/13/smv/
+permalink: 2017/04/13/softmarginsmv/
 mathjax: true
 tags: Linear-models
 category: Support-Vector-Machine
