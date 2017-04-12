@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Bài 20: Soft margin Support Vector Machine"
+title:  "Bài 20: Soft Margin Support Vector Machine"
 title2:  "20. Soft Margin SVM"
 date:   2017-04-13 15:22:00
 permalink: 2017/04/13/softmarginsmv/
