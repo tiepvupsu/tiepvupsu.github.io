@@ -66,7 +66,7 @@ Tôi xin bắt đầu bài viết này bằng ba bài toán khá gần với th�
 <a name="bai-toan"></a>
 
 #### Bài toán
-Một nhà xuấn bản (NXB) nhận được đơn hàng 600 bản của cuốn "Machine Learning cơ bản" tới Thái Bình và 400 bản tới Hải Phòng. NXB đó có 700 cuốn ở kho Nam Định và 800 cuốn ở kho Hải Dương. Giá chuyển phát một cuốn sách từ Nam Định tới Thái Bình là 50,000 VND (50k), tới Hải Phòng là 100k. Giá chuyển phát một cuốn từ Hải Dương  tới Thái Bình là 150k, trong khi tới Hải Phòng chỉ là 40k. Hỏi để tốn ít chi phí chuyển phát nhất, công ty đó nên phân phối mỗi kho chuyển bao nhiêu cuốn tới mỗi địa điểm?
+Một nhà xuấn bản (NXB) nhận được đơn hàng 600 bản của cuốn "Machine Learning cơ bản" tới Thái Bình và 400 bản tới Hải Phòng. NXB đó có 800 cuốn ở kho Nam Định và 700 cuốn ở kho Hải Dương. Giá chuyển phát một cuốn sách từ Nam Định tới Thái Bình là 50,000 VND (50k), tới Hải Phòng là 100k. Giá chuyển phát một cuốn từ Hải Dương  tới Thái Bình là 150k, trong khi tới Hải Phòng chỉ là 40k. Hỏi để tốn ít chi phí chuyển phát nhất, công ty đó nên phân phối mỗi kho chuyển bao nhiêu cuốn tới mỗi địa điểm?
 
 <a name="phan-tich"></a>
 
