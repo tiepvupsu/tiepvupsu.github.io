@@ -26,7 +26,7 @@ _Bài chú yếu nói về toán, nếu bạn đọc không hiểu ngay cũng kh
     - [2.2. Ví dụ](#-vi-du)
         - [2.2.1. Hyperplanes và halfspaces](#-hyperplanes-va-halfspaces)
         - [2.2.2. Norm balls](#-norm-balls)
-    - [2.2.3. Giao của các tập lồi là một tập lồi.](#-giao-cua-cac-tap-loi-la-mot-tap-loi)
+    - [2.3. Giao của các tập lồi là một tập lồi.](#-giao-cua-cac-tap-loi-la-mot-tap-loi)
     - [2.4. Convex combination và Convex hulls](#-convex-combination-va-convex-hulls)
 - [3. Convex functions](#-convex-functions)
     - [3.1. Định nghĩa](#-dinh-nghia-1)
@@ -231,7 +231,7 @@ Cũng lại nhân tiện, khoảng cách Mahalanobis có liên quan đến *kho�
 
 <a name="-giao-cua-cac-tap-loi-la-mot-tap-loi"></a>
 
-### 2.2.3. Giao của các tập lồi là một tập lồi.
+### 2.3. Giao của các tập lồi là một tập lồi.
 Việc này có thể nhận dễ nhận thấy với Hình 4 (trái) dưới đây. Giao của hai trong ba hoặc cả ba tập lồi đều là các tập lồi.
 
 Việc chứng minh việc này theo Định nghĩa 2 cũng không khó. Nếu \\(\mathbf{x}_1, \mathbf{x}_2\\) thuộc vào giao của các tập lồi, tức thuộc tất cả các tập lồi đã cho, thì \\(\theta\mathbf{x}_1 + (1 - \theta) \mathbf{x}_2)\\) cũng thuộc vào tất cả các tập lồi, tức thuộc vào giao của chúng!
