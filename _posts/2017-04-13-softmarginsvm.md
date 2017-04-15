@@ -81,7 +81,8 @@ Có hai trường hợp dễ nhận thấy SVM làm việc không hiệu quả h
 
 * Trường hợp 2: Dữ liệu không _linearly separable_ nhưng _gần linearly separable_ như Hình 1b). Trong trường hợp này, nếu ta sử dụng SVM _thuần_ thì rõ ràng bài toán tối ưu là _infeasible_, tức _feasible set_ là một tập rỗng, vì vậy bài toán tối ưu SVM trở nên vô nghiệm. Tuy nhiên, nếu ta lại _chịu hy sinh một chút_ những điểm ở gần biên giữa hai classes, ta vẫn có thể tạo được một đường phân chia khá tốt như đường nét đứt đậm. Các _đường support_ đường nét đứt mảnh vẫn giúp tạo được một margin lớn cho bộ phân lớp này. Với mỗi điểm nằm lần sang phía bên kia của các đường suport (hay _đường margin_, hoặc _đường biên_) tương ứng, ta gọi điểm đó rơi vào _vùng không an toàn_. Chú ý rằng vùng an toàn của hai classes là khác nhau, giao nhau ở phần nằm giữa hai đường support. 
 
-Trong cả hai trường hợp trên, _margin_ tạo bởi đường phân chia và đường nét đứt mảnh còn được gọi là _soft margin_ ( _biên mềm_). Cũng theo cách gọi này, SVM _thuần_ còn được gọi là _Hard Margin SVM_ (_SVM biên cứng_). 
+<a name="hard-margin"></a>
+Trong cả hai trường hợp trên, _margin_ tạo bởi đường phân chia và đường nét đứt mảnh còn được gọi là _soft margin_ (_biên mềm_). Cũng theo cách gọi này, SVM _thuần_ còn được gọi là _Hard Margin SVM_ (_SVM biên cứng_). 
 
 Trong bài này, chúng ta sẽ tiếp tục tìm hiểu một biến thể của _Hard Margin SVM_ có tên gọi là _Soft Margin SVM_. 
 
