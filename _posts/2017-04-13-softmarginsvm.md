@@ -98,7 +98,7 @@ Trước hết, chúng ta cùng đi phân tích bài toán.
 
 ## 2. Phân tích toán học
 
-Như đã đề cập phía trên, để có một _margin_ lớn hơn trong _Soft-margin SVM_, chúng ta cần _hy sinh_ một vài điểm dữ liệu bằng cách chấp nhận cho chúng rơi vào vùng _không an toàn_. Tất nhiên, chúng ta phải hạn chế _sự hy sinh_ này, nếu không, chúng ta có thể tạo ra một biên cực lớn bằng cách _hy sinh_ hầu hết các điểm. Vậy hàm mục tiêu nên là một sự kết hợp để tối đa _margin_ và tối thiểu _sự hy sinh_.
+Như đã đề cập phía trên, để có một _margin_ lớn hơn trong _Soft Margin SVM_, chúng ta cần _hy sinh_ một vài điểm dữ liệu bằng cách chấp nhận cho chúng rơi vào vùng _không an toàn_. Tất nhiên, chúng ta phải hạn chế _sự hy sinh_ này, nếu không, chúng ta có thể tạo ra một biên cực lớn bằng cách _hy sinh_ hầu hết các điểm. Vậy hàm mục tiêu nên là một sự kết hợp để tối đa _margin_ và tối thiểu _sự hy sinh_.
 
 Giống như với _Hard Margin SVM_, việc tối đa _margin_ có thể đưa về việc tối thiểu \\(\|\|\mathbf{w}\|\|\_2^2\\). Để xác định _sự hy sinh_, chúng ta cùng theo dõi Hình 2 dưới đây:
 
@@ -365,11 +365,11 @@ Hình 3 đưới dây mô tả hàm số _hinge loss_ \\(f(ys) = \max(0, 1 - ys)
 </table>
 </div>
 <hr>
-Trong Hình 3, biến số là \\(ys\\) là tích của đầu ra mong muốn (ground truth) và đầu ra tính được (score). Những điểm ở phía phải của trục tung ứng với những điểm được phân loại đúng, tức \\(s\\) tìm được cùng dấu với \\(y\\). Những điểm ở phía trái của trục tung ứng với các điểm bị phân loại sai. Ta có các nhận xét:
+Trong Hình 3, biến số là \\(y\\) là tích của đầu ra mong muốn (ground truth) và đầu ra tính được (score). Những điểm ở phía phải của trục tung ứng với những điểm được phân loại đúng, tức \\(s\\) tìm được cùng dấu với \\(y\\). Những điểm ở phía trái của trục tung ứng với các điểm bị phân loại sai. Ta có các nhận xét:
 
 * Với hàm zero-one loss, các điểm có _score_ ngược dấu với đầu ra mong muốn sẽ gây ra mất mát như nhau (bằng 1), bất kể chúng ở gần hay xa đường phân chia (trục tung). Đây là một hàm rời rạc, rất khó tối ưu và ta cũng khó có thể đo đếm được _sự hy sinh_ như đã định nghĩa ở phần đầu. 
 
-* Với hàm _hinge loss_, những điểm nằm trong vùng an toàn, ứng với \\(ys \geq 1\\), sẽ không gây ra mất mát gì. Những điểm nằm giữa margin của class tương ứng và đường phân chia tương ứng với \\(0 < ys < 1\\), những điểm này gây ra một mất mát nhỏ. Những điểm bị _misclassifed_, tức \\(ys < 0\\) sẽ gây ra mất mát lớn hơn, vì vậy, khi tối thiểu hàm mất mát, ta sẽ tránh được những điểm bị _misclassifed_ và _lấn_ sang phần class còn lại quá nhiều. Đây chính là một ưu điểm của hàm _hinge loss_. 
+* Với hàm _hinge loss_, những điểm nằm trong vùng an toàn, ứng với \\(ys \geq 1\\), sẽ không gây ra mất mát gì. Những điểm nằm giữa margin của class tương ứng và đường phân chia tương ứng với \\(0 < y < 1\\), những điểm này gây ra một mất mát nhỏ. Những điểm bị _misclassifed_, tức \\(y < 0\\) sẽ gây ra mất mát lớn hơn, vì vậy, khi tối thiểu hàm mất mát, ta sẽ tránh được những điểm bị _misclassifed_ và _lấn_ sang phần class còn lại quá nhiều. Đây chính là một ưu điểm của hàm _hinge loss_. 
 
 * Hàm hinge loss là một hàm liên tục, và _có đạo hàm tại gần như mọi nơi_ (_almost everywhere differentiable_) trừ điểm có hoành độ bằng 1. Ngoài ra, đạo hàm của hàm này cũng rất dễ xác định: bằng -1 tại các điểm nhỏ hơn 1 và bằng 0 tại các điểm lớn hơn 1. Tại 1, ta có thể coi như đạo hàm của nó bằng 0 giống như cách tính đạo hàm của [hàm ReLU](/2017/02/24/mlp/#-relu).
 
