@@ -8,3 +8,4 @@ assets/latex/*.tex
 !assets/latex/book.pdf
 #assets/data/INRIAPerson
 assets/data
+assets/21_kernelsvm/ksvm.mov

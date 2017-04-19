@@ -585,12 +585,12 @@ y = f'(x_0)(x - x_0) + f(x_0)
 \\]
 Với hàm nhiều biến, đặt \\(\nabla f(\mathbf{x}_0)\\) là gradient của hàm số \\(f\\) tại điểm \\(\mathbf{x}_0\\), phương trình mặt tiếp tuyến được cho bởi:
 \\[
-y = \nabla f(\mathbf{x})^T (\mathbf{x} - \mathbf{x}_0) + f(\mathbf{x}_0)
+y = \nabla f(\mathbf{x}\_0)^T (\mathbf{x} - \mathbf{x}_0) + f(\mathbf{x}_0)
 \\]
 <hr>
 **First-order condition** nói rằng: Giả sử hàm số \\(f\\) có tập xác định là một tập lồi, có đạo hàm tại mọi điểm trên tập xác định đó. Khi đó, hàm số \\(f\\) là _lồi_ **nếu và chỉ nếu** với mọi \\(\mathbf{x}, \mathbf{x}_0\\) trên tập xác định của hàm số đó, ta có:
 \\[
-f(\mathbf{x}) \geq f(\mathbf{x}_0) + \nabla f(\mathbf{x})^T(\mathbf{x} - \mathbf{x}_0) ~~ (6)
+f(\mathbf{x}) \geq f(\mathbf{x}_0) + \nabla f(\mathbf{x}\_0)^T(\mathbf{x} - \mathbf{x}_0) ~~ (6)
 \\]
 <hr>
 
