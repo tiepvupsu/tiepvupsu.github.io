@@ -535,7 +535,7 @@ Các đường màu càng xanh đậm thì tương ứng với các giá trị c
 Tức tập hợp các điểm trong tập xác định của \\(f\\) mà tại đó, \\(f\\) đạt giá trị nhỏ hơn hoặc bằng \\(\alpha\\).
 
 
-Quay lại với hình 10, hàng trên, các \\(\alpha-\\) sublevel sets chính là phần bị bao bởi các level sets.
+Quay lại với Hình 11, hàng trên, các \\(\alpha-\\) sublevel sets chính là phần bị bao bởi các level sets.
 
 Ở hàng dưới, bên trái, các \\(\alpha-\\) sublevel sets chính là phần nửa mặt phẳng phía dưới xác định bởi các đường thẳng level sets. Ở hình giữa, các \\(\alpha-\\) sublevel sets chính là các vùng bị giới hạn bởi các trục tọa độ và các level sets.
 
@@ -547,7 +547,7 @@ Hàng dưới, bên phải, các \\(\alpha-\\) sublevel sets hơi khó tưởng 
 
 Điều này chỉ ra rằng nếu tồn tại một giá trị \\(\alpha\\) sao cho một \\(\alpha-\\) sublevel set của một hàm số là _không lồi_, thì hàm số đó là _không lồi_ (không lồi nhưng không có nghĩa là _concave_, chú ý). Vậy nên Hyperbolic không phải là hàm lồi.
 
-Các ví dụ ở hình 10, trừ hình cuối cùng, đều tương ứng với các hàm lồi.
+Các ví dụ ở hình 11, trừ hình cuối cùng, đều tương ứng với các hàm lồi.
 
 Một ví dụ về việc một hàm số không _convex_ nhưng mọi \\(\alpha-\\) sublevel sets là _convex_ là hàm \\(f(x, y) = -e^{x+y}\\). Hàm này có mọi \\(\alpha-\\) sublevel sets là nửa mặt phẳng - là _convex_, nhưng nó không phải là _convex_ (trong trường hợp này nó là _concave_).
 
