@@ -717,7 +717,7 @@ Chú ý rằng nếu \\(f\\) là một _posynomial_, \\(h\\) là một _monomial
 Có thể được viết lại dưới dạng GP:
 \\[
 \begin{eqnarray}
-    (x, y, z)    &=& \arg\min_{x, y, z} x^{-1}y                         \\\
+    (x, y, z)    &=& \arg\min_{x, y, z} xy ^{-1}                        \\\
 \text{subject to:}~ && x^{-1} \leq 1 \\\
 && (1/2)x \leq 1 \\\
 && x^3y^{-1/2} + 2y^{1/2}z^{-1} \leq 1 \\\
