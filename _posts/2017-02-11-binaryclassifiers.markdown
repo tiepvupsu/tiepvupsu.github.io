@@ -247,7 +247,7 @@ Hàng trên gồm các hình được phân loại đúng, hàng dưới gồm c
 
 __Trong Machine Learning, thuật toán là quan trọng, nhưng thuật toán tốt mà dữ liệu không tốt thì sẽ dẫn đến những tác dụng ngược!__
 
-(Source code cho ví dụ này có thể tìm thấy [ở dây](/assets/LogRegs/ARgender.py).)
+(Source code cho ví dụ này có thể tìm thấy [ở dây](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/LogReg2/ARGender.ipynb).)
 <a name="-bai-toan-phan-biet-hai-chu-so-viet-tay"></a>
 
 ## 2. Bài toán phân biệt hai chữ số viết tay 
