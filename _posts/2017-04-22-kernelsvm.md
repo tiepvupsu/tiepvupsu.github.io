@@ -277,13 +277,21 @@ k(\mathbf{x}, \mathbf{z}) = \text{tanh}(\gamma \mathbf{x}^T\mathbf{z} + r)
 
 Dưới đây là bảng tóm tắt các kernel thông dụng và cách sử dụng trong `sklearn`. 
 <hr>
-| **Tên**            | **Công thức**                                       | `kernel`  | **Đặt hệ số**                                                  |
-| :------------ | :----------------------------------------------: | :-------: | :-----------                                              |
-| linear         | \\(\mathbf{x}^T\mathbf{z}\\)                     | `'linear'`  | không có hệ số                                               |
+| **Tên**  | **Công thức**   | `kernel`  | **Thiết lập hệ số**    |
+| :------- | :------------: | :-------: | :-----------    |
+| linear         | \\(\mathbf{x}^T\mathbf{z}\\)                     | `'linear'`  | không có hệ số  |
 | polynomial     | \\((r + \gamma \mathbf{x}^T\mathbf{z})^d \\)     | `'poly'`    | \\(d\\): `degree`, \\(\gamma\\): `gamma`, \\(r\\): `coef0` |
-| rbf            | \\(\exp(-\gamma \|\|\mathbf{x} - \mathbf{z}\|\|_2^2)\\) | `'rbf'`          | \\(\gamma >0\\): `gamma`                          |
-| sigmoid        | \\(\text{tanh}(\gamma \mathbf{x}^T\mathbf{z} + r)\\)| `'sigmoid'` |\\(\gamma\\): `gamma`, \\(r\\): `coef0`|
+| sigmoid        | \\(\text{tanh}(\gamma \mathbf{x}^T\mathbf{z} + r)\\)| `'sigmoid'` | \\(\gamma\\): `gamma`, \\(r\\): `coef0`|
 <hr>
+
+|  **Tên**   |                    **Công thức**                     |   `kernel`  |                    **Thiết lập hệ số**                     |
+|------------|------------------------------------------------------|-------------|------------------------------------------------------------|
+| linear     | \\(\mathbf{x}^T\mathbf{z}\\)                         | `'linear'`  | không có hệ số                                             |
+| polynomial | \\((r + \gamma \mathbf{x}^T\mathbf{z})^d \\)         | `'poly'`    | \\(d\\): `degree`, \\(\gamma\\): `gamma`, \\(r\\): `coef0` |
+| sigmoid    | \\(\text{tanh}(\gamma \mathbf{x}^T\mathbf{z} + r)\\) | `'sigmoid'` | \\(\gamma\\): `gamma`, \\(r\\): `coef0`                    |
+| rbf            | \\(\exp(-\gamma \|\|\mathbf{x} - \mathbf{z}\|\|_2^2)\\) | `'rbf'`          | \\(\gamma >0\\): `gamma`     |
+|            |                                                      |             |                                                            |
+
 Nếu bạn muốn sử dụng các thư viện cho C/C++, các bạn có thể tham khảo [LIBSVM](http://www.csie.ntu.edu.tw/~cjlin/papers/libsvm.pdf) và [LIBLINEAR](http://www.csie.ntu.edu.tw/~cjlin/liblinear/)
 
 <a name="-kernel-tu-dinh-nghia"></a>
