@@ -8,8 +8,8 @@ permalink: 2017/04/22/kernelsmv/
 mathjax: true
 tags: Linear-models
 category: Support-Vector-Machine
-sc_project: 
-sc_security: 
+sc_project: 11321646
+sc_security: f149e9fe
 img: /assets/21_kernelsvm/4.png
 summary: 
 ---
