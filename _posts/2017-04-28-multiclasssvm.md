@@ -567,7 +567,7 @@ plt.show()
         <img style="display:block;" width = "100%" src = "/assets/22_multiclasssvm/loss_history.png">
          </td>
         <td width="40%" style = "border: 0px solid white" align = "justify">
-        Hình 1: <em>Lịch sử loss</em> qua các vòng lặp. Ta thấy rằng <em>loss</em> có xu hướng giảm và hội tụ.
+        Hình 8: <em>Lịch sử loss</em> qua các vòng lặp. Ta thấy rằng <em>loss</em> có xu hướng giảm và hội tụ.
         </td>
     </tr>
 </table>
@@ -594,7 +594,7 @@ Kết quả đạt được cho CIFAR-10 là khoảng 40%. Như thế là đã r
 <hr>
 <div class="imgcap">
 <img src ="\assets\22_multiclasssvm\learned_ws_2.png" align = "center" width = "800">
-<div class = "thecap" align = "justify">Hình 6: Minh họa hệ số tìm được dưới dạng các bức ảnh.</div>
+<div class = "thecap" align = "justify">Hình 9: Minh họa hệ số tìm được dưới dạng các bức ảnh.</div>
 </div> 
 <hr>
 
