@@ -8,9 +8,9 @@ permalink: 2017/04/30/multiclasssmv/
 mathjax: true
 tags: Linear-models
 category: Support-Vector-Machine
-sc_project: 11321646
-sc_security: f149e9feV
-img: /assets/21_kernelsvm/4.png
+sc_project: 11328682
+sc_security: 64e376fc
+img: \assets\22_multiclasssvm\scores.png
 summary: 
 ---
 
