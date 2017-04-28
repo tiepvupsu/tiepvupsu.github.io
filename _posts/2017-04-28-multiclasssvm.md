@@ -3,8 +3,8 @@ layout: post
 comments: true
 title:  "Bài 22: Multi-class Support Vector Machine"
 title2:  "22. Multi-class SVM"
-date:   2017-04-30 15:22:00
-permalink: 2017/04/30/multiclasssmv/
+date:   2017-04-28 15:22:00
+permalink: 2017/04/28/multiclasssmv/
 mathjax: true
 tags: Linear-models
 category: Support-Vector-Machine
