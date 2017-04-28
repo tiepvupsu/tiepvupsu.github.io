@@ -9,7 +9,7 @@ mathjax: true
 tags: Linear-models
 category: Support-Vector-Machine
 sc_project: 11321646
-sc_security: f149e9feV
+sc_security: f149e9fe
 img: /assets/21_kernelsvm/4.png
 summary: 
 ---
