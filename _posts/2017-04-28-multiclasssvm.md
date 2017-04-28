@@ -10,7 +10,7 @@ tags: Linear-models
 category: Support-Vector-Machine
 sc_project: 11328682
 sc_security: 64e376fc
-img: \assets\22_multiclasssvm\scores.png
+img: \assets\22_multiclasssvm\cifar.png
 summary: 
 ---
 
@@ -93,7 +93,7 @@ Và để cho bài viết hấp dẫn hơn, tôi xin giới thiệu luôn, ở p
 
 ### 1.3. Bộ cơ sở dữ liệu CIFAR10
 
-Bộ cơ sở dữ liệu CIFAR10 gồm 51000 ảnh khác nhau thuộc 10 classes: _plane, car, bird, cat, deer, dog, frog, horse, ship, và truck_. Mỗi bức ảnh có kích thước \\(32 \times 32\\) pixel. Một vài ví dụ cho mỗi class được cho trong Hình 2 dưới đây. 50000 ảnh được sử dụng cho training, 10000 ảnh còn lại được dùng cho test. Trong số 50000 ảnh training, 1000 ảnh sẽ được lấy ra ngẫu nghiên để làm [validation set](/2017/03/04/overfitting/#-validation-1). 
+Bộ cơ sở dữ liệu CIFAR10 gồm 51000 ảnh khác nhau thuộc 10 classes: _plane, car, bird, cat, deer, dog, frog, horse, ship, và truck_. Mỗi bức ảnh có kích thước \\(32 \times 32\\) pixel. Một vài ví dụ cho mỗi class được cho trong Hình 2 dưới đây. 50000 ảnh được sử dụng cho training, 1000 ảnh còn lại được dùng cho test. Trong số 50000 ảnh training, 1000 ảnh sẽ được lấy ra ngẫu nghiên để làm [validation set](/2017/03/04/overfitting/#-validation-1). 
 
 <hr>
 <div class="imgcap">
