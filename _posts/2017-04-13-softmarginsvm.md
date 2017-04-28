@@ -335,17 +335,17 @@ Rõ ràng rằng biến số \\(\xi\\) không còn quan trọng trong bài toán
 <a name="-hinge-loss"></a>
 
 ### 4.2. Hinge loss 
-Nhắc lại một chút về hàm [_cross entropy_](/2017/02/17/softmax/#-cross-entropy) chúng ta đã biết từ bài [Logistic Regression](/2017/01/27/logisticregression/) và [Softmax Regression](/2017/02/17/softmax/). Với mỗi cặp hệ số \\((\mathbf{w}, b)\\) và cặp dữ liệu, nhãn \\((\mathbf{x}_n, y_n)\\), đặt \\(s_n = \mathbf{w}^T\mathbf{x}\_n + b\\) và \\(z_n = \sigma(s_n)\\) ( \\(\sigma\\) là [sigmoid function](/2017/01/27/logisticregression/#sigmoid-function)). Hàm cross entropy được định nghĩa là: 
+Nhắc lại một chút về hàm [_cross entropy_](/2017/02/17/softmax/#-cross-entropy) chúng ta đã biết từ bài [Logistic Regression](/2017/01/27/logisticregression/) và [Softmax Regression](/2017/02/17/softmax/). Với mỗi cặp hệ số \\((\mathbf{w}, b)\\) và cặp dữ liệu, nhãn \\((\mathbf{x}_n, y_n)\\), đặt \\(z_n = \mathbf{w}^T\mathbf{x}\_n + b\\) và \\(a_n = \sigma(z_n)\\) ( \\(\sigma\\) là [sigmoid function](/2017/01/27/logisticregression/#sigmoid-function)). Hàm cross entropy được định nghĩa là: 
 \\[
-J_n^1(\mathbf{w}, b) = -(y_n \log(z_n) + (1 - y_n) \log(1 - z_n))
+J_n^1(\mathbf{w}, b) = -(y_n \log(a_n) + (1 - y_n) \log(1 - a_n))
 \\]
-Chúng ta đã biết rằng, hàm cross entropy đạt giá trị càng nhỏ nếu xác suất \\(z_n\\) càng gần với \\(y_n\\) \\((0 < z_n < 1)\\). 
+Chúng ta đã biết rằng, hàm cross entropy đạt giá trị càng nhỏ nếu xác suất \\(a_n\\) càng gần với \\(y_n\\) \\((0 < a_n < 1)\\). 
 
 Ở đây, chúng ta làm quen với một hàm số khác cũng được sử dụng nhiều trong các classifiers:
 \\[
-J_n(\mathbf{w}, b) = \max(0, 1 - y_ns_n)
+J_n(\mathbf{w}, b) = \max(0, 1 - y_nz_n)
 \\]
-Hàm này có tên là _hinge loss_. Trong đó, \\(s_n\\) có thể được coi là _score_ của \\(\mathbf{x}_n\\) ứng với cặp hệ số \\((\mathbf{w}, b)\\), \\(y_n\\) chính là đầu ra mong muốn.
+Hàm này có tên là _hinge loss_. Trong đó, \\(z_n\\) có thể được coi là _score_ của \\(\mathbf{x}_n\\) ứng với cặp hệ số \\((\mathbf{w}, b)\\), \\(y_n\\) chính là đầu ra mong muốn.
 
 Hình 3 đưới dây mô tả hàm số _hinge loss_ \\(f(ys) = \max(0, 1 - ys)\\) và so sánh với hàm zero-one loss. Hàm zero-one loss là hàm đếm các điểm bị _misclassified_.
 
