@@ -141,7 +141,7 @@ f(s) = \frac{1}{1 + e^{-s}} \triangleq \sigma(s)
 Đặc biệt hơn nữa:
 \\[
 \begin{eqnarray}
-\sigma'(s) &=& \frac{e^{-1}}{(1 + e^{-s})^2} \\\
+\sigma'(s) &=& \frac{e^{-s}}{(1 + e^{-s})^2} \\\
 &=& \frac{1}{1 + e^{-s}} \frac{e^{-s}}{1 + e^{-s}} \\\
 &=& \sigma(s)(1 - \sigma(s))
 \end{eqnarray}
