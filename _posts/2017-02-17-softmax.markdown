@@ -171,8 +171,8 @@ Vậy một phương pháp đơn giản giúp khắc phục hiện tượng over
 ```python 
 def softmax_stable(Z):
     """
-    Compute softmax values for each sets of scores in V.
-    each column of V is a set of score.    
+    Compute softmax values for each sets of scores in Z.
+    each column of Z is a set of score.    
     """
     e_Z = np.exp(Z - np.max(Z, axis = 0, keepdims = True))
     A = e_Z / e_Z.sum(axis = 0)
