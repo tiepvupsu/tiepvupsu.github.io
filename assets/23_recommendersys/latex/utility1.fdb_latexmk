@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1494246404 "utility1.tex" "utility1.pdf" "utility1" 1494246404
-  "/dev/null" 1494246404 0 d41d8cd98f00b204e9800998ecf8427e ""
+["pdflatex"] 1494262846 "utility1.tex" "utility1.pdf" "utility1" 1494262846
+  "/dev/null" 1494262846 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/usr/local/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmss10.tfm" 1136768653 1316 b636689f1933f24d1294acdf6041daaa ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/vntex/vnr/vnr10.tfm" 1136768653 3980 abdf17ec2bc80e7408ecb3ef0a81faa4 ""
@@ -112,8 +112,8 @@
   "/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1489522183 1888048 f2c5faed5981a516f406b2ccc20bff71 ""
   "/usr/local/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt" 1463979169 3873397 413fbfbbedb8e719ddc392043a7add02 ""
   "/usr/local/texlive/2016/texmf.cnf" 1463979140 577 2938757e76f31531e65cc647e3507693 ""
-  "utility1.aux" 1494246404 178 7de723ce613ce6198728a5c5cca5ccfe ""
-  "utility1.tex" 1494246403 2179 d3b81b5672da2c18742de0bd55fce74e ""
+  "utility1.aux" 1494262846 178 7de723ce613ce6198728a5c5cca5ccfe ""
+  "utility1.tex" 1494262844 2326 69b94a0684641cb44100c2e15a217406 ""
   "vietnam.ldf" 1494210093 1979 1d709b8410726441ea017a355079d51b ""
   (generated)
   "utility1.aux"
