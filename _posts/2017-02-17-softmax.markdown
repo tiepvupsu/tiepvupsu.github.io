@@ -166,7 +166,7 @@ Khi một trong các \\(z\_i\\) quá lớn, việc tính toán \\(\exp(z\_i)\\) 
 \\]
 với \\(c\\) là một hằng số bất kỳ. 
 
-Vậy một phương pháp đơn giản giúp khắc phục hiện tượng overflow là trừ tất cả các \\(z\_i\\) đi một giá trị đủ lớn. Trong thực nghiệm, giá trị đủ lớn này thường được chọn là \\(c = \max\_i z\_i\\). Vậy chúng ta có thể sửa đoạn code cho hàm `softmax` phía trên bằng cách trừ mỗi cột của ma trận đầu vào `V` đi giá trị lớn nhất trong cột đó. Ta có phiên bản ổn định hơn là `softmax_stable`:
+Vậy một phương pháp đơn giản giúp khắc phục hiện tượng overflow là trừ tất cả các \\(z\_i\\) đi một giá trị đủ lớn. Trong thực nghiệm, giá trị đủ lớn này thường được chọn là \\(c = \max\_i z\_i\\). Vậy chúng ta có thể sửa đoạn code cho hàm `softmax` phía trên bằng cách trừ mỗi cột của ma trận đầu vào `Z` đi giá trị lớn nhất trong cột đó. Ta có phiên bản ổn định hơn là `softmax_stable`:
 
 ```python 
 def softmax_stable(Z):
