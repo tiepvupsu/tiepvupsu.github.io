@@ -201,7 +201,7 @@ Không phải hàm \\(k()\\) bất kỳ nào cũng được sử dụng. Các h�
 
 * _Về lý thuyết_, hàm kerrnel cần thỏa mãn [điều kiện Mercer](https://en.wikipedia.org/wiki/Mercer%27s_theorem#Mercer.27s_condition): 
 \\[
-\sum_{n=1}^N \sum_{m=1}^m k(\mathbf{x}\_m, \mathbf{x}\_n) c\_nc\_m \geq 0, ~~ \forall c\_i \in \mathbb{R}, i = 1, 2, \dots, N \quad \quad (7)
+\sum_{n=1}^N \sum_{m=1}^N k(\mathbf{x}\_m, \mathbf{x}\_n) c\_nc\_m \geq 0, ~~ \forall c\_i \in \mathbb{R}, i = 1, 2, \dots, N \quad \quad (7)
 \\]
 Tính chất này để đảm bảo cho việc hàm mục tiêu của bài toán đối ngẫu \\((5)\\) là _lồi_. 
 
@@ -210,11 +210,11 @@ Tính chất này để đảm bảo cho việc hàm mục tiêu của bài toá
 
 Nếu một hàm kerrnel thỏa mãn điều kiện \\((7)\\), xét \\(c_n = y_n \lambda_n\\), ta sẽ có: 
 \\[
-\lambda^T \mathbf{K} \lambda = \sum_{n=1}^N \sum_{m=1}^m k(\mathbf{x}\_m, \mathbf{x}\_n) y_ny_m \lambda_n \lambda_m \geq 0, ~\forall \lambda_n \quad\quad (8)
+\lambda^T \mathbf{K} \lambda = \sum_{n=1}^N \sum_{m=1}^N k(\mathbf{x}\_m, \mathbf{x}\_n) y_ny_m \lambda_n \lambda_m \geq 0, ~\forall \lambda_n \quad\quad (8)
 \\]
 với \\(\mathbf{K}\\) là một ma trận đối xứng mà phần tử ở hàng thứ \\(n\\) cột thứ \\(m\\) của nó được định nghĩa bởi: 
 \\(
-k_{ij} = y_ny_m k(\mathbf{x}\_n, \mathbf{x}\_m)
+k_{nm} = y_ny_m k(\mathbf{x}\_n, \mathbf{x}\_m)
 \\)
 
 Từ \\((8)\\) ta suy ra \\(\mathbf{K}\\) là một ma trận nửa xác định dương. Vì vậy, bài toán tối ưu \\((5)\\) có ràng buộc là lồi và hàm mục tiêu là một hàm lồi (một quadratic form). Vì vậy chúng ta có thể giải quyết bài toán này một cách hiệu quả. 
