@@ -139,7 +139,7 @@ Có một phương pháp rất phổ biến giúp bạn trả lời những câu
 
 Vẫn theo thói quen, tôi bắt đầu bằng một ví dụ. Giả sử chúng ta có bài toán phân loại tin rác. Ta thấy rằng nếu một tin có chứa các từ _khuyến mại, giảm giá, trúng thưởng, miễn phí, quà tặng, tri ân, ..._ thì nhiều khả năng đó là một tin nhắn rác. Vậy phương pháp đơn giản nhất là _đếm_ xem trong tin đó có bao nhiêu từ thuộc vào các từ trên, nếu nhiều hơn 1 ngưỡng nào đó thì ta quyết định đó là tin rác. (Tất nhiên bài toán thực tế phức tạp hơn nhiều khi các từ có thể được viết dưới dạng không dấu, hoặc bị cố tình viết sai chính tả, hoặc dùng ngôn ngữ teen). Với các loại văn bản khác nhau thì lượng từ liên quan tới từng chủ đề cũng khác nhau. Từ đó có thể dựa vào số lượng các từ trong từng loại để làm các vector đặc trưng cho từng văn bản. 
 
-Tôi xin lấy ví dụ cụ thể hơn về cách tạo ra vector đặc trưng cho mỗi văn bản dựa trên BoW và xin được lấy tiếng Anh làm ví dụ (nguồn [Bag of Words wiki](https://en.wikipedia.org/wiki/Bag-of-words_model). Tiếng Việt khó hơn vì một từ có thể có nhều âm tiết, tiếng Anh thì thường cứ gặp dấu cách là kết thúc một từ). 
+Tôi xin lấy ví dụ cụ thể hơn về cách tạo ra vector đặc trưng cho mỗi văn bản dựa trên BoW và xin được lấy tiếng Anh làm ví dụ (nguồn [Bag of Words wiki](https://en.wikipedia.org/wiki/Bag-of-words_model). Tiếng Việt khó hơn vì một từ có thể có nhiều âm tiết, tiếng Anh thì thường cứ gặp dấu cách là kết thúc một từ). 
 
 Giả sử chúng ta có hai văn bản đơn giản:
 
@@ -220,7 +220,7 @@ Tương tự thế, với ảnh là ô tô, các patch thu được có thể l�
 <div class = "thecap">Hình 4: Bag of Words cho ảnh ô tô. (Nguồn: tôi cố gắng tìm nguồn cho hình này nhưng tất cả các tài liệu tôi tìm được đều ghi "Source: B. Leibe", tôi cũng xin được trích nguồn tương tự)</div>
 </div> 
 
-Có một câu hỏi đặt ra là, trong xử lý văn bản, hai từ được coi là như nhau nếu nó được biểu diễn bởi các ký tự giống nau. Vậy trong xử lý ảnh, hai patchés được coi là như nhau khi nào? Khi mọi pixel trong hai patches có giá trị bằng nhau sao? 
+Có một câu hỏi đặt ra là, trong xử lý văn bản, hai từ được coi là như nhau nếu nó được biểu diễn bởi các ký tự giống nhau. Vậy trong xử lý ảnh, hai patchés được coi là như nhau khi nào? Khi mọi pixel trong hai patches có giá trị bằng nhau sao? 
 
 Câu trả lời là không. Xác suất để hai patches giống hệt nhau từng pixel là rất thấp vì có thể một phần của vật thể trong một patch bị lệch đi vài pixel so với phần đó trong patch kia; hoặc phần vật thể trong patch bị méo, hoặc có độ sáng khác nhau, mặc dù ta vẫn nhìn thấy hai patches đó _rất giống nhau_. Vậy thì hai patch được coi là như nhau khi nào? Và _từ điển_ ở đây được định nghĩa như thế nào? 
 
@@ -257,7 +257,7 @@ với \\(\bar{x}, \sigma\\) lần lượt là kỳ vọng và phương sai (stan
 <a name="scaling-to-unit-length"></a>
 
 #### Scaling to unit length 
-Một lựa chọn khác nữa cũng được sử dụng rộng rãi là chuẩn hóa các thành phần của mỗi vector dữ liệu sao cho toàn bộ vector có độ lớn (Ecluid, tức [norm 2](/math/#norm2)) bằng 1. Việc này có thể được thực hiện bằng:
+Một lựa chọn khác nữa cũng được sử dụng rộng rãi là chuẩn hóa các thành phần của mỗi vector dữ liệu sao cho toàn bộ vector có độ lớn (Euclid, tức [norm 2](/math/#norm2)) bằng 1. Việc này có thể được thực hiện bằng:
 \\[
 \mathbf{x}' = \frac{\mathbf{x}}{\|\|\mathbf{x}\|\|_2}
 \\]
