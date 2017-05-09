@@ -249,7 +249,7 @@ Tiếp theo, chúng ta tạo 1000 điểm dữ liệu được chọn _gần_ v�
 
 ```python
 X = np.random.rand(1000, 1)
-y = 4 + 3 * X + .2*np.random.randn(1000, 1)
+y = 4 + 3 * X + .2*np.random.randn(1000, 1) # noise added
 
 # Building Xbar 
 one = np.ones((X.shape[0],1))
