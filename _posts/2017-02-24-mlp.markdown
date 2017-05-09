@@ -318,7 +318,7 @@ Với cách làm tương tự, bạn đọc có thể suy ra:
 \frac{\partial J}{\partial b_j^{(l)}} = e_j^{(l)}
 \\]
 
-Nhận thấy rằng trong các công thức trên đây, việc tính các \\(e_j^{(k)}\\) đóng một vài trò quan trọng. Hơn nữa, để tính được giá trị này, ta cần tính được các \\(e_k^{(l+1)}\\). Nói cách khác, ta cần tính _ngược_ các giá trị này từ cuối. Cái tên _backpropagation_ cũng xuất phát từ việc này.
+Nhận thấy rằng trong các công thức trên đây, việc tính các \\(e_j^{(l)}\\) đóng một vài trò quan trọng. Hơn nữa, để tính được giá trị này, ta cần tính được các \\(e_j^{(l+1)}\\). Nói cách khác, ta cần tính _ngược_ các giá trị này từ cuối. Cái tên _backpropagation_ cũng xuất phát từ việc này.
 
 Việc tính toán các đạo hàm khi sử dụng SGD có thể tóm tắt như sau:
 
