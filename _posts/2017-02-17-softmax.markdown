@@ -179,7 +179,7 @@ def softmax_stable(Z):
     return A
 ```
 
-trong đó `axis = 0` nghĩa là lấy `max` theo cột (`axis = 1` sẽ lấy max theo hàng), `keepdims = True` để đảm bảo phép trừ giữa ma trận `V` và vector  thực hiện được. 
+trong đó `axis = 0` nghĩa là lấy `max` theo cột (`axis = 1` sẽ lấy max theo hàng), `keepdims = True` để đảm bảo phép trừ giữa ma trận `Z` và vector  thực hiện được. 
 
 
 
