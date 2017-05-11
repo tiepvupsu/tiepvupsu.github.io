@@ -79,7 +79,7 @@ Tôi viết đến đây không phải là để giới thiệu về Softmax Reg
 
 Trong Hình 1, phần TRAINING PHASE, chúng ta có thể thấy rằng có hai khối chính là _Feature Extraction_ và _Classification/Regression/Clustering..._ Các phương pháp _truyền thống_ thường xây dựng hai khối này qua các bước riêng rẽ. Phần Feature Extraction với dữ liệu ảnh có thể dùng các feature descriptor như [SIFT](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_feature2d/py_sift_intro/py_sift_intro.html), [SURF](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_feature2d/py_surf_intro/py_surf_intro.html), [HOG](http://www.learnopencv.com/histogram-of-oriented-gradients/); với dữ liệu văn bản thì có thể là [Bag of Words](2017/02/06/featureengineering/#bag-of-words) hoặc [TF-IDF](http://www.tfidf.com/). Nếu là các bài toán classification, phần còn lại có thể là SVM thông thường hay các bộ phân lớp _truyền thống_ khác. 
 
-Với sự phát triển của Deep Learning trong những năm gần đây, người ta cho rằng các hệ thống _end-to-end_ (từ đầu đến cuối) mang lại kết quả tốt hơn nhờ và việc các hai khối phía trên được huấn luyện cùng nhau, bổ trợ lẫn nhau. Thực tế cho thấy, các phương pháp _state-of-the-art_ đều là các mô hình _end-to-end_.
+Với sự phát triển của Deep Learning trong những năm gần đây, người ta cho rằng các hệ thống _end-to-end_ (từ đầu đến cuối) mang lại kết quả tốt hơn nhờ và việc các hai khối phía trên được huấn luyện cùng nhau, bổ trợ lẫn nhau. Thực tế cho thấy, các phương pháp _state-of-the-art_ thường là các mô hình _end-to-end_.
 
 Các phương pháp Support Vector Machine được chứng minh là tốt hơn Logistic Regression vì chúng có quan tâm đến việc tạo _margin_ lớn nhất giữa các classes. Câu hỏi đặt ra là: 
 
