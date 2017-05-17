@@ -510,13 +510,17 @@ Như vậy, với tập training, sai số vào khoảng 0.9 _sao_; với tập 
 
 * Việc xây dựng mô hình cho mỗi _users_ có thể được coi như bài toán Regression hoặc Classsification với training data cặp dữ liệu (_item_, _rating_) mà _user_ đó đã _rated_. _item_ là feature vector của _item_ và không phụ thuộc vào _user_, nó thường phụ thuộc vào các đặc điểm mô tả của _item_ hoặc cũng có thể được xác định bằng cách yêu cầu người dùng gắn _tag_. 
 
-* [Source code]
+* [Source code](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/23_recommendersys/python/MovieLens%20100k.ipynb)
 
 
 <a name="-tai-lieu-tham-khao"></a>
 
 ## 7. Tài liệu tham khảo
 
-[1] Chương 9
+[1] [Recommendation Systems - Stanford InfoLab](http://infolab.stanford.edu/~ullman/mmds/ch9.pdf)
 
-[2] Recommendation systems - Machine Learning - Andrew Ng
+[2] [Recommendation systems - Machine Learning - Andrew Ng](https://www.youtube.com/watch?v=saXRzxgFN0o&list=PL_npY1DYXHPT-3dorG7Em6d18P4JRFDvH)
+
+[3] [The Vector Space Model of text](https://stanford.edu/~rjweiss/public_html/IRiSS2013/text2/notebooks/tfidf.html)
+
+[4] [Content Based Recommendations | Stanford University](https://www.youtube.com/watch?v=2uxXPzm-7FY)
