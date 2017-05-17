@@ -8,8 +8,8 @@ permalink: 2017/05/17/contentbasedrecommendersys/
 mathjax: true
 tags: Recommendation-systems
 category: Recommendation-systems
-sc_project: 
-sc_security: 
+sc_project: 11345966
+sc_security: b9e55c79
 img: /assets/23_contentbasedrecommendersys/contentbased.png
 summary: Hệ thống gợi ý sản phẩm tới người dùng dựa trên thông tin sản phẩm.
 ---
