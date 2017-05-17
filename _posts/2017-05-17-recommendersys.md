@@ -1,15 +1,15 @@
 ---
 layout: post
 comments: true
-title:  "Bài 23: Recommender Systems - Collaborative Filtering"
-title2:  "22. Multi-class SVM"
-date:   2017-05-10 15:22:00
-permalink: 2017/05/10/recommendersys/
+title:  "Bài 23: Content-based Recommendation Systems"
+title2:  "23. Content-based Recommendation Systems"
+date:   2017-05-17 15:22:00
+permalink: 2017/05/17/recommendersys/
 mathjax: true
 tags: Linear-models
-category: Support-Vector-Machine
-sc_project: 11328682
-sc_security: 64e376fc
+category: Recommendation-systems
+sc_project: 
+sc_security: 
 img: \assets\22_multiclasssvm\cifar.png
 summary:
 ---
