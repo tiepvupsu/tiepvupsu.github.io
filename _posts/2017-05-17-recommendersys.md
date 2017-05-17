@@ -4,14 +4,14 @@ comments: true
 title:  "Bài 23: Content-based Recommendation Systems"
 title2:  "23. Content-based Recommendation Systems"
 date:   2017-05-17 15:22:00
-permalink: 2017/05/17/recommendersys/
+permalink: 2017/05/17/contentbasedrecommendersys/
 mathjax: true
 tags: Recommendation-systems
 category: Recommendation-systems
 sc_project: 
 sc_security: 
-img: /assets/23_recommendersys/contentbased.png
-summary:
+img: /assets/23_contentbasedrecommendersys/contentbased.png
+summary: Hệ thống gợi ý sản phẩm tới người dùng dựa trên thông tin sản phẩm.
 ---
 
 **Trong trang này:**
@@ -105,7 +105,7 @@ Như đã đề cập, có hai thực thể chính trong các Recommendation Sys
 <table width = "100%" style = "border: 0px solid white">
     <tr >
         <td width="40%" style = "border: 0px solid white" align = "center">
-        <img style="display:block;" width = "100%" src = "/assets/23_recommendersys/utility1.png">
+        <img style="display:block;" width = "100%" src = "/assets/23_contentbasedrecommendersys/utility1.png">
          </td>
         <td width="40%" style = "border: 0px solid white" align = "justify">
         Hình 1: Ví dụ về utility matrix với hệ thống Gợi ý bài hát. Các bài hát được người dùng đánh giá theo mức độ từ 0 đến 5 sao. Các dấu '?' nền màu xám ứng với việc dữ liệu chưa tồn tại trong cơ sở dữ liệu. Recommendation Systems cần phải <em>tự điền</em> các giá trị này.        
@@ -161,7 +161,7 @@ Trong ví dụ ở Hình 1 phía trên, chúng ta đơn giản hoá bài toán b
 
 <hr>
 <div class="imgcap">
-<img src ="/assets/23_recommendersys/contentbased.png" align = "center" width = "800">
+<img src ="/assets/23_contentbasedrecommendersys/contentbased.png" align = "center" width = "800">
 <br>
 <div class = "thecap">Hình 2: Giả sử feature vector cho mỗi <em>item</em> được cho trong cột cuối cùng. Với mỗi <em>user</em>, chúng ta cần tìm một mô hình \(\theta_i\) tương ứng sao cho mô hình thu được là <em>tốt nhất</em>.</div>
 </div> 
@@ -510,7 +510,7 @@ Như vậy, với tập training, sai số vào khoảng 0.9 _sao_; với tập 
 
 * Việc xây dựng mô hình cho mỗi _users_ có thể được coi như bài toán Regression hoặc Classsification với training data cặp dữ liệu (_item_, _rating_) mà _user_ đó đã _rated_. _item_ là feature vector của _item_ và không phụ thuộc vào _user_, nó thường phụ thuộc vào các đặc điểm mô tả của _item_ hoặc cũng có thể được xác định bằng cách yêu cầu người dùng gắn _tag_. 
 
-* [Source code](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/23_recommendersys/python/MovieLens%20100k.ipynb)
+* [Source code](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/23_contentbasedrecommendersys/python/MovieLens%20100k.ipynb)
 
 
 <a name="-tai-lieu-tham-khao"></a>
