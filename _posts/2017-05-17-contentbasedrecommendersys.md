@@ -163,35 +163,27 @@ Trong ví dụ ở Hình 1 phía trên, chúng ta đơn giản hoá bài toán b
 </div> 
 <hr> 
 
-Bài toán đi tìm mô hình \\(\theta_i\\) cho mỗi _user_ có thể được coi là một bài toán Regression trong trường hợp _ratings_ là một dải gía trị, hoặc bài toán _Classification_ trong trường hợp _ratings_ là một vài trường hợp cụ thể, như _like/dislike_ chẳng hạn. Dữ liệu training để xây dựng mỗi \\(\theta_i\\) là các cặp (_item profile, ratings_) tương ứng với các _items_ mà _user_ đó đã _rated_. Việc _điền_ các giá trị còn thiếu trong ma trận Utility chính là việc dự đoán đầu ra cho các _unrated items_ khi áp dụng mô hình \\(\theta_i\\) lên chúng. 
+Bài toán đi tìm mô hình \\(\theta_i\\) cho mỗi _user_ có thể được coi là một bài toán Regression trong trường hợp _ratings_ là một dải giá trị, hoặc bài toán _Classification_ trong trường hợp _ratings_ là một vài trường hợp cụ thể, như _like/dislike_ chẳng hạn. Dữ liệu training để xây dựng mỗi mô hình \\(\theta_i\\) là các cặp (_item profile, ratings_) tương ứng với các _items_ mà _user_ đó đã _rated_. Việc _điền_ các giá trị còn thiếu trong ma trận Utility chính là việc dự đoán đầu ra cho các _unrated items_ khi áp dụng mô hình \\(\theta_i\\) lên chúng. 
 
-Việc lựa chọn mô hình Regression hay Classification nào tuỳ thuộc vào ứng dụng. Tôi sẽ lấy ví dụ về một mô hình đơn giản nhất: mô hình tuyến tính, mà cụ thể là [Linear Regression với regularization, tức Ridge Regression](/2017/03/04/overfitting/#-\\l\\-regularization). 
+Việc lựa chọn mô hình Regression/Classification nào tuỳ thuộc vào ứng dụng. Tôi sẽ lấy ví dụ về một mô hình đơn giản nhất: mô hình tuyến tính, mà cụ thể là [Linear Regression với regularization, tức Ridge Regression](/2017/03/04/overfitting/#-\\l\\-regularization). 
 
 <a name="-xay-dung-ham-mat-mat"></a>
 
 ### 3.2. Xây dựng hàm mất mát
 
-Giả sử rằng số _users_ là \\(N\\), số _items_ là \\(M\\), _utility maxtrix_ được mô tả bởi ma trận \\(\mathbf{Y}\\). Thành phần ở hàng thứ \\(m\\), cột thứ \\(n\\) của \\(\mathbf{Y}\\) là _mức độ quan tâm_ (ở đây là số sao đã _rate_) của _user_ thứ \\(n\\) lên sản phẩm thứ \\(m\\) mà hệ thống đã thu thập được. Ma trận \\(\mathbf{Y}\\) bị khuyết rất nhiều thành phần tương ứng với các giá trị mà hệ thống cần dự đoán. Thêm nữa, gọi \\(\mathbf{R}\\) là ma trận _rated or not_ thể hiện việc một _user_ đã _rated_ một _item_ hay chưa. Cụ thể, \\(r\_{ij}\\) bằng 1 nếu _item_ thứ \\(i\\) đã được _rated_ bởi _user_ thứ \\(j\\), bằng 0 trong trường hợp còn lại. 
+Giả sử rằng số _users_ là \\(N\\), số _items_ là \\(M\\), _utility maxtrix_ được mô tả bởi ma trận \\(\mathbf{Y}\\). Thành phần ở hàng thứ \\(m\\), cột thứ \\(n\\) của \\(\mathbf{Y}\\) là _mức độ quan tâm_ (ở đây là số sao đã _rate_) của _user_ thứ \\(n\\) lên sản phẩm thứ \\(m\\) mà hệ thống đã thu thập được. Ma trận \\(\mathbf{Y}\\) bị khuyết rất nhiều thành phần tương ứng với các giá trị mà hệ thống cần dự đoán. Thêm nữa, gọi \\(\mathbf{R}\\) là ma trận _rated or not_ thể hiện việc một _user_ đã _rated_ một _item_ hay chưa. Cụ thể, \\(r\_{ij}\\) bằng 1 nếu _item_ thứ \\(i\\) đã được _rated_ bởi _user_ thứ \\(j\\), bằng 0 trong trường hợp ngược lại. 
 
 
 
 **Mô hình tuyến tính:**
 
-Giả sử rằng ta có thể tìm được một mô hình cho mỗi _user_, minh hoạ bởi vector cột hệ số \\(\mathbf{w}\_i\\) sao cho _mức độ quan tâm_ của một _user_ tới một _item_ có thể tính được bằng một hàm tuyến tính:
+Giả sử rằng ta có thể tìm được một mô hình cho mỗi _user_, minh hoạ bởi vector cột hệ số \\(\mathbf{w}\_i\\) và bias \\(b_n\\) sao cho _mức độ quan tâm_ của một _user_ tới một _item_ có thể tính được bằng một hàm tuyến tính:
 
 \\[
 y_{mn} = \mathbf{x}_m \mathbf{w}_n + b_n ~~~~(1)
 \\]
 
 (_Chú ý rằng \\(\mathbf{x}\_m\\) là một vector hàng, \\(\mathbf{w}\_n\\) là một vector cột_.)
-
-Một lần nữa, để cho các phép tính đơn giản hơn, chúng ta sẽ lại dùng đến [Bias trick](link), tức thêm 1 thành phần bằng 1 nữa vào mỗi feature vector và ghép \\(b\\) vào vector hệ số \\(\mathbf{w}\\). Lúc này, ta sẽ viết lại biểu thức \\(1\\) dưới dạng:
-
-\\[
-y_{mn} = \mathbf{x}_m^T\mathbf{w}_n ~~~~(2)
-\\]
-
-_Chú ý rằng cả vector hệ số \\(mathbf{w}\\) và feature vector \\(\mathbf{x}\\) trong \\((2)\\) là khác với chúng trong \\((1)\\) một chút_. 
 
 Xét một _user_ thứ \\(n\\) bất kỳ, nếu ta coi training set là tập hợp các thành phần đã được _điền_ của \\(\mathbf{y}_n\\), ta có thể xây dựng hàm mất mát tương tự như Ridge Regression như sau: 
 
@@ -213,12 +205,12 @@ là tổng các phần tử trên cột thứ \\(n\\) của ma trận _rated or 
 
 Các bạn đã thấy _loss function_ này _quen_ chưa? 
 
-Vì biểu thức _loss function_ chỉ phụ thuộc vào các _items_ đã được rated, ta có thể rút gọn nó bằng cách đặt \\(\hat{\mathbf{y}}\_n\\) là _sub vector_ của \\(\mathbf{y}\\) được xây dựng bằng cách _trích_ các thành phần _khác dấu ?_ ở cột thứ \\(n\\), tức đã được _rated_ bởi _user_ thứ \\(n\\) trong Utility Matrix \\(\mathbf{Y}\\). Đồng thời, đặt \\(\hat{\mathbf{X}}\_n\\) là _sub matrix_ của ma trận feature \\(\mathbf{X}\\), được tạo bằng cách _trích_ các cột tương ứng với các _items_ đã được _rated_ bởi _user_ thứ \\(n\\). (_Xem ví dụ phía dưới để hiểu rõ hơn_). Khi đó, biểu thức hàm mất mát của mô hình cho _user_ thứ \\(n\\) được viết gọn thành: 
+Vì biểu thức _loss function_ chỉ phụ thuộc vào các _items_ đã được rated, ta có thể rút gọn nó bằng cách đặt \\(\hat{\mathbf{y}}\_n\\) là _sub vector_ của \\(\mathbf{y}\\) được xây dựng bằng cách _trích_ các thành phần _khác dấu ?_ ở cột thứ \\(n\\), tức đã được _rated_ bởi _user_ thứ \\(n\\) trong Utility Matrix \\(\mathbf{Y}\\). Đồng thời, đặt \\(\hat{\mathbf{X}}\_n\\) là _sub matrix_ của ma trận feature \\(\mathbf{X}\\), được tạo bằng cách _trích_ các hàng tương ứng với các _items_ đã được _rated_ bởi _user_ thứ \\(n\\). (_Xem ví dụ phía dưới để hiểu rõ hơn_). Khi đó, biểu thức hàm mất mát của mô hình cho _user_ thứ \\(n\\) được viết gọn thành: 
 
 \\[
 \mathcal{L}_n = \frac{1}{2s_n} \|\|\hat{\mathbf{X}}_n\mathbf{w}_n + b_n \mathbf{e}_n- \hat{\mathbf{y}}_n\|\|_2^2 + \frac{\lambda}{2s_n} \|\|\mathbf{w}_n\|\|_2^2
 \\]
-trong đó, \\(\mathbf{e}_n\\) là vector chứa \\(s_n\\) phần tử 1.
+trong đó, \\(\mathbf{e}_n\\) là vector cột chứa \\(s_n\\) phần tử 1.
 
 Đây _chính xác_ là hàm mất mát của Ridge Regression. Cặp nghiệm \\(\mathbf{w}_n, b_n\\) có thể được tìm qua Stochastic Gradient Descent (SGD), hoặc Mini-batch GD. Tôi không đi sâu vào việc tính đạo hàm theo \\(\mathbf{w}_n\\) và \\(b_n\\) của \\(\mathcal{L}_n\\) nữa. Việc này đã được đề cập nhiều trong các bài trước. Trong bài này, tôi sẽ sử dụng class `Ridge` trong `sklearn.linear_model`.
 
@@ -229,7 +221,7 @@ Nếu vẫn có điểm chưa hiểu, bạn đọc có thể xem ví dụ nhỏ 
 
 ### 3.3. Ví dụ về hàm mất mát cho user E 
 
-Quay trở lại với ví dụ trong hình 2, _feature matrix_ (đã thêm 1 vào hàng cuối cùng theo bias trick) cho các _items_ (mỗi cột tương ứng với một _item_) là: 
+Quay trở lại với ví dụ trong hình 2, _feature matrix_ cho các _items_ (mỗi hàng tương ứng với một _item_) là: 
 \\[
 \mathbf{X} = 
 \left[
@@ -318,7 +310,7 @@ Sau khi download và giải nén, chúng ta sẽ thu được rất nhiều các
 ```
 Trong mỗi dòng, chúng ta sẽ thấy _id_ của phim, tên phim, ngày phát hành, link trên imdb, và các số nhị phân `0`, `1` phía cuối để chỉ ra bộ phim thuộc các thể loại nào trong 19 thể loại đã cho trong `u.genre`. Một bộ phim có thể thuộc nhiều thể loại khác nhau. Thông tin về thể loại này sẽ được dùng để xây dựng item profiles. 
 
-Với cơ sở dữ liệu này, chúng ta sẽ sử dụng thư viện [`pandas`](http://pandas.pydata.org), có thể được cài đặt bằng `pip install pandas`. 
+Với cơ sở dữ liệu này, chúng ta sẽ sử dụng thư viện [`pandas`](http://pandas.pydata.org) để trích xuất dữ liệu, có thể được cài đặt bằng `pip install pandas`. 
 
 
 ```python
