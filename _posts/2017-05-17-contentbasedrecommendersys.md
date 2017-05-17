@@ -235,7 +235,7 @@ Quay trở lại với ví dụ trong hình 2, _feature matrix_ cho các _items_
 \right]
 \\]
 
-Xét trường hợp của _user E_ với \\(n = 5\\), \\(\mathbf{y}\_5 = [5, ?, ?, 4, ?]^T \Rightarrow \mathbf{r}\_5 = [1, 0, 0, 1, 0]^T\\). Vì _E_ mới chỉ _rated_ cho _items_ thứ nhất và thứ tư nên \\(s_5 = 2\\). Hơn nữa:
+Xét trường hợp của _user E_ với \\(n = 5\\), \\(\mathbf{y}\_5 = [1, ?, ?, 4, ?]^T \Rightarrow \mathbf{r}\_5 = [1, 0, 0, 1, 0]^T\\). Vì _E_ mới chỉ _rated_ cho _items_ thứ nhất và thứ tư nên \\(s_5 = 2\\). Hơn nữa:
 \\[
 \hat{\mathbf{X}}_5 = 
 \left[
@@ -246,7 +246,7 @@ Xét trường hợp của _user E_ với \\(n = 5\\), \\(\mathbf{y}\_5 = [5, ?,
 \right],
 \hat{\mathbf{y}}_5 = \left[
 \begin{matrix}
-5 \\\
+1 \\\
 4 
 \end{matrix}
 \right], ~
@@ -273,7 +273,7 @@ Khi đó, hàm mất mát cho hệ số tương ứng với _user E_ là:
 \right] -
 \left[
 \begin{matrix}
-5 \\\
+1 \\\
 4
 \end{matrix}
 \right]\|\|_2^2 + \frac{\lambda}{4} \|\|\mathbf{w}_5\|\|_2^2
