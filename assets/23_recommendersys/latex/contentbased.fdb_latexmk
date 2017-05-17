@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1494539195 "contentbased.tex" "contentbased.pdf" "contentbased" 1494539196
-  "/dev/null" 1494539196 0 d41d8cd98f00b204e9800998ecf8427e ""
+["pdflatex"] 1494985753 "contentbased.tex" "contentbased.pdf" "contentbased" 1494985754
+  "/dev/null" 1494985754 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/usr/local/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmbx5.tfm" 1136768653 1332 f817c21a1ba54560425663374f1b651a ""
@@ -11,7 +11,6 @@
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/vntex/vnr/vnssbx10.tfm" 1136768653 3856 e4fc24997e8a64403185a13a868a4471 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb" 1248133631 34811 78b52f49e893bcba91bd7581cdc144c0 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1248133631 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
-  "/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb" 1248133631 36281 c355509802a035cadc5f15869451dcee ""
   "/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1248133631 32762 224316ccc9ad3ca0423a14971cfa7fc1 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
@@ -123,10 +122,10 @@
   "/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1489522183 1888048 f2c5faed5981a516f406b2ccc20bff71 ""
   "/usr/local/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt" 1463979169 3873397 413fbfbbedb8e719ddc392043a7add02 ""
   "/usr/local/texlive/2016/texmf.cnf" 1463979140 577 2938757e76f31531e65cc647e3507693 ""
-  "contentbased.aux" 1494539196 178 7de723ce613ce6198728a5c5cca5ccfe ""
-  "contentbased.tex" 1494539195 3201 5fb24ff408a82206e52a6571b962c8f3 ""
+  "contentbased.aux" 1494985754 178 7de723ce613ce6198728a5c5cca5ccfe ""
+  "contentbased.tex" 1494985753 3209 f40fdce3f13931b43349c45915c9596b ""
   "vietnam.ldf" 1494210093 1979 1d709b8410726441ea017a355079d51b ""
   (generated)
-  "contentbased.log"
   "contentbased.aux"
+  "contentbased.log"
   "contentbased.pdf"
