@@ -405,7 +405,7 @@ def get_items_rated_by_user(rate_matrix, user_id):
     y = rate_matrix[:,0] # all users
     # item indices rated by user_id
     # we need to +1 to user_id since in the rate_matrix, id starts from 1 
-    # but id in python starts from 0
+    # while index in python starts from 0
     ids = np.where(y == user_id +1)[0] 
     item_ids = rate_matrix[ids, 1] - 1 # index starts from 0 
     scores = rates[ids, 2]
@@ -496,7 +496,7 @@ Như vậy, với tập training, sai số vào khoảng 0.9 _sao_; với tập 
 
 * Content-based Recommendation Systems là phương pháp đơn giản nhất trong các hệ thống Recommendation Systems. Đặc điểm của phương pháp này là việc xây dựng mô hình cho mỗi _user_ không phụ thuộc vào các _users_ khác. 
 
-* Việc xây dựng mô hình cho mỗi _users_ có thể được coi như bài toán Regression hoặc Classsification với training data cặp dữ liệu (_item_, _rating_) mà _user_ đó đã _rated_. _item_ là feature vector của _item_ và không phụ thuộc vào _user_, nó thường phụ thuộc vào các đặc điểm mô tả của _item_ hoặc cũng có thể được xác định bằng cách yêu cầu người dùng gắn _tag_. 
+* Việc xây dựng mô hình cho mỗi _users_ có thể được coi như bài toán Regression hoặc Classsification với training data là cặp dữ liệu (_item profile_, _rating_) mà _user_ đó đã _rated_. _item profile_ không phụ thuộc vào _user_, nó thường phụ thuộc vào các đặc điểm mô tả của _item_ hoặc cũng có thể được xác định bằng cách yêu cầu người dùng gắn _tag_. 
 
 * [Source code](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/23_contentbasedrecommendersys/python/MovieLens%20100k.ipynb)
 
