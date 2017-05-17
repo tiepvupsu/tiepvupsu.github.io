@@ -10,7 +10,7 @@ tags: Linear-models
 category: Recommendation-systems
 sc_project: 
 sc_security: 
-img: \assets\22_multiclasssvm\cifar.png
+img: /assets/23_recommendersys/contentbased.png
 summary:
 ---
 
