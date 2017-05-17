@@ -6,7 +6,7 @@ title2:  "23. Content-based Recommendation Systems"
 date:   2017-05-17 15:22:00
 permalink: 2017/05/17/recommendersys/
 mathjax: true
-tags: Linear-models
+tags: Recommendation-systems
 category: Recommendation-systems
 sc_project: 
 sc_security: 
