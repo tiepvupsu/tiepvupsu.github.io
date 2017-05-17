@@ -523,4 +523,4 @@ Như vậy, với tập training, sai số vào khoảng 0.9 _sao_; với tập 
 
 [3] [The Vector Space Model of text](https://stanford.edu/~rjweiss/public_html/IRiSS2013/text2/notebooks/tfidf.html)
 
-[4] [Content Based Recommendations | Stanford University](https://www.youtube.com/watch?v=2uxXPzm-7FY)
+[4] [Content Based Recommendations - Stanford University](https://www.youtube.com/watch?v=2uxXPzm-7FY)
