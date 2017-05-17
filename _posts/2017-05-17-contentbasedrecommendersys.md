@@ -398,9 +398,9 @@ Tiếp theo, với mỗi _user_, chúng ta cần đi tìm những bộ phim nào
 import numpy as np
 def get_items_rated_by_user(rate_matrix, user_id):
     """
-    in each line of rate_matrix, we have infor: user_id, item_id, rating, time_stamp
+    in each line of rate_matrix, we have infor: user_id, item_id, rating (scores), time_stamp
     we care about the first three values
-    return (item_ids, scores)
+    return (item_ids, scores) rated by user user_id
     """
     y = rate_matrix[:,0] # all users
     # item indices rated by user_id
