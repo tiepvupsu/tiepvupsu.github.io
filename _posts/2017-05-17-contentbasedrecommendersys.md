@@ -33,7 +33,7 @@ summary: Hệ thống gợi ý sản phẩm tới người dùng dựa trên th�
     - [4.3. Tìm mô hình cho mỗi user](#-tim-mo-hinh-cho-moi-user)
     - [4.4. Đánh giá mô hình](#-danh-gia-mo-hinh)
 - [5. Thảo luận](#-thao-luan)
-- [7. Tài liệu tham khảo](#-tai-lieu-tham-khao)
+- [6. Tài liệu tham khảo](#-tai-lieu-tham-khao)
 
 <!-- /MarkdownTOC -->
 
@@ -515,7 +515,7 @@ Như vậy, với tập training, sai số vào khoảng 0.9 _sao_; với tập 
 
 <a name="-tai-lieu-tham-khao"></a>
 
-## 7. Tài liệu tham khảo
+## 6. Tài liệu tham khảo
 
 [1] [Recommendation Systems - Stanford InfoLab](http://infolab.stanford.edu/~ullman/mmds/ch9.pdf)
 
