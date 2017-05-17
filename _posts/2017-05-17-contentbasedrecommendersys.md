@@ -11,7 +11,7 @@ category: Recommendation-systems
 sc_project: 11345966
 sc_security: b9e55c79
 img: /assets/23_contentbasedrecommendersys/contentbased.png
-summary: Hệ thống gợi ý sản phẩm tới người dùng dựa trên thông tin sản phẩm.
+summary: Hệ thống đơn giản gợi ý sản phẩm tới người dùng.
 ---
 
 **Trong trang này:**
