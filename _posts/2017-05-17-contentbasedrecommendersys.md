@@ -48,7 +48,7 @@ summary: Hệ thống đơn giản gợi ý sản phẩm tới người dùng.
 
 * Khi bạn mua một món hàng trên Amazon, hệ thống sẽ tự động gợi ý "Frequently bought together", hoặc nó biết bạn có thể thích món hàng nào dựa trên lịch sử mua hàng của bạn. 
 
-* Facebook hiển thị quảng cáo những sản phẩm có liên qua đến từ khoá bạn vừa tìm kiếm.
+* Facebook hiển thị quảng cáo những sản phẩm có liên quan đến từ khoá bạn vừa tìm kiếm.
 
 * Facebook gợi ý kết bạn.
 
