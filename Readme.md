@@ -1,3 +1,5 @@
-# My blog
+Hello,
 
-This is my blog, uses [Jekyll](http://jekyllrb.com/). 
+This is my Vietnamese blog for Basic Machine Learning:
+
+[http://machinelearningcoban.com/](http://machinelearningcoban.com/)
