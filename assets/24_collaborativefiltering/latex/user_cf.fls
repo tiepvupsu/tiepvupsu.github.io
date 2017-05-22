@@ -2,8 +2,8 @@ PWD /Users/tiepvu/PROJECTS/tiepvupsu.github.io/assets/24_collaborativefiltering/
 INPUT /usr/local/texlive/2016/texmf.cnf
 INPUT /usr/local/texlive/2016/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT utility2.tex
-OUTPUT utility2.log
+INPUT user_cf.tex
+OUTPUT user_cf.log
 INPUT /usr/local/texlive/2016/texmf-dist/tex/latex/standalone/standalone.cls
 INPUT /usr/local/texlive/2016/texmf-dist/tex/latex/standalone/standalone.cls
 INPUT /usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/ifluatex.sty
@@ -142,9 +142,9 @@ INPUT /usr/local/texlive/2016/texmf-dist/tex/latex/base/ot1enc.dfu
 INPUT /usr/local/texlive/2016/texmf-dist/tex/latex/base/ot1enc.dfu
 INPUT /usr/local/texlive/2016/texmf-dist/tex/latex/base/omsenc.dfu
 INPUT /usr/local/texlive/2016/texmf-dist/tex/latex/base/omsenc.dfu
-INPUT utility2.aux
-INPUT utility2.aux
-OUTPUT utility2.aux
+INPUT user_cf.aux
+INPUT user_cf.aux
+OUTPUT user_cf.aux
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmss10.tfm
 INPUT /usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -174,9 +174,9 @@ INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmbx7.tfm
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmbx5.tfm
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmss9.tfm
-OUTPUT utility2.pdf
+OUTPUT user_cf.pdf
 INPUT /usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map
-INPUT utility2.aux
+INPUT user_cf.aux
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
