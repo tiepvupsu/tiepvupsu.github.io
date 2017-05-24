@@ -10,7 +10,7 @@ tags: Recommendation-systems
 category: Recommendation-systems
 sc_project: 
 sc_security: 
-img: /assets/23_contentbasedrecommendersys/contentbased.png
+img: /assets/24_collaborativefiltering/item_cf.png
 summary: 
 ---
 
@@ -551,6 +551,8 @@ _Các bạn cũng có thể thay _neighborhood size_ `k` bằng các giá trị 
 
 * [Source code](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/24_collaborativefiltering/python/CF.ipynb)
   <a name="-tai-lieu-tham-khao"></a>
+
+<a name="-tai-lieu-tham-khao"></a>
 
 ## 6. Tài liệu tham khảo
 
