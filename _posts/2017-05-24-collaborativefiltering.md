@@ -8,8 +8,8 @@ permalink: 2017/05/24/collaborativefiltering/
 mathjax: true
 tags: Recommendation-systems
 category: Recommendation-systems
-sc_project: 
-sc_security: 
+sc_project: 11351973
+sc_security: 2a35b75e
 img: /assets/24_collaborativefiltering/item_cf.png
 summary: 
 ---
