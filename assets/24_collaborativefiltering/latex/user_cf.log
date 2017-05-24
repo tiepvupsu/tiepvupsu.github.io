@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  24 MAY 2017 17:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  24 MAY 2017 19:33
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -950,18 +950,18 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
-LaTeX Font Info:    Try loading font information for OMS+cmss on input line 396
+LaTeX Font Info:    Try loading font information for OMS+cmss on input line 400
 .
-LaTeX Font Info:    No file OMScmss.fd. on input line 396.
+LaTeX Font Info:    No file OMScmss.fd. on input line 400.
 
 LaTeX Font Warning: Font shape `OMS/cmss/m/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textbraceleft' on input line 396.
+(Font)              for symbol `textbraceleft' on input line 400.
 
 
 LaTeX Font Warning: Font shape `OMS/cmss/bx/n' undefined
 (Font)              using `OMS/cmss/m/n' instead
-(Font)              for symbol `textbraceleft' on input line 399.
+(Font)              for symbol `textbraceleft' on input line 403.
 
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -1038,7 +1038,7 @@ exlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/local/te
 xlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/t
 exlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/te
 xlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on user_cf.pdf (1 page, 115400 bytes).
+Output written on user_cf.pdf (1 page, 115392 bytes).
 PDF statistics:
  59 PDF objects out of 1000 (max. 8388607)
  43 compressed objects within 1 object stream
