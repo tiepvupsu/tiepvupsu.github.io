@@ -216,7 +216,7 @@ _Nếu bạn đọc chưa quen thuộc với khái niệm norm, bạn được k
 
 Hàm số này có một vài đặc điểm đang lưu ý:
 
-* Thứ nhất, \\(\\|\mathbf{w}\\|\_2^2\\) là một hàm số _rất mượt_, đạo hàm của nó đơn giản là \\(\mathbf{w}\\), vì vậy đạo hàm của _regularized loss function_ cũng rất dễ tính, chúng ta có thể hoàn toàn dùng các phương pháp dựa trên gradient để cập nhật nghiệm. Cụ thể:
+* Thứ nhất, \\(\\|\mathbf{w}\\|\_2^2\\) là một hàm số _rất mượt_, tức có đạo hàm tại mọi điểm, đạo hàm của nó đơn giản là \\(\mathbf{w}\\), vì vậy đạo hàm của _regularized loss function_ cũng rất dễ tính, chúng ta có thể hoàn toàn dùng các phương pháp dựa trên gradient để cập nhật nghiệm. Cụ thể:
 \\[
 \frac{\partial J_{\text{reg}} }{\partial \mathbf{w}} = \frac{\partial J}{\partial \mathbf{w}} + \lambda \mathbf{w}
 \\]
