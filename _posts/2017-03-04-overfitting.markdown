@@ -126,6 +126,12 @@ Chúng ta vẫn quen với việc chia tập dữ liệu ra thành hai tập nh�
 
 Phương pháp đơn giản nhất là _trích_ từ tập training data ra một tập con nhỏ và thực hiện việc đánh giá mô hình trên tập con nhỏ này. Tập con nhỏ __được trích ra từ training set__ này được gọi là _validation set_. Lúc này, __training set là phần còn lại của training set ban đầu__. Train error được tính trên training set mới này, và có một khái niệm nữa được định nghĩa tương tự như trên _validation error_, tức error được tính trên tập validation.
 
+>> Việc này giống như khi bạn ôn thi. Giả sử bạn không biết đề thi như thế nào nhưng có 10 bộ đề thi từ các năm trước. Để xem trình độ của mình trước khi thi thế nào, có một cách là bỏ riêng một bộ đề ra, không ôn tập gì. Việc ôn tập sẽ được thực hiện dựa trên 9 bộ còn lại. Sau khi ôn tập xong, bạn bỏ bộ đề đã để riêng ra làm thử và kiểm tra kết quả, như thế mới "khách quan", mới giống như thi thật. 
+
+>> 10 bộ đề ở các năm trước là "toàn bộ" training set bạn có. Để tránh việc học lệch, học tủ theo chỉ 10 bộ, bạn tách 9 bộ ra làm training set thật, bộ còn lại là validation test. Khi làm như thế thì sẽ hạn chế việc học "lệch tủ", tức overfitting.
+
+
+
 Với khái niệm mới này, ta tìm mô hình sao cho cả _train eror_ và _validation error_ đều nhỏ, qua đó có thể dự đoán được rằng _test error_ cũng nhỏ. Phương pháp thường được sử dụng là sử dụng nhiều mô hình khác nhau. Mô hình nào cho _validation error_ nhỏ nhất sẽ là mô hình tốt.
 
 Thông thường, ta bắt đầu từ mô hình đơn giản, sau đó tăng dần độ phức tạp của mô hình. Tới khi nào _validation error_ có chiều hướng tăng lên thì chọn mô hình ngay trước đó. Chú ý rằng mô hình càng phức tạp, _train error_ có xu hướng càng nhỏ đi.
