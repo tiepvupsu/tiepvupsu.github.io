@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Bài 24: Collaborative Filtering"
+title:  "Bài 24: Collaborative Filtering cho Recommendation Systems"
 title2:  "24. Collaborative Filtering"
 date:   2017-05-24 15:22:00
 permalink: 2017/05/24/collaborativefiltering/
