@@ -55,8 +55,6 @@ Cấu trúc của bài viết như sau: Mục 2 sẽ trình bày _User-user Coll
 
 ## 2. User-user Collaborative Filtering 
 
-
-
 <a name="-similarity-functions"></a>
 
 ### 2.1. Similarity functions 
@@ -550,7 +548,6 @@ _Các bạn cũng có thể thay _neighborhood size_ `k` bằng các giá trị 
 
 
 * [Source code](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/24_collaborativefiltering/python/CF.ipynb)
-  <a name="-tai-lieu-tham-khao"></a>
 
 <a name="-tai-lieu-tham-khao"></a>
 
