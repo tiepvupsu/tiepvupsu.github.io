@@ -1,8 +1,8 @@
 ---
 layout: post
 comments: true
-title:  "Bài 24: Collaborative Filtering cho Recommendation Systems"
-title2:  "24. Collaborative Filtering"
+title:  "Bài 24: Neighborhood-Based Collaborative Filtering"
+title2:  "24. Neighborhood-Based Collaborative Filtering"
 date:   2017-05-24 15:22:00
 permalink: 2017/05/24/collaborativefiltering/
 mathjax: true
@@ -92,10 +92,12 @@ Một giá trị khả dĩ hơn cho việc này là trung bình cộng của cá
 
 Hãy cùng xem ví dụ trong Hình 2a) và 2b).
 
+<hr>
 <div class="imgcap">
 <img src ="\assets\24_collaborativefiltering\user_cf.png" align = "center" width = "800">
 <div class = "thecap" align = "left">Hình 2: Ví dụ mô tả User-user Collaborative Filtering. a) Utility Matrix ban đầu. b) Utility Matrix đã được chuẩn hoá. c) User similarity matrix. d) Dự đoán các (normalized) <em>ratings</em> còn thiếu. e) Ví dụ về cách dự đoán normalized rating của \(u_1\) cho \(i_1\). f) Dự đoán các (denormalized) <em>ratings</em> còn thiếu. </div>
 </div> 
+<hr>
 
 **Chuẩn hoá dữ liệu:**
 
@@ -543,9 +545,6 @@ _Các bạn cũng có thể thay _neighborhood size_ `k` bằng các giá trị 
 * Similarity function thường được dụng là **Cosine similarity** hoặc **Pearson correlation**.
 
 * User-user CF có một vài hạn chế khi lượng _users_ là lớn. Trong các trường hợp đó, Item-item thường được sử dụng và cho kết quả tốt hơn.
-
-* [Collaborative Filtering by Andrew Ng](https://www.youtube.com/watch?v=KkMAgWlYCAQ&index=3&list=PL_npY1DYXHPT-3dorG7Em6d18P4JRFDvH) có cách xây dựng hệ thống khác. Theo tôi, cách đó được xếp vào nhóm Matrix Factorization, có thể sẽ được tôi trình bày trong bài viết tiếp theo.
-
 
 * [Source code](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/24_collaborativefiltering/python/CF.ipynb)
 
