@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title:  "Bài 25: Matrix Factorization Collaborative Filtering"
-title2:  "25. Collaborative Filtering"
+title2:  "25. Matrix Factorization Collaborative Filtering"
 date:   2017-05-31 15:22:00
 permalink: 2017/05/31/matrixfactorization/
 mathjax: true
