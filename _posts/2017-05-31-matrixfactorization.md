@@ -1,4 +1,4 @@
-2---
+---
 layout: post
 comments: true
 title:  "Bài 25: Matrix Factorization Collaborative Filtering"
