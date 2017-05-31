@@ -533,7 +533,10 @@ với \\(b_m, d_n, \mu\\) lần lượt là bias của _item_ \\(m\\), _user_ \\
 
 Lúc này, hàm mất mát có thể được thay đổi thành: 
 \\[
-\mathcal{L}(\mathbf{X}, \mathbf{W}, \mathbf{b}, \mathbf{d}) = \frac{1}{2s} \sum_{n=1}^N \sum_{m:r_{mn} = 1} (\mathbf{x}\_m\mathbf{w}\_n + b_m + d_n +\mu - y\_{mn})^2 + \frac{\lambda}{2} (\|\|\mathbf{X}\|\|_F^2 + \|\|\mathbf{W}\|\|_F^2 + \|\|\mathbf{b}\|\|_2^2  + \|\|\mathbf{d}\|\|_2^2)
+\begin{eqnarray}
+\mathcal{L}(\mathbf{X}, \mathbf{W}, \mathbf{b}, \mathbf{d}) &=& \frac{1}{2s} \sum_{n=1}^N \sum_{m:r_{mn} = 1} (\mathbf{x}\_m\mathbf{w}\_n + b_m + d_n +\mu - y\_{mn})^2 + \\\ 
+&&\frac{\lambda}{2} (\|\|\mathbf{X}\|\|_F^2 + \|\|\mathbf{W}\|\|_F^2 + \|\|\mathbf{b}\|\|_2^2  + \|\|\mathbf{d}\|\|_2^2)
+\end{eqnarray}
 \\]
 
 Việc tính toán đạo hàm cho từng biến không quá phức tạp, tôi sẽ không bàn tiếp ở đây. Tuy nhiên, nếu bạn quan tâm, bạn có thể tham khảo [source code mà tôi viết tại đây](https://github.com/tiepvupsu/tiepvupsu.github.io/tree/master/assets/25_mf/python). Link này cũng kèm theo các ví dụ nêu trong Mục 3 và dữ liệu liên quan. 
