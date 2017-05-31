@@ -11,7 +11,7 @@ category: Recommendation-systems
 sc_project: 11351973
 sc_security: 2a35b75e
 img: /assets/24_collaborativefiltering/item_cf.png
-summary: 
+summary: Phương pháp suy luận mức quan tâm của một người dùng cho một sản phẩn dựa trên hành vi của những người dùng tương tự. 
 ---
 
 **Trong trang này:**
