@@ -535,7 +535,7 @@ Lúc này, hàm mất mát có thể được thay đổi thành:
 \\[
 \begin{eqnarray}
 \mathcal{L}(\mathbf{X}, \mathbf{W}, \mathbf{b}, \mathbf{d}) &=& \frac{1}{2s} \sum_{n=1}^N \sum_{m:r_{mn} = 1} (\mathbf{x}\_m\mathbf{w}\_n + b_m + d_n +\mu - y\_{mn})^2 + \\\ 
-&&\frac{\lambda}{2} (\|\|\mathbf{X}\|\|_F^2 + \|\|\mathbf{W}\|\|_F^2 + \|\|\mathbf{b}\|\|_2^2  + \|\|\mathbf{d}\|\|_2^2)
+&& + \frac{\lambda}{2} (\|\|\mathbf{X}\|\|_F^2 + \|\|\mathbf{W}\|\|_F^2 + \|\|\mathbf{b}\|\|_2^2  + \|\|\mathbf{d}\|\|_2^2)
 \end{eqnarray}
 \\]
 
