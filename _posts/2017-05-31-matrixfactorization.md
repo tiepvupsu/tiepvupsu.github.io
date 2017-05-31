@@ -11,7 +11,7 @@ category: Recommendation-systems
 sc_project: 11358048
 sc_security: 5bef7cd2
 img: /assets/25_mf/mf1.png
-summary: 
+summary: Trong bài viết này, chúng ta sẽ làm quen với một hướng tiếp cận khác cho Collaborative Filtering dựa trên Matrix Factorization (hoặc Matrix Decomposition), tức Phân tích ma trận thành nhân tử.
 ---
 
 **Trong trang này:**
