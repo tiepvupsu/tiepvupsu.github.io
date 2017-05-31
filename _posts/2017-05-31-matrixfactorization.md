@@ -23,7 +23,7 @@ summary:
     - [2.2. Tối ưu hàm mất mát](#-toi-uu-ham-mat-mat)
 - [3. Lập trình Python](#-lap-trinh-python)
     - [3.1. `class MF`](#-class-mf)
-    - [3.2. Áp dụn lên MovieLens 100k](#-ap-dun-len-movielens-k)
+    - [3.2. Áp dụng lên MovieLens 100k](#-ap-dung-len-movielens-k)
     - [3.3. Áp dụng lên MovieLens 1M](#-ap-dung-len-movielens-m)
 - [4. Thảo luận](#-thao-luan)
     - [4.1. Khi có bias](#-khi-co-bias)
@@ -382,9 +382,9 @@ class MF(object):
 ```
 
 
-<a name="-ap-dun-len-movielens-k"></a>
+<a name="-ap-dung-len-movielens-k"></a>
 
-### 3.2. Áp dụn lên MovieLens 100k
+### 3.2. Áp dụng lên MovieLens 100k
 
 Chúng ta cùng quay lại với cơ sở dữ liệu [MovieLens 100k](/2017/05/17/contentbasedrecommendersys/#-co-so-du-lieu-movielens-k)
 ```python
