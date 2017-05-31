@@ -162,7 +162,7 @@ Tương tự như thế, mỗi cột của \\(\mathbf{X}\\), tức vector cho m�
 
 \\[
 \mathcal{L}(\mathbf{x}\_m)
- = -\frac{1}{s}\|\|\hat{\mathbf{y}}^m - {\mathbf{x}}_m\hat{\mathbf{W}}_m\|\|_2^2 + \lambda \mathbf{x}_m ~~~~~ (9)
+ = -\frac{1}{s}\|\|\hat{\mathbf{y}}^m - {\mathbf{x}}_m\hat{\mathbf{W}}_m\|\|_2^2 + \frac{\lambda}{2} \|\|\mathbf{x}_m\|\|_2^2 ~~~~~ (9)
 \\]
 Tương tự như trên, **công thức cập nhật cho mồi hàng của \\(\mathbf{X}\\) sẽ có dạng:**
 \\[
