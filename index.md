@@ -105,7 +105,7 @@ permalink: /index/
 
 * [K-means Clustering](/2017/01/01/kmeans/)
 * [K-nearest neighbors](/2017/01/08/knn/)
-
+* [Kernel functions](http://machinelearningcoban.com/2017/04/22/kernelsmv/#-ham-so-kernel)
 <a name="l"></a>
 
 ## L
