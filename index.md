@@ -41,7 +41,7 @@ permalink: /index/
 
 * [Backpropagation](/2017/02/24/mlp/#-backpropagation)
 * [Bag of Words](/general/2017/02/06/featureengineering/#bag-of-words)
-* [Bias trick](http://machinelearningcoban.com/2017/04/28/multiclasssmv/#-bias-trick)
+* [Bias trick](/2017/04/28/multiclasssmv/#-bias-trick)
 * [Binary classifiers](/2017/02/11/binaryclassifiers/)
     - [one-vs-one](/2017/02/11/binaryclassifiers/#one-vs-one)
     - [Hierarchical](/2017/02/11/binaryclassifiers/#hierarchical-phan-tang)
@@ -56,11 +56,11 @@ permalink: /index/
 * [Classification](/2016/12/27/categories/#classification-phan-loai)
 * [Clustering](/2016/12/27/categories/#clustering-phan-nhom)    
     - [K-means Clustering](/2017/01/01/kmeans/)
-* [Collaborative Filtering](http://machinelearningcoban.com/2017/05/24/collaborativefiltering/)
-    - [Item-item Collaborative Filtering](http://machinelearningcoban.com/2017/05/24/collaborativefiltering/#-item-item-collaborative-filtering)
-    - [Matrix Factorization Collaborative Filtering](http://machinelearningcoban.com/2017/05/31/matrixfactorization/)
-    - [Neighborhood-based](http://machinelearningcoban.com/2017/05/24/collaborativefiltering/)
-    - [User-user Collaborative Filtering](http://machinelearningcoban.com/2017/05/24/collaborativefiltering/#-user-user-collaborative-filtering)
+* [Collaborative Filtering](/2017/05/24/collaborativefiltering/)
+    - [Item-item Collaborative Filtering](/2017/05/24/collaborativefiltering/#-item-item-collaborative-filtering)
+    - [Matrix Factorization Collaborative Filtering](/2017/05/31/matrixfactorization/)
+    - [Neighborhood-based](/2017/05/24/collaborativefiltering/)
+    - [User-user Collaborative Filtering](/2017/05/24/collaborativefiltering/#-user-user-collaborative-filtering)
 * [Convex combination](/2017/03/12/convexity/#-convex-combination-va-convex-hulls)
 * [Convex function](/2017/03/12/convexity/#-convex-functions)
     - [First-order condition](/2017/03/12/convexity/#-first-order-condition)
@@ -105,7 +105,7 @@ permalink: /index/
 
 * [K-means Clustering](/2017/01/01/kmeans/)
 * [K-nearest neighbors](/2017/01/08/knn/)
-* [Kernel functions](http://machinelearningcoban.com/2017/04/22/kernelsmv/#-ham-so-kernel)
+* [Kernel functions](/2017/04/22/kernelsmv/#-ham-so-kernel)
 <a name="l"></a>
 
 ## L
@@ -121,8 +121,8 @@ permalink: /index/
 <a name="m"></a>
 
 ## M 
-* [Matrix Factorization](http://machinelearningcoban.com/2017/05/31/matrixfactorization/)
-* [MovieLens 100k](http://machinelearningcoban.com/2017/05/17/contentbasedrecommendersys/#-bai-toan-voi-co-so-du-lieu-movielens-k)
+* [Matrix Factorization](/2017/05/31/matrixfactorization/)
+* [MovieLens 100k](/2017/05/17/contentbasedrecommendersys/#-bai-toan-voi-co-so-du-lieu-movielens-k)
 * [Multi-layer Perceptron](/2017/02/24/mlp/)
 
 <a name="n"></a>
@@ -159,7 +159,7 @@ permalink: /index/
 <a name="r"></a>
 
 ## R
-* [Recommendation Systems](http://machinelearningcoban.com/2017/05/17/contentbasedrecommendersys/)
+* [Recommendation Systems](/2017/05/17/contentbasedrecommendersys/)
 * [Regression](/2016/12/27/categories/#regression-hoi-quy)
     - [Linear Regression](/2016/12/28/linearregression/)
 * [Reinforement Learning (Học Củng Cố)](/2016/12/27/categories/#reinforcement-learning-hoc-cung-co)
@@ -172,7 +172,7 @@ permalink: /index/
 
 * [Semi-supervised Learning (Học Bán Giám Sát)](/2016/12/27/categories/#semi-supervised-learning-hoc-ban-giam-sat)
 * [Sigmoid function](/2017/01/27/logisticregression/#sigmoid-function)
-* [Similarity function](http://machinelearningcoban.com/2017/05/24/collaborativefiltering/#-similarity-functions)
+* [Similarity function](/2017/05/24/collaborativefiltering/#-similarity-functions)
 * [Softmax Regression](/2017/02/17/softmax/)
     - [Softmax function](/2017/02/17/softmax/#-softmax-function)
 * [Supervised Learning (Học Có Giám Sát)](/2016/12/27/categories/#supervised-learning-hoc-co-giam-sat)
@@ -192,6 +192,6 @@ permalink: /index/
 <a name="u"></a>
 
 ## U
-* [Utility Matrix](http://machinelearningcoban.com/2017/05/17/contentbasedrecommendersys/#-utility-matrix)
+* [Utility Matrix](/2017/05/17/contentbasedrecommendersys/#-utility-matrix)
 * [Unsupervised Learning (Học Không Giám Sát)](/2016/12/27/categories/#unsupervised-learning-hoc-khong-giam-sat)
 
