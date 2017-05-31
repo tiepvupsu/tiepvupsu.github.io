@@ -1,4 +1,4 @@
----
+2---
 layout: post
 comments: true
 title:  "Bài 25: Matrix Factorization Collaborative Filtering"
@@ -8,8 +8,8 @@ permalink: 2017/05/31/matrixfactorization/
 mathjax: true
 tags: Recommendation-systems, dimensionality-reduction
 category: Recommendation-systems
-sc_project: 
-sc_security: 
+sc_project: 11358048
+sc_security: 5bef7cd2
 img: /assets/25_mf/mf1.png
 summary: 
 ---
