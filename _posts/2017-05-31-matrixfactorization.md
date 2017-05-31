@@ -166,7 +166,7 @@ Tương tự như thế, mỗi cột của \\(\mathbf{X}\\), tức vector cho m�
 \\]
 Tương tự như trên, **công thức cập nhật cho mồi hàng của \\(\mathbf{X}\\) sẽ có dạng:**
 \\[
-\mathbf{x}_m = \mathbf{x}_m - \eta\left(-(\hat{\mathbf{y}}_n - \mathbf{x}_m\hat{\mathbf{W}}_m)\hat{\mathbf{W}}_m^T + \lambda \mathbf{x}_m\right) ~~~~~ (10)
+\mathbf{x}_m = \mathbf{x}_m - \eta\left(-(\hat{\mathbf{y}}^m - \mathbf{x}_m\hat{\mathbf{W}}_m)\hat{\mathbf{W}}_m^T + \lambda \mathbf{x}_m\right) ~~~~~ (10)
 \\]
 
 _Bạn đọc có thể muốn xem thêm [Đạo hàm của hàm nhiều biến](/math/#-dao-ham-cua-ham-nhieu-bien)_
