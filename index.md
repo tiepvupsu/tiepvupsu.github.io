@@ -147,7 +147,7 @@ permalink: /index/
 
 * [Perceptron Learning Algorithm](/2017/01/21/perceptron/)
 * [Pocket Algorithm](/2017/01/21/perceptron/#pocket-algorithm)
-* [Positive Semidefinite Matrices]()
+* [Positive Semidefinite Matrices](/2017/03/12/convexity/#positive-semidefinite)
 
 <a name="q"></a>
 
