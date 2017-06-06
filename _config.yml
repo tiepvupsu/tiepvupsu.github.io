@@ -22,7 +22,8 @@ kramdown:
 # Disqus post comments
 disqus_shortname: tiepvu
 
-paginate: 6
+# number of posts per page. Should be a number such that total pages >= 5
+paginate: 6 
 paginate_path: "/page:num/"
 
 # `gems: [jekyll-paginate]`
