@@ -10,7 +10,7 @@
 
   {% for page in (1..paginator.total_pages) %}
     {% if page == paginator.page %}
-      <a href="#" class="mypagination mypaginationactive" style = "background-color: #204081;" >{{ page }}</a>
+      <a href="#" class="mypagination mypaginationactive" style = "background-color: #074B80;" >{{ page }}</a>
     {% elsif page == 1 %}
       <a href="{{ site.baseurl }}/" class="mypagination">{{ page }}</a>
     {% else %}
