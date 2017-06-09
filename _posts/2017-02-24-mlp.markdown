@@ -616,7 +616,7 @@ for i in xrange(10000):
 <a name="-ket-qua"></a>
 
 ### 4.5. Kết quả
-Như vậy, cứ sau 1000 vòng lặp, hàm mất mát giảm dần. Bây giờ chúng ta cùng áp dụng ngược network này vào phân loại _dữ liệu training_:
+Như vậy hàm mất mát giảm dần khi số vòng lặp tăng lên. Bây giờ chúng ta cùng áp dụng ngược network này vào phân loại _dữ liệu training_:
 
 
 ```python
