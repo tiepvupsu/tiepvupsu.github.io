@@ -178,7 +178,7 @@ Tóm lại, thuật toán Perceptron có thể được viết như sau:
 
 1. Chọn ngẫu nhiên một vector hệ số \\(\mathbf{w}\\) với các phần tử gần 0.
 2. Duyệt ngẫu nhiên qua từng điểm dữ liệu \\(\mathbf{x}_i\\):
-    * Nếu \\(\mathbf{x}_i\\) được phân lớp đúng, tức \\(\text{sgn}(\mathbf{w}^T\mathbf{x}) = y_i\\), chúng ta không cần làm gì.
+    * Nếu \\(\mathbf{x}_i\\) được phân lớp đúng, tức \\(\text{sgn}(\mathbf{w}^T\mathbf{x}_i) = y_i\\), chúng ta không cần làm gì.
     * Nếu \\(\mathbf{x}_i\\) bị misclassifed, cập nhật \\(\mathbf{w}\\) theo công thức:
     \\[
     \mathbf{w} = \mathbf{w} + y\_i\mathbf{x}\_i

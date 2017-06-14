@@ -1,0 +1,75 @@
+%% line1.tex
+\documentclass{standalone}
+\usepackage{tkz-euclide}
+\usetkzobj{all}
+\usepackage{adjustbox,tikz}
+%% ================== commands ==========================
+\newcommand{\myShowPoints}[2]{
+\tkzDrawPoints(#1) 
+\tkzLabelPoints[#2](#1)
+}       
+\newcommand{\myGetMidPoint}[3]{
+\tkzDefMidPoint(#1,#2)\tkzGetPoint{#3}
+}       
+\begin{document}
+\def\s{3}
+\begin{tikzpicture}[>=stealth]
+    \clip(-.2,-.5) rectangle (3.25,3.5);
+    \tkzDefPoints{0/0/O, \s/0/A, 0/\s/B, 1.5/2.7/C, -2.4/1.8/D}
+    % \tkzDefPoint[label = above:$\mathbf{x}$](.5,1.5){X}
+    \tkzDefPoint[label = below:$O$](0, 0){O}
+    % \tkzDefPoint[label = above:$\mathbf{e}_1$](\s, 0){A}
+    % \tkzDefPoint[label = left:$\mathbf{e}_2$](0, \s){B}
+    % \tkzDefPoint[label = left:$\mathbf{u}_1$](1.8, 2.4){C}
+    % \tkzDefPoint[label = left:$\mathbf{u}_2$](-2.4, 1.8){D}
+    % \tkzDefPoint[label = below:$x_1$](0.75, 0){h}
+    % \tkzDefPoint[label = left:$x_2$](0, 2.25){i}
+    % \tkzDefPoint[label = right:$y_1$](1.3, 1.75){j}
+    % \tkzDefPoint[label = left:$y_2$](-.5, .4){k}
+
+    \tkzDrawLines[add = 0 and 0, draw, arrows=->](O,A)
+    \tkzDrawLines[add = 0 and 0, draw, arrows=->](O,B)
+    \tkzDrawLines[add = 0 and 0, draw = red, arrows=->](O,C)
+    % \tkzDrawLines[add = 0 and 0, draw = red, arrows=->](O,D)
+    % show points
+    % \tkzDefPoint[label = left:$\mathbf{x}$] (.7, 1.7) {X}
+
+    % \tkzDefPoint[label = above:$\mathbf{x}$](.75,2.25){X}
+    \foreach \x/\y in {
+0.91/1.64, 
+0.83/1.48, 
+0.79/1.35, 
+0.67/1.20, 
+0.98/1.90, 
+0.81/1.50, 
+0.29/0.45, 
+0.57/0.98, 
+0.83/1.40, 
+0.19/0.24, 
+0.62/1.10, 
+0.50/0.91, 
+0.89/1.63, 
+0.72/1.15, 
+0.90/1.76, 
+0.72/1.40, 
+0.12/0.12, 
+0.79/1.47, 
+0.13/0.01, 
+0.73/1.31, 
+0.30/0.55, 
+0.80/1.37, 
+0.47/0.69, 
+0.77/1.26, 
+0.52/1.03, 
+0.84/1.56, 
+0.26/0.23, 
+0.46/0.65, 
+0.95/1.87, 
+0.25/0.47, 
+}{
+        \draw [fill = blue] (\x, \y) circle (1pt);
+    }
+
+
+\end{tikzpicture}
+\end{document}
