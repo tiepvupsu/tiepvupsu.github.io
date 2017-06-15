@@ -11,7 +11,7 @@ category: Support-Vector-Machine
 sc_project: 11328682
 sc_security: 64e376fc
 img: \assets\22_multiclasssvm\cifar.png
-summary: 
+summary: Một trong hai thuật toán Classification phổ biến nhất hiện nay.
 ---
 
 Bạn sẽ hiểu rõ hơn nếu đã đọc các bài: 
