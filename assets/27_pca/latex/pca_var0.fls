@@ -186,8 +186,6 @@ INPUT /usr/local/texlive/2016/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libr
 INPUT /usr/local/texlive/2016/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryplotmarks.code.tex
 INPUT /usr/local/texlive/2016/texmf-dist/tex/generic/pgf/libraries/pgflibraryplotmarks.code.tex
 INPUT /usr/local/texlive/2016/texmf-dist/tex/generic/pgf/libraries/pgflibraryplotmarks.code.tex
-INPUT pca_var0.aux
-INPUT pca_var0.aux
 OUTPUT pca_var0.aux
 INPUT /usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 INPUT /usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii

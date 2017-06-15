@@ -33,8 +33,8 @@
     \end{scope}
 
     \begin{scope}[rotate = 0]
-        \draw[->, thick, red] (0,0) -- (3,0) node[right] {$\mathbf{e}_1$};
-        \draw[->, thick, red] (0,0) -- (0,3) node[above] {$\mathbf{e}_2$};
+        \draw[->, thick] (0,0) -- (3,0) node[right] {$\mathbf{e}_1$};
+        \draw[->, thick] (0,0) -- (0,3) node[above] {$\mathbf{e}_2$};
         \begin{scope}[yscale = .6, xscale = .5, yshift = 2cm, yscale = 1]
             \draw[color= green!70!black, domain=-3:3, samples = 100, very thick] plot (\normaltwo) node[right] {};
             \draw [dashed] (-4, 0) -- (4, 0);
