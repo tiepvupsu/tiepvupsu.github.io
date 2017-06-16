@@ -39,7 +39,7 @@ _Với những từ chuyên ngành, tôi sẽ dùng song song cả tiếng Anh v
 
 Khi chuẩn bị các bài viết, tôi sẽ giả định rằng bạn đọc có một chút kiến thức về Đại Số Tuyến Tính (Linear Algebra), Xác Suất Thống Kê (Probability and Statistics) và có kinh nghiệm về lập trình Python. Nếu bạn chưa có nhiều kinh nghiệm về các lĩnh vực này, đừng quá lo lắng vì mỗi bài sẽ chỉ sử dụng một vài kỹ thuật cơ bản. Hãy để lại câu hỏi của bạn ở phần Comment bên dưới mỗi bài, tôi sẽ thảo luận thêm với các bạn.
 
-_Nếu bạn thấy nội dung blog hữu ích và muốn ủng hộ tôi, bạn có thể click vào nút 'Buy me a coffe' ở phía trên cột bên trái của blog. Tôi xin chân thành cảm ơn._
+_Nội dung trên blog này là hoàn toàn miễn phí. Tôi cũng không sử dụng dịch vụ quảng cáo nào vì không muốn làm phiền các bạn trong khi đọc. Tuy nhiên, nếu bạn thấy nội dung blog hữu ích và muốn ủng hộ tôi, bạn có thể click vào nút 'Buy me a coffe' ở phía trên cột bên trái của blog. Tôi xin chân thành cảm ơn._
 
 
 [Trong bài tiếp theo của blog này](/2016/12/27/categories/), tôi sẽ giới thiệu về các nhóm thuật toán Machine learning cơ bản. Mời các bạn theo dõi. 
