@@ -9,8 +9,23 @@ permalink: /faqs/
 - [1. Blog được tạo như thế nào?](#-blog-duoc-tao-nhu-the-nao)
 - [2. Các kiến thức cần thiết để học Machine Learning?](#-cac-kien-thuc-can-thiet-de-hoc-machine-learning)
 - [3. Hướng dẫn cài đặt python và các thư viện trên MacOS?](#-huong-dan-cai-dat-python-va-cac-thu-vien-tren-macos)
+    - [3. 1. Đôi nét về thư viện scikit-learn](#--doi-net-ve-thu-vien-scikit-learn)
+    - [3.2. Cài đặt thư viện scikit-learn](#-cai-dat-thu-vien-scikit-learn)
+    - [3.3  Python](#--python)
+    - [3.4  Pip](#--pip)
+    - [3.5. Numpy](#-numpy)
+    - [3.6. Scipy](#-scipy)
+    - [3.7. Matplotlib](#-matplotlib)
+    - [3.8. Scikit-learn](#-scikit-learn)
+    - [3.9 Kiểm tra cài đặt](#-kiem-tra-cai-dat)
+    - [3.10. Tài liệu tham khảo](#-tai-lieu-tham-khao)
 - [4. Hướng dẫn cài đặt python và các thư viện trên Windows?](#-huong-dan-cai-dat-python-va-cac-thu-vien-tren-windows)
+    - [4.1. Cài đặt Python bằng Anaconda.](#-cai-dat-python-bang-anaconda)
+    - [4.2. Kiểm tra Libs](#-kiem-tra-libs)
+    - [4.3. Cài đặt Libs bằng Anaconda](#-cai-dat-libs-bang-anaconda)
+    - [4.4. Chạy thử 1 đoạn code trên python.](#-chay-thu--doan-code-tren-python)
 - [5. Các sách tham khảo?](#-cac-sach-tham-khao)
+- [6. Làm thế nào để hỗ trợ blog](#-lam-the-nao-de-ho-tro-blog)
 
 <!-- /MarkdownTOC -->
 
@@ -244,4 +259,11 @@ Bây giờ, các bạn đã có thể chạy thử 1 vài ví dụ trên trang M
 ## 5. Các sách tham khảo?
 
 Mời bạn [xem tại đây](/2017/02/02/howdoIcreatethisblog/#main-references).
+
+<a name="-lam-the-nao-de-ho-tro-blog"></a>
+
+## 6. Làm thế nào để hỗ trợ blog 
+
+_Nội dung trên blog này là hoàn toàn miễn phí. Tôi cũng không sử dụng dịch vụ quảng cáo nào vì không muốn làm phiền các bạn trong khi đọc. Tuy nhiên, nếu bạn thấy nội dung blog hữu ích và muốn ủng hộ tôi, bạn có thể **Mời tôi một ly cà phê** bằng cách click vào nút 'Buy me a coffe' ở phía trên cột bên trái của blog, loại cà phê mà bạn vẫn thích uống :). Tôi xin chân thành cảm ơn._
+
 [Về đầu trang](/faqs/).
