@@ -15,6 +15,9 @@ Khi chuẩn bị các bài viết, tôi sẽ giả định rằng bạn đọc c
 
 Một lần nữa, tôi xin chân thành cảm ơn.
 
+
+_Nội dung trên blog này là hoàn toàn miễn phí. Tôi cũng không sử dụng dịch vụ quảng cáo nào vì không muốn làm phiền các bạn trong khi đọc. Tuy nhiên, nếu bạn thấy nội dung blog hữu ích và muốn ủng hộ tôi, bạn có thể **Mời tôi một ly cà phê** bằng cách click vào nút 'Buy me a coffe' ở phía trên cột bên trái của blog, loại cà phê mà bạn vẫn thích uống :). Tôi xin chân thành cảm ơn._
+
 <b>Các bạn có thể theo dõi Facebook Page tại:</b> <br>
 <div class="share-page">
     <a href = "https://www.facebook.com/machinelearningbasicvn/" target="_blank" title="Follow us"><img src = "https://simplesharebuttons.com/images/somacro/facebook.png" width="50"></a>
