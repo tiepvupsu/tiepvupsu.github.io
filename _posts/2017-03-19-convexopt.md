@@ -207,7 +207,7 @@ Nếu có các ràng buộc về kích thước của thùng và trọng lượn
 
 Những bài toán trên đây đều là các bài toán tối ưu. Chính xác hơn nữa, chúng đều là các bài toán tối ưu lồi (_convex optimization problems_) như các bạn sẽ thấy ở phần sau. Và việc tìm lời giải có thể không mấy khó khăn, thậm chí giải bằng tay cũng có thể ra kết quả. Tuy nhiên, mục đích của bài viết này không phải là hướng dẫn các bạn giải các bài toán trên _bằng tay_, mà là cách nhận diện các bài toán và đưa chúng về các dạng mà các toolboxes sẵn có có thể giúp chúng ta. Trên thực tế, lượng dữ kiện và số biến cần tối ưu lớn hơn nhiều, chúng ta không thể giải các bài toán trên _bằng tay_ được.
 
-Trước hết, chúng ta cần hiểu các khái niệm về _convex optimization problems_ và tại sao _convex_ lại quan trọng. (Bạn đọc có thể đọc tới học[phần 4](/2017/03/19/convexopt/#-linear-programming) nếu không muốn biết các khái niệm và định lý toán  trong phần 2 và 3.)
+Trước hết, chúng ta cần hiểu các khái niệm về _convex optimization problems_ và tại sao _convex_ lại quan trọng. (Bạn đọc có thể đọc tới [phần 4](/2017/03/19/convexopt/#-linear-programming) nếu không muốn biết các khái niệm và định lý toán  trong phần 2 và 3.)
 
 <a name="-nhac-lai-bai-toan-toi-uu"></a>
 
