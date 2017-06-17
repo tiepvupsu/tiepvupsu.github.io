@@ -177,7 +177,7 @@ Giả sử chiếc thùng cần làm có chiều dài là \\(x\\) (\\(m\\)), chi
 
 * _Chi phí thuê xà lan:_ số chuyến xà lan phải thuê là \\(\frac{400}{xyz}\\) (ta hãy tạm giả sử rằng đây là một số tự nhiên, việc làm tròn này sẽ không thay đổi kết quả đáng kể vì chi phí vận chuyển một chuyến là nhỏ so với chi phí làm thùng). Số tiền phải trả cho xà lan sẽ là \\(0.1\frac{400}{xyz} = \frac{40}{xyz}\\).
 
-* _Chi phí làm thùng:_ Diện tích xung quanh của thùng là \\(2 (x + y)z \\). Diện tích đáy là \\(xy\\). Vậy tổng chi phí làm thùng là \\(2(x +y)z + 2xy = 2(xy + yz + zx))\\).
+* _Chi phí làm thùng:_ Diện tích xung quanh của thùng là \\(2 (x + y)z \\). Diện tích đáy là \\(xy\\). Vậy tổng chi phí làm thùng là \\(2(x +y)z + 2xy = 2(xy + yz + zx)\\).
 
 Tổng toàn bộ chi phí là \\(f(x, y, z) = 40x^{-1}y^{-1}z^{-1} + 2(xy + yz + zx)\\). Điều kiện ràng buộc duy nhất là kích thước thùng phải là các số dương. Vậy ta có bài toán tối ưu sau:
 <hr>
