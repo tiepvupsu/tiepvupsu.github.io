@@ -496,7 +496,7 @@ Trong mục này, chúng ta cùng làm hai thí nghiệm nhỏ. Thứ nghiệm t
 
 ### 5.1. Giải bài toán Soft Margin bằng 3 cách khác nhau
 
-Source code cho phần này có thể được tìm thấy [tại đây]([Source code](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/20_softmarginsvm/plt/softmargin%20SVM%20Example.ipynb).
+Source code cho phần này có thể được tìm thấy [tại đây](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/20_softmarginsvm/plt/softmargin%20SVM%20Example.ipynb).
 <a name="-khai-bao-thu-vien-va-tao-du-lieu-gia"></a>
 
 #### 5.1.1. Khai báo thư viện và tạo dữ liệu giả 
