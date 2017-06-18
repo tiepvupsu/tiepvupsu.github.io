@@ -67,6 +67,7 @@ permalink: /index/
     - [Second-order condition](/2017/03/12/convexity/#-second-order-condition)
 * [Convex hull](/2017/03/12/convexity/#-convex-combination-va-convex-hulls)
 * [Convex optimization problems](/2017/03/19/convexopt/)
+* [Covariance Matrix](http://machinelearningcoban.com/2017/06/15/pca/#-ky-vong-va-ma-tran-hiep-phuong-sai)
 * [Convex sets](/2017/03/12/convexity/#-convex-sets)
 * [Cross entropy](/2017/02/17/softmax/#-cross-entropy)
 * [Cross validation](/2017/03/04/overfitting/#-cross-validation)
@@ -117,6 +118,7 @@ permalink: /index/
 * [Locally optimal points](/2017/03/19/convexopt/#-optimal-and-locally-optimal-points)
 * [Logistic Regression](/2017/01/27/logisticregression/)
 * [Loss function (Hàm mất mát)](/2016/12/28/linearregression/#ham-mat-mat) ([2](/2017/01/01/kmeans/#ham-mat-mat-va-bai-toan-toi-uu))
+* [Low-rank approximation](http://machinelearningcoban.com/2017/06/07/svd/#-best-rank-\\k\\-approximation)
 
 <a name="m"></a>
 
@@ -140,7 +142,7 @@ permalink: /index/
 
 * [Objective function](/2017/03/12/convexity/#-gioi-thieu)
 * [Online Learning](/2017/01/16/gradientdescent2/#online-learning)
-
+* [Orthogonal basis and matrices](http://machinelearningcoban.com/2017/06/07/svd/#-he-truc-giao-va-truc-chuan)
 <a name="p"></a>
 
 ## P
@@ -148,6 +150,7 @@ permalink: /index/
 * [Perceptron Learning Algorithm](/2017/01/21/perceptron/)
 * [Pocket Algorithm](/2017/01/21/perceptron/#pocket-algorithm)
 * [Positive Semidefinite Matrices](/2017/03/12/convexity/#positive-semidefinite)
+* [Principal Component Analysis](http://machinelearningcoban.com/2017/06/15/pca/)
 
 <a name="q"></a>
 
@@ -173,6 +176,9 @@ permalink: /index/
 * [Semi-supervised Learning (Học Bán Giám Sát)](/2016/12/27/categories/#semi-supervised-learning-hoc-ban-giam-sat)
 * [Sigmoid function](/2017/01/27/logisticregression/#sigmoid-function)
 * [Similarity function](/2017/05/24/collaborativefiltering/#-similarity-functions)
+* [Singular Value Decomposition - SVD](http://machinelearningcoban.com/2017/06/07/svd/#-he-truc-giao-va-truc-chuan)
+    - [Compact SVD](http://machinelearningcoban.com/2017/06/07/svd/#-compact-svd)
+    - [Truncated SVD](http://machinelearningcoban.com/2017/06/07/svd/#-truncated-svd)
 * [Softmax Regression](/2017/02/17/softmax/)
     - [Softmax function](/2017/02/17/softmax/#-softmax-function)
 * [Supervised Learning (Học Có Giám Sát)](/2016/12/27/categories/#supervised-learning-hoc-co-giam-sat)
