@@ -72,15 +72,17 @@ $(document).ready(function() {
 
           // Build a snippet of HTML for this result
           var appendString = '<li><h3><a href="' + item.url + '">' + item.title + '</a></h3>';
+          // var appendString = '# [' + item.title + '](' + item.url + ')';
           appendString += '<p><b>Category: ' + item.categories + '</b></p>';
-          appendString += '<p><i>' + item.content.slice(0, 200) + '...</i></p></li>';
+          appendString += '<p>' + item.content.slice(0, 200) + '...</p></li>';
+          // appendString += '' + item.content.slice(0, 200) + '...';
 
           // Add the snippet to the collection of results.
           $search_results.append(appendString);
         });
       } else {
         // If there are no results, let the user know.
-        $search_results.html('<li>No results found.<br/>Please check spelling, spacing, yada...</li>');
+        $search_results.html('<li>No results found.<br/>Please check spelling, spacing,...</li>');
       }
     });
   }
