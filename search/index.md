@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Post Search
+title: Tìm kiếm trong Blog
 permalink: /search/
 ---
 
