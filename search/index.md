@@ -41,5 +41,11 @@ permalink: /search/
     /*margin: 0;*/
     width: 80%;
 }
+mark {
+    padding: 0;
+    font-weight: bold;
+}
 </style>
+
+
 
