@@ -53,8 +53,8 @@ sc_security: b333ed1f
 
 mark, .mark{
     padding: 0;
-    color = white;
-    background-color: #FFFF01;
+    /*color: white;*/
+    background-color: #FEFE65;
 }
 </style>
 
