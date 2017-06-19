@@ -4,6 +4,7 @@ sass:
 permalink: /:year/:month/:day/:title.html
 
 url: http://http://machinelearningcoban.com
+baseurl: ""
 
 future: true
 debug: false
@@ -22,7 +23,8 @@ kramdown:
 # Disqus post comments
 disqus_shortname: tiepvu
 
-# number of posts per page. Should be a number such that total pages >= 5
+# number of posts per page. Should be a number such that total pages >= 5. Well, this 
+# is my choice, there is no specific reason for this.
 paginate: 6 
 paginate_path: "/page:num/"
 
