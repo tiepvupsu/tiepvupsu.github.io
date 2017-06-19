@@ -56,6 +56,43 @@ $(document).ready(function() {
       display_search_results(results); // Hand the results off to be displayed
   }
 
+
+  function createExert(searchKey, content, numOfChars) {
+      var searchWords = searchKey.split(" ")
+      for (var i = 0; i < searchWords.length; i++) {
+        searchWords[i] = searchWords[i].toLowerCase();
+      }
+
+      var exert = "";
+      var begin = 0;
+      var NUM_OF_CHARS_PER_SUBSTR = 100;
+      var substr = "";
+      var distance = false; // distance between two matched substring
+      do {
+        substr = content.substring(begin, begin + NUM_OF_CHARS_PER_SUBSTR).toLowerCase();
+        var containSearchWord = false;
+        for (var i = 0; i < searchWords.length; i++) {
+          if (substr.indexOf(searchWords[i]) != -1) {
+            containSearchWord = true;
+            break;
+          }
+        }
+
+        if (containSearchWord) {
+          if (distance) exert += " .. ";
+          exert += content.substring(begin, begin + NUM_OF_CHARS_PER_SUBSTR);
+          distance = false;
+        } else {
+          distance = true;
+        }
+
+        begin += NUM_OF_CHARS_PER_SUBSTR; // next substring
+        console.log(substr.length);
+      } while (substr.length != 0 && exert.length <= numOfChars);
+
+      return exert;
+  }
+
   function display_search_results(results) {
     var $search_results = $("#search_results");
 
@@ -71,14 +108,23 @@ $(document).ready(function() {
           var item = loaded_data[result.ref];
 
           // Build a snippet of HTML for this result
-          var appendString = '<li><h3><a href="' + item.url + '">' + item.title + '</a></h3>';
-          // var appendString = '# [' + item.title + '](' + item.url + ')';
-          appendString += '<p><b>Category: ' + item.categories + '</b></p>';
-          appendString += '<p>' + item.content.slice(0, 200) + '...</p></li>';
-          // appendString += '' + item.content.slice(0, 200) + '...';
+          var appendString = '<li><h3><a class="result-title" href="' + item.url + '">' + item.title + '</a></h3>';
+          appendString += '<p class="result-category"><b>Category: ' + item.categories + '</b></p>';
+          var searchKeywords = $("#search_box").val();
+          var exert = createExert(searchKeywords, item.content, 500);
+          if (exert.length == 0) {
+            exert = item.content.substring(0, 200);
+          }
+          appendString += '<p>' + exert + '...</p></li>';
 
+          
           // Add the snippet to the collection of results.
           $search_results.append(appendString);
+
+          // highlight keywords
+          $(".result-exert").mark(searchKeywords, {separateWordSearch: false});
+          $(".result-title").mark(searchKeywords, {separateWordSearch: false});
+          $(".result-category").mark(searchKeywords, {separateWordSearch: false});
         });
       } else {
         // If there are no results, let the user know.
