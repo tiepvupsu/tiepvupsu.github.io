@@ -122,9 +122,9 @@ $(document).ready(function() {
           $search_results.append(appendString);
 
           // highlight keywords
-          $(".result-exert").mark(searchKeywords, {separateWordSearch: false});
-          $(".result-title").mark(searchKeywords, {separateWordSearch: false});
-          $(".result-category").mark(searchKeywords, {separateWordSearch: false});
+          $(".result-exert").mark(searchKeywords, {separateWordSearch: true});
+          $(".result-title").mark(searchKeywords, {separateWordSearch: true});
+          $(".result-category").mark(searchKeywords, {separateWordSearch: true});
         });
       } else {
         // If there are no results, let the user know.

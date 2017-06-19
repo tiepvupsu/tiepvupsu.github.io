@@ -2,6 +2,14 @@
 layout: post
 title: Tìm kiếm trong Blog
 permalink: /search/
+
+comments: false
+tags: 
+category: 
+sc_project: 11373937
+sc_security: b333ed1f
+
+
 ---
 
 <div class="container">
@@ -18,7 +26,8 @@ permalink: /search/
 
 <script src="/search/lunr.min.js"></script>
 <script src="/search/search.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/mark.js/8.9.1/jquery.mark.min.js"></script>
+<!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/mark.js/8.9.1/jquery.mark.min.js"></script> -->
+<script type="text/javascript" src="jquery.mark.min.js"></script>
 
 <style type="text/css">
 #site_search {
@@ -41,11 +50,11 @@ permalink: /search/
     /*margin: 0;*/
     width: 80%;
 }
-mark {
+
+mark, .mark{
     padding: 0;
-    font-weight: bold;
+    background-color: red;
 }
 </style>
-
 
 
