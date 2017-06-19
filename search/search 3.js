@@ -115,7 +115,7 @@ $(document).ready(function() {
           if (exert.length == 0) {
             exert = item.content.substring(0, 200);
           }
-          appendString += '<p class="result-exert">' + exert + '...</p></li>';
+          appendString += '<p>' + exert + '...</p></li>';
 
           
           // Add the snippet to the collection of results.
