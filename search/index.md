@@ -28,9 +28,9 @@ permalink: /search/
     width: 70%;
 }
 .input-group button{
-    width: 200px;
+    width: 100px;
     height: 30px;
-    background-color: #074B80;
+    /*background-color: #074B80;*/
 }
 #search_results {
 	/*margin-top: 10px;*/
