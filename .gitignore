@@ -14,3 +14,5 @@ assets/*/latex/*.fdb_latexmk
 assets/*/latex/*.log
 assets/*/latex/*.fls
 assets/*/latex/*.fls
+assets/*/latex/*.aux
+assets/*/latex/*.synctex.gz
