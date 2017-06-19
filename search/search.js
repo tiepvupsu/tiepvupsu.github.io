@@ -87,7 +87,7 @@ $(document).ready(function() {
         }
 
         begin += NUM_OF_CHARS_PER_SUBSTR; // next substring
-        console.log(substr.length);
+        // console.log(substr.length);
       } while (substr.length != 0 && exert.length <= numOfChars);
 
       return exert;

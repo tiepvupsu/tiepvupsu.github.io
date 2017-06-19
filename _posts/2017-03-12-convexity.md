@@ -227,8 +227,7 @@ Một ma trận \\(\mathbf{A}\\) là _xác định dương_ hoặc _nửa xác �
 \mathbf{A} \succ 0, ~~~~~ \mathbf{A} \succeq 0.
 \\]
 
-Cũng lại nhân tiện, khoảng cách Mahalanobis có liên quan đến *khoảng cách từ một điểm tới một phân phối xác suất* (from a point to a distribution). Có thể tôi sẽ đề cập lại vấn đề tay trong bài *Principle Component Analysis (PCA)*.
-
+Cũng lại nhân tiện, khoảng cách Mahalanobis có liên quan đến *khoảng cách từ một điểm tới một phân phối xác suất* (from a point to a distribution). 
 <a name="-giao-cua-cac-tap-loi-la-mot-tap-loi"></a>
 
 ### 2.3. Giao của các tập lồi là một tập lồi.
