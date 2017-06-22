@@ -164,7 +164,7 @@ Tóm lại, chúng ta cần tối ưu bài toán sau:
 ### Thuật toán tối ưu hàm mất mát
 Bài toán \\((2)\\) là một bài toán khó tìm _điểm tối ưu_ vì nó có thêm các điều kiện ràng buộc. _Bài toán này thuộc loại mix-integer programming (điều kiện biến là số nguyên) - là loại rất khó tìm nghiệm tối ưu toàn cục (global optimal point, tức nghiệm làm cho hàm mất mát đạt giá trị nhỏ nhất có thể)._ Tuy nhiên, trong một số trường hợp chúng ta vẫn có thể tìm được phương pháp để tìm được nghiệm gần đúng hoặc điểm cực tiểu. (_Nếu chúng ta vẫn nhớ chương trình toán ôn thi đại học thì điểm cực tiểu chưa chắc đã phải là điểm làm cho hàm số đạt giá trị nhỏ nhất_).
 
-Một cách đơn giản để giải bài toán \\((2)\\) là xen kẽ giải \\(\mathbf{Y}\\) và \\( \mathbf{M}\\) khi biến còn lại được cố định. Đây là một thuật toán lặp, cũng là kỹ thuật phổ biến khi giải bài toán tối ưu. Chúng ta sẽ lật lượt giải quyết hai bài toán sau đây:
+Một cách đơn giản để giải bài toán \\((2)\\) là xen kẽ giải \\(\mathbf{Y}\\) và \\( \mathbf{M}\\) khi biến còn lại được cố định. Đây là một thuật toán lặp, cũng là kỹ thuật phổ biến khi giải bài toán tối ưu. Chúng ta sẽ lần lượt giải quyết hai bài toán sau đây:
 
 <!-- ========================== New Heading ==================== -->
 <a name="co-dinh-\\\mathbfm-\\-tim-\\\mathbfy\\"></a>
