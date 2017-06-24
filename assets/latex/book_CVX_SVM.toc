@@ -1,0 +1,24 @@
+\contentsline {chapter}{\numberline {16}Convex sets v\IeC {\`a} convex functions}{1}{chapter.16}
+\contentsline {section}{\numberline {16.1}Gi\IeC {\'\ohorn }i thi\IeC {\d \ecircumflex }u}{1}{section.16.1}
+\contentsline {section}{\numberline {16.2}Convex sets}{3}{section.16.2}
+\contentsline {subsection}{\numberline {16.2.1}\IeC {\DJ }\IeC {\d i}nh ngh\IeC {\~\i }a}{3}{subsection.16.2.1}
+\contentsline {subsection}{\numberline {16.2.2}V\IeC {\'\i } d\IeC {\d u}}{4}{subsection.16.2.2}
+\contentsline {subsubsection}{Hyperplanes v\IeC {\`a} halfspaces}{4}{section*.4}
+\contentsline {subsubsection}{Norm balls}{5}{section*.5}
+\contentsline {subsection}{\numberline {16.2.3}Giao c\IeC {\h u}a c\IeC {\'a}c t\IeC {\d \acircumflex }p l\IeC {\`\ocircumflex }i l\IeC {\`a} m\IeC {\d \ocircumflex }t t\IeC {\d \acircumflex }p l\IeC {\`\ocircumflex }i.}{7}{subsection.16.2.3}
+\contentsline {subsection}{\numberline {16.2.4}Convex combination v\IeC {\`a} Convex hulls}{8}{subsection.16.2.4}
+\contentsline {section}{\numberline {16.3}Convex functions}{9}{section.16.3}
+\contentsline {subsection}{\numberline {16.3.1}\IeC {\DJ }\IeC {\d i}nh ngh\IeC {\~\i }a}{9}{subsection.16.3.1}
+\contentsline {subsection}{\numberline {16.3.2}C\IeC {\'a}c t\IeC {\'\i }nh ch\IeC {\'\acircumflex }t c\IeC {\ohorn } b\IeC {\h a}n}{10}{subsection.16.3.2}
+\contentsline {subsection}{\numberline {16.3.3}V\IeC {\'\i } d\IeC {\d u}}{11}{subsection.16.3.3}
+\contentsline {subsubsection}{C\IeC {\'a}c h\IeC {\`a}m m\IeC {\d \ocircumflex }t bi\IeC {\'\ecircumflex }n}{11}{section*.11}
+\contentsline {subsubsection}{Affine functions}{11}{section*.12}
+\contentsline {subsubsection}{Quadratic forms}{12}{section*.13}
+\contentsline {subsubsection}{Norms}{12}{section*.14}
+\contentsline {subsection}{\numberline {16.3.4}$\alpha -$ sublevel sets}{14}{subsection.16.3.4}
+\contentsline {subsection}{\numberline {16.3.5}Ki\IeC {\h \ecircumflex }m tra t\IeC {\'\i }nh ch\IeC {\'\acircumflex }t l\IeC {\`\ocircumflex }i d\IeC {\d \uhorn }a v\IeC {\`a}o \IeC {\dj }\IeC {\d a}o h\IeC {\`a}m.}{15}{subsection.16.3.5}
+\contentsline {subsubsection}{First-order condition}{15}{section*.16}
+\contentsline {subsubsection}{Second-order condition}{16}{section*.17}
+\contentsline {section}{\numberline {16.4}T\IeC {\'o}m t\IeC {\'\abreve }t}{18}{section.16.4}
+\contentsline {section}{\numberline {16.5}T\IeC {\`a}i li\IeC {\d \ecircumflex }u tham kh\IeC {\h a}o}{18}{section.16.5}
+\contentsline {chapter}{Index}{19}{chapter*.18}

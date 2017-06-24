@@ -294,7 +294,7 @@ Hẳn các bạn đã nghe tới khái niệm này khi ôn thi đại học môn
 <a name="-dinh-nghia-1"></a>
 
 ### 3.1. Định nghĩa
-Để trực quan, trước hết ta xem xét các hàm 1 biến, đồ thị của nó là một đường trong một mặt phẳng. Một hàm số được gọi là _lồi_ nếu **tập xác định của nó là một tập lồi** và nếu ta nối hai điểm bất kỳ trên đồ thị hàm số đó, ta được một đoạn thẳng nằm về phía trên hoặc nằm trên đồ thị (xem Hình 6).
+Để trực quan, trước hết ta xem xét các hàm 1 biến, đồ thị của nó là một đường trong một mặt phẳng. Một hàm số được gọi là _lồi_ nếu **tập xác định của nó là một tập lồi** và nếu ta nối hai điểm bất kỳ trên đồ thị hàm số đó, ta được một đoạn thẳng nằm về phía trên hoặc nằm trên đồ thị (xem Hình 5).
 
 Tập xác định (domain) của một hàm số \\(f(.)\\) thường được ký hiệu là \\(\text{dom} f\\).
 
@@ -311,7 +311,7 @@ với mọi \\(\mathbf{x, y} \in \text{dom}f, 0 \leq \theta \leq 1\\).
 <hr>
 <div class="imgcap">
  <img src ="/assets/16_convexity/convexf_def.png" align = "center" width = "500">
- <div class = "thecap">Hình 6. Convex function.</div>
+ <div class = "thecap">Hình 5. Convex function.</div>
 </div>
 <hr>
 
@@ -345,7 +345,7 @@ cũng là _convex_ trên tập xác định là giao của tất cả các tập
 <hr>
 <div class="imgcap">
  <img src ="/assets/16_convexity/max_point.png" align = "center" width = "400">
- <div class = "thecap">Hình 7. Ví dụ về Pointwise maximum.</div>
+ <div class = "thecap">Hình 6. Ví dụ về Pointwise maximum.</div>
 </div>
 <hr>
 
@@ -369,7 +369,7 @@ Dưới đây là đồ thị của một vài _convex functions_:
 <hr>
 <div class="imgcap">
  <img src ="/assets/16_convexity/convexfunctions.png" align = "center" width = "800">
- <div class = "thecap">Hình 8. Ví dụ về các convex functions một biến.</div>
+ <div class = "thecap">Hình 7. Ví dụ về các convex functions một biến.</div>
 </div>
 <hr>
 
@@ -385,7 +385,7 @@ Dưới đây là đồ thị của một vài _concave functions_:
 <hr>
 <div class="imgcap">
  <img src ="/assets/16_convexity/concavefunctions.png" align = "center" width = "800">
- <div class = "thecap">Hình 9. Ví dụ về các concave functions một biến.</div>
+ <div class = "thecap">Hình 8. Ví dụ về các concave functions một biến.</div>
 </div>
 <hr>
 
@@ -444,7 +444,7 @@ Dưới đây là hai ví dụ về norm 1 (trái) và norm 2 (phải) với s�
         </td>
     </tr>
 </table>
-<div class = "thecap"> Hình 10: Ví dụ về mặt của các norm hai biến.
+<div class = "thecap"> Hình 9: Ví dụ về mặt của các norm hai biến.
 </div>
 </div>
 <hr>
@@ -468,7 +468,7 @@ Tiện đây, tôi cũng lấy thêm hai ví dụ về các hàm không phải c
         </td>
     </tr>
 </table>
-<div class = "thecap">Hình 11: Ví dụ về các hàm hai biến không convex.
+<div class = "thecap">Hình 10: Ví dụ về các hàm hai biến không convex.
 </div>
 </div>
 <hr>
@@ -476,7 +476,7 @@ Tiện đây, tôi cũng lấy thêm hai ví dụ về các hàm không phải c
 **Contours - level sets**
 Với các hàm số phức tạp hơn, khi vẽ các mặt trong không gian ba chiều sẽ khó tưởng tượng hơn, tức khó nhìn được tính _convexity_ của nó. Một phương pháp thường được sử dụng là dùng _contours_ hay _level sets_. Tôi cũng đã đề cập đến khái niệm này trong Bài Gradient Descent, phần [đường đồng mức](/2017/01/12/gradientdescent/#duong-dong-muc-level-sets).
 
-Contours là cách mô tả các mặt trong không gian ba chiều bằng cách chiều nó xuống không gian hai chiều. Trong không gian hai chiều, các điểm thuộc cùng một _đường_ tương ứng với các điểm làm cho hàm số có giá trị bằng nhau. Mỗi _đường_ đó còn được gọi là một _level set_. Trong Hình 9 và Hình 10, các đường của các mặt lên mặt phẳng \\(0xy\\) chính là các _level sets_. Một cách hiểu khác, mỗi đường _level set_ là một _vết cắt_ nếu ta cắt các bề mặt bởi một mặt phẳng song song với mặt phẳng \\(0xy\\).
+Contours là cách mô tả các mặt trong không gian ba chiều bằng cách chiều nó xuống không gian hai chiều. Trong không gian hai chiều, các điểm thuộc cùng một _đường_ tương ứng với các điểm làm cho hàm số có giá trị bằng nhau. Mỗi _đường_ đó còn được gọi là một _level set_. Trong Hình 8 và Hình 9, các đường của các mặt lên mặt phẳng \\(0xy\\) chính là các _level sets_. Một cách hiểu khác, mỗi đường _level set_ là một _vết cắt_ nếu ta cắt các bề mặt bởi một mặt phẳng song song với mặt phẳng \\(0xy\\).
 
 Khi thể hiện một hàm số hai biến để kiểm tra tính convexity của nó, hoặc để tìm điểm cực trị của nó, người ta thường vẽ _contours_ thay vì vẽ các mặt trong không gian ba chiều. Dưới đây là một vài ví dụ về contours:
 
@@ -512,7 +512,7 @@ Khi thể hiện một hàm số hai biến để kiểm tra tính convexity c�
          </td>
      </tr>
 </table>
-<div class = "thecap"> Hình 12: Ví dụ về Countours.
+<div class = "thecap"> Hình 11: Ví dụ về Countours.
 </div>
 </div>
 <hr>
@@ -534,7 +534,7 @@ Các đường màu càng xanh đậm thì tương ứng với các giá trị c
 Tức tập hợp các điểm trong tập xác định của \\(f\\) mà tại đó, \\(f\\) đạt giá trị nhỏ hơn hoặc bằng \\(\alpha\\).
 
 
-Quay lại với Hình 12, hàng trên, các \\(\alpha-\\) sublevel sets chính là phần bị bao bởi các level sets.
+Quay lại với Hình 11, hàng trên, các \\(\alpha-\\) sublevel sets chính là phần bị bao bởi các level sets.
 
 Ở hàng dưới, bên trái, các \\(\alpha-\\) sublevel sets chính là phần nửa mặt phẳng phía dưới xác định bởi các đường thẳng level sets. Ở hình giữa, các \\(\alpha-\\) sublevel sets chính là các vùng bị giới hạn bởi các trục tọa độ và các level sets.
 
@@ -546,7 +546,7 @@ Hàng dưới, bên phải, các \\(\alpha-\\) sublevel sets hơi khó tưởng 
 
 Điều này chỉ ra rằng nếu tồn tại một giá trị \\(\alpha\\) sao cho một \\(\alpha-\\) sublevel set của một hàm số là _không lồi_, thì hàm số đó là _không lồi_ (không lồi nhưng không có nghĩa là _concave_, chú ý). Vậy nên Hyperbolic không phải là hàm lồi.
 
-Các ví dụ ở hình 12, trừ hình cuối cùng, đều tương ứng với các hàm lồi.
+Các ví dụ ở hình 11, trừ hình cuối cùng, đều tương ứng với các hàm lồi.
 
 Một ví dụ về việc một hàm số không _convex_ nhưng mọi \\(\alpha-\\) sublevel sets là _convex_ là hàm \\(f(x, y) = -e^{x+y}\\). Hàm này có mọi \\(\alpha-\\) sublevel sets là nửa mặt phẳng - là _convex_, nhưng nó không phải là _convex_ (trong trường hợp này nó là _concave_).
 
@@ -554,7 +554,7 @@ Dưới đây là một ví dụ khác về việc một hàm số có mọi \\(
 <hr>
 <div class="imgcap">
  <img src ="/assets/16_convexity/sin_surf2.png" align = "center" width = "800">
- <div class = "thecap">Hình 13. Mọi alpha-sublevel sets là convex sets nhưng hàm số là nonconvex.</div>
+ <div class = "thecap">Hình 12. Mọi alpha-sublevel sets là convex sets nhưng hàm số là nonconvex.</div>
 </div>
 <hr>
 

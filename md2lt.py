@@ -8,13 +8,14 @@ sys.stdout = codecs.getwriter('utf_8')(sys.stdout)
 sys.stdin = codecs.getreader('utf_8')(sys.stdin)
 
 f = codecs.open('test.md', encoding='utf-8').read().splitlines();
+# f = codecs.open('./_posts/2017-03-12-convexity.md', encoding='utf-8').read().splitlines();
 i = -1
 
 file = codecs.open("assets/latex/out.tex", "w", "utf-8")
 # file.write()
 
 ############## TITLE #############33
-first_line = "%!TEX root = book.tex"
+first_line = "%!TEX root = book_CVX_SVM.tex"
 file.write(first_line+'\n')
 
 

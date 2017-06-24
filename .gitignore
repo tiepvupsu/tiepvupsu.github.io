@@ -16,3 +16,5 @@ assets/*/latex/*.fls
 assets/*/latex/*.fls
 assets/*/latex/*.aux
 assets/*/latex/*.synctex.gz
+assets/latex/*.tex
+!assets/latex/book*.pdf
