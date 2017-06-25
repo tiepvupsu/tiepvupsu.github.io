@@ -26,7 +26,7 @@ c = 0
 
 in_math_mode = False
 in_code_mode = False
-in_fig_mode  = False
+in_fig_mode  = False 
 in_tab_mode  = False
 in_ital_mode = False 
 in_bold_mode = False 

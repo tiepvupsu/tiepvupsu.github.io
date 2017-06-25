@@ -1,692 +1,575 @@
 ---
 layout: post
 comments: true
-title:  "Bài 16: Convex sets và convex functions"
-title2:  "16. Convex sets và convex functions"
-date:   2017-03-12 15:22:00
-permalink: 2017/03/12/convexity/
+title:  "Bài 18: Duality"
+title2:  "18. Duality"
+date:   2017-04-02 15:22:00
+permalink: 2017/04/02/duality/
 mathjax: true
 tags: Convex Optimization
 category: Optimization
-sc_project: 11281831
-sc_security: f2dfc7eb
-img: \assets\16_convexity\norm2_surf.png
-summary: Giới thiệu về tập hợp lồi và hàm số lồi trong Toán Tối Ưu.
+sc_project: 11303728
+sc_security: d43a92f2
+img: /assets/18_duality/dual_func.png
+summary: Hàm số Lagrange, điều kiện KKT và bài toán đối ngẫu. 
 ---
-
-Bài này có khá nhiều khái niệm mới, mong bạn đọc thông cảm khi tôi sử dụng các khái niệm này ở cả tiếng Anh và tiếng Việt.
-
-_Bài chú yếu nói về toán, nếu bạn đọc không hiểu ngay cũng không sao, ngày đầu tôi làm quen với những khái niệm này cũng không thể hấp thụ được ngay. Làm nhiều, đọc nhiều rồi sẽ ngấm dần._
 
 <!-- MarkdownTOC -->
 
 - [1. Giới thiệu](#-gioi-thieu)
-- [2. Convex sets](#-convex-sets)
-    - [2.1. Định nghĩa](#-dinh-nghia)
-    - [2.2. Ví dụ](#-vi-du)
-        - [2.2.1. Hyperplanes và halfspaces](#-hyperplanes-va-halfspaces)
-        - [2.2.2. Norm balls](#-norm-balls)
-    - [2.3. Giao của các tập lồi là một tập lồi.](#-giao-cua-cac-tap-loi-la-mot-tap-loi)
-    - [2.4. Convex combination và Convex hulls](#-convex-combination-va-convex-hulls)
-- [3. Convex functions](#-convex-functions)
-    - [3.1. Định nghĩa](#-dinh-nghia-1)
-    - [3.2. Các tính chất cơ bản](#-cac-tinh-chat-co-ban)
-    - [3.3. Ví dụ](#-vi-du-1)
-        - [3.3.1. Các hàm một biến](#-cac-ham-mot-bien)
-        - [3.3.3. Affine functions](#-affine-functions)
-        - [3.3.3. Quadratic forms](#-quadratic-forms)
-        - [3.3.4. Norms](#-norms)
-    - [3.4. \\\(\alpha-\\\) sublevel sets](#-\\\alpha-\\-sublevel-sets)
-    - [3.5. Kiểm tra tính chất lồi dựa vào đạo hàm.](#-kiem-tra-tinh-chat-loi-dua-vao-dao-ham)
-        - [3.5.1. First-order condition](#-first-order-condition)
-        - [3.5.2. Second-order condition](#-second-order-condition)
-- [4. Tóm tắt](#-tom-tat)
-- [5. Tài liệu tham khảo](#-tai-lieu-tham-khao)
+- [2.  Phương pháp nhân tử Lagrange](#--phuong-phap-nhan-tu-lagrange)
+    - [Ví dụ](#vi-du)
+- [3. Hàm đối ngẫu Lagrange \(The Lagrange dual function\)](#-ham-doi-ngau-lagrange-the-lagrange-dual-function)
+    - [3.1. Lagrangian](#-lagrangian)
+    - [3.2. Hàm đối ngẫu Lagrange](#-ham-doi-ngau-lagrange)
+    - [3.3. Chặn dưới của giá trị tối ưu](#-chan-duoi-cua-gia-tri-toi-uu)
+    - [3.4. Ví dụ](#-vi-du)
+        - [Ví dụ 1](#vi-du-)
+        - [Ví dụ 2](#vi-du--1)
+- [4. Bài toán đối ngẫu Lagrange \(The Lagrange dual problem\)](#-bai-toan-doi-ngau-lagrange-the-lagrange-dual-problem)
+    - [4.1. Weak duality](#-weak-duality)
+    - [4.2. Strong duality và Slater's constraint qualification](#-strong-duality-va-slaters-constraint-qualification)
+- [5. Optimality conditions](#-optimality-conditions)
+    - [5.1. Complementary slackness](#-complementary-slackness)
+    - [5.2. KKT optimality conditions](#-kkt-optimality-conditions)
+        - [5.2.1. KKT condition cho bài toán _không_ lồi](#-kkt-condition-cho-bai-toan-khong-loi)
+        - [5.2.2. KKT conditions cho bài toán lồi](#-kkt-conditions-cho-bai-toan-loi)
+- [5. Tóm tắt](#-tom-tat)
+- [6. Kết luận](#-ket-luan)
+- [7. Tài liệu tham khảo](#-tai-lieu-tham-khao)
 
 <!-- /MarkdownTOC -->
 
+**Trong bài viết này, chúng ta giả sử rằng các đạo hàm tồn tại.**
+
+**Bài viết này chủ yếu được dịch lại từ Chương 5 của cuốn _Convex Optimization_ trong tài liệu tham khảo.** 
+
+_Nếu bạn gặp khó khăn trong việc hiểu đạo hàm trong bài viết này, bạn được khuyến khích đọc [Đạo hàm của hàm nhiều biến](/math/#-dao-ham-cua-ham-nhieu-bien). Ngoài ra, các kiến thức trong [Bài 16](/2017/03/12/convexity/) và [Bài 17](/2017/03/19/convexopt/) là quan trọng để hiểu rõ hơn bài viết này._
 
 <a name="-gioi-thieu"></a>
 
-## 1. Giới thiệu
-Từ đầu đến giờ, chúng ta đã làm quen với rất nhiều bài toán tối ưu. Học Machine Learning là phải học Toán Tối Ưu, và để hiểu hơn về Toán Tối Ưu, với tôi cách tốt nhất là tìm hiểu các thuật toán Machine Learning. Cho tới lúc này, những bài toán tối ưu các bạn đã nhìn thấy trong blog đều là các bài toán tối ưu không ràng buộc (unconstrained optimization problems), tức tối ưu hàm mất mát mà không có điều kiện ràng buộc (constraints) nào về nghiệm cả.
+## 1. Giới thiệu 
+Trong [Bài 16](/2017/03/12/convexity/), chúng ta đã làm quen với các khái niệm về tập hợp lồi và hàm số lồi. Tiếp theo đó, trong [Bài 17](/2017/03/19/convexopt/), tôi cũng đã trình bày về các bài toán tối ưu lồi, cách nhận dạng và cách sử dụng thư viện để giải các bài toán lồi cơ bản. Trong bài này, chúng ta sẽ tiếp tục tiếp cận một cách sâu hơn: các điều kiện về nghiệm của các bài toán tối ưu, cả lồi và không lồi; bài toán đối ngẫu (dual problem) và điều kiện KKT.
 
-Không chỉ trong Machine Learning, trên thực tế các bài toán tối ưu thường có rất nhiều ràng buộc khác nhau. Ví dụ:
+Trước tiên, chúng ta lại bắt đầu bằng những kỹ thuật đơn giản cho các bài toán cơ bản. Kỹ thuật này có lẽ các bạn đã từng nghe đến: Phương pháp nhân tử Lagrange (method of [Lagrange multipliers](https://en.wikipedia.org/wiki/Lagrange_multiplier)). Đây là một phương pháp giúp tìm các điểm cực trị của hàm mục tiêu trên feasible set của bài toán.
 
-* Tôi muốn thuê một ngôi nhà cách trung tâm Hà Nội không quá 5km với giá càng thấp càng tốt. Trong bài toán này, giá thuê nhà chính là hàm mất mát (_loss function_, đôi khi người ta cũng dùng _cost function_ để chỉ hàm số cần tối ưu), điều kiện khoảng cách không quá 5km chính là ràng buộc (constraint).
+Nhắc lại rằng giá trị lớn nhất và nhỏ nhất (nếu có) của một hàm số \\(f_0(\mathbf{x})\\) khả vi (và tập xác định là một [_tập mở_](https://en.wikipedia.org/wiki/Open_set)) đạt được tại một trong các điểm cực trị của nó. Và điều kiện cần để một điểm là điểm cực trị là đạo hàm của hàm số tại điểm này \\(f_0'(x) = 0\\). Chú ý rằng một điểm thoả mãn \\(f_0'(\mathbf{x})\\) = 0 thì được gọi là _điểm dừng_ hay _stationary point_. Điểm cực trị là một điểm dừng nhưng không phải điểm dừng nào cũng là điểm cực trị. Ví dụ hàm \\(f(x) = x^3\\) có \\(0\\) là một điểm dừng nhưng không phải là điểm cực trị.
 
-* Quay lại [bài toán dự đoán giá nhà theo Linear Regression](/2016/12/28/linearregression/#-gioi-thieu), giá nhà là một hàm tuyến tính của diện tích, số phòng ngủ và khoảng cách tới trung tâm. Rõ ràng, khi làm bài toán này, ta dự đoán rằng giá nhà tăng theo diện tích và số phòng ngủ, giảm theo khoảng cách. Vậy nên một nghiệm được gọi là _có lý một chút_ nếu hệ số tương ứng với diện tích và số phòng ngủ là dương, hệ số tương ứng với khoảng cách là âm. Để tránh các nghiệm ngoại lai không mong muốn, khi giải bài toán tối ưu, ta nên cho thêm các điều kiện ràng buộc này.
+Với hàm nhiều biến, ta cũng có thể áp dụng quan sát này. Tức chúng ta cần đi tìm nghiệm của phương trình đạo hàm _theo mỗi biến_ bằng 0. Tuy nhiên, đó là với các bài toán không ràng buộc (unconstrained optimization problems), với các bài toán có ràng buộc như chúng ta đã gặp trong Bài 17 thì sao? 
 
-Trong Tối Ưu, một bài toán có ràng buộc thường được viết dưới dạng:
+Trước tiên chúng ta xét bài toán mà ràng buộc chỉ là một phương trình:
+\\[
+\begin{eqnarray}
+    \mathbf{x}=& \arg\min_{\mathbf{x}} f_0(\mathbf{x}) \\\
+    \text{subject to:}~& f_1(\mathbf{x}) = 0~~~~~~~~~(1)
+\end{eqnarray}
+\\]
+
+Bài toán này là bài toán tổng quát, không nhất thiết phải lồi. Tức hàm mục tiêu và hàm ràng buộc không nhất thiết phải lồi. 
+<a name="--phuong-phap-nhan-tu-lagrange"></a>
+
+## 2.  Phương pháp nhân tử Lagrange
+Nếu chúng ta đưa được bài toán này về một bài toán không ràng buộc thì chúng ta có thể tìm được nghiệm bằng cách giải hệ phương trình đạo hàm theo từng thành phần bằng 0 (giả sử rằng việc giải hệ phương trình này là khả thi). 
+
+<!-- Một cách đơn giản nhất để đạt được mục đích này là kết hợp _hàm đẳng thức ràng buộc_ \\(f_1(\mathbf{x})\\) vào với hàm mục tiêu \\(f_0(\mathbf{x})\\) để được một hàm số \\(\mathcal{L}(\mathbf{x})\\) sao cho:
+
+* Nghiệm của \\(\nabla f_0(\mathbf{x})\\) có thể được suy ra từ nghiệm của \\(\nabla \mathcal{L}(\mathbf{x})= 0\\). 
+
+* Hơn nữa, nghiệm này phải thoả mãn điều kiện ràng buộc \\(f_1(\mathbf{x}) = 0\\). -->
+
+Điều này là động lực để nhà toán học [Lagrange](https://en.wikipedia.org/wiki/Joseph-Louis_Lagrange) sử dụng hàm số: \\(\mathcal{L}(\mathbf{x}, \lambda) = f_0(\mathbf{x}) + \lambda f_1(\mathbf{x})\\). Chú ý rằng, trong hàm số này, chúng ta có thêm một biến nữa là \\(\lambda\\), biến này được gọi là nhân tử Lagrange (Lagrange multiplier). Hàm số \\(\mathcal{L}(\mathbf{x}, \lambda)\\) được gọi là _hàm hỗ trợ_ (_auxiliary function_), hay _the Lagrangian_. Người ta đã chứng minh được rằng, điểm _optimal value_ của bài toán \\((1)\\) thoả mãn điều kiện \\(\nabla_{\mathbf{x}, \lambda} \mathcal{L}(\mathbf{x}, \lambda) = 0\\) (tôi xin được bỏ qua chứng minh của phần này). Điều này tương dương với:
 
 \\[
 \begin{eqnarray}
-\mathbf{x}^* &=& \arg\min_{\mathbf{x}} f_0(\mathbf{x})\\\
-\text{subject to:}~ && f_i(\mathbf{x}) \leq 0, ~~ i = 1, 2, \dots, m \\\
+    \nabla_{\mathbf{x}}f_0(\mathbf{x}) + \lambda \nabla_{\mathbf{x}} f_1(\mathbf{x}) &=& 0~~~~(2) \\\
+    f_1(\mathbf{x}) & = & 0  ~~~~(3)
+\end{eqnarray}
+\\]
+
+Để ý rằng điều kiện thứ hai chính là \\(\nabla_{\lambda}\mathcal{L}(\mathbf{x}, \lambda) = 0\\), và cũng chính là ràng buộc trong bài toán \\((1)\\).
+
+Việc giải hệ phương trình \\((2) - (3)\\), trong nhiều trường hợp, đơn giản hơn việc trực tiếp đi tìm _optimal value_ của bài toán \\((1)\\). 
+
+Xét các ví dụ đơn giản sau đây.
+<a name="vi-du"></a>
+
+### Ví dụ
+**Ví dụ 1:** Tìm giá trị lớn nhất và nhỏ nhất của hàm số \\(f_0(x, y) = x + y\\) thoả mãn điều kiện \\(f_1(x, y) = x^2 + y^2 = 2\\). Ta nhận thấy rằng đây không phải là một bài toán tối ưu lồi vì _feasible set_ \\(x^2 + y^2 = 2\\) không phải là một tập lồi (nó chỉ là một đường tròn).
+
+**_Lời giải:_**
+
+_Lagrangian_ của bài toán này là: \\(\mathcal{L}(x, y, \lambda) = x + y + \lambda(x^2 + y^2 - 2)\\). Các điểm cực trị của hàm số Lagrange phải thoả mãn điều kiện:
+
+\\[
+\nabla_{x, y, \lambda} \mathcal{L}(x, y, \lambda) = 0 \Leftrightarrow
+\left\\{
+\begin{matrix}
+    1 + 2\lambda x &= 0~~~ (4) \\\
+    1 + 2\lambda y &= 0~~~ (5) \\\
+    x^2 + y^2 &=     2 ~~~~(6)
+\end{matrix}
+\right.
+\\]
+
+Từ \\((4)\\) và \\((5)\\) ta suy ra \\(x = y = \frac{-1}{2\lambda}\\). Thay vào \\((6)\\) ta sẽ có \\(\lambda^2 = \frac{1}{4} \Rightarrow \lambda = \pm \frac{1}{2}\\). Vậy ta được 2 cặp nghiệm \\((x, y) \in \\{(1, 1), (-1, -1)\\}\\). Bằng cách thay các giá trị này vào hàm mục tiêu, ta tìm được giá trị nhỏ nhất và lớn nhất của hàm số cần tìm. 
+
+**Ví dụ 2: Cross-entropy**. Trong bài [Bài 10](/2017/01/27/logisticregression/) và [Bải 13](/2017/02/17/softmax/), chúng ta đã được biết đến hàm mất mát ở dạng [_cross entropy_](/2017/02/17/softmax/#-cross-entropy). Chúng ta cũng đã biết rằng hàm cross entropy được dùng để đo sự giống nhau của hai phân phối xác suất với giá trị của hàm số này càng nhỏ thì hai xác suất càng gần nhau. Chúng ta cũng đã phát biểu rằng giá trị nhỏ nhất của hàm cross entopy đạt được khi từng gặp xác suất là giống nhau. Bây giờ, tôi xin phát biểu lại và chứng minh nhận định trên. 
+
+Cho một phân bố xác xuất \\(\mathbf{p} = [p_1, p_2, \dots, p_n]^T\\) với \\(p_i \in [0, 1]\\) và \\(\sum_{i=1}^n p_i = 1\\). Với một phân bố xác suất bất kỳ \\(\mathbf{q} = [q_1, q_2, \dots, q_n]\\) và giả sử rằng \\(q_i \neq 0, \forall i\\), hàm số cross entropy được định nghĩa là:
+\\[
+f_0(\mathbf{q}) = -\sum_{i=1}^n p_i \log(q_i)
+\\]
+Hãy tìm \\(\mathbf{q}\\) để hàm cross entropy đạt giá trị nhỏ nhất. 
+
+Trong bài toán này, ta có ràng buộc là \\(\sum_{i=1}^n q_i = 1\\). _Lagrangian_ của bài toán là: 
+\\[
+\mathcal{L}(q_1, q_2, \dots, q_n, \lambda) = -\sum_{i=1}^n p_i \log(q_i) + \lambda(\sum_{i=1}^n q_i - 1)
+\\]
+Ta cần giải hệ phương trình: 
+
+\\[
+\nabla_{q_1, \dots, q_n, \lambda} \mathcal{L}(q_1, \dots, q_n, \lambda) = 0 \Leftrightarrow
+\left\\{
+\begin{matrix}
+   -\frac{p_i}{q_i} + \lambda &=& 0, ~~ i = 1, \dots, n ~~~(7)\\\
+   q_1 + q_2 + \dots + q_n &=& 1 ~~~~~~ (8)
+\end{matrix}
+\right.
+\\]
+
+Từ \\((7)\\) ta có \\(p_i = \lambda q_i\\). Vậy nên: \\( 1 = \sum_{i=1}^n p_i = \lambda\sum_{i=1}^n q_i = \lambda \Rightarrow \lambda = 1 \Rightarrow q_i = p_i, \forall i\\).
+
+Qua đây, chúng ta đã hiểu rằng vì sao hàm số cross entropy được dùng để _ép_ hai xác suất _gần nhau_.
+
+<a name="-ham-doi-ngau-lagrange-the-lagrange-dual-function"></a>
+
+## 3. Hàm đối ngẫu Lagrange (The Lagrange dual function)
+
+<a name="-lagrangian"></a>
+
+### 3.1. Lagrangian 
+Với bài toán tối ưu tổng quát:
+\\[
+\begin{eqnarray}
+\mathbf{x}^* &=& \arg\min_{\mathbf{x}} f_0(\mathbf{x}) \\\
+\text{subject to:}~ && f_i(\mathbf{x}) \leq 0, ~~ i = 1, 2, \dots, m ~~~(9)\\\
 && h_j(\mathbf{x}) = 0, ~~ j = 1, 2, \dots, p
 \end{eqnarray}
 \\]
+với miền xác đinh \\(\mathcal{D} = (\cap_{i=0}^m \text{dom}f_i) \cap (\cap_{j=1}^p \text{dom}h_j)\\). Chú ý rằng, chúng ta đang không giả sử về tính chất lồi của hàm tối ưu hay các hàm ràng buộc ở đây. Giả sử duy nhất ở đây là \\(\mathcal{D} \neq \emptyset\\) (tập rỗng).
 
-Trong đó, vector \\(\mathbf{x} = [x_1, x_2, \dots, x_n]^T\\) được gọi là _biến tối ưu_ (_optimization variable_). Hàm số \\(f_0: \mathbb{R}^n \rightarrow \mathbb{R}\\) được gọi là _hàm mục tiêu_ (_objective function_, các hàm mục tiêu trong Machine Learning thường được gọi là _hàm mất mát_). Các hàm số \\(f_i, h_j: \mathbb{R}^n \rightarrow \mathbb{R}, i = 1, 2, \dots, m; j = 1, 2, \dots, p\\) được gọi là các _hàm ràng buộc_ (hoặc đơn giản là _ràng buộc_ - constraints). Tập hợp các điểm \\(\mathbf{x}\\) thỏa mãn các _ràng buộc_ được gọi là _feasible set_. Mỗi điểm trong _feasible set_ được gọi là _feasible point_, các điểm không trong _feasible set_ được gọi là _infeasible points_.
+_Lagrangian_ cũng được xây dựng tương tự với mỗi nhân tử Lagrange cho một (bất) phương trình ràng buộc:
+\\[
+\mathcal{L}(\mathbf{x}, \lambda, \nu) = f_0(\mathbf{x}) + \sum_{i=1}^m \lambda_if_i(\mathbf{x}) + \sum_{j=1}^p \nu_j h_j(\mathbf{x})
+\\]
 
-**Chú ý:**
+với \\(\lambda = [\lambda\_1, \lambda\_2, \dots, \lambda\_m]; \nu = [\nu\_1, \nu\_2, \dots, \nu\_p]\\) (_ký hiệu \\(\nu\\) này không phải là chữ v mà là chữ nu trong tiếng Hy Lạp, đọc như từ new_) là các vectors và được gọi là _dual variables_ (_biến đối ngẫu_) hoặc _Lagrange multiplier vectors_ (vector nhân tử Lagrange). Lúc này nếu biến chính \\(\mathbf{x} \in \mathbb{R}^n\\) thì tổng số biến của hàm số này sẽ là \\(n + m + p\\). 
 
-* Nếu bài toán là tìm giá trị lớn nhất thay vì nhỏ nhất, ta chỉ cần đổi dấu của \\(f_0(\mathbf{x})\\).
+(_Thông thường, tôi dùng các chữ cái viết thường in đậm để biểu diễn một vector, trong trường hợp này tôi không bôi đậm được \\(\lambda\\) và \\(\nu\\) do hạn chế của LaTeX khi viết cùng markdown. Tôi lưu ý điều này để hạn chế nhầm lẫn cho bạn đọc_)
 
-* Nếu ràng buộc là _lớn hơn hoặc bằng_, tức \\(f_i(\mathbf{x}) \geq b_i\\), ta chỉ cần đổi dấu của ràng buộc là sẽ có điều kiện _nhỏ hơn hoặc bằng_ \\(-f_i(\mathbf{x}) \leq -b_i\\).
 
-* Các ràng buộc cũng có thể là _lớn hơn_ hoặc _nhỏ hơn_.
+<a name="-ham-doi-ngau-lagrange"></a>
 
-* Nếu ràng buộc là _bằng nhau_, tức \\(h_j(\mathbf{x}) = 0\\), ta có thể viết nó dưới dạng hai bất đẳng thức \\(h_j(\mathbf{x}) \leq 0\\) và \\(-h_j(\mathbf{x}) \leq 0\\). Trong một vài tài liệu, người ta bỏ các phương trình ràng buộc \\(h_j(\mathbf{x})= 0\\) đi.
+### 3.2. Hàm đối ngẫu Lagrange 
 
-* Trong bài viết này, \\(\mathbf{x}, \mathbf{y}\\) được dùng chủ yếu để ký hiệu các biến số, không phải là dữ liệu như trong các bài trước. Biến tối ưu chính là biến được ghi dưới dấu \\(\arg \min\\). Khi viết một bài toán Tối Ưu, ta cần chỉ rõ biến nào cần được tối ưu, biến nào là cố định.
+Hàm đối ngẫu Lagrange của bài toán tối ưu (hoặc gọn là _hàm số đối ngẫu_) \\((9)\\) là một hàm của các biến đối ngẫu, được định nghĩa là giá trị nhỏ nhất theo \\(\mathbf{x}\\) của _Lagrangian_:
+\\[
+\begin{eqnarray}
+g(\lambda, \nu) &=& \inf_{\mathbf{x} \in \mathcal{D}} \mathcal{L}(\mathbf{x}, \lambda, \nu)\\\
+&=& \inf_{\mathbf{x} \in \mathcal{D}}\left\( f_0(\mathbf{x}) + \sum_{i=1}^m \lambda_if_i(\mathbf{x}) + \sum_{j=1}^p \nu_j h_j(\mathbf{x})\right\)
+\end{eqnarray}
+\\]
 
-Các bài toán tối ưu, nhìn chung không có cách giải tổng quát, thậm chí có những bài chưa có lời giải. Hầu hết các phương pháp tìm nghiệm không chứng minh được nghiệm tìm được có phải là _global optimal_ hay không, tức đúng là điểm làm cho hàm số đạt giá trị nhỏ nhất hay lớn nhất hay không. Thay vào đó, nghiệm thường là các _local optimal_, tức các _điểm cực trị_.
+Nếu _Lagrangian không bị chặn dưới_, hàm đối ngẫu tại \\(\lambda, \nu\\) sẽ lấy giá trị \\(-\infty\\). 
 
-Để bắt đầu học Tối Ưu, chúng ta cần học một mảng rất quan trọng trong đó, có tên là _Tối Ưu Lồi_ (convex optimization), trong đó _hàm mục tiêu_ là một _hàm lồi_ (convex function), _feasible set_ là một _tập lồi_ (convex set). Những tính chất đặc biệt về _local optimal_ và _global optimal_ của một _hàm lồi_ khiến Tối Ưu Lồi trở nên cực kỳ quan trọng. Trong bài viết này, tôi sẽ giới thiệu tới các bạn các định nghĩa và tính chất cơ bản của _tập lồi_ và _hàm lồi_. _Bài toán tối ưu lồi_ (convex optimization problems) sẽ được đề cập trong bài tiếp theo.
+**Đặc biệt quan trọng:** 
 
-<a name="-convex-sets"></a>
+* \\(\inf\\) được lấy trên miền \\(x \in \mathcal{D}\\), tức miền xác định của bài toán (là giao của miền xác định của mọi hàm trong bài toán). Miền xác định này khác với _feasible set_. Thông thường, _feasible set_ là tập con của miền xác định \\(\mathcal{D}\\).
 
-## 2. Convex sets
+* Với mỗi \\(\mathbf{x}\\), _Lagrangian_ là một hàm _affine_ của \\((\lambda, \nu)\\), tức là một [hàm _concave_](/2017/03/12/convexity/#concave-function). Vậy, _hàm đối ngẫu_ chính là _pointwise infimum_ của (có thể vô hạn) các hàm concave, tức là một hàm concave. Vậy **hàm đối ngẫu của một bài toán tối ưu bất kỳ là một hàm concave, bất kể bài toán ban đầu có phải là convex hay không**. Nhắc lại rằng _pointwise supremum_ của các hàm _convex_ là một hàm _convex_, và một hàm là _concave_ nếu khi đổi dấu hàm đó, ta được một hàm _convex_. 
 
-<a name="-dinh-nghia"></a>
 
-### 2.1. Định nghĩa
-Khái niệm về _convex sets_ có lẽ không xa lạ với các bạn học sinh Việt Nam khi chúng ta đã nghe về _đa giác lồi_. _Lồi_, hiểu đơn giản là _phình ra ngoài_, hoặc _nhô ra ngoài_. Trong toán học, _bằng phẳng_ cũng được coi là _lồi_.
+<a name="-chan-duoi-cua-gia-tri-toi-uu"></a>
 
-**Định nghĩa 1:** Một tập hợp được gọi là _tập lồi_ (convex set) nếu đoạn thẳng nối hai điểm _bất kỳ_ trong tập hợp hợp đó nằm trọn vẹn trong tập hợp đó.
+### 3.3. Chặn dưới của giá trị tối ưu 
+Nếu \\(p^\*\\) là [_optimal value_](/2017/03/19/convexopt/#-cac-khai-niem-co-ban) (giá trị tối ưu) của bài toán \\((9)\\), thì với các biến đối ngẫu \\(\lambda_i \geq 0, \forall i\\) và \\(\nu\\) _bất kỳ_, chúng ta sẽ có: 
+\\[
+g(\lambda, \nu) \leq p^\*~~~~ (10)
+\\]
+Tính chất này có thể được chứng minh dễ dàng. Giả sử \\(\mathbf{x}\_0\\) là một điểm _feasible_ bất kỳ của bài toán \\((9)\\), tức thoả mãn các điều kiện ràng buộc \\(f_i(\mathbf{x}\_0) \leq 0, \forall i = 1, \dots, m; h_j(\mathbf{x}\_0) = 0, \forall j = 1, \dots, p\\), ta sẽ có: 
+\\[
+\sum_{i=1}^m \lambda_if_i(\mathbf{x}\_0) + \sum_{j=1}^p \nu_j h_j(\mathbf{x}\_0) \leq 0 \Rightarrow \mathcal{L}(\mathbf{x}\_0, \lambda, \nu) \leq f_0(\mathbf{x}\_0)
+\\]
+Vì điều này đúng với mọi \\(\mathbf{x}\_0\\) _feasible_, ta sẽ có tính chất quan trọng sau đây: 
+\\[
+g(\lambda, \nu) = \inf_{\mathbf{x} \in \mathcal{D}} \mathcal{L}(\mathbf{x}, \lambda, \nu) \leq \mathcal{L}(\mathbf{x}\_0, \lambda, \nu) \leq f_0(\mathbf{x}_0).
+\\]
 
-Một vài ví dụ về convex sets:
-<hr>
-<div class="imgcap">
- <img src ="/assets/16_convexity/convexsets.png" align = "center" width = "800">
- <div class = "thecap">Hình 1: Các ví dụ về convex sets.</div>
-</div>
-<hr>
+Khi \\(\mathbf{x}_0 = \mathbf{x}^*\\), ta có bất đẳng thức \\((10)\\).
 
-Các hình với đường biên màu đen thể hiện việc bao gồm cả biên, biên màu trắng thể hiện việc biên đó không nằm trong tập hợp đang xét. Đường hoặc đoạn thằng cũng là một tập lồi theo định nghĩa phía trên.
-
-Một vài ví dụ thực tế:
-
-* Giả sử có một căn phòng có dạng hình _lồi_, nếu ta đặt một bóng đèn đủ sáng ở bất kỳ vị trí nào trong phòng, mọi điểm trong căn phòng đều được chiếu sáng.
-
-* Nếu một đất nước có bản đồ dạng một hình _lồi_ thì đường bay nối giữa hai thành phố bất kỳ trong đất nước đó đều nằm trọn vẹn trong không phận của nước đó. (Không như Việt Nam, muốn bay thẳng Hà Nội - Hồ Chí Minh phải bay qua không phận Campuchia).
-
-Dưới đây là một vài ví dụ về _nonconvex sets_, tức tập hợp mà không phải là lồi:
-
-<hr>
-<div class="imgcap">
- <img src ="/assets/16_convexity/nonconvexsets.png" align = "center" width = "800">
- <div class = "thecap">Hình 2: Các ví dụ về nonconvex sets.</div>
-</div>
-<hr>
-
-Ba hình đầu tiên không phải là lồi vì các đường nét đứt chứa nhiều điểm không nằm trong các tập đó. Hình thứ tư, hình vuông không có biên ở đáy, không phải là _tập lồi_ vì đoạn thẳng nối hai điểm ở đáy có thể chứa phần ở giữa không thuộc tập đang xét (Nếu không có biên thì thình vuông vẫn là một _tập lồi_, nhưng biên nửa vời như ví dụ này thì hãy chú ý). Một đường cong bất kỳ cũng không phải là _tập lồi_ vì dễ thấy đường thẳng nối hai điểm bất kỳ không thuộc đường cong đó.
-
-Để mô tả một _tập lồi_ dưới dạng toán học, ta sử dụng:
-
-**Định nghĩa 2:** Một tập hợp \\(\mathcal{C}\\) được gọi là _convex_ nếu với hai điểm bất kỳ \\(\mathbf{x}\_1, \mathbf{x}\_2 \in \mathcal{C}\\), điểm \\( \mathbf{x}\_{\theta} = \theta \mathbf{x}_1 + (1 - \theta) \mathbf{x}_2\\) cũng nằm trong \\(\mathcal{C}\\) với bất kỳ \\(0 \leq \theta \leq 1\\).
-
-Có thể thấy rằng, tập hợp các điểm có dạng \\(\left(\theta \mathbf{x}\_1 + (1 - \theta) \mathbf{x}\_2\right)\\) chính là _đoạn thẳng_ nối hai điểm \\(\mathbf{x}_1\\) và \\(\mathbf{x}_2\\).
-
-Với các định nghĩa này thì _toàn bộ không gian_ là một _tập lồi_ vì đoạn thằng nào cũng nằm trong không gian đó. Tập rỗng cũng có thể coi là một trường hợp đặc biệt của _tập lồi_.
-
-Dưới đây là một vài ví dụ hay gặp về _tập lồi_.
 <a name="-vi-du"></a>
 
-### 2.2. Ví dụ
-<a name="-hyperplanes-va-halfspaces"></a>
+### 3.4. Ví dụ 
+<a name="vi-du-"></a>
 
-#### 2.2.1. Hyperplanes và halfspaces
-Một **hyperplane** (siêu mặt phẳng) trong không gian \\(n\\) chiều là tập hợp các điểm thỏa mãn phương trình:
-\\[
-a_1 x_1 + a_2 x_2 + \dots + a_n x_n = \mathbf{a}^T\mathbf{x} = b
-\\]
-với \\(b, a_i, i = 1, 2, \dots, n\\) là các số thực.
-
-Hyperplanes là các _tập lồi_. Điều này có thể dễ dàng suy ra từ Định nghĩa 1. Với Định nghĩa 2, chúng ta cũng dễ dàng nhận thấy. Nếu:
-
-\\[
-\mathbf{a}^T\mathbf{x}\_1 = \mathbf{a}^T\mathbf{x}\_2 = b
-\\]
-thì với \\(0 \leq \theta \leq 1\\) bất kỳ:
-\\[
-\mathbf{a}^T\mathbf{x}_{\theta} = \mathbf{a}^T(\theta \mathbf{x}_1 + (1 - \theta)\mathbf{x}_2)) = \theta b + (1 - \theta) b  = b
-\\]
-
-Một **halfspace** (nửa không gian) trong không gian \\(n\\) chiều là tập hợp các điểm thỏa mãn phương trình:
-\\[
-a_1 x_1 + a_2 x_2 + \dots + a_n x_n = \mathbf{a}^T\mathbf{x} \leq b
-\\]
-với \\(b, a_i, i = 1, 2, \dots, n\\) là các số thực.
-
-Các halfspace cũng là các tập lồi, bạn đọc có thể dễ dàng nhận thấy theo Định nghĩa 1 hoặc chứng minh theo Định nghĩa 2.
-
-<a name="-norm-balls"></a>
-
-#### 2.2.2. Norm balls
-**Euclidean balls** (hình tròn trong mặt phẳng, hình cầu trong không gian ba chiều) là tập hợp các điểm có dạng:
-\\[
-B(\mathbf{x}_c, r) = \\{\mathbf{x} ~\big|~ \|\|\mathbf{x} - \mathbf{x}_c\|\|_2 \leq r \\} = \\{\mathbf{x}_c + r\mathbf{u} ~\big|~ \|\|\mathbf{u}\|\|_2 \leq 1\\}
-\\]
-
-Theo Định nghĩa 1, chúng ta có thể _thấy_ Euclidean balls là các tập lồi, nếu phải chứng minh, ta dùng Định nghĩa 2 và [các tính chất của norms](/math/#-norms-chuan). Với \\(\mathbf{x}_1, \mathbf{x}_2\\) bất kỳ thuộc \\(B(\mathbf{x}_c, r)\\) và \\(0 \leq \theta \leq 1\\) bất kỳ:
+#### Ví dụ 1 
+Xét bài toán tối ưu sau:
 \\[
 \begin{eqnarray}
-\|\|\mathbf{x}\_{\theta} - \mathbf{x}_c\|\|_2 &=& \|\|\theta(\mathbf{x}_1 - \mathbf{x}_c)  + (1 - \theta) (\mathbf{x}_2 - \mathbf{x}_c)\|\|_2 \\\
-&\leq& \theta \|\|\mathbf{x}_1 - \mathbf{x}_c\|\|_2 + (1 - \theta)\|\|\mathbf{x}_2 - \mathbf{x}_c\|\|_2 \\\
-&\leq& \theta r + ( 1 - \theta) r = r
+    x=& \arg\min_{x} x^2 + 10\sin(x) + 10 \\\
+    \text{subject to:}~& (x-2)^2 \leq 4 
 \end{eqnarray}
 \\]
 
-Vậy nên \\(\mathbf{x}\_{\theta} \in B(\mathbf{x}_c, r)\\).
+Chú ý: Với bài toán này, miền xác định \\(\mathcal{D} = \mathbb{R}\\) nhưng _feasible set_ là \\(0 \leq x \leq 4\\).
 
-**Euclidean ball** sử dụng norm 2 làm khoảng cách. Nếu sử dụng norm bất kỳ là khoảng cách, ta vẫn được một _tập lồi_.
+Với hàm mục tiêu là đường đậm màu xanh lam trong Hình 1 dưới đây. Ràng buộc thực ra \\(0 \leq x \leq 4\\), nhưng tôi viết ở dạng này để bài toán thêm phần thú vị. Hàm số ràng buộc \\(f_1(x) = (x-2)^2 - 4\\) được cho bởi đường nét đứt màu xanh lục. Optimal value của bài toán này có thể được nhận ra là điểm trên đồ thị có hoành độ bằng 0. Chú ý rằng hàm mục tiêu ở đây không phải là hàm lồi nên bài toán tối ưu này cũng không phải là lồi, mặc dù hàm bất phương trình ràng buộc \\(f_1(x)\\) là lồi.
 
-**Khi sử dụng norm p:**
+_Lagrangian_ của bài toàn này có dạng:
 \\[
-\|\|\mathbf{x}\|\|\_p = (\|x_1\|^p + \|x_2\|^p + \dots \|x_n\|^p)^{\frac{1}{p}} ~~(1)
+\mathcal{L}(x, \lambda) = x^2 + 10\sin(x) +10+ \lambda((x-2)^2 - 4) 
 \\]
-với **p là một số thực bất kỳ không nhỏ hơn 1** ta cũng thu được các _tập lồi_.
-
-Hình dưới đây minh họa tập hợp các điểm có tọa độ \\((x, y)\\) trong không gian hai chiều thỏa mãn:
-\\[
-(|x|^p + |y|^p)^{1/p} \leq 1 ~~~(1)
-\\]
-với hàng trên là các tập với \\(0 < p < 1\\) (không phải norm) và hàng dưới tương ứng với \\(p \geq 1\\):
-<hr>
-<div class="imgcap">
- <img src ="/assets/16_convexity/normballs.png" align = "center" width = "800">
- <div class = "thecap">Hình 3. Hình dạng của các tập hợp bị chặn bởi pseudo-norms (hàng trên) và norm (hàng dưới).</div>
-</div>
-<hr>
-Chúng ta có thể thấy rằng khi \\(p\\) nhỏ gần bằng 0, tập hợp các điểm thỏa mãn bất đẳng thức (1) gần như nằm trên các trục tọa độ và bị chặn trong đoạn \\([0, 1]\\). Quan sát này sẽ giúp ích cho các bạn khi làm việc với (giả) norm 0 sau này. Khi \\(p \rightarrow \infty\\), các tập hợp hội tụ về hình vuông.
-
-Đây cũng là một trong các lý do vì sao cần có điều kiện \\(p \geq 1\\) khi định nghĩa norm.
-
-**Ellipsoids**
-
-Các ellipsoids (ellipse trong không gian nhiều chiều) cũng là các _tập lồi_. Thực chất, ellipsoides có mối quan hệ mật thiết tới [Khoảng cách Mahalanobis](https://en.wikipedia.org/wiki/Mahalanobis_distance). Khoảng cách này vốn dĩ là một norm nên ta có thể chứng minh theo Định nghĩa 2 được tính chất lồi của các ellipsoids.
-
-**Mahalanobis norm** của một vector \\(\mathbf{x} \in \mathbb{R}^n\\) được định nghĩa là:
-\\[
-\|\|\mathbf{x}\|\|_{\mathbf{A}} = \sqrt{\mathbf{x}^T\mathbf{A}^{-1}\mathbf{x}}
-\\]
-
-Với \\(\mathbf{A}\\) là một ma trận thỏa mãn:
-\\[
-\mathbf{x}^T\mathbf{A}^{-1}\mathbf{x} \geq 0, ~~\forall \mathbf{x} \in \mathbb{R}^n ~~ (2)
-\\]
-Khi một ma trận \\(\mathbf{A}\\) thỏa mãn điều kiện \\((2)\\), ta nói ma trận đó *xác định dương* (*positive definite*). Một ma trận là *xác định dương* nếu các *trị riêng* (eigenvalues) của nó là dương.
-
-<a name="positive-semidefinite"></a>
-Nhân tiện, một ma trận \\(\mathbf{B}\\) được gọi là **nửa** *xác định dương* (*positive semidefinite*) nếu các *trị riêng* của nó là không âm. Khi đó \\(\mathbf{x}^T \mathbf{Bx} \geq 0, \forall \mathbf{x}\\). Nếu dấu bằng xảy ra khi và chỉ khi \\(\mathbf{x} = 0\\) thì ta nói ma trận đó *xác định dương*. Trong biểu thức \\((2)\\), vì ma trận \\(\mathbf{A}\\) có nghịch đảo nên mọi *trị riêng* của nó phải khác không. Vì vậy, \\(\mathbf{A}\\) là một ma trận *xác định dương*.
-
-Một ma trận \\(\mathbf{A}\\) là _xác định dương_ hoặc _nửa xác định dương_ sẽ được ký hiệu lần lượt như sau:
-\\[
-\mathbf{A} \succ 0, ~~~~~ \mathbf{A} \succeq 0.
-\\]
-
-Cũng lại nhân tiện, khoảng cách Mahalanobis có liên quan đến *khoảng cách từ một điểm tới một phân phối xác suất* (from a point to a distribution). 
-<a name="-giao-cua-cac-tap-loi-la-mot-tap-loi"></a>
-
-### 2.3. Giao của các tập lồi là một tập lồi.
-Việc này có thể nhận dễ nhận thấy với Hình 4 (trái) dưới đây. Giao của hai trong ba hoặc cả ba tập lồi đều là các tập lồi.
-
-Việc chứng minh việc này theo Định nghĩa 2 cũng không khó. Nếu \\(\mathbf{x}_1, \mathbf{x}_2\\) thuộc vào giao của các tập lồi, tức thuộc tất cả các tập lồi đã cho, thì \\(\theta\mathbf{x}_1 + (1 - \theta) \mathbf{x}_2)\\) cũng thuộc vào tất cả các tập lồi, tức thuộc vào giao của chúng!
-
-<hr>
-<div class="imgcap">
- <img src ="/assets/16_convexity/intersection.png" align = "center" width = "800">
- <div class = "thecap">Hình 4. Trái: Giao của các tập lồi là một tập lồi. Phải: giao của các hyperplanes và haflspaces là một tập lồi và được gọi là polyhedron (số nhiều là polyhedra).</div>
-</div>
-<hr>
-
-Từ đó suy ra giao của các _haflspaces_ và các _hyperplanes_ cũng là một tập lồi. Trong không gian hai chiều, tập lồi này chính là _đa giác lồi_, trong không gian ba chiều, nó có tên là _đa diện lồi_.
-
-Trong không gian nhiều chiều, giao của các *haflspaces* và *hyperplanes* được gọi là **polyhedra**.
-
-Giả sử có \\(m\\) *haflspaces* và \\(p\\) *hyperplanes*. Mỗi một *haflspace*, theo như đã trình bày phía trên, có thể viết dưới dạng \\(\mathbf{a}_i^T\mathbf{x} \leq b_i, ~\forall i = 1, 2, \dots, m\\). Mỗi một *hyperplane* có thể viết dưới dạng: \\(\mathbf{c}_i^T\mathbf{x} = d_i, ~\forall i = 1, 2, \dots, p\\).
-
- Vậy nếu đặt \\(\mathbf{A} = [\mathbf{a}_1, \mathbf{a}_2, \dots, \mathbf{a}_m]\\), \\(\mathbf{b} = [b_1, b_2, \dots, b_m]^T, \mathbf{C} = [\mathbf{c}_1, \mathbf{c}_2, \dots, \mathbf{c}_p]\\) và \\(\mathbf{d} = [d_1, d_2, \dots, d_p]^T\\), ta có thể viết polyhedra dưới dạng tập hợp các điểm \\(\mathbf{x}\\) thỏa mãn:
- \\[
- \mathbf{A}^T\mathbf{x} \preceq \mathbf{b}, ~~~~  \mathbf{C}^T\mathbf{x} = \mathbf{d}
- \\]
-trong đó \\(\preceq\\) là *element-wise*, tức mỗi phần tử trong vế trái nhỏ hơn hoặc bằng phần tử tương ứng trong vế phải.
-
-<a name="-convex-combination-va-convex-hulls"></a>
-
-### 2.4. Convex combination và Convex hulls
-Một điểm được gọi là **convex combination** (_tổ hợp lồi_) của các điểm \\(\mathbf{x}_1, \mathbf{x}_2, \dots, \mathbf{x}_k\\) nếu nó có thể viết dưới dạng:
-\\[
-\mathbf{x} = \theta_1 \mathbf{x}_1 + \theta_2 \mathbf{x}_2 + \dots  + \theta_k \mathbf{x}_k, ~~ \text{with} ~~ \theta_1 + \theta_2 + \dots + \theta_k = 1
-\\]
-
-**Convex hull** của một **tập hợp bất kỳ** là tập hợp tất cả các điểm là _convex combination_ của tập hợp đó. *Convex hull* là một _convex set_. *Convexhull* của một _convex set_ là chính nó. Một cách dễ nhớ, _convex hull_ của một tập hợp là một _convex set_ **nhỏ nhất** chứa tập hợp đó. Khái niệm **nhỏ nhất** rất khó định nghĩa, nhưng nó cũng là một cách nhớ trực quan.
-
-Hai tập hợp được gọi là _linearly separable_ nếu các _convex hulls_ của chúng không có điểm chung.
-<hr>
-<div class="imgcap">
- <img src ="/assets/16_convexity/convex_hull.png" align = "center" width = "800">
- <div class = "thecap">Hình 5. Convex hull và Định lý separating hyperplane.</div>
-</div>
-<hr>
-Trong hình trên, convex hull của các điểm màu xanh là vùng màu xám bao với các đa giác lồi. Ở hình bên phải thì vùng màu xám nằm dưới vùng màu xanh.
-
-<hr>
-**Separating hyperplane theorem:** Định lý này nói rằng nếu hai _tập lồi không rỗng_ \\(\mathcal{C}, \mathcal{D}\\) là _disjoint_ (không giao nhau), thì tồn tại vector \\(\mathbf{a}\\) và số \\(b\\) sao cho:
-\\[
-\mathbf{a}^T\mathbf{x} \leq b, \forall \mathbf{x} \in \mathcal{C}, ~~ \text{and}~~ \mathbf{a}^T\mathbf{x} \geq b, \forall \mathbf{x} \in \mathcal{D}
-\\]
-Tập hợp tất cả các điểm \\(\mathbf{x}\\) thỏa mãn \\(\mathbf{a}^T\mathbf{x} = b\\) chính là một hyperplane. Hyperplan này được gọi là _separating hyperplane_.
-<hr>
-
-
-Ngoài ra còn nhiều tính chất thú vị của các tập lồi và các phép toán bảo toàn chính chất _lồi_ của một tập hợp, các bạn được khuyến khích đọc thêm Chương 2 của cuốn Convex Optimization trong phần tài liệu tham khảo.
-
-
-<a name="-convex-functions"></a>
-
-## 3. Convex functions
-
-Hẳn các bạn đã nghe tới khái niệm này khi ôn thi đại học môn toán. Khái niệm hàm lồi có quan hệ tới đạo hàm bậc hai và [Bất đẳng thức Jensen](https://vi.wikipedia.org/wiki/Bất_đẳng_thức_Jensen) (_nếu bạn chưa nghe tới phần này, không sao, bây giờ bạn sẽ biết_).
-
-<a name="-dinh-nghia-1"></a>
-
-### 3.1. Định nghĩa
-Để trực quan, trước hết ta xem xét các hàm 1 biến, đồ thị của nó là một đường trong một mặt phẳng. Một hàm số được gọi là _lồi_ nếu **tập xác định của nó là một tập lồi** và nếu ta nối hai điểm bất kỳ trên đồ thị hàm số đó, ta được một đoạn thẳng nằm về phía trên hoặc nằm trên đồ thị (xem Hình 5).
-
-Tập xác định (domain) của một hàm số \\(f(.)\\) thường được ký hiệu là \\(\text{dom} f\\).
-
-Định nghĩa theo toán học:
-<hr>
-**Định nghĩa convex function:** Một hàm số \\(f: \mathbb{R}^n \rightarrow \mathbb{R} \\) được gọi là một _hàm lồi_ (convex function) nếu \\(\text{dom} f\\) là một _tập lồi_, và:
-\\[
-f(\theta\mathbf{x} + (1 - \theta) \mathbf{y}) \leq \theta f(\mathbf{x}) + (1 - \theta)f(\mathbf{y})
-\\]
-với mọi \\(\mathbf{x, y} \in \text{dom}f, 0 \leq \theta \leq 1\\).
-<hr>
-Điều kiện \\(\text{dom} f\\) là một _tập lồi_ là rất quan trọng, vì nếu không có nó, ta không định nghĩa được \\(f(\theta\mathbf{x} + (1 - \theta) \mathbf{y}) \\).
-
-<hr>
-<div class="imgcap">
- <img src ="/assets/16_convexity/convexf_def.png" align = "center" width = "500">
- <div class = "thecap">Hình 5. Convex function.</div>
-</div>
-<hr>
-
-<a name="concave-function"></a>
-Một hàm số \\(f\\) được gọi là **concave** (nếu bạn muốn dịch là _lõm_ cũng được, tôi không thích cách dịch này) nếu \\(-f\\) là **convex**. Một hàm số có thể không thuộc hai loại trên. Các hàm tuyến tính vừa *convex*, vừa *concave*.
-<hr>
-**Định nghĩa strictly convex function:** (tiếng Việt có một số tài liệu gọi là _hàm lồi mạnh_, _hàm lồi chặt_) Một hàm số \\(f: \mathbb{R}^n \rightarrow \mathbb{R} \\) được gọi là _strictly convex_  nếu \\(\text{dom} f\\) là một _tập lồi_, và:
-\\[
-f(\theta\mathbf{x} + (1 - \theta) \mathbf{y}) < \theta f(\mathbf{x}) + (1 - \theta)f(\mathbf{y})
-\\]
-với mọi \\(\mathbf{x, y} \in \text{dom}f, \mathbf{x} \neq \mathbf{y},  0 < \theta < 1\\).
-<hr>
-Tương tự với định nghĩa **strictly concave**.
-
-Đây là một điểm quan trọng: **Nếu một hàm số là _strictly convex_ và có điểm cực trị, thì điểm cực trị đó là duy nhất và cũng là _global minimum_**.
-
-<a name="-cac-tinh-chat-co-ban"></a>
-
-### 3.2. Các tính chất cơ bản
-
-* Nếu \\(f(\mathbf{x})\\) là _convex_ thì \\(af(\mathbf{x})\\) là _convex_ nếu \\(a > 0\\) và là _concave_ nếu \\(a < 0\\). Điều này có thể suy ra trực tiếp từ định nghĩa.
-
-* Tổng của hai _hàm lồi_ là một _hàm lồi_, với tập xác định là giao của hai tập xác định kia (nhắc lại rằng giao của hai tập lồi là một tập lồi)
-
-* **Pointwise maximum and supremum:** Nếu các hàm số \\(f_1, f_2, \dots, f_m\\) là _convex_ thì:
-\\[
-f(\mathbf{x}) = \max\\{f_1(\mathbf{x}), f_2(\mathbf{x}), \dots, f_m(\mathbf{x})\\}
-\\]
-cũng là _convex_ trên tập xác định là giao của tất cả các tập xác định của các hàm số trên. Hàm \\(\max\\) phía trên cũng có thể thay thế bằng [hàm \\(\text{sup}\\)](https://en.wikipedia.org/wiki/Infimum_and_supremum). Tính chất này có thể chứng minh được theo Định nghĩa. Bạn cũng có thể nhận ra dựa vào hình ví dụ dưới đây. Mọi đoạn thẳng nối hai điểm bất kì trên đường màu xanh đều _không nằm dưới_ đường màu xanh.
-
-<hr>
-<div class="imgcap">
- <img src ="/assets/16_convexity/max_point.png" align = "center" width = "400">
- <div class = "thecap">Hình 6. Ví dụ về Pointwise maximum.</div>
-</div>
-<hr>
-
-<a name="-vi-du-1"></a>
-
-### 3.3. Ví dụ
-<a name="-cac-ham-mot-bien"></a>
-
-#### 3.3.1. Các hàm một biến
-**Các ví dụ về các _convex functions_ một biến:**
-
-* Hàm \\( y = ax + b\\) là một _hàm lồi_ vì đường nối hai điểm bất kỳ nằm trên chính đồ thị đó.
-
-* Hàm \\(y = e^{ax}\\) với \\(a \in \mathbb{R}\\) bất kỳ.
-
-* Hàm \\(y = x^a\\) trên tập các số thực dương và \\(a \geq 1\\) hoặc \\(a \leq 0\\).
-
-* Hàm _negative entropy_ \\(y = x \log x\\) trên tập các số thực dương.
-
-Dưới đây là đồ thị của một vài _convex functions_:
-<hr>
-<div class="imgcap">
- <img src ="/assets/16_convexity/convexfunctions.png" align = "center" width = "800">
- <div class = "thecap">Hình 7. Ví dụ về các convex functions một biến.</div>
-</div>
-<hr>
-
-**Các ví dụ về các _concave functions_ một biến:**
-
-* Hàm \\(y = ax + b\\) là một _concave function_ vì \\(-y\\) là một _convex function_.
-
-* Hàm \\(y = x^a\\) trên tập số dương và \\(0 \leq a \leq 1\\).
-
-* Hàm logarithm \\(y = \log(x)\\) trên tập các số dương.
-
-Dưới đây là đồ thị của một vài _concave functions_:
-<hr>
-<div class="imgcap">
- <img src ="/assets/16_convexity/concavefunctions.png" align = "center" width = "800">
- <div class = "thecap">Hình 8. Ví dụ về các concave functions một biến.</div>
-</div>
-<hr>
-
-<a name="-affine-functions"></a>
-
-#### 3.3.3. Affine functions
-Các hàm số dạng \\(f(\mathbf{x}) = \mathbf{a}^T\mathbf{x} + b \\) vừa là convex, vừa là concave.
-
-Khi biến là một ma trận \\(\mathbf{X}\\), các hàm affine được định nghĩa có dạng:
-\\[
-f(\mathbf{X}) = \text{trace}(\mathbf{A}^T\mathbf{X}) + b
-\\]
-trong đó \\(\text{trace}\\) là hàm số tính tổng các giá trị trên đường chéo của một ma trận vuông, \\(\mathbf{A}\\) là một ma trận có cùng chiều với \\(\mathbf{X}\\) (để đảm bảo phép nhân ma trận thực hiện được và kết quả là một ma trận vuông).
-
-<a name="-quadratic-forms"></a>
-
-#### 3.3.3. Quadratic forms
-Hàm bậc hai một biến có dạng \\(f(x) = a x^2 + bx + c\\) là convex nếu \\(a > 0\\), là concave nếu \\(a < 0\\).
-
-Với biến là một vector \\(\mathbf{x} = [x_1, x_2, \dots, x_n]\\), một quadratic form là một hàm số có dạng:
-\\[
-f(\mathbf{x}) = \mathbf{x}^T\mathbf{A}\mathbf{x} + \mathbf{b}^T\mathbf{x} + c
-\\]
-Với \\(\mathbf{A}\\) thường là một ma trận đối xứng, tức \\(a_{ij} = a_{ji}, \forall i, j\\), có số hàng bằng số phẩn tử của \\(\mathbf{x}\\), \\(\mathbf{b}\\) là một ma trận bất kỳ cùng chiều với \\(\mathbf{x}\\) và \\(c\\) là một hằng số bất kỳ.
-
-Nếu \\(\mathbf{A}\\) là một ma trận (nửa) xác định dương thì \\(f(\mathbf{x})\\) là một _convex function_.
-
-Nếu \\(\mathbf{A}\\) là một ma trận (nửa) xác định âm, tức \\(\mathbf{x}^T\mathbf{A}\mathbf{x} \leq 0, \forall \mathbf{x}\\), thì \\(f(\mathbf{x})\\) là một _concave function_.
-
-_Các bạn có thể tìm đọc về ma trận xác định dương và các tính chất của nó trong sách Đại số tuyến tính bất kỳ. Nếu bạn gặp nhiều khó khăn trong phần này, hãy đọc lại kiến thức về Đại số tuyến tính, rất rất quan trọng trong Tối Ưu và Machine Learning._
-
-[Hàm mất mát trong Linear Regression](/2016/12/28/linearregression/#ham-mat-mat) có dạng:
-\\[
-\begin{eqnarray}
-\mathcal{L}(\mathbf{w}) &=& \frac{1}{2} \|\|\mathbf{y} - \mathbf{X}\mathbf{w}\|\|_2^2 = \frac{1}{2} (\mathbf{y} - \mathbf{X}\mathbf{w})^T(\mathbf{y} - \mathbf{X}\mathbf{w})  \\\
-&=& \frac{1}{2} \mathbf{w}^T\mathbf{X}^T\mathbf{Xw} - \mathbf{y}^T\mathbf{Xw} + \frac{1}{2}\mathbf{y}^T\mathbf{y}
-\end{eqnarray}
-\\]
-vì \\(\mathbf{X}^T\mathbf{X}\\) là một ma trận xác định dương, hàm mất mát của Linear Regression chính là một convex function.
-
-<a name="-norms"></a>
-
-#### 3.3.4. Norms
-Vâng, lại là norms. Một hàm số bất kỳ thỏa mãn [ba điều kiện của norm](/math/#-norms-chuan) đều là một _convex function_. Bạn đọc có thể chứng minh điều này bằng định nghĩa.
-
-Dưới đây là hai ví dụ về norm 1 (trái) và norm 2 (phải) với số chiều là 2 (chiều thứ ba trong hình dưới đây là giá trị của hàm số).
+Các đường dấu chấm màu đỏ trong Hình 1 là các đường ứng với các \\(\lambda \\) khác nhau. Vùng bị chặn giữa hai đường thẳng đứng màu đen thể hiện miền _feasible_ của bài toán tối ưu.
 <hr>
 <div>
 <table width = "100%" style = "border: 0px solid white">
    <tr >
         <td width="40%" style = "border: 0px solid white">
-        <img style="display:block;" width = "100%" src = "/assets/16_convexity/norm1_surf.png">
+        <img style="display:block;" width = "100%" src = "/assets/18_duality/dual_func.png">
          </td>
         <td width="40%" style = "border: 0px solid white">
-        <img style="display:block;" width = "100%" src = "/assets/16_convexity/norm2_surf.png">
-        </td>
-    </tr>
-</table>
-<div class = "thecap"> Hình 9: Ví dụ về mặt của các norm hai biến.
-</div>
-</div>
-<hr>
-
-Nhận thấy rằng các bề mặt này đều có _một đáy duy nhất_ tương ứng với gốc tọa độ (đây chính là điều kiện đầu tiên của norm). Các hàm _strictly convex_ khác cũng có dạng tương tự, tức có một _đáy_ duy nhất. Điều này cho thấy nếu ta _thả một hòn bi_ ở vị trí bất kỳ trên các bề mặt này, cuối cùng nó sễ _lăn_ về đáy. Nếu liên tưởng tới thuật toán [Gradient Descent](/2017/01/12/gradientdescent/) thì việc áp dụng thuật toán này vào các bài toán không ràng buộc với _hàm mục tiêu_ là _strictly convex_ (và giả sửa là khả vi, tức có đạo hàm) sẽ cho kết quả rất tốt nếu _learning rate_ không quá lớn. Đây chính là một trong các lý do vì sao các _convex functions_ là quan trọng, cũng là lý do vì sao tôi dành bài viết này chỉ để nói về _convexity_. (Bạn đọc được khuyến khích đọc hai bài về [Gradient Descent](/2017/01/12/gradientdescent/) trong blog này).
-
-Tiện đây, tôi cũng lấy thêm hai ví dụ về các hàm không phải convex (cũng không phải concave). Hàm thứ nhất \\(f(x, y) = x^2 - y^2\\) là một hyperbolic, hàm thứ hai \\(f(x,y) = \frac{1}{10}(x^2 + 2y^2 - 2\sin(xy)) \\).
-
-
-
-
-<hr>
-<div>
-<table width = "100%" style = "border: 0px solid white">
-   <tr >
-        <td width="40%" style = "border: 0px solid white">
-        <img style="display:block;" width = "100%" src = "/assets/16_convexity/hyperbol.png">
-         </td>
-        <td width="40%" style = "border: 0px solid white">
-        <img style="display:block;" width = "100%" src = "/assets/16_convexity/nonconvex_surface.png">
-        </td>
-    </tr>
-</table>
-<div class = "thecap">Hình 10: Ví dụ về các hàm hai biến không convex.
-</div>
-</div>
-<hr>
-
-**Contours - level sets**
-Với các hàm số phức tạp hơn, khi vẽ các mặt trong không gian ba chiều sẽ khó tưởng tượng hơn, tức khó nhìn được tính _convexity_ của nó. Một phương pháp thường được sử dụng là dùng _contours_ hay _level sets_. Tôi cũng đã đề cập đến khái niệm này trong Bài Gradient Descent, phần [đường đồng mức](/2017/01/12/gradientdescent/#duong-dong-muc-level-sets).
-
-Contours là cách mô tả các mặt trong không gian ba chiều bằng cách chiều nó xuống không gian hai chiều. Trong không gian hai chiều, các điểm thuộc cùng một _đường_ tương ứng với các điểm làm cho hàm số có giá trị bằng nhau. Mỗi _đường_ đó còn được gọi là một _level set_. Trong Hình 8 và Hình 9, các đường của các mặt lên mặt phẳng \\(0xy\\) chính là các _level sets_. Một cách hiểu khác, mỗi đường _level set_ là một _vết cắt_ nếu ta cắt các bề mặt bởi một mặt phẳng song song với mặt phẳng \\(0xy\\).
-
-Khi thể hiện một hàm số hai biến để kiểm tra tính convexity của nó, hoặc để tìm điểm cực trị của nó, người ta thường vẽ _contours_ thay vì vẽ các mặt trong không gian ba chiều. Dưới đây là một vài ví dụ về contours:
-
-<hr>
-<div>
-<table width = "100%" style = "border: 0px solid white">
-   <tr >
-
-        <td width="30%" style = "border: 0px solid white">
-        <img style="display:block;" width = "100%" src = "/assets/16_convexity/abs_2d.png">
+        <img style="display:block;" width = "100%" src = "/assets/18_duality/dual_func2.png">
         </td>
 
-        <td width="30%" style = "border: 0px solid white">
-        <img style="display:block;" width = "100%" src = "/assets/16_convexity/norm_2d.png">
-        </td>
-
-        <td width="30%" style = "border: 0px solid white">
-        <img style="display:block;" width = "100%" src = "/assets/16_convexity/max_2d.png">
-         </td>
     </tr>
 
-      <tr >
-      <td width="30%" style = "border: 0px solid white">
-      <img style="display:block;" width = "100%" src = "/assets/16_convexity/linear_2d.png">
-       </td>
-
-         <td width="30%" style = "border: 0px solid white">
-         <img style="display:block;" width = "100%" src = "/assets/16_convexity/NE.png">
-         </td>
-
-         <td width="30%" style = "border: 0px solid white">
-         <img style="display:block;" width = "100%" src = "/assets/16_convexity/hyper_2d.png">
-         </td>
-     </tr>
 </table>
-<div class = "thecap"> Hình 11: Ví dụ về Countours.
+<div class = "thecap"> Hình 1: Ví dụ về dual function.
 </div>
 </div>
 <hr>
-Các đường màu càng xanh đậm thì tương ứng với các giá trị càng nhỏ, các đường màu càng đỏ đậm thì tương ứng các giá trị càng lớn.
-
-Ở hàng trên, các đường _level sets_ là các đường khép kín (closed). Khi các đường kín này tập trung nhỏ dần ở một điểm thì các điểm đó là các điểm cực trị. Với các _convex functions_ như trong ba ví dụ này, chỉ có 1 điểm cực trị và đó cũng là điểm làm cho hàm số đạt giá trị nhỏ nhất (global optimal). Nếu để ý, bạn sẽ thấy các đường khép kín này tạo thành một _vùng lồi_!
-
-Ở hàng dưới, các đường không phải khép kín. Hình bên trái tương ứng với một hàm tuyến tính \\(f(x, y) = x + y\\) và đó là một _convex function_. Hình ở giữa cũng là một _convex function_ (bạn có thể chứng minh điều này sau khi tính đạo hàm bậc hai, tôi sẽ nói ở phía dưới) nhưng các level sets là các _đường không kín_. Hàm này có \\(\log\\) nên tập xác định là góc phần tư thứ nhất tương ứng với các tọa độ dương (chú ý rằng tập hợp các điểm có tọa độ dương cũng là một _tập lồi_). Các _đường không kín_ này nếu kết hợp với trục \\(Ox, Oy\\) sẽ tạo thành biên của các _tập lồi_. Hình cuối cùng là contours của một hàm hyperbolic, hàm này không phải là _hàm lồi_.
-
-<a name="-\\\alpha-\\-sublevel-sets"></a>
-
-### 3.4. \\(\alpha-\\) sublevel sets
-<hr>
-**Định nghĩa:** \\(\alpha-\\)**sublevel set** của một hàm số \\(f : \mathbb{R}^n \rightarrow \mathbb{R}\\) được định nghĩa là:
+Với mỗi \\(\lambda\\), _dual function_ được định nghĩa là:
 \\[
-\mathcal{C}_{\alpha} = \\{\mathbf{x} \in \text{dom} f ~\big\|~ f(\mathbf{x}) \leq \alpha \\}
+g(\lambda) = \inf_{x} \left\(x^2 + 10\sin(x) + 10+ \lambda((x-2)^2 - 4) \right\), ~~ \lambda \geq 0.
 \\]
-<hr>
-Tức tập hợp các điểm trong tập xác định của \\(f\\) mà tại đó, \\(f\\) đạt giá trị nhỏ hơn hoặc bằng \\(\alpha\\).
+
+Từ hình 1 bên trái, ta có thể thấy ngay rằng với các \\(\lambda\\) khác nhau, \\(g(\lambda)\\) hoặc tại điểm có hoành độ bằng 0, hoặc tại một điểm thấp hơn điểm tối ưu của bài toán. Đồ thị của hàm \\(g(\lambda)\\) được cho bởi đường liền màu đỏ ở Hình 1 bên phải. Đường nét đứt màu lam thể hiện _optimal value_ của bài toán tối ưu ban đầu. Ta có thể thấy ngay hai điều:
+
+* Đường liền màu đỏ luôn nằm dưới (hoặc có đoạn trùng) với đường nét đứt màu lam. 
+
+* Hàm \\(g(\lambda)\\) có dạng một hàm _concave_, tức nếu ta _lật_ đồ thị này theo hướng trên-dưới thì ta sẽ có đồ thị của một hàm _convex_. (Mặc dù bài toán tối ưu gốc là không phải là một bài toán lồi.) 
+
+(_Để vẽ được hình bên phải, tôi đã dùng [Gradient Descent](/2017/01/12/gradientdescent/) để tìm giá trị nhỏ nhất ứng với mỗi \\(\lambda\\)_)
 
 
-Quay lại với Hình 11, hàng trên, các \\(\alpha-\\) sublevel sets chính là phần bị bao bởi các level sets.
+<a name="vi-du--1"></a>
 
-Ở hàng dưới, bên trái, các \\(\alpha-\\) sublevel sets chính là phần nửa mặt phẳng phía dưới xác định bởi các đường thẳng level sets. Ở hình giữa, các \\(\alpha-\\) sublevel sets chính là các vùng bị giới hạn bởi các trục tọa độ và các level sets.
-
-Hàng dưới, bên phải, các \\(\alpha-\\) sublevel sets hơi khó tưởng tượng chút. Với \\(\alpha > 0\\), các level sets là các đường màu vàng hoặc đỏ. Các \\(\alpha-\\) sublevel sets tương ứng là phần _bị bóp vào trong_, giới hạn bởi các đường đỏ cùng màu. Các vùng này, có thể dễ nhận thấy, là _không lồi_.
-
-<hr>
-**Định lý:** Nếu một hàm số là lồi thì _mọi_ \\(\alpha-\\) sublevel sets của nó là lồi. Ngược lại chưa chắc đã đúng, tức nếu các \\(\alpha-\\) sublevel sets của một hàm số là _lồi_ thì hàm số đó chưa chắc đã _lồi_.
-<hr>
-
-Điều này chỉ ra rằng nếu tồn tại một giá trị \\(\alpha\\) sao cho một \\(\alpha-\\) sublevel set của một hàm số là _không lồi_, thì hàm số đó là _không lồi_ (không lồi nhưng không có nghĩa là _concave_, chú ý). Vậy nên Hyperbolic không phải là hàm lồi.
-
-Các ví dụ ở hình 11, trừ hình cuối cùng, đều tương ứng với các hàm lồi.
-
-Một ví dụ về việc một hàm số không _convex_ nhưng mọi \\(\alpha-\\) sublevel sets là _convex_ là hàm \\(f(x, y) = -e^{x+y}\\). Hàm này có mọi \\(\alpha-\\) sublevel sets là nửa mặt phẳng - là _convex_, nhưng nó không phải là _convex_ (trong trường hợp này nó là _concave_).
-
-Dưới đây là một ví dụ khác về việc một hàm số có mọi \\(\alpha-\\) sublevel sets là _lồi_ nhưng không phải _hàm lồi_.
-<hr>
-<div class="imgcap">
- <img src ="/assets/16_convexity/sin_surf2.png" align = "center" width = "800">
- <div class = "thecap">Hình 12. Mọi alpha-sublevel sets là convex sets nhưng hàm số là nonconvex.</div>
-</div>
-<hr>
-
-Mọi \\(\alpha-\\) sublevel sets của hàm số này đều là các hình tròn - _convex_ nhưng hàm số đó không phải là _lồi_. Vì có thể tìm được hai điểm trên mặt này sao cho đoạn thẳng nối hai điểm nằm hoàn toàn phía dưới của mặt (một điểm ở _cánh_ và 1 điểm ở _đáy_ chẳng hạn). 
-
-Những hàm số có tập xác định là một _tập lồi_ và có mọi có \\(\alpha-\\) sublevel sets là _lồi_ được gọi chung là _quasiconvex_. Mọi _convex function_ đều là _quasiconvex_ nhưng ngược lại không đúng. Định nghĩa chính thức của _quasiconvex function_ được phát biểu như sau: 
-<a name = "quasiconvex">
-<hr>
-**Quasiconvex function:**
-Một hàm số \\(f: \mathcal{C} \rightarrow \mathbb{R}\\) với \\(\mathcal{C}\\) là một tập con _lồi_ của \\(\mathbb{R}^n\\) được gọi là _quasiconvex_ nếu với mọi \\(\mathbf{x}, \mathbf{y}) \in \mathcal{C}\\) và mọi \\(\theta \in [0, 1]\\), ta có: 
-\\[
-f(\theta\mathbf{x} + (1 - \theta)\mathbf{y}) \leq \max\\{f(\mathbf{x}), f(\mathbf{y})\\}
-\\]
-<hr> 
-Định nghĩa này khác với định nghĩa về _convex function_ một chút. 
-
-<a name="-kiem-tra-tinh-chat-loi-dua-vao-dao-ham"></a>
-
-### 3.5. Kiểm tra tính chất lồi dựa vào đạo hàm.
-Có một cách để nhận biết một hàm số khả vi có là hàm lồi hay không dựa vào các đạo hàm bậc nhất hoặc đạo hàm bậc hai của nó.
-<a name="-first-order-condition"></a>
-
-#### 3.5.1. First-order condition
-Trước hết chúng ta định nghĩa phương trình đường (mặt) tiếp tuyến của một hàm số \\(f\\) khả vi tại một điểm nằm trên đồ thị (mặt) của hàm số đó \\((\mathbf{x}_0, f(\mathbf{x}_0)\\). Với hàm một biến, bạn đọc đã quen thuộc:
-\\[
-y = f'(x_0)(x - x_0) + f(x_0)
-\\]
-Với hàm nhiều biến, đặt \\(\nabla f(\mathbf{x}_0)\\) là gradient của hàm số \\(f\\) tại điểm \\(\mathbf{x}_0\\), phương trình mặt tiếp tuyến được cho bởi:
-\\[
-y = \nabla f(\mathbf{x}\_0)^T (\mathbf{x} - \mathbf{x}_0) + f(\mathbf{x}_0)
-\\]
-<hr>
-**First-order condition** nói rằng: Giả sử hàm số \\(f\\) có tập xác định là một tập lồi, có đạo hàm tại mọi điểm trên tập xác định đó. Khi đó, hàm số \\(f\\) là _lồi_ **nếu và chỉ nếu** với mọi \\(\mathbf{x}, \mathbf{x}_0\\) trên tập xác định của hàm số đó, ta có:
-\\[
-f(\mathbf{x}) \geq f(\mathbf{x}_0) + \nabla f(\mathbf{x}\_0)^T(\mathbf{x} - \mathbf{x}_0) ~~ (6)
-\\]
-<hr>
-
-Tương tự như thế, một hàm số là _stricly convex_ nếu dấu bằng trong \\((6)\\) xảy ra khi và chỉ khi \\(\mathbf{x} = \mathbf{x}_0\\).
-
-Nói một cách trực quan hơn, một hàm số là lồi nếu đường (mặt) tiếp tuyến tại một điểm bất kỳ trên đồ thị (mặt) của hàm số đó **nằm dưới** đồ thị (mặt) đó.
-(Đừng quên điều kiện về tập xác định là lồi)
-Dưới đây là ví dụ về _hàm lồi_ và _hàm không lồi_.
-<hr>
-<div class="imgcap">
- <img src ="/assets/16_convexity/first_order.png" align = "center" width = "800">
- <div class = "thecap">Hình 13. Kiểm tra tính convexity dựa vào đạo hàm bậc nhất. Trái: hàm lồi, phải: hàm không lồi.</div>
-</div>
-<hr>
-Hàm bên trái là một hàm lồi. Hàm bên phải không phải là hàm lồi vì đồ thị của nó vừa nằm trên, vừa nằm dưới tiếp tuyến.
-
-(_iff_ là viết tắt của _if and only if_)
-
-**Ví dụ:** Nếu ma trận đối xứng \\(\mathbf{A}\\) là _xác định dương_ thì hàm số \\(f(\mathbf{x}) = \mathbf{x}^T\mathbf{A}\mathbf{x}\\) là _hàm lồi_.
-
-*Chứng minh:* Đạo hàm bậc nhất của hàm số trên là:
-
-\\[
-\nabla f(\mathbf{x}) = 2\mathbf{A} \mathbf{x}
-\\]
-Vậy _first-order condition_ có thể viết dưới dạng (chú ý rằng \\(\mathbf{A}\\) là một ma trận đối xứng):
+#### Ví dụ 2 
+Xét một bài toán Linear Programming:
 \\[
 \begin{eqnarray}
-\mathbf{x}^T\mathbf{Ax} &\geq& 2(\mathbf{A}\mathbf{x}_0)^T (\mathbf{x} - \mathbf{x}_0) + \mathbf{x}_0^T\mathbf{A}\mathbf{x}_0 \\\
-⇔ \mathbf{x}^T\mathbf{Ax} &\geq& 2\mathbf{x}_0^T\mathbf{A}\mathbf{x} -\mathbf{x}_0^T\mathbf{A}\mathbf{x}_0  \\\
-⇔(\mathbf{x} - \mathbf{x}_0)^T\mathbf{A}(\mathbf{x} - \mathbf{x}_0) &\geq& 0
+    x &=& \arg \min_{\mathbf{x}}{\mathbf{c}^T\mathbf{x}} \\\
+    \text{s.t.:} ~ &&\mathbf{Ax} = \mathbf{b} \\\
+                && \mathbf{x} \succeq 0 
+\end{eqnarray}
+\\]
+Hàm ràng buộc cuối cùng có thể được viết lại là: \\(f_i(\mathbf{x}) = -x_i, i = 1, \dots, n\\). Lagrangigan của bài toán này là: 
+\\[
+\mathcal{L}(\mathbf{x}, \lambda, \nu) = \mathbf{c}^T\mathbf{x} - \sum_{i=1}^n \lambda_i x_i + \nu^T(\mathbf{Ax} - \mathbf{b})  = -\mathbf{b}^T\nu + (\mathbf{c} + \mathbf{A}^T\nu - \lambda)^T\mathbf{x}
+\\]
+(đừng quên điều kiện \\(\lambda \succeq 0\\).)
+Dual function là: 
+\\[
+\begin{eqnarray}
+g(\lambda, \nu) &=& \inf_{\mathbf{x}}\mathcal{L}(\mathbf{x}, \lambda, \nu) \\\
+&=&  -\mathbf{b}^T\nu + \inf_{\mathbf{x}} (\mathbf{c} + \mathbf{A}^T\nu - \lambda)^T\mathbf{x}
+\end{eqnarray}
+\\]
+Nhận thấy rằng một hàm tuyến tính \\(\mathbf{d}^T\mathbf{x}\\) của \\(\mathbf{x}\\) bị chặn dưới khi vào chỉ khi \\(\mathbf{d} = 0\\). Vì chỉ nếu một phần tử \\(d_i\\) của \\(\mathbf{d}\\) khác 0, ta chỉ cần chọn \\(x_i\\) rất lớn và ngược dấu với \\(d_i\\), ta sẽ có một giá trị nhỏ tuỳ ý. 
+
+Nói cách khác, \\(g(\lambda, \nu) = -\infty\\) trừ khi \\(\mathbf{c} + \mathbf{A}^T\nu - \lambda = 0\\). Tóm lại: 
+
+\\[
+\\begin{eqnarray}
+    g(\lambda, \nu) = \left\\{
+    \begin{matrix}
+     -\mathbf{b}^T\nu & ~\text{if}~  \mathbf{c}+ \mathbf{A}^T\nu - \lambda = 0\\\
+    -\infty &\text{otherwise}
+    \end{matrix} \right.
+\end{eqnarray}
+\\] 
+
+Trường hợp thứ hai khi \\(g(\lambda,\nu) = -\infty\\) các bạn sẽ gặp rất nhiều sau này. Trường hợp này không nhiều thú vị vì hiển nhiên \\(g(\lambda, \nu) \leq p^\*\\). Vì mục đích chính là đi tìm chặn dưới của \\(p^\*\\) nên ta sẽ chỉ quan tâm tới các giá trị của \\(\lambda\\) và \\(\nu\\) sao cho \\(g(\lambda, \nu)\\) càng lớn càng tốt. Trong bài toán này, ta sẽ quan tâm tới các \\(\lambda\\) và \\(\nu\\) sao cho \\(\mathbf{c}+ \mathbf{A}^T\nu - \lambda = 0\\).
+
+<a name="-bai-toan-doi-ngau-lagrange-the-lagrange-dual-problem"></a>
+
+## 4. Bài toán đối ngẫu Lagrange (The Lagrange dual problem)
+Với mỗi cặp \\((\lambda, \nu)\\), hàm đối ngẫu Lagrange cho chúng ta một chặn dưới cho _optimal value_ \\(p^\*\\) của bài toán gốc \\((9)\\). Câu hỏi đặt ra là: với cặp giá trị nào của \\((\lambda, \nu)\\), chúng ta sẽ có một chặn dưới tốt nhất của \\(p^\*\\)? Nói cách khác, ta đi cần giải bài toán: 
+
+\\[
+\begin{eqnarray}
+    \lambda^\*, \nu^\* &=& \arg \max_{\lambda, \nu} g(\lambda, \nu)   \\\
+    \text{subject to:}~ && \lambda \succeq 0 ~~~~~~~~~(11)
+\end{eqnarray}
+\\]
+Một điểm quan trọng: vì \\(g(\lambda, \nu)\\) là _concave_ và hàm ràng buộc \\(f_i(\lambda) = -\lambda_i\\) là các hàm _convex_. Vậy bài toán \\((11)\\) chính là một bài toán lồi. Vì vậy trong nhiều trường hợp, lời giải có thể dễ tìm hơn là bài toán gốc. Chú ý rằng, bài toán đối ngẫu \\((11)\\) là lồi bất kể bài toán gốc \\((9)\\) có là lồi hay không. 
+
+Bài toán này dược gọi là _Lagrange dual problem_ (bài toán đối ngẫu Largange) ứng với bài toán \\((9)\\). Bài toán \\((9)\\) còn có tên gọi khác là _primal problem_ (bài toán gốc). Ngoài ra, có một khái niệm nữa, gọi là _dual feasible_ tức là _feasible set_ của bài toán đối ngẫu, bao gồm điều kiện \\(\lambda \succeq 0 \\) và điều kiện ẩn \\(g(\lambda, \nu) > -\infty\\) (vì ta đang đi tìm giá trị lớn nhất của hàm số nên \\(g(\lambda, \nu) = -\infty\\) rõ ràng là không thú vị).
+
+Nghiệm của bài toán \\((11)\\), ký hiệu là \\(\lambda^\*, \nu^\*\\) được gọi là _dual optimal_ hoặc _optimal Lagrange multipliers_.
+
+Chú ý rằng điều kiện ẩn \\(g(\lambda, \nu) > -\infty\\), trong nhiều trường hợp, cũng có thể được viết cụ thể. Quay lại với ví dụ phía trên, điệu kiện ẩn có thể được viết thành \\(\mathbf{c}+ \mathbf{A}^T\nu - \lambda = 0\\). Đây là một hàm affine. Vì vậy, khi có thêm ràng buộc này, ta vẫn được một bài toán lồi. 
+
+<a name="-weak-duality"></a>
+
+### 4.1. Weak duality 
+Ký hiệu giá trị tối ưu của bài toán đối ngẫu \\((11)\\) là \\(d^\*\\). Theo \\((11)\\), ta đã biết rằng:
+\\[
+d^\* \leq p^\*
+\\]
+ngay cả khi bài toán gốc không phải là lồi. 
+
+Tính chất đơn giản này được gọi là _weak duality_. Tuy đơn giản nhưng nó cực kỳ quan trọng. 
+
+Từ đây ta quan sát thấy hai điều:
+
+* Nếu bài toán gốc không bị chặn dưới, tức \\(p^\* = -\infty\\), ta phải có \\(d^\* = -\infty\\), tức là bài toán đối ngẫu Lagrange là _infeasible_ (tức không có giá trị nào thoả mãn ràng buộc).
+
+* Nếu bài toàn đối ngẫu là không bị chặn trên, tức \\(d^\* = +\infty\\), chúng ta phải có \\(p^\* = +\infty\\), tức bài toán gốc là _infeasible_. 
+
+Giá trị \\(p^\* - d^\*\\) được gọi là _optimal duality gap_ (dịch thô là _khoảng cách đối ngẫu tối ưu_). Khoảng cách này luôn luôn là một số không âm. 
+
+Đôi khi có những bài toán (lồi hoặc không) rất khó giải, nhưng ít nhất nếu ta có thể tìm được \\(d^\*\\), ta có thể biết được chặn dưới của bài toán gốc. Việc tìm \\(d^\*\\) thường có thể thực hiện được vì bài toán đối ngẫu luôn luôn là lồi. 
+
+<a name="-strong-duality-va-slaters-constraint-qualification"></a>
+
+### 4.2. Strong duality và Slater's constraint qualification 
+
+Nếu đẳng thức \\(p^\* = d^\*\\) thoả mãn, _the optimal duality gap_ bằng không, ta nói rằng _strong duality_ xảy ra. Lúc này, việc giải bài toán đối ngẫu đã giúp ta tìm được _chính xác_ giá trị tối ưu của bài toán gốc. 
+
+Thật không may, _strong duality_ không thường xuyên xảy ra trong các bài toán tối ưu. Tuy nhiên, nếu bài toán gốc là lồi, tức có dạng:
+
+\\[
+\begin{eqnarray}
+    x &=& \arg \min_{\mathbf{x}} f_0(\mathbf{x})   \\\
+    \text{subject to:}~ && f_i(\mathbf{x}) \leq 0, i = 1, 2, \dots, m ~~~~~ (12)\\\
+    && \mathbf{Ax} = \mathbf{b}
+\end{eqnarray}
+\\]
+trong đó \\(f_0, f_1, \dots, f_m\\) là các hàm lồi, chúng ta _thường_ (không luôn luôn) có _strong duality_. Có rất nhiều nghiên cứu thiết lập các điều kiện, ngoài tính chất lồi, để _strong duality_ xảy ra. Những điều kiện đó thường có tên là _constraint qualifications_.
+
+Một trong các _constraint qualification_ đơn giản nhất là _Slater's condition_. 
+
+**Định nghĩa:** Một điểm _feasible_ của bài toán \\((12)\\) được gọi là _strictly feasible_ nếu: 
+\\[
+f_i(\mathbf{x}) < 0, ~i = 1, 2, \dots, m, ~~~ \mathbf{Ax} = \mathbf{b}
+\\]
+
+**Định lý Slater:** Nếu tồn tại một điểm _strictly feasible_ (và bài toán gốc là lồi), thì _strong duality_ xảy ra. 
+
+Điều kiện khá đơn giản sẽ giúp ích cho nhiều bài toán tối ưu sau này. 
+
+Chú ý: 
+* _Strong duality_ không thường xuyên xảy ra. Với các bài toán lồi, việc này xảy ra thường xuyên hơn. Tồn tại những bài toán lồi mà _strong duality_ không xảy ra. 
+
+<!-- Bạn đọc có thể coi ví dụ về bài toán lồi nhưng không có _strong duality_ dưới đây:
+\\[
+\begin{eqnarray}
+    x &=& \arg \min_{\mathbf{x}} \mathbf{x}^T\mathbf{Ax} + 2\mathbf{b}^T\mathbf{x}   \\\
+    \text{subject to:}~ && \mathbf{x}^T\mathbf{x} \leq 1
+\end{eqnarray}
+\\]
+ -->
+* Có những bài toán không lồi nhưng _strong duality_ vẫn xảy ra. Ví dụ như bài toán trong Hình 1 phía trên. 
+
+<a name="-optimality-conditions"></a>
+
+## 5. Optimality conditions 
+<a name="-complementary-slackness"></a>
+
+### 5.1. Complementary slackness 
+Giả sử rằng _strong duality_ xảy ra. Gọi \\(\mathbf{x}^\*\\) là một điểm _optimal_ của bài toán gốc và \\((\lambda^\*, \nu^\*)\\) là cặp điểm _optimal_ của bài toán đối ngẫu. Ta có: 
+\\[
+\begin{eqnarray}
+    f\_0(\mathbf{x}^\*) &=& g(\lambda^\*,\nu^\*) \\\
+    &=& \inf_{\mathbf{x}} \left\(f_0(\mathbf{x}) + \sum_{i=1}^m \lambda_i^\* f\_i(\mathbf{x}) + \sum_{j=1}^p \nu_j^\* h_i(\mathbf{x})\right\)\\\
+    &\leq& f\_0(\mathbf{x}^\*) + \sum_{i=1}^m \lambda_i^\* f\_i(\mathbf{x}^\*) + \sum_{j=1}^p \nu_j^\* h\_j(\mathbf{x}^\*) \\\
+    &\leq& f\_0(\mathbf{x}^*)
 \end{eqnarray}
 \\]
 
-Bất đẳng thức cuối cùng là đúng dựa trên định nghĩa của một ma trận _xác định dương_. Vậy hàm số \\(f(\mathbf{x}) = \mathbf{x}^T\mathbf{A}\mathbf{x}\\) là _hàm lồi_.
+* Dòng đầu là do chính là _strong duality_.
 
-_First-order condition_ ít được sử dụng để tìm tính chất lồi của một hàm số, thay vào đó, người ta thường dùng _Second-order condition_ với các hàm có đạo hàm tới bậc hai.
-<a name="-second-order-condition"></a>
+* Dòng hai là do định nghĩa của hàm đối ngẫu.
 
-#### 3.5.2. Second-order condition
-Với hàm nhiều biến, tức biến là một vector, giả sử có chiều là \\(d\\), đạo hàm bậc nhất của nó là một vector cũng có chiều là \\(d\\). Đạo hàm bậc hai của nó là một ma trận vuông có chiều là \\(d\times d\\). Đạo hàm bậc hai của hàm số \\(f(\mathbf{x})\\) được ký hiệu là \\(\nabla^2 f(\mathbf{x})\\). Đạo hàm bậc hai còn được gọi là _Hessian_.
+* Dòng ba là hiển nhiên vì infimum của một hàm nhỏ hơn giá trị của hàm đó tại bất kỳ một điểm nào khác. 
 
-<hr>
-**Second-order condition:** Một hàm số có đạo hàm bậc hai là _convex_ nếu **dom**\\(f\\) là _convex_ và Hessian của nó là một ma trận _nửa xác định dương_ với mọi \\(\mathbf{x}\\) trong tập xác định:
+* Dòng bốn là vì các ràng buộc \\(f_i(\mathbf{x}^\*) \leq 0, \lambda_i \geq 0, i = 1, 2, \dots, m\\) và \\(h_j(\mathbf{x}^\*) = 0\\). 
+
+Từ đây có thể thế rằng dấu đẳng thức ở dòng ba và dòng bốn phải đồng thời xảy ra. Và ta lại có thêm hai quan sát thú vị nữa: 
+
+* \\(\mathbf{x}^\*\\) chính là một điểm _optimal_ của \\(g(\lambda^\*, \nu^\*)\\).
+
+* Thú vị hơn: 
 \\[
-\nabla^2 f(\mathbf{x}) \succeq 0.
+\sum_{i=1}^m \lambda_i^* f_i(\mathbf{x}^*) = 0
 \\]
-<hr>
-Nếu Hessian là một ma trận _xác định dương_ thì hàm số đó _strictly convex_.
-Tương tự, nếu Hessian là một ma trận _xác định âm_ thì hàm số đó là _strictly concave_.
 
-Với hàm số một biến \\(f(x)\\), điều kiện này tương đương với \\(f"(x) \geq 0\\) với mọi \\(x\\) thuộc tập xác định (và tập xác định là _lồi_).
+Vì mỗi phần tử trong tổng trên là không dương do \\(\lambda_i^* \geq 0, f_i \leq 0\\), ta kết luận rằng: 
+\\[
+\lambda_ui^\*f_i(\mathbf{x}^\*) = 0, i = 1, 2, \dots, m
+\\]
 
-**Ví dụ:**
+Điều kiện cuối cùng này được gọi là _complementary slackness_. Từ đây có thể suy ra: 
+\\[
+\begin{eqnarray}
+\lambda_i^* > 0 &\Rightarrow& f_i(\mathbf{x}^\*) = 0 \\\
+f_i(\mathbf{x}^\*) < 0 &\Rightarrow& \lambda_i^* = 0 
+\end{eqnarray}
+\\]
+Tức ta luôn có một trong hai giá trị này bằng 0. 
 
-* Hàm _negative entropy_ \\(f(x) = x\log(x)\\) là _stricly convex_ vì tập xác định là \\(x > 0\\) là một tập lồi và \\(f"(x) = 1/x\\) là một số dương với mọi \\(x\\) thuộc tập xác định.
+<a name="-kkt-optimality-conditions"></a>
 
-* Hàm \\(f(x) = x^2 + 5\sin(x)\\) không là hàm lồi vì đạo hàm bậc hai \\(f"(x) = 2 - 5\sin(x)\\) có thể nhận giá trị âm.
+### 5.2. KKT optimality conditions 
+Chúng ta vẫn giả sử rằng các hàm đang xét có đạo hàm và bài toán tối ưu không nhất thiết là lồi. 
 
-* Hàm _cross entropy_ là một hàm _strictly convex_. Xét ví dụ đơn giản với chỉ hai xác suất \\(x\\) và \\(1 - x\\) với \\(a\\) là một hằng số thuộc đoạn \\([0, 1]\\) và \\(0 < x < 1\\): \\(f(x) = -(a \log(x) + (1 - a) \log(1 - x))\\) có đạo hàm bậc hai là \\(\frac{a}{x^2} + \frac{1 - a}{(1-x)^2}\\) là một số dương.
+<a name="-kkt-condition-cho-bai-toan-khong-loi"></a>
 
-* Nếu \\(\mathbf{A}\\) là một ma trận xác định dương thì \\(f(\mathbf{x}) = \frac{1}{2}\mathbf{x}^T\mathbf{Ax}\\) là lồi vì Hessian của nó chính là \\(\mathbf{A}\\) là một ma trận xác định dương.
+#### 5.2.1. KKT condition cho bài toán _không_ lồi 
+Giả sử rằng _strong duality_ xảy ra. Gọi \\(\mathbf{x}^\*\\) và \\((\lambda^\*, \nu^\*)\\) là _bất kỳ primal và dual optimal points_. Vì \\(\mathbf{x}^\*\\) tối ưu hàm khả vi \\(\mathcal{L}(\mathbf{x}, \lambda^\*, \nu^\*)\\), ta có đạo hàm  của Lagrangian tại \\(\mathbf{x}^\*\\) phải bằng 0. 
 
-* Xét hàm số _negative entropy_ với hai biến: \\(f(x, y) = x \log(x) + y \log(y)
-\\) trên tập các giá trị dương của \\(x\\) và \\(y\\). Hàm số này có đạo hàm bậc nhất là \\([\log(x) + 1, \log(y) + 1]^T\\) và Hessian là:
+Điều kiện Karush-Kuhn-Tucker (KKT)) nói rằng \\(\mathbf{x}^\*, \lambda^\*, \nu^\*\\) phải thoả mãn điều kiện: 
+
+\\[
+\begin{eqnarray}
+    f\_i(\mathbf{x}^\*) &\leq& 0, i = 1, 2, \dots, m \\\
+    h\_j(\mathbf{x}^\*) &=& 0, j = 1, 2, \dots, p \\\
+    \lambda_i^\* &\geq& 0, i = 1, 2, \dots, m \\\
+    \lambda_i^\*f_i(\mathbf{x}^\*) &=& 0, i = 1, 2, \dots, m \\\
+    \nabla f_0(\mathbf{x}^\*) + \sum_{i=1}^m \lambda_i^\* \nabla f_i(\mathbf{x}^\*) + \sum_{j=1}^p\nu_j^\* \nabla h_j(\mathbf{x}^\*) &=& 0 
+\end{eqnarray}
+\\]
+
+Đây là _điều kiện cần_ để \\(\mathbf{x}^\*, \lambda^\*, \nu^\*\\) là nghiệm của hai bài toán. 
+
+<a name="-kkt-conditions-cho-bai-toan-loi"></a>
+
+#### 5.2.2. KKT conditions cho bài toán lồi 
+Với các bài toán lồi và _strong duality_ xảy ra, các điệu kiện KKT phía trên cũng là _điều kiện đủ_. Vậy với các bài toán lồi với hàm mục tiêu và hàm ràng buộc là khả vi, bất kỳ điểm nào thoả mãn các điều kiện KKT đều là _primal và dual optimal_ của bài toán gốc và bài toán đối ngẫu. 
+
+<!-- Xin nhắc lại rằng việc kiểm tra điều kiện Slater ở trên với các bài toán lồi thường (không phải luôn luôn)  -->
+**Từ đây ta có thể thấy rằng: Với một bài toán lồi và điều kiện Slater thoả mãn (suy ra _strong duality_) thì các điều kiện KKT là điều cần và đủ của nghiệm.** 
+
+Các điều kiện KKT rất quan trọng trong tối ưu. Trong một vài trường hợp đặc biệt (chúng ta sẽ thấy trong bài Support Vector Machine sắp tới), việc giải hệ (bất) phương trình các điều kiện KKT là khả thi. Rất nhiều các thuật toán tối ưu được xây dựng giả trên việc giải hệ điều kiện KKT.
+
+**Ví dụ:** _Equality constrained convex quadratic minimization_. Xét bài toán: 
+\\[
+\begin{eqnarray}
+    \mathbf{x} &=& \arg \min_{\mathbf{x}} \frac{1}{2}\mathbf{x}^T\mathbf{Px} + \mathbf{q}^T\mathbf{x} + r  \\\
+    \text{subject to:}~ && \mathbf{Ax} = \mathbf{b}
+\end{eqnarray}
+\\]
+trong đó \\(\mathbf{P} \in \mathbb{S}_+^n\\) (tập các ma trận đối xứng nửa xác định dương). 
+
+Lagrangian: 
+\\[
+\mathcal{L}(\mathbf{x}, \nu) = \frac{1}{2}\mathbf{x}^T\mathbf{Px} + \mathbf{q}^T\mathbf{x} + r  + \nu^T(\mathbf{Ax} - \mathbf{b})
+\\] 
+ĐIều kiện KKT cho bài toán này là: 
+\\[
+\begin{eqnarray}
+    \mathbf{Ax}^\* &=& \mathbf{b} \\\
+    \mathbf{P}\mathbf{x}^\* + \mathbf{q} + \mathbf{A}^T\nu^\* &=& 0
+\end{eqnarray}
+\\]
+Phương trình thứ hai chính là phương trình đạo hàm của Lagrangian tại \\(\mathbf{x}^\*\\) bằng 0. 
+
+Hệ phương trình này có thể được viết lại đơn giản là: 
+\\[
+\bmt
+\mathbf{P} & \mathbf{A}^T \\\ 
+\mathbf{A} & \mathbf{0}
+\emt
+\bmt
+\mathbf{x}^\* \\\
+\nu^\*
+\emt
+= 
+\bmt
+-\mathbf{q} \\\
+\mathbf{b}
+\emt
+\\]
+đây là một phương trình tuyến tính đơn giản!
 
 
-\begin{matrix}
-1/x & 0 \\\
-0 & 1/y
-\end{matrix}
-
-là một ma trận đường chéo với các thành phần trên đường chéo là dương nên là một ma trận xác định dương. Vậy _negative entropy_ là một hàm _strictly convex_.(_Chú ý rằng một ma trận là xác định dương nếu các trị riêng của nó đều dương. Với một ma trận là ma trận đường chéo thì các trị riêng của nó chính là các thành phần trên đường chéo_.)
 
 
 
 
-Ngoài ra còn nhiều tính chất thú vị của các _hàm lồi_, các bạn được khuyến khích đọc thêm Chương 3 của cuốn Convex Optimization trong phần tài liệu tham khảo.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <a name="-tom-tat"></a>
 
-## 4. Tóm tắt
+## 5. Tóm tắt 
+Giả sử rằng các hàm số đều khả vi:
 
-* Machine Learning và Optimization có quan hệ mật thiết với nhau. Trong Optimization, Convex Optimization là quan trọng nhất. Một bài toán là convex optimization nếu _hàm mục tiêu_ là convex và tập hợp các điểm thỏa mãn các điều kiện ràng buộc là một _convex set_.
+* Các bài toán tối ưu với chỉ ràng buộc là đẳng thức có thể được giải quyết bằng phương pháp nhân tử Lagrange. Ta cũng có định nghĩa về Lagrangian. Điều kiện cần để một điểm là nghiệm của bài toán tối ưu là nó phải làm cho đạo hàm của Lagrangian bằng 0. 
 
-* Trong _convex set_, mọi đoạn thẳng nối hai điểm bất kỳ trong tập đó sẽ nằm hoàn toàn trong tập đó. Tập hợp các giao điểm của các _convex sets_ là một _convex set_.
+* Với các bài toán tối ưu có thêm ràng buộc là bất đẳng thức (không nhất thiết là lồi), chúng ta có Lagrangian tổng quát và các biến Lagrange \\(\lambda, \nu\\). Với các giá trị \\((\lambda, \nu)\\) cố định, ta có định nghĩa về **hàm đối ngẫu Lagrange** (Lagrange dual function) \\(g(\lambda, \nu)\\) được xác định là infimum của Lagrangian khi \\(\mathbf{x}\\) thay đổi trên miền xác định của bài toán. 
 
-* Một hàm số là _convex_ nếu đoạn thẳng nối hai điểm bất kỳ trên đồ thì hàm số đó không nằm dưới đồ thị đó.
+* Miền xác định và tập các điểm _feasible_ thường khác nhau. _Feasible set_ là tập con của tập xác định. 
 
-* Một hàm số khả vi là _convex_ nếu tập xác định của nó là _convex_ và đường (mặt) tiếp tuyến _không nằm phía trên_ đồ thị (bề mặt) của hàm số đó.
+* Với mọi \\((\lambda, \nu)\\), \\(g(\lambda, \nu) \leq p^\*\\). 
 
-* Các norms là các hàm lồi, được sử dụng nhiều trong tối ưu.
+* Hàm số \\(g(\lambda,\nu)\\) **là lồi** bất kể bài toán tối ưu có là lồi hay không. Hàm số này được gọi là _dual Lagrange fucntion_ hay _hàm đối ngẫu Lagrange_.
+
+* Bài toán đi tìm giá trị lớn nhất của hàm đối ngẫu Lagrange với điều kiện \\(\lambda \succeq 0\\) được gọi là bài toán _đối ngẫu_ (_dual problem_). Bài toán này **là lồi** bất kể bài toán gốc có lồi hay không.
+
+* Gọi giá trị tối ưu của bài toán đối ngẫu là \\(d^\*\\) thì ta có: \\(d^\* \leq p^\*\\). Đây được gọi là _weak duality_.
+
+* _Strong duality_ xảy ra khi \\(d^\* = p^\*\\). Thường thì _strong duality_ không xảy ra, nhưng với các bài toán lồi thì _strong duality_ thường (không luôn luôn) xảy ra. 
+
+* Nếu bài toán là lồi và điều kiện Slater thoả mãn, thì _strong duality_ xảy ra. 
+
+* Nếu bài toán lồi và có _strong duality_ thì nghiệm của bài toán thoả mãn các điều kiện KKT (điều kiện cần và đủ).
+
+* Rất nhiều các bài toán tối ưu được giải quyết thông qua KKT conditions. 
+
+<a name="-ket-luan"></a>
+
+## 6. Kết luận 
+
+Trong ba bài 16, 17, 18, tôi đã giới thiệu _sơ lược_ về tập lồi, hàm lồi, bài toán lồi, và các điệu kiện tối ưu được xây dựng thông qua _duality_. Ý định ban đầu của tôi là tránh phần này vì khá nhiều toán, tuy nhiên trong quá trình chuẩn bị cho bài Support Vector Machine, tôi nhận thấy rằng cần phải giải thích về Lagrangian - kỹ thuật được sử dụng rất nhiều trong Tối ưu. Thêm nữa, để giải thích về Lagrangian, tôi cần nói về các bài toán lồi. Chính vì vậy tôi thấy có trách nhiệm _phải_ viết về ba bài này. 
+
+Trong loạt bài tiếp theo, chúng ta sẽ lại quay lại với các thuật toán Machine Learning với rất nhiều ví dụ, hình vẽ và code mẫu. Nếu bạn nào có cảm thấy hơi đuối sau ba bài tối ưu này thì cũng đừng lo, mọi chuyện rồi sẽ ổn cả thôi.
 
 <a name="-tai-lieu-tham-khao"></a>
 
-## 5. Tài liệu tham khảo
-
+## 7. Tài liệu tham khảo
 [1] [Convex Optimization](http://stanford.edu/~boyd/cvxbook/) – Boyd and Vandenberghe, Cambridge University Press, 2004.
 
-
+[2] [Lagrange Multipliers - Wikipedia](https://en.wikipedia.org/wiki/Lagrange_multiplier).
