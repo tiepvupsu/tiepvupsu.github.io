@@ -1,99 +1,99 @@
 \begin{theindex}
 
-  \item $\alpha$-sublevel sets, \hyperpage{25}
+  \item $\alpha$-sublevel sets, \hyperpage{17}
 
   \indexspace
 
-  \item affine functions, \hyperpage{22}
+  \item affine functions, \hyperpage{14}
 
   \indexspace
 
-  \item complementary slackness, \hyperpage{61}
-  \item constraints, \hyperpage{12}
-  \item contours, \hyperpage{23}
-  \item convex, \hyperpage{11}
-    \subitem combination, \hyperpage{18}
-    \subitem functions, \hyperpage{19}
-      \subsubitem first-order condition, \hyperpage{27}
-      \subsubitem Second-order condition, \hyperpage{29}
-    \subitem hull, \hyperpage{18}
-    \subitem optimization problems, \hyperpage{38}
-    \subitem sets, \hyperpage{12}
-    \subitem strictly convex functions, \hyperpage{20}
-  \item CVXOPT, \hyperpage{41}
+  \item complementary slackness, \hyperpage{53}
+  \item constraints, \hyperpage{4}
+  \item contours, \hyperpage{15}
+  \item convex, \hyperpage{3}
+    \subitem combination, \hyperpage{10}
+    \subitem functions, \hyperpage{11}
+      \subsubitem first-order condition, \hyperpage{19}
+      \subsubitem Second-order condition, \hyperpage{21}
+    \subitem hull, \hyperpage{10}
+    \subitem optimization problems, \hyperpage{30}
+    \subitem sets, \hyperpage{4}
+    \subitem strictly convex functions, \hyperpage{12}
+  \item CVXOPT, \hyperpage{33}
 
   \indexspace
 
-  \item duality, \hyperpage{52}
+  \item duality, \hyperpage{44}
 
   \indexspace
 
-  \item ellipsoids, \hyperpage{16}
+  \item ellipsoids, \hyperpage{8}
 
   \indexspace
 
-  \item feasible points, \hyperpage{12}
-  \item feasible sets, \hyperpage{12}
+  \item feasible points, \hyperpage{4}
+  \item feasible sets, \hyperpage{4}
 
   \indexspace
 
-  \item Geometric Programming, \hyperpage{47}
-    \subitem convex form, \hyperpage{49}
+  \item Geometric Programming, \hyperpage{39}
+    \subitem convex form, \hyperpage{41}
 
   \indexspace
 
-  \item halfspace, \hyperpage{15}
-  \item hyperplane, \hyperpage{14}
+  \item halfspace, \hyperpage{7}
+  \item hyperplane, \hyperpage{6}
 
   \indexspace
 
-  \item infeasible sets, \hyperpage{12}
+  \item infeasible sets, \hyperpage{4}
 
   \indexspace
 
-  \item KKT conditions, \hyperpage{62}
+  \item KKT conditions, \hyperpage{54}
 
   \indexspace
 
   \item Lagrange/Lagrangian
-    \subitem auxiliary function, \hyperpage{53}
-    \subitem dual function, \hyperpage{55}
-    \subitem dual functions, \hyperpage{55}
-    \subitem dual problems, \hyperpage{58}
-    \subitem multiplier method, \hyperpage{53}
-  \item level sets, \hyperpage{23}
-  \item Linear Programming, \hyperpage{41}
-    \subitem General form, \hyperpage{41}
-    \subitem Standard form, \hyperpage{42}
+    \subitem auxiliary function, \hyperpage{45}
+    \subitem dual function, \hyperpage{47}
+    \subitem dual functions, \hyperpage{47}
+    \subitem dual problems, \hyperpage{50}
+    \subitem multiplier method, \hyperpage{45}
+  \item level sets, \hyperpage{15}
+  \item Linear Programming, \hyperpage{33}
+    \subitem General form, \hyperpage{33}
+    \subitem Standard form, \hyperpage{34}
 
   \indexspace
 
-  \item Mahalanobis norm, \hyperpage{16}
-  \item monomials, \hyperpage{47}
+  \item Mahalanobis norm, \hyperpage{8}
+  \item monomials, \hyperpage{39}
 
   \indexspace
 
-  \item norm balls, \hyperpage{15}
+  \item norm balls, \hyperpage{7}
 
   \indexspace
 
-  \item posynomials, \hyperpage{47}
+  \item posynomials, \hyperpage{39}
 
   \indexspace
 
   \item quadratic
-    \subitem forms, \hyperpage{22}
-  \item Quadratic Programming, \hyperpage{44}
-  \item quasiconvex, \hyperpage{27}
+    \subitem forms, \hyperpage{14}
+  \item Quadratic Programming, \hyperpage{36}
+  \item quasiconvex, \hyperpage{19}
 
   \indexspace
 
-  \item Separating hyperplane theorem, \hyperpage{19}
-  \item Slater's constraint qualification, \hyperpage{60}
-  \item strong duality, \hyperpage{60}
+  \item Separating hyperplane theorem, \hyperpage{11}
+  \item Slater's constraint qualification, \hyperpage{52}
+  \item strong duality, \hyperpage{52}
 
   \indexspace
 
-  \item weak duality, \hyperpage{59}
+  \item weak duality, \hyperpage{51}
 
 \end{theindex}
