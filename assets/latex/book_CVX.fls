@@ -207,7 +207,6 @@ INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmmib
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy9.tfm
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm
-INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/vntex/vnr/vnti9.tfm
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/vntex/vnr/vnr12.tfm
 INPUT /usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/vntex/vnr/vnr17.tfm
@@ -441,4 +440,3 @@ INPUT /usr/local/texlive/2016/texmf-dist/fonts/type1/vntex/vnr/vnss9.pfb
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/type1/vntex/vnr/vnssbx10.pfb
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/type1/vntex/vnr/vnssi12.pfb
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/type1/vntex/vnr/vnti12.pfb
-INPUT /usr/local/texlive/2016/texmf-dist/fonts/type1/vntex/vnr/vnti9.pfb

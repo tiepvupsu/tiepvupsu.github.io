@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  25 JUN 2017 06:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  25 JUN 2017 06:57
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1111,31 +1111,36 @@ LaTeX Info: Redefining \selectfont on input line 126.
 \RaggedRightParindent=\skip84
 \JustifyingParindent=\skip85
 )
-LaTeX Font Info:    Try loading font information for T5+pcr on input line 188.
+LaTeX Font Info:    Try loading font information for T5+pcr on input line 189.
 (/usr/local/texlive/2016/texmf-dist/tex/latex/vntex/t5pcr.fd
 File: t5ucr.fd 2005/08/24 Fontinst v1.929 font definitions for T5/pcr.
 )
 LaTeX Font Info:    Font shape `T5/pcr/bx/n' in size <9> not available
-(Font)              Font shape `T5/pcr/b/n' tried instead on input line 188.
-LaTeX Font Info:    Try loading font information for U+msa on input line 188.
+(Font)              Font shape `T5/pcr/b/n' tried instead on input line 189.
+LaTeX Font Info:    Try loading font information for U+msa on input line 189.
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 188.
+LaTeX Font Info:    Try loading font information for U+msb on input line 189.
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 188--188
+Underfull \hbox (badness 10000) in paragraph at lines 189--189
  
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 188--188
+Underfull \hbox (badness 10000) in paragraph at lines 189--189
  
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 188--188
+Underfull \hbox (badness 10000) in paragraph at lines 189--189
+ 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 189--189
  
  []
 
@@ -1209,7 +1214,7 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 
 
 
-] [4] <../16_convexity/latex/convexsets.pdf, id=90, 370.68587pt x 103.76466pt>
+] [4] <../16_convexity/latex/convexsets.pdf, id=88, 370.68587pt x 103.76466pt>
 File: ../16_convexity/latex/convexsets.pdf Graphic file (type pdf)
 <use ../16_convexity/latex/convexsets.pdf>
 Package pdftex.def Info: ../16_convexity/latex/convexsets.pdf used on input lin
@@ -1218,14 +1223,14 @@ e 69.
 LaTeX Font Info:    Try loading font information for T5+cmss on input line 70.
 (/usr/local/texlive/2016/texmf-dist/tex/latex/vntex/t5cmss.fd
 File: t5cmss.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-) <../16_convexity/latex/nonconvexsets.pdf, id=92, 346.18031pt x 88.7606pt>
+) <../16_convexity/latex/nonconvexsets.pdf, id=90, 346.18031pt x 88.7606pt>
 File: ../16_convexity/latex/nonconvexsets.pdf Graphic file (type pdf)
 <use ../16_convexity/latex/nonconvexsets.pdf>
 Package pdftex.def Info: ../16_convexity/latex/nonconvexsets.pdf used on input 
 line 96.
 (pdftex.def)             Requested size: 375.80544pt x 96.36247pt.
 [5 <../16_convexity/latex/convexsets.pdf>] [6 <../16_convexity/latex/nonconvexs
-ets.pdf>] <../16_convexity/latex/normballs.pdf, id=124, 436.12434pt x 261.74387
+ets.pdf>] <../16_convexity/latex/normballs.pdf, id=122, 436.12434pt x 261.74387
 pt>
 File: ../16_convexity/latex/normballs.pdf Graphic file (type pdf)
 <use ../16_convexity/latex/normballs.pdf>
@@ -1233,14 +1238,14 @@ Package pdftex.def Info: ../16_convexity/latex/normballs.pdf used on input line
  186.
 (pdftex.def)             Requested size: 469.75502pt x 281.94427pt.
 [7] [8 <../16_convexity/latex/normballs.pdf>] <../16_convexity/latex/intersecti
-on.pdf, id=183, 282.5446pt x 128.43684pt>
+on.pdf, id=181, 282.5446pt x 128.43684pt>
 File: ../16_convexity/latex/intersection.pdf Graphic file (type pdf)
 <use ../16_convexity/latex/intersection.pdf>
 Package pdftex.def Info: ../16_convexity/latex/intersection.pdf used on input l
 ine 234.
 (pdftex.def)             Requested size: 281.85587pt x 128.12881pt.
 [9 <../16_convexity/latex/intersection.pdf>] <../16_convexity/latex/convex_hull
-.pdf, id=192, 314.78001pt x 147.6446pt>
+.pdf, id=190, 314.78001pt x 147.6446pt>
 File: ../16_convexity/latex/convex_hull.pdf Graphic file (type pdf)
 <use ../16_convexity/latex/convex_hull.pdf>
 Package pdftex.def Info: ../16_convexity/latex/convex_hull.pdf used on input li
@@ -1255,7 +1260,7 @@ LaTeX Warning: No positions in optional float specifier.
 LaTeX Font Warning: Font shape `T5/cmss/m/it' in size <12> not available
 (Font)              Font shape `T5/cmss/m/sl' tried instead on input line 348.
 
-<../16_convexity/latex/convexf_def.pdf, id=209, 163.5721pt x 98.90852pt>
+<../16_convexity/latex/convexf_def.pdf, id=207, 163.5721pt x 98.90852pt>
 File: ../16_convexity/latex/convexf_def.pdf Graphic file (type pdf)
 <use ../16_convexity/latex/convexf_def.pdf>
 Package pdftex.def Info: ../16_convexity/latex/convexf_def.pdf used on input li
@@ -1272,7 +1277,7 @@ Package pdftex.def Info: ../16_convexity/latex/convexf_def.pdf used on input li
 ne 348.
 (pdftex.def)             Requested size: 227.62204pt x 137.64542pt.
 [11] [12 <../16_convexity/latex/convexf_def.pdf>] <../16_convexity/latex/max_po
-int.pdf, id=245, 174.40157pt x 98.0473pt>
+int.pdf, id=243, 174.40157pt x 98.0473pt>
 File: ../16_convexity/latex/max_point.pdf Graphic file (type pdf)
 <use ../16_convexity/latex/max_point.pdf>
 Package pdftex.def Info: ../16_convexity/latex/max_point.pdf used on input line
@@ -1288,7 +1293,7 @@ File: ../16_convexity/latex/max_point.pdf Graphic file (type pdf)
 Package pdftex.def Info: ../16_convexity/latex/max_point.pdf used on input line
  409.
 (pdftex.def)             Requested size: 199.16928pt x 111.97705pt.
-<../16_convexity/latex/convexfunctions.pdf, id=247, 626.76057pt x 141.8379pt>
+<../16_convexity/latex/convexfunctions.pdf, id=245, 626.76057pt x 141.8379pt>
 File: ../16_convexity/latex/convexfunctions.pdf Graphic file (type pdf)
 <use ../16_convexity/latex/convexfunctions.pdf>
 Package pdftex.def Info: ../16_convexity/latex/convexfunctions.pdf used on inpu
@@ -1296,66 +1301,66 @@ t line 442.
 (pdftex.def)             Requested size: 469.75502pt x 106.30673pt.
 [13 <../16_convexity/latex/max_point.pdf> <../16_convexity/latex/convexfunction
 s.pdf>]
-<../16_convexity/latex/concavefunctions.pdf, id=296, 583.62543pt x 156.06406pt>
+<../16_convexity/latex/concavefunctions.pdf, id=294, 583.62543pt x 156.06406pt>
 File: ../16_convexity/latex/concavefunctions.pdf Graphic file (type pdf)
 <use ../16_convexity/latex/concavefunctions.pdf>
 Package pdftex.def Info: ../16_convexity/latex/concavefunctions.pdf used on inp
 ut line 471.
 (pdftex.def)             Requested size: 469.75502pt x 125.62057pt.
 [14 <../16_convexity/latex/concavefunctions.pdf>] <../16_convexity/norm1_surf.p
-ng, id=324, 611.28375pt x 663.47874pt>
+ng, id=322, 611.28375pt x 663.47874pt>
 File: ../16_convexity/norm1_surf.png Graphic file (type png)
 <use ../16_convexity/norm1_surf.png>
 Package pdftex.def Info: ../16_convexity/norm1_surf.png used on input line 538.
 
 (pdftex.def)             Requested size: 214.20567pt x 232.49437pt.
-<../16_convexity/norm2_surf.png, id=326, 628.3475pt x 714.67pt>
+<../16_convexity/norm2_surf.png, id=324, 628.3475pt x 714.67pt>
 File: ../16_convexity/norm2_surf.png Graphic file (type png)
 <use ../16_convexity/norm2_surf.png>
 Package pdftex.def Info: ../16_convexity/norm2_surf.png used on input line 543.
 
 (pdftex.def)             Requested size: 214.20567pt x 243.62798pt.
-<../16_convexity/hyperbol.png, id=329, 644.4075pt x 649.42625pt>
+<../16_convexity/hyperbol.png, id=327, 644.4075pt x 649.42625pt>
 File: ../16_convexity/hyperbol.png Graphic file (type png)
 <use ../16_convexity/hyperbol.png>
 Package pdftex.def Info: ../16_convexity/hyperbol.png used on input line 577.
 (pdftex.def)             Requested size: 214.20567pt x 215.87701pt.
-<../16_convexity/nonconvex_surface.png, id=330, 649.42625pt x 651.43375pt>
+<../16_convexity/nonconvex_surface.png, id=328, 649.42625pt x 651.43375pt>
 File: ../16_convexity/nonconvex_surface.png Graphic file (type png)
 <use ../16_convexity/nonconvex_surface.png>
 Package pdftex.def Info: ../16_convexity/nonconvex_surface.png used on input li
 ne 582.
 (pdftex.def)             Requested size: 214.20567pt x 214.86446pt.
-[15] <../16_convexity/python/abs_2d.pdf, id=342, 182.48175pt x 203.96199pt>
+[15] <../16_convexity/python/abs_2d.pdf, id=340, 182.48175pt x 203.96199pt>
 File: ../16_convexity/python/abs_2d.pdf Graphic file (type pdf)
 <use ../16_convexity/python/abs_2d.pdf>
 Package pdftex.def Info: ../16_convexity/python/abs_2d.pdf used on input line 6
 38.
 (pdftex.def)             Requested size: 133.8811pt x 149.65039pt.
-<../16_convexity/python/norm_2d.pdf, id=343, 216.81pt x 216.81pt>
+<../16_convexity/python/norm_2d.pdf, id=341, 216.81pt x 216.81pt>
 File: ../16_convexity/python/norm_2d.pdf Graphic file (type pdf)
 <use ../16_convexity/python/norm_2d.pdf>
 Package pdftex.def Info: ../16_convexity/python/norm_2d.pdf used on input line 
 641.
 (pdftex.def)             Requested size: 133.8811pt x 133.88817pt.
-<../16_convexity/python/max_2d.pdf, id=344, 216.81pt x 216.81pt>
+<../16_convexity/python/max_2d.pdf, id=342, 216.81pt x 216.81pt>
 File: ../16_convexity/python/max_2d.pdf Graphic file (type pdf)
 <use ../16_convexity/python/max_2d.pdf>
 Package pdftex.def Info: ../16_convexity/python/max_2d.pdf used on input line 6
 44.
 (pdftex.def)             Requested size: 133.8811pt x 133.88817pt.
-<../16_convexity/python/linear_2d.pdf, id=345, 216.81pt x 216.81pt>
+<../16_convexity/python/linear_2d.pdf, id=343, 216.81pt x 216.81pt>
 File: ../16_convexity/python/linear_2d.pdf Graphic file (type pdf)
 <use ../16_convexity/python/linear_2d.pdf>
 Package pdftex.def Info: ../16_convexity/python/linear_2d.pdf used on input lin
 e 648.
 (pdftex.def)             Requested size: 133.8811pt x 133.88817pt.
-<../16_convexity/python/NE.pdf, id=346, 182.48175pt x 203.96199pt>
+<../16_convexity/python/NE.pdf, id=344, 182.48175pt x 203.96199pt>
 File: ../16_convexity/python/NE.pdf Graphic file (type pdf)
 <use ../16_convexity/python/NE.pdf>
 Package pdftex.def Info: ../16_convexity/python/NE.pdf used on input line 651.
 (pdftex.def)             Requested size: 133.8811pt x 149.65039pt.
-<../16_convexity/python/hyper_2d.pdf, id=347, 211.189pt x 205.9695pt>
+<../16_convexity/python/hyper_2d.pdf, id=345, 211.189pt x 205.9695pt>
 File: ../16_convexity/python/hyper_2d.pdf Graphic file (type pdf)
 <use ../16_convexity/python/hyper_2d.pdf>
 Package pdftex.def Info: ../16_convexity/python/hyper_2d.pdf used on input line
@@ -1383,14 +1388,14 @@ ultiple pdfs with page group included in a single page
 
 pdfTeX warning: pdflatex (file ../16_convexity/python/hyper_2d.pdf): PDF inclus
 ion: multiple pdfs with page group included in a single page
->] <../16_convexity/sin_surf2_cropped.png, id=509, 822.4326pt x 502.2765pt>
+>] <../16_convexity/sin_surf2_cropped.png, id=507, 822.4326pt x 502.2765pt>
 File: ../16_convexity/sin_surf2_cropped.png Graphic file (type png)
 <use ../16_convexity/sin_surf2_cropped.png>
 Package pdftex.def Info: ../16_convexity/sin_surf2_cropped.png used on input li
 ne 720.
 (pdftex.def)             Requested size: 328.82707pt x 200.82274pt.
 [18] [19 <../16_convexity/sin_surf2_cropped.png>] <../16_convexity/latex/first_
-order.pdf, id=527, 299.54712pt x 125.47678pt>
+order.pdf, id=525, 299.54712pt x 125.47678pt>
 File: ../16_convexity/latex/first_order.pdf Graphic file (type pdf)
 <use ../16_convexity/latex/first_order.pdf>
 Package pdftex.def Info: ../16_convexity/latex/first_order.pdf used on input li
@@ -1405,7 +1410,7 @@ Chapter 17.
 
 
 
-] [24] [25] <../17_convexopt/latex/planting.pdf, id=603, 469.46994pt x 378.4217
+] [24] [25] <../17_convexopt/latex/planting.pdf, id=601, 469.46994pt x 378.4217
 7pt>
 File: ../17_convexopt/latex/planting.pdf Graphic file (type pdf)
 <use ../17_convexopt/latex/planting.pdf>
@@ -1433,7 +1438,7 @@ Overfull \hbox (30.33215pt too wide) in paragraph at lines 204--215
  []
 
 [28] [29] [30] [31]
-<../17_convexopt/latex/optimalitycondition.pdf, id=683, 197.38643pt x 132.15874
+<../17_convexopt/latex/optimalitycondition.pdf, id=681, 197.38643pt x 132.15874
 pt>
 File: ../17_convexopt/latex/optimalitycondition.pdf Graphic file (type pdf)
 <use ../17_convexopt/latex/optimalitycondition.pdf>
@@ -1451,7 +1456,7 @@ Package pdftex.def Info: ../17_convexopt/latex/optimalitycondition.pdf used on
 input line 357.
 (pdftex.def)             Requested size: 227.62204pt x 152.41087pt.
 [32 <../17_convexopt/latex/optimalitycondition.pdf>] [33] <../17_convexopt/late
-x/lp.pdf, id=732, 192.8555pt x 112.83255pt>
+x/lp.pdf, id=730, 192.8555pt x 112.83255pt>
 File: ../17_convexopt/latex/lp.pdf Graphic file (type pdf)
 <use ../17_convexopt/latex/lp.pdf>
 Package pdftex.def Info: ../17_convexopt/latex/lp.pdf used on input line 468.
@@ -1467,7 +1472,7 @@ Package pdftex.def Info: ../17_convexopt/latex/lp.pdf used on input line 468.
 [34] [35 <../17_convexopt/latex/lp.pdf>] (/usr/local/texlive/2016/texmf-dist/te
 x/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
-) [36] <../17_convexopt/latex/qp.pdf, id=793, 199.1691pt x 113.8112pt>
+) [36] <../17_convexopt/latex/qp.pdf, id=791, 199.1691pt x 113.8112pt>
 File: ../17_convexopt/latex/qp.pdf Graphic file (type pdf)
 <use ../17_convexopt/latex/qp.pdf>
 Package pdftex.def Info: ../17_convexopt/latex/qp.pdf used on input line 597.
@@ -1480,7 +1485,7 @@ File: ../17_convexopt/latex/qp.pdf Graphic file (type pdf)
 <use ../17_convexopt/latex/qp.pdf>
 Package pdftex.def Info: ../17_convexopt/latex/qp.pdf used on input line 597.
 (pdftex.def)             Requested size: 227.62204pt x 130.07779pt.
-[37 <../17_convexopt/latex/qp.pdf>] <../17_convexopt/latex/qp_ex.pdf, id=826, 4
+[37 <../17_convexopt/latex/qp.pdf>] <../17_convexopt/latex/qp_ex.pdf, id=824, 4
 69.46994pt x 378.42177pt>
 File: ../17_convexopt/latex/qp_ex.pdf Graphic file (type pdf)
 <use ../17_convexopt/latex/qp_ex.pdf>
@@ -1506,14 +1511,14 @@ Chapter 18.
 
 
 
-] [45] [46] [47] [48] <../18_duality/python/dual_func.pdf, id=994, 433.62pt x 3
+] [45] [46] [47] [48] <../18_duality/python/dual_func.pdf, id=992, 433.62pt x 3
 61.35pt>
 File: ../18_duality/python/dual_func.pdf Graphic file (type pdf)
 <use ../18_duality/python/dual_func.pdf>
 Package pdftex.def Info: ../18_duality/python/dual_func.pdf used on input line 
 204.
 (pdftex.def)             Requested size: 214.20567pt x 178.50764pt.
-<../18_duality/python/dual_func2.pdf, id=995, 433.62pt x 361.35pt>
+<../18_duality/python/dual_func2.pdf, id=993, 433.62pt x 361.35pt>
 File: ../18_duality/python/dual_func2.pdf Graphic file (type pdf)
 <use ../18_duality/python/dual_func2.pdf>
 Package pdftex.def Info: ../18_duality/python/dual_func2.pdf used on input line
@@ -1573,7 +1578,7 @@ m/it/12 x[]\OT1/cmr/m/n/12 ]$
 
 
 
-] [58] <norm12.pdf, id=1127, 200.88953pt x 143.06349pt>
+] [58] <norm12.pdf, id=1125, 200.88953pt x 143.06349pt>
 File: norm12.pdf Graphic file (type pdf)
 <use norm12.pdf>
 Package pdftex.def Info: norm12.pdf used on input line 79.
@@ -1588,25 +1593,25 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 ])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 243.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 243.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 244.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 244.
 (./book_CVX.aux (./00_loinoidau.aux) (./16_convexity.aux) (./17_convexopt.aux) 
 (./18_duality.aux) (./linearalgebra.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 243.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 243.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 244.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 244.
 Package rerunfilecheck Info: File `book_CVX.out' has not changed.
 (rerunfilecheck)             Checksum: D26864766405A024D8A9AEBC1EB2CA55;325.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 243.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 244.
  ) 
 Here is how much of TeX's memory you used:
- 12991 strings out of 493014
- 184023 string characters out of 6133351
+ 12989 strings out of 493014
+ 184005 string characters out of 6133351
  354284 words of memory out of 5000000
- 15916 multiletter control sequences out of 15000+600000
- 40046 words of font info for 83 fonts, out of 8000000 for 9000
+ 15915 multiletter control sequences out of 15000+600000
+ 39223 words of font info for 82 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  40i,14n,53p,1704b,1315s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/vntex/t5.enc}</usr/local/
@@ -1650,12 +1655,11 @@ vntex/vnr/vnr9.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/vntex/vnr/vn
 ss12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/vntex/vnr/vnss9.pfb></
 usr/local/texlive/2016/texmf-dist/fonts/type1/vntex/vnr/vnssbx10.pfb></usr/loca
 l/texlive/2016/texmf-dist/fonts/type1/vntex/vnr/vnssi12.pfb></usr/local/texlive
-/2016/texmf-dist/fonts/type1/vntex/vnr/vnti12.pfb></usr/local/texlive/2016/texm
-f-dist/fonts/type1/vntex/vnr/vnti9.pfb>
-Output written on book_CVX.pdf (70 pages, 1991302 bytes).
+/2016/texmf-dist/fonts/type1/vntex/vnr/vnti12.pfb>
+Output written on book_CVX.pdf (70 pages, 1981434 bytes).
 PDF statistics:
- 1476 PDF objects out of 1728 (max. 8388607)
- 1244 compressed objects within 13 object streams
+ 1472 PDF objects out of 1728 (max. 8388607)
+ 1241 compressed objects within 13 object streams
  328 named destinations out of 1000 (max. 500000)
  194 words of extra memory for PDF output out of 10000 (max. 10000000)
 
