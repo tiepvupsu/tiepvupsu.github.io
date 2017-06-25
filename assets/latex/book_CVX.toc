@@ -80,7 +80,7 @@
 \contentsline {section}{\numberline {18.6}T\IeC {\'o}m t\IeC {\'\abreve }t }{55}{section.18.6}
 \contentsline {section}{\numberline {18.7}K\IeC {\'\ecircumflex }t lu\IeC {\d \acircumflex }n }{56}{section.18.7}
 \contentsline {section}{\numberline {18.8}T\IeC {\`a}i li\IeC {\d \ecircumflex }u tham kh\IeC {\h a}o}{56}{section.18.8}
-\contentsline {chapter}{\numberline {51}\IeC {\^O}n t\IeC {\d \acircumflex }p \IeC {\DJ }\IeC {\d a}i s\IeC {\'\ocircumflex } tuy\IeC {\'\ecircumflex }n }{57}{chapter.51}
+\contentsline {chapter}{\numberline {51}\IeC {\^O}n t\IeC {\d \acircumflex }p \IeC {\DJ }\IeC {\d a}i s\IeC {\'\ocircumflex } tuy\IeC {\'\ecircumflex }n t\IeC {\'\i }nh}{57}{chapter.51}
 \contentsline {section}{\numberline {51.1}L\IeC {\uhorn }u \IeC {\'y} v\IeC {\`\ecircumflex } k\IeC {\'y} hi\IeC {\d \ecircumflex }u}{57}{section.51.1}
 \contentsline {section}{\numberline {51.2}Norms (chu\IeC {\h \acircumflex }n)}{57}{section.51.2}
 \contentsline {subsection}{\numberline {51.2.1}\IeC {\DJ }\IeC {\d i}nh ngh\IeC {\~\i }a}{58}{subsection.51.2.1}

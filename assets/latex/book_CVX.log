@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  25 JUN 2017 06:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  25 JUN 2017 07:11
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1600,7 +1600,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 244.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 244.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 244.
 Package rerunfilecheck Info: File `book_CVX.out' has not changed.
-(rerunfilecheck)             Checksum: D26864766405A024D8A9AEBC1EB2CA55;325.
+(rerunfilecheck)             Checksum: 1EAC45D2524270C91410A5B8E41A6552;332.
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -1656,7 +1656,7 @@ ss12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/vntex/vnr/vnss9.pfb></
 usr/local/texlive/2016/texmf-dist/fonts/type1/vntex/vnr/vnssbx10.pfb></usr/loca
 l/texlive/2016/texmf-dist/fonts/type1/vntex/vnr/vnssi12.pfb></usr/local/texlive
 /2016/texmf-dist/fonts/type1/vntex/vnr/vnti12.pfb>
-Output written on book_CVX.pdf (70 pages, 1981441 bytes).
+Output written on book_CVX.pdf (70 pages, 1981525 bytes).
 PDF statistics:
  1472 PDF objects out of 1728 (max. 8388607)
  1241 compressed objects within 13 object streams
