@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  25 JUN 2017 06:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  25 JUN 2017 06:59
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1443,31 +1443,31 @@ pt>
 File: ../17_convexopt/latex/optimalitycondition.pdf Graphic file (type pdf)
 <use ../17_convexopt/latex/optimalitycondition.pdf>
 Package pdftex.def Info: ../17_convexopt/latex/optimalitycondition.pdf used on 
-input line 357.
+input line 358.
 (pdftex.def)             Requested size: 227.62204pt x 152.41087pt.
 File: ../17_convexopt/latex/optimalitycondition.pdf Graphic file (type pdf)
 <use ../17_convexopt/latex/optimalitycondition.pdf>
 Package pdftex.def Info: ../17_convexopt/latex/optimalitycondition.pdf used on 
-input line 357.
+input line 358.
 (pdftex.def)             Requested size: 227.62204pt x 152.41087pt.
 File: ../17_convexopt/latex/optimalitycondition.pdf Graphic file (type pdf)
 <use ../17_convexopt/latex/optimalitycondition.pdf>
 Package pdftex.def Info: ../17_convexopt/latex/optimalitycondition.pdf used on 
-input line 357.
+input line 358.
 (pdftex.def)             Requested size: 227.62204pt x 152.41087pt.
 [32 <../17_convexopt/latex/optimalitycondition.pdf>] [33] <../17_convexopt/late
 x/lp.pdf, id=730, 192.8555pt x 112.83255pt>
 File: ../17_convexopt/latex/lp.pdf Graphic file (type pdf)
 <use ../17_convexopt/latex/lp.pdf>
-Package pdftex.def Info: ../17_convexopt/latex/lp.pdf used on input line 468.
+Package pdftex.def Info: ../17_convexopt/latex/lp.pdf used on input line 469.
 (pdftex.def)             Requested size: 227.62204pt x 133.18085pt.
 File: ../17_convexopt/latex/lp.pdf Graphic file (type pdf)
 <use ../17_convexopt/latex/lp.pdf>
-Package pdftex.def Info: ../17_convexopt/latex/lp.pdf used on input line 468.
+Package pdftex.def Info: ../17_convexopt/latex/lp.pdf used on input line 469.
 (pdftex.def)             Requested size: 227.62204pt x 133.18085pt.
 File: ../17_convexopt/latex/lp.pdf Graphic file (type pdf)
 <use ../17_convexopt/latex/lp.pdf>
-Package pdftex.def Info: ../17_convexopt/latex/lp.pdf used on input line 468.
+Package pdftex.def Info: ../17_convexopt/latex/lp.pdf used on input line 469.
 (pdftex.def)             Requested size: 227.62204pt x 133.18085pt.
 [34] [35 <../17_convexopt/latex/lp.pdf>] (/usr/local/texlive/2016/texmf-dist/te
 x/latex/listings/lstlang1.sty
@@ -1475,31 +1475,31 @@ File: lstlang1.sty 2015/06/04 1.6 listings language file
 ) [36] <../17_convexopt/latex/qp.pdf, id=791, 199.1691pt x 113.8112pt>
 File: ../17_convexopt/latex/qp.pdf Graphic file (type pdf)
 <use ../17_convexopt/latex/qp.pdf>
-Package pdftex.def Info: ../17_convexopt/latex/qp.pdf used on input line 597.
+Package pdftex.def Info: ../17_convexopt/latex/qp.pdf used on input line 598.
 (pdftex.def)             Requested size: 227.62204pt x 130.07779pt.
 File: ../17_convexopt/latex/qp.pdf Graphic file (type pdf)
 <use ../17_convexopt/latex/qp.pdf>
-Package pdftex.def Info: ../17_convexopt/latex/qp.pdf used on input line 597.
+Package pdftex.def Info: ../17_convexopt/latex/qp.pdf used on input line 598.
 (pdftex.def)             Requested size: 227.62204pt x 130.07779pt.
 File: ../17_convexopt/latex/qp.pdf Graphic file (type pdf)
 <use ../17_convexopt/latex/qp.pdf>
-Package pdftex.def Info: ../17_convexopt/latex/qp.pdf used on input line 597.
+Package pdftex.def Info: ../17_convexopt/latex/qp.pdf used on input line 598.
 (pdftex.def)             Requested size: 227.62204pt x 130.07779pt.
 [37 <../17_convexopt/latex/qp.pdf>] <../17_convexopt/latex/qp_ex.pdf, id=824, 4
 69.46994pt x 378.42177pt>
 File: ../17_convexopt/latex/qp_ex.pdf Graphic file (type pdf)
 <use ../17_convexopt/latex/qp_ex.pdf>
-Package pdftex.def Info: ../17_convexopt/latex/qp_ex.pdf used on input line 666
+Package pdftex.def Info: ../17_convexopt/latex/qp_ex.pdf used on input line 667
 .
 (pdftex.def)             Requested size: 256.0748pt x 206.41188pt.
 File: ../17_convexopt/latex/qp_ex.pdf Graphic file (type pdf)
 <use ../17_convexopt/latex/qp_ex.pdf>
-Package pdftex.def Info: ../17_convexopt/latex/qp_ex.pdf used on input line 666
+Package pdftex.def Info: ../17_convexopt/latex/qp_ex.pdf used on input line 667
 .
 (pdftex.def)             Requested size: 256.0748pt x 206.41188pt.
 File: ../17_convexopt/latex/qp_ex.pdf Graphic file (type pdf)
 <use ../17_convexopt/latex/qp_ex.pdf>
-Package pdftex.def Info: ../17_convexopt/latex/qp_ex.pdf used on input line 666
+Package pdftex.def Info: ../17_convexopt/latex/qp_ex.pdf used on input line 667
 .
 (pdftex.def)             Requested size: 256.0748pt x 206.41188pt.
 [38] [39 <../17_convexopt/latex/qp_ex.pdf>] [40] [41] [42]) [43]
@@ -1656,7 +1656,7 @@ ss12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/vntex/vnr/vnss9.pfb></
 usr/local/texlive/2016/texmf-dist/fonts/type1/vntex/vnr/vnssbx10.pfb></usr/loca
 l/texlive/2016/texmf-dist/fonts/type1/vntex/vnr/vnssi12.pfb></usr/local/texlive
 /2016/texmf-dist/fonts/type1/vntex/vnr/vnti12.pfb>
-Output written on book_CVX.pdf (70 pages, 1981434 bytes).
+Output written on book_CVX.pdf (70 pages, 1981441 bytes).
 PDF statistics:
  1472 PDF objects out of 1728 (max. 8388607)
  1241 compressed objects within 13 object streams
