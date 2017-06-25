@@ -1,6 +1,6 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  24 JUN 2017 23:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  25 JUN 2017 01:29
 entering extended mode
- \write18 enabled.
+ restricted \write18 enabled.
  %&-line parsing enabled.
 **book_CVX.tex
 (./book_CVX.tex
@@ -68,17 +68,22 @@ LaTeX Font Info:    Redeclaring math symbol \Omega on input line 642.
 \figcapgap=\dimen122
 \tabcapgap=\dimen123
 \c@merk=\count90
-) (/usr/local/texlive/2016/texmf-dist/tex/latex/geometry/geometry.sty
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2010/09/12 v5.6 Page Geometry
+
 (/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks14
-) (/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/ifpdf.sty
 Package: ifpdf 2016/05/14 v3.1 Provides the ifpdf switch
-) (/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/ifvtex.sty
 Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
-) (/usr/local/texlive/2016/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
 \Gm@cnth=\count91
@@ -93,24 +98,30 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layouthoffset=\dimen130
 \Gm@layoutvoffset=\dimen131
 \Gm@dimlist=\toks15
-) (/usr/local/texlive/2016/texmf-dist/tex/latex/base/fontenc.sty
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+
 (/usr/local/texlive/2016/texmf-dist/tex/latex/vntex/t5enc.def
 File: t5enc.def 2006/11/21 v1.4 Vietnamese T5 encoding
 )
 LaTeX Font Info:    Try loading font information for T5+cmr on input line 105.
+
 (/usr/local/texlive/2016/texmf-dist/tex/latex/vntex/t5cmr.fd
 File: t5cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-)) (/usr/local/texlive/2016/texmf-dist/tex/latex/base/inputenc.sty
+))
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2015/03/17 v1.2c Input encoding file
 \inpenc@prehook=\toks16
 \inpenc@posthook=\toks17
+
 (/usr/local/texlive/2016/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2016/02/28 v1.1s UTF-8 support for inputenc
 Now handling font encoding OML ...
 ... no UTF-8 mapping file for font encoding OML
 Now handling font encoding T1 ...
 ... processing UTF-8 mapping file for font encoding T1
+
 (/usr/local/texlive/2016/texmf-dist/tex/latex/base/t1enc.dfu
 File: t1enc.dfu 2016/02/28 v1.1s UTF-8 support for inputenc
    defining Unicode char U+00A0 (decimal 160)
@@ -347,6 +358,7 @@ File: t1enc.dfu 2016/02/28 v1.1s UTF-8 support for inputenc
 )
 Now handling font encoding OT1 ...
 ... processing UTF-8 mapping file for font encoding OT1
+
 (/usr/local/texlive/2016/texmf-dist/tex/latex/base/ot1enc.dfu
 File: ot1enc.dfu 2016/02/28 v1.1s UTF-8 support for inputenc
    defining Unicode char U+00A0 (decimal 160)
@@ -387,6 +399,7 @@ File: ot1enc.dfu 2016/02/28 v1.1s UTF-8 support for inputenc
 )
 Now handling font encoding OMS ...
 ... processing UTF-8 mapping file for font encoding OMS
+
 (/usr/local/texlive/2016/texmf-dist/tex/latex/base/omsenc.dfu
 File: omsenc.dfu 2016/02/28 v1.1s UTF-8 support for inputenc
    defining Unicode char U+00A7 (decimal 167)
@@ -402,6 +415,7 @@ Now handling font encoding U ...
 ... no UTF-8 mapping file for font encoding U
 Now handling font encoding T5 ...
 ... processing UTF-8 mapping file for font encoding T5
+
 (/usr/local/texlive/2016/texmf-dist/tex/latex/vntex/t5enc.dfu
 File: t5enc.dfu 2006/08/19 v1.1 UTF8 support for Vietnamese
    defining Unicode char U+00AB (decimal 171)
@@ -566,20 +580,25 @@ File: t5enc.dfu 2006/08/19 v1.1 UTF8 support for Vietnamese
    defining Unicode char U+2026 (decimal 8230)
    defining Unicode char U+2122 (decimal 8482)
    defining Unicode char U+2423 (decimal 9251)
-)) (/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsmath.sty
+))
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2016/03/10 v2.15b AMS math features
 \@mathmargin=\skip43
+
 For additional information on amsmath, use the `?' option.
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01 AMS text
+
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks18
 \ex@=\dimen132
-)) (/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsbsy.sty
+))
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen133
-) (/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsopn.sty
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
 \inf@bad=\count94
@@ -597,6 +616,7 @@ LaTeX Info: Redefining \cdots on input line 518.
 \big@size=\dimen134
 LaTeX Font Info:    Redeclaring font encoding OML on input line 634.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 635.
+
 
 Package amsmath Warning: Unable to redefine math accent \vec.
 
@@ -624,36 +644,46 @@ LaTeX Info: Redefining \[ on input line 2739.
 LaTeX Info: Redefining \] on input line 2740.
 ) (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-)) (/usr/local/texlive/2016/texmf-dist/tex/latex/base/makeidx.sty
+))
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/makeidx.sty
 Package: makeidx 2014/09/29 v1.0m Standard LaTeX package
-) (/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/graphicx.sty
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
 (/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2016/05/09 v1.0r Standard LaTeX Graphics (DPC,SPQR)
+
 (/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
-) (/usr/local/texlive/2016/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/01/02 v1.10 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 96.
+
 (/usr/local/texlive/2016/texmf-dist/tex/latex/pdftex-def/pdftex.def
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
 (/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/infwarerr.sty
 Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
-) (/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
 Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count106
 ))
 \Gin@req@height=\dimen141
 \Gin@req@width=\dimen142
-) (/usr/local/texlive/2016/texmf-dist/tex/latex/tools/multicol.sty
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/tools/multicol.sty
 Package: multicol 2016/04/07 v1.8p multicolumn formatting (FMi)
 \c@tracingmulticols=\count107
 \mult@box=\box28
@@ -701,7 +731,8 @@ Package: multicol 2016/04/07 v1.8p multicolumn formatting (FMi)
 \mult@nat@firstbox=\box52
 \colbreak@box=\box53
 \mc@col@check@num=\count115
-) (/usr/local/texlive/2016/texmf-dist/tex/latex/footmisc/footmisc.sty
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/footmisc/footmisc.sty
 Package: footmisc 2011/06/06 v5.5b a miscellany of footnote facilities
 \FN@temptoken=\toks23
 \footnotemargin=\dimen152
@@ -714,8 +745,10 @@ Package footmisc Info: Declaring symbol style lamport-robust on input line 883.
 Package footmisc Info: Declaring symbol style lamport* on input line 903.
 Package footmisc Info: Declaring symbol style lamport*-robust on input line 924
 .
-) (/usr/local/texlive/2016/texmf-dist/tex/latex/caption/caption.sty
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
+
 (/usr/local/texlive/2016/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2016/02/04 v1.7-139 caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 67.
@@ -746,28 +779,51 @@ Package: subcaption 2016/02/20 v1.1-142 Sub-captions (AR)
 \c@subfigure=\count118
 \c@subtable=\count119
 )
+(/usr/local/texlive/2016/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
 \@indexfile=\write3
 \openout3 = `book_CVX.idx'.
+
 
 Writing index file book_CVX.idx
 (/usr/local/texlive/2016/texmf-dist/tex/latex/cite/cite.sty
 LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 332.
 Package: cite 2015/02/27  v 5.5
-) (/usr/local/texlive/2016/texmf-dist/tex/latex/url/url.sty
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip11
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
-) (/usr/local/texlive/2016/texmf-dist/tex/latex/tools/bm.sty
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/tools/bm.sty
 Package: bm 2016/02/27 v1.2a Bold Symbol Support (DPC/FMi)
 \symboldoperators=\mathgroup6
 \symboldletters=\mathgroup7
 \symboldsymbols=\mathgroup8
 LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 142.
 LaTeX Info: Redefining \bm on input line 208.
-) (/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/hyperref.sty
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2016/05/05 v6.83n Hypertext links for LaTeX
+
 (/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
 Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
+
 
 (/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
 Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
@@ -807,20 +863,24 @@ Package atveryend Info: \enddocument detected (standard20110627).
 Package: atbegshi 2016/05/16 v1.17 At begin shipout hook (HO)
 Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
 Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
-) (/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/auxhook.sty
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/auxhook.sty
 Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
-) (/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/kvoptions.sty
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 )
 \@linkdim=\dimen160
 \Hy@linkcounter=\count120
 \Hy@pagecounter=\count121
+
 (/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2016/05/05 v6.83n Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 )
 \Hy@SavedSpaceFactor=\count122
+
 (/usr/local/texlive/2016/texmf-dist/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
@@ -857,6 +917,7 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 File: hpdftex.def 2016/05/05 v6.83n Hyperref driver for pdfTeX
 \Fld@listcount=\count128
 \c@bookmark@seq@number=\count129
+
 (/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
 Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
@@ -864,7 +925,8 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip48
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 55.
+Package hyperref Info: Option `colorlinks' set `true' on input line 56.
+
 (/usr/local/texlive/2016/texmf-dist/tex/latex/listings/listings.sty
 \lst@mode=\count130
 \lst@gtempboxa=\box54
@@ -878,29 +940,28 @@ Package hyperref Info: Option `colorlinks' set `true' on input line 55.
 \lst@newlines=\count134
 \lst@lineno=\count135
 \lst@maxwidth=\dimen167
+
 (/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 \c@lstnumber=\count136
 \lst@skipnumbers=\count137
 \lst@framebox=\box55
-) (/usr/local/texlive/2016/texmf-dist/tex/latex/listings/listings.cfg
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2015/06/04 1.6 listings configuration
 ))
 Package: listings 2015/06/04 1.6 (Carsten Heinz)
-(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/color.sty
-Package: color 2016/05/09 v1.1c Standard LaTeX Color (DPC)
-(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics-cfg/color.cfg
-File: color.cfg 2016/01/02 v1.6 sample color configuration
-)
-Package color Info: Driver file: pdftex.def on input line 144.
-) (/usr/local/texlive/2016/texmf-dist/tex/latex/psnfss/courier.sty
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/psnfss/courier.sty
 Package: courier 2005/04/12 PSNFSS-v9.2a (WaS) 
 )
-LaTeX Font Info:    Try loading font information for T1+txtt on input line 100.
+LaTeX Font Info:    Try loading font information for T1+txtt on input line 101.
+
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/txfonts/t1txtt.fd
 File: t1txtt.fd 2000/12/15 v3.1
-) (/usr/local/texlive/2016/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 \fancy@headwidth=\skip49
 \f@ncyO@elh=\skip50
 \f@ncyO@erh=\skip51
@@ -910,7 +971,8 @@ File: t1txtt.fd 2000/12/15 v3.1
 \f@ncyO@erf=\skip55
 \f@ncyO@olf=\skip56
 \f@ncyO@orf=\skip57
-) (/usr/local/texlive/2016/texmf-dist/tex/latex/floatrow/floatrow.sty
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/floatrow/floatrow.sty
 Package: floatrow 2008/08/02 v0.3b floatrow: float package extension
 \c@float@type=\count138
 \float@exts=\toks25
@@ -947,8 +1009,10 @@ Package floatrow Info: Modified rotfloat package code loaded on input line 473.
 \LTleft=\skip70
 \LTright=\skip71
 \flrow@types=\toks27
-) (/usr/local/texlive/2016/texmf-dist/tex/latex/sidecap/sidecap.sty
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/sidecap/sidecap.sty
 Package: sidecap 2003/06/06 v1.6f SideCap Package (RN/HjG)
+
 (/usr/local/texlive/2016/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
@@ -958,25 +1022,44 @@ Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 \SC@tempdimb=\dimen175
 \c@SC@C=\count145
 \SC@BOX=\box59
-) (./book_CVX.aux (./18_duality.aux))
+) (./book_CVX.aux (./00_loinoidau.aux) (./16_convexity.aux
+
+LaTeX Warning: Label `fig:16_normballs' multiply defined.
+
+) (./17_convexopt.aux) (./18_duality.aux
+
+LaTeX Warning: Label `fig:subim1' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:subim1' multiply defined.
+
+) (./linearalgebra.aux
+
+LaTeX Warning: Label `my-label' multiply defined.
+
+
+LaTeX Warning: Label `my-label' multiply defined.
+
+))
 \openout1 = `book_CVX.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for T5/cmr/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 172.
+LaTeX Font Info:    ... okay on input line 172.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 172.
+LaTeX Font Info:    ... okay on input line 172.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 172.
+LaTeX Font Info:    ... okay on input line 172.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 172.
+LaTeX Font Info:    ... okay on input line 172.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 172.
+LaTeX Font Info:    ... okay on input line 172.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 172.
+LaTeX Font Info:    ... okay on input line 172.
+LaTeX Font Info:    Checking defaults for T5/cmr/m/n on input line 172.
+LaTeX Font Info:    ... okay on input line 172.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 172.
+LaTeX Font Info:    ... okay on input line 172.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -1026,6 +1109,7 @@ LaTeX Font Info:    ... okay on input line 167.
 \everyMPtoPDFconversion=\toks29
 ) (/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
 (/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/grfext.sty
 Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
 )
@@ -1033,6 +1117,7 @@ Package grfext Info: Graphics extension search list:
 (grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
+
 (/usr/local/texlive/2016/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
@@ -1046,26 +1131,32 @@ Package caption Info: listings package is loaded.
 Package caption Info: sidecap package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \AtBeginShipoutBox=\box61
-Package hyperref Info: Link coloring ON on input line 167.
+Package hyperref Info: Link coloring ON on input line 172.
+
 (/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
+
 (/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count152
 )
-LaTeX Info: Redefining \ref on input line 167.
-LaTeX Info: Redefining \pageref on input line 167.
-LaTeX Info: Redefining \nameref on input line 167.
+LaTeX Info: Redefining \ref on input line 172.
+LaTeX Info: Redefining \pageref on input line 172.
+LaTeX Info: Redefining \nameref on input line 172.
+
 (./book_CVX.out) (./book_CVX.out)
 \@outlinefile=\write4
 \openout4 = `book_CVX.out'.
 
 \c@lstlisting=\count153
+
 (/usr/local/texlive/2016/texmf-dist/tex/latex/ms/ragged2e.sty
 Package: ragged2e 2009/05/21 v2.1 ragged2e Package (MS)
+
 (/usr/local/texlive/2016/texmf-dist/tex/latex/ms/everysel.sty
 Package: everysel 2011/10/28 v1.2 EverySelectfont Package (MS)
+
 ABD: EverySelectfont initializing macros
 LaTeX Info: Redefining \selectfont on input line 126.
 )
@@ -1084,151 +1175,613 @@ LaTeX Info: Redefining \selectfont on input line 126.
 \RaggedRightParindent=\skip84
 \JustifyingParindent=\skip85
 )
-LaTeX Font Info:    Try loading font information for T5+pcr on input line 183.
+LaTeX Font Info:    Try loading font information for T5+pcr on input line 188.
+
 (/usr/local/texlive/2016/texmf-dist/tex/latex/vntex/t5pcr.fd
 File: t5ucr.fd 2005/08/24 Fontinst v1.929 font definitions for T5/pcr.
 )
 LaTeX Font Info:    Font shape `T5/pcr/bx/n' in size <9> not available
-(Font)              Font shape `T5/pcr/b/n' tried instead on input line 183.
-LaTeX Font Info:    Try loading font information for U+msa on input line 183.
+(Font)              Font shape `T5/pcr/b/n' tried instead on input line 188.
+LaTeX Font Info:    Try loading font information for U+msa on input line 188.
+
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 183.
+LaTeX Font Info:    Try loading font information for U+msb on input line 188.
+
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 183--183
+Underfull \hbox (badness 10000) in paragraph at lines 188--188
  
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 183--183
+Underfull \hbox (badness 10000) in paragraph at lines 188--188
  
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 183--183
+Underfull \hbox (badness 10000) in paragraph at lines 188--188
  
  []
 
 [1
 
-{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./book
-_CVX.toc)
+{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+(./book_CVX.toc)
 \tf@toc=\write5
 \openout5 = `book_CVX.toc'.
 
-[5
+ [5
 
 
 ] [6
 
 
 ]
-\openout2 = `18_duality.aux'.
+\openout2 = `00_loinoidau.aux'.
 
-(./18_duality.tex
-Chapter 18.
+ (./00_loinoidau.tex
+Chapter 0.
+
+Package hyperref Warning: Composite letter `\textasciigrave+\ohorn'
+(hyperref)                not defined in PD1 encoding,
+(hyperref)                removing `\textasciigrave' on input line 2.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\ohorn' on input line 2.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\dj' on input line 2.
+
+
+Package hyperref Warning: Composite letter `\textasciigrave+\acircumflex'
+(hyperref)                not defined in PD1 encoding,
+(hyperref)                removing `\textasciigrave' on input line 2.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\acircumflex' on input line 2.
+
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.26 \end{eqnarray}
-                    [1
+l.17 \textbf{V·∫•n ƒë·ªÅ b·∫£n quy·ªÅn:}
+                                         [1
 
 
-]
+])
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
+ Make it at least 17.97171pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[2] [3]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 135.
+[2]
+\openout2 = `16_convexity.aux'.
 
+ (./16_convexity.tex
+Chapter 16.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 11.
 (/usr/local/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 135.
-[4] <../18_duality/python/dual_func.pdf, id=92, 433.62pt x 361.35pt>
-File: ../18_duality/python/dual_func.pdf Graphic file (type pdf)
-<use ../18_duality/python/dual_func.pdf>
-Package pdftex.def Info: ../18_duality/python/dual_func.pdf used on input line 
-197.
-(pdftex.def)             Requested size: 214.20567pt x 178.50764pt.
-<../18_duality/python/dual_func2.pdf, id=93, 433.62pt x 361.35pt>
-File: ../18_duality/python/dual_func2.pdf Graphic file (type pdf)
-<use ../18_duality/python/dual_func2.pdf>
-Package pdftex.def Info: ../18_duality/python/dual_func2.pdf used on input line
- 202.
-(pdftex.def)             Requested size: 214.20567pt x 178.50764pt.
-LaTeX Font Info:    Try loading font information for T5+cmss on input line 206.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 11.
+ [3
+
+
+
+] [4]
+<../16_convexity/latex/convexsets.pdf, id=90, 370.68587pt x 103.76466pt>
+File: ../16_convexity/latex/convexsets.pdf Graphic file (type pdf)
+
+<use ../16_convexity/latex/convexsets.pdf>
+Package pdftex.def Info: ../16_convexity/latex/convexsets.pdf used on input lin
+e 69.
+(pdftex.def)             Requested size: 375.80544pt x 105.2052pt.
+LaTeX Font Info:    Try loading font information for T5+cmss on input line 70.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/vntex/t5cmss.fd
 File: t5cmss.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-) [5] [6 <../18_duality/python/dual_func.pdf> <../18_duality/python/dual_func2.
-pdf
+)
+<../16_convexity/latex/nonconvexsets.pdf, id=92, 346.18031pt x 88.7606pt>
+File: ../16_convexity/latex/nonconvexsets.pdf Graphic file (type pdf)
 
-pdfTeX warning: pdflatex (file ../18_duality/python/dual_func2.pdf): PDF inclus
-ion: multiple pdfs with page group included in a single page
->] [7] [8] [9] [10] [11] [12]) [13] [14
+<use ../16_convexity/latex/nonconvexsets.pdf>
+Package pdftex.def Info: ../16_convexity/latex/nonconvexsets.pdf used on input 
+line 96.
+(pdftex.def)             Requested size: 375.80544pt x 96.36247pt.
+ [5 <../16_convexity/latex/convexsets.pdf>] [6 <../16_convexity/latex/nonconvex
+sets.pdf>]
+<../16_convexity/latex/normballs.pdf, id=124, 436.12434pt x 261.74387pt>
+File: ../16_convexity/latex/normballs.pdf Graphic file (type pdf)
+
+<use ../16_convexity/latex/normballs.pdf>
+Package pdftex.def Info: ../16_convexity/latex/normballs.pdf used on input line
+ 186.
+(pdftex.def)             Requested size: 469.75502pt x 281.94427pt.
+ [7] [8 <../16_convexity/latex/normballs.pdf>]
+<../16_convexity/latex/intersection.pdf, id=183, 282.5446pt x 128.43684pt>
+File: ../16_convexity/latex/intersection.pdf Graphic file (type pdf)
+
+<use ../16_convexity/latex/intersection.pdf>
+Package pdftex.def Info: ../16_convexity/latex/intersection.pdf used on input l
+ine 234.
+(pdftex.def)             Requested size: 281.85587pt x 128.12881pt.
+ [9 <../16_convexity/latex/intersection.pdf>]
+<../16_convexity/latex/convex_hull.pdf, id=192, 314.78001pt x 147.6446pt>
+File: ../16_convexity/latex/convex_hull.pdf Graphic file (type pdf)
+
+<use ../16_convexity/latex/convex_hull.pdf>
+Package pdftex.def Info: ../16_convexity/latex/convex_hull.pdf used on input li
+ne 273.
+(pdftex.def)             Requested size: 328.82707pt x 154.2474pt.
+ [10 <../16_convexity/latex/convex_hull.pdf>]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `htbp') on input line 343.
+
+
+LaTeX Font Warning: Font shape `T5/cmss/m/it' in size <12> not available
+(Font)              Font shape `T5/cmss/m/sl' tried instead on input line 348.
+
+<../16_convexity/latex/convexf_def.pdf, id=209, 163.5721pt x 98.90852pt>
+File: ../16_convexity/latex/convexf_def.pdf Graphic file (type pdf)
+
+<use ../16_convexity/latex/convexf_def.pdf>
+Package pdftex.def Info: ../16_convexity/latex/convexf_def.pdf used on input li
+ne 348.
+(pdftex.def)             Requested size: 227.62204pt x 137.64542pt.
+File: ../16_convexity/latex/convexf_def.pdf Graphic file (type pdf)
+
+<use ../16_convexity/latex/convexf_def.pdf>
+Package pdftex.def Info: ../16_convexity/latex/convexf_def.pdf used on input li
+ne 348.
+(pdftex.def)             Requested size: 227.62204pt x 137.64542pt.
+File: ../16_convexity/latex/convexf_def.pdf Graphic file (type pdf)
+
+<use ../16_convexity/latex/convexf_def.pdf>
+Package pdftex.def Info: ../16_convexity/latex/convexf_def.pdf used on input li
+ne 348.
+(pdftex.def)             Requested size: 227.62204pt x 137.64542pt.
+ [11] [12 <../16_convexity/latex/convexf_def.pdf>]
+<../16_convexity/latex/max_point.pdf, id=245, 174.40157pt x 98.0473pt>
+File: ../16_convexity/latex/max_point.pdf Graphic file (type pdf)
+
+<use ../16_convexity/latex/max_point.pdf>
+Package pdftex.def Info: ../16_convexity/latex/max_point.pdf used on input line
+ 409.
+(pdftex.def)             Requested size: 199.16928pt x 111.97705pt.
+File: ../16_convexity/latex/max_point.pdf Graphic file (type pdf)
+
+<use ../16_convexity/latex/max_point.pdf>
+Package pdftex.def Info: ../16_convexity/latex/max_point.pdf used on input line
+ 409.
+(pdftex.def)             Requested size: 199.16928pt x 111.97705pt.
+File: ../16_convexity/latex/max_point.pdf Graphic file (type pdf)
+
+<use ../16_convexity/latex/max_point.pdf>
+Package pdftex.def Info: ../16_convexity/latex/max_point.pdf used on input line
+ 409.
+(pdftex.def)             Requested size: 199.16928pt x 111.97705pt.
+
+<../16_convexity/latex/convexfunctions.pdf, id=247, 626.76057pt x 141.8379pt>
+File: ../16_convexity/latex/convexfunctions.pdf Graphic file (type pdf)
+
+<use ../16_convexity/latex/convexfunctions.pdf>
+Package pdftex.def Info: ../16_convexity/latex/convexfunctions.pdf used on inpu
+t line 442.
+(pdftex.def)             Requested size: 469.75502pt x 106.30673pt.
+ [13 <../16_convexity/latex/max_point.pdf> <../16_convexity/latex/convexfunctio
+ns.pdf>]
+<../16_convexity/latex/concavefunctions.pdf, id=296, 583.62543pt x 156.06406pt>
+File: ../16_convexity/latex/concavefunctions.pdf Graphic file (type pdf)
+<use ../16_convexity/latex/concavefunctions.pdf>
+Package pdftex.def Info: ../16_convexity/latex/concavefunctions.pdf used on inp
+ut line 471.
+(pdftex.def)             Requested size: 469.75502pt x 125.62057pt.
+ [14 <../16_convexity/latex/concavefunctions.pdf>]
+<../16_convexity/norm1_surf.png, id=324, 611.28375pt x 663.47874pt>
+File: ../16_convexity/norm1_surf.png Graphic file (type png)
+
+<use ../16_convexity/norm1_surf.png>
+Package pdftex.def Info: ../16_convexity/norm1_surf.png used on input line 538.
+
+(pdftex.def)             Requested size: 214.20567pt x 232.49437pt.
+
+<../16_convexity/norm2_surf.png, id=326, 628.3475pt x 714.67pt>
+File: ../16_convexity/norm2_surf.png Graphic file (type png)
+
+<use ../16_convexity/norm2_surf.png>
+Package pdftex.def Info: ../16_convexity/norm2_surf.png used on input line 543.
+
+(pdftex.def)             Requested size: 214.20567pt x 243.62798pt.
+
+<../16_convexity/hyperbol.png, id=329, 644.4075pt x 649.42625pt>
+File: ../16_convexity/hyperbol.png Graphic file (type png)
+
+<use ../16_convexity/hyperbol.png>
+Package pdftex.def Info: ../16_convexity/hyperbol.png used on input line 577.
+(pdftex.def)             Requested size: 214.20567pt x 215.87701pt.
+
+<../16_convexity/nonconvex_surface.png, id=330, 649.42625pt x 651.43375pt>
+File: ../16_convexity/nonconvex_surface.png Graphic file (type png)
+
+<use ../16_convexity/nonconvex_surface.png>
+Package pdftex.def Info: ../16_convexity/nonconvex_surface.png used on input li
+ne 582.
+(pdftex.def)             Requested size: 214.20567pt x 214.86446pt.
+ [15]
+<../16_convexity/python/abs_2d.pdf, id=342, 182.48175pt x 203.96199pt>
+File: ../16_convexity/python/abs_2d.pdf Graphic file (type pdf)
+
+<use ../16_convexity/python/abs_2d.pdf>
+Package pdftex.def Info: ../16_convexity/python/abs_2d.pdf used on input line 6
+38.
+(pdftex.def)             Requested size: 133.8811pt x 149.65039pt.
+
+<../16_convexity/python/norm_2d.pdf, id=343, 216.81pt x 216.81pt>
+File: ../16_convexity/python/norm_2d.pdf Graphic file (type pdf)
+
+<use ../16_convexity/python/norm_2d.pdf>
+Package pdftex.def Info: ../16_convexity/python/norm_2d.pdf used on input line 
+641.
+(pdftex.def)             Requested size: 133.8811pt x 133.88817pt.
+
+<../16_convexity/python/max_2d.pdf, id=344, 216.81pt x 216.81pt>
+File: ../16_convexity/python/max_2d.pdf Graphic file (type pdf)
+
+<use ../16_convexity/python/max_2d.pdf>
+Package pdftex.def Info: ../16_convexity/python/max_2d.pdf used on input line 6
+44.
+(pdftex.def)             Requested size: 133.8811pt x 133.88817pt.
+
+<../16_convexity/python/linear_2d.pdf, id=345, 216.81pt x 216.81pt>
+File: ../16_convexity/python/linear_2d.pdf Graphic file (type pdf)
+
+<use ../16_convexity/python/linear_2d.pdf>
+Package pdftex.def Info: ../16_convexity/python/linear_2d.pdf used on input lin
+e 648.
+(pdftex.def)             Requested size: 133.8811pt x 133.88817pt.
+
+<../16_convexity/python/NE.pdf, id=346, 182.48175pt x 203.96199pt>
+File: ../16_convexity/python/NE.pdf Graphic file (type pdf)
+
+<use ../16_convexity/python/NE.pdf>
+Package pdftex.def Info: ../16_convexity/python/NE.pdf used on input line 651.
+(pdftex.def)             Requested size: 133.8811pt x 149.65039pt.
+
+<../16_convexity/python/hyper_2d.pdf, id=347, 211.189pt x 205.9695pt>
+File: ../16_convexity/python/hyper_2d.pdf Graphic file (type pdf)
+
+<use ../16_convexity/python/hyper_2d.pdf>
+Package pdftex.def Info: ../16_convexity/python/hyper_2d.pdf used on input line
+ 654.
+(pdftex.def)             Requested size: 133.8811pt x 130.57231pt.
+ [16 <../16_convexity/norm1_surf.png> <../16_convexity/norm2_surf.png> <../16_c
+onvexity/hyperbol.png> <../16_convexity/nonconvex_surface.png>] [17 <../16_conv
+exity/python/abs_2d.pdf> <../16_convexity/python/norm_2d.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ../16_convexity/python/norm_
+2d.pdf): PDF inclusion: multiple pdfs with page group included in a single page
+
+> <../16_convexity/python/max_2d.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ../16_convexity/python/max_2
+d.pdf): PDF inclusion: multiple pdfs with page group included in a single page
+> <../16_convexity/python/linear_2d.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ../16_convexity/python/linea
+r_2d.pdf): PDF inclusion: multiple pdfs with page group included in a single pa
+ge
+> <../16_convexity/python/NE.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ../16_convexity/python/NE.pd
+f): PDF inclusion: multiple pdfs with page group included in a single page
+> <../16_convexity/python/hyper_2d.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ../16_convexity/python/hyper
+_2d.pdf): PDF inclusion: multiple pdfs with page group included in a single pag
+e
+>] <../16_convexity/sin_surf2_cropped.png, id=509, 822.4326pt x 502.2765pt>
+File: ../16_convexity/sin_surf2_cropped.png Graphic file (type png)
+
+<use ../16_convexity/sin_surf2_cropped.png>
+Package pdftex.def Info: ../16_convexity/sin_surf2_cropped.png used on input li
+ne 720.
+(pdftex.def)             Requested size: 328.82707pt x 200.82274pt.
+ [18] [19 <../16_convexity/sin_surf2_cropped.png>]
+<../16_convexity/latex/first_order.pdf, id=527, 299.54712pt x 125.47678pt>
+File: ../16_convexity/latex/first_order.pdf Graphic file (type pdf)
+
+<use ../16_convexity/latex/first_order.pdf>
+Package pdftex.def Info: ../16_convexity/latex/first_order.pdf used on input li
+ne 781.
+(pdftex.def)             Requested size: 469.75502pt x 196.78452pt.
+ [20 <../16_convexity/latex/first_order.pdf>] [21]) [22]
+\openout2 = `17_convexopt.aux'.
+
+ (./17_convexopt.tex
+Chapter 17.
+[23
 
 
 
-] (./book_CVX.ind)
+] [24] [25]
+<../17_convexopt/latex/planting.pdf, id=603, 469.46994pt x 378.42177pt>
+File: ../17_convexopt/latex/planting.pdf Graphic file (type pdf)
 
-Package caption Warning: Unused \captionsetup[table] on input line 156.
-See the caption package documentation for explanation.
+<use ../17_convexopt/latex/planting.pdf>
+Package pdftex.def Info: ../17_convexopt/latex/planting.pdf used on input line 
+123.
+(pdftex.def)             Requested size: 227.62204pt x 183.4766pt.
+File: ../17_convexopt/latex/planting.pdf Graphic file (type pdf)
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 236.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 236.
-(./book_CVX.aux (./18_duality.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 236.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 236.
+<use ../17_convexopt/latex/planting.pdf>
+Package pdftex.def Info: ../17_convexopt/latex/planting.pdf used on input line 
+123.
+(pdftex.def)             Requested size: 227.62204pt x 183.4766pt.
+File: ../17_convexopt/latex/planting.pdf Graphic file (type pdf)
+
+<use ../17_convexopt/latex/planting.pdf>
+Package pdftex.def Info: ../17_convexopt/latex/planting.pdf used on input line 
+123.
+(pdftex.def)             Requested size: 227.62204pt x 183.4766pt.
+ [26 <../17_convexopt/latex/planting.pdf>] [27]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `htbp') on input line 198.
+
+
+Overfull \hbox (30.33215pt too wide) in paragraph at lines 204--215
+ [][] 
+ []
+
+[28] [29] [30] [31]
+<../17_convexopt/latex/optimalitycondition.pdf, id=683, 197.38643pt x 132.15874
+pt>
+File: ../17_convexopt/latex/optimalitycondition.pdf Graphic file (type pdf)
+ <use ../17_convexopt/latex/optimalitycondition.pdf>
+Package pdftex.def Info: ../17_convexopt/latex/optimalitycondition.pdf used on 
+input line 357.
+(pdftex.def)             Requested size: 227.62204pt x 152.41087pt.
+File: ../17_convexopt/latex/optimalitycondition.pdf Graphic file (type pdf)
+
+<use ../17_convexopt/latex/optimalitycondition.pdf>
+Package pdftex.def Info: ../17_convexopt/latex/optimalitycondition.pdf used on 
+input line 357.
+(pdftex.def)             Requested size: 227.62204pt x 152.41087pt.
+File: ../17_convexopt/latex/optimalitycondition.pdf Graphic file (type pdf)
+
+<use ../17_convexopt/latex/optimalitycondition.pdf>
+Package pdftex.def Info: ../17_convexopt/latex/optimalitycondition.pdf used on 
+input line 357.
+(pdftex.def)             Requested size: 227.62204pt x 152.41087pt.
+ [32 <../17_convexopt/latex/optimalitycondition.pdf>] [33]
+<../17_convexopt/latex/lp.pdf, id=732, 192.8555pt x 112.83255pt>
+File: ../17_convexopt/latex/lp.pdf Graphic file (type pdf)
+
+<use ../17_convexopt/latex/lp.pdf>
+Package pdftex.def Info: ../17_convexopt/latex/lp.pdf used on input line 468.
+(pdftex.def)             Requested size: 227.62204pt x 133.18085pt.
+File: ../17_convexopt/latex/lp.pdf Graphic file (type pdf)
+ <use ../17_convexopt/latex/lp.pdf>
+Package pdftex.def Info: ../17_convexopt/latex/lp.pdf used on input line 468.
+(pdftex.def)             Requested size: 227.62204pt x 133.18085pt.
+File: ../17_convexopt/latex/lp.pdf Graphic file (type pdf)
+
+<use ../17_convexopt/latex/lp.pdf>
+Package pdftex.def Info: ../17_convexopt/latex/lp.pdf used on input line 468.
+(pdftex.def)             Requested size: 227.62204pt x 133.18085pt.
+ [34] [35 <../17_convexopt/latex/lp.pdf>]
+(/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+) [36]
+<../17_convexopt/latex/qp.pdf, id=793, 199.1691pt x 113.8112pt>
+File: ../17_convexopt/latex/qp.pdf Graphic file (type pdf)
+
+<use ../17_convexopt/latex/qp.pdf>
+Package pdftex.def Info: ../17_convexopt/latex/qp.pdf used on input line 597.
+(pdftex.def)             Requested size: 227.62204pt x 130.07779pt.
+File: ../17_convexopt/latex/qp.pdf Graphic file (type pdf)
+ <use ../17_convexopt/latex/qp.pdf>
+Package pdftex.def Info: ../17_convexopt/latex/qp.pdf used on input line 597.
+(pdftex.def)             Requested size: 227.62204pt x 130.07779pt.
+File: ../17_convexopt/latex/qp.pdf Graphic file (type pdf)
+
+<use ../17_convexopt/latex/qp.pdf>
+Package pdftex.def Info: ../17_convexopt/latex/qp.pdf used on input line 597.
+(pdftex.def)             Requested size: 227.62204pt x 130.07779pt.
+ [37 <../17_convexopt/latex/qp.pdf>]
+<../17_convexopt/latex/qp_ex.pdf, id=826, 469.46994pt x 378.42177pt>
+File: ../17_convexopt/latex/qp_ex.pdf Graphic file (type pdf)
+
+<use ../17_convexopt/latex/qp_ex.pdf>
+Package pdftex.def Info: ../17_convexopt/latex/qp_ex.pdf used on input line 666
+.
+(pdftex.def)             Requested size: 256.0748pt x 206.41188pt.
+File: ../17_convexopt/latex/qp_ex.pdf Graphic file (type pdf)
+ <use ../17_convexopt/latex/qp_ex.pdf>
+Package pdftex.def Info: ../17_convexopt/latex/qp_ex.pdf used on input line 666
+.
+(pdftex.def)             Requested size: 256.0748pt x 206.41188pt.
+File: ../17_convexopt/latex/qp_ex.pdf Graphic file (type pdf)
+
+<use ../17_convexopt/latex/qp_ex.pdf>
+Package pdftex.def Info: ../17_convexopt/latex/qp_ex.pdf used on input line 666
+.
+(pdftex.def)             Requested size: 256.0748pt x 206.41188pt.
+ [38] [39 <../17_convexopt/latex/qp_ex.pdf>] [40] [41] [42]) [43]
+\openout2 = `18_duality.aux'.
+
+ (./18_duality.tex
+Chapter 18.
+[44
+
+
+
+] [45] [46] [47] [48]
+<../18_duality/python/dual_func.pdf, id=994, 433.62pt x 361.35pt>
+File: ../18_duality/python/dual_func.pdf Graphic file (type pdf)
+
+<use ../18_duality/python/dual_func.pdf>
+Package pdftex.def Info: ../18_duality/python/dual_func.pdf used on input line 
+204.
+(pdftex.def)             Requested size: 214.20567pt x 178.50764pt.
+
+<../18_duality/python/dual_func2.pdf, id=995, 433.62pt x 361.35pt>
+File: ../18_duality/python/dual_func2.pdf Graphic file (type pdf)
+
+<use ../18_duality/python/dual_func2.pdf>
+Package pdftex.def Info: ../18_duality/python/dual_func2.pdf used on input line
+ 209.
+(pdftex.def)             Requested size: 214.20567pt x 178.50764pt.
+ [49 <../18_duality/python/dual_func.pdf> <../18_duality/python/dual_func2.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ../18_duality/python/dual_fu
+nc2.pdf): PDF inclusion: multiple pdfs with page group included in a single pag
+e
+>] [50] [51] [52] [53] [54] [55]) [56]
+\openout2 = `linearalgebra.aux'.
+
+ (./linearalgebra.tex
+Chapter 51.
+
+Package hyperref Warning: Composite letter `\textdotbelow+\acircumflex'
+(hyperref)                not defined in PD1 encoding,
+(hyperref)                removing `\textdotbelow' on input line 2.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\acircumflex' on input line 2.
+
+
+Package hyperref Warning: Composite letter `\textdotbelow+a'
+(hyperref)                not defined in PD1 encoding,
+(hyperref)                removing `\textdotbelow' on input line 2.
+
+
+Package hyperref Warning: Composite letter `\textacute+\ocircumflex'
+(hyperref)                not defined in PD1 encoding,
+(hyperref)                removing `\textacute' on input line 2.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\ocircumflex' on input line 2.
+
+
+Package hyperref Warning: Composite letter `\textacute+\ecircumflex'
+(hyperref)                not defined in PD1 encoding,
+(hyperref)                removing `\textacute' on input line 2.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\ecircumflex' on input line 2.
+
+
+Overfull \hbox (2.83876pt too wide) in paragraph at lines 7--8
+[]\T5/cmr/m/n/12 ^^^Ëi vÓi vec-tor, $\OT1/cmr/bx/n/12 x \OT1/cmr/m/n/12 = [\OML
+/cmm/m/it/12 x[]; x[]; [] ; x[]\OT1/cmr/m/n/12 ]$ \T5/cmr/m/n/12 ^^_˜Òc hi∫u l†
+ mÎt vec-tor h†ng. Trong khi $\OT1/cmr/bx/n/12 x \OT1/cmr/m/n/12 = [\OML/cmm/m/
+it/12 x[]\OT1/cmr/m/n/12 ; \OML/cmm/m/it/12 x[]\OT1/cmr/m/n/12 ; [] ; \OML/cmm/
+m/it/12 x[]\OT1/cmr/m/n/12 ]$
+ []
+
+[57
+
+
+
+] [58] <norm12.pdf, id=1127, 200.88953pt x 143.06349pt>
+File: norm12.pdf Graphic file (type pdf)
+ <use norm12.pdf>
+Package pdftex.def Info: norm12.pdf used on input line 79.
+(pdftex.def)             Requested size: 234.8775pt x 167.27881pt.
+
+[59 <./norm12.pdf>] [60] [61] [62] [63] [64]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+) [65] [66] (./book_CVX.ind [67
+
+
+
+
+])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 243.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 243.
+ (./book_CVX.aux (./00_loinoidau.aux)
+(./16_convexity.aux) (./17_convexopt.aux) (./18_duality.aux)
+(./linearalgebra.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 243.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 243.
 Package rerunfilecheck Info: File `book_CVX.out' has not changed.
-(rerunfilecheck)             Checksum: A428707C1352544C75841D82D676373A;43.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 236.
+(rerunfilecheck)             Checksum: D26864766405A024D8A9AEBC1EB2CA55;325.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 243.
  ) 
 Here is how much of TeX's memory you used:
- 11536 strings out of 493014
- 164758 string characters out of 6133351
- 270492 words of memory out of 5000000
- 14803 multiletter control sequences out of 15000+600000
- 33990 words of font info for 77 fonts, out of 8000000 for 9000
+ 12991 strings out of 493014
+ 184023 string characters out of 6133351
+ 354285 words of memory out of 5000000
+ 15916 multiletter control sequences out of 15000+600000
+ 40046 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,14n,43p,1702b,479s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 40i,14n,53p,1704b,1315s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/vntex/t5.enc}</usr/local/
-texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/t
-exlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/tex
-live/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texl
-ive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texli
-ve/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texliv
-e/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/
-2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/20
-16/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2016
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2016/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2016/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2016/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2016/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2016/texmf-dist
-/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2016/texmf-
-dist/fonts/type1/vntex/urwvn/ucrb8v.pfb></usr/local/texlive/2016/texmf-dist/fon
-ts/type1/vntex/vnr/vnbx12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/v
-ntex/vnr/vnbx9.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/vntex/vnr/vn
-bxti10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/vntex/vnr/vnr12.pfb>
-</usr/local/texlive/2016/texmf-dist/fonts/type1/vntex/vnr/vnr17.pfb></usr/local
-/texlive/2016/texmf-dist/fonts/type1/vntex/vnr/vnr9.pfb></usr/local/texlive/201
-6/texmf-dist/fonts/type1/vntex/vnr/vnss12.pfb></usr/local/texlive/2016/texmf-di
-st/fonts/type1/vntex/vnr/vnssbx10.pfb></usr/local/texlive/2016/texmf-dist/fonts
-/type1/vntex/vnr/vnti12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/vnt
-ex/vnr/vnti9.pfb>
-Output written on book_CVX.pdf (17 pages, 403583 bytes).
+texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></usr/local/
+texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/t
+exlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/te
+xlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/local/texl
+ive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texliv
+e/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive
+/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/
+2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2
+016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/201
+6/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2016/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2016/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2016/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2016/texm
+f-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/local/texlive/2016/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2016/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2016/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2016/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2016/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2016/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2016/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2016/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2016/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2016/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2016/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2016/texmf-dist/fonts/typ
+e1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2016/texmf-dist/fonts
+/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2016/texmf-dist/f
+onts/type1/public/txfonts/t1xbtt.pfb></usr/local/texlive/2016/texmf-dist/fonts/
+type1/public/txfonts/t1xtt.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/
+vntex/urwvn/ucrb8v.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/vntex/ur
+wvn/ucrr8v.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/vntex/vnr/vnbx12
+.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/vntex/vnr/vnbx9.pfb></usr/
+local/texlive/2016/texmf-dist/fonts/type1/vntex/vnr/vnbxti10.pfb></usr/local/te
+xlive/2016/texmf-dist/fonts/type1/vntex/vnr/vnr12.pfb></usr/local/texlive/2016/
+texmf-dist/fonts/type1/vntex/vnr/vnr17.pfb></usr/local/texlive/2016/texmf-dist/
+fonts/type1/vntex/vnr/vnr6.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/
+vntex/vnr/vnr9.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/vntex/vnr/vn
+ss12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/vntex/vnr/vnss9.pfb></
+usr/local/texlive/2016/texmf-dist/fonts/type1/vntex/vnr/vnssbx10.pfb></usr/loca
+l/texlive/2016/texmf-dist/fonts/type1/vntex/vnr/vnssi12.pfb></usr/local/texlive
+/2016/texmf-dist/fonts/type1/vntex/vnr/vnti12.pfb></usr/local/texlive/2016/texm
+f-dist/fonts/type1/vntex/vnr/vnti9.pfb>
+Output written on book_CVX.pdf (70 pages, 1991182 bytes).
 PDF statistics:
- 305 PDF objects out of 1000 (max. 8388607)
- 256 compressed objects within 3 object streams
- 57 named destinations out of 1000 (max. 500000)
- 19 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1476 PDF objects out of 1728 (max. 8388607)
+ 1244 compressed objects within 13 object streams
+ 328 named destinations out of 1000 (max. 500000)
+ 194 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,0 +1,99 @@
+\begin{theindex}
+
+  \item $\alpha$-sublevel sets, \hyperpage{25}
+
+  \indexspace
+
+  \item affine functions, \hyperpage{22}
+
+  \indexspace
+
+  \item complementary slackness, \hyperpage{61}
+  \item constraints, \hyperpage{12}
+  \item contours, \hyperpage{23}
+  \item convex, \hyperpage{11}
+    \subitem combination, \hyperpage{18}
+    \subitem functions, \hyperpage{19}
+      \subsubitem first-order condition, \hyperpage{27}
+      \subsubitem Second-order condition, \hyperpage{29}
+    \subitem hull, \hyperpage{18}
+    \subitem optimization problems, \hyperpage{38}
+    \subitem sets, \hyperpage{12}
+    \subitem strictly convex functions, \hyperpage{20}
+  \item CVXOPT, \hyperpage{41}
+
+  \indexspace
+
+  \item duality, \hyperpage{52}
+
+  \indexspace
+
+  \item ellipsoids, \hyperpage{16}
+
+  \indexspace
+
+  \item feasible points, \hyperpage{12}
+  \item feasible sets, \hyperpage{12}
+
+  \indexspace
+
+  \item Geometric Programming, \hyperpage{47}
+    \subitem convex form, \hyperpage{49}
+
+  \indexspace
+
+  \item halfspace, \hyperpage{15}
+  \item hyperplane, \hyperpage{14}
+
+  \indexspace
+
+  \item infeasible sets, \hyperpage{12}
+
+  \indexspace
+
+  \item KKT conditions, \hyperpage{62}
+
+  \indexspace
+
+  \item Lagrange/Lagrangian
+    \subitem auxiliary function, \hyperpage{53}
+    \subitem dual function, \hyperpage{55}
+    \subitem dual functions, \hyperpage{55}
+    \subitem dual problems, \hyperpage{58}
+    \subitem multiplier method, \hyperpage{53}
+  \item level sets, \hyperpage{23}
+  \item Linear Programming, \hyperpage{41}
+    \subitem General form, \hyperpage{41}
+    \subitem Standard form, \hyperpage{42}
+
+  \indexspace
+
+  \item Mahalanobis norm, \hyperpage{16}
+  \item monomials, \hyperpage{47}
+
+  \indexspace
+
+  \item norm balls, \hyperpage{15}
+
+  \indexspace
+
+  \item posynomials, \hyperpage{47}
+
+  \indexspace
+
+  \item quadratic
+    \subitem forms, \hyperpage{22}
+  \item Quadratic Programming, \hyperpage{44}
+  \item quasiconvex, \hyperpage{27}
+
+  \indexspace
+
+  \item Separating hyperplane theorem, \hyperpage{19}
+  \item Slater's constraint qualification, \hyperpage{60}
+  \item strong duality, \hyperpage{60}
+
+  \indexspace
+
+  \item weak duality, \hyperpage{59}
+
+\end{theindex}

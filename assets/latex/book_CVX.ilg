@@ -1,4 +1,6 @@
 This is makeindex, version 2.15 [TeX Live 2016] (kpathsea + Thai support).
-Scanning input file book_CVX.idx...done (0 entries accepted, 0 rejected).
-Nothing written in book_CVX.ind.
+Scanning input file book_CVX.idx....done (45 entries accepted, 0 rejected).
+Sorting entries....done (262 comparisons).
+Generating output file book_CVX.ind....done (99 lines written, 0 warnings).
+Output written in book_CVX.ind.
 Transcript written in book_CVX.ilg.

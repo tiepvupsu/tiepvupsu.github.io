@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1490232573 "appendix.tex" "appendix.pdf" "appendix" 1490232574
+["pdflatex"] 1490232573 "appendix.tex" "appendix.pdf" "appendix" 1498365216
   "/usr/local/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -123,10 +123,10 @@
   "definitions.tex" 1489550085 11636 f8b9b221a3d46c3f1684a17887677248 ""
   "norm12.pdf" 1489550085 46181 5a5b19be65778555483c2d5dabeffe29 ""
   (generated)
+  "0_math.aux"
+  "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/appendix.pdf"
+  "appendix.log"
+  "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/appendix.log"
+  "appendix.aux"
   "appendix.pdf"
   "appendix.out"
-  "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/appendix.log"
-  "appendix.log"
-  "/home/tiepvu/myProjects/tiepvupsu.github.io/assets/latex/appendix.pdf"
-  "0_math.aux"
-  "appendix.aux"

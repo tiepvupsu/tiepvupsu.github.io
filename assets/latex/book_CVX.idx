@@ -1,0 +1,45 @@
+\indexentry{convex|hyperpage}{3}
+\indexentry{constraints|hyperpage}{4}
+\indexentry{feasible sets|hyperpage}{4}
+\indexentry{feasible points|hyperpage}{4}
+\indexentry{infeasible sets|hyperpage}{4}
+\indexentry{convex!sets|hyperpage}{4}
+\indexentry{hyperplane|hyperpage}{6}
+\indexentry{halfspace|hyperpage}{7}
+\indexentry{norm balls|hyperpage}{7}
+\indexentry{ellipsoids|hyperpage}{8}
+\indexentry{Mahalanobis norm|hyperpage}{8}
+\indexentry{convex!combination|hyperpage}{10}
+\indexentry{convex!hull|hyperpage}{10}
+\indexentry{Separating hyperplane theorem|hyperpage}{11}
+\indexentry{convex!functions|hyperpage}{11}
+\indexentry{convex!strictly convex functions|hyperpage}{12}
+\indexentry{affine functions|hyperpage}{14}
+\indexentry{quadratic!forms|hyperpage}{14}
+\indexentry{level sets|hyperpage}{15}
+\indexentry{contours|hyperpage}{15}
+\indexentry{$\alpha$-sublevel sets|hyperpage}{17}
+\indexentry{quasiconvex|hyperpage}{19}
+\indexentry{convex!functions!first-order condition|hyperpage}{19}
+\indexentry{convex!functions!Second-order condition|hyperpage}{21}
+\indexentry{convex!optimization problems|hyperpage}{30}
+\indexentry{CVXOPT|hyperpage}{33}
+\indexentry{Linear Programming|hyperpage}{33}
+\indexentry{Linear Programming!General form|hyperpage}{33}
+\indexentry{Linear Programming!Standard form|hyperpage}{34}
+\indexentry{Quadratic Programming|hyperpage}{36}
+\indexentry{Geometric Programming|hyperpage}{39}
+\indexentry{monomials|hyperpage}{39}
+\indexentry{posynomials|hyperpage}{39}
+\indexentry{Geometric Programming!convex form|hyperpage}{41}
+\indexentry{duality|hyperpage}{44}
+\indexentry{Lagrange/Lagrangian!multiplier method|hyperpage}{45}
+\indexentry{Lagrange/Lagrangian!auxiliary function|hyperpage}{45}
+\indexentry{Lagrange/Lagrangian!dual function|hyperpage}{47}
+\indexentry{Lagrange/Lagrangian!dual functions|hyperpage}{47}
+\indexentry{Lagrange/Lagrangian!dual problems|hyperpage}{50}
+\indexentry{weak duality|hyperpage}{51}
+\indexentry{strong duality|hyperpage}{52}
+\indexentry{Slater's constraint qualification|hyperpage}{52}
+\indexentry{complementary slackness|hyperpage}{53}
+\indexentry{KKT conditions|hyperpage}{54}
