@@ -10,11 +10,11 @@ assets/latex/*.tex
 assets/data
 assets/21_kernelsvm/ksvm.mov
 assets/*/latex/*.pdf
-assets/*/latex/*.fdb_latexmk
-assets/*/latex/*.log
-assets/*/latex/*.fls
-assets/*/latex/*.fls
-assets/*/latex/*.aux
-assets/*/latex/*.synctex.gz
+*/*.fdb_latexmk
+*/*.log
+*/*.fls
+*/*.fls
+*/*.aux
+*/*.synctex.gz
 assets/latex/*.tex
 !assets/latex/book*.pdf
