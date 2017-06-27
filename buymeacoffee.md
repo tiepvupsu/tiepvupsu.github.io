@@ -2,6 +2,8 @@
 layout: post
 title: Buy me a coffee 
 permalink: /buymeacoffee/
+sc_project: 11381212
+sc_security: 1b751a0b
 ---
 
 Chào bạn,
