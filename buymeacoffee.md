@@ -13,7 +13,7 @@ Tôi luôn mong muốn blog đến được với nhiều độc giả và luôn
 Nội dung trên blog này là hoàn toàn miễn phí. Tôi cũng không sử dụng dịch vụ quảng cáo nào vì không muốn làm phiền các bạn trong khi đọc. Tuy nhiên, nếu bạn thấy nội dung blog hữu ích và muốn ủng hộ blog, bạn có thể **Mời tôi một ly cà phê** qua một trong hai cách:
 
 ### 1. Ngân hàng Vietcombank, chi nhánh Vũng Tàu. 
-(Khi chuyển các bạn vui lòng kèm trong ghi chú/mục đích chuyển từ khóa: **machinelearning**)
+<!-- (Khi chuyển các bạn vui lòng kèm trong ghi chú/mục đích chuyển từ khóa: **machinelearning**) -->
 
 Chủ tài khoản: **VU HUU LONG**
 
