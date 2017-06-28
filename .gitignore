@@ -9,8 +9,7 @@ assets/*/latex/*.tex
 #assets/data/INRIAPerson
 assets/data
 assets/21_kernelsvm/ksvm.mov
-assets/*/latex/
-assets/*/latex/
+assets/*/latex
 */*.fdb_latexmk
 */*.log
 */*.fls
