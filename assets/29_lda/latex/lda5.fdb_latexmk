@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1498675916 "lda5.tex" "lda5.pdf" "lda5" 1498675917
-  "/dev/null" 1498675917 0 d41d8cd98f00b204e9800998ecf8427e ""
+["pdflatex"] 1498676124 "lda5.tex" "lda5.pdf" "lda5" 1498676126
+  "/dev/null" 1498676126 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1248133631 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
   "/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
@@ -147,9 +147,9 @@
   "/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1489522183 1888048 f2c5faed5981a516f406b2ccc20bff71 ""
   "/usr/local/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt" 1463979169 3873397 413fbfbbedb8e719ddc392043a7add02 ""
   "/usr/local/texlive/2016/texmf.cnf" 1463979140 577 2938757e76f31531e65cc647e3507693 ""
-  "lda5.aux" 1498675917 8 a94a2480d3289e625eea47cd1b285758 ""
-  "lda5.tex" 1498675915 931 77844de3cd5439f7174f781d332eb2c5 ""
+  "lda5.aux" 1498676126 8 a94a2480d3289e625eea47cd1b285758 ""
+  "lda5.tex" 1498676124 943 77a4067cab3f4218c98171db41a5bd9c ""
   (generated)
-  "lda5.log"
   "lda5.pdf"
   "lda5.aux"
+  "lda5.log"

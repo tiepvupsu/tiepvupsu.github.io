@@ -23,13 +23,13 @@
     \pgfonlayer{pre main}
     \fill[black!30] (0,0) rectangle (e,1);
     \endpgfonlayer
-    \addplot [name path=ln, thin]  {ln(x)};
+    \addplot [name path=ln, thin]  {exp(-(x - 2)^2/4)};
     \addplot [thin]  {1};
     \addplot [name path=null, draw=none]  {0};
-    \addplot[color=white] fill between[of=null and ln,
-      soft clip={domain=1:e}];
+    \addplot[color=blue] fill between[of=null and ln,
+      soft clip={domain=0:e}];
     \node at (0.7,0.5) {$\mathcal{D}$};
-    \node at (3.2,1.6) {$y = \ln(x)$};
+    \node at (3.2,1.6) {$y = \exp(x)$};
   \end{axis}
 \end{tikzpicture}
 \end{document}

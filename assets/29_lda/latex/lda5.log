@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  28 JUN 2017 14:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  28 JUN 2017 14:55
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -556,8 +556,6 @@ s been generated with the most recent feature set (\pgfplotsset{compat=1.13}).
 
 \pgf@layerbox@pre main=\box40
 \pgf@layerboxsaved@pre main=\box41
-NOTE: coordinate (0Y0.0e0],3Y0.0e0]) has been dropped because it is unbounded (
-in y). (see also unbounded coords=jump). 
 Package pgfplots info on input line 30: fill between: found 'clip=true'. Prepar
 ing pgfplotsextra instruction with clip path for layer 'pre main'...
 Package pgfplots info on input line 33: fill between: activating layered graphi
@@ -588,10 +586,10 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 {/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./lda5
 .aux) ) 
 Here is how much of TeX's memory you used:
- 22090 strings out of 493014
- 585386 string characters out of 6133351
- 880012 words of memory out of 5000000
- 25270 multiletter control sequences out of 15000+600000
+ 22108 strings out of 493014
+ 585770 string characters out of 6133351
+ 879690 words of memory out of 5000000
+ 25288 multiletter control sequences out of 15000+600000
  3640 words of font info for 14 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  69i,7n,107p,753b,1830s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -599,7 +597,7 @@ Here is how much of TeX's memory you used:
 0.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.
 pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.p
 fb>
-Output written on lda5.pdf (1 page, 32856 bytes).
+Output written on lda5.pdf (1 page, 32565 bytes).
 PDF statistics:
  23 PDF objects out of 1000 (max. 8388607)
  16 compressed objects within 1 object stream
