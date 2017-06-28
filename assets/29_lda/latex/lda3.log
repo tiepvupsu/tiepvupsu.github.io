@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  28 JUN 2017 13:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  27 JUN 2017 23:52
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
-**lda.tex
-(./lda.tex
+**lda3.tex
+(./lda3.tex
 LaTeX2e <2016/03/31>
 Babel <3.9r> and hyphenation patterns for 83 language(s) loaded.
 (/usr/local/texlive/2016/texmf-dist/tex/latex/standalone/standalone.cls
@@ -631,8 +631,8 @@ brarydecorations.pathmorphing.code.tex))
 \pgfplots@ymax@reg=\dimen178
 \pgfplots@zmin@reg=\dimen179
 \pgfplots@zmax@reg=\dimen180
-)) (./lda.aux)
-\openout1 = `lda.aux'.
+)) (./lda3.aux)
+\openout1 = `lda3.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
 LaTeX Font Info:    ... okay on input line 13.
@@ -699,28 +699,30 @@ your preamble.
  on input line 13.
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 83.
+(Font)              <7> on input line 25.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 83.
+(Font)              <5> on input line 25.
 [1
 
-{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./lda.
-aux) ) 
+{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./lda3
+.aux) ) 
 Here is how much of TeX's memory you used:
- 26238 strings out of 493014
- 654498 string characters out of 6133351
- 1109699 words of memory out of 5000000
- 29289 multiletter control sequences out of 15000+600000
+ 25258 strings out of 493014
+ 640624 string characters out of 6133351
+ 854971 words of memory out of 5000000
+ 28309 multiletter control sequences out of 15000+600000
  3945 words of font info for 15 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 69i,7n,89p,776b,1080s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10
-.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pf
-b>
-Output written on lda.pdf (1 page, 64998 bytes).
+ 69i,7n,77p,716b,804s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi1
+0.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.
+pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb
+></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb>
+</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on lda3.pdf (1 page, 47344 bytes).
 PDF statistics:
- 19 PDF objects out of 1000 (max. 8388607)
- 13 compressed objects within 1 object stream
+ 31 PDF objects out of 1000 (max. 8388607)
+ 22 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
