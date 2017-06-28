@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  28 JUN 2017 14:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  28 JUN 2017 15:21
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -413,22 +413,30 @@ G,.JBIG2,.JB2,.eps]
 (/usr/local/texlive/2016/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
-)) [1
+))
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 22.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 22.
+[1
 
-] (./lda4.aux) ) 
+{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./lda4
+.aux) ) 
 Here is how much of TeX's memory you used:
- 12211 strings out of 493014
- 250032 string characters out of 6133351
- 275985 words of memory out of 5000000
- 15550 multiletter control sequences out of 15000+600000
+ 12707 strings out of 493014
+ 260314 string characters out of 6133351
+ 306101 words of memory out of 5000000
+ 16045 multiletter control sequences out of 15000+600000
  3640 words of font info for 14 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,7n,56p,401b,551s stack positions out of 5000i,500n,10000p,200000b,80000s
-
-Output written on lda4.pdf (1 page, 3751 bytes).
+ 55i,7n,56p,401b,676s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi1
+0.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.p
+fb>
+Output written on lda4.pdf (1 page, 24108 bytes).
 PDF statistics:
- 11 PDF objects out of 1000 (max. 8388607)
- 7 compressed objects within 1 object stream
+ 19 PDF objects out of 1000 (max. 8388607)
+ 13 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

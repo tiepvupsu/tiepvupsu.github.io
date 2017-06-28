@@ -53,11 +53,11 @@ _Nội dung trên blog này là hoàn toàn miễn phí. Tôi cũng không sử 
 2. [Deep Learning by Google trên Udacity](https://www.udacity.com/course/deep-learning--ud730) (_Khóa học nâng cao hơn về Deep Learning với Tensorflow_)
 3. [Machine Learning mastery](http://machinelearningmastery.com/) (_Các thuật toán Machine Learning cơ bản_)
 
-#### Tiếng Việt 
+<!-- #### Tiếng Việt 
 **Lưu ý**: _Các khóa học này tôi chưa từng tham gia, chỉ đưa ra để các bạn tham khảo._
 
 1. [Machine Learning 1/2017](http://tuanvannguyen.blogspot.com/2016/12/cap-nhat-khoa-hoc-ve-machine-learning.html)
-2. [Nhập môn Machine Learning - Cao Thanh Hà _POSTECH_](https://techmaster.vn/khoa-hoc/25511/machine-learning-co-ban) (_Tech Master_)
+2. [Nhập môn Machine Learning - Cao Thanh Hà _POSTECH_](https://techmaster.vn/khoa-hoc/25511/machine-learning-co-ban) (_Tech Master_) -->
 
 ### Các trang Machine Learning tiếng Việt khác
 3. [Machine Learning trong Xử Lý Ngôn Ngữ Tự Nhiên - Nhóm Đông Du _Nhật Bản_](http://viet.jnlp.org/kien-thuc-co-ban-ve-xu-ly-ngon-ngu-tu-nhien/machine-learning-trong-nlp)
