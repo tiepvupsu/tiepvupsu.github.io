@@ -59,7 +59,7 @@ _Nội dung trên blog này là hoàn toàn miễn phí. Tôi cũng không sử 
 1. [Machine Learning 1/2017](http://tuanvannguyen.blogspot.com/2016/12/cap-nhat-khoa-hoc-ve-machine-learning.html)
 2. [Nhập môn Machine Learning - Cao Thanh Hà _POSTECH_](https://techmaster.vn/khoa-hoc/25511/machine-learning-co-ban) (_Tech Master_) -->
 
-### Các trang Machine Learning tiếng Việt khác
+### Các trang Machine Learning tiếng Việt
 3. [Machine Learning trong Xử Lý Ngôn Ngữ Tự Nhiên - Nhóm Đông Du _Nhật Bản_](http://viet.jnlp.org/kien-thuc-co-ban-ve-xu-ly-ngon-ngu-tu-nhien/machine-learning-trong-nlp)
 4. [Machine Learning cho người mới bắt đầu - Ông Xuân Hồng _JAIST_](https://ongxuanhong.wordpress.com/). 
 5. [Machine Learning book for Vietnamese - Nguyễn Xuân Khánh _University of Maryland_](https://ml-book-vn.khanhxnguyen.com/)
