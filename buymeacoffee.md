@@ -14,14 +14,14 @@ Tôi luôn mong muốn blog đến được với nhiều độc giả và luôn
 
 Nội dung trên blog này là hoàn toàn miễn phí. Tôi cũng không sử dụng dịch vụ quảng cáo nào vì không muốn làm phiền các bạn trong khi đọc. Tuy nhiên, nếu bạn thấy nội dung hữu ích và muốn đóng góp cho blog, bạn có thể **Mời tôi một ly cà phê** bằng cách ủng hộ blog qua một trong hai cách:
 
-### 1. Ngân hàng Vietcombank, chi nhánh Vũng Tàu. 
+#### 1. Ngân hàng Vietcombank, chi nhánh Vũng Tàu. 
 <!-- (Khi chuyển các bạn vui lòng kèm trong ghi chú/mục đích chuyển từ khóa: **machinelearning**) -->
 
 Chủ tài khoản: **VU HUU LONG**
 
 Số tài khoản: **0081001280321**
 
-### 2. Paypal 
+#### 2. Paypal 
 Bạn cũng có thể Paypal qua email vuhuutiep@gmail.com hoặc click trực tiếp:
 <div markdown = "0"> 
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
