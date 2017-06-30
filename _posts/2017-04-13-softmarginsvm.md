@@ -6,7 +6,7 @@ title2:  "20. Soft Margin SVM"
 date:   2017-04-13 15:22:00
 permalink: 2017/04/13/softmarginsmv/
 mathjax: true
-tags: Linear-models
+tags: Linear-models Classification
 category: Support-Vector-Machine
 sc_project: 11314318
 sc_security: a223ce2c

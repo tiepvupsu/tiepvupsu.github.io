@@ -6,7 +6,7 @@ title2:  "21. Kernel SVM"
 date:   2017-04-22 15:22:00
 permalink: 2017/04/22/kernelsmv/
 mathjax: true
-tags: Linear-models
+tags: Linear-models Classification
 category: Support-Vector-Machine
 sc_project: 11321646
 sc_security: f149e9fe

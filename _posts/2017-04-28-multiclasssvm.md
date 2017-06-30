@@ -6,7 +6,7 @@ title2:  "22. Multi-class SVM"
 date:   2017-04-28 15:22:00
 permalink: 2017/04/28/multiclasssmv/
 mathjax: true
-tags: Linear-models
+tags: Linear-models Classification
 category: Support-Vector-Machine
 sc_project: 11328682
 sc_security: 64e376fc
