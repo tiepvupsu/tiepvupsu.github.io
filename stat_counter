@@ -537,3 +537,21 @@ class="statcounter"
 src="//c.statcounter.com/11381212/0/1b751a0b/0/" alt="web
 analytics"></a></div></noscript>
 <!-- End of StatCounter Code for Default Guide -->
+
+<!-- LDA -->
+<script type="text/javascript">
+var sc_project=11383254; 
+var sc_invisible=0; 
+var sc_security="bd55be73"; 
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web counter"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="//c.statcounter.com/11383254/0/bd55be73/0/" alt="web
+counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
