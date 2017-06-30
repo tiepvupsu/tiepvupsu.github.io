@@ -2,7 +2,7 @@
 layout: default
 metadata: true
 style:
- name: post
+ name: post2
  embedded: false
 ---
 
@@ -45,10 +45,6 @@ style:
    {{ content }}
 </div>
 
-<hr> 
-<em>Bạn đọc có thể ủng hộ blog bằng cách click vào nút <a href = "/buymeacoffee/">'Buy me a cofee'</a> ở góc trên bên trái của blog.
-
-Cảm ơn bạn.</em>
 
 <hr>
 
@@ -69,9 +65,28 @@ Cảm ơn bạn.</em>
    {% include disqus_comments.html %}
 {% endif %}
 
-{% include stat_counter.html %}
+
+<!-- SFor buy me a coffee only -->
+<script type="text/javascript">
+var sc_project=11383691; 
+var sc_invisible=0; 
+var sc_security="9c460504"; 
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web analytics"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="//c.statcounter.com/11383691/0/9c460504/0/" alt="web
+analytics"></a></div></noscript>
+
+
+
 <!-- <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
 
-<script type="text/javascript" async
+<!-- <script type="text/javascript" async
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
+</script> -->

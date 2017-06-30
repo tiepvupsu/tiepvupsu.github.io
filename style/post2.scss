@@ -1,0 +1,91 @@
+---
+---
+
+@import "site.css";
+
+@import "variables";
+
+.banner {
+  margin: 20px
+}
+
+.page-header {
+  margin: 20px 0
+}
+
+.post .published {
+  font-style: italic;
+  color: $gray;
+  display: block;
+  margin: 12px 0
+}
+
+ul.taglist {
+  list-style-type: none;
+  padding: 0
+}
+
+ul.taglist li.tag:before {
+  content: '#'
+}
+
+ul.taglist li.tag {
+  display: inline;
+  font-size: 75%;
+  color: #505050;
+  background-color: #FFFF99;
+  padding: 0.2em 0.6em;
+  border-radius: 0.8em
+}
+
+ul.taglist li.tag a {
+  color: inherit
+}
+
+/* Enable horizontal scrolling for code blocks */
+pre code {
+  overflow: auto;
+  word-wrap: normal;
+  white-space: pre
+}
+
+/* In Markdown use with: {: class="wrap"} */
+pre.wrap code {
+  white-space: pre-wrap;
+  word-break: normal
+}
+
+dd {
+  margin-left: 20px
+}
+
+article {
+  img, canvas {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%  /* scale images if they are too large (in particular when displayed on small devices) */
+  }
+  figure {
+    margin-top: 10px;
+    margin-bottom: 10px
+  }
+  figcaption {
+    text-align: center;
+    font-size: 0.9*$font-size-base;
+    font-style: italic
+  }
+}
+
+code {
+  padding: 0;
+  background-color: inherit
+}
+
+a code {
+  color: inherit
+}
+
+p code {
+  word-spacing: -0.2em
+}

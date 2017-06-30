@@ -1,11 +1,14 @@
 ---
-layout: post
+layout: post2
 title: Buy me a coffee 
 permalink: /buymeacoffee/
-sc_project: 11381212
-sc_security: 1b751a0b
+sc_project: 
+sc_security: 
 ---
 
+<!-- sc_project: 11381212
+sc_security: 1b751a0b
+ -->
 Chào bạn,
 
 Cảm ơn bạn đã ghé thăm blog.
