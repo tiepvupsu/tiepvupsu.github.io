@@ -13,6 +13,8 @@ mndata.load_training()
 X = mndata.test_images
 # X_train = mndata.train_images
 y = np.asarray(mndata.test_labels)
+
+y_pick 
 # y_train = np.asarray(mndata.train_labels)
 
 X_train, X_test, y_train, y_test = train_test_split(
