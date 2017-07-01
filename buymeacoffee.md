@@ -15,7 +15,7 @@ Cảm ơn bạn đã ghé thăm blog.
 
 Tôi luôn mong muốn blog đến được với nhiều độc giả và luôn đầu tư thời gian vào cả nội dung lẫn hình thức cho mỗi bài viết. Đặc biệt, các hình minh hoạ đều được vẽ lại cho phù hợp với các ký hiệu trong mỗi bài với mong muốn giúp bạn đọc dễ tiếp cận hơn.
 
-Nội dung trên blog này là hoàn toàn miễn phí. Tôi cũng không sử dụng dịch vụ quảng cáo nào vì không muốn gây mất tập trung các bạn trong khi đọc. Tuy nhiên, nếu bạn thấy nội dung hữu ích và muốn đóng góp cho blog, bạn có thể **Mời tôi một ly cà phê** bằng cách ủng hộ blog qua một trong hai cách:
+Nội dung trên blog này là hoàn toàn miễn phí. Tôi cũng không sử dụng dịch vụ quảng cáo nào vì không muốn gây mất tập trung các bạn trong khi đọc. Tuy nhiên, nếu bạn thấy nội dung hữu ích và muốn đóng góp cho blog, bạn có thể ủng hộ blog **Một ly cà phê** qua một trong hai cách:
 
 #### 1. Ngân hàng Vietcombank, chi nhánh Vũng Tàu. 
 <!-- (Khi chuyển các bạn vui lòng kèm trong ghi chú/mục đích chuyển từ khóa: **machinelearning**) -->
@@ -38,6 +38,8 @@ Bạn cũng có thể Paypal qua email vuhuutiep@gmail.com hoặc click trực t
 <p style="text-align:center;"><input type="image" src="/images/Buymeacoffee.png" border="0" style="padding-bottom: -9mm;" width = "25%" name="submit" alt="PayPal - The safer, easier way to pay online!"></p>
 </form> 
 </div>
+
+####  Mọi sự ủng hộ đều rất đáng quý
 
 Tôi xin chân thành cảm ơn. 
 
