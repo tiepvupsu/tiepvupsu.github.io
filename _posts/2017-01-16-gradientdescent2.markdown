@@ -156,7 +156,7 @@ def GD_momentum(theta_init, grad, eta, gamma):
         theta_new = theta[-1] - v_new
         if has_converged(theta_new, grad):
             break 
-        w.append(theta_new)
+        theta.append(theta_new)
         v_old = v_new
     return theta 
     # this variable includes all points in the path
