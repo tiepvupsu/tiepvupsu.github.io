@@ -188,8 +188,8 @@ Có một cách phân nhóm thứ hai dựa trên chức năng của các thuậ
 ### Classification Algorithms 
 
 1. Linear Classifier 
-2. Support Vector Machine (SVM)
-3. Kernel SVM 
+2. [Support Vector Machine (SVM)](http://machinelearningcoban.com/2017/04/09/smv/)
+3. [Kernel SVM](http://machinelearningcoban.com/2017/04/22/kernelsmv/)
 4. Sparse Representation-based classification (SRC)
 
 <!-- ========================== New Heading ==================== -->
@@ -241,8 +241,8 @@ Có một cách phân nhóm thứ hai dựa trên chức năng của các thuậ
 
 ### Dimensionality Reduction Algorithms 
 
-1. Principal Component Analysis (PCA)
-2. Linear Discriminant Analysis (LDA)
+1. [Principal Component Analysis (PCA)](http://machinelearningcoban.com/2017/06/15/pca/)
+2. [Linear Discriminant Analysis (LDA)](http://machinelearningcoban.com/2017/06/30/lda/)
 
 <!-- ========================== New Heading ==================== -->
 <a name="ensemble-algorithms"></a>
