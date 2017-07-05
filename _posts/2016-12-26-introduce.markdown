@@ -39,6 +39,8 @@ _Với những từ chuyên ngành, tôi sẽ dùng song song cả tiếng Anh v
 
 Khi chuẩn bị các bài viết, tôi sẽ giả định rằng bạn đọc có một chút kiến thức về Đại Số Tuyến Tính (Linear Algebra), Xác Suất Thống Kê (Probability and Statistics) và có kinh nghiệm về lập trình Python. Nếu bạn chưa có nhiều kinh nghiệm về các lĩnh vực này, đừng quá lo lắng vì mỗi bài sẽ chỉ sử dụng một vài kỹ thuật cơ bản. Hãy để lại câu hỏi của bạn ở phần Comment bên dưới mỗi bài, tôi sẽ thảo luận thêm với các bạn.
 
+[Bạn đọc có thể xem các reviews và review cho blog tại đây.](https://www.facebook.com/pg/machinelearningbasicvn/reviews/)
+
 <!-- _Nội dung trên blog này là hoàn toàn miễn phí. Tôi cũng không sử dụng dịch vụ quảng cáo nào vì không muốn làm phiền các bạn trong khi đọc. Tuy nhiên, nếu bạn thấy nội dung blog hữu ích và muốn ủng hộ blog, bạn có thể **Mời tôi một ly cà phê** bằng cách click vào nút 'Buy me a coffee' ở phía trên cột bên trái của blog, loại cà phê mà bạn vẫn thích uống :). Tôi xin chân thành cảm ơn._ -->
 
 
