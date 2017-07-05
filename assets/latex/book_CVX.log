@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  4 JUL 2017 23:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  4 JUL 2017 23:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1037,9 +1037,6 @@ LaTeX Warning: Label `sub@fig:subim1' multiply defined.
 
 LaTeX Warning: Label `my-label' multiply defined.
 
-
-LaTeX Warning: Label `my-label' multiply defined.
-
 ))
 \openout1 = `book_CVX.aux'.
 
@@ -1707,11 +1704,8 @@ File: norm12.pdf Graphic file (type pdf)
 Package pdftex.def Info: norm12.pdf used on input line 79.
 (pdftex.def)             Requested size: 234.8775pt x 167.27881pt.
 
-[59 <./norm12.pdf>] [60] [61] [62] [63] [64]
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-) [65] [66] (./book_CVX.ind [67
+[59 <./norm12.pdf>] [60] [61] [62] [63] [64]) [65] [66] (./book_CVX.ind
+[67
 
 
 
@@ -1719,9 +1713,8 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 ])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 244.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 244.
- (./book_CVX.aux (./00_loinoidau.aux)
-(./16_convexity.aux) (./17_convexopt.aux) (./18_duality.aux)
-(./linearalgebra.aux))
+ (./book_CVX.aux (./00_loinoidau.aux) (./16_convexity.aux)
+(./17_convexopt.aux) (./18_duality.aux) (./linearalgebra.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 244.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 244.
 Package rerunfilecheck Info: File `book_CVX.out' has not changed.
@@ -1733,10 +1726,10 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 244.
  ) 
 Here is how much of TeX's memory you used:
- 12991 strings out of 493014
- 184034 string characters out of 6133351
- 354296 words of memory out of 5000000
- 15916 multiletter control sequences out of 15000+600000
+ 12992 strings out of 493014
+ 184051 string characters out of 6133351
+ 354354 words of memory out of 5000000
+ 15917 multiletter control sequences out of 15000+600000
  39223 words of font info for 82 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  40i,14n,53p,1704b,1315s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1782,10 +1775,10 @@ ss12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/vntex/vnr/vnss9.pfb></
 usr/local/texlive/2016/texmf-dist/fonts/type1/vntex/vnr/vnssbx10.pfb></usr/loca
 l/texlive/2016/texmf-dist/fonts/type1/vntex/vnr/vnssi12.pfb></usr/local/texlive
 /2016/texmf-dist/fonts/type1/vntex/vnr/vnti12.pfb>
-Output written on book_CVX.pdf (70 pages, 1981960 bytes).
+Output written on book_CVX.pdf (70 pages, 1982001 bytes).
 PDF statistics:
- 1475 PDF objects out of 1728 (max. 8388607)
- 1244 compressed objects within 13 object streams
+ 1476 PDF objects out of 1728 (max. 8388607)
+ 1245 compressed objects within 13 object streams
  329 named destinations out of 1000 (max. 500000)
  194 words of extra memory for PDF output out of 10000 (max. 10000000)
 
