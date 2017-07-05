@@ -75,7 +75,7 @@
 \contentsline {section}{\numberline {18.5}Optimality conditions }{53}{section.18.5}
 \contentsline {subsection}{\numberline {18.5.1}Complementary slackness }{53}{subsection.18.5.1}
 \contentsline {subsection}{\numberline {18.5.2}KKT optimality conditions }{54}{subsection.18.5.2}
-\contentsline {subsubsection}{KKT condition cho b\IeC {\`a}i to\IeC {\'a}n \textit {kh\IeC {\^o}ng} l\IeC {\`\ocircumflex }i }{54}{section*.40}
+\contentsline {subsubsection}{KKT conditions cho b\IeC {\`a}i to\IeC {\'a}n \textit {kh\IeC {\^o}ng} l\IeC {\`\ocircumflex }i }{54}{section*.40}
 \contentsline {subsubsection}{KKT conditions cho b\IeC {\`a}i to\IeC {\'a}n l\IeC {\`\ocircumflex }i }{54}{section*.41}
 \contentsline {section}{\numberline {18.6}T\IeC {\'o}m t\IeC {\'\abreve }t }{55}{section.18.6}
 \contentsline {section}{\numberline {18.7}K\IeC {\'\ecircumflex }t lu\IeC {\d \acircumflex }n }{56}{section.18.7}

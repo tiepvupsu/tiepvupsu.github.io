@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  4 JUL 2017 23:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  4 JUL 2017 23:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1733,10 +1733,10 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 244.
  ) 
 Here is how much of TeX's memory you used:
- 12989 strings out of 493014
- 184005 string characters out of 6133351
- 354239 words of memory out of 5000000
- 15915 multiletter control sequences out of 15000+600000
+ 12991 strings out of 493014
+ 184034 string characters out of 6133351
+ 354296 words of memory out of 5000000
+ 15916 multiletter control sequences out of 15000+600000
  39223 words of font info for 82 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  40i,14n,53p,1704b,1315s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1782,10 +1782,10 @@ ss12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/vntex/vnr/vnss9.pfb></
 usr/local/texlive/2016/texmf-dist/fonts/type1/vntex/vnr/vnssbx10.pfb></usr/loca
 l/texlive/2016/texmf-dist/fonts/type1/vntex/vnr/vnssi12.pfb></usr/local/texlive
 /2016/texmf-dist/fonts/type1/vntex/vnr/vnti12.pfb>
-Output written on book_CVX.pdf (70 pages, 1981955 bytes).
+Output written on book_CVX.pdf (70 pages, 1981960 bytes).
 PDF statistics:
- 1472 PDF objects out of 1728 (max. 8388607)
- 1241 compressed objects within 13 object streams
- 328 named destinations out of 1000 (max. 500000)
+ 1475 PDF objects out of 1728 (max. 8388607)
+ 1244 compressed objects within 13 object streams
+ 329 named destinations out of 1000 (max. 500000)
  194 words of extra memory for PDF output out of 10000 (max. 10000000)
 
