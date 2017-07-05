@@ -43,7 +43,7 @@ Bạn cũng có thể Paypal qua email vuhuutiep@gmail.com hoặc click trực t
 #### 3. Một vài lời nhắn gửi tới blog 
 Bạn cũng có thể để lại một lời nhắn ở phần comment bên dưới. Tôi sẽ rất vui nếu nhận được sự động viên từ các bạn. 
 
-[Bạn đọc cũng có thể xem các reviews và review cho blog tại đây.](https://www.facebook.com/pg/machinelearningbasicvn/reviews/)
+#### [Bạn đọc cũng có thể xem các reviews và review cho blog tại đây.](https://www.facebook.com/pg/machinelearningbasicvn/reviews/)
 
 ####  Mọi sự ủng hộ đều rất đáng quý
 
