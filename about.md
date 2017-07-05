@@ -16,8 +16,6 @@ Khi chuẩn bị các bài viết, tôi sẽ giả định rằng bạn đọc c
 Một lần nữa, tôi xin chân thành cảm ơn.
 
 
-_Nội dung trên blog này là hoàn toàn miễn phí. Tôi cũng không sử dụng dịch vụ quảng cáo nào vì không muốn làm phiền các bạn trong khi đọc. Tuy nhiên, nếu bạn thấy nội dung blog hữu ích và muốn ủng hộ blog, bạn có thể **Mời tôi một ly cà phê** bằng cách click vào nút 'Buy me a coffee' ở phía trên cột bên trái của blog, loại cà phê mà bạn vẫn thích uống :). Tôi xin chân thành cảm ơn._
-
 <b>Các bạn có thể theo dõi Facebook Page tại:</b> <br>
 <div class="share-page">
     <a href = "https://www.facebook.com/machinelearningbasicvn/" target="_blank" title="Follow us"><img src = "https://simplesharebuttons.com/images/somacro/facebook.png" width="50"></a>
@@ -25,3 +23,19 @@ _Nội dung trên blog này là hoàn toàn miễn phí. Tôi cũng không sử 
 
 <b>Và đặt các câu hỏi, cùng tham gia thảo luận tại:</b> <br>
 [**Forum Machine Learning cơ bản**](https://www.facebook.com/groups/257768141347267/)
+
+**Một vài reviews trên facebook Page:**
+[Bạn đọc cũng có thể xem các reviews khác và review cho blog tại đây.](https://www.facebook.com/pg/machinelearningbasicvn/reviews/)
+
+<div>
+<table width = "100%" style = "border: 0px solid white">
+
+    <tr >
+        <td width="40%" style = "border: 0px solid white" align = "center">
+        <img style="display:block;" width = "100%" src = "/images/review.png">
+         </td>
+        
+    </tr>
+</table>
+</div>
+
