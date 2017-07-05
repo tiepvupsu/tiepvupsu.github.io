@@ -2,6 +2,8 @@
 layout: post
 title: About
 permalink: /about/
+sc_project: 11387860
+sc_security: bf94eebb
 ---
 
 Cảm ơn bạn đã ghé thăm blog của tôi. Tôi là Vũ Hữu Tiệp, hiện đang là nghiên cứu sinh ngành Học Máy và Thị Giác Máy Tính (Machine Learning and Computer Vision) tại Đại học bang Pennsylvania (Pennsylvania State University), Hoa Kỳ. Các thông tin khác về tôi có thể được tim thấy ở [website học thuật của tôi](http://www.personal.psu.edu/thv102/).
@@ -25,6 +27,7 @@ Một lần nữa, tôi xin chân thành cảm ơn.
 [**Forum Machine Learning cơ bản**](https://www.facebook.com/groups/257768141347267/)
 
 **Một vài reviews trên facebook Page:**
+
 [Bạn đọc cũng có thể xem các reviews khác và review cho blog tại đây.](https://www.facebook.com/pg/machinelearningbasicvn/reviews/)
 
 <div>
@@ -32,7 +35,7 @@ Một lần nữa, tôi xin chân thành cảm ơn.
 
     <tr >
         <td width="40%" style = "border: 0px solid white" align = "center">
-        <img style="display:block;" width = "100%" src = "/images/review.png">
+        <a href = "https://www.facebook.com/pg/machinelearningbasicvn/reviews/"><img  style="display:block;" width = "100%" src = "/images/review.png"></a>
          </td>
         
     </tr>
