@@ -238,15 +238,15 @@ Việc chứng minh việc này theo Định nghĩa 2 cũng không khó. Nếu \
 <hr>
 <div class="imgcap">
  <img src ="/assets/16_convexity/intersection.png" align = "center" width = "800">
- <div class = "thecap">Hình 4. Trái: Giao của các tập lồi là một tập lồi. Phải: giao của các hyperplanes và haflspaces là một tập lồi và được gọi là polyhedron (số nhiều là polyhedra).</div>
+ <div class = "thecap">Hình 4. Trái: Giao của các tập lồi là một tập lồi. Phải: giao của các hyperplanes và halfspaces là một tập lồi và được gọi là polyhedron (số nhiều là polyhedra).</div>
 </div>
 <hr>
 
-Từ đó suy ra giao của các _haflspaces_ và các _hyperplanes_ cũng là một tập lồi. Trong không gian hai chiều, tập lồi này chính là _đa giác lồi_, trong không gian ba chiều, nó có tên là _đa diện lồi_.
+Từ đó suy ra giao của các _halfspaces_ và các _hyperplanes_ cũng là một tập lồi. Trong không gian hai chiều, tập lồi này chính là _đa giác lồi_, trong không gian ba chiều, nó có tên là _đa diện lồi_.
 
-Trong không gian nhiều chiều, giao của các *haflspaces* và *hyperplanes* được gọi là **polyhedra**.
+Trong không gian nhiều chiều, giao của các *halfspaces* và *hyperplanes* được gọi là **polyhedra**.
 
-Giả sử có \\(m\\) *haflspaces* và \\(p\\) *hyperplanes*. Mỗi một *haflspace*, theo như đã trình bày phía trên, có thể viết dưới dạng \\(\mathbf{a}_i^T\mathbf{x} \leq b_i, ~\forall i = 1, 2, \dots, m\\). Mỗi một *hyperplane* có thể viết dưới dạng: \\(\mathbf{c}_i^T\mathbf{x} = d_i, ~\forall i = 1, 2, \dots, p\\).
+Giả sử có \\(m\\) *halfspaces* và \\(p\\) *hyperplanes*. Mỗi một *haflspace*, theo như đã trình bày phía trên, có thể viết dưới dạng \\(\mathbf{a}_i^T\mathbf{x} \leq b_i, ~\forall i = 1, 2, \dots, m\\). Mỗi một *hyperplane* có thể viết dưới dạng: \\(\mathbf{c}_i^T\mathbf{x} = d_i, ~\forall i = 1, 2, \dots, p\\).
 
  Vậy nếu đặt \\(\mathbf{A} = [\mathbf{a}_1, \mathbf{a}_2, \dots, \mathbf{a}_m]\\), \\(\mathbf{b} = [b_1, b_2, \dots, b_m]^T, \mathbf{C} = [\mathbf{c}_1, \mathbf{c}_2, \dots, \mathbf{c}_p]\\) và \\(\mathbf{d} = [d_1, d_2, \dots, d_p]^T\\), ta có thể viết polyhedra dưới dạng tập hợp các điểm \\(\mathbf{x}\\) thỏa mãn:
  \\[
