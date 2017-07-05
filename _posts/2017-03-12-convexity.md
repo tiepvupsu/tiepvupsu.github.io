@@ -16,7 +16,9 @@ summary: Giới thiệu về tập hợp lồi và hàm số lồi trong Toán T
 
 Bài này có khá nhiều khái niệm mới, mong bạn đọc thông cảm khi tôi sử dụng các khái niệm này ở cả tiếng Anh và tiếng Việt.
 
-_Bài chú yếu nói về toán, nếu bạn đọc không hiểu ngay cũng không sao, ngày đầu tôi làm quen với những khái niệm này cũng không thể hấp thụ được ngay. Làm nhiều, đọc nhiều rồi sẽ ngấm dần._
+_Bài chủ yếu nói về toán, nếu bạn đọc không hiểu ngay cũng không sao, ngày đầu tôi làm quen với những khái niệm này cũng không thể hấp thụ được ngay. Làm nhiều, đọc nhiều rồi sẽ ngấm dần._
+
+Bạn đọc có thể xem bản pdf [tại đây](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/latex/book_CVX.pdf).
 
 <!-- MarkdownTOC -->
 
