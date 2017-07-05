@@ -98,7 +98,7 @@ Với KNN, trong bài toán Classification, label của một điểm dữ liệ
 
 Trong bài toán Regresssion, đầu ra của một điểm dữ liệu sẽ bằng chính đầu ra của điểm dữ liệu đã biết gần nhất (trong trường hợp K=1), hoặc là trung bình có trọng số của đầu ra của những điểm gần nhất, hoặc bằng một mối quan hệ dựa trên khoảng cách tới các điểm gần nhất đó. 
 
-Một cách ngắn gọn, KNN là thuật toán đi tìm đầu ra của một điểm dữ liệu mới bằng cách _chỉ_ dựa trên thông tin của K điểm dữ liệu torng training set gần nó nhất (K-lân cận), _không quan tâm đến việc có một vài điểm dữ liệu trong những điểm gần nhất này là nhiễu_. Hình dưới đây là một ví dụ về KNN trong classification với K = 1.
+Một cách ngắn gọn, KNN là thuật toán đi tìm đầu ra của một điểm dữ liệu mới bằng cách _chỉ_ dựa trên thông tin của K điểm dữ liệu trong training set gần nó nhất (K-lân cận), _không quan tâm đến việc có một vài điểm dữ liệu trong những điểm gần nhất này là nhiễu_. Hình dưới đây là một ví dụ về KNN trong classification với K = 1.
 
 <div class="imgcap">
 <img src ="https://upload.wikimedia.org/wikipedia/commons/5/52/Map1NN.png" align = "center">
