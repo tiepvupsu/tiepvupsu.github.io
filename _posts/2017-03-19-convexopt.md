@@ -57,7 +57,7 @@ summary: Giới thiệu về các bài toán Convex Optimization
 
 Bài này cũng có rất nhiều khái niệm mới và nhiều lý thuyết nên có thể không hấp dẫn như các bài khác. Tuy nhiên, tôi không thể bỏ qua vì không muốn các bạn hoàn toàn mất phương hướng khi đọc các bài sau.
 
-Bạn đọc có thể đọc bản pdf [tại đây](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/latex/book_CVX.pdf).
+Bạn đọc có thể xem bản pdf [tại đây](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/latex/book_CVX.pdf).
 
 <a name="-gioi-thieu"></a>
 
