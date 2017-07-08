@@ -47,7 +47,7 @@ ax.axis('off')
 frame1 = plt.gca()
 
 
-filename = 'hyper_2d.pdf'
+filename = 'hyper_2d_2.pdf'
 with PdfPages(filename) as pdf:
 # with PdfPages('multipage_pdf.pdf') as pdf:
     plt.figure(figsize=(3, 3))

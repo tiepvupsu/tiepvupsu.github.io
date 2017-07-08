@@ -110,5 +110,5 @@ ax.set_title('$f(x, y) = \\frac{1}{10}(x^2 + y^2 - 10\sin(\sqrt{x^2 + y^2})$ (no
 ax.set_zlim(-5, 6)
 
 
-plt.savefig('aa.png')
+# plt.savefig('aa.png')
 plt.show()

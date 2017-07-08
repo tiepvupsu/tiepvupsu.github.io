@@ -1,0 +1,10 @@
+# Fdb version 3
+["pdflatex"] 1499533320 "binorm.py" "binorm.pdf" "binorm" 1499533320
+  "/usr/local/texlive/2016/texmf-dist/web2c/texmf.cnf" 1463093894 31953 b9489e6e586f798610c60aec1f5ec548 ""
+  "/usr/local/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt" 1463979169 3873397 413fbfbbedb8e719ddc392043a7add02 ""
+  "/usr/local/texlive/2016/texmf.cnf" 1463979140 577 2938757e76f31531e65cc647e3507693 ""
+  "binorm.aux" 1499533305 8 a94a2480d3289e625eea47cd1b285758 ""
+  "binorm.py" 1499533283 854 a50b79ede9d791e7b4ceeb635252faaf ""
+  (generated)
+  "binorm.log"
+  "binorm.pdf"
