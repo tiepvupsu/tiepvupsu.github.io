@@ -18,20 +18,20 @@ _Tên của một số nhân vật sẽ được thay đổi, hoặc hoán vị,
 
 _Ngày học mẫu giáo, tôi và đám bạn tự đi bộ đi học. Vì trường ngay trong làng, và bố mẹ đều bận, không có xe đưa đón._
 
-Trước khi học chữ quốc ngữ, tôi có thời gian 1 năm học chữ Nho ở nhà một ông Đồ trong làng. Hàng tuần tôi đạp chiếc xe nhỏ xíu và mang theo 1 cuốn vở tới nhà ông. Mỗi tuần khoảng 10 chữ, không học viết mà chỉ học thuộc vẹt cặp song ngữ Nho-Việt. Tôi nhớ được khoảng mấy chữ đầu và hay đem khoe với các cô và bạn trong lớp mẫu giáo. Ai cũng trầm trồ vì chẳng biết rằng tôi đôi khi cũng bịa ra mấy nét vẽ.
+Trước khi học chữ quốc ngữ, tôi có thời gian 1 năm học chữ Nho ở nhà một ông đồ trong làng. Hàng tuần tôi đạp chiếc xe nhỏ xíu và mang theo 1 cuốn vở tới nhà ông. Mỗi tuần khoảng 10 chữ, không học viết mà chỉ học thuộc vẹt cặp song ngữ Nho-Việt. Tôi nhớ được khoảng mấy chữ đầu và hay đem khoe với các cô và bạn trong lớp mẫu giáo. Ai cũng trầm trồ vì chẳng biết rằng tôi đôi khi cũng bịa ra mấy nét vẽ.
 
 ### 09/1995 - 10/1998
 _Ngày học cấp 1, tôi đi học ở một làng khác trong cùng xã. Bạn bè vẫn tự đi bộ đi học. Vì ai cũng thế._
 
 Ngày được xếp vào lớp 1, tôi khóc như mưa vì không được học cùng các bạn hồi mẫu giáo, mặc dù được _bầu_ làm lớp trưởng ở lớp kia. Tôi đòi mẹ đưa đến nhà thầy hiệu phó ăn vạ nhưng không thành. Buổi chiều vẫn buồn một chút nhưng hôm sau quên ngay.
 
-Cô giáo lớp 1 nói tôi nên dừng học chữ Nho để tập trung học chữ Quốc ngữ. Tôi dừng, ông Đồ tiếc mãi vì làng tôi vừa mất đi một thầy cúng tương lai.
+Cô giáo lớp 1 nói tôi nên dừng học chữ Nho để tập trung học chữ Quốc ngữ. Tôi dừng, ông đồ tiếc mãi vì làng tôi vừa mất đi một thầy cúng tương lai.
 
 Tôi nhớ có một con lợn nhựa, cứ 1 điểm mười thì sẽ được 1-2k cho vào lợn. Có ngày tôi được 23 điểm mười (à, tôi rất nhạy cảm với các con số, nhất là các số nguyên tố - mặc dù lớp 1 chưa biết số nguyên tố là gì), vậy mà bố tôi cũng chỉ cho 10k bỏ lợn :D.
 
 Bố tôi dạy tôi chơi cờ vua. Một thời gian sau, tôi thường xuyên thắng bố.
 
-Lớp 3, tối vẫn nhớ, một ngày đi học ở lớp bồi dưỡng của trường, tôi được 3 điểm, trong khi cô bạn thân học cùng được 8 điểm. Vừa buồn vừa sợ. Nỗi buồn kéo dài tới ngày hôm sau thì chấm dứt.
+Lớp 3, tôi vẫn nhớ, một ngày đi học ở lớp bồi dưỡng của trường, tôi được 3 điểm, trong khi cô bạn thân học cùng được 8 điểm. Vừa buồn vừa sợ. Nỗi buồn kéo dài tới ngày hôm sau thì chấm dứt.
 
 ### 10/1998 - 05/2000: chuyển xuống Thị Trấn học
 
