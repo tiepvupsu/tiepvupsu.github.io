@@ -6,8 +6,6 @@ sc_project:
 sc_security:
 ---
 
-Con đường đi học của tôi.
-
 Gần đây có một bạn độc giả tự nhận mình là _loyal reader_ của blog, hỏi tôi về cách tôi học Đại Số, Giải Tích, và Tối Ưu. Tôi không thực sự có thể trả lời câu hỏi này trong một vài câu trao đổi qua lại ngắn. Một phần vì tôi chưa tự tóm tắt lại 'phương pháp' của tôi, một phần vì đó là cả một câu chuyện dài, bắt đầu từ gần 20 năm trước, hoặc hơn.
 
 Tôi viết note này không hẳn là để trả lời câu hỏi trên, mà chủ yếu là để kể lại cho các bạn câu chuyện đi học của tôi. Trong quá trình hồi tưởng, tôi có thể sẽ xen thêm nhiều cảm xúc cá nhân. Và tôi không thể không nhắc đến những người bạn tuổi thơ đã ảnh hưởng rất nhiều đến con người tôi bây giờ.
@@ -160,4 +158,4 @@ Cảm ơn các bạn đã đọc đến những dòng cuối cùng này.
 
 Tôi luôn ghi nhớ và trân trọng những con người đi cùng con đường học tập của tôi. Tôi biết rằng mình cần phải cố gắng nhiều nhiều hơn nữa.
 
-Hoa Kỳ, tháng 7 năm 2017. 
+Hoa Kỳ, tháng 7 năm 2017.
