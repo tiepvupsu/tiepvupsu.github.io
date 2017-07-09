@@ -83,7 +83,7 @@ Năm lớp 9, có một sự thay đổi lớn. Lớp học chính của chúng 
 
 Cô Diệp dạy Đại Số và thầy Quyết dạy hình học đã giúp chúng tôi học được rất nhiều điều mới vào năm đó. Chúng tôi bắt đầu làm quen với các bài toán bất đẳng thức từ lớp 9. Bất đẳng thức Cauchy và Bunhiacopxki cũng gắn với chúng tôi từ những ngày đó. Ba tuần cuối trước khi thi HSG tỉnh, chúng tôi được miễn học trên lớp và chỉ tập trung học đội tuyển. Cả ngày chúng tôi học cùng nhau, buổi trưa ăn ở nhà một bạn bán cơm gần trường đó. Đội tuyển năm đó đạt giải rất cao. Thịnh, Yến, Trang, nếu tôi nhớ không nhầm, đều được giải Nhất. Hiệp được giải nhì, tôi được điểm cao nhất tỉnh (18.5/20) năm đó.
 
-Sau khi thi HSG xong, bố mẹ tôi cảm ơn gia đình Hiệp và xin cho tôi về nhà vì chúng tôi không học đội tuyển nữa. Mẹ Hiệp không đồng ý vì tôi và Hiệp học và chơi cùng nhau rất tốt, muốn tôi ở lại để hai đứa cùng giúp đỡ nhau học tập.
+Sau khi thi HSG xong, bố mẹ tôi cảm ơn gia đình Hiệp và xin cho tôi về nhà vì chúng tôi không học đội tuyển nữa. Mẹ Hiệp giữ tôi ở lại vì tôi và Hiệp học và chơi cùng nhau rất tốt, muốn tôi ở lại để hai đứa cùng giúp đỡ nhau học tập.
 
 _Mẹ Hiệp không biết rằng chúng tôi thường xuyên đi chơi điện tử cùng nhau. Hồi đó chúng tôi thường chơi Bóng đá 99, chọn đội tuyển Brazil và thường xuyên vô địch._
 
