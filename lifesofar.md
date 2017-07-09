@@ -6,7 +6,7 @@ sc_project: 11391116
 sc_security: 2a8ad2c1
 ---
 
-Gần đây có một bạn độc giả tự nhận mình là _loyal reader_ của blog, hỏi tôi về cách tôi học Đại Số, Giải Tích, và Tối Ưu. Tôi không thực sự có thể trả lời câu hỏi này trong một vài câu trao đổi qua lại ngắn. Một phần vì tôi chưa tự tóm tắt lại 'phương pháp' của tôi, một phần vì đó là cả một câu chuyện dài, bắt đầu từ gần 20 năm trước, hoặc hơn.
+Gần đây có một bạn độc giả tự nhận mình là _loyal reader_ của blog, hỏi tôi về cách tôi học Đại Số, Giải Tích, và Tối Ưu. Tôi không thực sự có thể trả lời câu hỏi này trong một vài câu trao đổi qua lại. Một phần vì tôi chưa tự tóm tắt lại 'phương pháp' của tôi, một phần vì đó là cả một câu chuyện dài, bắt đầu từ gần 20 năm trước, hoặc hơn.
 
 Tôi viết note này không hẳn là để trả lời câu hỏi trên, mà chủ yếu là để chỉa sẻ với các bạn câu chuyện đi học của tôi. Trong quá trình hồi tưởng, tôi có thể sẽ xen thêm nhiều cảm xúc cá nhân. Và tôi không thể không nhắc đến những người bạn tuổi thơ đã ảnh hưởng rất nhiều đến con người tôi bây giờ.
 
@@ -53,7 +53,7 @@ Lớp tôi có một cậu bạn tên Thịnh, nhà gần trường. Buổi chi�
 
 Tôi dạy Thịnh chơi cờ vua. Một thời gian sau, Thịnh thường xuyên thắng tôi.
 
-Năm ấy thi học sinh giỏi (HSG), tôi được giải Nhất tỉnh. Đứng thứ hai ở huyện sau một cô bạn cùng lớp tên Trang. Hồi câp 1 thi HSG có cả hai môn Toán và Tiếng Việt. Điểm Tiếng Việt của tôi khá cao. Thịnh không được giải cao, và cũng không nổi bật lắm trong lớp.
+Năm ấy thi học sinh giỏi (HSG), tôi được giải Nhất tỉnh. Điểm đứng thứ hai ở huyện sau một cô bạn cùng lớp tên Trang (có nhiều giải Nhất). Hồi câp 1 thi HSG có cả hai môn Toán và Tiếng Việt. Điểm Tiếng Việt của tôi khá cao. Thịnh không được giải cao, và cũng không nổi bật lắm trong lớp.
 
 **Những người bạn học rất giỏi và chơi rất vui đã giúp định hình con người tôi sau này rất nhiều. Đây là mốc thời gian mà tôi không thể không nhắc tới.**
 
