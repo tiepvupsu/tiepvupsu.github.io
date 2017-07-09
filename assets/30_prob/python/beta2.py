@@ -45,7 +45,7 @@ with PdfPages('beta1.pdf') as pdf:
     ax.set_yticks([])
 #     plt.axis('equal')
     plt.xlabel('$\lambda$', fontsize = 15)
-    plt.ylabel('$Pr(\lambda)$', fontsize = 15)
+    plt.ylabel('$(\lambda)$', fontsize = 15)
 
     # pdf.savefig()
     plt.show()

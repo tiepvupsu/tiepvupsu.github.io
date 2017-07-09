@@ -5,6 +5,12 @@ rc('font',**{'family':'sans-serif','sans-serif':['Helvetica']})
 #rc('font',**{'family':'serif','serif':['Palatino']})
 rc('text', usetex=True)
 
+import matplotlib.pyplot as plt
+import numpy as np
+import matplotlib.mlab as mlab
+import math
+from matplotlib.backends.backend_pdf import PdfPages
+
 from mpl_toolkits.mplot3d import axes3d
 import matplotlib.pyplot as plt
 from matplotlib import cm
@@ -31,7 +37,7 @@ ax.set_xlim(-2, 2)
 ax.set_ylabel('$y$', fontsize =15)
 ax.set_ylim(-2, 2)
 
-ax.set_zlabel('$Pr(x, y)$', fontsize = 15)
+ax.set_zlabel('$p(x, y)$', fontsize = 15)
 
 ax.set_title('bivariate normal distribution', fontsize = 15)
 ax.set_zlim(-1, 1)
