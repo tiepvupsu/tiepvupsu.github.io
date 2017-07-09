@@ -125,7 +125,7 @@ Sau khi thi vòng hai, tôi khá rảnh rang vì không phải thi Tốt nghiệ
 Trong 12 năm học Phổ Thông, tôi có vinh dự 6 lần được giải Nhất trong các kỳ thi HSG cấp tỉnh, chia đều ra 2 lần vào các năm cuối cấp.
 
 ### 09/2007 - 06/2012: học Đại học
-Tôi vào lớp KSTN-DTVT-K52 của Bách Khoa Hà Nội. Lớp lớn KSTN (100 sinh viên) của tôi quy tụ rất nhiều nhân tài khắp miền Bắc và miền Trung. Rất nhiều trong đó có giải quốc gia, quốc tế. Lần đầu tiên tôi thấy mình nhỏ bé trong lớp! Rất nhiều bạn giỏi đang chuẩn bị làm hồ sơ du học. Kỳ 1 năm đó điểm GPA của tôi rất thấp, 2.9/4, Đại Số B, Giải tích C. Tại sao là toán mà điểm của tôi thấp vậy. Thời gian mùa hè bỏ bê quá nhiều khiến tôi không bao giờ tìm lại được cảm giác với toán như trước nữa. Cả thời gian đại học tôi ăn mày dĩ vãng thời đam mê sống và học tập hồi câp ba mà không thể tìm lại được. Có lẽ vì có quá nhiều thú vui khiến tôi sao nhãng việc học hành, mặc dù tôi rất rất muốn tìm lại cảm xúc đam mê ngày nào.
+Tôi vào lớp KSTN-DTVT-K52 của Bách Khoa Hà Nội. Lớp lớn KSTN (100 sinh viên) của tôi quy tụ rất nhiều nhân tài khắp miền Bắc và miền Trung. Rất nhiều trong đó có giải quốc gia, quốc tế. Lần đầu tiên tôi thấy mình nhỏ bé trong lớp! Rất nhiều bạn giỏi đang chuẩn bị làm hồ sơ du học. Kỳ 1 năm đó điểm GPA của tôi rất thấp, 2.9/4, Đại Số B, Giải tích C. Tại sao là toán mà điểm của tôi thấp vậy. Thời gian mùa hè bỏ bê quá nhiều khiến tôi không bao giờ tìm lại được cảm giác với toán như trước nữa. Cả thời gian đại học tôi ăn mày dĩ vãng thời đam mê sống và học tập hồi cấp ba mà không thể tìm lại được. Có lẽ vì có quá nhiều thú vui khiến tôi sao nhãng việc học hành, mặc dù tôi rất rất muốn tìm lại cảm xúc đam mê ngày nào.
 
 Năm thứ nhất tôi biết tin có kỳ thi Olympic toán sinh viên toàn quốc. Mặc dù biết mình khó cạnh tranh với toàn trường để vào đội tuyển 5 người của Đại số hoặc Giải tích, tôi vẫn tham gia vì kỳ thi năm đó được tổ chức ở Nha Trang - wow. Kỳ lạ thay, tôi đứng thứ 5 và được chọn vào đội tuyển Đại số của Bách Khoa năm đó. Tôi vẫn nhớ rằng thầy dạy đội tuyển năm đó không hy vọng nhiều vào tôi vì trong quá trình ôn thi tôi học tệ nhất đội.
 
@@ -135,11 +135,11 @@ Tôi rất buồn sau khi thi xong, lại nghe tin trước lúc biết kết qu
 
 Năm thứ hai. Các bạn đã đi du học rất nhiều. Tôi vẫn ở lại với Giải tích II B+, Giải tích III B+, Phương pháp tính B+, Xác suất thống kê B+. Không môn toán nào tôi được A! Tôi lại tham gia đội tuyển Đại số của BKHN đi thi ở Đồng Hới. Tôi nhớ như in tôi làm xong bài từ rất sớm. Sau đó làm lại sạch đẹp không dập xoá tí nào. Tự tin giải Nhất, được giải Nhì, buồn!
 
-Năm thứ ba, tôi một lần nữa vào đội Đại số. Kỳ thi năm đó ở Huê, tôi đi chơi là chính. Các thầy trong khoa toán nhìn tôi ngao ngán bảo sang năm nghỉ để nhường cho các em. Tôi lại được giải Nhất một lần nữa.
+Năm thứ ba, tôi một lần nữa vào đội Đại số. Kỳ thi năm đó ở Huế, tôi đi chơi là chính. Các thầy trong khoa toán nhìn tôi ngao ngán bảo sang năm nghỉ để nhường cho các em. Tôi lại được giải Nhất một lần nữa.
 
-Sau năm thứ ba, tôi không học sâu Toán nữa vì các môn chuyên ngành yêu cầu những kiến thức khác nữa. Tôi có tham gia một lab về phần cứng trong Viện DTVT. Tôi cố gắng rất nhiều nhưng không bao giờ thấy lại đam mê như trước nữa.
+Sau năm thứ ba, tôi không học sâu Toán nữa vì các môn chuyên ngành yêu cầu những kiến thức khác nữa. Tôi có tham gia một lab về phần cứng trong Viện ĐTVT. Tôi cố gắng rất nhiều nhưng không bao giờ thấy lại đam mê như trước nữa. Phần cứng và tôi không có duyên với nhau. Tôi làm cháy khá nhiều mạch, cũng vì cái tính _khó từ bỏ_ của tôi.
 
-Năm cuối đại học, tôi được thầy hướng dẫn khuyến khích làm hồ sơ đi Mỹ học cao học. Tôi không tự tin với tiếng Anh của mình lắm. Cũng chỉ làm theo phong trào. May mắn thay tôi được thầy hiện giờ ở Penn State nhận vào học, bắt đầu từ kỳ Fall 2013.
+Năm cuối đại học, tôi được thầy hướng dẫn khuyến khích làm hồ sơ đi Mỹ học cao học. Tôi không tự tin với tiếng Anh của mình lắm. Cũng chỉ làm theo phong trào. May mắn thay tôi được thầy hiện giờ ở Penn State nhận vào học, bắt đầu từ kỳ Fall 2013. Cảm ơn những giải Nhât môn Đại số của tôi. 
 
 Thịnh hiện giờ đang làm nghiên cứu sinh ngành toán ở Singapore.
 
