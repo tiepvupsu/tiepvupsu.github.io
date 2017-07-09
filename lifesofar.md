@@ -8,7 +8,7 @@ sc_security:
 
 Gần đây có một bạn độc giả tự nhận mình là _loyal reader_ của blog, hỏi tôi về cách tôi học Đại Số, Giải Tích, và Tối Ưu. Tôi không thực sự có thể trả lời câu hỏi này trong một vài câu trao đổi qua lại ngắn. Một phần vì tôi chưa tự tóm tắt lại 'phương pháp' của tôi, một phần vì đó là cả một câu chuyện dài, bắt đầu từ gần 20 năm trước, hoặc hơn.
 
-Tôi viết note này không hẳn là để trả lời câu hỏi trên, mà chủ yếu là để kể lại cho các bạn câu chuyện đi học của tôi. Trong quá trình hồi tưởng, tôi có thể sẽ xen thêm nhiều cảm xúc cá nhân. Và tôi không thể không nhắc đến những người bạn tuổi thơ đã ảnh hưởng rất nhiều đến con người tôi bây giờ.
+Tôi viết note này không hẳn là để trả lời câu hỏi trên, mà chủ yếu là để chỉa sẻ với các bạn câu chuyện đi học của tôi. Trong quá trình hồi tưởng, tôi có thể sẽ xen thêm nhiều cảm xúc cá nhân. Và tôi không thể không nhắc đến những người bạn tuổi thơ đã ảnh hưởng rất nhiều đến con người tôi bây giờ.
 
 Nhìn chung, cuộc đời đi học của tôi khá suôn sẻ và chủ yếu là niềm vui. Hoặc là vì tôi luôn nhìn đời bằng con mắt lạc quan.
 
@@ -141,6 +141,9 @@ Sau năm thứ ba, tôi không học sâu Toán nữa vì các môn chuyên ngà
 
 Năm cuối đại học, tôi được thầy hướng dẫn khuyến khích làm hồ sơ đi Mỹ học cao học. Tôi không tự tin với tiếng Anh của mình lắm. Cũng chỉ làm theo phong trào. May mắn thay tôi được thầy hiện giờ ở Penn State nhận vào học, bắt đầu từ kỳ Fall 2013.
 
+Thịnh hiện giờ đang làm nghiên cứu sinh ngành toán ở Singapore.
+
+
 ### 08/2013 - hiện tại
 Đây là một khoảng thời gian quan trọng với tôi. Tôi được học lại Đại số tuyến tính, Xác suất thông kê, Tối ưu rất kỹ, cả ở trong trường và cả tự học online. Tôi rất thích khoá Convexoptimization của Stephen Boyd, khoá Probabilities and Random Processes, và khoá Pattern Regconition đều của thầy David Miller ở Penn State. Tôi thường xuyên phát biểu trong lớp và đạt điểm cao trong các môn học này. Cảm giác thích học toán của tôi quay lại, và niềm đam mê học tập của tôi cũng tiệm cận với những gì tôi có hồi trước khi vào đại học.
 
@@ -149,6 +152,8 @@ Càng học, tôi càng thấy mình nhỏ bé. Nhưng những điều đó khô
 Như đã từng đề cập, tôi muốn ôn tập lại kiến thức Machine Learning, một lĩnh vực cần khá nhiều toán, nên tôi bắt đầu viết blog này từ đầu năm nay. Tôi được ôn lại toán rất nhiều, và hạnh phúc với những gì mình đang làm cho tới thời điểm này.
 
 ### Kết luận
+
+_Cứ khoảng mỗi 5 năm, tôi lại xa nhà thêm một bậc. Từ làng, xã, thị trấn, thị xã, tới thủ đô. Và bây giờ tôi đang ở Mỹ._
 
 Mỗi người có một con đường học tập khác nhau. Và tôi không nghĩ những gì trải qua trong cuộc đời tôi có thể đúc rút lại thành "kinh nghiệm học toán" cho bất kỳ ai. Chỉ có một điều tôi luôn ghi nhớ: đam mê là quan trọng nhất. Tôi tự nhận mình khá chăm chỉ, nhưng chăm chỉ thôi không đủ (như những năm cuối của đại học), quan trọng nhất là mình được làm những thứ mình đam mê.
 
