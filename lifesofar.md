@@ -21,7 +21,7 @@ _Ngày học mẫu giáo, tôi và đám bạn tự đi bộ đi học. Vì trư
 Trước khi học chữ quốc ngữ, tôi có thời gian 1 năm học chữ Nho ở nhà một ông Đồ trong làng. Hàng tuần tôi đạp chiếc xe nhỏ xíu và mang theo 1 cuốn vở tới nhà ông. Mỗi tuần khoảng 10 chữ, không học viết mà chỉ học thuộc vẹt cặp song ngữ Nho-Việt. Tôi nhớ được khoảng mấy chữ đầu và hay đem khoe với các cô và bạn trong lớp mẫu giáo. Ai cũng trầm trồ vì chẳng biết rằng tôi đôi khi cũng bịa ra mấy nét vẽ.
 
 ### 09/1995 - 10/1998
-_Ngày học cấp 1, tôi đi học ở một làng khác trong cùng xã. Bạn bè vẫn tự đi bộ đi học. Vì ai cũng thế mà._
+_Ngày học cấp 1, tôi đi học ở một làng khác trong cùng xã. Bạn bè vẫn tự đi bộ đi học. Vì ai cũng thế._
 
 Ngày được xếp vào lớp 1, tôi khóc như mưa vì không được học cùng các bạn hồi mẫu giáo, mặc dù được _bầu_ làm lớp trưởng ở lớp kia. Tôi đòi mẹ đưa đến nhà thầy hiệu phó ăn vạ nhưng không thành. Buổi chiều vẫn buồn một chút nhưng hôm sau quên ngay.
 
