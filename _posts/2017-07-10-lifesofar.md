@@ -10,7 +10,7 @@ tags:
 category:
 sc_project: 11391116
 sc_security: 2a8ad2c1
-img: https://sachsangtao.com/files/sanpham/1153/1/png/nhung-bai-toan-co-ms-46.png
+img: /images/nbtc.png
 summary: Gần đây có một bạn độc giả tự nhận mình là loyal reader của blog, hỏi tôi về cách tôi học Đại Số, Giải Tích, và Tối Ưu. Tôi không thực sự có thể trả lời câu hỏi này trong một vài câu trao đổi qua lại. Một phần vì tôi chưa tự tóm tắt lại 'phương pháp' của tôi, một phần vì đó là cả một câu chuyện dài, bắt đầu từ gần 20 năm trước, hoặc hơn.
 ---
 
