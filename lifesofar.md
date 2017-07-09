@@ -110,7 +110,7 @@ Năm lớp 12, tôi vẫn trong đội tuyển toán của Tỉnh. Năm này là
 
 _Bài toán đó nằm trong tập tài liệu Thịnh mang về cho tôi, đã được dạy ở Sư Phạm._
 
-Hồi đó internet bắt đầu nỏ rộ. Tôi tham gia Diễn Đàn Toán Học và có giải một số bài. Tôi cũng thường xuyên download các bài toán hay trong các kỳ thi toán trên khắp thế giới về học. Vẫn nhớ hồi đó in rất đắt. Tôi in 46 trang tài liệu mất 23k. Trong khi tiền ăn một bữa có 3k.
+Hồi đó internet bắt đầu nở rộ. Tôi tham gia Diễn Đàn Toán Học và có giải một số bài. Tôi cũng thường xuyên download các bài toán hay trong các kỳ thi toán trên khắp thế giới về học. Vẫn nhớ hồi đó in rất đắt. Tôi in 46 trang tài liệu mất 23k. Trong khi tiền ăn một bữa có 3k.
 
 Năm đó kỳ thi HSG quốc gia có nhiều thay đổi. Không còn bảng A hay B như trước nữa mà cả nước thi chung 1 đề. Những năm trước các đội tuyển mỗi tỉnh được 8 người, các đội của các trường đại học (Sư Phạm, Tổng Hợp, Vinh) được 10 hoặc 15. Năm này chỉ còn 6. Kỳ thi không còn là 2 ngày, mỗi ngày 3 bài như trước mà dồn lại 1 ngày, 7 bài trong 180 phút. Thêm nữa là được giải trong kỳ thi này cũng không được tuyển thẳng Đại học nữa nên Việt Nam bỏ lỡ khá nhiều nhân tài vào năm đó, tôi nghĩ thế.
 
