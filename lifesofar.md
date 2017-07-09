@@ -2,8 +2,8 @@
 layout: post
 title: Con đường học tập của tôi
 permalink: /lifesofar/
-sc_project:
-sc_security:
+sc_project: 11391116
+sc_security: 2a8ad2c1
 ---
 
 Gần đây có một bạn độc giả tự nhận mình là _loyal reader_ của blog, hỏi tôi về cách tôi học Đại Số, Giải Tích, và Tối Ưu. Tôi không thực sự có thể trả lời câu hỏi này trong một vài câu trao đổi qua lại ngắn. Một phần vì tôi chưa tự tóm tắt lại 'phương pháp' của tôi, một phần vì đó là cả một câu chuyện dài, bắt đầu từ gần 20 năm trước, hoặc hơn.
@@ -139,13 +139,13 @@ Năm thứ ba, tôi một lần nữa vào đội Đại số. Kỳ thi năm đ�
 
 Sau năm thứ ba, tôi không học sâu Toán nữa vì các môn chuyên ngành yêu cầu những kiến thức khác nữa. Tôi có tham gia một lab về phần cứng trong Viện ĐTVT. Tôi cố gắng rất nhiều nhưng không bao giờ thấy lại đam mê như trước nữa. Phần cứng và tôi không có duyên với nhau. Tôi làm cháy khá nhiều mạch, cũng vì cái tính _khó từ bỏ_ của tôi.
 
-Năm cuối đại học, tôi được thầy hướng dẫn khuyến khích làm hồ sơ đi Mỹ học cao học. Tôi không tự tin với tiếng Anh của mình lắm. Cũng chỉ làm theo phong trào. May mắn thay tôi được thầy hiện giờ ở Penn State nhận vào học, bắt đầu từ kỳ Fall 2013. Cảm ơn những giải Nhât môn Đại số của tôi. 
+Năm cuối đại học, tôi được thầy hướng dẫn khuyến khích làm hồ sơ đi Mỹ học cao học. Tôi không tự tin với tiếng Anh của mình lắm. Cũng chỉ làm theo phong trào. May mắn thay tôi được thầy hiện giờ ở Penn State nhận vào học, bắt đầu từ kỳ Fall 2013. Cảm ơn những giải Nhât môn Đại số của tôi.
 
 Thịnh hiện giờ đang làm nghiên cứu sinh ngành toán ở Singapore.
 
 
 ### 08/2013 - hiện tại
-Đây là một khoảng thời gian quan trọng với tôi. Tôi được học lại Đại số tuyến tính, Xác suất thông kê, Tối ưu rất kỹ, cả ở trong trường và cả tự học online. Tôi rất thích khoá Convexoptimization của Stephen Boyd, khoá Probabilities and Random Processes, và khoá Pattern Regconition đều của thầy David Miller ở Penn State. Tôi thường xuyên phát biểu trong lớp và đạt điểm cao trong các môn học này. Cảm giác thích học toán của tôi quay lại, và niềm đam mê học tập của tôi cũng tiệm cận với những gì tôi có hồi trước khi vào đại học.
+Đây là một khoảng thời gian quan trọng với tôi. Tôi được học lại Đại số tuyến tính, Xác suất thông kê, Tối ưu rất kỹ, cả ở trong trường và cả tự học online. Tôi rất thích khoá Convex optimization của Stephen Boyd, khoá Probabilities and Random Processes, và khoá Pattern Regconition đều của thầy David Miller ở Penn State. Tôi thường xuyên phát biểu trong lớp và đạt điểm cao trong các môn học này. Cảm giác thích học toán của tôi quay lại, và niềm đam mê học tập của tôi cũng tiệm cận với những gì tôi có hồi trước khi vào đại học.
 
 Càng học, tôi càng thấy mình nhỏ bé. Nhưng những điều đó không bao giờ làm tôi nản trí mà chỉ khiến tôi cố gắng tìm tòi hơn nữa. Tôi bắt đầu đọc và viết papers. Các papers của tôi đều có phần tăng tốc cho thuật toán, là một điều tôi rất thích. Có nhiều papers đề xuất các ý tưởng và bài toán optimization rất đẹp nhưng chưa thực sự giải quyết các bài toán đó một cách triệt để. Tôi thì lại thích tối ưu các thuật toán đó để cho nghiệm tốt hơn và tốc độ chạy nhanh hơn, đó cũng là phần chính trong đề tài tốt nghiệp cao học của tôi. Tôi mới biết chắc rằng tôi sẽ tốt nghiệp vào mùa hè năm tới.
 
