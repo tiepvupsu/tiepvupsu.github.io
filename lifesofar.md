@@ -93,7 +93,7 @@ Cuối năm lớp 9, tôi không hề biết gì về chuyên Sư Phạm và chu
 
 <!-- Tôi cũng phải chia tay với một vài tình yêu bọ xít vì phải học xa nhau. -->
 
-### 09/2004 - 05/2007: Học chuyên Toán ở Thành phố
+### 09/2004 - 05/2007: Học chuyên Toán
 Tôi ở lại ký túc xá của trường Chuyên Thái Bình, một tuần đạp xe 32km về nhà vào sáng Thứ Bảy và lên lại vào chiều Chủ Nhật.
 
 Tôi học lớp chuyên Toán, và thực sự được dạy rất sâu về Toán. Ký túc xá của tôi 19h30 đóng cửa, không TV, không internet, không nói chuyện to. Tôi chỉ biết học Toán, đọc sách Toán, và đọc rất nhiều tiểu thuyết, thường thức học đến 2-3 giờ sáng. Đơn giản vì tôi thích học. Cũng vì cô giáo dạy Văn lớp 10 của chúng tôi cũng là cô giáo làm quản lý thư viện trường nên lớp tôi được mượn rất nhiều sách từ trường.
@@ -120,12 +120,12 @@ Thi xong, tôi nghĩ sẽ được giải Nhất vì làm được 6.5/7 bài. T
 
 Vì năm đó cả nước có ít giải, cả giái Khuyến khích mới là 41 (lại số nguyên tố) nên tất cả đều được vào vòng hai. Tôi cũng đi nhưng thầy và tôi đều không hy vọng vào được top 6 người cho đội Việt Nam năm đó. Tôi không buồn khi biết kết quả vì đó là điều được dự đoán từ trước. Trong kỳ thi này, tôi được gặp và làm quen với rất nhiều các bạn giỏi, nhiều trong số đó học cùng lớp đại học với tôi sau này.
 
-Sau khi thi vòng hai, tôi khá rảnh rang vì không phải thi Tốt nghiệp (tôi nhơ là năm đó thi tốt nghiệp rất rất khó). Tôi cũng không phải thi đại học vì có giải Ba từ năm lớp 11, trước khi quy định có giải ba vẫn phải thi đại học. Tôi cũng được vào thẳng lớp KSTN của Bách Khoa nên chẳng lo nghĩ gì về thi đại học nữa. Và kéo theo đó là thời gian xả hơi sau 3 năm vất vả học tập. Tôi đi chơi cả mùa hè trong khi các bạn tập trung ôn thi. Và việc không _luyện tập_ thường xuyên mang lại nhiều hậu quả sau này.
+Sau khi thi vòng hai, tôi khá rảnh rang vì không phải thi Tốt nghiệp (tôi nhớ là năm đó thi tốt nghiệp rất rất khó). Tôi cũng không phải thi đại học vì có giải Ba từ năm lớp 11, trước khi quy định có giải QG vẫn phải thi đại học. Tôi cũng được vào thẳng lớp KSTN của Bách Khoa nên chẳng lo nghĩ gì về thi đại học nữa. Và kéo theo đó là thời gian xả hơi sau 3 năm vất vả học tập. Tôi đi chơi cả mùa hè trong khi các bạn tập trung ôn thi. Và việc không _luyện tập_ thường xuyên mang lại nhiều hậu quả sau này.
 
 Trong 12 năm học Phổ Thông, tôi có vinh dự 6 lần được giải Nhất trong các kỳ thi HSG cấp tỉnh, chia đều ra 2 lần vào các năm cuối cấp.
 
-### 09/2007 - 06/2012: học Đại học ở Thủ đô
-Tôi vào lớp KSTN-DTVT-K52 của Bách Khoa Hà Nội. Lớp lớn KSTN (100 sinh viên) của tôi quy tụ rất nhiều nhân tài khắp miền Bắc và miền Trung. Rất nhiều trong đó có giải quốc gia, quốc tế. Lần đầu tiên tôi thấy mình nhỏ bé trong lớp! Rất nhiều bạn giỏi đang chuẩn bị làm hồ sơ du học. Kỳ 1 năm đó điểm GPA của tôi rất thấp, 2.9/4, Đại Số B, Giải tích C. Tại sao là toán mà điểm của tôi thấp vậy. Thời gian mùa hè bỏ bê quá nhiều khiến tôi không bao giờ tìm lại được cảm giác say mê với toán như trước nữa. Cả thời gian đại học tôi ăn mày dĩ vãng thời đam mê sống và học tập hồi câp ba mà không thể tìm lại được. Có lẽ vì có quá nhiều thú vui khiến tôi sao nhãng việc học hành, mặc dù tôi rất rất muốn tìm lại cảm xúc đam mê ngày nào.
+### 09/2007 - 06/2012: học Đại học
+Tôi vào lớp KSTN-DTVT-K52 của Bách Khoa Hà Nội. Lớp lớn KSTN (100 sinh viên) của tôi quy tụ rất nhiều nhân tài khắp miền Bắc và miền Trung. Rất nhiều trong đó có giải quốc gia, quốc tế. Lần đầu tiên tôi thấy mình nhỏ bé trong lớp! Rất nhiều bạn giỏi đang chuẩn bị làm hồ sơ du học. Kỳ 1 năm đó điểm GPA của tôi rất thấp, 2.9/4, Đại Số B, Giải tích C. Tại sao là toán mà điểm của tôi thấp vậy. Thời gian mùa hè bỏ bê quá nhiều khiến tôi không bao giờ tìm lại được cảm giác với toán như trước nữa. Cả thời gian đại học tôi ăn mày dĩ vãng thời đam mê sống và học tập hồi câp ba mà không thể tìm lại được. Có lẽ vì có quá nhiều thú vui khiến tôi sao nhãng việc học hành, mặc dù tôi rất rất muốn tìm lại cảm xúc đam mê ngày nào.
 
 Năm thứ nhất tôi biết tin có kỳ thi Olympic toán sinh viên toàn quốc. Mặc dù biết mình khó cạnh tranh với toàn trường để vào đội tuyển 5 người của Đại số hoặc Giải tích, tôi vẫn tham gia vì kỳ thi năm đó được tổ chức ở Nha Trang - wow. Kỳ lạ thay, tôi đứng thứ 5 và được chọn vào đội tuyển Đại số của Bách Khoa năm đó. Tôi vẫn nhớ rằng thầy dạy đội tuyển năm đó không hy vọng nhiều vào tôi vì trong quá trình ôn thi tôi học tệ nhất đội.
 
