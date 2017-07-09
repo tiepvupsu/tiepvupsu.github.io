@@ -120,7 +120,7 @@ Thi xong, tôi nghĩ sẽ được giải Nhất vì làm được 6.5/7 bài. T
 
 Vì năm đó cả nước có ít giải, cả giái Khuyến khích mới là 41 (lại số nguyên tố) nên tất cả đều được vào vòng hai. Tôi cũng đi nhưng thầy và tôi đều không hy vọng vào được top 6 người cho đội Việt Nam năm đó. Tôi không buồn khi biết kết quả vì đó là điều được dự đoán từ trước. Trong kỳ thi này, tôi được gặp và làm quen với rất nhiều các bạn giỏi, nhiều trong số đó học cùng lớp đại học với tôi sau này.
 
-Sau khi thi vòng hai, tôi khá rảnh rang vì không phải thi Tốt nghiệp (tôi nhớ là năm đó thi tốt nghiệp rất rất khó). Tôi cũng không phải thi đại học vì có giải Ba từ năm lớp 11, trước khi quy định có giải QG vẫn phải thi đại học. Tôi cũng được vào thẳng lớp KSTN của Bách Khoa nên chẳng lo nghĩ gì về thi đại học nữa. Và kéo theo đó là thời gian xả hơi sau 3 năm vất vả học tập. Tôi đi chơi cả mùa hè trong khi các bạn tập trung ôn thi. Và việc không _luyện tập_ thường xuyên mang lại nhiều hậu quả sau này.
+Sau khi thi vòng hai, tôi khá rảnh rang vì không phải thi Tốt nghiệp (tôi nhớ là năm đó thi tốt nghiệp rất rất _khó_). Tôi cũng không phải thi đại học vì có giải Ba từ năm lớp 11, trước khi quy định có giải QG vẫn phải thi đại học. Tôi cũng được vào thẳng lớp KSTN của Bách Khoa nên chẳng lo nghĩ gì về thi đại học nữa. Và kéo theo đó là thời gian xả hơi sau 3 năm vất vả học tập. Tôi đi chơi cả mùa hè trong khi các bạn tập trung ôn thi. Và việc không _luyện tập_ thường xuyên mang lại nhiều hậu quả sau này.
 
 Trong 12 năm học Phổ Thông, tôi có vinh dự 6 lần được giải Nhất trong các kỳ thi HSG cấp tỉnh, chia đều ra 2 lần vào các năm cuối cấp.
 
