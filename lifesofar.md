@@ -110,15 +110,15 @@ Năm lớp 12, tôi vẫn trong đội tuyển toán của Tỉnh. Năm này là
 
 _Bài toán đó nằm trong tập tài liệu Thịnh mang về cho tôi, đã được dạy ở Sư Phạm._
 
-Hồi đó internet bắt đầu nỏ rộ. Tôi tham gia Diễn Đàn Toán Học và có giải một số bài. Tôi cũng thường xuyên download các bài toán hay trong các kỳ thi toán trên khắp thế giới về học. Vẫn nhớ hồi đó in rất đắt. Tôi in 46 trang tài liệu mất 23k. Trong khi tiền ăn một bữa có 3k. 
+Hồi đó internet bắt đầu nỏ rộ. Tôi tham gia Diễn Đàn Toán Học và có giải một số bài. Tôi cũng thường xuyên download các bài toán hay trong các kỳ thi toán trên khắp thế giới về học. Vẫn nhớ hồi đó in rất đắt. Tôi in 46 trang tài liệu mất 23k. Trong khi tiền ăn một bữa có 3k.
 
-Năm đó kỳ thi HSG quốc gia có nhiều thay đổi. Không còn bảng A hay B như trước nữa mà cả nước thi chung 1 đề. Những năm trước các đội tuyển mỗi tỉnh được 8 người, các đội của các trường đại học (Sư Phạm, Tổng Hợp, Vinh) được 10 hoặc 15. Năm này chỉ còn 6. Kỳ thi không còn lài 2 ngày, mỗi ngày 3 bài như trước mà dồn lại 1 ngày, 7 bài trong 180 phút. Thêm nữa là được giải trong kỳ thi này cũng không được tuyển thẳng Đại học nữa nên Việt Nam bỏ lỡ khá nhiều nhân tài vào năm đó, tôi nghĩ thế.
+Năm đó kỳ thi HSG quốc gia có nhiều thay đổi. Không còn bảng A hay B như trước nữa mà cả nước thi chung 1 đề. Những năm trước các đội tuyển mỗi tỉnh được 8 người, các đội của các trường đại học (Sư Phạm, Tổng Hợp, Vinh) được 10 hoặc 15. Năm này chỉ còn 6. Kỳ thi không còn là 2 ngày, mỗi ngày 3 bài như trước mà dồn lại 1 ngày, 7 bài trong 180 phút. Thêm nữa là được giải trong kỳ thi này cũng không được tuyển thẳng Đại học nữa nên Việt Nam bỏ lỡ khá nhiều nhân tài vào năm đó, tôi nghĩ thế.
 
 Thịnh bất ngờ đạt điểm kém trong vòng thi cuối cùng ở Sư Phạm, các vòng trước điểm của bạn ấy rất cao, và không được tham dự kỳ thi Quốc gia. Đó là một điều đáng tiếc!
 
-Thi xong, tôi nghĩ sẽ được giải Nhất vì làm được 6.5/7 bài. Thế nhưng niềm vui cứ giảm dần sau khi phát hiện ra các lỗi sai. Khi nhận giải, tôi là người duy nhất trong đội tuyển có giải. Giải Ba, khóc như mưa!!
+Thi xong, tôi nghĩ sẽ được giải Nhất vì làm được 6.5/7 bài. Thế nhưng niềm vui cứ giảm dần sau khi phát hiện ra các lỗi sai. Khi nhận giải, tôi là người duy nhất trong đội tuyển Thái Bình có giải. Giải Ba, khóc như mưa!! Cùng ngày biết tin, tôi báo bố rằng vừa làm mất chiếc xe đạp thứ hai, chiếc xe 'cào cào' mà tôi rất thích.
 
-Vì năm đó cả nước có ít giải nên cả giái Khuyến khích (tổng cộng 41) nên tất cả đều được vào vòng hai. Tôi cũng đi nhưng thầy và tôi đều không hy vọng vào được top 6 người cho đội Việt Nam năm đó. Tôi không buồn khi biết kết quả vì đó là điều được dự đoán từ trước. Trong kỳ thi này, tôi được gặp và làm quen với rất nhiều các bạn giỏi, nhiều trong số đó học cùng lớp đại học với tôi sau này.
+Vì năm đó cả nước có ít giải, cả giái Khuyến khích mới là 41 (lại số nguyên tố) nên tất cả đều được vào vòng hai. Tôi cũng đi nhưng thầy và tôi đều không hy vọng vào được top 6 người cho đội Việt Nam năm đó. Tôi không buồn khi biết kết quả vì đó là điều được dự đoán từ trước. Trong kỳ thi này, tôi được gặp và làm quen với rất nhiều các bạn giỏi, nhiều trong số đó học cùng lớp đại học với tôi sau này.
 
 Sau khi thi vòng hai, tôi khá rảnh rang vì không phải thi Tốt nghiệp (tôi nhơ là năm đó thi tốt nghiệp rất rất khó). Tôi cũng không phải thi đại học vì có giải Ba từ năm lớp 11, trước khi quy định có giải ba vẫn phải thi đại học. Tôi cũng được vào thẳng lớp KSTN của Bách Khoa nên chẳng lo nghĩ gì về thi đại học nữa. Và kéo theo đó là thời gian xả hơi sau 3 năm vất vả học tập. Tôi đi chơi cả mùa hè trong khi các bạn tập trung ôn thi. Và việc không _luyện tập_ thường xuyên mang lại nhiều hậu quả sau này.
 
