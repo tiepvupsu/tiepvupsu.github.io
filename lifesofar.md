@@ -8,7 +8,7 @@ sc_security: 2a8ad2c1
 
 Gần đây có một bạn độc giả tự nhận mình là _loyal reader_ của blog, hỏi tôi về cách tôi học Đại Số, Giải Tích, và Tối Ưu. Tôi không thực sự có thể trả lời câu hỏi này trong một vài câu trao đổi qua lại. Một phần vì tôi chưa tự tóm tắt lại 'phương pháp' của tôi, một phần vì đó là cả một câu chuyện dài, bắt đầu từ gần 20 năm trước, hoặc hơn.
 
-Tôi viết note này không hẳn là để trả lời câu hỏi trên, mà chủ yếu là để chỉa sẻ với các bạn câu chuyện đi học của tôi. Trong quá trình hồi tưởng, tôi có thể sẽ xen thêm nhiều cảm xúc cá nhân. Và tôi không thể không nhắc đến những người bạn tuổi thơ đã ảnh hưởng rất nhiều đến con người tôi bây giờ.
+Tôi viết note này không hẳn là để trả lời câu hỏi trên, mà chủ yếu là để chia sẻ với các bạn câu chuyện đi học của tôi. Trong quá trình hồi tưởng, tôi có thể sẽ xen thêm nhiều cảm xúc cá nhân. Và tôi không thể không nhắc đến những người bạn tuổi thơ đã ảnh hưởng rất nhiều đến con người tôi bây giờ.
 
 Nhìn chung, cuộc đời đi học của tôi khá suôn sẻ và chủ yếu là niềm vui. Hoặc là vì tôi luôn nhìn đời bằng con mắt lạc quan.
 
