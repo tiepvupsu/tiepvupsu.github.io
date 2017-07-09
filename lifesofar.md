@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Con đường học tập của tôi
+title: Con đường học Toán của tôi
 permalink: /lifesofar/
 sc_project: 11391116
 sc_security: 2a8ad2c1
