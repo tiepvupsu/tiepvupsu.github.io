@@ -112,9 +112,9 @@ Tôi và Thịnh vẫn thường xuyên liên lạc mặc dù Thịnh học ở 
 
 Hè năm 2005, tôi xin bố lên Hà Nội mua sách Toán nâng cao. Tôi vẫn nhớ lần đầu tiên tiêu nhiều tiến thế để mua sách. Bố cho tôi khá nhiều tiền. Tôi tự đi Hà Nội lên nhà cậu. Cậu đưa tôi đi Nhà sách Giảng Võ và Nguyễn Thái Học. Bao nhiêu là sách hay! Tôi mua sách hết 327k, thấy hơi tiếc tiền nhưng nhiều sách hay thế này chắc bố không mắng.
 
-Năm 2006, học lớp 11, tôi và 4 bạn khác trong lớp được chọn vào đội tuyển thi học sinh giỏi quốc gia của tỉnh Thái Bình. Tôi được giải ba, hai bạn nữ trong lớp được giải Nhì. Điểm thi của tôi vẫn luôn kém các bạn nữ.
+Năm 2006, học lớp 11, tôi và 4 bạn khác trong lớp được chọn vào đội tuyển thi học sinh giỏi quốc gia của tỉnh Thái Bình. Tôi được giải Ba, hai bạn nữ trong lớp được giải Nhì. Điểm thi của tôi vẫn luôn kém các bạn nữ.
 
-Năm lớp 12, tôi vẫn trong đội tuyển toán của Tỉnh. Năm này là năm Việt Nam tổ chức thi International Mathematical Olympiad (IMO). Tôi vẫn đón báo Toán học tuổi trẻ ngày 15 hàng tháng và thi thoảng nộp bài lên báo. Có những tháng tới tận 18, 19 mới có báo về tới Bưu điện Thái Bình, và chiều nào tôi cũng đạp xe ra sạp báo đón mua. Năm đó báo có chương trình "Chào IMO", tôi cũng nộp một số bài. Có nhớ mãi một lần được báo nêu tên, là một trong bốn học sinh cả nước giải được một bài tổ hợp và lời giải được lấy làm mẫu. Vinh dự lắm.
+Năm lớp 12, tôi vẫn trong đội tuyển toán của tỉnh. Năm này là năm Việt Nam tổ chức thi International Mathematical Olympiad (IMO). Tôi vẫn đón báo Toán học tuổi trẻ ngày 15 hàng tháng và thi thoảng nộp bài lên báo. Có những tháng tới tận 18, 19 mới có báo về tới Bưu điện Thái Bình, và chiều nào tôi cũng đạp xe ra sạp báo đón mua. Năm đó báo có chương trình "Chào IMO", tôi cũng nộp một số bài. Có nhớ mãi một lần được báo nêu tên, là một trong bốn học sinh cả nước giải được một bài tổ hợp và lời giải được lấy làm mẫu. Vinh dự lắm.
 
 _Bài toán đó nằm trong tập tài liệu Thịnh mang về cho tôi, đã được dạy ở Sư Phạm._
 
@@ -139,7 +139,7 @@ Năm thứ nhất tôi biết tin có kỳ thi Olympic toán sinh viên toàn qu
 
 Tôi vẫn nhớ kỳ thi năm đó. Có 5 bài, tôi đánh vật với từng bài. Tới 2/3 thời gian thì thấy Thịnh, lúc đó ở đội của Sư Phạm Hà Nội, cười toe toét ở bên ngoài cửa sau khi xin ra sớm. Thật là ghen tị với bạn.
 
-Tôi rất buồn sau khi thi xong, lại nghe tin trước lúc biết kết quả rằng BKHN có 3 giải Nhất, 1 Nhì, 1 Ba. Chắc mình được giải Ba rồi, buồn quá. Thế mà tôi lại được giải Nhất, có lẽ do nhầm lẫn gì đó. Thịnh cũng được giải Nhất năm đó.
+Tôi rất buồn sau khi thi xong, lại nghe tin trước lúc biết kết quả rằng BKHN có 3 giải Nhất, 1 Nhì, 1 Ba. Chắc mình được giải Ba rồi, buồn quá. Thế mà tôi lại được giải Nhất, có lẽ do nhầm lẫn gì đó. Thịnh cũng được giải Nhất năm đó, như một điều hiển nhiên. 
 
 Năm thứ hai. Các bạn đã đi du học rất nhiều. Tôi vẫn ở lại với Giải tích II B+, Giải tích III B+, Phương pháp tính B+, Xác suất thống kê B+. Không môn toán nào tôi được A! Tôi lại tham gia đội tuyển Đại số của BKHN đi thi ở Đồng Hới. Tôi nhớ như in tôi làm xong bài từ rất sớm. Sau đó làm lại sạch đẹp không dập xoá tí nào. Tự tin giải Nhất, được giải Nhì, buồn!
 
