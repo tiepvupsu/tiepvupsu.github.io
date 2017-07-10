@@ -159,6 +159,8 @@ Càng học, tôi càng thấy mình nhỏ bé. Nhưng những điều đó khô
 
 Như đã từng đề cập, tôi muốn ôn tập lại kiến thức Machine Learning, một lĩnh vực cần khá nhiều toán, nên tôi bắt đầu viết blog này từ đầu năm nay. Tôi được ôn lại toán rất nhiều, và hạnh phúc với những gì mình đang làm cho tới thời điểm này.
 
+_Có thể các bạn thấy hụt hẫng vì tôi kết thúc ở đây, nhưng tôi xin phép được dừng lại. Có thể có nhiều câu chuyện thú vị khác nữa, tôi sẽ kể lại vào dịp khác, một dịp mà tôi có thời gian và cảm hứng. Thời đại học, tôi cũng có những kỷ niệm rất đẹp, những thầy cô tận tuỵ và những người bạn rất chân thành, nhưng những điều đó ảnh hưởng tới con người tôi hơn là con đường học Toán của tôi. Cảm xúc cũng không phải tự nhiên tuôn ra được, và không phải chuyện gì cũng đem ra kể được._
+
 ### Kết luận
 
 _Cứ khoảng mỗi 5 năm, tôi lại xa nhà thêm một bậc. Từ làng, xã, thị trấn, thị xã, tới thủ đô. Và bây giờ tôi đang ở Mỹ._
