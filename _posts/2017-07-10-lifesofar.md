@@ -145,7 +145,7 @@ Năm thứ hai. Các bạn đã đi du học rất nhiều. Tôi vẫn ở lại
 
 Năm thứ ba, tôi một lần nữa vào đội Đại số. Kỳ thi năm đó ở Huế, tôi đi chơi là chính. Các thầy trong khoa toán nhìn tôi ngao ngán bảo sang năm nghỉ để nhường cho các em. Tôi lại được giải Nhất một lần nữa.
 
-Sau năm thứ ba, tôi không học sâu Toán nữa vì các môn chuyên ngành yêu cầu những kiến thức khác nữa. Tôi có tham gia một lab về phần cứng trong Viện ĐTVT. Tôi cố gắng rất nhiều nhưng không bao giờ thấy lại đam mê như trước nữa. Phần cứng và tôi không có duyên với nhau. Tôi làm cháy khá nhiều mạch, cũng vì cái tính _khó từ bỏ_ của tôi.
+Sau năm thứ ba, tôi không học sâu Toán nữa vì các môn chuyên ngành yêu cầu những kiến thức khác nữa. Tôi có tham gia một lab về phần cứng trong Viện Điện Tử Viễn Thông. Tôi cố gắng rất nhiều nhưng không bao giờ thấy lại đam mê như trước nữa. Phần cứng và tôi không có duyên với nhau. Tôi làm cháy khá nhiều mạch, cũng vì cái tính _khó từ bỏ_ của tôi.
 
 Năm cuối đại học, tôi được thầy hướng dẫn khuyến khích làm hồ sơ đi Mỹ học cao học. Tôi không tự tin với tiếng Anh của mình lắm. Cũng chỉ làm theo phong trào. May mắn thay tôi được thầy hiện giờ ở Penn State nhận vào học, bắt đầu từ kỳ Fall 2013. Cảm ơn những giải Nhât môn Đại số của tôi.
 
