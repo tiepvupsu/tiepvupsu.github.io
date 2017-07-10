@@ -147,7 +147,7 @@ Năm thứ ba, tôi một lần nữa vào đội Đại số. Kỳ thi năm đ�
 
 Sau năm thứ ba, tôi không học sâu Toán nữa vì các môn chuyên ngành yêu cầu những kiến thức khác nữa. Tôi có tham gia một lab về phần cứng trong Viện Điện Tử Viễn Thông. Tôi cố gắng rất nhiều nhưng không bao giờ thấy lại đam mê như trước nữa. Phần cứng và tôi không có duyên với nhau. Tôi làm cháy khá nhiều mạch, cũng vì cái tính _khó từ bỏ_ của tôi.
 
-Năm cuối đại học, tôi được thầy hướng dẫn khuyến khích làm hồ sơ đi Mỹ học cao học. Tôi không tự tin với tiếng Anh của mình lắm. Cũng chỉ làm theo phong trào. May mắn thay, tôi được thầy hiện giờ ở Penn State nhận vào học, bắt đầu từ kỳ Fall 2013. Cảm ơn những giải Nhât môn Đại số của tôi.
+Năm cuối đại học, tôi được thầy hướng dẫn khuyến khích làm hồ sơ đi Mỹ học cao học. Tôi không tự tin với tiếng Anh của mình lắm. Cũng chỉ làm theo phong trào. May mắn thay, tôi được thầy hiện giờ ở Penn State nhận vào học, bắt đầu từ kỳ Fall 2013.
 
 Thịnh hiện giờ đang làm nghiên cứu sinh ngành toán ở Singapore.
 
