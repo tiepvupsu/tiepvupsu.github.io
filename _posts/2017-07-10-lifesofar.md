@@ -53,7 +53,7 @@ Và tôi bắt đầu ở xa nhà từ đó, lúc mới 9 tuổi. Tôi ở lại
 
 Tôi vẫn nhớ như in cô Diện dạy Toán tôi ngày lớp 4 đó. Ngày đó cô 27 tuổi, kém tôi bây giờ 1 tuổi. Bài học đầu tiên là "Cấu tạo số". Bài tập mẫu đầu tiên là "Tìm một số có hai chữ số sao cho khi thêm chữ số 1 vào trước thì được một số mới gấp 5 lần số ban đầu.". Thật là kỳ diệu, một thế giới toán học sáng loà mở ra trước mắt tôi. Một bài học khác nữa tôi nhớ là "Có bao nhiêu số có 2 chữ số khác nhau được tạo bởi các chữ số 1, 2, 3.". Tôi cực kỳ sung sướng vì thấy những lời giải thật đẹp mà cô Diện dạy chúng tôi. Cô Diện cũng quý tôi nhất lớp, còn tổ chức sinh nhật riêng cho tôi ở lớp, tặng tôi 20 quyển vở. Các bạn trong lớp cũng tặng cho tôi rất nhiều quà. Cô là cô giáo dạy Toán mà tôi nhớ mãi suốt cuộc đời này, không phải là đầu tiên nhưng là người thực sự đưa tôi vào con đường học Toán dài tới tận bây giờ. Vài năm sau đó, cô chuyển ra Hải Phòng và tôi không thể nào liên lạc lại với cô được nữa.
 
-_Bạn nào ở Hải Phòng và biết cô Diện người Thái Bình, năm nay khoảng 46 tuổi, từng dạy tại trường tiểu học thị trấn Diêm Điền, Thái Thuỵ, Thái Bình, thì cho tôi xin contact. Tôi thực sự biết ơn._
+_Sau khi viết bài này, tôi đã tìm được cô Diện. Cô cũng là giáo viên dạy Toán của một bạn đang theo dõi blog._
 
 Ở môn Tiếng Việt, cô Lan Anh dạy lớp tôi rất hay. Tôi vẫn nhớ là thi thoảng cô hỏi lớp xem bạn nào thuộc bảng chữ cái. Tôi thường là người duy nhất giơ tay và kiếm được kha khá điểm 10.
 
