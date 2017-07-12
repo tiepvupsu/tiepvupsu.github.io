@@ -9,7 +9,8 @@
 html, body { height: 100%; }
 
 body {
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  /*font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;*/
+  font-family: "Times New Roman", Times, serif;
   font-size: 16px;
   text-align: justify;
   line-height: 1.5;
@@ -18,7 +19,8 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 { 
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  /*font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;*/
+  font-family: "Times New Roman", Times, serif;
   font-size: 100%; font-weight: 500; 
   text-align: left;
 }
