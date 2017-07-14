@@ -36,7 +36,7 @@ Bạn cũng có thể Paypal qua email vuhuutiep@gmail.com hoặc click trực t
 <input type="hidden" name="no_note" value="0">
 <input type="hidden" name="currency_code" value="USD">
 <input type="hidden" name="bn" value="PP-DonationsBF:Buymeacoffee.png:NonHostedGuest">
-<p style="text-align:center;"><input type="image" src="/images/Buymeacoffee.png" border="0" style="padding-bottom: -9mm;" width = "25%" name="submit" alt="PayPal - The safer, easier way to pay online!"></p>
+<p style="text-align:center;"><input type="image" src="/images/Buymeacoffee_blue.png" border="0" style="padding-bottom: -9mm;" width = "25%" name="submit" alt="PayPal - The safer, easier way to pay online!"></p>
 </form> 
 </div>
 
