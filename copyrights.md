@@ -10,7 +10,7 @@ Tôi rất mong muốn kiến thức tôi viết trong blog này đến được
 
 Cụ thể hơn:
 
-* Bạn có thể đăng lại bài viết hoặc một phần của bài viết. Khi bạn trích dẫn làm ơn ghi rõ nguồn, bao gồm liên kết (link) đến trang web này và ghi rõ tên tác giả Tiệp Vũ.
+* Bạn có thể đăng lại bài viết hoặc một phần của bài viết. Khi bạn trích dẫn vui lòng ghi rõ nguồn, bao gồm liên kết (link) đến trang web này và ghi rõ tên tác giả Tiệp Vũ.
 
 * Các bài đăng lại phải là phi lợi nhuận. Nếu muốn đăng vì lợi nhuận xin hỏi tác giả trước.
 
