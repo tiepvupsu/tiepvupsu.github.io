@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1500400480 "new_logo_short6.tex" "new_logo_short6.pdf" "new_logo_short6" 1500400481
-  "/dev/null" 1500400481 0 d41d8cd98f00b204e9800998ecf8427e ""
+["pdflatex"] 1500401744 "new_logo_short6.tex" "new_logo_short6.pdf" "new_logo_short6" 1500401744
+  "/dev/null" 1500401744 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/usr/local/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmss10.tfm" 1136768653 1316 b636689f1933f24d1294acdf6041daaa ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm" 1136768653 1272 e2d13f0df30bf3ad990bb9d028e37f34 ""
@@ -100,9 +100,9 @@
   "/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1489522183 1888048 f2c5faed5981a516f406b2ccc20bff71 ""
   "/usr/local/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt" 1463979169 3873397 413fbfbbedb8e719ddc392043a7add02 ""
   "/usr/local/texlive/2016/texmf.cnf" 1463979140 577 2938757e76f31531e65cc647e3507693 ""
-  "new_logo_short6.aux" 1500400481 8 a94a2480d3289e625eea47cd1b285758 ""
-  "new_logo_short6.tex" 1500400480 3265 f080a59d14f8464f8244e8d58f330e64 ""
+  "new_logo_short6.aux" 1500401744 8 a94a2480d3289e625eea47cd1b285758 ""
+  "new_logo_short6.tex" 1500401744 3404 7a894849d2e3f9c594451319fb5147b2 ""
   (generated)
-  "new_logo_short6.log"
   "new_logo_short6.aux"
   "new_logo_short6.pdf"
+  "new_logo_short6.log"
