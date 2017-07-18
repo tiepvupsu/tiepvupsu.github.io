@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1500389205 "new_logo2_rau.tex" "new_logo2_rau.pdf" "new_logo2_rau" 1500389206
-  "/dev/null" 1500389206 0 d41d8cd98f00b204e9800998ecf8427e ""
+["pdflatex"] 1500392376 "new_logo_short2.tex" "new_logo_short2.pdf" "new_logo_short2" 1500392377
+  "/dev/null" 1500392377 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/usr/local/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmss10.tfm" 1136768653 1316 b636689f1933f24d1294acdf6041daaa ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm" 1136768653 1272 e2d13f0df30bf3ad990bb9d028e37f34 ""
@@ -100,9 +100,9 @@
   "/usr/local/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt" 1463979169 3873397 413fbfbbedb8e719ddc392043a7add02 ""
   "/usr/local/texlive/2016/texmf.cnf" 1463979140 577 2938757e76f31531e65cc647e3507693 ""
   "Funda2.png" 1500389054 22867 19d1c4ac46dc39b75d3fa73a17be8e5f ""
-  "new_logo2_rau.aux" 1500389206 8 a94a2480d3289e625eea47cd1b285758 ""
-  "new_logo2_rau.tex" 1500389205 3308 8200633079e58b86c8ab6d528a6c856f ""
+  "new_logo_short2.aux" 1500392376 8 a94a2480d3289e625eea47cd1b285758 ""
+  "new_logo_short2.tex" 1500392375 2945 fd58947050f8c3b436e291d3f4e8ff79 ""
   (generated)
-  "new_logo2_rau.aux"
-  "new_logo2_rau.log"
-  "new_logo2_rau.pdf"
+  "new_logo_short2.log"
+  "new_logo_short2.pdf"
+  "new_logo_short2.aux"

@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  18 JUL 2017 10:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  18 JUL 2017 13:54
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
-**new_logo2_rau.tex
-(./new_logo2_rau.tex
+**new_logo_short6.tex
+(./new_logo_short6.tex
 LaTeX2e <2016/03/31>
 Babel <3.9r> and hyphenation patterns for 83 language(s) loaded.
 (/usr/local/texlive/2016/texmf-dist/tex/latex/standalone/standalone.cls
@@ -353,8 +353,8 @@ File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.1a (rcs-revision 1.2)
-))) (./new_logo2_rau.aux)
-\openout1 = `new_logo2_rau.aux'.
+))) (./new_logo_short6.aux)
+\openout1 = `new_logo_short6.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 4.
 LaTeX Font Info:    ... okay on input line 4.
@@ -413,29 +413,30 @@ G,.JBIG2,.JB2,.eps]
 (/usr/local/texlive/2016/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
-)) <Funda2.png, id=4, 364.36125pt x 126.4725pt>
-File: Funda2.png Graphic file (type png)
-<use Funda2.png>
-Package pdftex.def Info: Funda2.png used on input line 72.
-(pdftex.def)             Requested size: 364.36035pt x 126.47218pt.
+))
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 43.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 43.
 [1
 
-{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./Funda
-2.png>] (./new_logo2_rau.aux) ) 
+{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./new_
+logo_short6.aux) ) 
 Here is how much of TeX's memory you used:
- 11881 strings out of 493014
- 243363 string characters out of 6133351
- 272706 words of memory out of 5000000
- 15215 multiletter control sequences out of 15000+600000
+ 11827 strings out of 493014
+ 242048 string characters out of 6133351
+ 273706 words of memory out of 5000000
+ 15163 multiletter control sequences out of 15000+600000
  4239 words of font info for 16 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,7n,56p,410b,676s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2016/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmssbx10.pfb>
-Output written on new_logo2_rau.pdf (1 page, 19071 bytes).
+ 55i,7n,56p,412b,533s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmss10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmssbx10.pfb>
+Output written on new_logo_short6.pdf (1 page, 17001 bytes).
 PDF statistics:
- 18 PDF objects out of 1000 (max. 8388607)
- 11 compressed objects within 1 object stream
+ 19 PDF objects out of 1000 (max. 8388607)
+ 13 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 18 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
