@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  18 JUL 2017 16:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  18 JUL 2017 16:50
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
-**new_logo8.tex
-(./new_logo8.tex
+**three_logos.tex
+(./three_logos.tex
 LaTeX2e <2016/03/31>
 Babel <3.9r> and hyphenation patterns for 83 language(s) loaded.
 (/usr/local/texlive/2016/texmf-dist/tex/latex/standalone/standalone.cls
@@ -353,21 +353,21 @@ File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.1a (rcs-revision 1.2)
-))) (./new_logo8.aux)
-\openout1 = `new_logo8.aux'.
+))) (./three_logos.aux)
+\openout1 = `three_logos.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
 ABD: EveryShipout initializing macros (/usr/local/texlive/2016/texmf-dist/tex/c
 ontext/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -413,24 +413,40 @@ G,.JBIG2,.JB2,.eps]
 (/usr/local/texlive/2016/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
-)) [1
+)) <new_logo9.pdf, id=4, 1069.82289pt x 785.29585pt>
+File: new_logo9.pdf Graphic file (type pdf)
+<use new_logo9.pdf>
+Package pdftex.def Info: new_logo9.pdf used on input line 14.
+(pdftex.def)             Requested size: 232.57033pt x 170.71652pt.
+<new_logo71.pdf, id=5, 938.94086pt x 782.45021pt>
+File: new_logo71.pdf Graphic file (type pdf)
+<use new_logo71.pdf>
+Package pdftex.def Info: new_logo71.pdf used on input line 15.
+(pdftex.def)             Requested size: 204.8627pt x 170.71652pt.
+<new_logo_short.pdf, id=6, 956.01263pt x 956.01263pt>
+File: new_logo_short.pdf Graphic file (type pdf)
+<use new_logo_short.pdf>
+Package pdftex.def Info: new_logo_short.pdf used on input line 16.
+(pdftex.def)             Requested size: 170.7182pt x 170.71652pt.
+[1
 
-{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./new_
-logo8.aux) ) 
+{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./new_l
+ogo9.pdf> <./new_logo71.pdf> <./new_logo_short.pdf>] (./three_logos.aux) ) 
 Here is how much of TeX's memory you used:
- 11879 strings out of 493014
- 243343 string characters out of 6133351
- 273012 words of memory out of 5000000
- 15216 multiletter control sequences out of 15000+600000
+ 11784 strings out of 493014
+ 241053 string characters out of 6133351
+ 272922 words of memory out of 5000000
+ 15118 multiletter control sequences out of 15000+600000
  3945 words of font info for 15 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,7n,56p,390b,620s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmss10.pfb>
-Output written on new_logo8.pdf (1 page, 10907 bytes).
+ 55i,7n,56p,392b,615s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr
+/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/
+local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb>
+Output written on three_logos.pdf (1 page, 24984 bytes).
 PDF statistics:
- 15 PDF objects out of 1000 (max. 8388607)
- 10 compressed objects within 1 object stream
+ 37 PDF objects out of 1000 (max. 8388607)
+ 28 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 28 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1500403345 "new_logo_short6.tex" "new_logo_short6.pdf" "new_logo_short6" 1500403346
-  "/dev/null" 1500403346 0 d41d8cd98f00b204e9800998ecf8427e ""
+["pdflatex"] 1500403345 "new_logo_short6.tex" "new_logo_short6.pdf" "new_logo_short6" 1500410045
+  "/dev/null" 1500410035 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/usr/local/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmss10.tfm" 1136768653 1316 b636689f1933f24d1294acdf6041daaa ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm" 1136768653 1272 e2d13f0df30bf3ad990bb9d028e37f34 ""
@@ -102,6 +102,6 @@
   "new_logo_short6.aux" 1500403346 8 a94a2480d3289e625eea47cd1b285758 ""
   "new_logo_short6.tex" 1500403345 3406 dfd605d484353f79f09c0464f90a87a3 ""
   (generated)
-  "new_logo_short6.aux"
-  "new_logo_short6.pdf"
   "new_logo_short6.log"
+  "new_logo_short6.pdf"
+  "new_logo_short6.aux"

@@ -1,9 +1,9 @@
 # Fdb version 3
-["pdflatex"] 1500410978 "new_logo_short.tex" "new_logo_short.pdf" "new_logo_short" 1500410979
-  "/dev/null" 1500410979 0 d41d8cd98f00b204e9800998ecf8427e ""
+["pdflatex"] 1500411044 "three_logos.tex" "three_logos.pdf" "three_logos" 1500411044
+  "/dev/null" 1500411044 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/usr/local/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmss10.tfm" 1136768653 1316 b636689f1933f24d1294acdf6041daaa ""
-  "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm" 1136768653 1272 e2d13f0df30bf3ad990bb9d028e37f34 ""
+  "/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb" 1248133631 24457 5cbb7bdf209d5d1ce9892a9b80a307cc ""
   "/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb" 1248133631 28902 2f5c04fd2884d1878057baa5aad22765 ""
   "/usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1461363279 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/local/texlive/2016/texmf-dist/tex/generic/ifxetex/ifxetex.sty" 1284331290 1458 43ab4710dc82f3edeabecd0d099626b2 ""
@@ -99,9 +99,12 @@
   "/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1489522183 1888048 f2c5faed5981a516f406b2ccc20bff71 ""
   "/usr/local/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt" 1463979169 3873397 413fbfbbedb8e719ddc392043a7add02 ""
   "/usr/local/texlive/2016/texmf.cnf" 1463979140 577 2938757e76f31531e65cc647e3507693 ""
-  "new_logo_short.aux" 1500410979 8 a94a2480d3289e625eea47cd1b285758 ""
-  "new_logo_short.tex" 1500410978 3261 ee7b86062d9386e2f56c1c23f554d3b6 ""
+  "new_logo71.pdf" 1500410412 17458 ba33906fbd8f276704eebdb85359129d ""
+  "new_logo9.pdf" 1500411028 10907 64dc4782fab7e83167958c89d77b492c ""
+  "new_logo_short.pdf" 1500410979 10548 2d57abcdd3ec1119c0a1aa23c01ded8d ""
+  "three_logos.aux" 1500411044 8 a94a2480d3289e625eea47cd1b285758 ""
+  "three_logos.tex" 1500410629 710 af57faa9cd38f014770e799af8de5d3c ""
   (generated)
-  "new_logo_short.log"
-  "new_logo_short.aux"
-  "new_logo_short.pdf"
+  "three_logos.pdf"
+  "three_logos.aux"
+  "three_logos.log"

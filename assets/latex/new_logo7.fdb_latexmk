@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1500408896 "new_logo7.tex" "new_logo7.pdf" "new_logo7" 1500408897
-  "/dev/null" 1500408897 0 d41d8cd98f00b204e9800998ecf8427e ""
+["pdflatex"] 1500410400 "new_logo7.tex" "new_logo7.pdf" "new_logo7" 1500410400
+  "/dev/null" 1500410400 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/usr/local/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmss10.tfm" 1136768653 1316 b636689f1933f24d1294acdf6041daaa ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm" 1136768653 1272 e2d13f0df30bf3ad990bb9d028e37f34 ""
@@ -100,9 +100,9 @@
   "/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1489522183 1888048 f2c5faed5981a516f406b2ccc20bff71 ""
   "/usr/local/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt" 1463979169 3873397 413fbfbbedb8e719ddc392043a7add02 ""
   "/usr/local/texlive/2016/texmf.cnf" 1463979140 577 2938757e76f31531e65cc647e3507693 ""
-  "new_logo7.aux" 1500408897 8 a94a2480d3289e625eea47cd1b285758 ""
-  "new_logo7.tex" 1500408896 4188 50b4513a1d403e06f5adb7fabc284bc9 ""
+  "new_logo7.aux" 1500410400 8 a94a2480d3289e625eea47cd1b285758 ""
+  "new_logo7.tex" 1500410400 4186 7361a2783f3ec4d2588b2c37ea3c0a63 ""
   (generated)
+  "new_logo7.log"
   "new_logo7.pdf"
   "new_logo7.aux"
-  "new_logo7.log"
