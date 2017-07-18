@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1500347506 "new_logo2_revert.tex" "new_logo2_revert.pdf" "new_logo2_revert" 1500347506
-  "/dev/null" 1500347506 0 d41d8cd98f00b204e9800998ecf8427e ""
+["pdflatex"] 1500382783 "new_logo2_revert.tex" "new_logo2_revert.pdf" "new_logo2_revert" 1500382784
+  "/dev/null" 1500382784 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/usr/local/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmss10.tfm" 1136768653 1316 b636689f1933f24d1294acdf6041daaa ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm" 1136768653 1272 e2d13f0df30bf3ad990bb9d028e37f34 ""
@@ -99,9 +99,9 @@
   "/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1489522183 1888048 f2c5faed5981a516f406b2ccc20bff71 ""
   "/usr/local/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt" 1463979169 3873397 413fbfbbedb8e719ddc392043a7add02 ""
   "/usr/local/texlive/2016/texmf.cnf" 1463979140 577 2938757e76f31531e65cc647e3507693 ""
-  "new_logo2_revert.aux" 1500347506 8 a94a2480d3289e625eea47cd1b285758 ""
-  "new_logo2_revert.tex" 1500347506 3671 a19450c55dd68c50413d951fc5e6d97c ""
+  "new_logo2_revert.aux" 1500382784 8 a94a2480d3289e625eea47cd1b285758 ""
+  "new_logo2_revert.tex" 1500382783 3672 63c4ef4a7ddf021eeb99e63a0e6c4403 ""
   (generated)
+  "new_logo2_revert.log"
   "new_logo2_revert.pdf"
   "new_logo2_revert.aux"
-  "new_logo2_revert.log"
