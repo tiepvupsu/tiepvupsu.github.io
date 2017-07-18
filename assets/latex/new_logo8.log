@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  18 JUL 2017 14:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  18 JUL 2017 16:19
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
-**new_logo_short6.tex
-(./new_logo_short6.tex
+**new_logo8.tex
+(./new_logo8.tex
 LaTeX2e <2016/03/31>
 Babel <3.9r> and hyphenation patterns for 83 language(s) loaded.
 (/usr/local/texlive/2016/texmf-dist/tex/latex/standalone/standalone.cls
@@ -353,8 +353,8 @@ File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.1a (rcs-revision 1.2)
-))) (./new_logo_short6.aux)
-\openout1 = `new_logo_short6.aux'.
+))) (./new_logo8.aux)
+\openout1 = `new_logo8.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 4.
 LaTeX Font Info:    ... okay on input line 4.
@@ -416,18 +416,18 @@ e
 )) [1
 
 {/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./new_
-logo_short6.aux) ) 
+logo8.aux) ) 
 Here is how much of TeX's memory you used:
- 11826 strings out of 493014
- 242056 string characters out of 6133351
+ 11877 strings out of 493014
+ 243308 string characters out of 6133351
  272706 words of memory out of 5000000
- 15162 multiletter control sequences out of 15000+600000
- 4239 words of font info for 16 fonts, out of 8000000 for 9000
+ 15214 multiletter control sequences out of 15000+600000
+ 3945 words of font info for 15 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,7n,56p,412b,531s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmssbx10.pfb>
-Output written on new_logo_short6.pdf (1 page, 9494 bytes).
+ 55i,7n,56p,406b,626s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmss10.pfb>
+Output written on new_logo8.pdf (1 page, 10866 bytes).
 PDF statistics:
  15 PDF objects out of 1000 (max. 8388607)
  10 compressed objects within 1 object stream

@@ -1,9 +1,10 @@
 # Fdb version 3
-["pdflatex"] 1500403345 "new_logo_short6.tex" "new_logo_short6.pdf" "new_logo_short6" 1500403346
-  "/dev/null" 1500403346 0 d41d8cd98f00b204e9800998ecf8427e ""
+["pdflatex"] 1500408896 "new_logo7.tex" "new_logo7.pdf" "new_logo7" 1500408897
+  "/dev/null" 1500408897 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/usr/local/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmss10.tfm" 1136768653 1316 b636689f1933f24d1294acdf6041daaa ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm" 1136768653 1272 e2d13f0df30bf3ad990bb9d028e37f34 ""
+  "/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb" 1248133631 24457 5cbb7bdf209d5d1ce9892a9b80a307cc ""
   "/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb" 1248133631 28902 2f5c04fd2884d1878057baa5aad22765 ""
   "/usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1461363279 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/local/texlive/2016/texmf-dist/tex/generic/ifxetex/ifxetex.sty" 1284331290 1458 43ab4710dc82f3edeabecd0d099626b2 ""
@@ -99,9 +100,9 @@
   "/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1489522183 1888048 f2c5faed5981a516f406b2ccc20bff71 ""
   "/usr/local/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt" 1463979169 3873397 413fbfbbedb8e719ddc392043a7add02 ""
   "/usr/local/texlive/2016/texmf.cnf" 1463979140 577 2938757e76f31531e65cc647e3507693 ""
-  "new_logo_short6.aux" 1500403346 8 a94a2480d3289e625eea47cd1b285758 ""
-  "new_logo_short6.tex" 1500403345 3406 dfd605d484353f79f09c0464f90a87a3 ""
+  "new_logo7.aux" 1500408897 8 a94a2480d3289e625eea47cd1b285758 ""
+  "new_logo7.tex" 1500408896 4188 50b4513a1d403e06f5adb7fabc284bc9 ""
   (generated)
-  "new_logo_short6.aux"
-  "new_logo_short6.pdf"
-  "new_logo_short6.log"
+  "new_logo7.pdf"
+  "new_logo7.aux"
+  "new_logo7.log"

@@ -2,8 +2,8 @@ PWD /Users/tiepvu/PROJECTS/tiepvupsu.github.io/assets/latex
 INPUT /usr/local/texlive/2016/texmf.cnf
 INPUT /usr/local/texlive/2016/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT new_logo_short6.tex
-OUTPUT new_logo_short6.log
+INPUT new_logo8.tex
+OUTPUT new_logo8.log
 INPUT /usr/local/texlive/2016/texmf-dist/tex/latex/standalone/standalone.cls
 INPUT /usr/local/texlive/2016/texmf-dist/tex/latex/standalone/standalone.cls
 INPUT /usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/ifluatex.sty
@@ -132,9 +132,9 @@ INPUT /usr/local/texlive/2016/texmf-dist/tex/generic/pgf/libraries/pgflibraryplo
 INPUT /usr/local/texlive/2016/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
 INPUT /usr/local/texlive/2016/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
 INPUT /usr/local/texlive/2016/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
-INPUT new_logo_short6.aux
-INPUT new_logo_short6.aux
-OUTPUT new_logo_short6.aux
+INPUT new_logo8.aux
+INPUT new_logo8.aux
+OUTPUT new_logo8.aux
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmss10.tfm
 INPUT /usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -155,8 +155,7 @@ INPUT /usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/etexcmds.sty
 INPUT /usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/etexcmds.sty
 INPUT /usr/local/texlive/2016/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT /usr/local/texlive/2016/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm
-OUTPUT new_logo_short6.pdf
+OUTPUT new_logo8.pdf
 INPUT /usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map
-INPUT new_logo_short6.aux
-INPUT /usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb
+INPUT new_logo8.aux
+INPUT /usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb
