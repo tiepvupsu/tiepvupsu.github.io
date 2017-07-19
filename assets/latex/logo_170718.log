@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  18 JUL 2017 17:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  18 JUL 2017 17:18
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
-**new_logo9.tex
-(./new_logo9.tex
+**logo_170718.tex
+(./logo_170718.tex
 LaTeX2e <2016/03/31>
 Babel <3.9r> and hyphenation patterns for 83 language(s) loaded.
 (/usr/local/texlive/2016/texmf-dist/tex/latex/standalone/standalone.cls
@@ -353,8 +353,8 @@ File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.1a (rcs-revision 1.2)
-))) (./new_logo9.aux)
-\openout1 = `new_logo9.aux'.
+))) (./logo_170718.aux)
+\openout1 = `logo_170718.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
 LaTeX Font Info:    ... okay on input line 12.
@@ -413,24 +413,29 @@ G,.JBIG2,.JB2,.eps]
 (/usr/local/texlive/2016/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
-)) [1
+)) <new_logo9.pdf, id=4, 1069.82289pt x 785.29585pt>
+File: new_logo9.pdf Graphic file (type pdf)
+<use new_logo9.pdf>
+Package pdftex.def Info: new_logo9.pdf used on input line 14.
+(pdftex.def)             Requested size: 232.57033pt x 170.71652pt.
+[1
 
-{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./new_
-logo9.aux) ) 
+ <./new_logo9.pdf{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdf
+tex.map}>] (./logo_170718.aux) ) 
 Here is how much of TeX's memory you used:
- 11879 strings out of 493014
- 243349 string characters out of 6133351
- 272958 words of memory out of 5000000
- 15216 multiletter control sequences out of 15000+600000
+ 11771 strings out of 493014
+ 240788 string characters out of 6133351
+ 271922 words of memory out of 5000000
+ 15107 multiletter control sequences out of 15000+600000
  3945 words of font info for 15 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,7n,56p,390b,620s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmss10.pfb>
-Output written on new_logo9.pdf (1 page, 10823 bytes).
+ 55i,7n,56p,392b,607s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2016/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmss10.pfb>
+Output written on logo_170718.pdf (1 page, 11518 bytes).
 PDF statistics:
- 15 PDF objects out of 1000 (max. 8388607)
- 10 compressed objects within 1 object stream
+ 19 PDF objects out of 1000 (max. 8388607)
+ 13 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 18 words of extra memory for PDF output out of 10000 (max. 10000000)
 
