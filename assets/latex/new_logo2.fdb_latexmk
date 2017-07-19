@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1500382701 "new_logo2.tex" "new_logo2.pdf" "new_logo2" 1500382702
-  "/dev/null" 1500382702 0 d41d8cd98f00b204e9800998ecf8427e ""
+["pdflatex"] 1500382701 "new_logo2.tex" "new_logo2.pdf" "new_logo2" 1500429308
+  "/dev/null" 1500429251 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/usr/local/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmss10.tfm" 1136768653 1316 b636689f1933f24d1294acdf6041daaa ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm" 1136768653 1272 e2d13f0df30bf3ad990bb9d028e37f34 ""
@@ -102,6 +102,6 @@
   "new_logo2.aux" 1500382702 8 a94a2480d3289e625eea47cd1b285758 ""
   "new_logo2.tex" 1500382700 3590 46f6b78eb785f298f7769b084fa079d2 ""
   (generated)
-  "new_logo2.log"
-  "new_logo2.pdf"
   "new_logo2.aux"
+  "new_logo2.pdf"
+  "new_logo2.log"
