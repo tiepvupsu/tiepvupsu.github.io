@@ -324,13 +324,13 @@ Trong thuật toán PLA, ta phải tìm các weights trên các mũi tên sao ch
 Hàm số \\(y = \text{sgn}(z)\\) còn được gọi là _activation function_. Đây chính là dạng đơn giản nhất của Neural Network.
 
 
-Các Neral Networks sau này có thể có nhiều node ở output tạo thành một _output layer_, hoặc có thể có thêm các layer trung gian giữa _input layer_ và _output layer_. Các layer trung gian đó được gọi là _hidden layer_. Khi biểu diễn các Networks lớn, người ta thường giản lược hình bên trái thành hình bên phải. Trong đó node \\(x_0 = 1\\) thường được ẩn đi. Node \\(z\\) cũng được ẩn đi và viết gộp vào trong node \\(y\\). Perceptron thường được vẽ dưới dạng đơn giản như Hình 5 bên phải. 
+Các Neural Networks sau này có thể có nhiều node ở output tạo thành một _output layer_, hoặc có thể có thêm các layer trung gian giữa _input layer_ và _output layer_. Các layer trung gian đó được gọi là _hidden layer_. Khi biểu diễn các Networks lớn, người ta thường giản lược hình bên trái thành hình bên phải. Trong đó node \\(x_0 = 1\\) thường được ẩn đi. Node \\(z\\) cũng được ẩn đi và viết gộp vào trong node \\(y\\). Perceptron thường được vẽ dưới dạng đơn giản như Hình 5 bên phải. 
 
 Để ý rằng nếu ta thay _activation function_ bởi \\(y = z\\), ta sẽ có Neural Network mô tả thuật toán Linear Regression như hình dưới. Với đường thẳng chéo màu xanh thể hiện đồ thị hàm số \\(y = z\\). Các trục tọa độ đã được lược bỏ.
 
 <div class="imgcap">
 <img src ="\assets\pla\lr_nn.png" align = "center" width = "300">
-<div class = "thecap"> Hình 6: Biểu diễn của Linear Regression dưới dang Neural Network.</div>
+<div class = "thecap"> Hình 6: Biểu diễn của Linear Regression dưới dạng Neural Network.</div>
 </div> 
 
 
