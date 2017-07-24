@@ -399,6 +399,8 @@ def convert_labels(y, C = C):
     Y = sparse.coo_matrix((np.ones_like(y), 
         (y, np.arange(len(y)))), shape = (C, len(y))).toarray()
     return Y 
+
+Y = convert_labels(y, C)
 ```
 
 
