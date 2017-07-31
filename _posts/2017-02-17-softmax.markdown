@@ -341,7 +341,7 @@ Thực ra:
 Khi \\(C = 2\\), Softmax Regression và Logistic Regression là giống nhau. Thật vậy, đầu ra dự đoán của Softmax Regression với \\(C= 2\\) có thể được viết dưới dạng: 
 \\[
 \begin{eqnarray}
-a\_1 &=& \frac{\exp(\mathbf{w}\_1\mathbf{x})} {\exp(\mathbf{w}\_1^T\mathbf{x}) + \exp(\mathbf{w}\_2^T\mathbf{x})} \\\
+a\_1 &=& \frac{\exp(\mathbf{w}\_1^T\mathbf{x})} {\exp(\mathbf{w}\_1^T\mathbf{x}) + \exp(\mathbf{w}\_2^T\mathbf{x})} \\\
 &=& \frac{1}{1 + \exp((\mathbf{w}\_2 - \mathbf{w}\_1)^T\mathbf{x})}
 \end{eqnarray}
 \\]
