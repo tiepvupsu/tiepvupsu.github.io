@@ -6,7 +6,7 @@ sc_project: 11387860
 sc_security: bf94eebb
 ---
 
-Cảm ơn bạn đã ghé thăm blog của tôi. Tôi là Vũ Hữu Tiệp, hiện đang là nghiên cứu sinh ngành Học Máy và Thị Giác Máy Tính (Machine Learning and Computer Vision) tại Đại học bang Pennsylvania (Pennsylvania State University), Hoa Kỳ. Các thông tin khác về tôi có thể được tim thấy ở [website học thuật của tôi](http://www.personal.psu.edu/thv102/).
+Cảm ơn bạn đã ghé thăm blog của tôi. Tôi là Vũ Hữu Tiệp, hiện đang là nghiên cứu sinh ngành Học Máy và Thị Giác Máy Tính (Machine Learning and Computer Vision) tại Đại học bang Pennsylvania (Pennsylvania State University), Hoa Kỳ. Trước khi trở thành nghiên cứu sinh, tôi là sinh viên KSTN-ĐTVT-K52, Đại học Bách Khoa Hà Nội. Các thông tin khác về tôi có thể được tim thấy ở [website học thuật của tôi](http://www.personal.psu.edu/thv102/).
 
 Tôi viết blog này với hai mục đích chính. Một là tổng hợp lại các kiến thức của bản thân về Machine Learning để chuẩn bị cho tương lai sau khi tốt nghiệp. Hai là tôi có mong muốn mang Machine Learning tới càng nhiều bạn đọc Việt Nam càng tốt, vì đây sẽ là một xu hướng 
 được dự đoán là cực kỳ nổi bật trong những năm sắp tới. 
