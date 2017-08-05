@@ -19,6 +19,12 @@ Khi chuẩn bị các bài viết, tôi sẽ giả định rằng bạn đọc c
 
 Một lần nữa, tôi xin chân thành cảm ơn.
 
+Nếu bạn thấy blog có ích, hãy 'Star' repository này trên Github bằng cách click vào button dưới đây:
+
+<!-- Place this tag where you want the button to render. -->
+<a class="github-button" href="https://github.com/tiepvupsu/tiepvupsu.github.io" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star tiepvupsu/tiepvupsu.github.io on GitHub">Star</a>
+
+
 
 <b>Các bạn có thể theo dõi Facebook Page tại:</b> <br>
 <div class="share-page">
@@ -44,3 +50,5 @@ Một lần nữa, tôi xin chân thành cảm ơn.
 </table>
 </div>
 
+<!-- Place this tag in your head or just before your close body tag. -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
