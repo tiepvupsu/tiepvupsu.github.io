@@ -6,7 +6,9 @@ sc_project: 11387860
 sc_security: bf94eebb
 ---
 
-Cảm ơn bạn đã ghé thăm blog của tôi. Tôi là Vũ Hữu Tiệp, hiện đang là nghiên cứu sinh ngành Học Máy và Thị Giác Máy Tính (Machine Learning and Computer Vision) tại Đại học bang Pennsylvania (Pennsylvania State University), Hoa Kỳ. Trước khi trở thành nghiên cứu sinh, tôi là sinh viên KSTN-ĐTVT-K52, Đại học Bách Khoa Hà Nội. Các thông tin khác về tôi có thể được tim thấy ở [website học thuật của tôi](http://www.personal.psu.edu/thv102/).
+Cảm ơn bạn đã ghé thăm blog của tôi. 
+
+Tôi là Vũ Hữu Tiệp, hiện đang là nghiên cứu sinh ngành Học Máy và Thị Giác Máy Tính (Machine Learning and Computer Vision) tại Đại học bang Pennsylvania (Pennsylvania State University), Hoa Kỳ. Trước khi trở thành nghiên cứu sinh, tôi là sinh viên KSTN-ĐTVT-K52, Đại học Bách Khoa Hà Nội. Các thông tin khác về tôi có thể được tim thấy ở [website học thuật của tôi](http://www.personal.psu.edu/thv102/), hoặc [Linkedin](https://www.linkedin.com/in/tiephuuvu/) của tôi. Tôi rất vui nếu bạn có thể giúp tôi 'endorse' một vài 'skills' mà bạn nghĩ rằng tôi có.
 
 Tôi viết blog này với hai mục đích chính. Một là tổng hợp lại các kiến thức của bản thân về Machine Learning để chuẩn bị cho tương lai sau khi tốt nghiệp. Hai là tôi có mong muốn mang Machine Learning tới càng nhiều bạn đọc Việt Nam càng tốt, vì đây sẽ là một xu hướng 
 được dự đoán là cực kỳ nổi bật trong những năm sắp tới. 
@@ -18,13 +20,6 @@ Khi chuẩn bị các bài viết, tôi sẽ giả định rằng bạn đọc c
 **Nếu bạn muốn trích dẫn lại các bài viết trong blog, [vui lòng xem thông tin tại đây](/copyrights/).**
 
 Một lần nữa, tôi xin chân thành cảm ơn.
-
-Nếu bạn thấy blog có ích, hãy 'Star' repository này trên Github bằng cách click vào button dưới đây:
-
-<!-- Place this tag where you want the button to render. -->
-<a class="github-button" href="https://github.com/tiepvupsu/tiepvupsu.github.io" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star tiepvupsu/tiepvupsu.github.io on GitHub">Star</a>
-
-
 
 <b>Các bạn có thể theo dõi Facebook Page tại:</b> <br>
 <div class="share-page">
