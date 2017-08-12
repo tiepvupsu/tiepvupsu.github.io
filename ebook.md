@@ -30,9 +30,9 @@ _Trang này chưa hoàn thành_
 ## 1. Giới thiệu
 Chào các bạn, 
 
-Kể từ những ngày đầu lập blog (29/12/2016), các bạn đã đồng hành cùng tôi trên con đường học tập Machine Learning. Nhờ sự ủng hộ của các bạn, tôi đã viết được trên 30 bài và nhiều Ghi chú ngắn về các vấn đề cơ bản và cốt lõi của Machine Learning. Tôi thực sự rất hạnh phúc về việc chúng ta đã cùng nhau đi xa được đến thế. 
+Kể từ những ngày đầu lập blog (29/12/2016), các bạn đã đồng hành cùng tôi trên con đường học tập và chia sẻ kiến thức Machine Learning. Nhờ sự ủng hộ của các bạn, tôi đã viết được trên 30 bài và nhiều ghi chép nhanh về các vấn đề cơ bản và cốt lõi của Machine Learning. Tôi thực sự rất hạnh phúc về việc chúng ta đã cùng nhau đi xa được đến thế. 
 
-Tôi rất mong muốn tổng hợp những kiến thức đã viết thành một cuốn sách tiếng Việt cơ bản nhất về Machine Learning cho các bạn đọc Việt Nam - thậm chí những bạn chưa bao giờ học và làm Machine Learning. Mong muốn lớn nhất của tôi là giúp cộng đồng được tiếp cận nhanh hơn với lĩnh vực lý thú đang trong thời gian bùng nổ này. Trong quá trình viết blog, tôi cũng đã nhận được rất nhiều yêu cầu tổng hợp blog thành sách mà chưa có dịp bắt tay vào làm được. Ý định tổng hợp thành sách chỉ xuất hiện sau khi tôi viết được khoảng 10 bài và nhận được phản hồi tốt từ độc giả. 
+Tôi rất mong muốn tổng hợp những kiến thức đã viết thành một cuốn sách tiếng Việt cơ bản về Machine Learning cho các bạn đọc Việt Nam - thậm chí những bạn chưa bao giờ học và làm Machine Learning. Mong muốn lớn nhất của tôi là giúp cộng đồng được tiếp cận nhanh hơn với lĩnh vực lý thú đang trong giai đoạn bùng nổ này. Trong quá trình viết blog, tôi cũng đã nhận được rất nhiều yêu cầu tổng hợp blog thành sách mà chưa có dịp bắt tay vào làm được. Ý định tổng hợp thành sách chỉ xuất hiện sau khi tôi viết được khoảng 10 bài và nhận được phản hồi tốt từ độc giả. 
 
 Sau một thời gian suy nghĩ và xin ý kiến đóng góp từ bạn đọc, hôm nay tôi đã quyết định bắt tay vào viết cuốn sách "**Machine Learning cơ bản - I**". 
 
@@ -83,7 +83,7 @@ Các bạn có thể tham khảo thêm giá của các khoá học/cuốn sách 
 ### Bước 1
 * **Nếu bạn chọn thanh toán bằng Paypal:**
 
-Bạn có thể chuyển khoản trực tiếp vào tài khoản email: **vuhuutiep@gmail.com**. Các bạn chú ý **gửi trực tiếp tới email này chứ không qua nút "Buy me a coffee" trên blog**. Tôi phải nộp một phần cho Paypal nếu các bạn thanh toán qua đó. Sau khi thanh toán, *các bạn cần giữa lại Transaction ID để điền form ở Bước 2*. 
+Bạn có thể chuyển khoản trực tiếp vào tài khoản email: **vuhuutiep@gmail.com**. Các bạn chú ý **gửi trực tiếp tới email này chứ không qua nút "Buy me a coffee" trên blog**. Tôi phải nộp một phần cho Paypal nếu các bạn thanh toán qua đó. Sau khi thanh toán, *các bạn cần giữ lại Transaction ID để điền form ở Bước 2*. 
 
 * **Nếu bạn chọn thanh toán qua Vietcombank:**
 
