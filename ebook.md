@@ -63,7 +63,7 @@ Dưới đây là một phần nhỏ về Tối Ưu Lồi được trích ra t�
 
 Giá mỗi cuốn sách sẽ là $20 nếu thanh toán qua Paypal hoặc 475k VND nếu chuyển khoản qua tài khoản Vietcombank. Ngoài ra, nếu bạn đọc là sinh viên và có email của trường đại học - còn hoạt động - thì sẽ được giảm giá khoảng 25%, tức $15 hoặc 350k VND. Tôi sẽ gửi ebook tới các bạn qua email này khi nó được hoàn thành. Vì tôi không có tài khoản ngân hàng ở Việt Nam nên tôi ưu tiên các bạn gửi qua Paypal trực tiếp tới tôi. 
 
-Các bạn có thể tham khảo thêm giá của các khoá học Machine Learning khác (nhiều khoá lên tới nhiều triệu động), cũng như so sánh chất lượng giữa chúng trước khi đưa ra quyết định. 
+Các bạn có thể tham khảo thêm giá của các khoá học/cuốn sách Machine Learning khác (nhiều khoá lên tới nhiều triệu động), cũng như so sánh chất lượng giữa chúng trước khi đưa ra quyết định. 
 
 **_Với các bạn mua ebook, tôi sẽ có chương trình giảm giá ít nhất 30% khi tôi xuất bản sách giấy. Ngoài ra, các bạn cũng sẽ được cấp tài khoản để truy cập vào source code đi kèm._** 
 
