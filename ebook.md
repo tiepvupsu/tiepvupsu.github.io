@@ -116,9 +116,7 @@ Bạn điền thông tin về tên, cách thức bạn chuyển tiền, **Tracsa
 Sau khi điền form, bạn sẽ nhận được email xác nhận **trong vòng 24 giờ** (với Paypal) và **trong vòng 48 giờ** (với Vietcombank). 
 
 
-Khi tôi thực hiện xong ebook này, dự tính trước ngày 31/10/2017, tôi sẽ gửi hướng dẫn lấy ebook vào email mà các bạn đã đăng ký. Tôi sẽ hoàn trả 100% số tiền cho các bạn trước ngày 31/12/2017 trong trường hợp tôi không thể hoàn thành cuốn sách - tất nhiên không ai muốn điều này xảy ra. 
-
-
+Khi tôi thực hiện xong ebook này, dự tính trước ngày 31/10/2017, tôi sẽ gửi hướng dẫn lấy ebook vào email mà các bạn đã đăng ký. Trong trường hợp không thể hoàn thành cuốn sách trước 30/11/2017, tôi sẽ hoàn trả 100% cho các bạn trước ngày 31/12/2017 - tất nhiên không ai muốn điều này xảy ra. 
 
 <a name="-loi-ket"></a>
 
