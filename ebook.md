@@ -109,7 +109,7 @@ Số tài khoản: **0081001280321**
 <a name="buoc--1"></a>
 
 ### Bước 2
-Bạn điền thông tin về tên, cách thức bạn chuyển tiền, **Tracsaction ID (với Paypal)** hoặc **Mã chuyển khoản (với Vietcombank)** và email mà bạn sẽ nhận sách vào Form dưới đây. **Với các bạn là sinh viên, bạn cần sử dụng email của trường đại học để được giảm giá.**
+Bạn điền thông tin về tên, cách thức bạn chuyển tiền, **Tracsaction ID (với Paypal)** hoặc **Mã giao dịch - Ref (với Vietcombank)** và email mà bạn sẽ nhận sách vào Form dưới đây. **Với các bạn là sinh viên, bạn cần sử dụng email của trường đại học để được giảm giá.**
 
 <a name="link-dang-ky-pre-order-ebook-machine-learning-co-ban-i"></a>
 
