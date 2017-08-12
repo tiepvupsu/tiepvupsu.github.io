@@ -43,7 +43,7 @@ Nội dung cuốn sách sẽ bao gồm 29 bài đầu tiên trong blog (khoảng
 
 ## 2. Sự khác nhau giữa sách và blog
 
-Với các bài viết trên blog, tôi chỉ cần sự thống nhất và chặt chẽ trong từng bài. Với sách, sự chặt chẽ cần nằm trong toàn bộ cuốn sách. Vì vậy, nôi dung trong sách không đơn thuần là copy hoàn toàn từ các bài trên blog; thay vào đó, tôi cần sắp xếp, bổ sung, và xâu chuỗi chúng lại thành một tài liệu mang tính chất học thuật nhất, giúp các bạn tiếp cận một cách nhanh nhất tới các thuật ngữ, thành phần cơ bản, và các bước thực hiện giải quyết một bài toán Machine Learning. Ngoài ra, vì là sách nên văn phong cần được chau chuốt hơn, các hình vẽ cũng cần được làm một cách cẩn thận hơn, đặc biệt là việc chuyển các hình động thành những hình tương ứng mang tính minh hoạ cao.
+Với các bài viết trên blog, tôi chỉ cần sự thống nhất và chặt chẽ trong từng bài. Với sách, sự chặt chẽ cần nằm trong toàn bộ cuốn sách. Vì vậy, nôi dung trong sách không đơn thuần là copy hoàn toàn từ các bài trên blog; thay vào đó, tôi cần sắp xếp, bổ sung, và xâu chuỗi chúng lại thành một tài liệu mang tính chất học thuật nhất, giúp các bạn tiếp cận một cách nhanh nhất tới các thuật ngữ, thành phần cơ bản, và các bước thực hiện giải quyết một bài toán Machine Learning. Ngoài ra, vì là sách nên văn phong cần được trau chuốt hơn, các hình vẽ cũng cần được làm một cách cẩn thận hơn, đặc biệt là việc chuyển các hình động thành những hình tương ứng mang tính minh hoạ cao.
 
 
 
