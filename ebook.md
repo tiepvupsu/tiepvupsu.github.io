@@ -17,9 +17,9 @@ _Trang này chưa hoàn thành_
 - [3. Hình thức của cuốn sách](#-hinh-thuc-cua-cuon-sach)
 - [4. Giá mỗi ebook](#-gia-moi-ebook)
 - [5. Các bước đặt sách](#-cac-buoc-dat-sach)
-    - [Bước 1:](#buoc-)
-    - [Bước 2:](#buoc--1)
-    - [Bước 3:](#buoc--2)
+    - [Bước 1](#buoc-)
+    - [Bước 2](#buoc--1)
+    - [Bước 3](#buoc--2)
 - [6. Vấn đề bản quyền](#-van-de-ban-quyen)
 - [7. Lời kết](#-loi-ket)
 
@@ -74,7 +74,7 @@ Các bạn có thể tham khảo thêm giá của các khoá học Machine Learn
 
 <a name="buoc-"></a>
 
-### Bước 1: 
+### Bước 1
 **Nếu bạn chọn thanh toán bằng Paypal:**
 
 Bạn có thể chuyển khoản trực tiếp vào tài khoản email: **vuhuutiep@gmail.com**. Các bạn chú ý **gửi trực tiếp tới email này chứ không qua nút "Buy me a coffee" trên blog**. Tôi phải nộp một phần cho Paypal nếu các bạn thanh toán qua đó. Sau khi thanh toán, *các bạn cần giữa lại Transaction ID để điền form ở Bước 2*. 
@@ -94,12 +94,12 @@ Sau khi chuyển khoản, các bạn cần lưu lại *Mã giao dịch* và chuy
 
 <a name="buoc--1"></a>
 
-### Bước 2:
+### Bước 2
 Bạn điền thông tin về Tên, cách thức bạn chuyển tiền, **Tracsaction ID (với Paypal)** hoặc **Mã chuyển khoản (với Vietcombank)** và email mà bạn sẽ nhận sách vào Form dưới đây. Với các bạn là sinh viên, bạn cần sử dụng email của trường đại học để được giảm giá. 
 
 <a name="buoc--2"></a>
 
-### Bước 3: 
+### Bước 3
 Sau khi điền form, bạn sẽ nhận được email xác nhận **trong vòng 24 giờ**. 
 
 Khi tôi thực hiện xong ebook này, dự tính trước ngày 31/10/2017, tôi sẽ gửi hướng dẫn lấy ebook vào email mà các bạn đã đăng ký. Tôi sẽ hoàn trả 100% số tiền cho các bạn trước ngày 31/12/2017 trong trường hợp tôi không thể hoàn thành cuốn sách - tất nhiên không ai muốn điều này xảy ra. 
