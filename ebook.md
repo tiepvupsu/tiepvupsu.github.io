@@ -15,13 +15,12 @@ _Trang này chưa hoàn thành_
 - [1. Giới thiệu](#-gioi-thieu)
 - [2. Sự khác nhau giữa sách và blog](#-su-khac-nhau-giua-sach-va-blog)
 - [3. Hình thức của cuốn sách](#-hinh-thuc-cua-cuon-sach)
-- [4. Giá mỗi ebook](#-gia-moi-ebook)
-- [5. Các bước đặt sách](#-cac-buoc-dat-sach)
+- [4. Vấn đề bản quyền](#-van-de-ban-quyen)
+- [5. Giá mỗi ebook](#-gia-moi-ebook)
+- [6. Các bước đặt sách](#-cac-buoc-dat-sach)
     - [Bước 1](#buoc-)
     - [Bước 2](#buoc--1)
         - [**Link đăng ký pre-order ebook 'Machine Learning cơ bản - I'**](#link-dang-ky-pre-order-ebook-machine-learning-co-ban---i)
-    - [Bước 3](#buoc--2)
-- [6. Vấn đề bản quyền](#-van-de-ban-quyen)
 - [7. Lời kết](#-loi-ket)
 
 <!-- /MarkdownTOC -->
@@ -58,9 +57,16 @@ Dưới đây là một phần nhỏ về Tối Ưu Lồi được trích ra t�
 
 [Convex optimization - Tối Ưu Lồi](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/latex/book_CVX.pdf)
 
+<a name="-van-de-ban-quyen"></a>
+
+## 4. Vấn đề bản quyền 
+
+Vì vấn đề bản quyền rất khó được xử lý ở Việt Nam, tôi chắc chắn cuốn sách này sẽ được sao lưu và upload lên các trang khác mà không có sự cho phép của tác giả. Để giảm thiểu vấn đề đau đầu này, tôi quyết định nhận **pre-order**, tức **thanh toán trước** trước khi gửi sách tới các bạn. Tôi hy vọng các bạn cũng ủng hộ và tôn trọng vấn đề bản quyền, như là một cách gián tiếp giúp cho cộng đồng có nhiều tác phẩm mang giá trị cao hơn. Tôi tin rằng, nếu vấn đề bản quyền được tôn trọng, sẽ có nhiều tài liệu tiếng Việt chất lượng khác xuất hiện trong tương lai. 
+
+
 <a name="-gia-moi-ebook"></a>
 
-## 4. Giá mỗi ebook 
+## 5. Giá mỗi ebook 
 
 Giá mỗi cuốn sách sẽ là $20 nếu thanh toán qua Paypal hoặc 475k VND nếu chuyển khoản qua tài khoản Vietcombank. Ngoài ra, nếu bạn đọc là sinh viên và có email của trường đại học - còn hoạt động - thì sẽ được giảm giá khoảng 25%, tức $15 hoặc 350k VND. Tôi sẽ gửi ebook tới các bạn qua email này khi nó được hoàn thành. Vì tôi không có tài khoản ngân hàng ở Việt Nam nên tôi ưu tiên các bạn gửi qua Paypal trực tiếp tới tôi. 
 
@@ -70,7 +76,7 @@ Các bạn có thể tham khảo thêm giá của các khoá học/cuốn sách 
 
 <a name="-cac-buoc-dat-sach"></a>
 
-## 5. Các bước đặt sách
+## 6. Các bước đặt sách
 
 <a name="buoc-"></a>
 
@@ -95,25 +101,17 @@ Sau khi chuyển khoản, các bạn cần lưu lại *Mã giao dịch* và chuy
 <a name="buoc--1"></a>
 
 ### Bước 2
-Bạn điền thông tin về Tên, cách thức bạn chuyển tiền, **Tracsaction ID (với Paypal)** hoặc **Mã chuyển khoản (với Vietcombank)** và email mà bạn sẽ nhận sách vào Form dưới đây. **Với các bạn là sinh viên, bạn cần sử dụng email của trường đại học để được giảm giá.**
+Bạn điền thông tin về tên, cách thức bạn chuyển tiền, **Tracsaction ID (với Paypal)** hoặc **Mã chuyển khoản (với Vietcombank)** và email mà bạn sẽ nhận sách vào Form dưới đây. **Với các bạn là sinh viên, bạn cần sử dụng email của trường đại học để được giảm giá.**
 
 <a name="link-dang-ky-pre-order-ebook-machine-learning-co-ban---i"></a>
 
 #### [**Link đăng ký pre-order ebook 'Machine Learning cơ bản - I'**](https://docs.google.com/forms/d/e/1FAIpQLSefMyP_SH2LYMwrqV23AHd06xZxhNLOZ6PLGWSwoulN3XeMMQ/viewform?usp=sf_link)
 
-
-<a name="buoc--2"></a>
-
-### Bước 3
 Sau khi điền form, bạn sẽ nhận được email xác nhận **trong vòng 24 giờ**. 
+
 
 Khi tôi thực hiện xong ebook này, dự tính trước ngày 31/10/2017, tôi sẽ gửi hướng dẫn lấy ebook vào email mà các bạn đã đăng ký. Tôi sẽ hoàn trả 100% số tiền cho các bạn trước ngày 31/12/2017 trong trường hợp tôi không thể hoàn thành cuốn sách - tất nhiên không ai muốn điều này xảy ra. 
 
-<a name="-van-de-ban-quyen"></a>
-
-## 6. Vấn đề bản quyền 
-
-Vì vấn đề bản quyền rất khó được xử lý ở Việt Nam, tôi chắc chắn cuốn sách này sẽ được sao lưu và upload lên các trang khác mà không có sự cho phép của tác giả. Để giảm thiểu vấn đề đau đầu này, tôi quyết định nhận **pre-order**, tức **thanh toán trước** trước khi gửi sách tới các bạn. Tôi hy vọng các bạn cũng ủng hộ và tôn trọng vấn đề bản quyền, như là một cách gián tiếp giúp cho cộng đồng có nhiều tác phẩm mang giá trị cao hơn. Tôi tin rằng, nếu vấn đề bản quyền được tôn trọng, sẽ có nhiều tài liệu tiếng Việt chất lượng khác xuất hiện trong tương lai. 
 
 
 <a name="-loi-ket"></a>
