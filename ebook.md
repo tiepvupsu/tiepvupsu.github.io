@@ -1,12 +1,11 @@
 ---
 layout: post
-title: ebook Machine Learning cơ bản
+title: Dự án viết ebook 'Machine Learning cơ bản I'
 permalink: /ebook/
 sc_project: 11420197
 sc_security: 38b33822
 comments: true
 ---
-_Trang này chưa hoàn thành_
 
 
 **Trong trang này:**
@@ -21,7 +20,7 @@ _Trang này chưa hoàn thành_
 - [6. Các bước đặt sách](#-cac-buoc-dat-sach)
     - [Bước 1](#buoc-)
     - [Bước 2](#buoc--1)
-        - [**Link đăng ký pre-order ebook 'Machine Learning cơ bản - I'**](#link-dang-ky-pre-order-ebook-machine-learning-co-ban---i)
+        - [**Link đăng ký pre-order ebook 'Machine Learning cơ bản I'**](#link-dang-ky-pre-order-ebook-machine-learning-co-ban-i)
 - [7. Lời kết](#-loi-ket)
 
 <!-- /MarkdownTOC -->
@@ -31,26 +30,30 @@ _Trang này chưa hoàn thành_
 ## 1. Giới thiệu
 Chào các bạn, 
 
-Kể từ những ngày đầu lập blog (29/12/2016), các bạn đã đồng hành cùng tôi trên con đường học tập và chia sẻ kiến thức Machine Learning. Nhờ sự ủng hộ của các bạn, tôi đã viết được trên 30 bài và nhiều ghi chép nhanh về các vấn đề cơ bản và cốt lõi của Machine Learning. Tôi thực sự rất hạnh phúc về việc chúng ta đã cùng nhau đi xa được đến thế. 
+Kể từ những ngày đầu lập blog (29/12/2016), các bạn đã đồng hành cùng tôi trên con đường học tập và chia sẻ kiến thức Machine Learning. Nhờ sự ủng hộ của các bạn, tôi đã viết được trên 30 bài và nhiều ghi chép nhanh về các vấn đề cơ bản của Machine Learning. Tôi thực sự rất hạnh phúc về việc chúng ta đã cùng nhau đi xa được đến thế. 
 
-Tôi rất mong muốn tổng hợp những kiến thức đã viết thành một cuốn sách tiếng Việt cơ bản về Machine Learning cho các bạn đọc Việt Nam - thậm chí những bạn chưa bao giờ học và làm Machine Learning. Mong muốn lớn nhất của tôi là giúp cộng đồng được tiếp cận nhanh hơn với lĩnh vực lý thú đang trong giai đoạn bùng nổ này. Trong quá trình viết blog, tôi cũng đã nhận được rất nhiều yêu cầu tổng hợp blog thành sách mà chưa có dịp bắt tay vào làm được. Ý định tổng hợp thành sách chỉ xuất hiện sau khi tôi viết được khoảng 10 bài và nhận được phản hồi tốt từ độc giả. 
+Tôi rất mong muốn tổng hợp những kiến thức đã viết thành một cuốn sách tiếng Việt cơ bản về Machine Learning cho các bạn đọc Việt Nam - thậm chí cả những bạn chưa bao giờ học và làm Machine Learning. Mong muốn lớn nhất của tôi là giúp cộng đồng được tiếp cận nhanh hơn với lĩnh vực lý thú đang trong giai đoạn bùng nổ này. Trong quá trình viết blog, tôi cũng đã nhận được rất nhiều yêu cầu tổng hợp blog thành sách mà chưa có dịp bắt tay vào làm được. Ý định tổng hợp thành sách chỉ xuất hiện sau khi tôi viết được khoảng 10 bài và nhận được phản hồi tốt từ độc giả. 
 
-Sau một thời gian suy nghĩ và xin ý kiến đóng góp từ bạn đọc, hôm nay tôi đã quyết định bắt tay vào viết cuốn sách "**Machine Learning cơ bản - I**". 
+Sau một thời gian suy nghĩ và xin ý kiến đóng góp từ bạn đọc, hôm nay tôi đã quyết định bắt tay vào viết cuốn sách "**Machine Learning cơ bản I**". 
 
-Nội dung cuốn sách sẽ bao gồm 29 bài đầu tiên trong blog (khoảng trên dưới 500 trang) và các quick notes tôi đã viết. **Vì việc viết sách đòi hỏi nhiều thời gian và công sức hơn so với viết một bài blog nên tôi đã quyết định tạm dừng viết blog để tập trung làm sách**. Tôi vẫn sẽ có thể có các notes ngắn và các bài chia sẻ khác trên page, chỉ không thường xuyên ra thêm bài trong blog nữa. 
+Nội dung cuốn sách sẽ bao gồm 29 bài đầu tiên trong blog (khoảng trên dưới 500 trang) và các quick notes tôi đã viết. **Vì việc viết sách đòi hỏi rất nhiều thời gian và công sức hơn so với viết một bài blog nên tôi đã quyết định tạm dừng viết blog để tập trung làm sách**. Tôi vẫn sẽ có thể có các notes ngắn và các bài chia sẻ khác trên page, chỉ không thường xuyên ra thêm bài trong blog nữa. 
 
 
 <a name="-su-khac-nhau-giua-sach-va-blog"></a>
 
 ## 2. Sự khác nhau giữa sách và blog
 
-Với các bài viết trên blog, tôi chỉ cần sự thống nhất và chặt chẽ trong từng bài. Với sách, sự chặt chẽ cần nằm trong toàn bộ cuốn sách. Vì vậy, nôi dung trong sách không đơn thuần là copy hoàn toàn từ các bài trên blog; thay vào đó, tôi cần sắp xếp, bổ sung, và xâu chuỗi chúng lại thành một tài liệu mang tính chất học thuật nhất, giúp các bạn tiếp cận một cách nhanh nhất tới các thuật ngữ, thành phần cơ bản, và các bước thực hiện giải quyết một bài toán Machine Learning. Ngoài ra, vì là sách nên văn phong cần được chau chuốt hơn, các hình vẽ cũng cần được làm một cách cẩn thận hơn, đặc biệt là việc chuyển các hình động thành những hình tương ứng mang tính minh hoạ cao. 
+Với các bài viết trên blog, tôi chỉ cần sự thống nhất và chặt chẽ trong từng bài. Với sách, sự chặt chẽ cần nằm trong toàn bộ cuốn sách. Vì vậy, nôi dung trong sách không đơn thuần là copy hoàn toàn từ các bài trên blog; thay vào đó, tôi cần sắp xếp, bổ sung, và xâu chuỗi chúng lại thành một tài liệu mang tính chất học thuật nhất, giúp các bạn tiếp cận một cách nhanh nhất tới các thuật ngữ, thành phần cơ bản, và các bước thực hiện giải quyết một bài toán Machine Learning. Ngoài ra, vì là sách nên văn phong cần được chau chuốt hơn, các hình vẽ cũng cần được làm một cách cẩn thận hơn, đặc biệt là việc chuyển các hình động thành những hình tương ứng mang tính minh hoạ cao.
+
+
+
+
 
 <a name="-hinh-thuc-cua-cuon-sach"></a>
 
 ## 3. Hình thức của cuốn sách
 
-Cũng là sách, nhưng sách giấy và ebook khác nhau rất nhiều trong quá trình chuẩn bị. Mong muốn cuối cùng của tôi vẫn là sách giấy, nhưng với điều kiện hiện tại, tôi cho rằng ebook là một lựa chọn hợp lý hơn. Thứ nhất, thời gian tới được bạn đọc sẽ nhanh hơn rất nhiều so với sách giấy vì các công đoạn xin giấy phép và in ấn đã được bỏ qua - đặc biệt là việc tôi chưa có kế hoạch về Việt Nam trong thời gian ngắn, ít nhất là hết năm 2017. Thứ hai, ebook có thể dễ dàng đến được với bạn đọc khắp nơi một cách nhanh nhất. Thứ ba, các link liên quan - Machine Learning cập nhật từng ngày với rất nhiều ví dụ, ứng dụng trên web - sẽ được giữ lại trong ebook, bạn đọc có thể click vào các đường dẫn là ngay lập tức tới được các trang liên quan. Thứ tư, việc thực hành code trực tiếp cũng sẽ được thuận lợi hơn khi các bạn có thể dễ dàng copy và paste. Tôi cũng sẽ công bố source code cho cuốn sách. 
+Cũng là sách, nhưng sách giấy và ebook khác nhau rất nhiều trong quá trình chuẩn bị. Mong muốn cuối cùng của tôi vẫn là sách giấy, nhưng với điều kiện hiện tại, tôi cho rằng ebook là một lựa chọn hợp lý hơn. Thứ nhất, thời gian tới được bạn đọc sẽ nhanh hơn rất nhiều so với sách giấy vì các công đoạn xin giấy phép và in ấn đã được bỏ qua - đặc biệt là việc tôi chưa có kế hoạch về Việt Nam trong tương lai gần, ít nhất là hết năm 2017. Thứ hai, ebook có thể dễ dàng đến được với bạn đọc khắp nơi một cách nhanh nhất. Thứ ba, các link liên quan - Machine Learning cập nhật từng ngày với rất nhiều ví dụ, ứng dụng trên web - sẽ được giữ lại trong ebook, bạn đọc có thể click vào các đường dẫn là ngay lập tức tới được các trang liên quan. Thứ tư, việc thực hành code trực tiếp cũng sẽ được thuận lợi hơn khi các bạn có thể dễ dàng copy và paste. Tôi cũng sẽ công bố source code cho cuốn sách. 
 
 Vì đây là một dự án lớn, sẽ lấy của tôi rất nhiều thời gian. Tôi hy vọng nhận được sự ủng hộ từ cộng đồng bằng việc mua sách (ebook) này. **Dự kiến cuốn sách sẽ được hoàn thành trước ngày 31/10/2017.** 
 
@@ -62,7 +65,9 @@ Dưới đây là một phần nhỏ về Tối Ưu Lồi được trích ra t�
 
 ## 4. Vấn đề bản quyền 
 
-Vì vấn đề bản quyền rất khó được xử lý ở Việt Nam, tôi chắc chắn cuốn sách này sẽ được sao lưu và upload lên các trang khác mà không có sự cho phép của tác giả. Để giảm thiểu vấn đề đau đầu này, tôi quyết định nhận **pre-order**, tức **thanh toán trước** trước khi gửi sách tới các bạn. Tôi hy vọng các bạn cũng ủng hộ và tôn trọng vấn đề bản quyền, như là một cách gián tiếp giúp cho cộng đồng có nhiều tác phẩm mang giá trị cao hơn. Tôi tin rằng, nếu vấn đề bản quyền được tôn trọng, sẽ có nhiều tài liệu tiếng Việt chất lượng khác xuất hiện trong tương lai. 
+Vì vấn đề bản quyền rất khó được xử lý ở Việt Nam, tôi chắc chắn cuốn sách này sẽ được sao lưu và upload lên các trang khác mà không có sự cho phép của tác giả. Để giảm thiểu vấn đề đau đầu này, tôi quyết định nhận **pre-order**, tức **thanh toán trước** trước khi gửi sách tới các bạn. 
+
+Tôi hy vọng các bạn cũng ủng hộ và tôn trọng vấn đề bản quyền, như là một cách gián tiếp giúp cho cộng đồng có nhiều tác phẩm mang giá trị cao hơn. Tôi tin rằng, nếu vấn đề bản quyền được tôn trọng, sẽ có nhiều tài liệu tiếng Việt chất lượng khác xuất hiện trong tương lai. 
 
 
 <a name="-gia-moi-ebook"></a>
@@ -104,9 +109,9 @@ Sau khi chuyển khoản, các bạn cần lưu lại *Mã giao dịch* và chuy
 ### Bước 2
 Bạn điền thông tin về tên, cách thức bạn chuyển tiền, **Tracsaction ID (với Paypal)** hoặc **Mã chuyển khoản (với Vietcombank)** và email mà bạn sẽ nhận sách vào Form dưới đây. **Với các bạn là sinh viên, bạn cần sử dụng email của trường đại học để được giảm giá.**
 
-<a name="link-dang-ky-pre-order-ebook-machine-learning-co-ban---i"></a>
+<a name="link-dang-ky-pre-order-ebook-machine-learning-co-ban-i"></a>
 
-#### [**Link đăng ký pre-order ebook 'Machine Learning cơ bản - I'**](https://docs.google.com/forms/d/e/1FAIpQLSefMyP_SH2LYMwrqV23AHd06xZxhNLOZ6PLGWSwoulN3XeMMQ/viewform?usp=sf_link)
+#### [**Link đăng ký pre-order ebook 'Machine Learning cơ bản I'**](https://docs.google.com/forms/d/e/1FAIpQLSefMyP_SH2LYMwrqV23AHd06xZxhNLOZ6PLGWSwoulN3XeMMQ/viewform?usp=sf_link)
 
 Sau khi điền form, bạn sẽ nhận được email xác nhận **trong vòng 24 giờ** (với Paypal) và **trong vòng 48 giờ** (với Vietcombank). 
 
