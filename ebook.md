@@ -2,8 +2,8 @@
 layout: post
 title: ebook Machine Learning cơ bản
 permalink: /ebook/
-sc_project: 
-sc_security: 
+sc_project: 11420197
+sc_security: 38b33822
 comments: true
 ---
 _Trang này chưa hoàn thành_
