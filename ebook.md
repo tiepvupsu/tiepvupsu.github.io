@@ -81,11 +81,11 @@ Các bạn có thể tham khảo thêm giá của các khoá học/cuốn sách 
 <a name="buoc-"></a>
 
 ### Bước 1
-* **Nếu bạn chọn thanh toán bằng Paypal:**
+**Nếu bạn chọn thanh toán bằng Paypal:**
 
 Bạn có thể chuyển khoản trực tiếp vào tài khoản email: **vuhuutiep@gmail.com**. Các bạn chú ý **gửi trực tiếp tới email này chứ không qua nút "Buy me a coffee" trên blog**. Tôi phải nộp một phần cho Paypal nếu các bạn thanh toán qua đó. Sau khi thanh toán, *các bạn cần giữ lại Transaction ID để điền form ở Bước 2*. 
 
-* **Nếu bạn chọn thanh toán qua Vietcombank:**
+**Nếu bạn chọn thanh toán qua Vietcombank:**
 
 Bạn có thể chuyển tới:
 
