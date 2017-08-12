@@ -108,7 +108,7 @@ Bạn điền thông tin về tên, cách thức bạn chuyển tiền, **Tracsa
 
 #### [**Link đăng ký pre-order ebook 'Machine Learning cơ bản - I'**](https://docs.google.com/forms/d/e/1FAIpQLSefMyP_SH2LYMwrqV23AHd06xZxhNLOZ6PLGWSwoulN3XeMMQ/viewform?usp=sf_link)
 
-Sau khi điền form, bạn sẽ nhận được email xác nhận **trong vòng 24 giờ**. 
+Sau khi điền form, bạn sẽ nhận được email xác nhận **trong vòng 24 giờ** (với Paypal) và **trong vòng 48 giờ** (với Vietcombank). 
 
 
 Khi tôi thực hiện xong ebook này, dự tính trước ngày 31/10/2017, tôi sẽ gửi hướng dẫn lấy ebook vào email mà các bạn đã đăng ký. Tôi sẽ hoàn trả 100% số tiền cho các bạn trước ngày 31/12/2017 trong trường hợp tôi không thể hoàn thành cuốn sách - tất nhiên không ai muốn điều này xảy ra. 
