@@ -4,6 +4,7 @@ title: ebook Machine Learning cơ bản
 permalink: /ebook/
 sc_project: 
 sc_security: 
+comments: true
 ---
 _Trang này chưa hoàn thành_
 
