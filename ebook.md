@@ -19,6 +19,7 @@ _Trang này chưa hoàn thành_
 - [5. Các bước đặt sách](#-cac-buoc-dat-sach)
     - [Bước 1](#buoc-)
     - [Bước 2](#buoc--1)
+        - [**Link đăng ký pre-order ebook 'Machine Learning cơ bản - I'**](#link-dang-ky-pre-order-ebook-machine-learning-co-ban---i)
     - [Bước 3](#buoc--2)
 - [6. Vấn đề bản quyền](#-van-de-ban-quyen)
 - [7. Lời kết](#-loi-ket)
@@ -71,7 +72,6 @@ Các bạn có thể tham khảo thêm giá của các khoá học/cuốn sách 
 
 ## 5. Các bước đặt sách
 
-
 <a name="buoc-"></a>
 
 ### Bước 1
@@ -97,7 +97,9 @@ Sau khi chuyển khoản, các bạn cần lưu lại *Mã giao dịch* và chuy
 ### Bước 2
 Bạn điền thông tin về Tên, cách thức bạn chuyển tiền, **Tracsaction ID (với Paypal)** hoặc **Mã chuyển khoản (với Vietcombank)** và email mà bạn sẽ nhận sách vào Form dưới đây. **Với các bạn là sinh viên, bạn cần sử dụng email của trường đại học để được giảm giá.**
 
-[Link pre-order ebook 'Machine Learning cơ bản - I'](https://docs.google.com/forms/d/e/1FAIpQLSefMyP_SH2LYMwrqV23AHd06xZxhNLOZ6PLGWSwoulN3XeMMQ/viewform?usp=sf_link)
+<a name="link-dang-ky-pre-order-ebook-machine-learning-co-ban---i"></a>
+
+#### [**Link đăng ký pre-order ebook 'Machine Learning cơ bản - I'**](https://docs.google.com/forms/d/e/1FAIpQLSefMyP_SH2LYMwrqV23AHd06xZxhNLOZ6PLGWSwoulN3XeMMQ/viewform?usp=sf_link)
 
 
 <a name="buoc--2"></a>
