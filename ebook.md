@@ -121,7 +121,7 @@ Khi tôi thực hiện xong ebook này, dự tính trước ngày 31/10/2017, t�
 <a name="-loi-ket"></a>
 
 ## 7. Lời kết 
-Tôi luôn hy vọng rằng sẽ có nhiều cá nhân/tổ chức thực hiện việc dịch/tổng hợp các tài liệu chất lượng bằng tiếng Anh ra tiếng Việt để giúp kiến thức đến với nhiều người Việt (hoặc biết tiếng Việt) hơn. Tuy vậy, tôi vẫn luôn khuyến khích bạn đọc chủ động tìm đọc các tài liệu tiếng Anh với chất lượng cao hơn và tốc độ cập nhật nhanh hơn. 
+Tôi luôn hy vọng rằng sẽ có nhiều cá nhân/tổ chức thực hiện việc dịch/tổng hợp các tài liệu chất lượng bằng tiếng Anh ra tiếng Việt để giúp kiến thức đến với nhiều người Việt (hoặc biết tiếng Việt) hơn. Tuy vậy, tôi vẫn luôn khuyến khích bạn đọc chủ động tìm đọc các tài liệu gốc tiếng Anh với tốc độ cập nhật nhanh hơn. 
 
 Một lần nữa cảm ơn các bạn đã ủng hộ blog trong suốt hơn 7 tháng qua. 
 
