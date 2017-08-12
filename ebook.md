@@ -130,6 +130,7 @@ Tôi luôn hy vọng rằng sẽ có nhiều cá nhân/tổ chức thực hiện
 Một lần nữa cảm ơn các bạn đã ủng hộ blog trong suốt hơn 7 tháng qua. 
 
 Trân trọng, 
+
 Vũ Hữu Tiệp 
 
 
