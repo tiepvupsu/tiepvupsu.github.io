@@ -91,6 +91,8 @@ Các bạn có thể tham khảo thêm giá của các khoá học/cuốn sách 
 
 Bạn có thể chuyển khoản trực tiếp vào tài khoản email: **vuhuutiep@gmail.com**. Các bạn chú ý **gửi trực tiếp tới email này chứ không qua nút "Buy me a coffee" trên blog**. Tôi phải nộp một phần cho Paypal nếu các bạn thanh toán qua đó. 
 
+Các bạn chú ý chọn 'Send money to friends and family' để hạn chế việc mất phí ở phía người nhận. 
+
 _Sau khi chuyển khoản, các bạn cần lưu lại **Transaction ID** để điền form ở Bước 2._ 
 
 **Nếu bạn chọn thanh toán qua Vietcombank:**
