@@ -34,7 +34,7 @@ Kể từ những ngày đầu lập blog (29/12/2016), các bạn đã đồng 
 
 Tôi rất mong muốn tổng hợp những kiến thức đã viết thành một cuốn sách tiếng Việt cơ bản nhất về Machine Learning cho các bạn đọc Việt Nam - thậm chí những bạn chưa bao giờ học và làm Machine Learning. Mong muốn lớn nhất của tôi là giúp cộng đồng được tiếp cận nhanh hơn với lĩnh vực lý thú đang trong thời gian bùng nổ này. Trong quá trình viết blog, tôi cũng đã nhận được rất nhiều yêu cầu tổng hợp blog thành sách mà chưa có dịp bắt tay vào làm được. Ý định tổng hợp thành sách chỉ xuất hiện sau khi tôi viết được khoảng 10 bài và nhận được phản hồi tốt từ độc giả. 
 
-Sau một thời gian suy nghĩ và xin ý kiến đóng góp từ bạn đọc, hôm nay tôi đã quyết định bắt tay vào viết cuốn sách "**Machine Learning cơ bản - Tập I**". 
+Sau một thời gian suy nghĩ và xin ý kiến đóng góp từ bạn đọc, hôm nay tôi đã quyết định bắt tay vào viết cuốn sách "**Machine Learning cơ bản - I**". 
 
 Nội dung cuốn sách sẽ bao gồm 29 bài đầu tiên trong blog (khoảng trên dưới 500 trang) và các quick notes tôi đã viết. **Vì việc viết sách đòi hỏi nhiều thời gian và công sức hơn so với viết một bài blog nên tôi đã quyết định tạm dừng viết blog để tập trung làm sách**. Tôi vẫn sẽ có thể có các notes ngắn và các bài chia sẻ khác trên page, chỉ không thường xuyên ra thêm bài trong blog nữa. 
 
@@ -95,7 +95,10 @@ Sau khi chuyển khoản, các bạn cần lưu lại *Mã giao dịch* và chuy
 <a name="buoc--1"></a>
 
 ### Bước 2
-Bạn điền thông tin về Tên, cách thức bạn chuyển tiền, **Tracsaction ID (với Paypal)** hoặc **Mã chuyển khoản (với Vietcombank)** và email mà bạn sẽ nhận sách vào Form dưới đây. Với các bạn là sinh viên, bạn cần sử dụng email của trường đại học để được giảm giá. 
+Bạn điền thông tin về Tên, cách thức bạn chuyển tiền, **Tracsaction ID (với Paypal)** hoặc **Mã chuyển khoản (với Vietcombank)** và email mà bạn sẽ nhận sách vào Form dưới đây. **Với các bạn là sinh viên, bạn cần sử dụng email của trường đại học để được giảm giá.**
+
+[Link pre-order ebook 'Machine Learning cơ bản - I'](https://docs.google.com/forms/d/e/1FAIpQLSefMyP_SH2LYMwrqV23AHd06xZxhNLOZ6PLGWSwoulN3XeMMQ/viewform?usp=sf_link)
+
 
 <a name="buoc--2"></a>
 
