@@ -76,6 +76,8 @@ Tôi hy vọng các bạn cũng ủng hộ và tôn trọng vấn đề bản qu
 
 Giá mỗi cuốn sách sẽ là $20 nếu thanh toán qua Paypal hoặc 475k VND nếu chuyển khoản qua tài khoản Vietcombank. Ngoài ra, nếu bạn đọc là sinh viên và có _email còn hoạt động_ theo trường đại học thì sẽ được giảm giá khoảng 25%, tức $15 hoặc 350k VND. Tôi sẽ gửi ebook tới các bạn qua email này khi nó được hoàn thành. Vì tôi không có tài khoản ngân hàng ở Việt Nam nên tôi ưu tiên các bạn gửi qua Paypal trực tiếp tới tôi. 
 
+_Trong trường hợp trường bạn không có email riêng, bạn có thể chụp ảnh sinh viên, upload ảnh đó lên một server nào đó rồi copy đường link vào trong mục 'Một vài lời nhắn gửi :)' ở trong Form được cho trong Bước 2 của mục 6 dưới đây._
+
 Các bạn có thể tham khảo thêm giá của các khoá học/cuốn sách Machine Learning khác (nhiều khoá lên tới nhiều triệu động), cũng như so sánh chất lượng giữa chúng trước khi đưa ra quyết định. 
 
 **_Với các bạn mua ebook, tôi sẽ có chương trình giảm giá ít nhất 30% khi tôi xuất bản sách giấy. Ngoài ra, các bạn cũng sẽ được cấp tài khoản để truy cập vào source code đi kèm._** 
