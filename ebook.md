@@ -100,7 +100,7 @@ _Sau khi chuyển khoản, các bạn cần lưu lại **Transaction ID** để 
 Bạn có thể chuyển tới:
 
 Ngân hàng Vietcombank, chi nhánh Vũng Tàu. 
-(Khi chuyển các bạn vui lòng kèm trong ghi chú/mục đích chuyển từ khóa: **ebook ML**)
+(Khi chuyển các bạn vui lòng kèm trong ghi chú/mục đích chuyển từ khóa: **ebook ML và tên của bạn**)
 
 Chủ tài khoản: **VU HUU LONG**
 
