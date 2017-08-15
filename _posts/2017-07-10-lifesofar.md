@@ -110,7 +110,7 @@ Lớp 10 tỉnh Thái Bình không tổ chức thi học sinh giỏi tỉnh và 
 
 Tôi và Thịnh vẫn thường xuyên liên lạc mặc dù Thịnh học ở Sư Phạm. Nhiều lần về quê, Thịnh dừng lại ở Tp Thái Bình 1 đêm và ở cùng tôi trong ký túc xá. Thịnh thường mang theo rất nhiều tài liệu từ Sư Phạm về cho tôi. Rất nhiều bài toán hình học hay từ thầy Nguyễn Minh Hà và rất nhiều bài tổ hợp khó mới lạ, những thứ mà tôi không được học ở Thái Bình. Tôi và Thịnh thường thức đến 2-3 giờ đêm nói chuyện cùng nhau. Sáng 5 giờ dậy đưa Thịnh ra bến xe về quê. Những tài liệu quý giá Thịnh mang về đã giúp tôi rất nhiều trong việc học môn Toán.
 
-Hè năm 2005, tôi xin bố lên Hà Nội mua sách Toán nâng cao. Tôi vẫn nhớ lần đầu tiên tiêu nhiều tiến thế để mua sách. Bố cho tôi khá nhiều tiền. Tôi tự đi Hà Nội lên nhà cậu. Cậu đưa tôi đi Nhà sách Giảng Võ và Nguyễn Thái Học. Bao nhiêu là sách hay! Tôi mua sách hết 327k, thấy hơi tiếc tiền nhưng nhiều sách hay thế này chắc bố không mắng.
+Hè năm 2005, tôi xin bố lên Hà Nội mua sách Toán nâng cao. Tôi vẫn nhớ lần đầu tiên tiêu nhiều tiền thế để mua sách. Bố cho tôi khá nhiều tiền. Tôi tự đi Hà Nội lên nhà cậu. Cậu đưa tôi đi Nhà sách Giảng Võ và Nguyễn Thái Học. Bao nhiêu là sách hay! Tôi mua sách hết 327k, thấy hơi tiếc tiền nhưng nhiều sách hay thế này chắc bố không mắng.
 
 Năm 2006, học lớp 11, tôi và 4 bạn khác trong lớp được chọn vào đội tuyển thi học sinh giỏi quốc gia của tỉnh Thái Bình. Tôi được giải Ba, hai bạn nữ trong lớp được giải Nhì. Điểm thi của tôi vẫn luôn kém các bạn nữ.
 
