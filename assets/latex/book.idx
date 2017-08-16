@@ -9,3 +9,48 @@
 \indexentry{Linear Regression|hyperpage}{11}
 \indexentry{pseudo inverse|hyperpage}{14}
 \indexentry{tanh function|hyperpage}{79}
+\indexentry{convex|hyperpage}{148}
+\indexentry{constraints|hyperpage}{149}
+\indexentry{feasible sets|hyperpage}{149}
+\indexentry{feasible points|hyperpage}{149}
+\indexentry{infeasible sets|hyperpage}{149}
+\indexentry{convex!sets|hyperpage}{149}
+\indexentry{hyperplane|hyperpage}{151}
+\indexentry{halfspace|hyperpage}{151}
+\indexentry{norm balls|hyperpage}{152}
+\indexentry{ellipsoids|hyperpage}{153}
+\indexentry{Mahalanobis norm|hyperpage}{153}
+\indexentry{convex!combination|hyperpage}{154}
+\indexentry{convex!hull|hyperpage}{155}
+\indexentry{Separating hyperplane theorem|hyperpage}{156}
+\indexentry{convex!functions|hyperpage}{156}
+\indexentry{convex!strictly convex functions|hyperpage}{156}
+\indexentry{affine functions|hyperpage}{159}
+\indexentry{quadratic!forms|hyperpage}{159}
+\indexentry{level sets|hyperpage}{160}
+\indexentry{contours|hyperpage}{160}
+\indexentry{$\alpha$-sublevel sets|hyperpage}{161}
+\indexentry{quasiconvex|hyperpage}{162}
+\indexentry{convex!functions!first-order condition|hyperpage}{162}
+\indexentry{convex!functions!Second-order condition|hyperpage}{163}
+\indexentry{convex!optimization problems|hyperpage}{177}
+\indexentry{CVXOPT|hyperpage}{180}
+\indexentry{Linear Programming|hyperpage}{180}
+\indexentry{Linear Programming!General form|hyperpage}{180}
+\indexentry{Linear Programming!Standard form|hyperpage}{181}
+\indexentry{Quadratic Programming|hyperpage}{183}
+\indexentry{Geometric Programming|hyperpage}{186}
+\indexentry{monomials|hyperpage}{187}
+\indexentry{posynomials|hyperpage}{187}
+\indexentry{Geometric Programming!convex form|hyperpage}{189}
+\indexentry{duality|hyperpage}{191}
+\indexentry{Lagrange/Lagrangian!multiplier method|hyperpage}{192}
+\indexentry{Lagrange/Lagrangian!auxiliary function|hyperpage}{192}
+\indexentry{Lagrange/Lagrangian!dual function|hyperpage}{194}
+\indexentry{Lagrange/Lagrangian!dual functions|hyperpage}{194}
+\indexentry{Lagrange/Lagrangian!dual problems|hyperpage}{197}
+\indexentry{weak duality|hyperpage}{198}
+\indexentry{strong duality|hyperpage}{198}
+\indexentry{Slater's constraint qualification|hyperpage}{198}
+\indexentry{complementary slackness|hyperpage}{199}
+\indexentry{KKT conditions|hyperpage}{200}

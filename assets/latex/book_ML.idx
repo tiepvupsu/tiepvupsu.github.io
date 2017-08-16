@@ -1,0 +1,56 @@
+\indexentry{Supervised Learning|hyperpage}{6}
+\indexentry{Classification problems|hyperpage}{7}
+\indexentry{Regression problems|hyperpage}{7}
+\indexentry{Unsupervised Learning|hyperpage}{8}
+\indexentry{Clustering problems|hyperpage}{8}
+\indexentry{Association problems|hyperpage}{8}
+\indexentry{Semi-Supervised Learning|hyperpage}{9}
+\indexentry{Reinforcement Learning|hyperpage}{9}
+\indexentry{Linear Regression|hyperpage}{13}
+\indexentry{pseudo inverse|hyperpage}{16}
+\indexentry{tanh function|hyperpage}{81}
+\indexentry{convex|hyperpage}{150}
+\indexentry{constraints|hyperpage}{151}
+\indexentry{feasible sets|hyperpage}{151}
+\indexentry{feasible points|hyperpage}{151}
+\indexentry{infeasible sets|hyperpage}{151}
+\indexentry{convex!sets|hyperpage}{151}
+\indexentry{hyperplane|hyperpage}{153}
+\indexentry{halfspace|hyperpage}{154}
+\indexentry{norm balls|hyperpage}{154}
+\indexentry{ellipsoids|hyperpage}{155}
+\indexentry{Mahalanobis norm|hyperpage}{155}
+\indexentry{convex!combination|hyperpage}{157}
+\indexentry{convex!hull|hyperpage}{157}
+\indexentry{Separating hyperplane theorem|hyperpage}{158}
+\indexentry{convex!functions|hyperpage}{158}
+\indexentry{convex!strictly convex functions|hyperpage}{159}
+\indexentry{affine functions|hyperpage}{161}
+\indexentry{quadratic!forms|hyperpage}{161}
+\indexentry{level sets|hyperpage}{162}
+\indexentry{contours|hyperpage}{162}
+\indexentry{$\alpha$-sublevel sets|hyperpage}{164}
+\indexentry{quasiconvex|hyperpage}{166}
+\indexentry{convex!functions!first-order condition|hyperpage}{166}
+\indexentry{convex!functions!Second-order condition|hyperpage}{168}
+\indexentry{convex!optimization problems|hyperpage}{177}
+\indexentry{CVXOPT|hyperpage}{180}
+\indexentry{Linear Programming|hyperpage}{180}
+\indexentry{Linear Programming!General form|hyperpage}{180}
+\indexentry{Linear Programming!Standard form|hyperpage}{181}
+\indexentry{Quadratic Programming|hyperpage}{183}
+\indexentry{Geometric Programming|hyperpage}{186}
+\indexentry{monomials|hyperpage}{186}
+\indexentry{posynomials|hyperpage}{186}
+\indexentry{Geometric Programming!convex form|hyperpage}{188}
+\indexentry{duality|hyperpage}{191}
+\indexentry{Lagrange/Lagrangian!multiplier method|hyperpage}{192}
+\indexentry{Lagrange/Lagrangian!auxiliary function|hyperpage}{192}
+\indexentry{Lagrange/Lagrangian!dual function|hyperpage}{194}
+\indexentry{Lagrange/Lagrangian!dual functions|hyperpage}{194}
+\indexentry{Lagrange/Lagrangian!dual problems|hyperpage}{197}
+\indexentry{weak duality|hyperpage}{198}
+\indexentry{strong duality|hyperpage}{199}
+\indexentry{Slater's constraint qualification|hyperpage}{199}
+\indexentry{complementary slackness|hyperpage}{200}
+\indexentry{KKT conditions|hyperpage}{201}
