@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  4 JUL 2017 23:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  20 AUG 2017 13:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1464,27 +1464,24 @@ Package pdftex.def Info: ../16_convexity/python/hyper_2d.pdf used on input line
 onvexity/hyperbol.png> <../16_convexity/nonconvex_surface.png>] [17 <../16_conv
 exity/python/abs_2d.pdf> <../16_convexity/python/norm_2d.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ../16_convexity/python/norm_
-2d.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-
+pdfTeX warning: pdflatex (file ../16_convexity/python/norm_2d.pdf): PDF inclusi
+on: multiple pdfs with page group included in a single page
 > <../16_convexity/python/max_2d.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ../16_convexity/python/max_2
-d.pdf): PDF inclusion: multiple pdfs with page group included in a single page
+pdfTeX warning: pdflatex (file ../16_convexity/python/max_2d.pdf): PDF inclusio
+n: multiple pdfs with page group included in a single page
 > <../16_convexity/python/linear_2d.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ../16_convexity/python/linea
-r_2d.pdf): PDF inclusion: multiple pdfs with page group included in a single pa
-ge
+pdfTeX warning: pdflatex (file ../16_convexity/python/linear_2d.pdf): PDF inclu
+sion: multiple pdfs with page group included in a single page
 > <../16_convexity/python/NE.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ../16_convexity/python/NE.pd
-f): PDF inclusion: multiple pdfs with page group included in a single page
+pdfTeX warning: pdflatex (file ../16_convexity/python/NE.pdf): PDF inclusion: m
+ultiple pdfs with page group included in a single page
 > <../16_convexity/python/hyper_2d.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ../16_convexity/python/hyper
-_2d.pdf): PDF inclusion: multiple pdfs with page group included in a single pag
-e
+pdfTeX warning: pdflatex (file ../16_convexity/python/hyper_2d.pdf): PDF inclus
+ion: multiple pdfs with page group included in a single page
 >] <../16_convexity/sin_surf2_cropped.png, id=508, 822.4326pt x 502.2765pt>
 File: ../16_convexity/sin_surf2_cropped.png Graphic file (type png)
 
@@ -1640,9 +1637,8 @@ Package pdftex.def Info: ../18_duality/python/dual_func2.pdf used on input line
 (pdftex.def)             Requested size: 214.20567pt x 178.50764pt.
  [49 <../18_duality/python/dual_func.pdf> <../18_duality/python/dual_func2.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ../18_duality/python/dual_fu
-nc2.pdf): PDF inclusion: multiple pdfs with page group included in a single pag
-e
+pdfTeX warning: pdflatex (file ../18_duality/python/dual_func2.pdf): PDF inclus
+ion: multiple pdfs with page group included in a single page
 >] [50] [51] [52] [53] [54] [55]) [56]
 \openout2 = `linearalgebra.aux'.
 
@@ -1723,7 +1719,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 246.
 Here is how much of TeX's memory you used:
  12992 strings out of 493014
  184051 string characters out of 6133351
- 354354 words of memory out of 5000000
+ 354355 words of memory out of 5000000
  15917 multiletter control sequences out of 15000+600000
  39223 words of font info for 82 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
