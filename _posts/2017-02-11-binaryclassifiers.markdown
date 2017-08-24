@@ -70,7 +70,7 @@ Mỗi bức ảnh trong AR Face thu gọn được đặt tên dưới dạng `G
 
 * _Kéo dài_ ảnh xám thu được thành 1 vector hàng có số chiều `165x120`, sau đó sử dụng một _random projection matrix_ để giảm số chiều về `500`. Bạn đọc có thể thay giá trị này bằng các số khác nhỏ hơn `1000`. 
 
-Chúng ta có thể bắt đầu làm việc với Python ngay bây giờ. Tôi sẽ sử dụng hàm [sklearn.linear_model.LogisticRegression](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html) trong thư viện `sklearn` cho các ví dụ trong bài này. Nếu không muốn đọc phần này, bạn có thể lấy [source code ở dây](/assets/LogRegs/ARgender.py). 
+Chúng ta có thể bắt đầu làm việc với Python ngay bây giờ. Tôi sẽ sử dụng hàm [sklearn.linear_model.LogisticRegression](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html) trong thư viện `sklearn` cho các ví dụ trong bài này. Nếu không muốn đọc phần này, bạn có thể lấy [source code ở dây](/assets/LogReg2/ARgender.py). 
 
 **Chú ý:** Hàm [sklearn.linear_model.LogisticRegression](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html) nhận dữ liệu ở dạng vector hàng. 
 
