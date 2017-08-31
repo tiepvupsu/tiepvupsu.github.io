@@ -28,7 +28,7 @@ summary: Các phương pháp đánh giá hiệu năng của một mô hình phâ
 
 <!-- /MarkdownTOC -->
 
-
+_Một bài viết nhanh được thực hiện khi tôi đang bế tắc trong nghiên cứu. Bạn yên tâm, chuyện này xảy ra thường xuyên. Mọi chuyện rồi sẽ ổn thôi._
 
 <a name="-gioi-thieu"></a>
 
@@ -62,7 +62,6 @@ def acc(y_true, y_pred):
 y_true = np.array([0, 0, 0, 0, 1, 1, 1, 2, 2, 2])
 y_pred = np.array([0, 1, 0, 2, 1, 1, 0, 2, 0, 2])
 print('accuracy = ', acc(y_true, y_pred))
-
 ```
 
 ```
@@ -103,7 +102,7 @@ Về cơ bản, confusion matrix thể hiện có bao nhiêu điểm dữ liệu
 
 Có tổng cộng 10 điểm dữ liệu. Chúng ta xét ma trận tạo bởi các giá trị tại vùng 3x3 trung tâm của bảng. 
 
-Ma trận thu được được gọi là _confusion matrix_. Nó là một ma trận vuông với số chiều bằng số lượng lớp dữ liệu. Giá trị tại hàng thứ `i`, cột thứ `j` là số lượng điểm lẽ ra thuộc vào class `i` nhưng lại được dự đoán là thuộc vào class `j`. Như vậy, nhìn vào hàng thứ nhất (`0`), ta có thể thấy được rằng trong số bốn điểm thực sự thuộc lớp `0`, chỉ có hai điểm được phân loại đúng, hai điểm còn lại bị phân loại nhầm vào lớp `1` và lớp `2`. 
+Ma trận thu được được gọi là _confusion matrix_. Nó là một ma trận vuông với số chiều bằng số lượng lớp dữ liệu. Giá trị tại hàng thứ `i`, cột thứ `j` là số lượng điểm **lẽ ra thuộc vào class `i` nhưng lại được dự đoán là thuộc vào class `j`**. Như vậy, nhìn vào hàng thứ nhất (`0`), ta có thể thấy được rằng trong số bốn điểm thực sự thuộc lớp `0`, chỉ có hai điểm được phân loại đúng, hai điểm còn lại bị phân loại nhầm vào lớp `1` và lớp `2`. 
 
 _**Chú ý:** Có một số tài liệu định nghĩa ngược lại, tức giá trị tại **cột** thứ `i`, **hàng** thứ `j` là số lượng điểm lẽ ra thuộc vào class `i` nhưng lại được dự đoán là thuộc vào class `j`. Khi đó ta sẽ được confusion matrix là ma trận chuyển vị của confusion matrix như cách tôi đang làm. Tôi chọn cách này vì đây chính là cách thư viện sklearn sử dụng._
 
