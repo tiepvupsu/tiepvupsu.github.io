@@ -165,7 +165,7 @@ print(cnf_matrix)
      [0 1 2]]
 
 
-Confusion matrix thường được minh hoạ bằng màu sắc để có cái nhìn rõ ràng hơn. Đoạn code dưới đây giúp hiển thị confusion matrix ở cả hai dạng (Nguồn: [Confusion matrix¶](http://scikit-learn.org/stable/auto_examples/model_selection/plot_confusion_matrix.html)): 
+Confusion matrix thường được minh hoạ bằng màu sắc để có cái nhìn rõ ràng hơn. Đoạn code dưới đây giúp hiển thị confusion matrix ở cả hai dạng (Nguồn: [Confusion matrix](http://scikit-learn.org/stable/auto_examples/model_selection/plot_confusion_matrix.html)): 
 
 
 ```python
