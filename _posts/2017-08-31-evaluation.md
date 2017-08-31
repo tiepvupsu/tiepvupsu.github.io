@@ -30,6 +30,7 @@ summary: Các phương pháp đánh giá hiệu năng của một mô hình phâ
 
 _Một bài viết nhanh được thực hiện khi tôi đang bế tắc trong nghiên cứu. Bạn yên tâm, chuyện này xảy ra thường xuyên. Mọi chuyện rồi sẽ ổn thôi._
 
+Bạn có thể download toàn bộ source code dưới dạng Jupyter Notebook [tại đây](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/33_evaluation/python/Evaluation%20methods.ipynb).
 <a name="-gioi-thieu"></a>
 
 ## 1. Giới thiệu 
@@ -37,7 +38,7 @@ Khi xây dựng một mô hình Machine Learning, chúng ta cần một phép đ
 
 Hiệu năng của một mô hình thường được đánh giá dựa trên tập dữ liệu kiểm thử (test data). Cụ thể, giả sử đầu ra của mô hình khi đầu vào là tập kiểm thử được mô tả bởi vector `y_pred` - là vector dự đoán đầu ra với mỗi phần tử là class được dự đoán của một điểm dữ liệu trong tập kiểm thử. Ta cần so sánh giữa vector dự đoán `y_pred` này với vector class _thật_ của dữ liệu, được mô tả bởi vector `y_true`. 
 
-Ví dụ với bài toán có 3 lớp dữ liệu được gán nhãn là `0, 1, 2`. Trong bài toán thực tế, các class có thể có nhãn bất kỳ, không nhất thiết là số, và không nhất thiết bắt đầu từ `0`. Chúng ta hãy tạm giả sử các class được đánh số từ `0` đến `C-1` trong trường hợp có `C` lớp dữ liệu.  Có 10 điểm dữ liệu trong tập kiểm thử với các nhãn thực sự được mô tả bởi `y_true = [0, 0, 0, 0, 1, 1, 1, 2, 2, 2]`. Giả sử bộ phân lớp chúng ta đang cần đánh giá dự đoán nhãn cho các điểm này là `y_pred = [0, 1, 0, 2, 1, 1, 0, 2, 0, 2]`. 
+Ví dụ với bài toán có 3 lớp dữ liệu được gán nhãn là `0, 1, 2`. Trong bài toán thực tế, các class có thể có nhãn bất kỳ, không nhất thiết là số, và không nhất thiết bắt đầu từ `0`. Chúng ta hãy tạm giả sử các class được đánh số từ `0` đến `C-1` trong trường hợp có `C` lớp dữ liệu.  Có 10 điểm dữ liệu trong tập kiểm thử với các nhãn thực sự được mô tả bởi `y_true = [0, 0, 0, 0, 1, 1, 1, 2, 2, 2]`. Giả sử bộ phân lớp chúng ta đang cần đánh giá dự đoán nhãn cho các điểm này là `y_pred = [0, 1, 0, 2, 1, 1, 0, 2, 1, 2]`. 
 
 Có rất nhiều cách đánh giá một mô hình phân lớp. Tuỳ vào những bài toán khác nhau mà chúng ta sử dụng các phương pháp khác nhau. Các phương pháp thường được sử dụng là: accuracy score, confusion matrix, ROC curve, Area Under the Curve, Precision and Recall, F1 score, Top R error, etc. 
 
@@ -60,7 +61,7 @@ def acc(y_true, y_pred):
     return float(correct)/y_true.shape[0]
 
 y_true = np.array([0, 0, 0, 0, 1, 1, 1, 2, 2, 2])
-y_pred = np.array([0, 1, 0, 2, 1, 1, 0, 2, 0, 2])
+y_pred = np.array([0, 1, 0, 2, 1, 1, 0, 2, 1, 2])
 print('accuracy = ', acc(y_true, y_pred))
 ```
 
@@ -95,7 +96,7 @@ Về cơ bản, confusion matrix thể hiện có bao nhiêu điểm dữ liệu
 -----------|-----------|-----------|-----------|---
  True: 1   |     1     |     2     |     0     | 3 
 -----------|-----------|-----------|-----------|---
- True: 2   |     1     |     0     |     2     | 3 
+ True: 2   |     0     |     1     |     2     | 3 
 -----------|-----------|-----------|-----------|---
 
 ```
@@ -127,7 +128,7 @@ print('\nAccuracy:', np.diagonal(cnf_matrix).sum()/cnf_matrix.sum())
     Confusion matrix:
     [[ 2.  1.  1.]
      [ 1.  2.  0.]
-     [ 1.  0.  2.]]
+     [ 0.  1.  2.]]
     
     Accuracy: 0.6
 
@@ -141,12 +142,12 @@ print('\nConfusion matrix (with normalizatrion:)')
 print(normalized_confusion_matrix)
 ```
 
-    
+```
     Confusion matrix (with normalizatrion:)
     [[ 0.5         0.25        0.25      ]
      [ 0.33333333  0.66666667  0.        ]
-     [ 0.33333333  0.          0.66666667]]
-
+     [ 0.          0.33333333  0.66666667]]
+```
 
 Và cách tính [sử dụng thư viện](http://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html):
 
@@ -161,7 +162,7 @@ print(cnf_matrix)
     Confusion matrix:
     [[2 1 1]
      [1 2 0]
-     [1 0 2]]
+     [0 1 2]]
 
 
 Confusion matrix thường được minh hoạ bằng màu sắc để có cái nhìn rõ ràng hơn. Đoạn code dưới đây giúp hiển thị confusion matrix ở cả hai dạng (Nguồn: [Confusion matrix¶](http://scikit-learn.org/stable/auto_examples/model_selection/plot_confusion_matrix.html)): 
@@ -201,7 +202,6 @@ def plot_confusion_matrix(cm, classes,
 
 # Plot non-normalized confusion matrix
 class_names = [0, 1, 2]
-cnf_matrix = cm
 plt.figure()
 plot_confusion_matrix(cnf_matrix, classes=class_names,
                       title='Confusion matrix, without normalization')
