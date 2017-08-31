@@ -420,4 +420,4 @@ Có một thông số nữa dùng để đánh giá mà tôi đã sử dụng �
 ## 5. Tài liệu tham khảo
 [1] [Sklearn: Receiver Operating Characteristic (ROC) ](http://scikit-learn.org/stable/auto_examples/model_selection/plot_roc.html)
 
-[2] [Receiver Operating Characteristic (ROC) with cross validation](http://scikit-learn.org/stable/auto_examples/model_selection/)plot_roc_crossval.html#sphx-glr-auto-examples-model-selection-plot-roc-crossval-py
+[2] [Receiver Operating Characteristic (ROC) with cross validation](http://scikit-learn.org/stable/auto_examples/model_selection/plot_roc_crossval.html#sphx-glr-auto-examples-model-selection-plot-roc-crossval-py)
