@@ -8,8 +8,8 @@ permalink: 2017/08/31/evaluation/
 mathjax: true
 tags: Classification 
 category: Classification
-sc_project: 
-sc_security: 
+sc_project: 11435469
+sc_security: 4f6cab76
 img: /assets/33_evaluation/roc.png
 summary: Các phương pháp đánh giá hiệu năng của một mô hình phân lớp. 
 ---
