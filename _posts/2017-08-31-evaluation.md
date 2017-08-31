@@ -288,7 +288,7 @@ Ngược lại, nếu ta muốn _bỏ sót còn hơn báo nhầm_, tất nhiên 
 
 Như vậy, ứng với mỗi giá trị của threshold, ta sẽ thu được một cặp (FPR, TPR). Biểu diễn các điểm (FPR, TPR) trên đồ thị khi thay đổi threshold từ 0 tới 1 ta sẽ thu được một đường được gọi là _Receiver Operating Characteristic curve_ hay ROC curve. (_Chú ý rằng khoảng giá trị của threshold không nhất thiết từ 0 tới 1 trong các bài toán tổng quát. Khoảng giá trị này cần được đảm bảo có trường hợp TPR/FPR nhận giá trị lớn nhất hay nhỏ nhất mà nó có thể đạt được_).
 
-Dưới đây là một ví dụ với hai lớp dữ liệu. Lớp thứ nhất là lớp _Negative_ có 20 điểm dữ liệu, 30 điểm còn lại thuộc lớp _Positive_. Giả sử mô hình đang xét cho các đầu ra của dữ liệu được lưu ở biến `scores`. 
+Dưới đây là một ví dụ với hai lớp dữ liệu. Lớp thứ nhất là lớp _Negative_ có 20 điểm dữ liệu, 30 điểm còn lại thuộc lớp _Positive_. Giả sử mô hình đang xét cho các đầu ra của dữ liệu (xác suất) được lưu ở biến `scores`. 
 
 
 
