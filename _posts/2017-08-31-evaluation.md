@@ -234,7 +234,7 @@ plt.show()
 <hr>
 
 
-Với các bài toán với nhiều lớp dữ liệu, cách biểu diễn bằng màu này rất hữu ích. Các ô màu đậm thể hiện các giá trị cao. Một mô hình tốt sẽ cho một confusion matrix có các phần tử trên đường chéo chính có giá trị lớn, các phần tử còn lại có giá trị nhỏ. Nói cách khác, khi biểu diễn bằng màu sắc, đường chéo có màu càng đậm so với phần còn lại sẽ càng tốt. Từ hai hình trên ta thấy rằng confusion matrix đã chuẩn hoá mang nhiều thông tin hơn. Ta thấy rằng lớp dữ liệu `0` được phân loại không thực sự tốt (ô ở hàng `0`, cột `0` chưa đủ đậm, thực tế chỉ có 50% điểm trong lớp `0` được phân loại đúng). 
+Với các bài toán với nhiều lớp dữ liệu, cách biểu diễn bằng màu này rất hữu ích. Các ô màu đậm thể hiện các giá trị cao. Một mô hình tốt sẽ cho một confusion matrix có các phần tử trên đường chéo chính có giá trị lớn, các phần tử còn lại có giá trị nhỏ. Nói cách khác, khi biểu diễn bằng màu sắc, đường chéo có màu càng đậm so với phần còn lại sẽ càng tốt. Từ hai hình trên ta thấy rằng confusion matrix đã chuẩn hoá mang nhiều thông tin hơn. Sự khác nhau được thấy ở ô trên cùng bên trái. Lớp dữ liệu `0` được phân loại không thực sự tốt nhưng trong _unnormalized confusion matrix_, nó vẫn có màu đậm như hai ô còn lại trên đường chéo chính. 
 
 
 <a name="-truefalse-positivenegative"></a>
