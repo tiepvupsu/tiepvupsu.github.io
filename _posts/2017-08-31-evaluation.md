@@ -329,7 +329,7 @@ Nhìn chung, các điểm thuộc lớp `1` có `score` cao hơn. Thư viện sk
 
 
 ```python
-from sklearn.metrics import roc_curve
+from sklearn.metrics import roc_curve, auc
 fpr, tpr, thresholds = roc_curve(y_true, scores, pos_label = 1)
 print('Thresholds:')
 print(thresholds)
