@@ -243,7 +243,7 @@ Với các bài toán với nhiều lớp dữ liệu, cách biểu diễn bằn
 <a name="-truefalse-positivenegative-1"></a>
 
 ### 4.1. True/False Positive/Negative 
-Cách đánh giá này thường được áp dụng cho các bài toán phân lớp có hai lớp dữ liệu. Cụ thể hơn, trong hai lớp dữ liệu này có một lớp _nghiêm trọng_ hơn lớp kia và cần được dự đoán chính xác. Ví dụ, trong bài toán xác định có bênh ung thư hay không thì việc không bị _sót_ (miss) quan trọng hơn là việc chẩn đoán nhầm _âm tính_ thành _dương tính_. Trong bài toán xác định có mìn dưới lòng đất hay không thì việc _bỏ sót_ nghiêm trọng hơn việc _báo động nhầm_ rất nhiều. Hay trong bài toán lọc email rác thì việc cho nhầm email quan trọng vào thùng rác nghiêm trọng hơn việc xác định một email rác là email thường. 
+Cách đánh giá này thường được áp dụng cho các bài toán phân lớp có hai lớp dữ liệu. Cụ thể hơn, trong hai lớp dữ liệu này có một lớp _nghiêm trọng_ hơn lớp kia và cần được dự đoán chính xác. Ví dụ, trong bài toán xác định có bệnh ung thư hay không thì việc không bị _sót_ (miss) quan trọng hơn là việc chẩn đoán nhầm _âm tính_ thành _dương tính_. Trong bài toán xác định có mìn dưới lòng đất hay không thì việc _bỏ sót_ nghiêm trọng hơn việc _báo động nhầm_ rất nhiều. Hay trong bài toán lọc email rác thì việc cho nhầm email quan trọng vào thùng rác nghiêm trọng hơn việc xác định một email rác là email thường. 
 
 Trong những bài toán này, người ta thường định nghĩa lớp dữ liệu _quan trọng_ hơn cần được xác định đúng là lớp _Positive_ (P-dương tính), lớp còn lại được gọi là _Negative_ (N-âm tính). Ta định nghĩa _True Positive (TP), False Positive (FP), True Negative (TN), False Negative (FN)_ dựa trên _confusion matrix_ chưa chuẩn hoá như sau: 
 ```
@@ -268,10 +268,10 @@ Người ta thường quan tâm đến TPR, FNR, FPR, TNR (R - Rate) dựa trên
 ------------------|--------------------|--------------------|
 ```
 
-_False Positive Rate_ còn được gọi là _False Alarm Rate_ (tỉ lệ báo động nhầm), _False Negative Rate_ còn được gọi là _Miss Detection Rate_ (tỉ lệ bỏ sót). Trong bài toán dò bom, _thà báo nhầm còn hơn bỏ sót_, tức là ta có thể chấp nhận _False Alarm Rate_ cao để đạt được _Miss Detection Rate_ thấp. 
+_False Positive Rate_ còn được gọi là _False Alarm Rate_ (tỉ lệ báo động nhầm), _False Negative Rate_ còn được gọi là _Miss Detection Rate_ (tỉ lệ bỏ sót). Trong bài toán dò mìn, _thà báo nhầm còn hơn bỏ sót_, tức là ta có thể chấp nhận _False Alarm Rate_ cao để đạt được _Miss Detection Rate_ thấp. 
 
 **Chú ý:**:
-* Việc biết một cột của confusion matrix này(với bài toán có hai lớp dữ liệu) sẽ suy ra được cột còn lại vì tổng các hàng luôn bằng 1.
+* Việc biết một cột của confusion matrix này sẽ suy ra được cột còn lại vì tổng các hàng luôn bằng 1 và chỉ có hai lớp dữ liệu.
 
 * **Với các bài toán có nhiều lớp dữ liệu**, ta có thể xây dựng bảng True/False Positive/Negative cho **mỗi lớp** nếu coi lớp đó là lớp _Positive_, các lớp còn lại gộp chung thành lớp _Negative_, giống như cách làm trong one-vs-rest. Bạn có thể xem thêm ví dụ [tại đây](http://scikit-learn.org/stable/auto_examples/model_selection/plot_roc.html#sphx-glr-auto-examples-model-selection-plot-roc-py). 
 
