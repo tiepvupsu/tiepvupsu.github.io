@@ -80,7 +80,7 @@ _Trong trường hợp trường bạn không có email riêng, bạn có thể 
 
 Các bạn có thể tham khảo thêm giá của các khoá học/cuốn sách Machine Learning khác (nhiều khoá lên tới nhiều triệu động), cũng như so sánh chất lượng giữa chúng trước khi đưa ra quyết định. 
 
-**_Với các bạn mua ebook, tôi sẽ có chương trình giảm giá ít nhất 30% khi tôi xuất bản sách giấy. Ngoài ra, các bạn cũng sẽ được cấp tài khoản để truy cập vào source code đi kèm._** 
+**_Nếu có kế hoạch xuất bản sách giấy, tôi sẽ tặng một bản cho mỗi bạn đã mua ebook và đang ở Việt Nam. Kế hoạch cụ thể hơn và chi phí chuyển phát sẽ được thông báo sau. Ngoài ra, các bạn cũng sẽ được cấp tài khoản để truy cập vào source code đi kèm._** 
 
 <a name="-cac-buoc-dat-sach"></a>
 
