@@ -156,7 +156,7 @@ thì với \\(0 \leq \theta \leq 1\\) bất kỳ:
 \mathbf{a}^T\mathbf{x}_{\theta} = \mathbf{a}^T(\theta \mathbf{x}_1 + (1 - \theta)\mathbf{x}_2)) = \theta b + (1 - \theta) b  = b
 \\]
 
-Một **halfspace** (nửa không gian) trong không gian \\(n\\) chiều là tập hợp các điểm thỏa mãn phương trình:
+Một **halfspace** (nửa không gian) trong không gian \\(n\\) chiều là tập hợp các điểm thỏa mãn bất phương trình:
 \\[
 a_1 x_1 + a_2 x_2 + \dots + a_n x_n = \mathbf{a}^T\mathbf{x} \leq b
 \\]
