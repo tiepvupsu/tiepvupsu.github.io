@@ -333,11 +333,6 @@ Các Neural Networks sau này có thể có nhiều node ở output tạo thành
 <div class = "thecap"> Hình 6: Biểu diễn của Linear Regression dưới dạng Neural Network.</div>
 </div> 
 
-
-
-
-
-
 Mô hình perceptron ở trên khá giống với một node nhỏ của dây thân kinh sinh học như hình sau đây:
 
 <div class="imgcap">

@@ -18,3 +18,5 @@ assets/21_kernelsvm/ksvm.mov
 */*.synctex.gz
 assets/latex/*.tex
 !assets/latex/book*.pdf
+.sass-cache 
+.DS_Store

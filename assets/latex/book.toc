@@ -279,4 +279,85 @@
 \contentsline {section}{\numberline {15.4}C\IeC {\'a}c ph\IeC {\uhorn }\IeC {\ohorn }ng ph\IeC {\'a}p kh\IeC {\'a}c}{146}{section.15.4}
 \contentsline {section}{\numberline {15.5}T\IeC {\'o}m t\IeC {\'\abreve }t n\IeC {\d \ocircumflex }i dung}{147}{section.15.5}
 \contentsline {section}{\numberline {15.6}T\IeC {\`a}i li\IeC {\d \ecircumflex }u tham kh\IeC {\h a}o}{147}{section.15.6}
-\contentsline {chapter}{Index}{149}{chapter*.52}
+\contentsline {chapter}{\numberline {16}Convex sets v\IeC {\`a} convex functions}{148}{chapter.16}
+\contentsline {section}{\numberline {16.1}Gi\IeC {\'\ohorn }i thi\IeC {\d \ecircumflex }u}{148}{section.16.1}
+\contentsline {section}{\numberline {16.2}Convex sets}{150}{section.16.2}
+\contentsline {subsection}{\numberline {16.2.1}\IeC {\DJ }\IeC {\d i}nh ngh\IeC {\~\i }a}{150}{subsection.16.2.1}
+\contentsline {subsection}{\numberline {16.2.2}V\IeC {\'\i } d\IeC {\d u}}{151}{subsection.16.2.2}
+\contentsline {subsubsection}{Hyperplanes v\IeC {\`a} halfspaces}{151}{section*.54}
+\contentsline {subsubsection}{Norm balls}{152}{section*.55}
+\contentsline {subsection}{\numberline {16.2.3}Giao c\IeC {\h u}a c\IeC {\'a}c t\IeC {\d \acircumflex }p l\IeC {\`\ocircumflex }i l\IeC {\`a} m\IeC {\d \ocircumflex }t t\IeC {\d \acircumflex }p l\IeC {\`\ocircumflex }i.}{154}{subsection.16.2.3}
+\contentsline {subsection}{\numberline {16.2.4}Convex combination v\IeC {\`a} Convex hulls}{155}{subsection.16.2.4}
+\contentsline {section}{\numberline {16.3}Convex functions}{156}{section.16.3}
+\contentsline {subsection}{\numberline {16.3.1}\IeC {\DJ }\IeC {\d i}nh ngh\IeC {\~\i }a}{156}{subsection.16.3.1}
+\contentsline {subsection}{\numberline {16.3.2}C\IeC {\'a}c t\IeC {\'\i }nh ch\IeC {\'\acircumflex }t c\IeC {\ohorn } b\IeC {\h a}n}{157}{subsection.16.3.2}
+\contentsline {subsection}{\numberline {16.3.3}V\IeC {\'\i } d\IeC {\d u}}{158}{subsection.16.3.3}
+\contentsline {subsubsection}{C\IeC {\'a}c h\IeC {\`a}m m\IeC {\d \ocircumflex }t bi\IeC {\'\ecircumflex }n}{158}{section*.61}
+\contentsline {subsubsection}{Affine functions}{159}{section*.64}
+\contentsline {subsubsection}{Quadratic forms}{159}{section*.65}
+\contentsline {subsubsection}{Norms}{160}{section*.66}
+\contentsline {subsection}{\numberline {16.3.4}$\alpha -$ sublevel sets}{161}{subsection.16.3.4}
+\contentsline {subsection}{\numberline {16.3.5}Ki\IeC {\h \ecircumflex }m tra t\IeC {\'\i }nh ch\IeC {\'\acircumflex }t l\IeC {\`\ocircumflex }i d\IeC {\d \uhorn }a v\IeC {\`a}o \IeC {\dj }\IeC {\d a}o h\IeC {\`a}m.}{162}{subsection.16.3.5}
+\contentsline {subsubsection}{First-order condition}{162}{section*.71}
+\contentsline {subsubsection}{Second-order condition}{163}{section*.73}
+\contentsline {section}{\numberline {16.4}T\IeC {\'o}m t\IeC {\'\abreve }t}{164}{section.16.4}
+\contentsline {section}{\numberline {16.5}T\IeC {\`a}i li\IeC {\d \ecircumflex }u tham kh\IeC {\h a}o}{165}{section.16.5}
+\contentsline {chapter}{\numberline {17}Convex Optimization Problems}{170}{chapter.17}
+\contentsline {section}{\numberline {17.1}Gi\IeC {\'\ohorn }i thi\IeC {\d \ecircumflex }u}{170}{section.17.1}
+\contentsline {subsection}{\numberline {17.1.1}B\IeC {\`a}i to\IeC {\'a}n nh\IeC {\`a} xu\IeC {\'\acircumflex }t b\IeC {\h a}n}{170}{subsection.17.1.1}
+\contentsline {subsubsection}{B\IeC {\`a}i to\IeC {\'a}n}{170}{section*.74}
+\contentsline {subsubsection}{Ph\IeC {\^a}n t\IeC {\'\i }ch}{170}{section*.75}
+\contentsline {subsection}{\numberline {17.1.2}B\IeC {\`a}i to\IeC {\'a}n canh t\IeC {\'a}c}{172}{subsection.17.1.2}
+\contentsline {subsubsection}{B\IeC {\`a}i to\IeC {\'a}n}{172}{section*.77}
+\contentsline {subsubsection}{Ph\IeC {\^a}n t\IeC {\'\i }ch }{172}{section*.78}
+\contentsline {subsection}{\numberline {17.1.3}B\IeC {\`a}i to\IeC {\'a}n \IeC {\dj }\IeC {\'o}ng th\IeC {\`u}ng}{174}{subsection.17.1.3}
+\contentsline {subsubsection}{B\IeC {\`a}i to\IeC {\'a}n}{174}{section*.80}
+\contentsline {subsubsection}{Ph\IeC {\^a}n t\IeC {\'\i }ch}{174}{section*.81}
+\contentsline {section}{\numberline {17.2}Nh\IeC {\'\abreve }c l\IeC {\d a}i b\IeC {\`a}i to\IeC {\'a}n t\IeC {\'\ocircumflex }i \IeC {\uhorn }u}{175}{section.17.2}
+\contentsline {subsection}{\numberline {17.2.1}C\IeC {\'a}c kh\IeC {\'a}i ni\IeC {\d \ecircumflex }m c\IeC {\ohorn } b\IeC {\h a}n}{175}{subsection.17.2.1}
+\contentsline {subsection}{\numberline {17.2.2}Optimal and locally optimal points}{176}{subsection.17.2.2}
+\contentsline {subsection}{\numberline {17.2.3}M\IeC {\d \ocircumflex }t v\IeC {\`a}i l\IeC {\uhorn }u \IeC {\'y}}{177}{subsection.17.2.3}
+\contentsline {section}{\numberline {17.3}B\IeC {\`a}i to\IeC {\'a}n t\IeC {\'\ocircumflex }i \IeC {\uhorn }u l\IeC {\`\ocircumflex }i}{177}{section.17.3}
+\contentsline {subsection}{\numberline {17.3.1}\IeC {\DJ }\IeC {\d i}nh ngh\IeC {\~\i }a}{177}{subsection.17.3.1}
+\contentsline {subsection}{\numberline {17.3.2}C\IeC {\d \uhorn }c ti\IeC {\h \ecircumflex }u c\IeC {\h u}a b\IeC {\`a}i to\IeC {\'a}n t\IeC {\'\ocircumflex }i \IeC {\uhorn }u l\IeC {\`\ocircumflex }i ch\IeC {\'\i }nh l\IeC {\`a} \IeC {\dj }i\IeC {\h \ecircumflex }m t\IeC {\'\ocircumflex }i \IeC {\uhorn }u.}{178}{subsection.17.3.2}
+\contentsline {subsection}{\numberline {17.3.3}\IeC {\DJ }i\IeC {\`\ecircumflex }u ki\IeC {\d \ecircumflex }n t\IeC {\'\ocircumflex }i \IeC {\uhorn }u cho h\IeC {\`a}m m\IeC {\d u}c ti\IeC {\^e}u kh\IeC {\h a} vi}{179}{subsection.17.3.3}
+\contentsline {subsection}{\numberline {17.3.4}Gi\IeC {\'\ohorn }i thi\IeC {\d \ecircumflex }u th\IeC {\uhorn } vi\IeC {\d \ecircumflex }n CVXOPT}{180}{subsection.17.3.4}
+\contentsline {section}{\numberline {17.4}Linear Programming}{180}{section.17.4}
+\contentsline {subsection}{\numberline {17.4.1}D\IeC {\d a}ng t\IeC {\h \ocircumflex }ng qu\IeC {\'a}t c\IeC {\h u}a LP}{180}{subsection.17.4.1}
+\contentsline {subsection}{\numberline {17.4.2}D\IeC {\d a}ng ti\IeC {\^e}u chu\IeC {\h \acircumflex }n c\IeC {\h u}a LP}{181}{subsection.17.4.2}
+\contentsline {subsection}{\numberline {17.4.3}Minh ho\IeC {\d a} b\IeC {\`\abreve }ng h\IeC {\`\i }nh h\IeC {\d o}c c\IeC {\h u}a b\IeC {\`a}i to\IeC {\'a}n LP}{182}{subsection.17.4.3}
+\contentsline {subsection}{\numberline {17.4.4}Gi\IeC {\h a}i LP b\IeC {\`\abreve }ng CVXOPT}{182}{subsection.17.4.4}
+\contentsline {section}{\numberline {17.5}Quadratic Programming}{184}{section.17.5}
+\contentsline {subsection}{\numberline {17.5.1}\IeC {\DJ }\IeC {\d i}nh ngh\IeC {\~\i }a b\IeC {\`a}i to\IeC {\'a}n Quadratic Programming}{184}{subsection.17.5.1}
+\contentsline {subsection}{\numberline {17.5.2}V\IeC {\'\i } d\IeC {\d u} v\IeC {\`\ecircumflex } QP}{184}{subsection.17.5.2}
+\contentsline {subsection}{\numberline {17.5.3}V\IeC {\'\i } d\IeC {\d u} v\IeC {\`\ecircumflex } gi\IeC {\h a}i QP b\IeC {\`\abreve }ng CVXOPT}{185}{subsection.17.5.3}
+\contentsline {section}{\numberline {17.6}Geometric Programming}{186}{section.17.6}
+\contentsline {subsection}{\numberline {17.6.1}Monomials v\IeC {\`a} posynomials}{187}{subsection.17.6.1}
+\contentsline {subsection}{\numberline {17.6.2}Geometric Programming}{187}{subsection.17.6.2}
+\contentsline {subsection}{\numberline {17.6.3}Bi\IeC {\'\ecircumflex }n \IeC {\dj }\IeC {\h \ocircumflex }i GP v\IeC {\`\ecircumflex } d\IeC {\d a}ng convex}{188}{subsection.17.6.3}
+\contentsline {subsection}{\numberline {17.6.4}Gi\IeC {\h a}i GP b\IeC {\`\abreve }ng CVXOPT}{189}{subsection.17.6.4}
+\contentsline {section}{\numberline {17.7}T\IeC {\'o}m t\IeC {\'\abreve }t}{190}{section.17.7}
+\contentsline {section}{\numberline {17.8}T\IeC {\`a}i li\IeC {\d \ecircumflex }u tham kh\IeC {\h a}o}{190}{section.17.8}
+\contentsline {chapter}{\numberline {18}Duality}{191}{chapter.18}
+\contentsline {section}{\numberline {18.1}Gi\IeC {\'\ohorn }i thi\IeC {\d \ecircumflex }u }{191}{section.18.1}
+\contentsline {section}{\numberline {18.2}Ph\IeC {\uhorn }\IeC {\ohorn }ng ph\IeC {\'a}p nh\IeC {\^a}n t\IeC {\h \uhorn } Lagrange}{192}{section.18.2}
+\contentsline {subsection}{\numberline {18.2.1}V\IeC {\'\i } d\IeC {\d u}}{192}{subsection.18.2.1}
+\contentsline {section}{\numberline {18.3}H\IeC {\`a}m \IeC {\dj }\IeC {\'\ocircumflex }i ng\IeC {\~\acircumflex }u Lagrange (The Lagrange dual function)}{194}{section.18.3}
+\contentsline {subsection}{\numberline {18.3.1}Lagrangian }{194}{subsection.18.3.1}
+\contentsline {subsection}{\numberline {18.3.2}H\IeC {\`a}m \IeC {\dj }\IeC {\'\ocircumflex }i ng\IeC {\~\acircumflex }u Lagrange }{194}{subsection.18.3.2}
+\contentsline {subsection}{\numberline {18.3.3}Ch\IeC {\d \abreve }n d\IeC {\uhorn }\IeC {\'\ohorn }i c\IeC {\h u}a gi\IeC {\'a} tr\IeC {\d i} t\IeC {\'\ocircumflex }i \IeC {\uhorn }u }{195}{subsection.18.3.3}
+\contentsline {subsection}{\numberline {18.3.4}V\IeC {\'\i } d\IeC {\d u} }{195}{subsection.18.3.4}
+\contentsline {subsubsection}{V\IeC {\'\i } d\IeC {\d u} 1 }{195}{section*.87}
+\contentsline {subsubsection}{V\IeC {\'\i } d\IeC {\d u} 2 }{196}{section*.89}
+\contentsline {section}{\numberline {18.4}B\IeC {\`a}i to\IeC {\'a}n \IeC {\dj }\IeC {\'\ocircumflex }i ng\IeC {\~\acircumflex }u Lagrange (The Lagrange dual problem)}{197}{section.18.4}
+\contentsline {subsection}{\numberline {18.4.1}Weak duality }{198}{subsection.18.4.1}
+\contentsline {subsection}{\numberline {18.4.2}Strong duality v\IeC {\`a} Slater's constraint qualification }{198}{subsection.18.4.2}
+\contentsline {section}{\numberline {18.5}Optimality conditions }{199}{section.18.5}
+\contentsline {subsection}{\numberline {18.5.1}Complementary slackness }{199}{subsection.18.5.1}
+\contentsline {subsection}{\numberline {18.5.2}KKT optimality conditions }{200}{subsection.18.5.2}
+\contentsline {subsubsection}{KKT conditions cho b\IeC {\`a}i to\IeC {\'a}n \textit {kh\IeC {\^o}ng} l\IeC {\`\ocircumflex }i }{200}{section*.90}
+\contentsline {subsubsection}{KKT conditions cho b\IeC {\`a}i to\IeC {\'a}n l\IeC {\`\ocircumflex }i }{201}{section*.91}
+\contentsline {section}{\numberline {18.6}T\IeC {\'o}m t\IeC {\'\abreve }t }{202}{section.18.6}
+\contentsline {section}{\numberline {18.7}K\IeC {\'\ecircumflex }t lu\IeC {\d \acircumflex }n }{202}{section.18.7}
+\contentsline {section}{\numberline {18.8}T\IeC {\`a}i li\IeC {\d \ecircumflex }u tham kh\IeC {\h a}o}{203}{section.18.8}
+\contentsline {chapter}{Index}{205}{chapter*.92}

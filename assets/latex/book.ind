@@ -1,19 +1,95 @@
 \begin{theindex}
 
+  \item $\alpha$-sublevel sets, \hyperpage{161}
+
+  \indexspace
+
+  \item affine functions, \hyperpage{159}
   \item Association problems, \hyperpage{6}
 
   \indexspace
 
   \item Classification problems, \hyperpage{5}
   \item Clustering problems, \hyperpage{6}
+  \item complementary slackness, \hyperpage{199}
+  \item constraints, \hyperpage{149}
+  \item contours, \hyperpage{160}
+  \item convex, \hyperpage{148}
+    \subitem combination, \hyperpage{154}
+    \subitem functions, \hyperpage{156}
+      \subsubitem first-order condition, \hyperpage{162}
+      \subsubitem Second-order condition, \hyperpage{163}
+    \subitem hull, \hyperpage{155}
+    \subitem optimization problems, \hyperpage{177}
+    \subitem sets, \hyperpage{149}
+    \subitem strictly convex functions, \hyperpage{156}
+  \item CVXOPT, \hyperpage{180}
 
   \indexspace
 
+  \item duality, \hyperpage{191}
+
+  \indexspace
+
+  \item ellipsoids, \hyperpage{153}
+
+  \indexspace
+
+  \item feasible points, \hyperpage{149}
+  \item feasible sets, \hyperpage{149}
+
+  \indexspace
+
+  \item Geometric Programming, \hyperpage{186}
+    \subitem convex form, \hyperpage{189}
+
+  \indexspace
+
+  \item halfspace, \hyperpage{151}
+  \item hyperplane, \hyperpage{151}
+
+  \indexspace
+
+  \item infeasible sets, \hyperpage{149}
+
+  \indexspace
+
+  \item KKT conditions, \hyperpage{200}
+
+  \indexspace
+
+  \item Lagrange/Lagrangian
+    \subitem auxiliary function, \hyperpage{192}
+    \subitem dual function, \hyperpage{194}
+    \subitem dual functions, \hyperpage{194}
+    \subitem dual problems, \hyperpage{197}
+    \subitem multiplier method, \hyperpage{192}
+  \item level sets, \hyperpage{160}
+  \item Linear Programming, \hyperpage{180}
+    \subitem General form, \hyperpage{180}
+    \subitem Standard form, \hyperpage{181}
   \item Linear Regression, \hyperpage{11}
 
   \indexspace
 
+  \item Mahalanobis norm, \hyperpage{153}
+  \item monomials, \hyperpage{187}
+
+  \indexspace
+
+  \item norm balls, \hyperpage{152}
+
+  \indexspace
+
+  \item posynomials, \hyperpage{187}
   \item pseudo inverse, \hyperpage{14}
+
+  \indexspace
+
+  \item quadratic
+    \subitem forms, \hyperpage{159}
+  \item Quadratic Programming, \hyperpage{183}
+  \item quasiconvex, \hyperpage{162}
 
   \indexspace
 
@@ -23,6 +99,9 @@
   \indexspace
 
   \item Semi-Supervised Learning, \hyperpage{7}
+  \item Separating hyperplane theorem, \hyperpage{156}
+  \item Slater's constraint qualification, \hyperpage{198}
+  \item strong duality, \hyperpage{198}
   \item Supervised Learning, \hyperpage{4}
 
   \indexspace
@@ -32,5 +111,9 @@
   \indexspace
 
   \item Unsupervised Learning, \hyperpage{6}
+
+  \indexspace
+
+  \item weak duality, \hyperpage{198}
 
 \end{theindex}
