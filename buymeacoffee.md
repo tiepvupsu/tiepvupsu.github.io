@@ -14,7 +14,9 @@ Chào bạn,
 
 Cảm ơn bạn đã ghé thăm blog.
 
-Tôi luôn mong muốn blog đến được với nhiều độc giả và luôn đầu tư thời gian vào cả nội dung lẫn hình thức cho mỗi bài viết. Đặc biệt, các hình minh hoạ đều được vẽ lại cho phù hợp với các ký hiệu trong mỗi bài với mong muốn giúp bạn đọc dễ tiếp cận hơn.
+Tôi luôn mong muốn blog đến được với nhiều độc giả và luôn đầu tư thời gian vào cả nội dung lẫn hình thức cho mỗi bài viết. Đặc biệt, các hình minh hoạ đều được vẽ lại cho phù hợp với các ký hiệu trong mỗi bài với mong muốn giúp bạn đọc dễ tiếp cận hơn. 
+
+**Gần đây, tôi có tạo thêm một trang web giúp các bạn học và thực hành code Python cho các vấn đề liên quan trực tiếp đến Machine Learning. Hiện đang ở mức cơ bản. Bạn có thể tạo tài khoản và học tại đây: [https://fundaml.com](https://fundaml.com).**
 
 Nội dung trên blog này là hoàn toàn miễn phí. Tôi cũng không sử dụng dịch vụ quảng cáo nào vì không muốn gây mất tập trung các bạn trong khi đọc. Tuy nhiên, nếu bạn thấy nội dung hữu ích và muốn đóng góp cho blog, bạn có thể ủng hộ blog qua một trong ba cách:
 
