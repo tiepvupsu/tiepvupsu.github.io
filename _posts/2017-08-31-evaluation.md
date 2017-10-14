@@ -21,9 +21,10 @@ summary: Các phương pháp đánh giá hiệu năng của một mô hình phâ
 - [2. Accuracy](#-accuracy)
 - [3. Confusion matrix](#-confusion-matrix)
 - [4. True/False Positive/Negative](#-truefalse-positivenegative)
-    - [4.1. True/False Positive/Negative](#-truefalse-positivenegative-1)
-    - [4.2. Receiver Operating Characteristic curve](#-receiver-operating-characteristic-curve)
-    - [4.3. Area Under the Curve](#-area-under-the-curve)
+  - [4.1. True/False Positive/Negative](#-truefalse-positivenegative-1)
+  - [4.2. Receiver Operating Characteristic curve](#-receiver-operating-characteristic-curve)
+  - [4.3. Area Under the Curve](#-area-under-the-curve)
+- [5. Precision và Recall](#-precision-va-recall)
 - [5. Tài liệu tham khảo](#-tai-lieu-tham-khao)
 
 <!-- /MarkdownTOC -->
@@ -80,6 +81,7 @@ print('accuracy = ',accuracy_score(y_true, y_pred))
 ```
     accuracy =  0.6
 ```
+
 
 <a name="-confusion-matrix"></a>
 
