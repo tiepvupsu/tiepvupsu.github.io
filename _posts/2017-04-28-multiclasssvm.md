@@ -358,7 +358,7 @@ Về cách tính _gradient_ cho phần _data loss_, mặc dù [hàm \\(\max\\) l
 -\mathbf{x}\_n & \text{if} &1 - \mathbf{w}\_{y_n}^T \mathbf{x}\_n + \mathbf{w}\_j^T\mathbf{x}\_n > 0
 \end{matrix}
 \right. && ~~~~(5)\\\
-\frac{\partial }{\partial \mathbf{w}\_{j}}\max(0, 1 - \mathbf{w}_{j}^T \mathbf{x}_n + \mathbf{w}_j^T\mathbf{x}_n) &=& 
+\frac{\partial }{\partial \mathbf{w}\_{j}}\max(0, 1 - \mathbf{w}_{y_n}^T \mathbf{x}_n + \mathbf{w}_j^T\mathbf{x}_n) &=& 
 \left\\{
 \begin{matrix}
 0 & \text{if}& 1 - \mathbf{w}\_{y_n}^T \mathbf{x}\_n + \mathbf{w}\_j^T\mathbf{x}\_n < 0 \\\
