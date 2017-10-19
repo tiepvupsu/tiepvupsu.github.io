@@ -1,5 +1,5 @@
 Hello,
 
-This is my Vietnamese blog for Basic Machine Learning:
+This is my Machine Learning blog in Vietnamese:
 
 [https://machinelearningcoban.com/](http://machinelearningcoban.com/)
