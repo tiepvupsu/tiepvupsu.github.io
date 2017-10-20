@@ -307,6 +307,7 @@ class CF(object):
             m = np.mean(ratings) 
             if np.isnan(m):
                 m = 0 # to avoid empty array and nan value
+            self.mu[n] = m
             # normalize
             self.Ybar_data[ids, 2] = ratings - self.mu[n]
 
