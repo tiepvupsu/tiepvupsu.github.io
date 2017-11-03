@@ -1,6 +1,6 @@
 _drafts/
 _site/
-*/_site
+#*/_site
 assets/*/latex/*.tex
 !assets/latex/iris1.jpg
 !assets/latex/iris2.jpg
