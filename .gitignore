@@ -20,3 +20,6 @@ assets/latex/*.tex
 !assets/latex/book*.pdf
 .sass-cache 
 #.DS_Store
+md2lt.py
+fix_disqus.py
+dis_links.csv
