@@ -25,7 +25,7 @@ disqus_shortname: tiepvu
 
 # number of posts per page. Should be a number such that total pages >= 5. Well, this 
 # is my choice, there is no specific reason for this.
-paginate: 8
+paginate: 10
 paginate_path: "/page:num/"
 
 # `gems: [jekyll-paginate]`
