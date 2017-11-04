@@ -19,4 +19,4 @@ assets/21_kernelsvm/ksvm.mov
 assets/latex/*.tex
 !assets/latex/book*.pdf
 .sass-cache 
-.DS_Store
+#.DS_Store
