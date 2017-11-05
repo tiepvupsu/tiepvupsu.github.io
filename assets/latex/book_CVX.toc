@@ -86,20 +86,4 @@
 \contentsline {subsection}{\numberline {51.2.1}\IeC {\DJ }\IeC {\d i}nh ngh\IeC {\~\i }a}{58}{subsection.51.2.1}
 \contentsline {subsection}{\numberline {51.2.2}M\IeC {\d \ocircumflex }t s\IeC {\'\ocircumflex } chu\IeC {\h \acircumflex }n th\IeC {\uhorn }\IeC {\`\ohorn }ng d\IeC {\`u}ng}{58}{subsection.51.2.2}
 \contentsline {subsection}{\numberline {51.2.3}Chu\IeC {\h \acircumflex }n c\IeC {\h u}a ma tr\IeC {\d \acircumflex }n}{60}{subsection.51.2.3}
-\contentsline {section}{\numberline {51.3}\IeC {\DJ }\IeC {\d a}o h\IeC {\`a}m c\IeC {\h u}a h\IeC {\`a}m nhi\IeC {\`\ecircumflex }u bi\IeC {\'\ecircumflex }n }{60}{section.51.3}
-\contentsline {subsection}{\numberline {51.3.1}H\IeC {\`a}m cho gi\IeC {\'a} tr\IeC {\d i} l\IeC {\`a} m\IeC {\d \ocircumflex }t s\IeC {\'\ocircumflex } v\IeC {\^o} h\IeC {\uhorn }\IeC {\'\ohorn }ng}{60}{subsection.51.3.1}
-\contentsline {subsection}{\numberline {51.3.2}H\IeC {\`a}m cho gi\IeC {\'a} tr\IeC {\d i} l\IeC {\`a} m\IeC {\d \ocircumflex }t vector }{61}{subsection.51.3.2}
-\contentsline {subsection}{\numberline {51.3.3}Hai t\IeC {\'\i }nh ch\IeC {\'\acircumflex }t quan tr\IeC {\d o}ng }{63}{subsection.51.3.3}
-\contentsline {subsubsection}{Product rules}{63}{section*.43}
-\contentsline {subsubsection}{Chain rules }{63}{section*.44}
-\contentsline {subsection}{\numberline {51.3.4}\IeC {\DJ }\IeC {\d a}o h\IeC {\`a}m c\IeC {\h u}a c\IeC {\'a}c h\IeC {\`a}m s\IeC {\'\ocircumflex } th\IeC {\uhorn }\IeC {\`\ohorn }ng g\IeC {\d \abreve }p }{63}{subsection.51.3.4}
-\contentsline {subsubsection}{$f(\mathbf {x}) = \mathbf {a}^T\mathbf {x}$}{63}{section*.45}
-\contentsline {subsubsection}{$f(\mathbf {x}) = \mathbf {Ax}$}{64}{section*.46}
-\contentsline {subsubsection}{$f(\mathbf {x}) = \mathbf {x}^T\mathbf {A} \mathbf {x}$}{64}{section*.47}
-\contentsline {subsubsection}{$f(\mathbf {x}) = \delimiter "026B30D \mathbf {Ax} - \mathbf {b}\delimiter "026B30D _2^2 $}{65}{section*.48}
-\contentsline {subsubsection}{$f(\mathbf {x}) = \mathbf {a}^T\mathbf {x}\mathbf {x}^T\mathbf {b}$}{65}{section*.49}
-\contentsline {subsection}{\numberline {51.3.5}B\IeC {\h a}ng c\IeC {\'a}c \IeC {\dj }\IeC {\d a}o h\IeC {\`a}m th\IeC {\uhorn }\IeC {\`\ohorn }ng g\IeC {\d \abreve }p}{65}{subsection.51.3.5}
-\contentsline {subsubsection}{Cho vector }{65}{section*.50}
-\contentsline {subsubsection}{Cho ma tr\IeC {\d \acircumflex }n}{66}{section*.52}
-\contentsline {subsection}{\numberline {51.3.6}T\IeC {\`a}i li\IeC {\d \ecircumflex }u tham kh\IeC {\h a}o }{66}{subsection.51.3.6}
-\contentsline {chapter}{Index}{67}{chapter*.54}
+\contentsline {chapter}{Index}{61}{chapter*.43}
