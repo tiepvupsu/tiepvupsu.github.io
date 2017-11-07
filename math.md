@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title: Math
 permalink: /math/
 mathjax: true
@@ -27,11 +28,11 @@ Bạn có thể download bản pdf [tại đây](https://github.com/tiepvupsu/ti
         - [Product rules](#product-rules)
         - [Chain rules](#chain-rules)
     - [3.4. Đạo hàm của các hàm số thường gặp](#-dao-ham-cua-cac-ham-so-thuong-gap)
-        - [\\\(f\(\mathbf{x}\) = \mathbf{a}^T\mathbf{x}\\\)](#\\f\mathbfx--\mathbfa^t\mathbfx\\)
-        - [\\\(f\(\mathbf{x}\) = \mathbf{Ax}\\\)](#\\f\mathbfx--\mathbfax\\)
-        - [\\\(f\(\mathbf{x}\) = \mathbf{x}^T\mathbf{A} \mathbf{x}\\\)](#\\f\mathbfx--\mathbfx^t\mathbfa-\mathbfx\\)
-        - [\\\(f\(\mathbf{x}\) = \|\|\mathbf{Ax} - \mathbf{b}\|\|_2^2 \\\)](#\\f\mathbfx--\|\|\mathbfax---\mathbfb\|\|^-\\)
-        - [\\\(f\(\mathbf{x}\) = \mathbf{a}^T\mathbf{x}\mathbf{x}^T\mathbf{b}\\\)](#\\f\mathbfx--\mathbfa^t\mathbfx\mathbfx^t\mathbfb\\)
+        - [\\\(f(\mathbf{x}\) = \mathbf{a}^T\mathbf{x}\\)](#%5C%5Cf%5Cmathbfx--%5Cmathbfa%5Et%5Cmathbfx%5C%5C)
+        - [\\\(f(\mathbf{x}\) = \mathbf{Ax}\\)](#%5C%5Cf%5Cmathbfx--%5Cmathbfax%5C%5C)
+        - [\\\(f(\mathbf{x}\) = \mathbf{x}^T\mathbf{A} \mathbf{x}\\)](#%5C%5Cf%5Cmathbfx--%5Cmathbfx%5Et%5Cmathbfa-%5Cmathbfx%5C%5C)
+        - [\\\(f(\mathbf{x}\) = \|\|\mathbf{Ax} - \mathbf{b}\|\|_2^2 \\)](#%5C%5Cf%5Cmathbfx--%5C%7C%5C%7C%5Cmathbfax---%5Cmathbfb%5C%7C%5C%7C%5E-%5C%5C)
+        - [\\\(f(\mathbf{x}\) = \mathbf{a}^T\mathbf{x}\mathbf{x}^T\mathbf{b}\\)](#%5C%5Cf%5Cmathbfx--%5Cmathbfa%5Et%5Cmathbfx%5Cmathbfx%5Et%5Cmathbfb%5C%5C)
     - [3.5. Bảng các đạo hàm thường gặp](#-bang-cac-dao-ham-thuong-gap)
         - [Cho vector](#cho-vector)
         - [Cho ma trận](#cho-ma-tran)
@@ -42,6 +43,7 @@ Bạn có thể download bản pdf [tại đây](https://github.com/tiepvupsu/ti
 <!-- ========================== New Heading ==================== -->
 <a name="-luu-y-ve-ky-hieu"></a>
 
+<a name="-luu-y-ve-ky-hieu"></a>
 ## 1. Lưu ý về ký hiệu
 
 Trong các bài viết của tôi, các số vô hướng được biểu diễn bởi các chữ cái viết ở dạng không in đậm, có thể viết hoa, ví dụ \\(x_1, N, y, k\\). Các vector được biểu diễn bằng các chữ cái thường in đậm, ví dụ \\(\mathbf{y}, \mathbf{x}_1 \\). Nếu không giải thích gì thêm, các vector được mặc định hiểu là các vector cột. Các ma trận được biểu diễn bởi các chữ viết hoa in đậm, ví dụ \\(\mathbf{X, Y, W} \\).
@@ -55,6 +57,7 @@ Cho một ma trận \\(\mathbf{W}\\), nếu không giải thích gì thêm, chú
 <!-- ========================== New Heading ==================== -->
 <a name="-norms-chuan"></a>
 
+<a name="-norms-chuan"></a>
 ## 2. Norms (chuẩn)
 Trong không gian một chiều, việc đo khoảng cách giữa hai điểm đã rất quen thuộc: lấy trị tuyệt đối của hiệu giữa hai giá trị đó. Trong không gian hai chiều, tức mặt phẳng, chúng ta thường dùng khoảng cách Euclid để đo khoảng cách giữa hai điểm. Khoảng cách này chính là cái chúng ta thường nói bằng ngôn ngữ thông thường là _đường chim bay_. Đôi khi, để đi từ một điểm này tới một điểm kia, con người chúng ta không thể đi bằng đường chim bay được mà còn phụ thuộc vào việc đường đi nối giữa hai điểm có dạng như thế nào nữa. 
 
@@ -66,6 +69,7 @@ Và đó chính là lý do mà khái niệm norm (chuẩn) ra đời. Có nhiề
 <!-- ========================== New Heading ==================== -->
 <a name="dinh-nghia"></a>
 
+<a name="dinh-nghia"></a>
 ### Định nghĩa
 Một hàm số \\(f() \\) ánh xạ một điểm \\(\mathbf{x}\\) từ không gian \\(n\\) chiều sang tập số thực một chiều được gọi là norm nếu nó thỏa mãn ba điều kiện sau đây:
 
@@ -83,6 +87,7 @@ Một hàm số \\(f() \\) ánh xạ một điểm \\(\mathbf{x}\\) từ không 
 <!-- ========================== New Heading ==================== -->
 <a name="mot-so-chuan-thuong-dung"></a>
 
+<a name="mot-so-chuan-thuong-dung"></a>
 ### Một số chuẩn thường dùng
 
 Giả sử các vectors \\(\mathbf{x} = [x_1; x_2; \dots; x_n]\\), \\(\mathbf{y} = [y_1; y_2; \dots; y_n]\\).
@@ -131,6 +136,7 @@ Norm 2 (màu xanh) chính là đường thằng "chim bay" nối giữa hai vect
 <!-- ========================== New Heading ==================== -->
 <a name="chuan-cua-ma-tran"></a>
 
+<a name="chuan-cua-ma-tran"></a>
 ### Chuẩn của ma trận
 Với một ma trận \\(\mathbf{A} \in \mathbb{R}^{m\times n}\\), chuẩn thường được dùng nhất là chuẩn Frobenius, ký hiệu là \\(\|\|\mathbf{A}\|\|\_F\\) là căn bậc hai của tổng bình phương tất cả các phần tử của ma trận đó. 
 \\[
@@ -141,6 +147,7 @@ Với một ma trận \\(\mathbf{A} \in \mathbb{R}^{m\times n}\\), chuẩn thư�
 
 <a name="-dao-ham-cua-ham-nhieu-bien"></a>
 
+<a name="-dao-ham-cua-ham-nhieu-bien"></a>
 ## 3. Đạo hàm của hàm nhiều biến 
 (Bạn có thể download bản pdf [tại đây](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/latex/appendix.pdf).)
 
@@ -149,6 +156,7 @@ Trong mục này, chúng ta sẽ giả sử rằng các đạo hàm tồn tại.
 
 <a name="-ham-cho-gia-tri-la-mot-so-vo-huong"></a>
 
+<a name="-ham-cho-gia-tri-la-mot-so-vo-huong"></a>
 ### 3.1. Hàm cho giá trị là một số vô hướng
 
 Đạo hàm (gradient) của một hàm số \\(f(\mathbf{x}): \mathbb{R}^n \rightarrow \mathbb{R}\\) **theo vector** \\(\mathbf{x}\\) được định nghĩa như sau: 
@@ -240,6 +248,7 @@ Chú ý rằng _Hessian_ luôn là một ma trận đối xứng.
 
 <a name="-ham-cho-gia-tri-la-mot-vector"></a>
 
+<a name="-ham-cho-gia-tri-la-mot-vector"></a>
 ### 3.2. Hàm cho giá trị là một vector 
 
 Những hàm số cho giá trị là một vector được gọi là _vector-valued function_ trong tiếng Anh. 
@@ -318,10 +327,12 @@ Trước khi đến phần tính đạo hàm của các hàm số thường gặ
 
 <a name="-hai-tinh-chat-quan-trong"></a>
 
+<a name="-hai-tinh-chat-quan-trong"></a>
 ### 3.3. Hai tính chất quan trọng 
 
 <a name="product-rules"></a>
 
+<a name="product-rules"></a>
 #### Product rules
 Để cho tổng quát, ta giả sử biến đầu vào là một ma trận (vector và số thực là các trường hợp đặt biệt của ma trận). Giả sử rằng các hàm số có chiều phù hợp để các phép nhân thực hiện được. Ta có: 
 
@@ -337,6 +348,7 @@ Chú ý rằng với vector và ma trận, chúng ta không được sử dụng
 
 <a name="chain-rules"></a>
 
+<a name="chain-rules"></a>
 #### Chain rules 
 Khi có các hàm hợp thì:
 \\[
@@ -350,9 +362,11 @@ Quy tắc này cũng giống với quy tắc trong hàm một biến:
 Nhắc lại rằng khi tính toán với ma trận, chúng ta cần chú ý tới chiều của các ma trận, và nhân ma trận không có tính chất giao hoán. 
 <a name="-dao-ham-cua-cac-ham-so-thuong-gap"></a>
 
+<a name="-dao-ham-cua-cac-ham-so-thuong-gap"></a>
 ### 3.4. Đạo hàm của các hàm số thường gặp 
 <a name="\\f\mathbfx--\mathbfa^t\mathbfx\\"></a>
 
+<a name="%5C%5Cf%5Cmathbfx--%5Cmathbfa%5Et%5Cmathbfx%5C%5C"></a>
 #### \\(f(\mathbf{x}) = \mathbf{a}^T\mathbf{x}\\)
 
 Giả sử \\(\mathbf{a}, \mathbf{x} \in \mathbb{R}^n\\), ta viết lại:
@@ -383,6 +397,7 @@ Thêm nữa, vì \\(\mathbf{a}^T\mathbf{x} = \mathbf{x}^T\mathbf{a}\\) nên:
 
 <a name="\\f\mathbfx--\mathbfax\\"></a>
 
+<a name="%5C%5Cf%5Cmathbfx--%5Cmathbfax%5C%5C"></a>
 #### \\(f(\mathbf{x}) = \mathbf{Ax}\\)
 Đây là một _vector-valued function_ \\(f: \mathbb{R}^n \rightarrow \mathbb{R}^{m} \\) với \\(\mathbf{x} \in \mathbb{R}^n, \mathbf{A} \in \mathbb{R}^{m\times n}\\). Giả sử rằng \\(\mathbf{a}\_i\\) là **hàng** thứ \\(i\\) của ma trận \\(\mathbf{A}\\). Ta có: 
 \\[
@@ -412,6 +427,7 @@ Từ đây ta có thể suy ra đạo hàm của hàm số \\(f(\mathbf{x}) = \m
 \\]
 <a name="\\f\mathbfx--\mathbfx^t\mathbfa-\mathbfx\\"></a>
 
+<a name="%5C%5Cf%5Cmathbfx--%5Cmathbfx%5Et%5Cmathbfa-%5Cmathbfx%5C%5C"></a>
 #### \\(f(\mathbf{x}) = \mathbf{x}^T\mathbf{A} \mathbf{x}\\)
 với \\(\mathbf{x} \in \mathbb{R}^n, \mathbf{A} \in \mathbb{R}^{n\times n}\\). Áp dụng Product rules \\((14)\\) ta có:
 \\[
@@ -446,6 +462,7 @@ Nếu \\(\mathbf{A}\\) là ma trận đơn vị, tức \\(f(\mathbf{x}) = \mathb
 
 <a name="\\f\mathbfx--\|\|\mathbfax---\mathbfb\|\|^-\\"></a>
 
+<a name="%5C%5Cf%5Cmathbfx--%5C%7C%5C%7C%5Cmathbfax---%5Cmathbfb%5C%7C%5C%7C%5E-%5C%5C"></a>
 #### \\(f(\mathbf{x}) = \|\|\mathbf{Ax} - \mathbf{b}\|\|_2^2 \\)
 Có hai cách tính đạo hàm của hàm số này:
 
@@ -468,6 +485,7 @@ Sử dụng \\(\nabla (\mathbf{Ax} - \mathbf{b}) = \mathbf{A}^T\\) và \\(\nabla
 
 <a name="\\f\mathbfx--\mathbfa^t\mathbfx\mathbfx^t\mathbfb\\"></a>
 
+<a name="%5C%5Cf%5Cmathbfx--%5Cmathbfa%5Et%5Cmathbfx%5Cmathbfx%5Et%5Cmathbfb%5C%5C"></a>
 #### \\(f(\mathbf{x}) = \mathbf{a}^T\mathbf{x}\mathbf{x}^T\mathbf{b}\\)
 Bằng cách viết lại \\(f(\mathbf{x}) = (\mathbf{a}^T\mathbf{x})(\mathbf{x}^T\mathbf{b})\\), ta có thể dùng Product rules \\((14)\\) và ra kết quả: 
 \\[
@@ -481,10 +499,12 @@ trong đây tôi đã sử dụng tính chất \\(\mathbf{y}^T\mathbf{z} = \math
 
 <a name="-bang-cac-dao-ham-thuong-gap"></a>
 
+<a name="-bang-cac-dao-ham-thuong-gap"></a>
 ### 3.5. Bảng các đạo hàm thường gặp
 <!-- ========================== New Heading ==================== -->
 <a name="cho-vector"></a>
 
+<a name="cho-vector"></a>
 #### Cho vector 
 
 | \\(f(\mathbf{x}) \\)           | \\( \nabla f(\mathbf{x}) \\)     |         
@@ -499,6 +519,7 @@ trong đây tôi đã sử dụng tính chất \\(\mathbf{y}^T\mathbf{z} = \math
 <!-- ========================== New Heading ==================== -->
 <a name="cho-ma-tran"></a>
 
+<a name="cho-ma-tran"></a>
 #### Cho ma trận
 
 | \\(f(\mathbf{X}) \\)                                   | \\( \nabla f(\mathbf{X}) \\)                                   |
@@ -512,6 +533,7 @@ trong đây tôi đã sử dụng tính chất \\(\mathbf{y}^T\mathbf{z} = \math
 
 <a name="-tai-lieu-tham-khao"></a>
 
+<a name="-tai-lieu-tham-khao"></a>
 ### 3.6. Tài liệu tham khảo 
 [1] [Matrix calculus](https://ccrma.stanford.edu/~dattorro/matrixcalc.pdf)
 
