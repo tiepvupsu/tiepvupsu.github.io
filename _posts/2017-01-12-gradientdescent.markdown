@@ -70,43 +70,80 @@ thì đạo hàm càng dương.
 <a name="gradient-descent"></a>
 
 ### Gradient Descent
-Trong Machine Learning nói riêng và Toán Tối Ưu nói chung, chúng ta thường xuyên phải tìm giá trị nhỏ nhất (hoặc đôi khi là lớn nhất) của một hàm số nào đó. Ví dụ như các hàm mất mát trong hai bài [Linear Regression](/2016/12/28/linearregression/) và [K-means Clustering](/2017/01/01/kmeans/). Nhìn chung, việc tìm global minimum của các hàm mất mát trong Machine Learning là rất phức tạp, thậm chí là bất khả thi. Thay vào đó, người ta thường cố gắng tìm các điểm local minimum, và ở một mức độ nào đó, coi đó là nghiệm cần tìm của bài toán. 
+Trong Machine Learning nói riêng và Toán Tối Ưu nói chung, chúng ta thường xuyên
+phải tìm giá trị nhỏ nhất (hoặc đôi khi là lớn nhất) của một hàm số nào đó. Ví
+dụ như các hàm mất mát trong hai bài [Linear Regression](/2016/12/28/linearregression/) 
+và [K-means Clustering](/2017/01/01/kmeans/). Nhìn chung, việc tìm global
+minimum của các hàm mất mát trong Machine Learning là rất phức tạp, thậm chí là
+bất khả thi. Thay vào đó, người ta thường cố gắng tìm các điểm local minimum, và
+ở một mức độ nào đó, coi đó là nghiệm cần tìm của bài toán.
 
-Các điểm local minimum là nghiệm của phương trình đạo hàm bằng 0. Nếu bằng một cách nào đó có thể tìm được toàn bộ (hữu hạn) các điểm cực tiểu, ta chỉ cần thay từng điểm local minimum đó vào hàm số rồi tìm điểm làm cho hàm có giá trị nhỏ nhất (_đoạn này nghe rất quen thuộc, đúng không?_). Tuy nhiên, trong hầu hết các trường hợp, việc giải phương trình đạo hàm bằng 0 là bất khả thi. Nguyên nhân có thể đến từ sự phức tạp của dạng của đạo hàm, từ việc các điểm dữ liệu có số chiều lớn, hoặc từ việc có quá nhiều điểm dữ liệu. 
+Các điểm local minimum là nghiệm của phương trình đạo hàm bằng 0. Nếu bằng một
+cách nào đó có thể tìm được toàn bộ (hữu hạn) các điểm cực tiểu, ta chỉ cần thay
+từng điểm local minimum đó vào hàm số rồi tìm điểm làm cho hàm có giá trị nhỏ
+nhất (_đoạn này nghe rất quen thuộc, đúng không?_). Tuy nhiên, trong hầu hết các
+trường hợp, việc giải phương trình đạo hàm bằng 0 là bất khả thi. Nguyên nhân có
+thể đến từ sự phức tạp của dạng của đạo hàm, từ việc các điểm dữ liệu có số
+chiều lớn, hoặc từ việc có quá nhiều điểm dữ liệu.
 
-Hướng tiếp cận phổ biến nhất là xuất phát từ một điểm mà chúng ta coi là _gần_ với nghiệm của bài toán, sau đó dùng một phép toán lặp để _tiến dần_ đến điểm cần tìm, tức đến khi đạo hàm gần với 0. Gradient Descent (viết gọn là GD) và các biến thể của nó là một trong những phương pháp được dùng nhiều nhất. 
+Hướng tiếp cận phổ biến nhất là xuất phát từ một điểm mà chúng ta coi là _gần_
+với nghiệm của bài toán, sau đó dùng một phép toán lặp để _tiến dần_ đến điểm
+cần tìm, tức đến khi đạo hàm gần với 0. Gradient Descent (viết gọn là GD) và các
+biến thể của nó là một trong những phương pháp được dùng nhiều nhất.
 
 <a name="large-scale"></a>
-Vì kiến thức về GD khá rộng nên tôi xin phép được chia thành hai phần. Phần 1 này giới thiệu ý tưởng phía sau thuật toán GD và một vài ví dụ đơn giản giúp các bạn làm quen với thuật toán này và vài khái niệm mới. Phần 2 sẽ nói về các phương pháp cải tiến GD và các biến thể của GD trong các bài toán mà số chiều và số điểm dữ liệu lớn. Những bài toán như vậy được gọi là _large-scale_. 
+
+Vì kiến thức về GD khá rộng nên tôi xin phép được chia thành hai phần. Phần 1
+này giới thiệu ý tưởng phía sau thuật toán GD và một vài ví dụ đơn giản giúp các
+bạn làm quen với thuật toán này và vài khái niệm mới. Phần 2 sẽ nói về các
+phương pháp cải tiến GD và các biến thể của GD trong các bài toán mà số chiều và
+số điểm dữ liệu lớn. Những bài toán như vậy được gọi là _large-scale_.
 
 
 <a name="-gradient-descent-cho-ham--bien"></a>
 
 ## 2. Gradient Descent cho hàm 1 biến
-Quay trở lại hình vẽ ban đầu và một vài quan sát tôi đã nêu. Giả sử  \\(x_\{t}\\) là điểm ta tìm được sau vòng lặp thứ \\(t\\). Ta cần tìm một thuật toán để đưa \\(x_\{t}\\) về càng gần \\(x^\*\\) càng tốt. 
+
+Quay trở lại hình vẽ ban đầu và một vài quan sát tôi đã nêu. Giả sử
+\\(x_\{t}\\) là điểm ta tìm được sau vòng lặp thứ \\(t\\). Ta cần tìm một thuật
+toán để đưa \\(x_\{t}\\) về càng gần \\(x^\*\\) càng tốt.
 
 Trong hình đầu tiên, chúng ta lại có thêm hai quan sát nữa:
 
-1. Nếu đạo hàm của hàm số tại \\(x_\{t}\\): \\(f'(x_\{t}) > 0\\) thì \\(x_\{t}\\) nằm về bên phải so với \\(x^*\\) (và ngược lại). Để điểm tiếp theo \\(x\_{t+1}\\) gần với \\(x^\*\\) hơn, chúng ta cần di chuyển \\(x_\{t}\\) về phía bên trái, tức về phía _âm_. Nói các khác, __chúng ta cần di chuyển ngược dấu với đạo hàm__:
+1. Nếu đạo hàm của hàm số tại \\(x_\{t}\\): \\(f'(x_\{t}) > 0\\) thì
+   \\(x_\{t}\\) nằm về bên phải so với \\(x^*\\) (và ngược lại). Để điểm tiếp
+   theo \\(x\_{t+1}\\) gần với \\(x^\*\\) hơn, chúng ta cần di chuyển
+   \\(x_\{t}\\) về phía bên trái, tức về phía _âm_. Nói các khác, __chúng ta cần
+   di chuyển ngược dấu với đạo hàm__:
 \\[
 x\_{t+1} = x_\{t} + \Delta
 \\]
 Trong đó \\(\Delta\\) là một đại lượng ngược dấu với đạo hàm \\(f'(x_\{t})\\).
 
-2. \\(x_\{t}\\) càng xa \\(x^*\\) về phía bên phải thì \\(f'(x_\{t})\\) càng lớn hơn 0 (và ngược lại). Vậy, lượng di chuyển \\(\Delta\\), một cách trực quan nhất, là tỉ lệ thuận với \\(-f'(x_\{t})\\). 
+2. \\(x_\{t}\\) càng xa \\(x^*\\) về phía bên phải thì \\(f'(x_\{t})\\) càng lớn
+   hơn 0 (và ngược lại). Vậy, lượng di chuyển \\(\Delta\\), một cách trực quan
+   nhất, là tỉ lệ thuận với \\(-f'(x_\{t})\\).
 
 Hai nhận xét phía trên cho chúng ta một cách cập nhật đơn giản là:
 \\[
 x\_{t+1} = x_\{t} - \eta f'(x_\{t})
 \\]
 
-Trong đó \\(\eta\\) (đọc là _eta_) là một số dương được gọi là _learning rate_ (tốc độ học). Dấu trừ thể hiện việc chúng ta phải _đi ngược_ với đạo hàm (Đây cũng chính là lý do phương pháp này được gọi là Gradient Descent - _descent_ nghĩa là _đi ngược_). Các quan sát đơn giản phía trên, mặc dù không phải đúng cho tất cả các bài toán, là nên tảng cho rất nhiều phương pháp tối ưu nói chung và thuật toán Machine Learning nói riêng. 
+Trong đó \\(\eta\\) (đọc là _eta_) là một số dương được gọi là _learning rate_
+(tốc độ học). Dấu trừ thể hiện việc chúng ta phải _đi ngược_ với đạo hàm (Đây
+cũng chính là lý do phương pháp này được gọi là Gradient Descent - _descent_
+nghĩa là _đi ngược_). Các quan sát đơn giản phía trên, mặc dù không phải đúng
+cho tất cả các bài toán, là nên tảng cho rất nhiều phương pháp tối ưu nói chung
+và thuật toán Machine Learning nói riêng.
 
 <a name="vi-du-don-gian-voi-python"></a>
 
 ### Ví dụ đơn giản với Python
 
-Xét hàm số \\(f(x) = x^2 + 5\sin(x)\\) với đạo hàm \\(f'(x) = 2x + 5\cos(x)\\) (một lý do tôi chọn hàm này vì nó không dễ tìm nghiệm của đạo hàm bằng 0 như hàm phía trên). Giả sử bắt đầu từ một điểm \\(x\_{0}\\) nào đó, tại vòng lặp thứ \\(t\\), chúng ta sẽ cập nhật như sau:
+Xét hàm số \\(f(x) = x^2 + 5\sin(x)\\) với đạo hàm \\(f'(x) = 2x + 5\cos(x)\\)
+(một lý do tôi chọn hàm này vì nó không dễ tìm nghiệm của đạo hàm bằng 0 như hàm
+phía trên). Giả sử bắt đầu từ một điểm \\(x\_{0}\\) nào đó, tại vòng lặp thứ
+\\(t\\), chúng ta sẽ cập nhật như sau:
 \\[
 x\_{t+1} = x_\{t} - \eta(2x_\{t} + 5\cos(x_\{t}))
 \\]
@@ -125,8 +162,12 @@ import matplotlib.pyplot as plt
 Tiếp theo, tôi viết các hàm số :
 
 1. `grad` để tính đạo hàm
-2. `cost` để tính giá trị của hàm số. Hàm này không sử dụng trong thuật toán nhưng thường được dùng để kiểm tra việc tính đạo hàm của đúng không hoặc để xem giá trị của hàm số có giảm theo mỗi vòng lặp hay không.
-3. `myGD1` là phần chính thực hiện thuật toán Gradient Desent nêu phía trên. Đầu vào của hàm số này là learning rate và điểm bắt đầu. Thuật toán dừng lại khi đạo hàm có độ lớn đủ nhỏ.
+2. `cost` để tính giá trị của hàm số. Hàm này không sử dụng trong thuật toán
+   nhưng thường được dùng để kiểm tra việc tính đạo hàm của đúng không hoặc để
+   xem giá trị của hàm số có giảm theo mỗi vòng lặp hay không.
+3. `myGD1` là phần chính thực hiện thuật toán Gradient Desent nêu phía trên. Đầu
+   vào của hàm số này là learning rate và điểm bắt đầu. Thuật toán dừng lại khi
+   đạo hàm có độ lớn đủ nhỏ.
 
 
 ```python
