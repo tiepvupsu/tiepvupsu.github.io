@@ -354,7 +354,7 @@ Từ đó ta có:
 \frac{f(x + \varepsilon) - f(x - \varepsilon)}{2\varepsilon} \approx f'(x) + \frac{f^{(3)}(x)}{6}\varepsilon^2 + \dots =  f'(x) + O(\varepsilon^2) ~~(4)
 \\]
 
-trong đó \\(O()\\) là [Big O notation](https://en.wikipedia.org/wiki/Big_O_notation). 
+<!-- trong đó \\(O()\\) là [Big O notation](https://en.wikipedia.org/wiki/Big_O_notation).  -->
 
 Từ đó, nếu xấp xỉ đạo hàm bằng công thức \\((3)\\) (xấp xỉ đạo hàm phải), sai số sẽ là \\(O(\varepsilon)\\). Trong khi đó, nếu xấp xỉ đạo hàm bằng công thức \\((4)\\) (xấp xỉ đạo hàm hai phía), sai số sẽ là \\(O(\varepsilon^2) \ll O(\varepsilon)\\) nếu \\(\varepsilon\\) nhỏ. 
 
