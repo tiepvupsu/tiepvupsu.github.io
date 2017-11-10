@@ -192,7 +192,8 @@ def myGD1(eta, x0):
 
 #### Điểm khởi tạo khác nhau
 
-Sau khi có các hàm cần thiết, tôi thử tìm nghiệm với các điểm khởi tạo khác nhau là \\(x\_{0} = -5\\) và \\(x\_{0} = 5\\).
+Sau khi có các hàm cần thiết, tôi thử tìm nghiệm với các điểm khởi tạo khác nhau
+là \\(x\_{0} = -5\\) và \\(x\_{0} = 5\\).
 
 
 ```python
@@ -206,7 +207,10 @@ print('Solution x2 = %f, cost = %f, obtained after %d iterations'%(x2[-1], cost(
     Solution x2 = -1.110341, cost = -3.246394, obtained after 29 iterations
 
 
-Vậy là với các điểm ban đầu khác nhau, thuật toán của chúng ta tìm được nghiệm gần giống nhau, mặc dù với tốc độ hội tụ khác nhau. Dưới đây là hình ảnh minh họa thuật toán GD cho bài toán này (_xem tốt trên Desktop ở chế độ full màn hình_).
+Vậy là với các điểm ban đầu khác nhau, thuật toán của chúng ta tìm được nghiệm
+gần giống nhau, mặc dù với tốc độ hội tụ khác nhau. Dưới đây là hình ảnh minh
+họa thuật toán GD cho bài toán này (_xem tốt trên Desktop ở chế độ full màn
+hình_).
 
 
 <table width = "100%" style = "border: 0px solid white">
@@ -220,8 +224,7 @@ Vậy là với các điểm ban đầu khác nhau, thuật toán của chúng t
     </tr>
 </table> 
 
-Từ hình minh họa trên ta thấy rằng ở hình bên trái, tương ứng với \\(x\_{0} = -5\\), nghiệm hội tụ nhanh hơn, vì điểm ban đầu \\(x_0\\) gần với nghiệm \\( x^\* \approx -1\\)  hơn. Hơn nữa, với \\(x\_{0} = 5 \\) ở hình bên phải, _đường đi_ của nghiệm có chứa
-  một khu vực có đạo hàm khá nhỏ gần điểm có hoành độ bằng 2. Điều này khiến cho thuật toán _la cà_ ở đây khá lâu. Khi vượt qua được điểm này thì mọi việc diễn ra rất tốt đẹp. 
+Từ hình minh họa trên ta thấy rằng ở hình bên trái, tương ứng với \\(x\_{0} = -5\\), nghiệm hội tụ nhanh hơn, vì điểm ban đầu \\(x_0\\) gần với nghiệm \\( x^\* \approx -1\\)  hơn. Hơn nữa, với \\(x\_{0} = 5 \\) ở hình bên phải, _đường đi_ của nghiệm có chứa một khu vực có đạo hàm khá nhỏ gần điểm có hoành độ bằng 2. Điều này khiến cho thuật toán _la cà_ ở đây khá lâu. Khi vượt qua được điểm này thì mọi việc diễn ra rất tốt đẹp.
 
 <a name="learning-rate-khac-nhau"></a>
 
