@@ -46,14 +46,26 @@ Các bạn hẳn thấy hình vẽ dưới đây quen thuộc:
  <img src ="https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/GD/gradient_descent.png?raw=true" align = "center" width = "600">
 </div>
 
-Điểm màu xanh lục là điểm local minimum (cực tiểu), và cũng là điểm làm cho hàm số đạt giá trị nhỏ nhất. Từ đây trở đi, tôi sẽ dùng _local minimum_ để thay cho _điểm cực tiểu_, _global minimum_ để thay cho _điểm mà tại đó hàm số đạt giá trị nhỏ nhất_. Global minimum là một trường hợp đặc biệt của local minimum. 
+Điểm màu xanh lục là điểm local minimum (cực tiểu), và cũng là điểm làm cho hàm
+số đạt giá trị nhỏ nhất. Từ đây trở đi, tôi sẽ dùng _local minimum_ để thay cho
+_điểm cực tiểu_, _global minimum_ để thay cho _điểm mà tại đó hàm số đạt giá trị
+nhỏ nhất_. Global minimum là một trường hợp đặc biệt của local minimum.
 
-Giả sử chúng ta đang quan tâm đến một hàm số một biến có đạo hàm mọi nơi. Xin cho tôi được nhắc lại vài điều đã quá quen thuộc:
+Giả sử chúng ta đang quan tâm đến một hàm số một biến có đạo hàm mọi nơi. Xin
+cho tôi được nhắc lại vài điều đã quá quen thuộc:
 
-1. Điểm local minimum \\(x^\*\\) của hàm số là điểm có đạo hàm \\(f'(x^\*)\\) bằng 0. Hơn thế nữa, trong lân cận của nó, đạo hàm của các điểm phía bên trái \\(x^*\\) là không dương, đạo hàm của các điểm phía bên phải \\(x^\*\\) là không âm.
-2. Đường tiếp tuyến với đồ thị hàm số đó tại 1 điểm bất kỳ có hệ số góc chính bằng đạo hàm của hàm số tại điểm đó. 
+1. Điểm local minimum \\(x^\*\\) của hàm số là điểm có đạo hàm \\(f'(x^\*)\\)
+   bằng 0. Hơn thế nữa, trong lân cận của nó, đạo hàm của các điểm phía bên trái
+   \\(x^*\\) là không dương, đạo hàm của các điểm phía bên phải \\(x^\*\\) là
+   không âm.
 
-Trong hình phía trên, các điểm bên trái của điểm local minimum màu xanh lục có đạo hàm âm, các điểm bên phải có đạo hàm dương. Và đối với hàm số này, càng xa về phía trái của điểm local minimum thì đạo hàm càng âm, càng xa về phía phải thì đạo hàm càng dương. 
+2. Đường tiếp tuyến với đồ thị hàm số đó tại 1 điểm bất kỳ có hệ số góc chính
+   bằng đạo hàm của hàm số tại điểm đó.
+
+Trong hình phía trên, các điểm bên trái của điểm local minimum màu xanh lục có
+đạo hàm âm, các điểm bên phải có đạo hàm dương. Và đối với hàm số này, càng xa
+về phía trái của điểm local minimum thì đạo hàm càng âm, càng xa về phía phải
+thì đạo hàm càng dương.
 
 <a name="gradient-descent"></a>
 
@@ -357,13 +369,23 @@ Từ đó ta có:
 
 Từ đó, nếu xấp xỉ đạo hàm bằng công thức \\((3)\\) (xấp xỉ đạo hàm phải), sai số sẽ là \\(O(\varepsilon)\\). Trong khi đó, nếu xấp xỉ đạo hàm bằng công thức \\((4)\\) (xấp xỉ đạo hàm hai phía), sai số sẽ là \\(O(\varepsilon^2) \ll O(\varepsilon)\\) nếu \\(\varepsilon\\) nhỏ. 
 
-Cả hai cách giải thích trên đây đều cho chúng ta thấy rằng, xấp xỉ đạo hàm hai phía là xấp xỉ tốt hơn. 
+Cả hai cách giải thích trên đây đều cho chúng ta thấy rằng, xấp xỉ đạo hàm hai
+phía là xấp xỉ tốt hơn.
+
 <a name="voi-ham-nhieu-bien"></a>
 
 ##### Với hàm nhiều biến
-Với hàm nhiều biến, công thức \\((2)\\) được áp dụng cho từng biến khi các biến khác cố định. Cách tính này thường cho giá trị khá chính xác. Tuy nhiên, cách này không được sử dụng để tính đạo hàm vì độ phức tạp quá cao so với cách tính trực tiếp. Khi so sánh đạo hàm này với đạo hàm chính xác tính theo công thức, người ta thường giảm số chiều dữ liệu và giảm số điểm dữ liệu để thuận tiện cho tính toán. Một khi đạo hàm tính được rất gần với _numerical gradient_, chúng ta có thể tự tin rằng đạo hàm tính được là chính xác.
 
-Dưới đây là một đoạn code đơn giản để kiểm tra đạo hàm và có thể áp dụng với một hàm số (của một vector) bất kỳ với `cost` và `grad` đã tính ở phía trên. 
+Với hàm nhiều biến, công thức \\((2)\\) được áp dụng cho từng biến khi các biến
+khác cố định. Cách tính này thường cho giá trị khá chính xác. Tuy nhiên, cách
+này không được sử dụng để tính đạo hàm vì độ phức tạp quá cao so với cách tính
+trực tiếp. Khi so sánh đạo hàm này với đạo hàm chính xác tính theo công thức,
+người ta thường giảm số chiều dữ liệu và giảm số điểm dữ liệu để thuận tiện cho
+tính toán. Một khi đạo hàm tính được rất gần với _numerical gradient_, chúng ta
+có thể tự tin rằng đạo hàm tính được là chính xác.
+
+Dưới đây là một đoạn code đơn giản để kiểm tra đạo hàm và có thể áp dụng với một
+hàm số (của một vector) bất kỳ với `cost` và `grad` đã tính ở phía trên.
 
 
 ```python
@@ -389,9 +411,14 @@ print( 'Checking gradient...', check_grad(np.random.rand(2, 1), cost, grad))
 
     Checking gradient... True
 
-(_Với các hàm số khác, bạn đọc chỉ cần viết lại hàm `grad` và `cost` ở phần trên rồi áp dụng đoạn code này để kiểm tra đạo hàm. Nếu hàm số là hàm của một ma trận thì chúng ta thay đổi một chút trong hàm `numerical_grad`, tôi hy vọng không quá phức tạp_).
+(_Với các hàm số khác, bạn đọc chỉ cần viết lại hàm `grad` và `cost` ở phần trên
+rồi áp dụng đoạn code này để kiểm tra đạo hàm. Nếu hàm số là hàm của một ma trận
+thì chúng ta thay đổi một chút trong hàm `numerical_grad`, tôi hy vọng không quá
+phức tạp_).
 
-Với bài toán Linear Regression, cách tính đạo hàm như trong \\((1)\\) phía trên được coi là đúng vì sai số giữa hai cách tính là rất nhỏ (nhỏ hơn \\(10^{-6}\\)). Sau khi có được đạo hàm chính xác, chúng ta viết hàm cho GD:
+Với bài toán Linear Regression, cách tính đạo hàm như trong \\((1)\\) phía trên
+được coi là đúng vì sai số giữa hai cách tính là rất nhỏ (nhỏ hơn
+\\(10^{-6}\\)). Sau khi có được đạo hàm chính xác, chúng ta viết hàm cho GD:
 
 
 ```python
@@ -413,7 +440,8 @@ print('Solution found by GD: w = ', w1[-1].T, ',\nafter %d iterations.' %(it1+1)
     after 49 iterations.
 
 
-Sau 49 vòng lặp, thuật toán đã hội tụ với một nghiệm khá gần với nghiệm tìm được theo công thức. 
+Sau 49 vòng lặp, thuật toán đã hội tụ với một nghiệm khá gần với nghiệm tìm được
+theo công thức.
 
 Dưới đây là hình động minh họa thuật toán GD.
 
@@ -436,9 +464,14 @@ Trong hình bên phải, tôi xin giới thiệu một thuật ngữ mới: _đ�
 <a name="duong-dong-muc-level-sets"></a>
 
 #### Đường đồng mức (level sets)
-Với đồ thị của một hàm số với hai biến đầu vào cần được vẽ trong không gian ba chiều, nhều khi chúng ta khó nhìn được nghiệm có khoảng tọa độ bao nhiêu. Trong toán tối ưu, người ta thường dùng một cách vẽ sử dụng khái niệm _đường đồng mức_ (level sets). 
 
-Nếu các bạn để ý trong các bản độ tự nhiên, để miêu tả độ cao của các dãy núi, người ta dùng nhiều đường cong kín bao quanh nhau như sau:
+Với đồ thị của một hàm số với hai biến đầu vào cần được vẽ trong không gian ba
+chiều, nhều khi chúng ta khó nhìn được nghiệm có khoảng tọa độ bao nhiêu. Trong
+toán tối ưu, người ta thường dùng một cách vẽ sử dụng khái niệm _đường đồng mức_
+(level sets).
+
+Nếu các bạn để ý trong các bản độ tự nhiên, để miêu tả độ cao của các dãy núi,
+người ta dùng nhiều đường cong kín bao quanh nhau như sau:
 
 <div class="imgcap">
  <img src ="http://files.vforum.vn/2016/T06/img/vforum.vn-324944-hinh-44-lc6b0e1bba3c-c491e1bb93-c491e1bb8ba-hc3acnh-te1bb89-le1bb87-le1bb9bn.png" align = "center" width = "600">
@@ -448,9 +481,16 @@ Nếu các bạn để ý trong các bản độ tự nhiên, để miêu tả �
 
 Các vòng nhỏ màu đỏ hơn thể hiện các điểm ở trên cao hơn. 
 
-Trong toán tối ưu, người ta cũng dùng phương pháp này để thể hiện các bề mặt trong không gian hai chiều. 
+Trong toán tối ưu, người ta cũng dùng phương pháp này để thể hiện các bề mặt
+trong không gian hai chiều.
 
-Quay trở lại với hình minh họa thuật toán GD cho bài toán Liner Regression bên trên, hình bên phải là hình biểu diễn các level sets. Tức là tại các điểm trên cùng một vòng, hàm mất mát có giá trị như nhau. Trong ví dụ này, tôi hiển thị giá trị của hàm số tại một số vòng. Các vòng màu xanh có giá trị thấp, các vòng tròn màu đỏ phía ngoài có giá trị cao hơn. Điểm này khác một chút so với đường đồng mức trong tự nhiên là các vòng bên trong thường thể hiện một thung lũng hơn là một đỉnh núi (vì chúng ta đang đi tìm giá trị nhỏ nhất).
+Quay trở lại với hình minh họa thuật toán GD cho bài toán Liner Regression bên
+trên, hình bên phải là hình biểu diễn các level sets. Tức là tại các điểm trên
+cùng một vòng, hàm mất mát có giá trị như nhau. Trong ví dụ này, tôi hiển thị
+giá trị của hàm số tại một số vòng. Các vòng màu xanh có giá trị thấp, các vòng
+tròn màu đỏ phía ngoài có giá trị cao hơn. Điểm này khác một chút so với đường
+đồng mức trong tự nhiên là các vòng bên trong thường thể hiện một thung lũng hơn
+là một đỉnh núi (vì chúng ta đang đi tìm giá trị nhỏ nhất).
 
 Tôi thử với _learning rate_ nhỏ hơn, kết quả như sau:
 
@@ -465,7 +505,9 @@ Tôi thử với _learning rate_ nhỏ hơn, kết quả như sau:
     </tr>
 </table> 
 
-Tốc độ hội tụ đã chậm đi nhiều, thậm chí sau 99 vòng lặp, GD vẫn chưa tới gần được nghiệm tốt nhất. Trong các bài toán thực tế, chúng ta cần nhiều vòng lặp hơn 99 rất nhiều, vì số chiều và số điểm dữ liệu thường là rất lớn.
+Tốc độ hội tụ đã chậm đi nhiều, thậm chí sau 99 vòng lặp, GD vẫn chưa tới gần
+được nghiệm tốt nhất. Trong các bài toán thực tế, chúng ta cần nhiều vòng lặp
+hơn 99 rất nhiều, vì số chiều và số điểm dữ liệu thường là rất lớn.
 
 <a name="-mot-vi-du-khac"></a>
 
@@ -477,13 +519,19 @@ Tốc độ hội tụ đã chậm đi nhiều, thậm chí sau 99 vòng lặp, 
  <img src ="/assets/GD/img3_0.015.gif" align = "center" width = "800">
 </div>
 
-Hàm số \\(f(x, y) = (x^2 + y - 7)^2 + (x - y + 1)^2\\) có hai điểm local minimum màu xanh lục tại \\((2, 3)\\) và \\((-3, -2)\\), và chúng cũng là hai điểm global minimum. Trong ví dụ này, tùy vào điểm khởi tạo mà chúng ta thu được các nghiệm cuối cùng khác nhau.
+Hàm số \\(f(x, y) = (x^2 + y - 7)^2 + (x - y + 1)^2\\) có hai điểm local minimum
+màu xanh lục tại \\((2, 3)\\) và \\((-3, -2)\\), và chúng cũng là hai điểm
+global minimum. Trong ví dụ này, tùy vào điểm khởi tạo mà chúng ta thu được các
+nghiệm cuối cùng khác nhau.
 
 <a name="-thao-luan"></a>
 
 ## 5. Thảo luận
 
-Dựa trên GD, có rất nhiều thuật toán phức tạp và hiệu quả hơn được thiết kế cho những loại bài toán khác nhau. Vì bài này đã đủ dài, tôi xin phép dừng lại ở đây. Mời các bạn đón đọc bài Gradient Descent phần 2 với nhiều kỹ thuật nâng cao hơn.
+Dựa trên GD, có rất nhiều thuật toán phức tạp và hiệu quả hơn được thiết kế cho
+những loại bài toán khác nhau. Vì bài này đã đủ dài, tôi xin phép dừng lại ở
+đây. Mời các bạn đón đọc bài Gradient Descent phần 2 với nhiều kỹ thuật nâng cao
+hơn.
 
 <a name="-tai-lieu-tham-khao"></a>
 
