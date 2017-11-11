@@ -247,15 +247,33 @@ Tốc độ hội tụ của GD không những phụ thuộc vào điểm khởi
 </table> 
 Ta quan sát thấy hai điều:
 
-1. Với _learning rate_ nhỏ \\(\eta = 0.01\\), tốc độ hội tụ rất chậm. Trong ví dụ này tôi chọn tối đa 100 vòng lặp nên thuật toán dừng lại trước khi tới _đích_, mặc dù đã rất gần. Trong thực tế, khi việc tính toán trở nên phức tạp, _learning rate_ quá thấp sẽ ảnh hưởng tới tốc độ của thuật toán rất nhiều, thậm chí không bao giờ tới được đích. 
-2. Với _learning rate_ lớn \\(\eta = 0.5\\), thuật toán tiến rất nhanh tới _gần đích_ sau vài vòng lặp. Tuy nhiên, thuật toán không hội tụ được vì _bước nhảy_ quá lớn, khiến nó cứ _quẩn quanh_ ở đích. 
+1. Với _learning rate_ nhỏ \\(\eta = 0.01\\), tốc độ hội tụ rất chậm. Trong ví
+   dụ này tôi chọn tối đa 100 vòng lặp nên thuật toán dừng lại trước khi tới
+   _đích_, mặc dù đã rất gần. Trong thực tế, khi việc tính toán trở nên phức
+   tạp, _learning rate_ quá thấp sẽ ảnh hưởng tới tốc độ của thuật toán rất
+   nhiều, thậm chí không bao giờ tới được đích.
+2. Với _learning rate_ lớn \\(\eta = 0.5\\), thuật toán tiến rất nhanh tới _gần
+   đích_ sau vài vòng lặp. Tuy nhiên, thuật toán không hội tụ được vì _bước
+   nhảy_ quá lớn, khiến nó cứ _quẩn quanh_ ở đích.
 
-Việc lựa chọn _learning rate_ rất quan trọng trong các bài toán thực tế. Việc lựa chọn giá trị này phụ thuộc nhiều vào từng bài toán và phải làm một vài thí nghiệm để chọn ra giá trị tốt nhất. Ngoài ra, tùy vào một số bài toán, GD có thể làm việc hiệu quả hơn bằng cách chọn ra _learning rate_ phù hợp hoặc chọn _learning rate_ khác nhau ở mỗi vòng lặp. Tôi sẽ quay lại vấn đề này ở phần 2. 
+Việc lựa chọn _learning rate_ rất quan trọng trong các bài toán thực tế. Việc
+lựa chọn giá trị này phụ thuộc nhiều vào từng bài toán và phải làm một vài thí
+nghiệm để chọn ra giá trị tốt nhất. Ngoài ra, tùy vào một số bài toán, GD có thể
+làm việc hiệu quả hơn bằng cách chọn ra _learning rate_ phù hợp hoặc chọn
+_learning rate_ khác nhau ở mỗi vòng lặp. Tôi sẽ quay lại vấn đề này ở phần 2.
 
 <a name="-gradient-descent-cho-ham-nhieu-bien"></a>
 
 ## 3. Gradient Descent cho hàm nhiều biến
-Giả sử ta cần tìm global minimum cho hàm \\(f(\mathbf{\theta})\\) trong đó \\(\mathbf{\theta}\\) (_theta_) là một vector, thường được dùng để ký hiệu tập hợp các tham số của một mô hình cần tối ưu (trong Linear Regression thì các tham số chính là hệ số \\(\mathbf{w}\\)). Đạo hàm của hàm số đó tại một điểm \\(\theta\\) bất kỳ được ký hiệu là \\(\nabla_{\theta}f(\theta)\\) (hình tam giác ngược đọc là _nabla_). Tương tự như hàm 1 biến, thuật toán GD cho hàm nhiều biến cũng bắt đầu bằng một điểm dự đoán \\(\theta\_{0}\\), sau đó, ở vòng lặp thứ \\(t\\), quy tắc cập nhật là:
+
+Giả sử ta cần tìm global minimum cho hàm \\(f(\mathbf{\theta})\\) trong đó
+\\(\mathbf{\theta}\\) (_theta_) là một vector, thường được dùng để ký hiệu tập
+hợp các tham số của một mô hình cần tối ưu (trong Linear Regression thì các tham
+số chính là hệ số \\(\mathbf{w}\\)). Đạo hàm của hàm số đó tại một điểm
+\\(\theta\\) bất kỳ được ký hiệu là \\(\nabla_{\theta}f(\theta)\\) (hình tam
+giác ngược đọc là _nabla_). Tương tự như hàm 1 biến, thuật toán GD cho hàm nhiều
+biến cũng bắt đầu bằng một điểm dự đoán \\(\theta\_{0}\\), sau đó, ở vòng lặp
+thứ \\(t\\), quy tắc cập nhật là:
 
 \\[
 \theta\_{t+1} = \theta_\{t} - \eta \nabla_{\theta} f(\theta_\{t})
