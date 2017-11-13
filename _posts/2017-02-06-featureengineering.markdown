@@ -62,7 +62,7 @@ Tôi xin trích một câu nói của thầy Andrew Ng và xin phép thêm khôn
 <a name="-mo-hinh-chung-cho-cac-bai-toan-machine-learning"></a>
 
 ## 2. Mô hình chung cho các bài toán Machine Learning 
-Phần lớn các bài toán Machine Learning có thể được thể hiện trong hình (tôi) vẽ dưới đây:
+Phần lớn các bài toán Machine Learning có thể được thể hiện trong hình vẽ dưới đây:
 
 <div class="imgcap">
 <img src ="\assets\FeatureEngineering\ML_models.png" align = "center" width = "800">

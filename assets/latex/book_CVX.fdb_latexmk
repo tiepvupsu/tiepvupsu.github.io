@@ -1,10 +1,10 @@
 # Fdb version 3
-["makeindex book_CVX.idx"] 1498387377 "book_CVX.idx" "book_CVX.ind" "book_CVX" 1509761199
+["makeindex book_CVX.idx"] 1498387377 "book_CVX.idx" "book_CVX.ind" "book_CVX" 1510526477
   "book_CVX.idx" 1509761198 2128 709d5aa3d997d8209915ad1fd9aac032 ""
   (generated)
-  "book_CVX.ilg"
   "book_CVX.ind"
-["pdflatex"] 1509761196 "book_CVX.tex" "book_CVX.pdf" "book_CVX" 1509761199
+  "book_CVX.ilg"
+["pdflatex"] 1509761196 "book_CVX.tex" "book_CVX.pdf" "book_CVX" 1510526477
   "../16_convexity/hyperbol.png" 1489550082 200319 38c0b13aec1a5ae93be105dbb175857a ""
   "../16_convexity/latex/concavefunctions.pdf" 1489550082 43660 d387b79f78c8a5311d35d303233e6df6 ""
   "../16_convexity/latex/convex_hull.pdf" 1489550082 10860 06bf083a3014f5123ad785c622a9ee8c ""
@@ -226,20 +226,20 @@
   "book_CVX.tex" 1499227086 6048 e669ce62df919b51e457db7ef03df185 ""
   "book_CVX.toc" 1509761198 10695 7594c335fb8452279dcfd61ea348cd0a ""
   "linearalgebra.aux" 1509761198 2586 dc6144fe75446b2942237b13a7fb68ba ""
-  "linearalgebra.tex" 1509761194 26544 b0e8f8d2dba66805b9010944bdaf9e99 ""
+  "linearalgebra.tex" 1510525772 26544 b0e8f8d2dba66805b9010944bdaf9e99 ""
   "mysvmono.cls" 1489550085 60041 3e0aa58ff10fbe471e1d0beb91c496f7 ""
   "norm12.pdf" 1489550085 46181 5a5b19be65778555483c2d5dabeffe29 ""
   (generated)
-  "book_CVX.toc"
   "book_CVX.out"
-  ".aux"
-  "book_CVX.pdf"
-  "book_CVX.idx"
   "book_CVX.log"
+  "book_CVX.idx"
   "linearalgebra.aux"
-  "16_convexity.aux"
-  "book_CVX.aux"
-  "appendix.aux"
-  "17_convexopt.aux"
+  "book_CVX.pdf"
   "18_duality.aux"
+  "16_convexity.aux"
+  "book_CVX.toc"
   "00_loinoidau.aux"
+  "17_convexopt.aux"
+  ".aux"
+  "appendix.aux"
+  "book_CVX.aux"
