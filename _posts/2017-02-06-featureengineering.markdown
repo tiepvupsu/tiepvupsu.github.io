@@ -87,7 +87,27 @@ Tôi xin đề cập đầu ra của khối này trước vì mục đích của
 
 * **_raw training input_**. Raw input là tất cả các thông tin ta biết về dữ liệu. Ví dụ: với ảnh thì là giá trị của từng pixel; với văn bản thì là từng từ, từng câu; với file âm thanh thì nó là một đoạn tín hiệu; với cơ sở dữ liệu [Iris](/2017/01/08/knn/#bo-co-so-du-lieu-iris-iris-flower-dataset) thì nó là độ dài các cánh hoa và đài hoa, ... Dữ liệu thô này thường không ở dạng vector, không có số chiều như nhau. Thậm chí có thể có số chiều như nhau nhưng số chiều quá lớn, như một bức ảnh màu 1000 pixel x 1000 pixel thì số _elements_ đã là \\(3 \times 10^6\\) (3 vì ảnh màu thường có 3 channels: Red, Green, Blue). Đây là một con số quá lớn, không lợi cho lưu trữ và tính toán. 
 
-* **(optional) _output_ của _training set_**. Trong các bài toán Unsupervised learning, ta không biết _output_ nên hiển nhiên sẽ không có đầu vào này. Trong các bài toán Supervised learning, có khi dữ liệu này cũng không được sử dụng. Ví dụ: nếu _raw input_ đã có cùng số chiều rồi nhưng số chiều quá lớn,  ta muốn giảm số chiều của nó thì cách đơn giản nhất là _chiếu_ vector đó xuống một không gian có số chiều nhỏ hơn bằng cách lấy một ma trận ngẫu nhiên nhân với nó. Ma trận này thường là ma trận _béo_ (số hàng ít hơn số cột, tiếng Anh - fat matrices) để đảm bảo số chiều thu được nhỏ hơn số chiều ban đầu. Việc làm này mặc dù làm mất đi thông tin, trong nhiều trường hợp vẫn mang lại hiệu quả vì đã giảm được lượng tính toán ở phần sau. Đôi khi _ma trận chiếu_ không phải là ngẫu nhiên mà có thể được _học_ dựa trên toàn bộ _raw input_, ta sẽ có bài toán tìm ma trận chiếu để lượng thông tin mất đi là ít nhất. Trong nhiều trường hợp, dữ liệu _output_ của _training set_ cũng được sử dụng để tạo ra Feature Extractor. Ví dụ: trong bài toán classification, ta không quan tâm nhiều đến việc mất thông tin hay không, ta chỉ quan tâm đến việc những thông tin còn lại có đặc trưng cho từng class hay không. Ví dụ, dữ liệu thô là các hình vuông và hình tam giác có màu đỏ và xanh. Trong bài toán phân loại đa giác, các output là _tam giác_ và _vuông_,  thì ta không quan tâm tới màu sắc mà chỉ quan tâm tới số cạnh của đa giác. Ngược lại, trong bài toán phân loại màu, các class là _xanh_ và _đỏ_, ta không quan tâm tới số cạnh mà chỉ quan tâm đến màu sắc thôi. 
+* **(optional) _output_ của _training set_**. Trong các bài toán Unsupervised
+  learning, ta không biết _output_ nên hiển nhiên sẽ không có đầu vào này. Trong
+  các bài toán Supervised learning, có khi dữ liệu này cũng không được sử dụng.
+  Ví dụ: nếu _raw input_ đã có cùng số chiều rồi nhưng số chiều quá lớn,  ta
+  muốn giảm số chiều của nó thì cách đơn giản nhất là _chiếu_ vector đó xuống
+  một không gian có số chiều nhỏ hơn bằng cách lấy một ma trận ngẫu nhiên nhân
+  với nó. Ma trận này thường là ma trận _béo_ (số hàng ít hơn số cột, tiếng Anh
+  - fat matrices) để đảm bảo số chiều thu được nhỏ hơn số chiều ban đầu. Việc
+  làm này mặc dù làm mất đi thông tin, trong nhiều trường hợp vẫn mang lại hiệu
+  quả vì đã giảm được lượng tính toán ở phần sau. Đôi khi _ma trận chiếu_ không
+  phải là ngẫu nhiên mà có thể được _học_ dựa trên toàn bộ _raw input_, ta sẽ có
+  bài toán tìm ma trận chiếu để lượng thông tin mất đi là ít nhất. Trong nhiều
+  trường hợp, dữ liệu _output_ của _training set_ cũng được sử dụng để tạo ra
+  Feature Extractor. Ví dụ: trong bài toán classification, ta không quan tâm
+  nhiều đến việc mất thông tin hay không, ta chỉ quan tâm đến việc những thông
+  tin còn lại có đặc trưng cho từng class hay không. Ví dụ, dữ liệu thô là các
+  hình vuông và hình tam giác có màu đỏ và xanh. Trong bài toán phân loại đa
+  giác, các output là _tam giác_ và _vuông_,  thì ta không quan tâm tới màu sắc
+  mà chỉ quan tâm tới số cạnh của đa giác. Ngược lại, trong bài toán phân loại
+  màu, các class là _xanh_ và _đỏ_, ta không quan tâm tới số cạnh mà chỉ quan
+  tâm đến màu sắc thôi.
 
 * **(optional) _Prior knowledge about data_**: Đôi khi những giả thiết khác về dữ liệu cũng mang lại lợi ích. Ví dụ, trong bài toán classification, nếu ta biết dữ liệu là (gần như) [ _linearly separable_](/2017/01/21/perceptron/#bai-toan-perceptron) thì ta sẽ đi tìm một ma trận chiếu sao cho ở trong không gian mới, dữ liệu vẫn đảm bảo tính _linearly separable_, việc này thuận tiện hơn cho phần classification vì các thuật toán linear, nhìn chung, đơn giản hơn. 
 
@@ -96,16 +116,28 @@ Sau khi _học_ được feature extractor thì ta cũng sẽ thu được _extr
 <a name="main-algorithms"></a>
 
 #### Main Algorithms 
-Khi có được _extracted features_ rồi, chúng ta sử dụng những thông tin này cùng với (optional) _training output_ và (optional) _prior knowledge_ để tạo ra các mô hình phù hợp, điều mà chúng ta đã làm ở những bài trước. 
+Khi có được _extracted features_ rồi, chúng ta sử dụng những thông tin này cùng
+với (optional) _training output_ và (optional) _prior knowledge_ để tạo ra các
+mô hình phù hợp, điều mà chúng ta đã làm ở những bài trước.
 
 **Chú ý:** Trong một số thuật toán cao cấp hơn, việc _huấn luyện_ feature extractor và main algorithm được thực hiện cùng lúc với nhau chứ không phải từng bước như trên. 
 
-**Một điểm rất quan trọng: khi xây dựng bộ _feature extractor_ và _main algorithms_, chúng ta không được sử dụng bất kỳ thông tin nào trong tập _test data_. Ta phải giả sử rằng những thông tin trong _test data_ chưa được nhìn thấy bao giờ. Nếu sử dụng thêm thông tin về _test data_ thì rõ ràng ta đã _ăn gian_! Tôi từng đánh giá các bài báo khoa học quốc tế, rất nhiều tác giả xây dựng mô hình dùng cả dữ liệu _test data_, sau đó lại dùng chính mô hình đó để kiểm tra trên _test data_ đó. Việc _ăn gian_ này là lỗi rất nặng và hiển nhiên những bài báo đó bị từ chối (reject).**
+**Một điểm rất quan trọng: khi xây dựng bộ _feature extractor_ và _main
+algorithms_, chúng ta không được sử dụng bất kỳ thông tin nào trong tập _test
+data_. Ta phải giả sử rằng những thông tin trong _test data_ chưa được nhìn thấy
+bao giờ. Nếu sử dụng thêm thông tin về _test data_ thì rõ ràng ta đã _ăn gian_!
+Tôi từng đánh giá các bài báo khoa học quốc tế, rất nhiều tác giả xây dựng mô
+hình dùng cả dữ liệu _test data_, sau đó lại dùng chính mô hình đó để kiểm tra
+trên _test data_ đó. Việc _ăn gian_ này là lỗi rất nặng và hiển nhiên những bài
+báo đó bị từ chối (reject).**
 
 <a name="testing-phase"></a>
 
 ### TESTING PHASE 
-Bước này đơn giản hơn nhiều. Với _raw input_ mới, ta sử dụng feature extractor đã tạo được ở trên (tất nhiên không được sử dụng _output_ của nó vì _output_ là cái ta đang đi tìm) để tạo ra feature vector tương ứng. Feature vector được đưa vào _main algorithm_ đã được học ở training phase để dự đoán _output_. 
+Bước này đơn giản hơn nhiều. Với _raw input_ mới, ta sử dụng feature extractor
+đã tạo được ở trên (tất nhiên không được sử dụng _output_ của nó vì _output_ là
+cái ta đang đi tìm) để tạo ra feature vector tương ứng. Feature vector được đưa
+vào _main algorithm_ đã được học ở training phase để dự đoán _output_.
 
 <a name="-mot-so-vi-du-ve-feature-engineering"></a>
 
@@ -113,27 +145,58 @@ Bước này đơn giản hơn nhiều. Với _raw input_ mới, ta sử dụng 
 <a name="truc-tiep-lay-raw-data"></a>
 
 ### Trực tiếp lấy raw data 
-Với bài toán phân loại chữ số viết tay trong bộ cơ sở dữ liệu [MNIST](/2017/01/04/kmeans2/#bo-co-so-du-lieu-mnist), mỗi bức ảnh có số chiều là 28 pixel x 28 pixel (tất nhiên việc _crop_ và chỉnh sửa mỗi bức ảnh đã được thực hiện từ trước rồi, đó đã là một phần của feature engineering rồi). Một cách đơn giản thường được dùng là _kéo dài_ ma trận 28x28 này để được 1 vector có số chiều 784. Trong cách này, các cột (hoặc hàng) của ma trận ảnh được đặt chồng lên (hoặc cạnh nhau) để được 1 vector dài. Vector dài này được trực tiếp sử dụng làm feature đưa vào các bộ classifier/clustering/regression/... Lúc này, giá trị của mỗi pixel ảnh được coi là một feature. 
+Với bài toán phân loại chữ số viết tay trong bộ cơ sở dữ liệu
+[MNIST](/2017/01/04/kmeans2/#bo-co-so-du-lieu-mnist), mỗi bức ảnh có số chiều là
+28 pixel x 28 pixel (tất nhiên việc _crop_ và chỉnh sửa mỗi bức ảnh đã được thực
+hiện từ trước rồi, đó đã là một phần của feature engineering rồi). Một cách đơn
+giản thường được dùng là _kéo dài_ ma trận 28x28 này để được 1 vector có số
+chiều 784. Trong cách này, các cột (hoặc hàng) của ma trận ảnh được đặt chồng
+lên (hoặc cạnh nhau) để được 1 vector dài. Vector dài này được trực tiếp sử dụng
+làm feature đưa vào các bộ classifier/clustering/regression/... Lúc này, giá trị
+của mỗi pixel ảnh được coi là một feature.
 
 Rõ ràng việc làm đơn giản này đã làm mất thông tin về _không gian_ (spatial information) giữa các điểm ảnh, tuy nhiên, trong nhiều trường hợp, nó vẫn mang lại kết quả khả quan. 
 <a name="feature-selection"></a>
 
 ### Feature selection 
-Giả sử rằng các điểm dữ liệu có số features khác nhau (do kích thước dữ liệu khác nhau hay do một số feature mà điểm dữ liệu này có nhưng điểm dữ liệu kia lại không thu thập được), và số lượng features là cực lớn. Chúng ta cần _chọn_ ra một số lượng nhỏ hơn các feature phù hợp với bài toán. _Chọn thế nào_ và _thế nào là phù hợp_ lại là một bài toán khác, tôi sẽ không bàn thêm ở đây.
+Giả sử rằng các điểm dữ liệu có số features khác nhau (do kích thước dữ liệu
+khác nhau hay do một số feature mà điểm dữ liệu này có nhưng điểm dữ liệu kia
+lại không thu thập được), và số lượng features là cực lớn. Chúng ta cần _chọn_
+ra một số lượng nhỏ hơn các feature phù hợp với bài toán. _Chọn thế nào_ và _thế
+nào là phù hợp_ lại là một bài toán khác, tôi sẽ không bàn thêm ở đây.
 
 <a name="dimensionality-reduction"></a>
 
 ### Dimensionality reduction 
-Một phương pháp nữa tôi đã đề cập đó là làm giảm số chiều của dữ liệu để giảm bộ nhớ và khối lượng tính toán. Việc giảm số chiều này có thể được thực hiện bằng nhiều cách, trong đó _random projection_ là cách đơn giản nhất. Tức chọn một _ma trận chiếu_ (projection matrix) ngẫu nhiên (ma trận béo) rồi nhân nó với từng điểm dữ liệu (giả sử dữ liệu ở dạng vector cột) để được các vector có số chiều thấp hơn. Ví dụ, vector ban đầu có số chiều là 784, chọn _ma trận chiếu_ có kích thước (100x784), khi đó nếu nhân ma trận chéo này với vector ban đầu, ta sẽ được một vector mới có số chiều là 100, nhỏ hơn số chiều ban đầu rất nhiều. Lúc này, có thể ta không có tên gọi cho mỗi feature nữa vì các feature ở vector ban đầu đã được trộn lẫn với nhau theo một tỉ lệ nào đó rồi lưu và vector mới này. Mỗi thành phần của vector mới này được coi là một feature (không tên). 
+Một phương pháp nữa tôi đã đề cập đó là làm giảm số chiều của dữ liệu để giảm bộ
+nhớ và khối lượng tính toán. Việc giảm số chiều này có thể được thực hiện bằng
+nhiều cách, trong đó _random projection_ là cách đơn giản nhất. Tức chọn một _ma
+trận chiếu_ (projection matrix) ngẫu nhiên (ma trận béo) rồi nhân nó với từng
+điểm dữ liệu (giả sử dữ liệu ở dạng vector cột) để được các vector có số chiều
+thấp hơn. Ví dụ, vector ban đầu có số chiều là 784, chọn _ma trận chiếu_ có kích
+thước (100x784), khi đó nếu nhân ma trận chéo này với vector ban đầu, ta sẽ được
+một vector mới có số chiều là 100, nhỏ hơn số chiều ban đầu rất nhiều. Lúc này,
+có thể ta không có tên gọi cho mỗi feature nữa vì các feature ở vector ban đầu
+đã được trộn lẫn với nhau theo một tỉ lệ nào đó rồi lưu và vector mới này. Mỗi
+thành phần của vector mới này được coi là một feature (không tên).
 
-Việc chọn một ma trận chiếu ngẫu nhiên đôi khi mang lại kết quả tệ không mong muốn vì thông tin bị mất đi quá nhiều. Một phương pháp được sử dụng nhiều để hạn chế lượng thông tin mất đi có tên là [Principle Component Analysis](https://en.wikipedia.org/wiki/Principal_component_analysis) sẽ được tôi trình bày sau đây khoảng 1-2 tháng. 
+Việc chọn một ma trận chiếu ngẫu nhiên đôi khi mang lại kết quả tệ không mong
+muốn vì thông tin bị mất đi quá nhiều. Một phương pháp được sử dụng nhiều để hạn
+chế lượng thông tin mất đi có tên là [Principle Component
+Analysis](https://en.wikipedia.org/wiki/Principal_component_analysis) sẽ được
+tôi trình bày sau đây khoảng 1-2 tháng.
 
-**Chú ý:** Feature learning không nhất thiết phải làm giảm số chiều dữ liệu, đôi khi feature vector còn có số chiều lớn hơn raw data. Random projection cũng có thể làm được việc này nếu ma trận chiếu là một ma trận _cao_ (số cột ít hơn số hàng).
+**Chú ý:** Feature learning không nhất thiết phải làm giảm số chiều dữ liệu, đôi
+khi feature vector còn có số chiều lớn hơn raw data. Random projection cũng có
+thể làm được việc này nếu ma trận chiếu là một ma trận _cao_ (số cột ít hơn số
+hàng).
 
 <a name="bag-of-words"></a>
 
 ### Bag-of-words 
-Hẳn rất nhiều bạn đã tự đặt câu hỏi: Với một văn bản thì feature vector sẽ có dạng như thế nào? Làm sao đưa các từ, các câu, đoạn văn ở dạng _text_ trong các văn bản về một vector mà mỗi phần tử là một số? 
+Hẳn rất nhiều bạn đã tự đặt câu hỏi: Với một văn bản thì feature vector sẽ có
+dạng như thế nào? Làm sao đưa các từ, các câu, đoạn văn ở dạng _text_ trong các
+văn bản về một vector mà mỗi phần tử là một số?
 
 Có một phương pháp rất phổ biến giúp bạn trả lời những câu hỏi này. Phương pháp đó có tên là _Bag of Words (BoW)_ (_Túi đựng Từ_).
 

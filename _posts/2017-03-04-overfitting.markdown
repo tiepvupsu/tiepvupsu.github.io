@@ -24,7 +24,7 @@ summary: Overfitting không phải là một thuật toán trong Machine Learnin
 - [3. Regularization](#-regularization)
     - [3.1. Early Stopping](#-early-stopping)
     - [3.2. Thêm số hạng vào hàm mất mát](#-them-so-hang-vao-ham-mat-mat)
-    - [3.3. \\\(l_2\\\) regularization](#-\\l\\-regularization)
+    - [3.3. \\\(l_2\\\) regularization](#-%5C%5Cl%5C%5C-regularization)
         - [Ví dụ về Weight Decay với MLP](#vi-du-ve-weight-decay-voi-mlp)
     - [3.4. Tikhonov regularization](#-tikhonov-regularization)
     - [3.5. Regularizers for sparsity](#-regularizers-for-sparsity)
@@ -40,6 +40,7 @@ Overfitting không phải là một thuật toán trong Machine Learning. Nó l�
 
 <a name="-gioi-thieu"></a>
 
+<a name="-gioi-thieu"></a>
 ## 1. Giới thiệu
 Đây là một câu chuyện của chính tôi khi lần đầu biết đến Machine Learning.
 
@@ -93,7 +94,7 @@ Về cơ bản, overfitting xảy ra khi mô hình quá phức tạp để mô p
 
 Vậy, có những kỹ thuật nào giúp tránh Overfitting?
 
- Trước hết, chúng ta cần một vài đại lượng để đánh giá chất lượng của mô hình trên training data và test data. Dưới đây là hai đại lượng đơn giản, với giả sử \\(\mathbf{y}\\) là đầu ra thực sự (có thể là vector), và \\(\mathbf{\hat{x}}\\) là đầu ra dự đoán bởi mô hình:
+ Trước hết, chúng ta cần một vài đại lượng để đánh giá chất lượng của mô hình trên training data và test data. Dưới đây là hai đại lượng đơn giản, với giả sử \\(\mathbf{y}\\) là đầu ra thực sự (có thể là vector), và \\(\mathbf{\hat{y}}\\) là đầu ra dự đoán bởi mô hình:
 
 **Train error:** Thường là hàm mất mát áp dụng lên training data. Hàm mất mát này cần có một thừa số \\(\frac{1}{N\_{\text{train}}} \\) để tính giá trị trung bình, tức mất mát trung bình trên mỗi điểm dữ liệu. Với Regression, đại lượng này thường được định nghĩa:
 \\[
@@ -118,9 +119,11 @@ Chúng ta cùng đi vào phương pháp đầu tiên
 
 <a name="-validation"></a>
 
+<a name="-validation"></a>
 ## 2. Validation
 <a name="-validation-1"></a>
 
+<a name="-validation-1"></a>
 ### 2.1. Validation
 Chúng ta vẫn quen với việc chia tập dữ liệu ra thành hai tập nhỏ: training data và test data. Và một điều tôi vẫn muốn nhắc lại là khi xây dựng mô hình, ta không được sử dụng test data. Vậy làm cách nào để biết được chất lượng của mô hình với _unseen data_ (tức dữ liệu chưa nhìn thấy bao giờ)?
 
@@ -149,6 +152,7 @@ Nhắc lại rằng, khi bậc nhỏ (bằng 1 hoặc 2), cả ba error đều c
 
 <a name="-cross-validation"></a>
 
+<a name="-cross-validation"></a>
 ### 2.2. Cross-validation
 Trong nhiều trường hợp, chúng ta có rất hạn chế số lượng dữ liệu để xây dựng mô hình. Nếu lấy quá nhiều dữ liệu trong tập training ra làm dữ liệu validation, phần dữ liệu còn lại của tập training là không đủ để xây dựng mô hình. Lúc này, tập validation phải thật nhỏ để giữ được lượng dữ liệu cho training đủ lớn. Tuy nhiên, một vấn đề khác nảy sinh. Khi tập validation quá nhỏ, hiện tượng overfitting lại có thể xảy ra với tập training còn lại. Có giải pháp nào cho tình huống này không?
 
@@ -165,6 +169,7 @@ Sklearn hỗ trợ rất nhiều phương thức cho phân chia dữ liệu và 
 
 <a name="-regularization"></a>
 
+<a name="-regularization"></a>
 ## 3. Regularization
 
 
@@ -177,6 +182,7 @@ Một kỹ thuật rất đơn giản là _early stopping_.
 
 <a name="-early-stopping"></a>
 
+<a name="-early-stopping"></a>
 ### 3.1. Early Stopping
 Trong nhiều bài toán Machine Learning, chúng ta cần sử dụng các thuật toán lặp để tìm ra nghiệm, ví dụ như Gradient Descent. Nhìn chung, hàm mất mát giảm dần khi số vòng lặp tăng lên. Early stopping tức dừng thuật toán trước khi hàm mất mát đạt giá trị quá nhỏ, giúp tránh overfitting.
 
@@ -192,6 +198,7 @@ Hình trên đây mô tả cách tìm điểm _stopping_. Chúng ta thấy rằn
 
 <a name="-them-so-hang-vao-ham-mat-mat"></a>
 
+<a name="-them-so-hang-vao-ham-mat-mat"></a>
 ### 3.2. Thêm số hạng vào hàm mất mát
 
 
@@ -209,6 +216,7 @@ Với các mô hình Neural Networks, một số kỹ thuật regularization th�
 
 <a name="-\\l\\-regularization"></a>
 
+<a name="-%5C%5Cl%5C%5C-regularization"></a>
 ### 3.3. \\(l_2\\) regularization
 Trong kỹ thuật này:
 \\[
@@ -236,6 +244,7 @@ trong đó, số hạng đầu tiên ở vế phải chính là hàm mất mát 
 
 <a name="vi-du-ve-weight-decay-voi-mlp"></a>
 
+<a name="vi-du-ve-weight-decay-voi-mlp"></a>
 #### Ví dụ về Weight Decay với MLP
 Chúng ta sử dụng [mô hình MLP giống như bài trước](/2017/02/24/mlp/#-vi-du-tren-python) nhưng dữ liệu có khác đi đôi chút.
 
@@ -310,6 +319,7 @@ Khi \\(\lambda\\) quá lớn, tức ta xem phần _regularization_ quan trọng 
 
 <a name="-tikhonov-regularization"></a>
 
+<a name="-tikhonov-regularization"></a>
 ### 3.4. Tikhonov regularization
 \\[
 \lambda R(\mathbf{w}) = \\|\Gamma \mathbf{w}\\|_2^2
@@ -321,6 +331,7 @@ Khi các phần tử trên đường chéo của \\(\Gamma\\) là khác nhau, ta
 
 <a name="-regularizers-for-sparsity"></a>
 
+<a name="-regularizers-for-sparsity"></a>
 ### 3.5. Regularizers for sparsity
 
 Trong nhiều trường hợp, ta muốn các hệ số _thực sự_ bằng 0 chứ không phải là _nhỏ gần 0_ như \\(l_2\\) regularization đã làm phía trên. Lúc đó, có một regularization khác được sử dụng, đó là \\(l_0\\) regularization:
@@ -343,12 +354,14 @@ Khi cả \\(l_2\\) và \\(l_1\\) regularization được sử dụng, ta có mô
 
 <a name="-regularization-trong-sklearn"></a>
 
+<a name="-regularization-trong-sklearn"></a>
 ### 3.6. Regularization trong sklearn
 
 Trong [sklearn](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html), ví dụ [Logistic Regression](/2017/01/27/logisticregression/), bạn cũng có thể sử dụng các \\(l_1\\) và \\(l_2\\) regularizations bằng cách khai báo biến `penalty='l1'` hoặc `penalty = 'l2'` và biến `C`, trong đó `C` là _nghịch đảo_ của \\(\lambda\\). Trong các bài trước khi chưa nói về  Overfitting và Regularization, tôi có sử dụng `C = 1e5` để chỉ ra rằng \\(\lambda\\) là một số rất nhỏ.
 
 <a name="-cac-phuong-phap-khac"></a>
 
+<a name="-cac-phuong-phap-khac"></a>
 ## 4. Các phương pháp khác
 Ngoài các phương pháp đã nêu ở trên, với mỗi mô hình, nhiều phương pháp tránh overfitting khác cũng được sử dụng. Điển hình là [Dropout trong Deep Neural Networks mới được đề xuất gần đây](http://jmlr.org/papers/volume15/srivastava14a/srivastava14a.pdf). Một cách ngắn gọn, dropout là một phương pháp _tắt_ ngẫu nhiên các units trong Networks. _Tắt_ tức cho các unit giá trị bằng không và tính toán feedforward và backpropagation bình thường trong khi training. Việc này không những giúp lượng tính toán giảm đi mà còn làm giảm việc overffitng. Tôi xin được quay lại vấn đề này nếu có dịp nói  sâu về Deep Learning trong tương lai.
 
@@ -356,6 +369,7 @@ Bạn đọc có thể tìm đọc thêm với các từ khóa: [pruning](https:
 
 <a name="-tom-tat-noi-dung"></a>
 
+<a name="-tom-tat-noi-dung"></a>
 ## 5. Tóm tắt nội dung
 * Một mô hình mô tốt là mộ mô hình có _tính tổng quát_, tức mô tả được dữ liệu cả trong lẫn ngoài tập training. Mô hình chỉ mô tả tốt dữ liệu trong tập training được gọi là **overfitting**.
 
@@ -363,6 +377,7 @@ Bạn đọc có thể tìm đọc thêm với các từ khóa: [pruning](https:
 
 <a name="-tai-lieu-tham-khao"></a>
 
+<a name="-tai-lieu-tham-khao"></a>
 ## 6. Tài liệu tham khảo
 
 [1] [Overfitting - Wikipedia](https://en.wikipedia.org/wiki/Overfitting)
