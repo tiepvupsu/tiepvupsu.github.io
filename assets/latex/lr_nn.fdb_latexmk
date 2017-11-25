@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1497494679 "pla_nn2.tex" "pla_nn2.pdf" "pla_nn2" 1511485980
-  "/dev/null" 1511485980 0 d41d8cd98f00b204e9800998ecf8427e ""
+["pdflatex"] 1511487047 "lr_nn.tex" "lr_nn.pdf" "lr_nn" 1511487121
+  "/dev/null" 1511487120 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/usr/local/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmss10.tfm" 1136768653 1316 b636689f1933f24d1294acdf6041daaa ""
   "/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb" 1248133631 24457 5cbb7bdf209d5d1ce9892a9b80a307cc ""
@@ -67,6 +67,11 @@
   "/usr/local/texlive/2016/texmf-dist/tex/generic/xkeyval/keyval.tex" 1403829539 2725 fc34ef3ccb37ba15a640e8fca6190bca ""
   "/usr/local/texlive/2016/texmf-dist/tex/generic/xkeyval/xkeyval.tex" 1417732693 19231 26434a5656c684f5ffb1f26f98006baa ""
   "/usr/local/texlive/2016/texmf-dist/tex/generic/xkeyval/xkvutils.tex" 1403829539 7677 6f5ce7c1124cad7ec57d05b2562bd8fe ""
+  "/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsbsy.sty" 1456875012 2210 5c54ab129b848a5071554186d0168766 ""
+  "/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsgen.sty" 1456875012 4160 c115536cf8d4ff25aa8c1c9bc4ecb79a ""
+  "/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsmath.sty" 1459635588 82019 58dd7b022876c1d593cd2135c441946d ""
+  "/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsopn.sty" 1459635588 4115 318a66090112f3aa3f415aeb6fe8540f ""
+  "/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amstext.sty" 1456875012 2431 fe3078ec12fc30287f568596f8e0b948 ""
   "/usr/local/texlive/2016/texmf-dist/tex/latex/base/article.cls" 1459635588 19821 310da678527a7dfe2a02c88af38079b7 ""
   "/usr/local/texlive/2016/texmf-dist/tex/latex/base/size10.clo" 1459635588 8292 e897c12e1e886ce77fe26afc5d470886 ""
   "/usr/local/texlive/2016/texmf-dist/tex/latex/graphics-cfg/color.cfg" 1459978653 1213 620bba36b25224fa9b7e1ccb4ecb76fd ""
@@ -98,9 +103,9 @@
   "/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1489522183 1888048 f2c5faed5981a516f406b2ccc20bff71 ""
   "/usr/local/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt" 1463979169 3873397 413fbfbbedb8e719ddc392043a7add02 ""
   "/usr/local/texlive/2016/texmf.cnf" 1463979140 577 2938757e76f31531e65cc647e3507693 ""
-  "pla_nn2.aux" 1497494680 8 a94a2480d3289e625eea47cd1b285758 ""
-  "pla_nn2.tex" 1497494679 1718 9e0b1522d8eb205724588ff42b505657 ""
+  "lr_nn.aux" 1511487047 8 a94a2480d3289e625eea47cd1b285758 ""
+  "lr_nn.tex" 1511487046 2633 282e97ccfb4a008cd5c378ea97929b88 ""
   (generated)
-  "pla_nn2.log"
-  "pla_nn2.aux"
-  "pla_nn2.pdf"
+  "lr_nn.pdf"
+  "lr_nn.aux"
+  "lr_nn.log"

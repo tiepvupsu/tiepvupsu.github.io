@@ -152,8 +152,8 @@ def update2(ii):
 
 	# y0 = w1[ii][0] + w1[ii][1]*x0
 	else:
-		animlist = plt.plot([w3[ii-1][0], w3[ii][0]], [w3[ii-1][1], w3[ii][1]], 'r-')
-	animlist = plt.plot(w3[ii][0], w3[ii][1], 'ro') 
+		animlist = plt.plot([w3[ii-1][0], w3[ii][0]], [w3[ii-1][1], w3[ii][1]], 'r-', markeredgecolor = 'k')
+	animlist = plt.plot(w3[ii][0], w3[ii][1], 'ro', markeredgecolor = 'k') 
 	ax.set_xlabel('1')
 	return animlist, ax
 
