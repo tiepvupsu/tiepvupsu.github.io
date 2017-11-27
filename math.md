@@ -9,7 +9,7 @@ mathjax: true
 
 Một số kiến thức về Đại Số Tuyến Tính, Xác Suất Thống Kê, Toán Tối Ưu cần thiết cho Machine Learning.
 
-Bạn có thể download bản pdf [tại đây](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/latex/appendix.pdf).
+Bạn có thể download bản pdf [đầy đủ hơn tại đây](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/ML_math.pdf).
 
 (_đang trong thời gian xây dựng, cập nhật theo bài_)
 
