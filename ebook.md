@@ -108,12 +108,12 @@ Chủ tài khoản: **VU HUU LONG**
 
 Số tài khoản: **0081001280321**
 
-*Sau khi chuyển khoản, các bạn cần lưu lại **Mã giao dịch (Ref)** để điền form ở Bước 2.*
+Sau khi chuyển khoản, các bạn cần lưu lại **nội dung chuyển khoản**. Nội dung chuyển khoản tốt nhất là họ tên của bạn, để tôi có thể đối chiếu nhanh chóng với ngân hàng và form. Nếu nội dung chuyển khoản không tồn tại, bạn cần lưu lại mã giao dịch (ref). Nếu gặp khó khăn trong việc tìm mã, bạn có thể chụp lại hoá đơn và đính kèm .
 
 <a name="buoc--1"></a>
 
 ### Bước 2
-Bạn điền thông tin về tên, cách thức bạn chuyển tiền, **Tracsaction ID (với Paypal)** hoặc **Mã giao dịch - Ref (với Vietcombank)** và email mà bạn sẽ nhận sách vào Form dưới đây. **Với các bạn là sinh viên, bạn cần sử dụng email của trường đại học để được giảm giá.**
+Bạn điền thông tin về tên, cách thức bạn chuyển tiền, **Tracsaction ID (với Paypal)** hoặc **Nội dung chuyển khoản hoặc mã giao dịch (với Vietcombank)** và email mà bạn sẽ nhận sách vào Form dưới đây. **Với các bạn là sinh viên, bạn cần sử dụng email của trường đại học để được giảm giá.**
 
 <a name="link-dang-ky-pre-order-ebook-machine-learning-co-ban-i"></a>
 
