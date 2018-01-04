@@ -4,7 +4,7 @@ comments: true
 title:  "Bài 33: Các phương pháp đánh giá một hệ thống phân lớp"
 title2:  "33. Đánh giá hệ thống phân lớp"
 date:   2018-01-03 15:22:00
-permalink: 2017/01/03/evaluation/
+permalink: 2017/08/31/evaluation/
 mathjax: true
 tags: Classification 
 category: Classification
