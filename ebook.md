@@ -24,7 +24,7 @@ comments: true
 <!-- /MarkdownTOC -->
 
 
-Ebook 'Machine Learning cơ bản' đã hoàn thành, bạn có thể order và nhận ebook ngay trong ngày. Dưới đây là một vài review về cuốn ebook:
+Ebook 'Machine Learning cơ bản' đã hoàn thành, bạn có thể order và nhận ebook ngay trong ngày. Dưới đây là một vài [review về cuốn ebook](https://fundaml.com/ebook):
 
 
 <div>
