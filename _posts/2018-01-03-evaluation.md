@@ -1,10 +1,10 @@
 ---
 layout: post
 comments: true
-title:  "Bài 33: Các phương pháp đánh giá một hệ thống phân lớp (Phần 1/2)"
-title2:  "33. Đánh giá hệ thống phân lớp (1/2)"
-date:   2017-08-31 15:22:00
-permalink: 2017/08/31/evaluation/
+title:  "Bài 33: Các phương pháp đánh giá một hệ thống phân lớp"
+title2:  "33. Đánh giá hệ thống phân lớp"
+date:   2018-01-03 15:22:00
+permalink: 2017/01/03/evaluation/
 mathjax: true
 tags: Classification 
 category: Classification
@@ -25,7 +25,14 @@ summary: Các phương pháp đánh giá hiệu năng của một mô hình phâ
   - [4.2. Receiver Operating Characteristic curve](#-receiver-operating-characteristic-curve)
   - [4.3. Area Under the Curve](#-area-under-the-curve)
 - [5. Precision và Recall](#-precision-va-recall)
-- [5. Tài liệu tham khảo](#-tai-lieu-tham-khao)
+  - [5.1 Định nghĩa](#-dinh-nghia)
+  - [5.2. Precision-Recall curve và Average precision](#-precision-recall-curve-va-average-precision)
+  - [5.3. F1-score](#-f-score)
+  - [5.4. Precision-recall cho bài toán phân lớp nhiều lớp](#-precision-recall-cho-bai-toan-phan-lop-nhieu-lop)
+    - [5.4.1. Micro-average](#-micro-average)
+    - [5.4.2. Macro-average](#-macro-average)
+- [5. Tóm tắt](#-tom-tat)
+- [6. Tài liệu tham khảo](#-tai-lieu-tham-khao)
 
 <!-- /MarkdownTOC -->
 
@@ -417,9 +424,286 @@ Có một thông số nữa dùng để đánh giá mà tôi đã sử dụng �
 
 **Chú ý:** [Cross validation](https://machinelearningcoban.com/2017/03/04/overfitting/#-cross-validation) cũng có thể được thực hiện bằng cách xác định ROC curve và AUC lên [validation set]. 
 
+
+
+<a name="-precision-va-recall"></a>
+
+## 5. Precision và Recall 
+
+<a name="-dinh-nghia"></a>
+
+### 5.1 Định nghĩa
+Với bài toán phân loại mà tập dữ liệu của các lớp là chênh lệch nhau rất nhiều, có một phép đó hiệu quả thường được sử dụng là Precision-Recall. 
+
+Trước hết xét bài toán phân loại nhị phân. Ta cũng coi một trong hai lớp là _positive_, lớp còn lại là _negative_. 
+
+Xét Hình 3 dưới đây:
+
+<hr>
+<div class="imgcap">
+<img src ="/assets/33_evaluation/PR.png" align = "center" width = "800">
+</div>
+
+<br>
+<div  class = "thecap" style = "text-align: justify" >Hình 3: Cách tính Precision và Recall.</div>
+<hr>
+
+Với một cách xác định một lớp là _positive_, **Precision** được định nghĩa là tỉ
+lệ số điểm **true positive** trong số những điểm **được phân loại là
+_positive_** (TP + FP).
+
+**Recall** được định nghĩa là tỉ lệ số điểm **true positive** trong số những
+điểm **thực sự là _positive_** (TP + FN).
+
+Một cách toán học, Precison và Recall là hai phân số có tử số bằng nhau nhưng
+mẫu số khác nhau:
+
+\\[
+\begin{eqnarray}
+\text{Precision} &=& \frac{\text{TP}}{\text{TP} + \text{FP}} \\\
+\text{Recall} &=& \frac{\text{TP}}{\text{TP} + \text{FN}}
+\end{eqnarray}
+\\]
+
+Bạn đọc có thể nhận thấy rằng TPR và Recall là hai đại lượng bằng nhau. Ngoài
+ra, cả Precision và Recall đều là các số không âm nhỏ hơn hoặc bằng một.
+
+Precision cao đồng nghĩa với việc độ chính xác của các điểm tìm được là cao. Recall cao đồng nghĩa với việc True Positive Rate cao, tức tỉ lệ bỏ sót các điểm thực sự _positive_ là thấp.
+
+Ví dụ nhỏ dưới đây thể hiện cách tính Precision và Recall dựa vào Confusion Matrix cho bài toán phân loại nhị phân.
+
+
+```python
+from __future__ import print_function
+import numpy as np 
+# confusion matrix to precision + recall
+def cm2pr_binary(cm):
+    p = cm[0,0]/np.sum(cm[:,0])
+    r = cm[0,0]/np.sum(cm[0])
+    return (p, r)
+
+# example of a confusion matrix for binary classification problem 
+cm = np.array([[100., 10], [20, 70]])
+p,r = cm2pr_binary(cm)
+print("precition = {0:.2f}, recall = {1:.2f}".format(p, r))
+```
+
+    precition = 0.83, recall = 0.91
+
+
+Khi Precision = 1, mọi điểm tìm được đều thực sự là _positive_, tức không có điểm _negative_ nào lẫn vào kết quả. Tuy nhiên, Precision = 1 không đảm bảo mô hình là tốt, vì câu hỏi đặt ra là liệu mô hình đã tìm được tất cả các điểm _positive_ hay chưa. Nếu một mô hình chỉ tìm được đúng một điểm _positive_ mà nó chắc chắn nhất thì ta không thể gọi nó là một mô hình tốt. 
+
+Khi Recall = 1, mọi điểm _positive_ đều được tìm thấy. Tuy nhiên, đại lượng này lại không đo liệu có bao nhiêu điểm _negative_ bị lẫn trong đó. Nếu mô hình phân loại mọi điểm là _positive_ thì chắc chắn Recall = 1, tuy nhiên dễ nhận ra đây là một mô hình cực tồi. 
+
+Một mô hình phân lớp tốt là mô hình có cả Precision và Recall đều cao, tức càng gần một càng tốt. Có hai cách đo chất lượng của bộ phân lớp dựa vào Precision và Reall: Precision-Recall curve và F-score.
+
+<a name="-precision-recall-curve-va-average-precision"></a>
+
+### 5.2. Precision-Recall curve và Average precision
+Tương tự như ROC curve, chúng ta cũng có thể đánh giá mô hình dựa trên việc thay đổi một ngưỡng và quan sát giá trị của Precision và Recall. Khái niệm Area Under the Curve (AUC) cũng được định nghĩa tương tự. Với Precision-Recall Curve, AUC còn có một tên khác là **Average precision (AP).** 
+
+Giả sử có \\(N\\) ngưỡng để tính precision và recall, với mỗi ngưỡng cho một cặp giá trị precision, recall là \\(P_n, R_n,~ n= 1, 2, \dots, N\\). Precision-Recall curve được vẽ bằng cách vẽ từng điểm có toạ độ \\((R_n, P_n)\\) trên trục toạ độ và nối chúng với nhau. AP được xác định bằng: 
+\\[
+\text{AP} = \sum_{n}(R_{n} - R_{n-1})P_n
+\\]
+
+ở đó \\((R_{n} - R_{n-1})P_n\\) chính là diện tích hình chữ nhật có chiều rộng \\((R_{n} - R_{n-1})\\) và chiều cao \\(P_n\\), đây cũng gần với cách tính tích phân dựa trên cách tính diện tích của từng hình chữ nhật nhỏ. (Nếu bạn đọc còn nhớ khái niệm _diện tích hình thang cong_ thì sẽ tưởng tượng ra.)
+
+
+Xem thêm [Precision-Recall--scikit-learn](http://scikit-learn.org/stable/auto_examples/model_selection/plot_precision_recall.html). 
+
+<a name="-f-score"></a>
+
+### 5.3. F1-score
+$F_1$ score, hay F1-score, là _harmonic mean_ của precision và recall (giả sử rằng hai đại lượng này khác không):
+\\[
+\frac{2}{F_1} = \frac{1}{\text{precision}} + \frac{1}{\text{recall}} ~ \text{hay} ~ F_1 = 2\frac{1}{\frac{1}{\text{precision}} + \frac{1}{\text{recall}}} = 2\frac{\text{precion}\cdot{recall}}{\text{precision} + \text{recall}}
+\\]
+
+\\(F-1\\)-score có giá trị nằm trong nửa khoảng \\((0, 1]\\). \\(F_1\\) càng cao, bộ phân lớp càng tốt. Khi cả recall và precision đều bằng 1 (tốt nhất có thể), \\(F_1 = 1\\). Khi cả recall và precision đều thấp, ví dụ bằng 0.1, \\(F_1 = 0.1\\). Dưới đây là một vài ví dụ về \\(F_1\\)
+
+| precision     | recall    | \\(F_1\\)    |
+| :-----------: | :-------: | :----------: |
+| 1             | 1         | 1            |
+| 0.1           | 0.1       | 0.1          |
+| 0.5           | 0.5       | 0.5          |
+| 1             | 0.1       | 0.182        |
+| 0.3           | 0.8       | 0.36         |
+
+Như vậy, một bộ phân lớp với precision = recall = 0.5 tốt hơn một bộ phân lớp
+khác với precision = 0.3, recall = 0.8 theo cách đo này.
+
+Trường hợp tổng quát của \\(F_1\\) score là \\(F_{\beta}\\) score: 
+\\[
+F_{\beta} = ( 1 + \beta^2)\frac{\text{precision}\cdot\text{recall}}{\beta^2\cdot\text{precision} + \text{recall}}
+\\]
+
+\\(F_1\\) chính là một trường hợp đặc biệt của \\(F_{\beta}\\) khi \\(\beta =
+1\\). Khi \\(\beta >1\\), recall được coi trọng hơn precision, khi \\(\beta <
+1\\), precision được coi trọng hơn. Hai đại lượng \\(\beta\\) thường được sử
+dụng là \\(\beta = 2\\) và \\(\beta = 0.5\\).
+
+
+
+<a name="-precision-recall-cho-bai-toan-phan-lop-nhieu-lop"></a>
+
+### 5.4. Precision-recall cho bài toán phân lớp nhiều lớp
+Cũng giống như ROC curve, precision-recall curve ban đầu được định nghĩa cho bài
+toán phân lớp nhị phân. Để có thể áp dụng các phép đo này cho bài toán
+multi-class classification, các đại lượng đầu ra (ground truth và predicted
+output) cần được đưa về dạng nhị phân.
+
+Bằng trực giác, ta có thể đưa bài toán phân lớp nhiều lớp về bài toán phân lớp
+nhị phân bằng cách xem xét từng lớp. Với mỗi lớp, ta coi dữ liệu thuộc lớp đó có
+label là _positive_, tất cả các dữ liệu còn lại có label là _negative_. Sau đó,
+giá trị Precision, Recall, và PR curve được áp dụng lên từng lớp. Với mỗi lớp,
+ta sẽ nhận được một cặp giá trị  precision và recall. Với các bài toán có ít lớp
+dữ liệu, ta có thể minh hoạ PR curve cho từng lớp trên cùng một đồ thị. Tuy
+nhiên, với các bài toán có rất nhiều lớp dữ liệu, việc này đôi khi không khả
+thi. Thay vào đó, hai phép đánh giá dựa trên Precision-Recall được sử dụng là
+_micro-average_ và _macro-average_.
+
+<a name="-micro-average"></a>
+
+#### 5.4.1. Micro-average  
+Xét ví dụ bài toán với 3 lớp dữ liệu, bộ phân lớp cho các tham số FP, TP, FN của
+mỗi lớp là:
+
+
+```python
+tp1, fp1, fn1 = 10, 5, 3
+tp2, fp2, fn2 = 17, 7, 10
+tp3, fp3, fn3 = 25, 2, 4 
+```
+
+
+```python
+from __future__ import print_function
+def PR(tp, fp, fn):
+    P = float(tp)/(tp + fp)
+    R = float(tp)/(tp + fn)
+    return (P, R)
+
+(P1, R1) = PR(tp1, fp1, fn1)
+(P2, R2) = PR(tp2, fp2, fn2)
+(P3, R3) = PR(tp3, fp3, fn2)
+
+print('(P1, R1) = (%.2f, %.2f)'%(P1, R1))
+print('(P2, R2) = (%.2f, %.2f)'%(P2, R2))
+print('(P3, R3) = (%.2f, %.2f)'%(P3, R3))
+
+```
+
+    (P1, R1) = (0.67, 0.77)
+    (P2, R2) = (0.71, 0.63)
+    (P3, R3) = (0.93, 0.71)
+
+
+Micro-average precision và Micro-average recall đơn giản được tính bằng: 
+\\[
+\begin{eqnarray}
+\text{micro-average precision} &=& \frac{\sum_{c=1}^C\text{TP}c}{\sum_{c=1}^C(\text{TP}c + \text{FP}c)}\\\
+\text{micro-average recall} &=& \frac{\sum_{c=1}^C\text{TP}c}{\sum_{c=1}^C(\text{TP}c + \text{FN}c)}
+\end{eqnarray}
+\\]
+với \\(\text{TP}c, \text{FP}c, \text{FN}c\\) lần lượt là TP, FP, FN của class \\(c\\). 
+
+Tức TP được tính là tổng của toàn bộ TP của mỗi lớp. Tương tự với FP và FN. Với
+ví dụ trên, micro-average precision và recall tính được là:
+
+
+```python
+total_tp = tp1 + tp2 + tp3
+total_fp = fp1 + fp2 + fp3 
+total_fn = fn1 + fn2 + fn3 
+micro_ap = float(total_tp)/(total_tp + total_fp)
+micro_ar = float(total_tp)/(total_tp + total_fn)
+print('(micro_ap, micro_ar) = (%.2f, %.2f)' % (micro_ap, micro_ar))
+```
+
+    (micro_ap, micro_ar) = (0.79, 0.75)
+
+
+Micro-average F-Score cũng được tính tương tự như F-score nhưng dựa trên
+micro-average precision và micro-average recall.
+
+<a name="-macro-average"></a>
+
+#### 5.4.2. Macro-average 
+Macro-average precision là trung bình cộng của các precision theo class, tương
+tự với Macro-average recall. Với ví dụ trên, ta có
+
+
+```python
+macro_ap = (P1 + P2 + P3)/3
+macro_ar = (R1 + R2 + R3)/3
+print('(micro_ap, micro_ar) = (%.2f, %.2f)' % (macro_ap, macro_ar))
+```
+
+    (micro_ap, micro_ar) = (0.77, 0.70)
+
+
+Macro-average F-Score cũng được tính tương tự như F-score nhưng dựa trên macro-average precision và macro-average recall.
+
+<a name="-tom-tat"></a>
+
+## 5. Tóm tắt 
+* Accuracy là tỉ lệ giữa số điểm được phân loại đúng và tổng số điểm. Accuracy chỉ phù hợp với các bài toán mà kích thước các lớp dữ liệu là tương đối như nhau. 
+
+* Confusion matrix giúp có cái nhìn rõ hơn về việc các điểm dữ liệu được phân loại đúng/sai như thế nào. 
+
+* True Positive (TP): số lượng điểm của lớp _positive_ được phân loại đúng là _positive_.
+
+* True Negative (TN): số lượng điểm của lớp _negative_ được phân loại đúng là _negative_.
+
+* False Positive (FP): số lượng điểm của lớp _negative_ bị phân loại nhầm thành _positive_.
+
+* False Negative (FN): số lượng điểm của lớp _positiv_ bị phân loại nhầm thành _negative_
+
+* True positive rate (TPR), false negative rate (FNR), false positive rate (FPR), true negative rate (TNR):
+
+```
+                  |     Predicted      |     Predicted      |
+                  |    as Positive     |    as Negative     |
+------------------|--------------------|--------------------|
+ Actual: Positive | TPR = TP/(TP + FN) | FNR = FN/(TP + FN) |
+------------------|--------------------|--------------------|
+ Actual: Negative | FPR = FP/(FP + TN) | TNR = TN/(FP + TN) |
+------------------|--------------------|--------------------|
+```
+
+* Khi kích thước các lớp dữ liệu là chênh lệch (_imbalanced data_ hay _skew data_), precision và recall thường được sử dụng: 
+\\[
+\begin{eqnarray}
+\text{Precision} &=& \frac{\text{TP}}{\text{TP} + \text{FP}} \\\
+\text{Recall} &=& \frac{\text{TP}}{\text{TP} + \text{FN}}
+\end{eqnarray}
+\\]
+
+* \\(F_1\\) score: 
+\\[
+F_1 = 2\frac{1}{\frac{1}{\text{precision}} + \frac{1}{\text{recall}}} = 2\frac{\text{precion}\cdot{recall}}{\text{precision} + \text{recall}}
+\\]
+
+* Micro-average precision, micro-average recall: 
+\\[
+\begin{eqnarray}
+\text{micro-average precision} &=& \frac{\sum_{c=1}^C\text{TP}c}{\sum_{c=1}^C(\text{TP}c + \text{FP}c)}\\\
+\text{micro-average recall} &=& \frac{\sum_{c=1}^C\text{TP}c}{\sum_{c=1}^C(\text{TP}c + \text{FN}c)}
+\end{eqnarray}
+\\]
+với \\(\text{TP}c, \text{FP}c, \text{FN}c\\) lần lượt là TP, FP, FN của class \\(c\\). 
+
+* Micro-average precision, macro-average recall là trung bình cộng của các precision, recall cho từng lớp. Micro-average (macro-average) \\(F_1\\) scores cũng được tính dựa trên các micro-average (macro-average) precision, recall tương ứng. 
+
+
+
+
 <a name="-tai-lieu-tham-khao"></a>
 
-## 5. Tài liệu tham khảo
+## 6. Tài liệu tham khảo
 [1] [Sklearn: Receiver Operating Characteristic (ROC) ](http://scikit-learn.org/stable/auto_examples/model_selection/plot_roc.html)
 
 [2] [Receiver Operating Characteristic (ROC) with cross validation](http://scikit-learn.org/stable/auto_examples/model_selection/plot_roc_crossval.html#sphx-glr-auto-examples-model-selection-plot-roc-crossval-py)
+
+[3] [A systematic analysis of performance measures for classification tasks](https://www.sciencedirect.com/science/article/pii/S0306457309000259)
