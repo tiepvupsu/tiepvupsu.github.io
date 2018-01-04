@@ -31,8 +31,8 @@ summary: Các phương pháp đánh giá hiệu năng của một mô hình phâ
   - [5.4. Precision-recall cho bài toán phân lớp nhiều lớp](#-precision-recall-cho-bai-toan-phan-lop-nhieu-lop)
     - [5.4.1. Micro-average](#-micro-average)
     - [5.4.2. Macro-average](#-macro-average)
-- [5. Tóm tắt](#-tom-tat)
-- [6. Tài liệu tham khảo](#-tai-lieu-tham-khao)
+- [6. Tóm tắt](#-tom-tat)
+- [7. Tài liệu tham khảo](#-tai-lieu-tham-khao)
 
 <!-- /MarkdownTOC -->
 
@@ -647,7 +647,7 @@ Macro-average F-Score cũng được tính tương tự như F-score nhưng dự
 
 <a name="-tom-tat"></a>
 
-## 5. Tóm tắt 
+## 6. Tóm tắt 
 * Accuracy là tỉ lệ giữa số điểm được phân loại đúng và tổng số điểm. Accuracy chỉ phù hợp với các bài toán mà kích thước các lớp dữ liệu là tương đối như nhau. 
 
 * Confusion matrix giúp có cái nhìn rõ hơn về việc các điểm dữ liệu được phân loại đúng/sai như thế nào. 
@@ -701,7 +701,7 @@ với \\(\text{TP}c, \text{FP}c, \text{FN}c\\) lần lượt là TP, FP, FN củ
 
 <a name="-tai-lieu-tham-khao"></a>
 
-## 6. Tài liệu tham khảo
+## 7. Tài liệu tham khảo
 [1] [Sklearn: Receiver Operating Characteristic (ROC) ](http://scikit-learn.org/stable/auto_examples/model_selection/plot_roc.html)
 
 [2] [Receiver Operating Characteristic (ROC) with cross validation](http://scikit-learn.org/stable/auto_examples/model_selection/plot_roc_crossval.html#sphx-glr-auto-examples-model-selection-plot-roc-crossval-py)
