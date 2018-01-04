@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Dự án viết ebook 'Machine Learning cơ bản I'
+title: Ebook 'Machine Learning cơ bản'
 permalink: /ebook/
 sc_project: 11420197
 sc_security: 38b33822
