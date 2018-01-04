@@ -10,7 +10,7 @@ tags: Classification
 category: Classification
 sc_project: 11435469
 sc_security: 4f6cab76
-img: /assets/33_evaluation/roc.png
+img: /assets/33_evaluation/PR.png
 summary: Các phương pháp đánh giá hiệu năng của một mô hình phân lớp. 
 ---
 **Trong trang này:**
