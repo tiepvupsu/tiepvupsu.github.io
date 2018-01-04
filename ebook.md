@@ -49,7 +49,8 @@ _Trong trường hợp trường bạn không có email riêng, bạn có thể 
 
 Các bạn có thể tham khảo thêm giá của các khoá học/cuốn sách Machine Learning khác (nhiều khoá lên tới nhiều triệu động), cũng như so sánh chất lượng giữa chúng trước khi đưa ra quyết định. 
 
-**_Nếu có kế hoạch xuất bản sách giấy, tôi sẽ tặng một bản cho mỗi bạn đã mua ebook và đang ở Việt Nam. Kế hoạch cụ thể hơn và chi phí chuyển phát sẽ được thông báo sau. Ngoài ra, các bạn cũng sẽ được cấp tài khoản để truy cập vào source code đi kèm._** 
+**Nếu tôi có thể xuất bản sách giấy, các bạn order ebook trước ngày 31/1/2018 sẽ nhận được bản sách giấy miễn phí. Các bạn lo chi phí chuyển phát.**
+
 
 <a name="-cac-buoc-dat-sach"></a>
 
