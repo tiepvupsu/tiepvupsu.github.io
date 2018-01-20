@@ -28,3 +28,6 @@ og72237_created.bin
 Markdow*.*
 44*.text
 **/.ipynb_checkpoints
+assets/*/.DS_Store 
+assets/*/.ipynb_checkpoints 
+
