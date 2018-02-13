@@ -40,6 +40,7 @@ summary: Hệ thống đơn giản gợi ý sản phẩm tới người dùng.
 
 <a name="-gioi-thieu"></a>
 
+<a name="-gioi-thieu"></a>
 ## 1. Giới thiệu
 
  Các bạn có lẽ đã gặp những hiện tượng này nhiều lần:
@@ -61,6 +62,7 @@ Recommendation Systems là một mảng khá rộng của Machine Learning và c
 
 <a name="-hien-tuong-long-tail-trong-thuong-mai"></a>
 
+<a name="-hien-tuong-long-tail-trong-thuong-mai"></a>
 ### 1.1. Hiện tượng _Long Tail_ trong thương mại
 Chúng ta cùng đi vào việc so sánh điểm khác nhau căn bản giữa các _cửa hàng thực_ và _cửa hàng điện tử_, xét trên khía cạnh lựa chọn sản phẩm để quảng bá.
 
@@ -75,6 +77,7 @@ Với các _cửa hàng online_, nhược điểm trên hoàn toàn có thể tr
 
 <a name="-hai-nhom-chinh-cua-recommendation-systems"></a>
 
+<a name="-hai-nhom-chinh-cua-recommendation-systems"></a>
 ### 1.2. Hai nhóm chính của Recommendation Systems
 
 
@@ -89,9 +92,11 @@ Trong bài viết này, chúng ta sẽ làm quen với nhóm thứ nhất: _Cont
 
 <a name="-utility-matrix"></a>
 
+<a name="-utility-matrix"></a>
 ## 2. Utility matrix
 <a name="-vi-du-ve-utility-matrix"></a>
 
+<a name="-vi-du-ve-utility-matrix"></a>
 ### 2.1. Ví dụ về Utility matrix
 
 Như đã đề cập, có hai thực thể chính trong các Recommendation Systems là _users_ và _items_. Mỗi _user_ sẽ có _mức độ quan tâm_ (_degree of preference_) tới từng _item_ khác nhau. Mức độ quan tâm này, _nếu đã biết trước_, được gán cho một giá trị ứng với mỗi cặp _user-item_. Giả sử rằng _mức độ quan tâm_ được đo bằng giá trị _user_ rate cho _item_, ta tạm gọi giá trị này là _rating_. Tập hợp tất cả các _ratings_, bao gồm cả những giá trị chưa biết cần được dự đoán, tạo nên một ma trận gọi là _utility matrix_. Xét ví dụ sau:
@@ -123,6 +128,7 @@ Rõ ràng rằng càng nhiều ô được điền thì độ chính xác của 
 
 <a name="-xay-dung-utility-matrix"></a>
 
+<a name="-xay-dung-utility-matrix"></a>
 ### 2.2. Xây dựng Utility Matrix 
 
 
@@ -134,10 +140,12 @@ Không có Utility matrix, gần như không thể gợi ý được sản phẩ
 
 <a name="-content-based-recommendations"></a>
 
+<a name="-content-based-recommendations"></a>
 ## 3. Content-Based Recommendations
 
 <a name="-item-profiles"></a>
 
+<a name="-item-profiles"></a>
 ### 3.1. Item profiles 
 
 Trong các hệ thống content-based, tức dựa trên _nội dung_ của mỗi _item_, chúng ta cần xây dựng một bộ hộ sơ (profile) cho mỗi item. *Profile* này được biểu diễn dưới dạng toán học là một feature vector. Trong những trường hợp đơn giản, *feature vector* được trực tiếp trích xuất từ _item_. Ví dụ, xem xét các _features_ của một bài hát mà có thể được sử dụng trong các Recommendation Systems: 
@@ -169,6 +177,7 @@ Việc lựa chọn mô hình Regression/Classification nào tuỳ thuộc vào 
 
 <a name="-xay-dung-ham-mat-mat"></a>
 
+<a name="-xay-dung-ham-mat-mat"></a>
 ### 3.2. Xây dựng hàm mất mát
 
 Giả sử rằng số _users_ là \\(N\\), số _items_ là \\(M\\), _utility maxtrix_ được mô tả bởi ma trận \\(\mathbf{Y}\\). Thành phần ở hàng thứ \\(m\\), cột thứ \\(n\\) của \\(\mathbf{Y}\\) là _mức độ quan tâm_ (ở đây là số sao đã _rate_) của _user_ thứ \\(n\\) lên sản phẩm thứ \\(m\\) mà hệ thống đã thu thập được. Ma trận \\(\mathbf{Y}\\) bị khuyết rất nhiều thành phần tương ứng với các giá trị mà hệ thống cần dự đoán. Thêm nữa, gọi \\(\mathbf{R}\\) là ma trận _rated or not_ thể hiện việc một _user_ đã _rated_ một _item_ hay chưa. Cụ thể, \\(r\_{ij}\\) bằng 1 nếu _item_ thứ \\(i\\) đã được _rated_ bởi _user_ thứ \\(j\\), bằng 0 trong trường hợp ngược lại. 
@@ -219,6 +228,7 @@ Nếu vẫn có điểm chưa hiểu, bạn đọc có thể xem ví dụ nhỏ 
 
 <a name="-vi-du-ve-ham-mat-mat-cho-user-e"></a>
 
+<a name="-vi-du-ve-ham-mat-mat-cho-user-e"></a>
 ### 3.3. Ví dụ về hàm mất mát cho user E 
 
 Quay trở lại với ví dụ trong hình 2, _feature matrix_ cho các _items_ (mỗi hàng tương ứng với một _item_) là: 
@@ -283,10 +293,12 @@ Chúng ta sẽ áp dụng những phân tích trên đây để đi tìm nghiệ
 
 <a name="-bai-toan-voi-co-so-du-lieu-movielens-k"></a>
 
+<a name="-bai-toan-voi-co-so-du-lieu-movielens-k"></a>
 ## 4. Bài toán với cơ sở dữ liệu MovieLens 100k 
 
 <a name="-co-so-du-lieu-movielens-k"></a>
 
+<a name="-co-so-du-lieu-movielens-k"></a>
 ### 4.1. Cơ sở dữ liệu MovieLens 100k
 
 [Bộ cơ sở dữ liệu MovieLens 100k](https://grouplens.org/datasets/movielens/100k/) được công bố năm 1998 bởi [GroupLens](https://grouplens.org). Bộ cơ sở dữ liệu này bao gồm 100,000 (100k) _ratings_ từ 943 _users_ cho 1682 bộ phim. Các bạn cũng có thể tìm thấy các bộ cơ sở dữ liệu tương tự với khoảng 1M, 10M, 20M ratings. Trong bài viết này, tôi sử dụng bộ cơ sở dữ liệu nhỏ nhất này nhằm mục đích minh hoạ. 
@@ -349,6 +361,7 @@ print 'Number of test rates:', rate_test.shape[0]
 
 <a name="-xay-dung-item-profiles"></a>
 
+<a name="-xay-dung-item-profiles"></a>
 ### 4.2. Xây dựng item profiles
 
 Công việc quan trọng trong content-based recommendation system là xây dựng profile cho mỗi item, tức feature vector cho mỗi item. Trước hết, chúng ta cần load toàn bộ thông tin về các _items_ vào biến `items`:
@@ -414,6 +427,7 @@ def get_items_rated_by_user(rate_matrix, user_id):
 
 <a name="-tim-mo-hinh-cho-moi-user"></a>
 
+<a name="-tim-mo-hinh-cho-moi-user"></a>
 ### 4.3. Tìm mô hình cho mỗi user
 Bây giờ, ta có thể đi tìm các hệ số của Ridge Regression cho mỗi _user_:
 
@@ -445,7 +459,7 @@ Sau khi tính được các hệ số `W` và `b`, _ratings_ cho mỗi _items_ �
 Yhat = tfidf.dot(W) + b
 ```
 
-Dưới đây là một ví dụ với _user_ có _id_ là `100`. 
+Dưới đây là một ví dụ với _user_ có _id_ là `10`. 
 
 
 ```python
@@ -464,6 +478,7 @@ print 'Predicted ratings:', Yhat[ids, n]
 
 <a name="-danh-gia-mo-hinh"></a>
 
+<a name="-danh-gia-mo-hinh"></a>
 ### 4.4. Đánh giá mô hình
 Để đánh giá mô hình tìm được, chúng ta sẽ sử dụng Root Mean Squared Error (RMSE), tức căn bậc hai của trung bình cộng bình phương của lỗi. Lỗi được tính là hiệu của _true rating_ và _predicted rating_:
 
@@ -492,6 +507,7 @@ Như vậy, với tập training, sai số vào khoảng 0.9 _sao_; với tập 
 
 <a name="-thao-luan"></a>
 
+<a name="-thao-luan"></a>
 ## 5. Thảo luận
 
 * Content-based Recommendation Systems là phương pháp đơn giản nhất trong các hệ thống Recommendation Systems. Đặc điểm của phương pháp này là việc xây dựng mô hình cho mỗi _user_ không phụ thuộc vào các _users_ khác. 
@@ -503,6 +519,7 @@ Như vậy, với tập training, sai số vào khoảng 0.9 _sao_; với tập 
 
 <a name="-tai-lieu-tham-khao"></a>
 
+<a name="-tai-lieu-tham-khao"></a>
 ## 6. Tài liệu tham khảo
 
 [1] [Recommendation Systems - Stanford InfoLab](http://infolab.stanford.edu/~ullman/mmds/ch9.pdf)
