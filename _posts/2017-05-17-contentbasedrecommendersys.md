@@ -463,18 +463,18 @@ Dưới đây là một ví dụ với _user_ có _id_ là `10`.
 
 
 ```python
-n = 100
-ids, scores = get_items_rated_by_user(rate_test, 10)
+n = 10
+np.set_printoptions(precision=2) # 2 digits after . 
+ids, scores = get_items_rated_by_user(rate_test, n)
 Yhat[n, ids]
-print 'Rated movies ids:', ids 
-print 'True ratings:', scores
-print 'Predicted ratings:', Yhat[ids, n]
+print('Rated movies ids :', ids )
+print('True ratings     :', scores)
+print('Predicted ratings:', Yhat[ids, n])
 ```
 
     Rated movies ids: [ 37 109 110 226 424 557 722 724 731 739]
     True ratings: [3 3 4 3 4 3 5 3 3 4]
-    Predicted ratings: [ 2.65444617  3.89748085  3.20646314  3.27516929  2.10970401  2.04527559
-      2.40568427  2.10970401  3.20646314  3.34104676]
+    Predicted ratings: [3.18 3.13 3.42 3.09 3.35 5.2  4.01 3.35 3.42 3.72]
 
 <a name="-danh-gia-mo-hinh"></a>
 
