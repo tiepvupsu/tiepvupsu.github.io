@@ -19,7 +19,6 @@ comments: true
         - [**Link đăng ký pre-order ebook 'Machine Learning cơ bản I'**](#link-dang-ky-pre-order-ebook-machine-learning-co-ban-i)
     - [Bước 3](#buoc--2)
 - [3. Vấn đề bản quyền](#-van-de-ban-quyen)
-- [4. Lời cảm ơn](#-loi-cam-on)
 
 <!-- /MarkdownTOC -->
 
@@ -106,57 +105,6 @@ Ebook sẽ được tải về tại [https://fundaml.com/ebook](https://fundaml
 Vì vấn đề bản quyền rất khó được xử lý ở Việt Nam, tôi chắc chắn cuốn sách này sẽ được sao lưu và upload lên các trang khác mà không có sự cho phép của tác giả. Để giảm thiểu vấn đề đau đầu này, tôi quyết định nhận **pre-order**, tức **thanh toán trước** trước khi gửi sách tới các bạn. 
 
 Tôi hy vọng các bạn cũng ủng hộ và tôn trọng vấn đề bản quyền, như là một cách gián tiếp giúp cho cộng đồng có nhiều tác phẩm mang giá trị cao hơn. Tôi tin rằng, nếu vấn đề bản quyền được tôn trọng, sẽ có nhiều tài liệu tiếng Việt chất lượng khác xuất hiện trong tương lai. 
-
-<a name="-loi-cam-on"></a>
-
-## 4. Lời cảm ơn 
-Trước hết, tôi xin cảm ơn bạn bè trong friend list Facebook của tôi đã nhiệt
-tình ủng hộ và chia sẻ blog ngay ngày đầu blog được ra mắt. Tôi cũng xin chân
-thành cảm ơn bạn đọc blog Machine Learning cơ bản và Facebook page Machine
-Learning cơ bản đã đồng hành cùng tôi trong suốt một năm qua. Không có độc giả,
-chắc chắn tôi không có đủ động lực viết hơn 30 bài trên blog và rất nhiều các
-ghi chép nhanh trên Facebook page.
-
-Trong quá trình viết blog, tôi nhận được rất rất nhiều sự ủng hộ của bạn đọc về
-cả vật chất lẫn tinh thần. Không có những sự ủng hộ đó và những lời động viên
-viết sách, dự án này sẽ không thể được bắt đầu. Khi tôi đã bắt đầu, số lượng
-pre-order cuốn sách này tăng lên từng ngày. Tôi thực sự biết ơn các bạn đã
-pre-order cũng những lời nhắn gửi ấm áp. Quan trọng hơn hết, số lượng sách được
-đặt trước khi tôi hoàn thành khiến tôi tin rằng sản phẩm mình tạo ra đã mang lại
-những giá trị nhất định cho cộng đồng. Những điều đó góp phần tôi duy trì tinh
-thần làm việc và cố gắng hết mình để tạo ra một sản phẩm chất lượng. 
-
-Tôi may mắn nhận được những phản hồi tích cực cũng như các góp ý từ các thầy cô
-trong các trường đại học lớn trong và ngoài nước. Tôi xin được gửi lời cảm ơn
-tới thầy Phạm Ngọc Nam và cô Nguyễn Việt Hương (ĐH Bách Khoa Hà Nội), thầy Chế
-Viết Nhật Anh (ĐH Bách Khoa Tp.HCM), thầy Nguyễn Thanh Tùng (ĐH Thuỷ Lợi),
-thầy Trần Duy Trác (ĐH Johns Hopkins), và anh Nguyễn Hồng Lâm (người hướng dẫn
-trong thời gian tôi thực tập tại U.S. Army Research Lab).
-
-Tôi đặc biệt cảm ơn bạn Nguyễn Hoàng Linh và Hoàng Đức Huy, Đại học
-Waterloo--Canada, những người bạn đã nhiệt tình giúp tôi xây dựng trang
-FundaML.com giúp bạn đọc có thể học Python/Numpy trực tiếp trên trình duyệt. Tôi
-cũng xin cảm ơn bạn Lê Việt Hải--nghiên cứu sinh ngành toán ứng dụng tại Penn
-State, và Đinh Hoàng Phong--kỹ sư phần mềm tại Facebook--đã góp ý sửa đổi rất
-nhiều
-điểm về ngôn ngữ và toán trong các bản nháp.
-Tôi tin rằng cuốn sách đã được sửa đổi rất nhiều so với phiên bản trên blog.
-
-Tôi xin cảm ơn ba người bạn thân--Nguyễn Tiến Cường, Nguyễn Văn Giang, Vũ Đình
-Quyền--đã luôn động viên tôi và đóng góp nhiều phản hồi quý giá cho cuốn sách.
-Ngoài ra, tôi xin cảm ơn những người bạn thân thiết khác của tôi tại Penn State
-đã luôn bên cạnh tôi trong thời gian tôi thực hiện dự án, bao gồm gia đình anh
-Triệu Thanh Quang, gia đình anh Trần Quốc Long, bạn thân (cũng là một blogger)
-Nguyễn Phương Chi, và các đồng nghiệp John McKay, Tiantong Guo, Hojjat Mousavi,
-Omar Aldayel, và Mohammad Tofighi trong Phòng nghiên cứu Xử lý Thông tin và
-Thuật toán (Information Processing and Algorithm Laboratory--iPAL), ĐH
-bang Pennsylvania.
-
-Cuối cùng và quan trọng nhất, tôi xin cảm ơn gia đình tôi, những người luôn ủng
-hộ tôi vô điều kiện và hỗ trợ tôi hết mình trong quá trình tôi thực hiện dự án
-này. 
-
-
 
 Trân trọng, 
 
