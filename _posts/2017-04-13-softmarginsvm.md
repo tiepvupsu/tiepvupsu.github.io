@@ -262,12 +262,14 @@ Ta có một vài quan sát như sau:
 y_n(\mathbf{w}^T\mathbf{x}\_n + b) = 1 - \xi_n
 \\] 
     - Nếu \\(0 < \lambda_n < C\\), từ \\((6)\\) ta suy ra \\(\mu_n \neq 0\\) và từ \\((14)\\) ta lại có \\(\xi\_n = 0\\). Nói cách khác, \\(y_n(\mathbf{w}^T\mathbf{x}\_n + b) = 1\\), hay những điểm \\(\mathbf{x}\_n\\) nằm _chính xác_ trên margin. 
-    - Với những điềm nằm nằm _hoàn toàn_ trong _vùng không an toàn_, tức \\(\xi_n > 0\\). Ta có thể suy ra \\(\mu_n = 0\\) và \\(\lambda_n = C\\). 
+    - Nếu \\(\lambda_n = C\\), thì \\(\mu_n = 0\\) và \\(\xi_n\\) có thể nhận bất kỳ giá trị nào không âm. Nếu \\(\xi_n \leq 1, \mathbf{x}_n\\) sẽ được phân lớp đúng (vẫn đúng phía so với đường phân chia). Ngược lại, các điểm tương ứng với \\(\xi_n > 1\\) sẽ bị phân lớp sai. 
+    - \\(\lambda_n\\) không thể lớn hơn \\(C\\) vì khi đó theo \\((6)\\), \\(\mu_n < 0\\), mâu thuẫn với \\((12)\\).
+    <!-- - Với những điềm nằm nằm _hoàn toàn_ trong _vùng không an toàn_, tức \\(\xi_n > 0\\). Ta có thể suy ra \\(\mu_n = 0\\) và \\(\lambda_n = C\\).  -->
 
 Ngoài ra, những điểm tương ứng với \\(\lambda_n > 0\\) bây giờ là sẽ là các _support vectors_. Mặc dù những điểm này có thể không nằm trên _margins_, chúng vẫn được coi là _support vectors_ vì có công đóng góp cho việc tính toán \\(\mathbf{w}\\) thông qua phương trình \\((4)\\).
 
 Như vậy, dựa trên các giá trị của \\(\lambda_n\\) ta có thể dự đoán được vị trí tương đối của \\(\mathbf{x}\_n\\) so với hai _margins_.
-Đặt \\(\mathcal{M} = \\{n: 0 < \lambda_n < C \\}\\) và \\(\mathcal{S} = \\{m: 0 < \lambda_m\\}\\). Tức \\(\mathcal{M}\\) là tập hợp các chỉ số của các điểm nằm chính xác trên _margins_ - hỗ trợ cho việc tính \\(\mathbf{w}\\), \\(\mathbf{S}\\) là tập hợp các chỉ số của các _support vectors_ - hỗ trợ trực tiếp cho việc tính \\(b\\). Tương tự như với Hard Margin SVM, các hệ số \\(\mathbf{w}, b\\) có thể được xác định bởi:
+Đặt \\(\mathcal{M} = \\{n: 0 < \lambda_n < C \\}\\) và \\(\mathcal{S} = \\{m: 0 < \lambda_m \leq C\\}\\). Tức \\(\mathcal{M}\\) là tập hợp các chỉ số của các điểm nằm chính xác trên _margins_ - hỗ trợ cho việc tính \\(b\\), \\(\mathbf{S}\\) là tập hợp các chỉ số của các _support vectors_ - hỗ trợ trực tiếp cho việc tính \\(\mathbf{w}\\). Tương tự như với Hard Margin SVM, các hệ số \\(\mathbf{w}, b\\) có thể được xác định bởi:
 \\[
 \begin{eqnarray}
 \mathbf{w} &=& \sum_{m \in \mathcal{S}} \lambda_m y_m \mathbf{x}\_m & ~~~(15)  \\\
