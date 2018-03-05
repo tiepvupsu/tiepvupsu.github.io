@@ -266,7 +266,7 @@ y_n(\mathbf{w}^T\mathbf{x}\_n + b) = 1 - \xi_n
     - \\(\lambda_n\\) không thể lớn hơn \\(C\\) vì khi đó theo \\((6)\\), \\(\mu_n < 0\\), mâu thuẫn với \\((12)\\).
     <!-- - Với những điềm nằm nằm _hoàn toàn_ trong _vùng không an toàn_, tức \\(\xi_n > 0\\). Ta có thể suy ra \\(\mu_n = 0\\) và \\(\lambda_n = C\\).  -->
 
-Ngoài ra, những điểm tương ứng với \\(\lambda_n > 0\\) bây giờ là sẽ là các _support vectors_. Mặc dù những điểm này có thể không nằm trên _margins_, chúng vẫn được coi là _support vectors_ vì có công đóng góp cho việc tính toán \\(\mathbf{w}\\) thông qua phương trình \\((4)\\).
+Ngoài ra, những điểm tương ứng với \\(0 < \lambda_n \leq C\\) bây giờ là sẽ là các _support vectors_. Mặc dù những điểm này có thể không nằm trên _margins_, chúng vẫn được coi là _support vectors_ vì có công đóng góp cho việc tính toán \\(\mathbf{w}\\) thông qua phương trình \\((4)\\).
 
 Như vậy, dựa trên các giá trị của \\(\lambda_n\\) ta có thể dự đoán được vị trí tương đối của \\(\mathbf{x}\_n\\) so với hai _margins_.
 Đặt \\(\mathcal{M} = \\{n: 0 < \lambda_n < C \\}\\) và \\(\mathcal{S} = \\{m: 0 < \lambda_m \leq C\\}\\). Tức \\(\mathcal{M}\\) là tập hợp các chỉ số của các điểm nằm chính xác trên _margins_ - hỗ trợ cho việc tính \\(b\\), \\(\mathbf{S}\\) là tập hợp các chỉ số của các _support vectors_ - hỗ trợ trực tiếp cho việc tính \\(\mathbf{w}\\). Tương tự như với Hard Margin SVM, các hệ số \\(\mathbf{w}, b\\) có thể được xác định bởi:
