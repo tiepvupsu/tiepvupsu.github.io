@@ -48,7 +48,6 @@ _Trong trường hợp trường bạn không có email riêng, bạn có thể 
 
 Các bạn có thể tham khảo thêm giá của các khoá học/cuốn sách Machine Learning khác (nhiều khoá lên tới nhiều triệu động), cũng như so sánh chất lượng giữa chúng trước khi đưa ra quyết định. 
 
-**Nếu tôi có thể xuất bản sách giấy, các bạn order ebook trước ngày 31/1/2018 sẽ nhận được bản sách giấy miễn phí. Các bạn lo chi phí chuyển phát.**
 
 
 <a name="-cac-buoc-dat-sach"></a>

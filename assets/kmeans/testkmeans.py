@@ -1,4 +1,4 @@
-import numpy as np 
+import numpy as np
 import matplotlib.pyplot as plt
 from scipy.spatial.distance import cdist
 import matplotlib.animation as animation
@@ -25,7 +25,7 @@ def kmeans_assign_labels(X, centers):
     D = cdist(X, centers)
     # return index of the closest center
     return np.argmin(D, axis = 1)
-    
+
 
 def kmeans_update_centers(X, labels, K):
     centers = np.zeros((K, X.shape[1]))
@@ -41,7 +41,7 @@ def kmeans(X, K):
     centers = [kmeans_init_centers(X, K)]
     labels = []
     max_it = 100
-    it = 0 
+    it = 0
     while it < max_it:
         labels.append(kmeans_assign_labels(X, centers[-1]))
         new_centers = kmeans_update_centers(X, labels[-1], K)
@@ -57,7 +57,7 @@ print labels[-1].shape
 
 
 ###########
-from matplotlib.animation import FuncAnimation 
+from matplotlib.animation import FuncAnimation
 from scipy.spatial import Voronoi, voronoi_plot_2d
 vor = Voronoi(centers[-1])
 
@@ -153,7 +153,7 @@ def update(ii):
     else:
         label2 += ' assign points to clusters'
 
-    i_c = (ii+1)/2 
+    i_c = (ii+1)/2
     i_p = ii/2
 
     label = labels[i_p]
@@ -169,13 +169,13 @@ def update(ii):
     animlist = plt.plot(X1[:, 0], X1[:, 1], 'go', markersize = 4, alpha = .8)
     animlist = plt.plot(X2[:, 0], X2[:, 1], 'rs', markersize = 4, alpha = .8)
 
-    # display centers and voronoi 
-    i = i_c 
+    # display centers and voronoi
+    i = i_c
     animlist = plt.plot(centers[i][0, 0], centers[i][0, 1], 'y^', markersize = 15)
     animlist = plt.plot(centers[i][1, 0], centers[i][1, 1], 'yo', markersize = 15)
     animlist = plt.plot(centers[i][2, 0], centers[i][2, 1], 'ys', markersize = 15)
 
-    ## vonoroi 
+    ## vonoroi
     points = centers[i]
     vor = Voronoi(points)
     regions, vertices = voronoi_finite_polygons_2d(vor, radius = 1000)
