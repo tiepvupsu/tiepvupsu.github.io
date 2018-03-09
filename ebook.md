@@ -12,7 +12,7 @@ comments: true
 
 <!-- MarkdownTOC -->
 
-- [0. Bố cục cuốn sách \(Mục lục ngắn\)](#-bo-cuc-cuon-sach-muc-luc-ngan)
+- [0. Bố cục \(Mục lục ngắn\)](#-bo-cuc-muc-luc-ngan)
 - [1. Giá mỗi ebook](#-gia-moi-ebook)
 - [2. Các bước đặt sách](#-cac-buoc-dat-sach)
     - [Bước 1](#buoc-)
@@ -39,9 +39,9 @@ Ebook 'Machine Learning cơ bản' đã hoàn thành, bạn có thể order và 
 </table>
 </div>
 
-<a name="-bo-cuc-cuon-sach-muc-luc-ngan"></a>
+<a name="-bo-cuc-muc-luc-ngan"></a>
 
-## 0. Bố cục cuốn sách (Mục lục ngắn)
+## 0. Bố cục (Mục lục ngắn)
 
 <hr>
 <div class="imgcap">
