@@ -12,6 +12,7 @@ comments: true
 
 <!-- MarkdownTOC -->
 
+- [0. Bố cục cuốn sách \(Mục lục ngắn\)](#-bo-cuc-cuon-sach-muc-luc-ngan)
 - [1. Giá mỗi ebook](#-gia-moi-ebook)
 - [2. Các bước đặt sách](#-cac-buoc-dat-sach)
     - [Bước 1](#buoc-)
@@ -31,13 +32,22 @@ Ebook 'Machine Learning cơ bản' đã hoàn thành, bạn có thể order và 
 
     <tr >
         <td width="40%" style = "border: 0px solid white" align = "center">
-        <a href = "https://www.facebook.com/pg/machinelearningbasicvn/reviews/"><img  style="display:block;" width = "100%" src = "/images/ebook_review.png"></a>
+        <a href = "https://fundaml.com/ebook"><img  style="display:block;" width = "100%" src = "/images/ebook_review.png"></a>
          </td>
         
     </tr>
 </table>
 </div>
 
+<a name="-bo-cuc-cuon-sach-muc-luc-ngan"></a>
+
+## 0. Bố cục cuốn sách (Mục lục ngắn)
+
+<hr>
+<div class="imgcap">
+<img src ="/images/content.png" align = "center" width = "800">
+</div>
+<hr>
 <a name="-gia-moi-ebook"></a>
 
 ## 1. Giá mỗi ebook 
