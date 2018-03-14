@@ -80,12 +80,14 @@ _Sau khi chuyển khoản, các bạn cần lưu lại **Transaction ID** để 
 
 Bạn có thể chuyển tới:
 
-Ngân hàng Vietcombank, chi nhánh Vũng Tàu. 
+
 (Khi chuyển các bạn vui lòng kèm trong ghi chú/mục đích chuyển từ khóa là **họ tên của bạn**. Vì VCB chỉ hiển thị rất giới hạn ký tự trong nội dung tin nhắn, bạn nên viết tên bạn vào nội dung này để tôi dễ đối chiếu.)
 
 Chủ tài khoản: **VU HUU LONG**
 
 Số tài khoản: **0081001280321**
+
+Ngân hàng Vietcombank, chi nhánh Vũng Tàu. 
 
 Sau khi chuyển khoản, các bạn cần lưu lại **nội dung chuyển khoản**. Xin nhắc lại, nội dung chuyển khoản tốt nhất là họ tên của bạn, để tôi có thể đối chiếu nhanh chóng với ngân hàng và form. Nếu nội dung chuyển khoản không tồn tại, bạn cần lưu lại mã giao dịch (ref). Nếu gặp khó khăn trong việc tìm mã, bạn có thể chụp lại hoá đơn và đính kèm.
 
