@@ -135,7 +135,7 @@ thứ mà tôi không được học ở Thái Bình. Tôi và Thịnh thường
 nói chuyện cùng nhau. Sáng năm giờ dậy đạp xe đưa Thịnh ra bến xe về quê. Những
 tài liệu quý giá Thịnh mang về đã giúp tôi rất nhiều trong việc học môn Toán.
 
-Hè năm 2005, tôi xin bố lên Hà Nội mua sách Toán nâng cao. Tôi vẫn nhớ lần đầu tiên tiêu nhiều tiền thế để mua sách. Bố cho tôi khá nhiều tiền. Tôi tự đi Hà Nội lên nhà cậu. Cậu đưa tôi đi Nhà sách Giảng Võ và Nguyễn Thái Học. Bao nhiêu là sách hay! Tôi mua sách hết 327k, thấy hơi tiếc tiền nhưng nhiều sách hay thế này chắc bố không mắng.
+Hè năm 2005, tôi xin bố lên Hà Nội mua sách Toán nâng cao. Tôi vẫn nhớ lần đầu tiên tiêu nhiều tiền thế để mua sách. Tôi tự đi Hà Nội lên nhà cậu. Cậu đưa tôi đi Nhà sách Giảng Võ và Nguyễn Thái Học. Bao nhiêu là sách hay! Tôi mua sách hết 327k, thấy hơi tiếc tiền nhưng nhiều sách hay thế này chắc bố không mắng.
 
 Năm 2006, học lớp 11, tôi và bốn bạn khác trong lớp được chọn vào đội tuyển thi học sinh giỏi quốc gia của tỉnh Thái Bình. Tôi được giải Ba, hai bạn nữ trong lớp được giải Nhì. Điểm thi của tôi vẫn luôn kém các bạn nữ.
 
