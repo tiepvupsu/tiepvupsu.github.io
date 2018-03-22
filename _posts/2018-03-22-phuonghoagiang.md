@@ -13,7 +13,7 @@ sc_security: 46454d9e
 img: /images/ds.png
 summary: Đừng chạy theo *buzzwords*, cuộc sống nhiều cám dỗ, hãy bắt đầu từ những thứ căn bản nhất. Thinking và mindset là những thứ quan trọng nhất. Python hay R hay Java cũng chỉ là công cụ.
 ---
-*Một bạn nữ từng học Ngoại Thương Hà Nội, hiện đang làm việc tại Microsoft AI Research London có đôi dòng tâm sự về con đường trở thành Data Scientist.*
+*Bạn [Giang Phương Hoa](https://www.facebook.com/phuonghoa.giang) từng học Ngoại Thương Hà Nội, hiện đang làm việc tại Microsoft AI Research London có đôi dòng tâm sự về con đường trở thành Data Scientist.*
 
 Chào cả nhà,
 
