@@ -17,7 +17,7 @@ summary: Đừng chạy theo *buzzwords*, cuộc sống nhiều cám dỗ, hãy 
 
 Chào cả nhà,
 
-Cảm ơn anh Tiệp đã tạo cơ hội cho mình viết bài này để chia sẻ. Follow [Forum](https://www.facebook.com/groups/machinelearningcoban/) đã lâu mà chưa đóng góp được gì nhiều.
+Cảm ơn anh Tiệp đã tạo cơ hội cho mình viết bài này để chia sẻ. Follow [Forum Machine Learning cơ bản](https://www.facebook.com/groups/machinelearningcoban/) đã lâu mà chưa đóng góp được gì nhiều.
 
 Dạo gần đây mình có gặp nhiều bạn trẻ muốn theo nghề Data Science và PM mình hỏi về con đường mình đến với Data Science và bắt đầu học Machine Learning như thế nào. Vì thế mình đã xin phép anh Tiệp để viết bài ở đây, chia sẻ cùng mọi người và hy vọng sẽ giúp ích cho các bạn đang tự học Data Science, hoặc có background trái ngành trái nghề và muốn làm Data Science một cách nghiêm túc. Bài viết sẽ rất vớ vẩn với các chuyên gia 😊.
 
