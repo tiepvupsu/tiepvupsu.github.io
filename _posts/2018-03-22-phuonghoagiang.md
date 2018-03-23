@@ -8,8 +8,8 @@ permalink: 2018/03/22/phuonghoagiang/
 mathjax: true
 tags: 
 category: 
-sc_project: 11664247
-sc_security: 46454d9e
+sc_project: 11664376
+sc_security: 5e6d0814
 img: /images/ds.png
 summary: Đừng chạy theo *buzzwords*, cuộc sống nhiều cám dỗ, hãy bắt đầu từ những thứ căn bản nhất. Thinking và mindset là những thứ quan trọng nhất. Python hay R hay Java cũng chỉ là công cụ.
 ---
