@@ -7,7 +7,7 @@ date:   2017-07-10 15:22:00
 permalink: /lifesofar/
 mathjax: true
 tags:
-category:
+category: Chia-sẻ
 sc_project: 11391116
 sc_security: 2a8ad2c1
 img: /images/nbtc.png
