@@ -93,8 +93,7 @@ Tôi xin đề cập đầu ra của khối này trước vì mục đích của
   Ví dụ: nếu _raw input_ đã có cùng số chiều rồi nhưng số chiều quá lớn,  ta
   muốn giảm số chiều của nó thì cách đơn giản nhất là _chiếu_ vector đó xuống
   một không gian có số chiều nhỏ hơn bằng cách lấy một ma trận ngẫu nhiên nhân
-  với nó. Ma trận này thường là ma trận _béo_ (số hàng ít hơn số cột, tiếng Anh
-  - fat matrices) để đảm bảo số chiều thu được nhỏ hơn số chiều ban đầu. Việc
+  với nó. Ma trận này thường là ma trận _béo_ (số hàng ít hơn số cột, tiếng Anh - fat matrices) để đảm bảo số chiều thu được nhỏ hơn số chiều ban đầu. Việc
   làm này mặc dù làm mất đi thông tin, trong nhiều trường hợp vẫn mang lại hiệu
   quả vì đã giảm được lượng tính toán ở phần sau. Đôi khi _ma trận chiếu_ không
   phải là ngẫu nhiên mà có thể được _học_ dựa trên toàn bộ _raw input_, ta sẽ có

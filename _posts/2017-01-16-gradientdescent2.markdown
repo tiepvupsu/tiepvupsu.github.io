@@ -138,7 +138,7 @@ Hình bên trái là đường đi của nghiệm khi không sử dụng Momentu
 
 Hình bên phải là đường đi của nghiệm khi có sử dụng Momentum, _hòn bi_ đã có thể vượt dốc tới khu vực gần điểm global minimun, sau đó dao động xung quanh điểm này, giảm tốc rồi cuối cùng tới đích. Mặc dù mất nhiều vòng lặp hơn, GD với Momentum cho chúng ta nghiệm chính xác hơn. Quan sát đường đi của _hòn bi_ trong trường hợp này, chúng ta thấy rằng điều này giống với vật lý hơn!
 
-Nếu biết trước điểm _đặt bi_ ban đầu `theta`, đạo hàm của hàm mất mát tại một điểm bất kỳ `grad(theta)`, lượng thông tin lưu trữ từ vần tốc trước đó `gamma` và learning rate `eta`, chúng ta có thể viết hàm số `GD_momentum` trong Python như sau:
+Nếu biết trước điểm _đặt bi_ ban đầu `theta`, đạo hàm của hàm mất mát tại một điểm bất kỳ `grad(theta)`, lượng thông tin lưu trữ từ vận tốc trước đó `gamma` và learning rate `eta`, chúng ta có thể viết hàm số `GD_momentum` trong Python như sau:
 
 
 ```python
@@ -263,7 +263,7 @@ Trên thực tế, có một thuật toán đơn giản hơn và tỏ ra rất h
 <a name="-stochastic-gradient-descent"></a>
 
 ### 2.2. Stochastic Gradient Descent.
-Trong thuật toán này, tại 1 thời điểm, ta chỉ tính đạo hàm của hàm mất mát dựa trên _chỉ một_ điểm dữ liệu \\(\mathbf{x_i}\\) rồi cập nhật \\(\theta\\) dựa trên đạo hàm này. Việc này được thực hiện với từng điểm trên toàn bộ dữ liệu, sau đó lặp lại quá trình trên. Thuật toán rất đơn giản này trê thực tế lại làm việc rất hiệu quả. 
+Trong thuật toán này, tại 1 thời điểm, ta chỉ tính đạo hàm của hàm mất mát dựa trên _chỉ một_ điểm dữ liệu \\(\mathbf{x_i}\\) rồi cập nhật \\(\theta\\) dựa trên đạo hàm này. Việc này được thực hiện với từng điểm trên toàn bộ dữ liệu, sau đó lặp lại quá trình trên. Thuật toán rất đơn giản này trên thực tế lại làm việc rất hiệu quả. 
 
 Mỗi lần duyệt một lượt qua _tất cả_ các điểm trên toàn bộ dữ liệu được gọi là một epoch. Với GD thông thường thì mỗi epoch ứng với 1 lần cập nhật \\(\theta\\), với SGD thì mỗi epoch ứng với \\(N\\) lần cập nhật \\(\theta\\) với \\(N\\) là số điểm dữ liệu. Nhìn vào một mặt, việc cập nhật từng điểm một như thế này có thể làm giảm đi tốc độ thực hiện 1 epoch. Nhưng nhìn vào một mặt khác, SGD chỉ yêu cầu một lượng epoch rất nhỏ (thường là 10 cho lần đầu tiên, sau đó khi có dữ liệu mới thì chỉ cần chạy dưới một epoch là đã có nghiệm tốt). Vì vậy SGD phù hợp với các bài toán có lượng cơ sở dữ liệu lớn (chủ yếu là Deep Learning mà chúng ta sẽ thấy trong phần sau của blog) và các bài toán yêu cầu mô hình thay đổi liên tục, tức online learning.
 
