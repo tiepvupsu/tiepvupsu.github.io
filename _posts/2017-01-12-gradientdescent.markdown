@@ -133,7 +133,7 @@ Trong đó \\(\eta\\) (đọc là _eta_) là một số dương được gọi l
 (tốc độ học). Dấu trừ thể hiện việc chúng ta phải _đi ngược_ với đạo hàm (Đây
 cũng chính là lý do phương pháp này được gọi là Gradient Descent - _descent_
 nghĩa là _đi ngược_). Các quan sát đơn giản phía trên, mặc dù không phải đúng
-cho tất cả các bài toán, nhưng là nền tảng cho rất nhiều phương pháp tối ưu nói chung
+cho tất cả các bài toán, là nền tảng cho rất nhiều phương pháp tối ưu nói chung
 và thuật toán Machine Learning nói riêng.
 
 <a name="vi-du-don-gian-voi-python"></a>
