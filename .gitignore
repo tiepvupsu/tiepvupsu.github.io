@@ -18,6 +18,7 @@ assets/21_kernelsvm/ksvm.mov
 */*.synctex.gz
 assets/latex/*.tex
 !assets/latex/book*.pdf
+<<<<<<< HEAD
 .sass-cache 
 .DS_Store
 **/.DS_Store
@@ -32,3 +33,7 @@ Markdow*.*
 assets/*/.DS_Store 
 assets/*/.ipynb_checkpoints 
 
+=======
+.sass-cache
+.DS_Store
+>>>>>>> vietanhdev-master
