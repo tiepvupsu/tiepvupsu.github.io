@@ -21,16 +21,16 @@ summary: Các phương pháp đánh giá hiệu năng của một mô hình phâ
 - [2. Accuracy](#-accuracy)
 - [3. Confusion matrix](#-confusion-matrix)
 - [4. True/False Positive/Negative](#-truefalse-positivenegative)
-  - [4.1. True/False Positive/Negative](#-truefalse-positivenegative-1)
-  - [4.2. Receiver Operating Characteristic curve](#-receiver-operating-characteristic-curve)
-  - [4.3. Area Under the Curve](#-area-under-the-curve)
+    - [4.1. True/False Positive/Negative](#-truefalse-positivenegative-1)
+    - [4.2. Receiver Operating Characteristic curve](#-receiver-operating-characteristic-curve)
+    - [4.3. Area Under the Curve](#-area-under-the-curve)
 - [5. Precision và Recall](#-precision-va-recall)
-  - [5.1 Định nghĩa](#-dinh-nghia)
-  - [5.2. Precision-Recall curve và Average precision](#-precision-recall-curve-va-average-precision)
-  - [5.3. F1-score](#-f-score)
-  - [5.4. Precision-recall cho bài toán phân lớp nhiều lớp](#-precision-recall-cho-bai-toan-phan-lop-nhieu-lop)
-    - [5.4.1. Micro-average](#-micro-average)
-    - [5.4.2. Macro-average](#-macro-average)
+    - [5.1 Định nghĩa](#-dinh-nghia)
+    - [5.2. Precision-Recall curve và Average precision](#-precision-recall-curve-va-average-precision)
+    - [5.3. F1-score](#-f-score)
+    - [5.4. Precision-recall cho bài toán phân lớp nhiều lớp](#-precision-recall-cho-bai-toan-phan-lop-nhieu-lop)
+        - [5.4.1. Micro-average](#-micro-average)
+        - [5.4.2. Macro-average](#-macro-average)
 - [6. Tóm tắt](#-tom-tat)
 - [7. Tài liệu tham khảo](#-tai-lieu-tham-khao)
 
@@ -682,7 +682,7 @@ Macro-average F-Score cũng được tính tương tự như F-score nhưng dự
 
 * \\(F_1\\) score: 
 \\[
-F_1 = 2\frac{1}{\frac{1}{\text{precision}} + \frac{1}{\text{recall}}} = 2\frac{\text{precion}\cdot{recall}}{\text{precision} + \text{recall}}
+F_1 = 2\frac{1}{\frac{1}{\text{precision}} + \frac{1}{\text{recall}}} = 2\frac{\text{precion}\cdot\text{recall}}{\text{precision} + \text{recall}}
 \\]
 
 * Micro-average precision, micro-average recall: 
