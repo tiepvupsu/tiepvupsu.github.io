@@ -40,5 +40,7 @@ with PdfPages(filename) as pdf:
     # plt.axes.get_xaxis().set_visible(False)
     # plt.axes.get_yaxis().set_visible(False)
     plt.axis('off')
-    pdf.savefig()  # saves the current figure into a pdf page
+    # pdf.savefig()  # saves the current figure into a pdf page
+    plt.show() 
     plt.close()
+
