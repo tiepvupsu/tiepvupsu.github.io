@@ -91,7 +91,7 @@ Lớp bảy, tôi được giải Ba, Thịnh hình như cũng thế, Yến vẫ
 
 Lớp tám, tôi được giải Nhất, điểm cao nhất đội (19.5/20) lần đầu tiên. Thịnh cũng đạt giải cao.
 
-Trong thời gian này, mỗi mùa hè tôi đều được bố đưa lên thị xã mua sách nâng cao môn Toán. Cuốn sách tôi thích nhất là cuốn "Những bài toán cổ" của NXB giáo dục, bìa màu vàng, tôi không nhớ tên tác giả. Tôi đọc và say mê các bài toán cũng như lịch sử của Toán học từ cuốn sách này. Các sách toán nâng cao khác của tác giả Vũ Hữu Bình (cùng bọ Vũ Hữu với tôi) cũng là hành trang theo suốt tuổi thơ học Toán của tôi.
+Trong thời gian này, mỗi mùa hè tôi đều được bố đưa lên thị xã mua sách nâng cao môn Toán. Cuốn sách tôi thích nhất là cuốn "Những bài toán cổ" của NXB giáo dục, bìa màu vàng, tôi không nhớ tên tác giả. Tôi đọc và say mê các bài toán cũng như lịch sử của Toán học từ cuốn sách này. Các sách toán nâng cao khác của tác giả Vũ Hữu Bình (cùng họ Vũ Hữu với tôi) cũng là hành trang theo suốt tuổi thơ học Toán của tôi.
 
 ### 09/2003 - 09/2004
 Năm lớp chín, có một sự thay đổi lớn. Lớp học chính của chúng tôi ở thị trấn
