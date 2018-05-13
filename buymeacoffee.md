@@ -28,19 +28,7 @@ Chủ tài khoản: **VU HUU LONG**
 Số tài khoản: **0081001280321**
 
 #### 2. Paypal 
-Bạn cũng có thể Paypal qua email vuhuutiep@gmail.com hoặc click trực tiếp:
-<div markdown = "0"> 
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-<input type="hidden" name="cmd" value="_donations">
-<input type="hidden" name="business" value="vuhuutiep@gmail.com">
-<input type="hidden" name="lc" value="US">
-<input type="hidden" name="item_name" value="I find machinelearningcoban.com helpful. I'd like to buy Tiep Vu a coffee ^^. (Thank you so much for your support.)">
-<input type="hidden" name="no_note" value="0">
-<input type="hidden" name="currency_code" value="USD">
-<input type="hidden" name="bn" value="PP-DonationsBF:Buymeacoffee.png:NonHostedGuest">
-<p style="text-align:center;"><input type="image" src="/images/Buymeacoffee_blue.png" border="0" style="padding-bottom: -9mm;" width = "25%" name="submit" alt="PayPal - The safer, easier way to pay online!"></p>
-</form> 
-</div>
+Bạn cũng có thể Paypal qua [paypal.me/TiepVu](paypal.me/TiepVu).
 
 #### 3. Một vài lời nhắn gửi tới blog 
 Bạn cũng có thể để lại một lời nhắn ở phần comment bên dưới. Tôi sẽ rất vui nếu nhận được sự động viên từ các bạn. 
