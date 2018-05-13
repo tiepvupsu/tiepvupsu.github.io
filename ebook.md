@@ -12,14 +12,14 @@ comments: true
 
 <!-- MarkdownTOC -->
 
-- [0. Bố cục \(Mục lục ngắn\)](#-bo-cuc-muc-luc-ngan)
-- [1. Giá mỗi ebook](#-gia-moi-ebook)
-- [2. Các bước đặt sách](#-cac-buoc-dat-sach)
-    - [Bước 1](#buoc-)
-    - [Bước 2](#buoc--1)
-        - [**Link đăng ký pre-order ebook 'Machine Learning cơ bản I'**](#link-dang-ky-pre-order-ebook-machine-learning-co-ban-i)
-    - [Bước 3](#buoc--2)
-- [3. Vấn đề bản quyền](#-van-de-ban-quyen)
+- 0. Bố cục \(Mục lục ngắn\)
+- 1. Giá mỗi ebook
+- 2. Các bước đặt sách
+    - Bước 1
+    - Bước 2
+        - **Link đăng ký pre-order ebook 'Machine Learning cơ bản I'**
+    - Bước 3
+- 3. Vấn đề bản quyền
 
 <!-- /MarkdownTOC -->
 
@@ -70,7 +70,7 @@ Các bạn có thể tham khảo thêm giá của các khoá học/cuốn sách 
 ### Bước 1
 **Nếu bạn chọn thanh toán bằng Paypal:**
 
-Bạn có thể chuyển khoản trực tiếp vào tài khoản email: **vuhuutiep@gmail.com**. Các bạn chú ý **gửi trực tiếp tới email này chứ không qua nút "Buy me a coffee" trên blog**. Tôi phải nộp một phần cho Paypal nếu các bạn thanh toán qua đó. 
+Bạn có thể chuyển khoản trực tiếp qua [paypal.me/TiepVu](paypal.me/TiepVu).  
 
 Các bạn chú ý chọn 'Send money to friends and family' để hạn chế việc mất phí ở phía người nhận. 
 
