@@ -70,7 +70,7 @@ Các bạn có thể tham khảo thêm giá của các khoá học/cuốn sách 
 ### Bước 1
 **Nếu bạn chọn thanh toán bằng Paypal:**
 
-Bạn có thể chuyển khoản trực tiếp qua [paypal.me/TiepVu](paypal.me/TiepVu).  
+Bạn có thể chuyển khoản trực tiếp qua [https://www.paypal.me/TiepVu](https://www.paypal.me/TiepVu).  
 
 Các bạn chú ý chọn 'Send money to friends and family' để hạn chế việc mất phí ở phía người nhận. 
 

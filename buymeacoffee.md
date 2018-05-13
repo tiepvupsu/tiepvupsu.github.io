@@ -28,7 +28,7 @@ Chủ tài khoản: **VU HUU LONG**
 Số tài khoản: **0081001280321**
 
 #### 2. Paypal 
-Bạn cũng có thể Paypal qua [paypal.me/TiepVu](paypal.me/TiepVu).
+Bạn cũng có thể Paypal qua [https://www.paypal.me/TiepVu](https://www.paypal.me/TiepVu).
 
 #### 3. Một vài lời nhắn gửi tới blog 
 Bạn cũng có thể để lại một lời nhắn ở phần comment bên dưới. Tôi sẽ rất vui nếu nhận được sự động viên từ các bạn. 
