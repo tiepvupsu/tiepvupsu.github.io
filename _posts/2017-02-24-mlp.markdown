@@ -685,7 +685,7 @@ Có một vài nhận xét như sau:
 
 ## 5. Thảo luận
 
-* [Người ta đã chứng minh được rằng](http://www.dartmouth.edu/~gvc/Cybenko_MCSS.pdf), với một hàm số liên tục bất kỳ \\(f(x)\\) và một số \\(\varepsilon >0\\), luôn luôn tồn tại một Neural Network với predicted output có dạng \\(g(x)\\) với một hidden layer (với số hidden units đủ lớn và _nonlinear_ activation function phù hợp) sao cho với mọi \\(x, \|f(x) - g(x)\| < \varepsilon\\). Nói một cách khác, Neural Network có khả năng xấp xỉ hầu hết các hàm liên tục nào.
+* [Người ta đã chứng minh được rằng](http://www.dartmouth.edu/~gvc/Cybenko_MCSS.pdf), với một hàm số liên tục bất kỳ \\(f(x)\\) và một số \\(\varepsilon >0\\), luôn luôn tồn tại một Neural Network với predicted output có dạng \\(g(x)\\) với một hidden layer (với số hidden units đủ lớn và _nonlinear_ activation function phù hợp) sao cho với mọi \\(x, \|f(x) - g(x)\| < \varepsilon\\). Nói một cách khác, Neural Network có khả năng xấp xỉ hầu hết các hàm liên tục.
 
 * Trên thực tế, việc tìm ra số lượng hidden units và _nonlinear_ activation function nói trên nhiều khi bất khả thi. Thay vào đó, thực nghiệm chứng minh rằng Neural Networks với nhiều hidden layers kết hợp với các _nonlinear_ activation function (đơn giản như ReLU) có khả năng xấp xỉ (khả năng biểu diễn) training data tốt hơn.
 
