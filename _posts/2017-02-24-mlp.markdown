@@ -18,32 +18,32 @@ summary: Giới thiệu về Neural Network nhiều lớp và phương pháp t�
 
 <!-- MarkdownTOC -->
 
-- [1. Giới thiệu](#-gioi-thieu)
-    - [1.1. PLA cho các hàm logic cơ bản](#-pla-cho-cac-ham-logic-co-ban)
-    - [1.2. Biểu diễn hàm XOR với Neural Network.](#-bieu-dien-ham-xor-voi-neural-network)
-- [2. Các ký hiệu và khái niệm](#-cac-ky-hieu-va-khai-niem)
-    - [2.1. Layers](#-layers)
-    - [2.2. Units](#-units)
-    - [2.3. Weights và Biases](#-weights-va-biases)
-    - [2.4. Activation functions](#-activation-functions)
-        - [2.4.1. Hàm _sgn_ không được sử dụng trong MLP](#-ham-sgn-khong-duoc-su-dung-trong-mlp)
-        - [2.4.1 Sigmoid và tanh](#-sigmoid-va-tanh)
-        - [2.4.3. ReLU](#-relu)
-        - [2.4.4. Một vài lưu ý](#-mot-vai-luu-y)
-- [3. Backpropagation](#-backpropagation)
-    - [3.1. Backpropagation cho Stochastic Gradient Descent](#-backpropagation-cho-stochastic-gradient-descent)
-        - [3.1.1. Đạo hàm theo từng hệ số \\\(w_{ij}^{\(l\)}, b_{i}^{\(l\)}\\\)](#-dao-ham-theo-tung-he-so-\\wij^l-bi^l\\)
-        - [3.1.2. Đạo hàm theo ma trận \\\(\mathbf{W}^{\(l\)}, \mathbf{b}^{\(l\)}\\\)](#-dao-ham-theo-ma-tran-\\\mathbfw^l-\mathbfb^l\\)
-    - [3.2. Backpropagation cho Batch \(mini-batch\) Gradient Descent](#-backpropagation-cho-batch-mini-batch-gradient-descent)
-- [4. Ví dụ trên Python](#-vi-du-tren-python)
-    - [4.1. Tạo dữ liệu giả](#-tao-du-lieu-gia)
-    - [4.2. Tính toán Feedforward](#-tinh-toan-feedforward)
-    - [4.3. Tính toán Backpropagation](#-tinh-toan-backpropagation)
-    - [4.4. Một số hàm phụ trợ](#-mot-so-ham-phu-tro)
-    - [4.4. Phần chương trình chính](#-phan-chuong-trinh-chinh)
-    - [4.5. Kết quả](#-ket-qua)
-- [5. Thảo luận](#-thao-luan)
-- [6. Tài liệu tham khảo](#-tai-lieu-tham-khao)
+- 1. Giới thiệu
+    - 1.1. PLA cho các hàm logic cơ bản
+    - 1.2. Biểu diễn hàm XOR với Neural Network.
+- 2. Các ký hiệu và khái niệm
+    - 2.1. Layers
+    - 2.2. Units
+    - 2.3. Weights và Biases
+    - 2.4. Activation functions
+        - 2.4.1. Hàm _sgn_ không được sử dụng trong MLP
+        - 2.4.1 Sigmoid và tanh
+        - 2.4.3. ReLU
+        - 2.4.4. Một vài lưu ý
+- 3. Backpropagation
+    - 3.1. Backpropagation cho Stochastic Gradient Descent
+        - 3.1.1. Đạo hàm theo từng hệ số \\(w_{ij}^{\(l\)}, b_{i}^{\(l\)}\\)
+        - 3.1.2. Đạo hàm theo ma trận \\(\mathbf{W}^{\(l\)}, \mathbf{b}^{\(l\)}\\)
+    - 3.2. Backpropagation cho Batch \(mini-batch\) Gradient Descent
+- 4. Ví dụ trên Python
+    - 4.1. Tạo dữ liệu giả
+    - 4.2. Tính toán Feedforward
+    - 4.3. Tính toán Backpropagation
+    - 4.4. Một số hàm phụ trợ
+    - 4.4. Phần chương trình chính
+    - 4.5. Kết quả
+- 5. Thảo luận
+- 6. Tài liệu tham khảo
 
 <!-- /MarkdownTOC -->
 
@@ -685,7 +685,7 @@ Có một vài nhận xét như sau:
 
 ## 5. Thảo luận
 
-* [Người ta đã chứng minh được rằng](http://www.dartmouth.edu/~gvc/Cybenko_MCSS.pdf), với một hàm số liên tục bất kỳ \\(f(x)\\) và một số \\(\varepsilon >0\\), luôn luôn tồn tại một Neural Network với predicted output có dạng \\(g(x)\\) với một hidden layer (với số hidden units đủ lớn và _nonlinear_ activation function phù hợp) sao cho với mọi \\(x, \|f(x) - g(x)\| < \varepsilon\\). Nói một cách khác, Neural Network có khả năng xấp xỉ bất kỳ hàm liên tục nào.
+* [Người ta đã chứng minh được rằng](http://www.dartmouth.edu/~gvc/Cybenko_MCSS.pdf), với một hàm số liên tục bất kỳ \\(f(x)\\) và một số \\(\varepsilon >0\\), luôn luôn tồn tại một Neural Network với predicted output có dạng \\(g(x)\\) với một hidden layer (với số hidden units đủ lớn và _nonlinear_ activation function phù hợp) sao cho với mọi \\(x, \|f(x) - g(x)\| < \varepsilon\\). Nói một cách khác, Neural Network có khả năng xấp xỉ hầu hết các hàm liên tục nào.
 
 * Trên thực tế, việc tìm ra số lượng hidden units và _nonlinear_ activation function nói trên nhiều khi bất khả thi. Thay vào đó, thực nghiệm chứng minh rằng Neural Networks với nhiều hidden layers kết hợp với các _nonlinear_ activation function (đơn giản như ReLU) có khả năng xấp xỉ (khả năng biểu diễn) training data tốt hơn.
 
