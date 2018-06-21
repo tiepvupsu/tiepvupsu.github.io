@@ -127,9 +127,7 @@ máy tính cũng khiến cho việc huấn luyện MLP không hiệu quả khi s
 layers lớn lên. Vấn đề này có tên là **vanishing gradient**.
 
 Nhắc lại rằng hàm kích hoạt được sử dụng thời gian đó là sigmoid hoặc tanh -- là
-các hàm bị chặn trong khoảng (0, 1) hoặc (-1, 1) (Nhắc lại [đạo hàm của hàm sigm
-oid](https://machinelearningcoban.com/2017/01/27/logisticregression/#sigmoid-fun
-ction) \\(\sigma(z)\\) là \\(\sigma(z)(1 - \sigma(z))\\) là tích của hai số nhỏ
+các hàm bị chặn trong khoảng (0, 1) hoặc (-1, 1) (Nhắc lại [đạo hàm của hàm sigmoid](https://machinelearningcoban.com/2017/01/27/logisticregression/#sigmoid-function) \\(\sigma(z)\\) là \\(\sigma(z)(1 - \sigma(z))\\) là tích của hai số nhỏ
 hơn 1). Khi sử dụng backpropagation để tính đạo hàm cho các ma trận hệ số ở các
 lớp đầu tiên, ta cần phải nhân rất nhiều các giá trị nhỏ hơn 1 với nhau. Việc
 này khiến cho nhiều đạo hàm thành phần bằng 0 do xấp xỉ tính toán. Khi đạo hàm
