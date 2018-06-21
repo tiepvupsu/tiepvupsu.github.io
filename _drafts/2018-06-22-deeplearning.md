@@ -178,11 +178,11 @@ phiền hà của _vanishing gradient_.
 Kể từ đây, neural networks với nhiều hidden layer được đổi tên thành **deep learning**.  
 
 Vấn đề _vanishing gradient_ được giải quyết phần nào (vẫn chưa thực sự triệt
-để), nhưng vẫn còn những vấn đề khác của deep learning: dự liệu huấn luyện quá
+để), nhưng vẫn còn những vấn đề khác của deep learning: dữ liệu huấn luyện quá
 ít, và khả năng tính toán của CPU còn rất hạn chế trong việc huấn luyện các deep
 networks.
 
-Năm 2010, giáo sư Li Fei Fei, một giáo sư ngành computer vision đầu ngành tại
+Năm 2010, giáo sư Li Fei-Fei, một giáo sư ngành computer vision đầu ngành tại
 Stanford, cùng với nhóm của bà tạo ra một cơ sở dữ liệu có tên
 [ImageNet](http://www.image-net.org/) với hàng triệu bức ảnh thuộc 1000 lớp dữ
 liệu khác nhau đã được gán nhãn. Dự án này được thực hiện nhờ vào sự bùng nổ của
