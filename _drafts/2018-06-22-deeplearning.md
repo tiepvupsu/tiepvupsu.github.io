@@ -191,7 +191,7 @@ internet những năm 2000 và lượng ảnh khổng lồ được upload lên 
 đó. Các bức ảnh này được gán nhãn bởi rất nhiều người (được trả công).
 
 <div style="text-align:center;">
-<iframe width="600" height = "400" src="https://www.youtube.com/embed/40riCqvRoMs" frameborder="0" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/40riCqvRoMs" frameborder="0" allowfullscreen></iframe>
 <div class="thecap">How we teach computers to understand pictures.</div>
 </div>
 
