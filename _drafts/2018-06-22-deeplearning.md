@@ -194,7 +194,9 @@ internet những năm 2000 và lượng ảnh khổng lồ được upload lên 
 <div class="thecap">How we teach computers to understand pictures.</div>
 </div>
 
-Bộ cơ sở dữ liệu này được cập nhật hàng năm, và kể từ năm 2010, nó được dùng trong một cuộc thi thường niên có tên ["ImageNet Large Scale Visual Recognition Challenge" (ILSVRC)]. Trong cuộc thi này, dữ liệu huấn luyện được giao cho các đội tham gia. Mỗi đội cần sử dụng dữ liệu này để huấn luyện các mô hình phân lớp, các mô hình này sẽ được áp dụng để dự đoán nhãn của dữ liệu mới (được giữ bởi ban tổ chức). Trong hai năm 2010 và 2011, có rất nhiều đội tham gia. Các mô hình trong hai năm này chủ yếu là sự kết hợp của SVM với các feature được xây dựng bởi các bộ _hand-crafted descriptors_ (SIFT, HoG, v.v.). Mô hình giành chiến thắng có top-5 error rate là 28% (càng nhỏ càng tốt). Mô hình giành chiến thắng năm 2011 có top-1 error rate là 26%. Cải thiện không nhiều! 
+Bộ cơ sở dữ liệu này được cập nhật hàng năm, và kể từ năm 2010, nó được dùng trong một cuộc thi thường niên có tên ["ImageNet Large Scale Visual Recognition Challenge" (ILSVRC)]. Trong cuộc thi này, dữ liệu huấn luyện được giao cho các đội tham gia. Mỗi đội cần sử dụng dữ liệu này để huấn luyện các mô hình phân lớp, các mô hình này sẽ được áp dụng để dự đoán nhãn của dữ liệu mới (được giữ bởi ban tổ chức). Trong hai năm 2010 và 2011, có rất nhiều đội tham gia. Các mô hình trong hai năm này chủ yếu là sự kết hợp của SVM với các feature được xây dựng bởi các bộ _hand-crafted descriptors_ (SIFT, HoG, v.v.). Mô hình giành chiến thắng có top-5 error rate là 28% (càng nhỏ càng tốt). Mô hình giành chiến thắng năm 2011 có top-5 error rate là 26%. Cải thiện không nhiều! 
+
+*Ngoài lề: top-5 error rate được tính như sau. Mỗi mô hình dự đoán 5 nhãn của một bức ảnh. Nếu nhãn thật của bức ảnh nằm trong 5 nhãn đó, ta có một điểm được phân lớp chính xác. Ngoài ra, bức ảnh đó được coi là một error. Top-5 error rate là tỉ lệ số bức ảnh error trong toàn bộ số ảnh kiểm thử với error được tính theo cách này. Top-1 error cộng với classification accuracy (phần trăm) chính bằng 100 phần trăm.* 
 
 <a name="dot-pha-"></a>
 
