@@ -36,9 +36,15 @@ Trong trang này:
 <a name="gioi-thieu"></a>
 
 ## Giới thiệu
-Như đã một lần nhắc đến trong [bài đầu tiên của blog](https://machinelearningcoban.com/2016/12/26/introduce/), trí tuệ nhân tạo đang len lỏi vào trong cuộc sống và ảnh hưởng sâu rộng tới mỗi chúng ta. Kể từ khi tôi viết bài đầu tiên, tần suất chúng ta nghe thấy các cụm từ 'artificial intelligence', 'machine learning', 'deep learning' cũng ngày một tăng lên. Nguyên nhân chính dẫn đến việc này (và việc ra đời blog này) là sự xuất hiện của deep learning trong 5-6 năm gần đây.
+Như đã một lần nhắc đến trong [bài đầu tiên của blog](/2016/12/26/introduce/),
+trí tuệ nhân tạo đang len lỏi vào trong cuộc sống và ảnh hưởng sâu rộng tới mỗi
+chúng ta. Kể từ khi tôi viết bài đầu tiên, tần suất chúng ta nghe thấy các cụm
+từ 'artificial intelligence', 'machine learning', 'deep learning' cũng ngày một
+tăng lên. Nguyên nhân chính dẫn đến việc này (và việc ra đời blog này) là sự
+xuất hiện của deep learning trong 5-6 năm gần đây.
 
-Một lần nữa xin được dùng lại hình vẽ mô tả mối quan hệ giữa artificial intelligence, machine learning, và deep learning: 
+Một lần nữa xin được dùng lại hình vẽ mô tả mối quan hệ giữa artificial
+intelligence, machine learning, và deep learning:
 
 <hr>
 <div class="imgcap">
@@ -49,9 +55,14 @@ Một lần nữa xin được dùng lại hình vẽ mô tả mối quan hệ g
 </div>
 <hr>
 
-Trong bài viết này, tôi sẽ trình bày sơ lược về lịch sử deep learning. Trong các bài tiếp theo, tôi có tham vọng viết thật kỹ về các thành phần cơ bản của các hệ thống deep learning. Xa hơn nữa, blog sẽ có thêm các bài hướng dẫn cho nhiều bài toán thực tế. 
+Trong bài viết này, tôi sẽ trình bày sơ lược về lịch sử deep learning. Trong các
+bài tiếp theo, tôi có tham vọng viết thật kỹ về các thành phần cơ bản của các hệ
+thống deep learning. Xa hơn nữa, blog sẽ có thêm các bài hướng dẫn cho nhiều bài
+toán thực tế.
 
-**Blog luôn đón nhận những đóng góp để chất lượng các bài viết được tốt hơn. Nếu bạn có đóng góp nào, vui lòng để lại trong phần comment, tôi sẽ cập nhật bài viết cho phù hợp. Cảm ơn bạn. **
+**Blog luôn đón nhận những đóng góp để chất lượng các bài viết được tốt hơn. Nếu
+bạn có đóng góp nào, vui lòng để lại trong phần comment, tôi sẽ cập nhật bài
+viết cho phù hợp. Cảm ơn bạn. **
 
 
 
@@ -74,7 +85,19 @@ Chúng ta cùng quan sát hình dưới đây:
 
 ### Perceptron (60s)
 
-Một trong những nền móng đầu tiên của neural network và deep learning là [perceptron learning algorithm](https://machinelearningcoban.com/2017/01/21/perceptron/) (hoặc gọn là perceptron). Perceptron là một thuật toán supervised learning giúp giải quyết bài toán phân lớp nhị phân, được khởi nguồn bởi [Frank Rosenblatt](https://en.wikipedia.org/wiki/Frank_Rosenblatt) năm 1957 trong một nghiên cứu được tài trợ bởi Văn phòng nghiên cứu hải quân Hoa Kỳ (U.S Office of Naval Research -- _từ một cơ quan liên quan đến quân sự_). Thuật toán perceptron được chứng minh là hội tụ nếu hai lớp dữ liệu là _linearly separable_. Với thành công này, năm 1958, trong một hội thảo, Rosenblatt đã có một phát biểu gây tranh cãi. Từ phát biểu này, tờ New York Times đã có một bài báo cáo rằng perceptron được Hải quân Hoa Kỳ mong đợi "có thể đi, nói chuyện, nhìn, viết, tự sinh sản, và tự nhận thức được sự tồn tại của mình". (_Chúng ta biết rằng cho tới giờ các hệ thống nâng cao hơn perceptron nhiều lần vẫn chưa thể_).
+Một trong những nền móng đầu tiên của neural network và deep learning là
+[perceptron learning algorithm](/2017/01/21/perceptron/) (hoặc gọn là
+perceptron). Perceptron là một thuật toán supervised learning giúp giải quyết
+bài toán phân lớp nhị phân, được khởi nguồn bởi [Frank
+Rosenblatt](https://en.wikipedia.org/wiki/Frank_Rosenblatt) năm 1957 trong một
+nghiên cứu được tài trợ bởi Văn phòng nghiên cứu hải quân Hoa Kỳ (U.S Office of
+Naval Research -- _từ một cơ quan liên quan đến quân sự_). Thuật toán perceptron
+được chứng minh là hội tụ nếu hai lớp dữ liệu là _linearly separable_. Với thành
+công này, năm 1958, trong một hội thảo, Rosenblatt đã có một phát biểu gây tranh
+cãi. Từ phát biểu này, tờ New York Times đã có một bài báo cáo rằng perceptron
+được Hải quân Hoa Kỳ mong đợi "có thể đi, nói chuyện, nhìn, viết, tự sinh sản,
+và tự nhận thức được sự tồn tại của mình". (_Chúng ta biết rằng cho tới giờ các
+hệ thống nâng cao hơn perceptron nhiều lần vẫn chưa thể_).
 
 Mặc dù thuật toán này mang lại nhiều kỳ vọng, nó nhanh chóng được chứng minh không thể giải quyết những bài toán đơn giản. Năm 1969, [Marvin Minsky](https://en.wikipedia.org/wiki/Marvin_Minsky) và [Seymour Papert](https://en.wikipedia.org/wiki/Seymour_Papert) trong cuốn sách nổi tiếng [Perceptrons](https://en.wikipedia.org/wiki/Perceptrons_(book)) đã chứng minh rằng [không thể 'học' được hàm số XOR](/2017-02-24-mlp.markdown#-bieu-dien-ham-xor-voi-neural-network) khi sử dụng perceptron. Phát hiện này làm choáng váng giới khoa học thời gian đó (_bây giờ chúng ta thấy việc này khá hiển nhiên_). Perceptron được chứng minh rằng chỉ hoạt động nếu dữ liệu là _linearly separable_.
 
@@ -86,7 +109,7 @@ Cho tới khi...
 
 ### MLP và Backpropagation ra đời (80s)
 
-[Geoffrey Hinton](https://en.wikipedia.org/wiki/Geoffrey_Hinton) tốt nghiệp PhD ngành neural networks năm 1978. Năm 1986, ông cùng với hai tác giả khác xuất bản một bài báo khoa học trên Nature với tựa đề ["Learning representations by back-propagating errors"](http://www.nature.com/nature/journal/v323/n6088/abs/323533a0.html). Trong bài báo này, nhóm của ông chứng minh rằng neural nets với nhiều hidden layer (được gọi là multi-layer perceptron hoặc MLP) có thể được huấn luyện một cách hiệu quả dựa trên một quy trình đơn giản được gọi là [**backpropagation**](https://machinelearningcoban.com/2017/02/24/mlp/#-backpropagation) (_backpropagation là tên gọi mỹ miều của quy tắc chuỗi -- chain rule -- trong tính đạo hàm. Việc tính được đạo hàm của hàm số phức tạp mô tả quan hệ giữa đầu vào và đầu ra của một neural net là rất quan trọng vì hầu hết các thuật toán tối ưu đều được thực hiện thông qua việc tính đạo hàm, [gradient descent](https://machinelearningcoban.com/2017/01/12/gradientdescent/) là một ví dụ_). Việc này giúp neural nets _thoát_ được những hạn chế của perceptron về việc chỉ biểu diễn được các quan hệ tuyến tính. Để biểu diễn các quan hệ phi tuyến, phía sau mỗi layer là một hàm kích hoạt phi tuyến, ví dụ hàm sigmoid hoặc tanh. (ReLU ra đời năm 2012). Với hidden layers, neural nets được chứng minh rằng có khả năng xấp xỉ hầu hết bất kỳ hàm số nào qua một định lý được gọ là [universal approximation theorem](https://en.wikipedia.org/wiki/Universal_approximation_theorem). _Neurel nets quay trở lại cuộc chơi_.
+[Geoffrey Hinton](https://en.wikipedia.org/wiki/Geoffrey_Hinton) tốt nghiệp PhD ngành neural networks năm 1978. Năm 1986, ông cùng với hai tác giả khác xuất bản một bài báo khoa học trên Nature với tựa đề ["Learning representations by back-propagating errors"](http://www.nature.com/nature/journal/v323/n6088/abs/323533a0.html). Trong bài báo này, nhóm của ông chứng minh rằng neural nets với nhiều hidden layer (được gọi là multi-layer perceptron hoặc MLP) có thể được huấn luyện một cách hiệu quả dựa trên một quy trình đơn giản được gọi là [**backpropagation**](/2017/02/24/mlp/#-backpropagation) (_backpropagation là tên gọi mỹ miều của quy tắc chuỗi -- chain rule -- trong tính đạo hàm. Việc tính được đạo hàm của hàm số phức tạp mô tả quan hệ giữa đầu vào và đầu ra của một neural net là rất quan trọng vì hầu hết các thuật toán tối ưu đều được thực hiện thông qua việc tính đạo hàm, [gradient descent](/2017/01/12/gradientdescent/) là một ví dụ_). Việc này giúp neural nets _thoát_ được những hạn chế của perceptron về việc chỉ biểu diễn được các quan hệ tuyến tính. Để biểu diễn các quan hệ phi tuyến, phía sau mỗi layer là một hàm kích hoạt phi tuyến, ví dụ hàm sigmoid hoặc tanh. (ReLU ra đời năm 2012). Với hidden layers, neural nets được chứng minh rằng có khả năng xấp xỉ hầu hết bất kỳ hàm số nào qua một định lý được gọ là [universal approximation theorem](https://en.wikipedia.org/wiki/Universal_approximation_theorem). _Neurel nets quay trở lại cuộc chơi_.
 
 Thuật toán này mang lại một vài thành công ban đầu, nổi trội là **convolutional neural nets** (convnets hay CNN) (còn được gọi là [LeNet](http://yann.lecun.com/exdb/lenet/)) cho bài toán nhận dạng chữ số viết tay được khởi nguồn bởi Yann LeCun tại AT&T Bell Labs (Yann LeCun là sinh viên sau cao học của Hinton tại đại học Toronto năm 1987-1988). Dưới đây là bản demo được lấy từ trang web của LeNet, network là một CNN với 5 layer, còn được gọi là LeNet-5 (1998). 
 
@@ -121,14 +144,14 @@ tính toán của các máy tính thời đó còn rất hạn chế.
 
 Một hạn chế khác của các kiến trúc MLP nói chung là hàm mất mát không phải là
 một [hàm
-lồi](https://machinelearningcoban.com/2017/03/12/convexity/#-convex-functions).
+lồi](/2017/03/12/convexity/#-convex-functions).
 Việc này khiến cho việc tìm nghiệm tối ưu toàn cục cho bài toán tối ưu hàm mất
 mát trở nên rất khó khăn. Một vấn đề khác liên quan đến giới hạn tính toán của
 máy tính cũng khiến cho việc huấn luyện MLP không hiệu quả khi số lượng hidden
 layers lớn lên. Vấn đề này có tên là **vanishing gradient**.
 
 Nhắc lại rằng hàm kích hoạt được sử dụng thời gian đó là sigmoid hoặc tanh -- là
-các hàm bị chặn trong khoảng (0, 1) hoặc (-1, 1) (Nhắc lại [đạo hàm của hàm sigmoid](https://machinelearningcoban.com/2017/01/27/logisticregression/#sigmoid-function) \\(\sigma(z)\\) là \\(\sigma(z)(1 - \sigma(z))\\) là tích của hai số nhỏ
+các hàm bị chặn trong khoảng (0, 1) hoặc (-1, 1) (Nhắc lại [đạo hàm của hàm sigmoid](/2017/01/27/logisticregression/#sigmoid-function) \\(\sigma(z)\\) là \\(\sigma(z)(1 - \sigma(z))\\) là tích của hai số nhỏ
 hơn 1). Khi sử dụng backpropagation để tính đạo hàm cho các ma trận hệ số ở các
 lớp đầu tiên, ta cần phải nhân rất nhiều các giá trị nhỏ hơn 1 với nhau. Việc
 này khiến cho nhiều đạo hàm thành phần bằng 0 do xấp xỉ tính toán. Khi đạo hàm
@@ -137,9 +160,9 @@ của một thành phần bằng 0, nó sẽ không được cập nhật thông
 Những hạn chế này khiến cho neural nets một lần nữa rơi vào thời kỳ _băng giá_
 thứ hai. Vào thời điểm những năm 1990 và đầu những năm 2000, neural nets dần
 được thay thế bởi [support vector machines
---SVM](https://machinelearningcoban.com/2017/04/09/smv/). SVMs có ưu điểm là bài toán tối ưu để tìm các tham số của nó là một bài toán lồi -- có
+--SVM](/2017/04/09/smv/). SVMs có ưu điểm là bài toán tối ưu để tìm các tham số của nó là một bài toán lồi -- có
 nhiều các thuật toán tối ưu hiệu quả giúp tìm nghiệm của nó. Các [kỹ thuật về
-kernel](https://machinelearningcoban.com/2017/04/22/kernelsmv/) cũng phát triển
+kernel](/2017/04/22/kernelsmv/) cũng phát triển
 giúp SVMs giải quyết được cả các vấn đề về việc dữ liệu không phân biệt tuyến
 tính.
 
@@ -151,7 +174,7 @@ Cả giới khoa học làm machine learning đua nhau nghiên cứu SVM trong t
 Năm 2006, Hinton một lần nữa cho rằng ông biết [bộ não hoạt động như thế nào](https://www.youtube.com/watch?v=mlXzufEk-2E), và giới thiệu ý tưởng của _tiền huấn luyện không giám sát_ ([_unsupervised pretraining_](https://metacademy.org/graphs/concepts/unsupervised_pre_training)) thông qua [deep belief nets (DBN)](https://en.wikipedia.org/wiki/Deep_belief_network). DBN có thể được xem như sự xếp chồng các unsupervised networks đơn giản như [restricted Boltzman machine](https://en.wikipedia.org/wiki/Restricted_Boltzmann_machine) hay [autoencoders](http://ufldl.stanford.edu/tutorial/unsupervised/Autoencoders/). 
 
 Lấy ví dụ với autoencoder. Mỗi autoencoder là một neural net với một hidden
-layer. Số hidden [unit](https://machinelearningcoban.com/2017/02/24/mlp/#-units)
+layer. Số hidden [unit](/2017/02/24/mlp/#-units)
 ít hơn số input unit, và số output unit bằng với số input unit. Network này đơn
 giản được huấn luyện để kết quả ở output layer giống với kết quả ở input layer
 (và vị vậy được gọi là autoencoder). Khi output giống với input, ta có thể thấy
@@ -221,7 +244,7 @@ t-classification-with-deep-convolutional-neural-networks.pdf).
 
 Trong bài báo này, rất nhiều các kỹ thuật mới được giới thiệu. Trong đó hai đóng
 góp nổi bật nhất là [hàm
-ReLU](https://machinelearningcoban.com/2017/02/24/mlp/#-relu) và dropout. Hàm
+ReLU](/2017/02/24/mlp/#-relu) và dropout. Hàm
 ReLU (\\(ReLU(x) = \max(x, 0)\\)) với cách tính và đạo hàm đơn giản (bằng 1 khi
 đầu vào không âm, bằng 0 khi ngược lại) giúp tốc độ huấn luyện tăng lên đáng kể.
 Ngoài ra, việc ReLU không bị chặn trên bởi 1 (như softmax hay tanh) khiến cho
@@ -232,7 +255,7 @@ Trong quá trình test, toàn bộ các unit sẽ được sử dụng. Cách l�
 lý khi đối chiếu với con người. Nếu chỉ dùng một phần năng lực đã đem lại hiệu
 quả thì dùng toàn bộ năng lực sẽ mang lại hiệu quả cao hơn. Việc này cũng giúp
 cho mô hình tránh được
-[overfitting](https://machinelearningcoban.com/2017/03/04/overfitting/) và cũng
+[overfitting](/2017/03/04/overfitting/) và cũng
 được coi giống với kỹ thuật
 [_ensemble_](https://en.wikipedia.org/wiki/Ensemble_learning) trong các hệ thống
 machine learning khác. Với mỗi cách _tắt_ các unit, ta có một mô hình khác nhau.
@@ -265,12 +288,16 @@ deep learning trong thời gian này. Rất nhiều các ứng dụng công ngh�
 khoa học về deep learning tăng lên theo hàm số mũ. Các blog về deep learning
 cũng tăng lên từng ngày.
 
-_Blog Machine Learning cơ bản được ra đời vào những ngày cuối cùng của năm 2016. Tôi vẫn đề cập mặc dù sự ra đời này chẳng ảnh hưởng gì tới lịch sử phát triển của deep learning._
+_Blog Machine Learning cơ bản được ra đời vào những ngày cuối cùng của năm 2016.
+Tôi vẫn đề cập mặc dù sự ra đời này chẳng ảnh hưởng gì tới lịch sử phát triển
+của deep learning._
 
 <a name="dieu-gi-mang-den-su-thanh-cong-cua-deep-learning"></a>
 
 ## Điều gì mang đến sự thành công của deep learning 
-Rất nhiều những ý tưởng cơ bản của deep learning được đặt nền móng từ những năm 80-90 của thế kỷ trước, tuy nhiên deep learning chỉ đột phá trong khoảng 5-6 năm nay. Vì sao? 
+Rất nhiều những ý tưởng cơ bản của deep learning được đặt nền móng từ những năm
+80-90 của thế kỷ trước, tuy nhiên deep learning chỉ đột phá trong khoảng 5-6 năm
+nay. Vì sao?
 
 Có nhiều nhân tố dẫn đến sự bùng nổ này: 
 
@@ -292,7 +319,11 @@ Có nhiều nhân tố dẫn đến sự bùng nổ này:
 <a name="ket-luan"></a>
 
 ## Kết luận
-Rất nhiều bạn đọc có yêu cầu tôi viết về deep learning từ lâu. Tuy nhiên, trước đó tôi tự nhận rằng mình chưa đủ kiến thức về lĩnh vực này để viết cho độc giả. Chỉ khi có những bài cơ bản về machine learning và bản thân đã tích luỹ được một lượng kiến thức nhất định tôi mới quyết định bắt đầu vào chủ đề được nhiều bạn quan tâm này. 
+Rất nhiều bạn đọc có yêu cầu tôi viết về deep learning từ lâu. Tuy nhiên, trước
+đó tôi tự nhận rằng mình chưa đủ kiến thức về lĩnh vực này để viết cho độc giả.
+Chỉ khi có những bài cơ bản về machine learning và bản thân đã tích luỹ được một
+lượng kiến thức nhất định tôi mới quyết định bắt đầu vào chủ đề được nhiều bạn
+quan tâm này.
 
 Các thuật toán machine learning cổ điển khác vẫn có thể xuất hiện trong các bài sau của blog. 
 
