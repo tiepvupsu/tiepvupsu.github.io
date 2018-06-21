@@ -10,7 +10,7 @@ category:
 sc_project: 
 sc_security: 
 img: /assets/35_deeplearning/nn_timeline.jpg
-summary: Lịch sử Deep Learning
+summary: Lịch sử deep learning
 ---
 
 _Tôi xin tạm dừng các bài viết về Decision Tree để chuyển sang Deep Learning. Tôi sẽ quay lại với các thuật toán Machine Learning cổ điển khi có dịp_
