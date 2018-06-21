@@ -104,8 +104,8 @@ LeNet là thuật toán tốt nhất thời gian đó cho bài toán nhận dạ
 tay. Nó tốt hơn MLP thông thường (với fully connected layer) vì nó có khả năng
 trích xuất được đặc trưng trong không gian hai chiều của ảnh thông qua các
 filters (bộ lọc) hai chiều. Hơn nữa, các filter này nhỏ nên việc lưu trữ và tính
-toán cũng tốt hơn so với MLP thông thường. _Vâng, Yan LeCun có xuất phát từ
-Electrical Engineering nên rất quen thuộc với các bộ lọc._
+toán cũng tốt hơn so với MLP thông thường. (_Yan LeCun có xuất phát từ
+Electrical Engineering nên rất quen thuộc với các bộ lọc._)
 
 <a name="mua-dong-ai-thu-hai-s---dau-s"></a>
 
