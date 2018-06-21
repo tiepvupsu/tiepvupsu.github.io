@@ -183,32 +183,72 @@ Vấn đề _vanishing gradient_ được giải quyết phần nào (vẫn chư
 ít, và khả năng tính toán của CPU còn rất hạn chế trong việc huấn luyện các deep
 networks.
 
-Năm 2010, giáo sư Li Fei-Fei, một giáo sư ngành computer vision đầu ngành tại
+Năm 2010, giáo sư Fei-Fei Li, một giáo sư ngành computer vision đầu ngành tại
 Stanford, cùng với nhóm của bà tạo ra một cơ sở dữ liệu có tên
 [ImageNet](http://www.image-net.org/) với hàng triệu bức ảnh thuộc 1000 lớp dữ
 liệu khác nhau đã được gán nhãn. Dự án này được thực hiện nhờ vào sự bùng nổ của
 internet những năm 2000 và lượng ảnh khổng lồ được upload lên internet thời gian
 đó. Các bức ảnh này được gán nhãn bởi rất nhiều người (được trả công).
 
-<div style="text-align:center;">
-<iframe src="https://www.youtube.com/embed/40riCqvRoMs" frameborder="0" allowfullscreen></iframe>
-<div class="thecap">How we teach computers to understand pictures.</div>
-</div>
+Xem thêm [How we teach computers to understand pictures. Fei-Fei Li](https://www.youtube.com/watch?v=40riCqvRoMs)
 
-Bộ cơ sở dữ liệu này được cập nhật hàng năm, và kể từ năm 2010, nó được dùng trong một cuộc thi thường niên có tên ["ImageNet Large Scale Visual Recognition Challenge" (ILSVRC)]. Trong cuộc thi này, dữ liệu huấn luyện được giao cho các đội tham gia. Mỗi đội cần sử dụng dữ liệu này để huấn luyện các mô hình phân lớp, các mô hình này sẽ được áp dụng để dự đoán nhãn của dữ liệu mới (được giữ bởi ban tổ chức). Trong hai năm 2010 và 2011, có rất nhiều đội tham gia. Các mô hình trong hai năm này chủ yếu là sự kết hợp của SVM với các feature được xây dựng bởi các bộ _hand-crafted descriptors_ (SIFT, HoG, v.v.). Mô hình giành chiến thắng có top-5 error rate là 28% (càng nhỏ càng tốt). Mô hình giành chiến thắng năm 2011 có top-5 error rate là 26%. Cải thiện không nhiều! 
+Bộ cơ sở dữ liệu này được cập nhật hàng năm, và kể từ năm 2010, nó được dùng
+trong một cuộc thi thường niên có tên ["ImageNet Large Scale Visual Recognition
+Challenge" (ILSVRC)]. Trong cuộc thi này, dữ liệu huấn luyện được giao cho các
+đội tham gia. Mỗi đội cần sử dụng dữ liệu này để huấn luyện các mô hình phân
+lớp, các mô hình này sẽ được áp dụng để dự đoán nhãn của dữ liệu mới (được giữ
+bởi ban tổ chức). Trong hai năm 2010 và 2011, có rất nhiều đội tham gia. Các mô
+hình trong hai năm này chủ yếu là sự kết hợp của SVM với các feature được xây
+dựng bởi các bộ _hand-crafted descriptors_ (SIFT, HoG, v.v.). Mô hình giành
+chiến thắng có top-5 error rate là 28% (càng nhỏ càng tốt). Mô hình giành chiến
+thắng năm 2011 có top-5 error rate là 26%. Cải thiện không nhiều!
 
-*Ngoài lề: top-5 error rate được tính như sau. Mỗi mô hình dự đoán 5 nhãn của một bức ảnh. Nếu nhãn thật của bức ảnh nằm trong 5 nhãn đó, ta có một điểm được phân lớp chính xác. Ngoài ra, bức ảnh đó được coi là một error. Top-5 error rate là tỉ lệ số bức ảnh error trong toàn bộ số ảnh kiểm thử với error được tính theo cách này. Top-1 error cộng với classification accuracy (phần trăm) chính bằng 100 phần trăm.* 
+*Ngoài lề: top-5 error rate được tính như sau. Mỗi mô hình dự đoán 5 nhãn của
+một bức ảnh. Nếu nhãn thật của bức ảnh nằm trong 5 nhãn đó, ta có một điểm được
+phân lớp chính xác. Ngoài ra, bức ảnh đó được coi là một error. Top-5 error rate
+là tỉ lệ số bức ảnh error trong toàn bộ số ảnh kiểm thử với error được tính theo
+cách này. Top-1 error cộng với classification accuracy (phần trăm) chính bằng
+100 phần trăm.*
 
 <a name="dot-pha-"></a>
 
 ### Đột phá (2012)
-Năm 2012, cũng tại ILSVRC, Alex Krizhevsky, Ilya Sutskever, và Geoffrey Hinton (lại là ông) tham gia và đạt kết quả top-5 error rate 16%. Kết quả này làm sững sờ giới nghiên cứu thời gian đó. Mô hình là một Deep Convolutional Neural Network, sau này được gọi là [AlexNet](https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf). 
+Năm 2012, cũng tại ILSVRC, Alex Krizhevsky, Ilya Sutskever, và Geoffrey Hinton
+(lại là ông) tham gia và đạt kết quả top-5 error rate 16%. Kết quả này làm sững
+sờ giới nghiên cứu thời gian đó. Mô hình là một Deep Convolutional Neural
+Network, sau này được gọi là [AlexNet](https://papers.nips.cc/paper/4824-imagene
+t-classification-with-deep-convolutional-neural-networks.pdf).
 
-Trong bài báo này, rất nhiều các kỹ thuật mới được giới thiệu. Trong đó hai đóng góp nổi bật nhất là [hàm ReLU](https://machinelearningcoban.com/2017/02/24/mlp/#-relu) và dropout. Hàm ReLU (\\(ReLU(x) = \max(x, 0)\\)) với cách tính và đạo hàm đơn giản (bằng 1 khi đầu vào không âm, bằng 0 khi ngược lại) giúp tốc độ huấn luyện tăng lên đáng kể. Ngoài ra, việc ReLU không bị chặn trên bởi 1 (như softmax hay tanh) khiến cho vấn đề vanishing gradient cũng được giải quyết phần nào. Dropout cũng là một kỹ thuật đơn giản và cực kỳ hiệu quả. Trong quá trình training, nhiều hidden unit bị _tắt_ ngẫu nhiên và mô hình được huấn luyện trên các bộ tham số còn lại. Trong quá trình test, toàn bộ các unit sẽ được sử dụng. Cách làm này khá là có lý khi đối chiếu với con người. Nếu chỉ dùng một phần năng lực đã đem lại hiệu quả thì dùng toàn bộ năng lực sẽ mang lại hiệu quả cao hơn. Việc này cũng giúp cho mô hình tránh được [overfitting](https://machinelearningcoban.com/2017/03/04/overfitting/) và cũng được coi giống với kỹ thuật [_ensemble_](https://en.wikipedia.org/wiki/Ensemble_learning) trong các hệ thống machine learning khác. Với mỗi cách _tắt_ các unit, ta có một mô hình khác nhau. Với nhiều tổ hợp unit bị tắt khác nhau, ta thu được nhiều mô hình. Việc kết hợp ở cuối cùng được coi như sự kết hợp của nhiều mô hình (và vì vậy, nó giống với **ensemble**). 
+Trong bài báo này, rất nhiều các kỹ thuật mới được giới thiệu. Trong đó hai đóng
+góp nổi bật nhất là [hàm
+ReLU](https://machinelearningcoban.com/2017/02/24/mlp/#-relu) và dropout. Hàm
+ReLU (\\(ReLU(x) = \max(x, 0)\\)) với cách tính và đạo hàm đơn giản (bằng 1 khi
+đầu vào không âm, bằng 0 khi ngược lại) giúp tốc độ huấn luyện tăng lên đáng kể.
+Ngoài ra, việc ReLU không bị chặn trên bởi 1 (như softmax hay tanh) khiến cho
+vấn đề vanishing gradient cũng được giải quyết phần nào. Dropout cũng là một kỹ
+thuật đơn giản và cực kỳ hiệu quả. Trong quá trình training, nhiều hidden unit
+bị _tắt_ ngẫu nhiên và mô hình được huấn luyện trên các bộ tham số còn lại.
+Trong quá trình test, toàn bộ các unit sẽ được sử dụng. Cách làm này khá là có
+lý khi đối chiếu với con người. Nếu chỉ dùng một phần năng lực đã đem lại hiệu
+quả thì dùng toàn bộ năng lực sẽ mang lại hiệu quả cao hơn. Việc này cũng giúp
+cho mô hình tránh được
+[overfitting](https://machinelearningcoban.com/2017/03/04/overfitting/) và cũng
+được coi giống với kỹ thuật
+[_ensemble_](https://en.wikipedia.org/wiki/Ensemble_learning) trong các hệ thống
+machine learning khác. Với mỗi cách _tắt_ các unit, ta có một mô hình khác nhau.
+Với nhiều tổ hợp unit bị tắt khác nhau, ta thu được nhiều mô hình. Việc kết hợp
+ở cuối cùng được coi như sự kết hợp của nhiều mô hình (và vì vậy, nó giống với
+**ensemble**).
 
-Một trong những yếu tố quan trọng nhất giúp AlexNet thành công là việc sử dụng GPU (card đồ hoạ) để huấn luyện mô hình. GPU được tạo ra cho game thủ, với khả năng chạy song song nhiều lõi, đã trở thành một công cụ cực kỳ phù hợp với các thuật toán deep learning, giúp tăng tốc thuật toán lên nhiều lần so với CPU. 
+Một trong những yếu tố quan trọng nhất giúp AlexNet thành công là việc sử dụng
+GPU (card đồ hoạ) để huấn luyện mô hình. GPU được tạo ra cho game thủ, với khả
+năng chạy song song nhiều lõi, đã trở thành một công cụ cực kỳ phù hợp với các
+thuật toán deep learning, giúp tăng tốc thuật toán lên nhiều lần so với CPU.
 
-Sau AlexNet, tất cả các mô hình giành giải cao trong các năm tiếp theo đều là các deep networks (ZFNet 2013, GoogLeNet 2014, VGG 2014, ResNet 2015). Tôi sẽ giành một bài của blog để viết về các kiến trúc quan trọng này. Xu thế chung có thể thấy là các mô hình càng ngày càng *deep*. Xem hình dưới đây. 
+Sau AlexNet, tất cả các mô hình giành giải cao trong các năm tiếp theo đều là
+các deep networks (ZFNet 2013, GoogLeNet 2014, VGG 2014, ResNet 2015). Tôi sẽ
+giành một bài của blog để viết về các kiến trúc quan trọng này. Xu thế chung có
+thể thấy là các mô hình càng ngày càng *deep*. Xem hình dưới đây.
 
 <hr>
 <div class="imgcap">
@@ -219,7 +259,11 @@ Sau AlexNet, tất cả các mô hình giành giải cao trong các năm tiếp 
 </div>
 <hr>
 
-Những công ty công nghệ lớn cũng để ý tới việc phát triển các phòng nghiên cứu deep learning trong thời gian này. Rất nhiều các ứng dụng công nghệ đột phá đã được áp dụng vào cuộc sống hàng ngày. Cũng kể từ năm 2012, số lượng các bài báo khoa học về deep learning tăng lên theo hàm số mũ. Các blog về deep learning cũng tăng lên từng ngày.
+Những công ty công nghệ lớn cũng để ý tới việc phát triển các phòng nghiên cứu
+deep learning trong thời gian này. Rất nhiều các ứng dụng công nghệ đột phá đã
+được áp dụng vào cuộc sống hàng ngày. Cũng kể từ năm 2012, số lượng các bài báo
+khoa học về deep learning tăng lên theo hàm số mũ. Các blog về deep learning
+cũng tăng lên từng ngày.
 
 _Blog Machine Learning cơ bản được ra đời vào những ngày cuối cùng của năm 2016. Tôi vẫn đề cập mặc dù sự ra đời này chẳng ảnh hưởng gì tới lịch sử phát triển của deep learning._
 
