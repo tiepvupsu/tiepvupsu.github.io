@@ -14,7 +14,8 @@ summary: Một bài viết ngắn về lịch sử deep learning
 ---
 
 
-_Tôi xin tạm dừng các bài viết về Decision Tree để chuyển sang Deep Learning. Tôi sẽ quay lại với các thuật toán Machine Learning cổ điển khi có dịp_
+_Tôi xin tạm dừng các bài viết về Decision Tree để chuyển sang Deep Learning.
+Tôi sẽ quay lại với các thuật toán Machine Learning cổ điển khi có dịp_
 
 
 Trong trang này: 
@@ -157,8 +158,7 @@ lớp đầu tiên, ta cần phải nhân rất nhiều các giá trị nhỏ h�
 này khiến cho nhiều đạo hàm thành phần bằng 0 do xấp xỉ tính toán. Khi đạo hàm
 của một thành phần bằng 0, nó sẽ không được cập nhật thông qua gradient descent!
 
-Những hạn chế này khiến cho neural nets một lần nữa rơi vào thời kỳ _băng giá_
-thứ hai. Vào thời điểm những năm 1990 và đầu những năm 2000, neural nets dần
+Những hạn chế này khiến cho neural nets một lần nữa rơi vào thời kỳ _băng giá_. Vào thời điểm những năm 1990 và đầu những năm 2000, neural nets dần
 được thay thế bởi [support vector machines
 --SVM](/2017/04/09/smv/). SVMs có ưu điểm là bài toán tối ưu để tìm các tham số của nó là một bài toán lồi -- có
 nhiều các thuật toán tối ưu hiệu quả giúp tìm nghiệm của nó. Các [kỹ thuật về
