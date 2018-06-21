@@ -94,7 +94,7 @@ Thuật toán này mang lại một vài thành công ban đầu, nổi trội l
 <div >
     <img src="http://yann.lecun.com/exdb/lenet/gifs/asamples.gif" width = "500">
 </div>
-<div class="thecap">LeNet-5 cho bài toán nhận diện chữ số viết tay. (Nguồn: [http://yann.lecun.com](http://yann.lecun.com))</div>
+<div class="thecap">LeNet-5 cho bài toán nhận diện chữ số viết tay. (Nguồn: <a href="http://yann.lecun.com">http://yann.lecun.com</a>)</div>
 </div>
 <hr>
 
@@ -214,7 +214,7 @@ Sau AlexNet, tất cả các mô hình giành giải cao trong các năm tiếp 
 <div >
     <img src="/assets/35_deeplearning/imagenet_results.png" width = "800">
 </div>
-<div class="thecap">Kết quả ILSVRC qua các năm. (Nguồn [CNN Architectures: LeNet, AlexNet, VGG, GoogLeNet, ResNet and more ...](https://medium.com/@siddharthdas_32104/cnns-architectures-lenet-alexnet-vgg-googlenet-resnet-and-more-666091488df5))</div>
+<div class="thecap">Kết quả ILSVRC qua các năm. (Nguồn: <a href ="https://medium.com/@siddharthdas_32104/cnns-architectures-lenet-alexnet-vgg-googlenet-resnet-and-more-666091488df5">CNN Architectures: LeNet, AlexNet, VGG, GoogLeNet, ResNet and more ...</a>)</div>
 </div>
 <hr>
 
