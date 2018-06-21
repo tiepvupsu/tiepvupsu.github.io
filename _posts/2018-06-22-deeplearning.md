@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Lịch sử Deep Learning"
+title:  "Lược sử Deep Learning"
 date:   2018-06-22 15:22:00
 permalink: 2018/06/22/deeplearning/
 mathjax: true
@@ -10,7 +10,7 @@ category: Deep Learning
 sc_project: 11743468
 sc_security: 72d514df
 img: /assets/35_deeplearning/nn_timeline.jpg
-summary: Lịch sử deep learning
+summary: Một bài viết ngắn về lịch sử deep learning
 ---
 
 
@@ -166,7 +166,7 @@ kernel](/2017/04/22/kernelsmv/) cũng phát triển
 giúp SVMs giải quyết được cả các vấn đề về việc dữ liệu không phân biệt tuyến
 tính.
 
-Cả giới khoa học làm machine learning đua nhau nghiên cứu SVM trong thời gian đó, trừ một vài nhà khoa học cứng đầu...
+Nhiều nhà khoa học làm machine learning chuyển sang nghiên cứu SVM trong thời gian đó, trừ một vài nhà khoa học cứng đầu...
 
 <a name="cai-ten-duoc-lam-moi----deep-learning-"></a>
 
