@@ -48,7 +48,7 @@ Một lần nữa xin được dùng lại hình vẽ mô tả mối quan hệ g
 </div>
 <hr>
 
-Trong bài viết này, tôi sẽ trình bày sơ lược về lịch sử, các nguồn tài liệu, các công cụ cho deep learning. Trong các bài tiếp theo, tôi có tham vọng viết thật kỹ về các thành phần cơ bản của các hệ thống deep learning. Xa hơn nữa, blog sẽ có thêm nhiều bài hướng dẫn cho nhiều bài toán thực tế. 
+Trong bài viết này, tôi sẽ trình bày sơ lược về lịch sử deep learning. Trong các bài tiếp theo, tôi có tham vọng viết thật kỹ về các thành phần cơ bản của các hệ thống deep learning. Xa hơn nữa, blog sẽ có thêm các bài hướng dẫn cho nhiều bài toán thực tế. 
 
 **Blog luôn đón nhận những đóng góp để chất lượng các bài viết được tốt hơn. Nếu bạn có đóng góp nào, vui lòng để lại trong phần comment, tôi sẽ cập nhật bài viết cho phù hợp. Cảm ơn bạn. **
 
