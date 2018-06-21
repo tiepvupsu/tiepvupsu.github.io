@@ -131,13 +131,12 @@ các hàm bị chặn trong khoảng (0, 1) hoặc (-1, 1) (Nhắc lại [đạo
 hơn 1). Khi sử dụng backpropagation để tính đạo hàm cho các ma trận hệ số ở các
 lớp đầu tiên, ta cần phải nhân rất nhiều các giá trị nhỏ hơn 1 với nhau. Việc
 này khiến cho nhiều đạo hàm thành phần bằng 0 do xấp xỉ tính toán. Khi đạo hàm
-của một thành phần bằng 0, nó sẽ không được cập nhật trong qua gradient descent!
+của một thành phần bằng 0, nó sẽ không được cập nhật thông qua gradient descent!
 
 Những hạn chế này khiến cho neural nets một lần nữa rơi vào thời kỳ _băng giá_
 thứ hai. Vào thời điểm những năm 1990 và đầu những năm 2000, neural nets dần
 được thay thế bởi [support vector machines
---SVM](https://machinelearningcoban.com/2017/04/09/smv/). SVMs tỏ ra rất lợi
-hại, vì bài toán tối ưu để tìm các tham số của nó là một bài toán lồi -- có
+--SVM](https://machinelearningcoban.com/2017/04/09/smv/). SVMs có ưu điểm là bài toán tối ưu để tìm các tham số của nó là một bài toán lồi -- có
 nhiều các thuật toán tối ưu hiệu quả giúp tìm nghiệm của nó. Các [kỹ thuật về
 kernel](https://machinelearningcoban.com/2017/04/22/kernelsmv/) cũng phát triển
 giúp SVMs giải quyết được cả các vấn đề về việc dữ liệu không phân biệt tuyến
