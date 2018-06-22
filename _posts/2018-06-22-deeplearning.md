@@ -28,7 +28,7 @@ Trong trang này:
     - [Mùa đông AI thứ hai \(90s - đầu 2000s\)](#mua-dong-ai-thu-hai-s---dau-s)
     - [Cái tên được làm mới -- Deep Learning \(2006\)](#cai-ten-duoc-lam-moi----deep-learning-)
     - [Đột phá \(2012\)](#dot-pha-)
-- [Điều gì mang đến sự thành công của deep learning](#dieu-gi-mang-den-su-thanh-cong-cua-deep-learning)
+- [Điều gì mang đến sự thành công của deep learning?](#dieu-gi-mang-den-su-thanh-cong-cua-deep-learning)
 - [Kết luận](#ket-luan)
 - [Tài liệu tham khảo](#tai-lieu-tham-khao)
 
@@ -293,7 +293,7 @@ cũng tăng lên từng ngày.
 
 <a name="dieu-gi-mang-den-su-thanh-cong-cua-deep-learning"></a>
 
-## Điều gì mang đến sự thành công của deep learning 
+## Điều gì mang đến sự thành công của deep learning?
 Rất nhiều những ý tưởng cơ bản của deep learning được đặt nền móng từ những năm
 80-90 của thế kỷ trước, tuy nhiên deep learning chỉ đột phá trong khoảng 5-6 năm
 nay. Vì sao?
