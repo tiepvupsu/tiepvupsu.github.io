@@ -245,7 +245,7 @@ t-classification-with-deep-convolutional-neural-networks.pdf).
 Trong bài báo này, rất nhiều các kỹ thuật mới được giới thiệu. Trong đó hai đóng
 góp nổi bật nhất là [hàm
 ReLU](/2017/02/24/mlp/#-relu) và dropout. Hàm
-ReLU (\\(ReLU(x) = \max(x, 0)\\)) với cách tính và đạo hàm đơn giản (bằng 1 khi
+ReLU (\\(\text{ReLU}(x) = \max(x, 0)\\)) với cách tính và đạo hàm đơn giản (bằng 1 khi
 đầu vào không âm, bằng 0 khi ngược lại) giúp tốc độ huấn luyện tăng lên đáng kể.
 Ngoài ra, việc ReLU không bị chặn trên bởi 1 (như softmax hay tanh) khiến cho
 vấn đề vanishing gradient cũng được giải quyết phần nào. Dropout cũng là một kỹ
