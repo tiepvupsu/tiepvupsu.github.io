@@ -263,7 +263,7 @@ cho mô hình tránh được
 machine learning khác. Với mỗi cách _tắt_ các unit, ta có một mô hình khác nhau.
 Với nhiều tổ hợp unit bị tắt khác nhau, ta thu được nhiều mô hình. Việc kết hợp
 ở cuối cùng được coi như sự kết hợp của nhiều mô hình (và vì vậy, nó giống với
-**ensemble**).
+*ensemble learning*).
 
 Một trong những yếu tố quan trọng nhất giúp AlexNet thành công là việc sử dụng
 GPU (card đồ hoạ) để huấn luyện mô hình. GPU được tạo ra cho game thủ, với khả
