@@ -95,7 +95,7 @@ nghiên cứu được tài trợ bởi Văn phòng nghiên cứu hải quân Ho
 Naval Research -- _từ một cơ quan liên quan đến quân sự_). Thuật toán perceptron
 được chứng minh là hội tụ nếu hai lớp dữ liệu là _linearly separable_. Với thành
 công này, năm 1958, trong một hội thảo, Rosenblatt đã có một phát biểu gây tranh
-cãi. Từ phát biểu này, tờ New York Times đã có một bài báo cáo rằng perceptron
+cãi. Từ phát biểu này, tờ New York Times đã có một bài báo cho rằng perceptron
 được Hải quân Hoa Kỳ mong đợi "có thể đi, nói chuyện, nhìn, viết, tự sinh sản,
 và tự nhận thức được sự tồn tại của mình". (_Chúng ta biết rằng cho tới giờ các
 hệ thống nâng cao hơn perceptron nhiều lần vẫn chưa thể_).
