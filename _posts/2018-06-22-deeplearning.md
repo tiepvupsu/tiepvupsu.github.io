@@ -288,9 +288,6 @@ deep learning trong thời gian này. Rất nhiều các ứng dụng công ngh�
 khoa học về deep learning tăng lên theo hàm số mũ. Các blog về deep learning
 cũng tăng lên từng ngày.
 
-_Blog Machine Learning cơ bản được ra đời vào những ngày cuối cùng của năm 2016.
-Tôi vẫn đề cập mặc dù sự ra đời này chẳng ảnh hưởng gì tới lịch sử phát triển
-của deep learning._
 
 <a name="dieu-gi-mang-den-su-thanh-cong-cua-deep-learning"></a>
 
