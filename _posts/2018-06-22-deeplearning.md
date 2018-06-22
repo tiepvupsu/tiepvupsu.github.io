@@ -174,20 +174,21 @@ Nhiều nhà khoa học làm machine learning chuyển sang nghiên cứu SVM tr
 Năm 2006, Hinton một lần nữa cho rằng ông biết [bộ não hoạt động như thế nào](https://www.youtube.com/watch?v=mlXzufEk-2E), và giới thiệu ý tưởng của _tiền huấn luyện không giám sát_ ([_unsupervised pretraining_](https://metacademy.org/graphs/concepts/unsupervised_pre_training)) thông qua [deep belief nets (DBN)](https://en.wikipedia.org/wiki/Deep_belief_network). DBN có thể được xem như sự xếp chồng các unsupervised networks đơn giản như [restricted Boltzman machine](https://en.wikipedia.org/wiki/Restricted_Boltzmann_machine) hay [autoencoders](http://ufldl.stanford.edu/tutorial/unsupervised/Autoencoders/). 
 
 Lấy ví dụ với autoencoder. Mỗi autoencoder là một neural net với một hidden
-layer. Số hidden [unit](/2017/02/24/mlp/#-units)
-ít hơn số input unit, và số output unit bằng với số input unit. Network này đơn
-giản được huấn luyện để kết quả ở output layer giống với kết quả ở input layer
-(và vì vậy được gọi là autoencoder). Khi output giống với input, ta có thể thấy
-rằng hidden layer với ít unit hơn có để mã hoá input khá thành công, và có thể
-được coi mang những tính chất của input. Nếu ta bỏ output layer, _cố định_
-(_freeze_) kết nối giữa input và hidden layer, coi đầu ra của hidden layer là
-một input mới, sau đó huấn luyện một autoencoder khác, ta được thêm một hidden
-layer nữa. Quá trình này tiếp tục kéo dài ta sẽ được một network đủ _sâu_ mà
-output của network lớn này (chính là hidden layer của autoencoder cuối cùng)
-mang nhiều thông tin của input ban đầu. Sau đó ta có thể thêm các layer khác tuỳ
-thuộc vào bài toán (chẳng hạn thêm softmax layer ở cuối cho bài toán
-classification). Cả network được huấn luyện thêm một vài epoch nữa. Quá trình
-này được gọi là _tinh chỉnh_ (_fine tuining_).
+layer. Số hidden [unit](/2017/02/24/mlp/#-units) ít hơn số input unit, và số
+output unit bằng với số input unit. Network này đơn giản được huấn luyện để kết
+quả ở output layer giống với kết quả ở input layer (và vì vậy được gọi là
+autoencoder). Quá trình dữ liệu đi từ input layer tới hidden layer có thể coi là
+_mã hoá_, quá trình dữ liệu đi từ hidden layer ra output layer có thể được coi
+là _giải mã_. Khi output giống với input, ta có thể thấy rằng hidden layer với
+ít unit hơn có để mã hoá input khá thành công, và có thể được coi mang những
+tính chất của input. Nếu ta bỏ output layer, _cố định_ (_freeze_) kết nối giữa
+input và hidden layer, coi đầu ra của hidden layer là một input mới, sau đó huấn
+luyện một autoencoder khác, ta được thêm một hidden layer nữa. Quá trình này
+tiếp tục kéo dài ta sẽ được một network đủ _sâu_ mà output của network lớn này
+(chính là hidden layer của autoencoder cuối cùng) mang thông tin của input ban
+đầu. Sau đó ta có thể thêm các layer khác tuỳ thuộc vào bài toán (chẳng hạn thêm
+softmax layer ở cuối cho bài toán classification). Cả network được huấn luyện
+thêm một vài epoch nữa. Quá trình này được gọi là _tinh chỉnh_ (_fine tuining_).
 
 Tại sao quá trình huấn luyện như trên mang lại nhiều lợi ích? 
 
