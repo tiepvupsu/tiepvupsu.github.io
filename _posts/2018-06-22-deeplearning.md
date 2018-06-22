@@ -177,7 +177,7 @@ Lấy ví dụ với autoencoder. Mỗi autoencoder là một neural net với m
 layer. Số hidden [unit](/2017/02/24/mlp/#-units)
 ít hơn số input unit, và số output unit bằng với số input unit. Network này đơn
 giản được huấn luyện để kết quả ở output layer giống với kết quả ở input layer
-(và vị vậy được gọi là autoencoder). Khi output giống với input, ta có thể thấy
+(và vì vậy được gọi là autoencoder). Khi output giống với input, ta có thể thấy
 rằng hidden layer với ít unit hơn có để mã hoá input khá thành công, và có thể
 được coi mang những tính chất của input. Nếu ta bỏ output layer, _cố định_
 (_freeze_) kết nối giữa input và hidden layer, coi đầu ra của hidden layer là
