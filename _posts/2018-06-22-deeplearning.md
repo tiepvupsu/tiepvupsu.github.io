@@ -217,8 +217,8 @@ internet những năm 2000 và lượng ảnh khổng lồ được upload lên 
 Xem thêm [How we teach computers to understand pictures. Fei-Fei Li](https://www.youtube.com/watch?v=40riCqvRoMs)
 
 Bộ cơ sở dữ liệu này được cập nhật hàng năm, và kể từ năm 2010, nó được dùng
-trong một cuộc thi thường niên có tên ["ImageNet Large Scale Visual Recognition
-Challenge" (ILSVRC)]. Trong cuộc thi này, dữ liệu huấn luyện được giao cho các
+trong một cuộc thi thường niên có tên [ImageNet Large Scale Visual Recognition
+Challenge (ILSVRC)](http://www.image-net.org/challenges/LSVRC/). Trong cuộc thi này, dữ liệu huấn luyện được giao cho các
 đội tham gia. Mỗi đội cần sử dụng dữ liệu này để huấn luyện các mô hình phân
 lớp, các mô hình này sẽ được áp dụng để dự đoán nhãn của dữ liệu mới (được giữ
 bởi ban tổ chức). Trong hai năm 2010 và 2011, có rất nhiều đội tham gia. Các mô
