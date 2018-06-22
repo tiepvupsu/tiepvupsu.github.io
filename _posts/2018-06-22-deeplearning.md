@@ -2,6 +2,7 @@
 layout: post
 comments: true
 title:  "Lược sử Deep Learning"
+title2:  "35. Lược sử Deep Learning"
 date:   2018-06-22 15:22:00
 permalink: 2018/06/22/deeplearning/
 mathjax: true
