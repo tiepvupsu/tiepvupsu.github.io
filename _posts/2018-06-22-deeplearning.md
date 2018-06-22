@@ -63,7 +63,7 @@ toán thực tế.
 
 **Blog luôn đón nhận những đóng góp để chất lượng các bài viết được tốt hơn. Nếu
 bạn có đóng góp nào, vui lòng để lại trong phần comment, tôi sẽ cập nhật bài
-viết cho phù hợp. Cảm ơn bạn. **
+viết cho phù hợp. Cảm ơn bạn.**
 
 
 
