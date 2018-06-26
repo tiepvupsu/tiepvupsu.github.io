@@ -36,7 +36,6 @@ summary: Các phương pháp đánh giá hiệu năng của một mô hình phâ
 
 <!-- /MarkdownTOC -->
 
-_Một bài viết nhanh được thực hiện khi tôi đang bế tắc trong nghiên cứu. Bạn yên tâm, chuyện này xảy ra thường xuyên. Mọi chuyện rồi sẽ ổn thôi._
 
 Bạn có thể download toàn bộ source code dưới dạng Jupyter Notebook [tại đây](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/33_evaluation/python/Evaluation%20methods.ipynb).
 <a name="-gioi-thieu"></a>
