@@ -27,31 +27,30 @@ summary: Trong thuật toán K-means clustering, chúng ta không biết nhãn (
 **Trong trang này:**
 <!-- MarkdownTOC -->
 
-- 1. Giới thiệu
-- 2. Phân tích toán học
-    - Một số ký hiệu toán học
-    - Hàm mất mát và bài toán tối ưu
-    - Thuật toán tối ưu hàm mất mát
-        - Cố định \\(\mathbf{M} \\), tìm \\(\mathbf{Y}\\)
-        - Cố định \\(\mathbf{Y} \\), tìm \\(\mathbf{M}\\)
-    - Tóm tắt thuật toán
-- 3. Ví dụ trên Python
-    - Giới thiệu bài toán
-    - Hiển thị dữ liệu trên đồ thị
-    - Các hàm số cần thiết cho K-means clustering
-    - Kết quả tìm được bằng thư viện scikit-learn
-- 4. Thảo luận
-    - Hạn chế
-        - Chúng ta cần biết số lượng cluster cần clustering
-        - Nghiệm cuối cùng phụ thuộc vào các centers được khởi tạo ban đầu
-        - Các cluster cần có só lượng điểm gần bằng nhau
-        - Các cluster cần có dạng hình tròn
-        - Khi một cluster nằm phía trong 1 cluster khác
-- 5. Tài liệu tham khảo
+- [1. Giới thiệu](#-gioi-thieu)
+- [2. Phân tích toán học](#-phan-tich-toan-hoc)
+    - [Một số ký hiệu toán học](#mot-so-ky-hieu-toan-hoc)
+    - [Hàm mất mát và bài toán tối ưu](#ham-mat-mat-va-bai-toan-toi-uu)
+    - [Thuật toán tối ưu hàm mất mát](#thuat-toan-toi-uu-ham-mat-mat)
+        - [Cố định \\\(\mathbf{M} \\\), tìm \\\(\mathbf{Y}\\\)](#co-dinh-\\\mathbfm-\\-tim-\\\mathbfy\\)
+        - [Cố định \\\(\mathbf{Y} \\\), tìm \\\(\mathbf{M}\\\)](#co-dinh-\\\mathbfy-\\-tim-\\\mathbfm\\)
+    - [Tóm tắt thuật toán](#tom-tat-thuat-toan)
+- [3. Ví dụ trên Python](#-vi-du-tren-python)
+    - [Giới thiệu bài toán](#gioi-thieu-bai-toan)
+    - [Hiển thị dữ liệu trên đồ thị](#hien-thi-du-lieu-tren-do-thi)
+    - [Các hàm số cần thiết cho K-means clustering](#cac-ham-so-can-thiet-cho-k-means-clustering)
+    - [Kết quả tìm được bằng thư viện scikit-learn](#ket-qua-tim-duoc-bang-thu-vien-scikit-learn)
+- [4. Thảo luận](#-thao-luan)
+    - [Hạn chế](#han-che)
+        - [Chúng ta cần biết số lượng cluster cần clustering](#chung-ta-can-biet-so-luong-cluster-can-clustering)
+        - [Nghiệm cuối cùng phụ thuộc vào các centers được khởi tạo ban đầu](#nghiem-cuoi-cung-phu-thuoc-vao-cac-centers-duoc-khoi-tao-ban-dau)
+        - [Các cluster cần có só lượng điểm gần bằng nhau](#cac-cluster-can-co-so-luong-diem-gan-bang-nhau)
+        - [Các cluster cần có dạng hình tròn](#cac-cluster-can-co-dang-hinh-tron)
+        - [Khi một cluster nằm phía trong 1 cluster khác](#khi-mot-cluster-nam-phia-trong--cluster-khac)
+- [5. Tài liệu tham khảo](#-tai-lieu-tham-khao)
 
 <!-- /MarkdownTOC -->
 
-<!-- ========================== New Heading ==================== -->
 <a name="-gioi-thieu"></a>
 
 ## 1. Giới thiệu
@@ -94,7 +93,6 @@ Quay lại với bài toán phân nhóm và cụ thể là thuật toán K-means
 
 Mục đích cuối cùng của thuật toán phân nhóm này là: từ dữ liệu đầu vào và số lượng nhóm chúng ta muốn tìm, hãy chỉ ra center của mỗi nhóm và phân các điểm dữ liệu vào các nhóm tương ứng. Giả sử thêm rằng mỗi điểm dữ liệu chỉ thuộc vào đúng một nhóm. 
 
-<!-- ========================== New Heading ==================== -->
 <a name="mot-so-ky-hieu-toan-hoc"></a>
 
 ### Một số ký hiệu toán học
@@ -241,7 +239,7 @@ Chúng ta có thể đảm bảo rằng thuật toán sẽ dừng lại sau mộ
 Chúng ta sẽ có một vài [thảo luận](#-thao-luan) về thuật toán này, về những hạn chế và một số phương pháp khắc phục. Nhưng trước hết, hãy xem nó thể hiện như thế nào trong một ví dụ cụ thể dưới đây.
 
 <!-- ========================== New Heading ==================== -->
-<a name="vi-du-tren-python"></a>
+<a name="-vi-du-tren-python"></a>
 
 ## 3. Ví dụ trên Python
 
@@ -256,6 +254,7 @@ Trước tiên, chúng ta cần khai báo các thư viện cần dùng. Chúng t
 
 
 ```python
+from __future__ import print_function 
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.spatial.distance import cdist
