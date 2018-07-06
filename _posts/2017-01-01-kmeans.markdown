@@ -64,7 +64,7 @@ Trong thuật toán K-means clustering, chúng ta không biết nhãn (label) c�
 
 **Ví dụ:** Một công ty muốn tạo ra những chính sách ưu đãi cho những nhóm khách hàng khác nhau dựa trên sự tương tác giữa mỗi khách hàng với công ty đó (số năm là khách hàng; số tiền khách hàng đã chi trả cho công ty; độ tuổi; giới tính; thành phố; nghề nghiệp; ...). Giả sử công ty đó có rất nhiều dữ liệu của rất nhiều khách hàng nhưng chưa có cách nào chia toàn bộ khách hàng đó thành một số nhóm/cụm khác nhau. Nếu một người biết Machine Learning được đặt câu hỏi này, phương pháp đầu tiên anh (chị) ta nghĩ đến sẽ là K-means Clustering. Vì nó là một trong những thuật toán đầu tiên mà anh ấy tìm được trong các cuốn sách, khóa học về Machine Learning. Và tôi cũng chắc rằng anh ấy đã đọc blog <a href = "https://tiepvupsu.github.io">Machine Learning cơ bản</a>. Sau khi đã phân ra được từng nhóm, nhân viên công ty đó có thể lựa chọn ra một vài khách hàng trong mỗi nhóm để quyết định xem mỗi nhóm tương ứng với nhóm khách hàng nào. Phần việc cuối cùng này cần sự can thiệp của con người, nhưng lượng công việc đã được rút gọn đi rất nhiều. 
 
-Ý tưởng đơn giản nhất về cluster (cụm) là tập hợp các điểm _ở gần nhau trong một không gian nào đó_ (không gian này có thể có rất nhiều chiều trong trường hợp thông tin về một điểm dữ liệu là rất lớn). Hình bên dưới là một ví dụ về 3 cụm dữ liệu (từ giờ rôi sẽ viết gọn là _cluster_). 
+Ý tưởng đơn giản nhất về cluster (cụm) là tập hợp các điểm _ở gần nhau trong một không gian nào đó_ (không gian này có thể có rất nhiều chiều trong trường hợp thông tin về một điểm dữ liệu là rất lớn). Hình bên dưới là một ví dụ về 3 cụm dữ liệu (từ giờ tôi sẽ viết gọn là _cluster_). 
 
 
 <div class="imgcap">
@@ -373,8 +373,8 @@ def kmeans(X, K):
 
 ```python
 (centers, labels, it) = kmeans(X, K)
-print 'Centers found by our algorithm:'
-print centers[-1]
+print('Centers found by our algorithm:')
+print(centers[-1])
 
 kmeans_display(X, labels[-1])
 ```
@@ -414,8 +414,8 @@ Các bạn có thể xem thêm các trang web minh họa thuật toán K-means c
 ```python
 from sklearn.cluster import KMeans
 kmeans = KMeans(n_clusters=3, random_state=0).fit(X)
-print 'Centers found by scikit-learn:'
-print kmeans.cluster_centers_
+print('Centers found by scikit-learn:')
+print(kmeans.cluster_centers_)
 pred_label = kmeans.predict(X)
 kmeans_display(X, pred_label)
 ```
