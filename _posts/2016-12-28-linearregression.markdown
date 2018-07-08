@@ -118,9 +118,7 @@ Trước khi đi tìm lời giải, chúng ta đơn giản hóa phép toán tron
 \mathcal{L}(\mathbf{w}) 
 = \frac{1}{2}\sum_{i=1}^N (y_i - \mathbf{\bar{x}}_i\mathbf{w})^2 \\]
 \\[
-= \frac{1}{2} \\|\mathbf{y} - \mathbf{\bar{X}}\mathbf{w} \\|_2^2 
-~~~(3)
-\\]
+= \frac{1}{2} \\|\mathbf{y} - \mathbf{\bar{X}}\mathbf{w} \\|_2^2 ~~~(3) \\]
 
 với \\( \\| \mathbf{z} \\|_2 \\) là Euclidean norm (chuẩn Euclid, hay khoảng cách Euclid), nói cách khác \\( \\| \mathbf{z} \\|_2^2 \\) là tổng của bình phương mỗi phần tử của vector \\(\mathbf{z}\\). Tới đây, ta đã có một dạng đơn giản của hàm mất mát được viết như phương trình \\((3)\\).
 
@@ -387,3 +385,4 @@ Nhưng có một điều chúng ta nên nhớ, **còn tính được đạo hàm
 1. [Linear Regression - Wikipedia](https://en.wikipedia.org/wiki/Linear_regression)
 2. [Simple Linear Regression Tutorial for Machine Learning](http://machinelearningmastery.com/simple-linear-regression-tutorial-for-machine-learning/)
 3. [Least Squares, Pseudo-Inverses, PCA & SVD](http://www.sci.utah.edu/~gerig/CS6640-F2012/Materials/pseudoinverse-cis61009sl10.pdf)
+

@@ -14,41 +14,41 @@ img: /assets/fundaml/matrix.png
 summary: Trong Numpy, người ta thường dùng mảng numpy hai chiều để thể hiện một ma trận. Mảng hai chiều có thể coi là một mảng của các mảng một chiều. Trong đó, mỗi _mảng nhỏ một chiều_ tương ứng với một hàng của ma trận. 
 ---
 
-**Tất cả các bài tập trong bài viết này có thể được thực hiện trực tiếp trên trình duyện qua trang web [FundaML](https://fundaml.com)**
+**Tất cả các bài tập trong bài viết này có thể được thực hiện trực tiếp trên trình duyệt qua trang web [FundaML](https://fundaml.com)**
 
 <!-- MarkdownTOC -->
 
 - [2.0. Mảng nhiều chiều](#-mang-nhieu-chieu)
 - [2.1. Khởi tạo một ma trận](#-khoi-tao-mot-ma-tran)
-  - [2.1.1. Khởi tạo một ma trận](#-khoi-tao-mot-ma-tran-1)
+    - [2.1.1. Khởi tạo một ma trận](#-khoi-tao-mot-ma-tran-1)
 - [2.2. Ma trận đơn vị và ma trận đường chéo](#-ma-tran-don-vi-va-ma-tran-duong-cheo)
-  - [2.2.1. Ma trận đơn vị](#-ma-tran-don-vi)
-  - [2.2.2. Ma trận đường chéo](#-ma-tran-duong-cheo)
+    - [2.2.1. Ma trận đơn vị](#-ma-tran-don-vi)
+    - [2.2.2. Ma trận đường chéo](#-ma-tran-duong-cheo)
 - [2.3. Kích thước của ma trận](#-kich-thuoc-cua-ma-tran)
 - [2.4. Truy cập vào từng phần tử của ma trận](#-truy-cap-vao-tung-phan-tu-cua-ma-tran)
-  - [2.4.1. Truy cập vào từng phần tử](#-truy-cap-vao-tung-phan-tu)
-    - [2.4.1.1. Cách 1: giống với list](#-cach--giong-voi-list)
-    - [2.4.1.2. Cách 2: giống như Matlab](#-cach--giong-nhu-matlab)
-  - [2.4.2. Truy cập vào hàng/cột](#-truy-cap-vao-hangcot)
+    - [2.4.1. Truy cập vào từng phần tử](#-truy-cap-vao-tung-phan-tu)
+        - [2.4.1.1. Cách 1: giống với list](#-cach--giong-voi-list)
+        - [2.4.1.2. Cách 2: giống như Matlab](#-cach--giong-nhu-matlab)
+    - [2.4.2. Truy cập vào hàng/cột](#-truy-cap-vao-hangcot)
 - [2.5. Truy cập vào nhiều phần tử của ma trận](#-truy-cap-vao-nhieu-phan-tu-cua-ma-tran)
-  - [2.5.1. Nhiều phần tử trong cùng một hàng](#-nhieu-phan-tu-trong-cung-mot-hang)
-  - [2.5.2. Nhiều phần tử trong cùng một cột](#-nhieu-phan-tu-trong-cung-mot-cot)
-  - [2.5.3. Nhiều hàng, nhiều cột](#-nhieu-hang-nhieu-cot)
-  - [2.5.4. Cặp các toạ độ](#-cap-cac-toa-do)
+    - [2.5.1. Nhiều phần tử trong cùng một hàng](#-nhieu-phan-tu-trong-cung-mot-hang)
+    - [2.5.2. Nhiều phần tử trong cùng một cột](#-nhieu-phan-tu-trong-cung-mot-cot)
+    - [2.5.3. Nhiều hàng, nhiều cột](#-nhieu-hang-nhieu-cot)
+    - [2.5.4. Cặp các toạ độ](#-cap-cac-toa-do)
 - [2.6. np.sum, np.min, np.max, np.mean cho mảng nhiều chiều](#-npsum-npmin-npmax-npmean-cho-mang-nhieu-chieu)
-  - [`keepdims = True`](#keepdims--true)
+    - [`keepdims = True`](#keepdims--true)
 - [2.7. Các phép toán tác động đến mọi phần tử của ma trận](#-cac-phep-toan-tac-dong-den-moi-phan-tu-cua-ma-tran)
-  - [2.7.1. Tính toán giữa một mảng hai chiều và một số vô hướng](#-tinh-toan-giua-mot-mang-hai-chieu-va-mot-so-vo-huong)
-  - [2.7.2. np.abs, np.sin, np.exp, ...](#-npabs-npsin-npexp-)
+    - [2.7.1. Tính toán giữa một mảng hai chiều và một số vô hướng](#-tinh-toan-giua-mot-mang-hai-chieu-va-mot-so-vo-huong)
+    - [2.7.2. np.abs, np.sin, np.exp, ...](#-npabs-npsin-npexp-)
 - [2.8. Các phép toán giữa hai ma trận I](#-cac-phep-toan-giua-hai-ma-tran-i)
 - [2.9. Chuyện vị ma trận, Reshape ma trận](#-chuyen-vi-ma-tran-reshape-ma-tran)
-  - [2.9.1 Chuyển vị ma trận](#-chuyen-vi-ma-tran)
-  - [2.9.2. Reshape](#-reshape)
-  - [2.9.3. Thứ tự của phép toán reshape](#-thu-tu-cua-phep-toan-reshape)
+    - [2.9.1 Chuyển vị ma trận](#-chuyen-vi-ma-tran)
+    - [2.9.2. Reshape](#-reshape)
+    - [2.9.3. Thứ tự của phép toán reshape](#-thu-tu-cua-phep-toan-reshape)
 - [2.10. Các phép toán giữa ma trận và vector](#-cac-phep-toan-giua-ma-tran-va-vector)
 - [2.11. Tích giữa hai ma trận, tích giữa ma trận và vector](#-tich-giua-hai-ma-tran-tich-giua-ma-tran-va-vector)
-  - [2.11.1. Tích giữa hai ma trận](#-tich-giua-hai-ma-tran)
-  - [2.11.2. Tích giữa một ma trận và một vector](#-tich-giua-mot-ma-tran-va-mot-vector)
+    - [2.11.1. Tích giữa hai ma trận](#-tich-giua-hai-ma-tran)
+    - [2.11.2. Tích giữa một ma trận và một vector](#-tich-giua-mot-ma-tran-va-mot-vector)
 - [2.12. Softmax III - Phiên bản tổng quát](#-softmax-iii---phien-ban-tong-quat)
 
 <!-- /MarkdownTOC -->
@@ -977,19 +977,19 @@ Hy vọng các bạn gặp khó khăn chút với Compiler và nhận ra lý do 
 
 ## 2.12. Softmax III - Phiên bản tổng quát 
 Chúng ta đã làm quen với [Phiên bản ổn định của hàm Softmax](https://fundaml.com/course/5990a766cdc6e32b3b4d0666/lesson/5990aa22cdc6e32b3b4d0667/5991da2ecdc6e32b3b4d066e)
-với một một mảng một chiều $\mathbf{z}$:
+với một một mảng một chiều \\(\mathbf{z}\\):
 
 $$\frac{\exp(z_i)}{\sum_{j=0}^{C-1} \exp(z_j)} = 
 \frac{\exp(-b)\exp(z_i)}{\exp(-b)\sum_{j=0}^{C-1} \exp(z_j)}
 = \frac{\exp(z_i-b)}{\sum_{j=0}^{C-1} \exp(z_j-b)}$$
 
 Bây giờ, chúng ta tiếp tục tổng quát hàm số này để áp dụng cho nhiều phần tử 
-cùng lúc. Giả sử ma trận $\mathbf{Z}$ là ma trận _scores_ của $N$ điểm dữ 
-liệu, mỗi hàng $\mathbf{z}_i$ của ma trận này ứng với score của một điểm dữ liệu. 
-Hãy viết một hàm số trên python để tính softmax cho từng hàng của $\mathbf{Z}$. 
-Kết quả thu được là một ma trận $\mathbf{A}$ cùng chiều với $\mathbf{Z}$ mà 
-mỗi hàng của $\mathbf{A}$ là kết quả khi áp dụng hàm Softmax lên một hàng tương 
-ứng của $\mathbf{Z}$. 
+cùng lúc. Giả sử ma trận \\(\mathbf{Z}\\) là ma trận _scores_ của \\(N\\) điểm dữ 
+liệu, mỗi hàng \\(\mathbf{z}_i\\) của ma trận này ứng với score của một điểm dữ liệu. 
+Hãy viết một hàm số trên python để tính softmax cho từng hàng của \\(\mathbf{Z}\\). 
+Kết quả thu được là một ma trận \\(\mathbf{A}\\) cùng chiều với \\(\mathbf{Z}\\) mà 
+mỗi hàng của \\(\mathbf{A}\\) là kết quả khi áp dụng hàm Softmax lên một hàng tương 
+ứng của \\(\mathbf{Z}\\). 
 
 Bạn đọc cần viết hàm dưới dạng _vectorization_, tức không sử dụng vòng `for`.
 

@@ -21,23 +21,23 @@ Cứ làm đi, sai đâu sửa đấy, cuối cùng sẽ thành công!
 **Trong trang này:**
 <!-- MarkdownTOC -->
 
-- [1. Giới thiệu](#-gioi-thieu)
-    - [Bài toán Perceptron](#bai-toan-perceptron)
-- [2. Thuật toán Perceptron \(PLA\)](#-thuat-toan-perceptron-pla)
-    - [Một số ký hiệu](#mot-so-ky-hieu)
-    - [Xây dựng hàm mất mát](#xay-dung-ham-mat-mat)
-    - [Tóm tắt PLA](#tom-tat-pla)
-- [3. Ví dụ trên Python](#-vi-du-tren-python)
-    - [Load thư viện và tạo dữ liệu](#load-thu-vien-va-tao-du-lieu)
-    - [Các hàm số cho PLA](#cac-ham-so-cho-pla)
-- [4. Chứng minh hội tụ](#-chung-minh-hoi-tu)
-- [5. Mô hình Neural Network đầu tiên](#-mo-hinh-neural-network-dau-tien)
-- [6. Thảo Luận](#-thao-luan)
-    - [PLA có thể cho vô số nghiệm khác nhau](#pla-co-the-cho-vo-so-nghiem-khac-nhau)
-    - [PLA đòi hỏi dữ liệu linearly separable](#pla-doi-hoi-du-lieu-linearly-separable)
-    - [Pocket Algorithm](#pocket-algorithm)
-- [7. Kết luận](#-ket-luan)
-- [8. Tài liệu tham khảo](#-tai-lieu-tham-khao)
+- 1. Giới thiệu
+    - Bài toán Perceptron
+- 2. Thuật toán Perceptron \(PLA\)
+    - Một số ký hiệu
+    - Xây dựng hàm mất mát
+    - Tóm tắt PLA
+- 3. Ví dụ trên Python
+    - Load thư viện và tạo dữ liệu
+    - Các hàm số cho PLA
+- 4. Chứng minh hội tụ
+- 5. Mô hình Neural Network đầu tiên
+- 6. Thảo Luận
+    - PLA có thể cho vô số nghiệm khác nhau
+    - PLA đòi hỏi dữ liệu linearly separable
+    - Pocket Algorithm
+- 7. Kết luận
+- 8. Tài liệu tham khảo
 
 <!-- /MarkdownTOC -->
 
@@ -150,15 +150,14 @@ J(\mathbf{w}; \mathbf{x}_i; y\_i) = -y\_i\mathbf{w}^T\mathbf{x}\_i
 Đạo hàm tương ứng:
 
 \\[
-\nabla\_{\mathbf{w}}J(\mathbf{w}; \mathbf{x}_i; y\_i) = -y_i\mathbf{x}_i
+\nabla_{\mathbf{w}}J(\mathbf{w}; \mathbf{x}_i; y_i) = -y_i\mathbf{x}_i
 \\]
+
 Vậy quy tắc cập nhật là:
 \\[
 \mathbf{w} = \mathbf{w} + \eta y_i\mathbf{x}_i
 \\]
-với \\(\eta\\) là learning rate. 
-
-Nhận xét rằng nếu \\(\mathbf{w}\\) là nghiệm thì \\(\eta\mathbf{w}\\) cũng là nghiệm với \\(\eta\\) là một số khác 0 bất kỳ. Vậy nếu \\(\mathbf{w}\_0\\) nhỏ gần với 0 và số vòng lặp đủ lớn, ta có thể coi như learning rate \\(\eta = 1\\). Ta có một quy tắc cập nhật rất gọn là: \\(\mathbf{w}\_{t+1} = \mathbf{w}_{t} + y\_i\mathbf{x}\_i\\). Nói cách khác, với mỗi điểm \\(\mathbf{x}_i\\) bị misclassifed, ta chỉ cần nhân điểm đó với nhãn \\(y_i\\) của nó, lấy kết quả cộng vào \\(\mathbf{w}\\) ta sẽ được \\(\mathbf{w}\\) mới.
+với \\(\eta\\) là learning rate được chọn bằng 1. Ta có một quy tắc cập nhật rất gọn là: \\(\mathbf{w}\_{t+1} = \mathbf{w}_{t} + y\_i\mathbf{x}\_i\\). Nói cách khác, với mỗi điểm \\(\mathbf{x}_i\\) bị misclassifed, ta chỉ cần nhân điểm đó với nhãn \\(y_i\\) của nó, lấy kết quả cộng vào \\(\mathbf{w}\\) ta sẽ được \\(\mathbf{w}\\) mới.
 
 Ta có một quan sát nhỏ ở đây:
 \\[

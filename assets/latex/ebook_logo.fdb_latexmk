@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1515076058 "ebook_logo.tex" "ebook_logo.pdf" "ebook_logo" 1515076058
-  "/dev/null" 1515076045 0 d41d8cd98f00b204e9800998ecf8427e ""
+["pdflatex"] 1539617497 "ebook_logo.tex" "ebook_logo.pdf" "ebook_logo" 1539617498
+  "/dev/null" 1539617464 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/usr/local/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmss10.tfm" 1136768653 1316 b636689f1933f24d1294acdf6041daaa ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm" 1136768653 1272 e2d13f0df30bf3ad990bb9d028e37f34 ""
@@ -99,9 +99,9 @@
   "/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1489522183 1888048 f2c5faed5981a516f406b2ccc20bff71 ""
   "/usr/local/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt" 1463979169 3873397 413fbfbbedb8e719ddc392043a7add02 ""
   "/usr/local/texlive/2016/texmf.cnf" 1463979140 577 2938757e76f31531e65cc647e3507693 ""
-  "ebook_logo.aux" 1515076058 8 a94a2480d3289e625eea47cd1b285758 ""
-  "ebook_logo.tex" 1515076058 472 2254dd648ef68eaef4d3454e9718e15f ""
+  "ebook_logo.aux" 1539617498 8 a94a2480d3289e625eea47cd1b285758 ""
+  "ebook_logo.tex" 1539617497 477 4f0c3a17e2c9ebaaf2f0f79b06670aeb ""
   (generated)
-  "ebook_logo.log"
   "ebook_logo.pdf"
   "ebook_logo.aux"
+  "ebook_logo.log"

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Ebook 'Machine Learning cơ bản'
+title: Đặt mua ebook/sách giấy 'Machine Learning cơ bản'
 permalink: /ebook/
 sc_project: 11420197
 sc_security: 38b33822
@@ -12,14 +12,16 @@ comments: true
 
 <!-- MarkdownTOC -->
 
-- 0. Bố cục \(Mục lục ngắn\)
-- 1. Giá mỗi ebook
-- 2. Các bước đặt sách
-    - Bước 1
-    - Bước 2
-        - **Link đăng ký pre-order ebook 'Machine Learning cơ bản I'**
-    - Bước 3
-- 3. Vấn đề bản quyền
+- [0. Một vài lưu ý](#-mot-vai-luu-y)
+    - [__d\) Nếu bạn đặt trước ngày 09/10/2018 và thuộc diện nhận sách giấy, bạn cần điền thông tin người nhận qua Mẫu cập nhật thông tin nhận sách.__](#d-neu-ban-dat-truoc-ngay--va-thuoc-dien-nhan-sach-giay-ban-can-dien-thong-tin-nguoi-nhan-qua-mau-cap-nhat-thong-tin-nhan-sach)
+- [1. Bố cục \(Mục lục ngắn\)](#-bo-cuc-muc-luc-ngan)
+- [2. Giá](#-gia)
+- [3. Các bước đặt sách](#-cac-buoc-dat-sach)
+    - [Bước 1](#buoc-)
+    - [Bước 2](#buoc--1)
+        - [**Link đăng ký đặt ebook/sách giấy 'Machine Learning cơ bản I'**](#link-dang-ky-dat-ebooksach-giay-machine-learning-co-ban-i)
+    - [Bước 3](#buoc--2)
+- [4. Vấn đề bản quyền](#-van-de-ban-quyen)
 
 <!-- /MarkdownTOC -->
 
@@ -39,38 +41,65 @@ Ebook 'Machine Learning cơ bản' đã hoàn thành, bạn có thể order và 
 </table>
 </div>
 
+<a name="-mot-vai-luu-y"></a>
+
+## 0. Một vài lưu ý
+
+a) Nếu bạn muốn đặt ebook/sách giấy bây giờ, bạn có thể làm theo hướng dẫn ở [phía dưới](#-gia).
+
+Tôi chưa có ý định dừng việc bán sách nên các bạn không cần hỏi 'còn đặt sách được không?' :). 
+
+b) __Bạn sẽ nhận được ebook và sách giấy__ nếu: 
+
+* Bạn đặt mua trước ngày 21/03/2018, hoặc
+
+* Bạn đặt mua với mức giá thông thường sau ngày 20/03/2018 ($20 qua Paypal hoặc 475k qua Vietcombank)
+
+c) __Bạn sẽ chỉ nhận được ebook__ nếu đặt mua sau ngày 20/03/2018 với mức giá $15 qua Paypal hoặc 350k qua Vietcombank. Từ hôm nay, _mức giá này áp dụng cho tất cả các đối tượng, không nhất thiết là sinh viên_. 
+
+<a name="d-neu-ban-dat-truoc-ngay--va-thuoc-dien-nhan-sach-giay-ban-can-dien-thong-tin-nguoi-nhan-qua-mau-cap-nhat-thong-tin-nhan-sach"></a>
+
+### __d) Nếu bạn đặt trước ngày 09/10/2018 và thuộc diện nhận sách giấy, bạn cần điền thông tin người nhận qua [Mẫu cập nhật thông tin nhận sách](https://goo.gl/forms/eVuA1a9is4FyIqUk2).__
+
+_Bạn không cần lo lắng về chuyện có được nhận email thông báo hay không. Sau khi điền xong mẫu, bạn sẽ không nhận được email nào khác. Tôi sẽ tự so sánh email và chuyển sách cho các bạn._ 
+
+Sách hiện đang được in, tôi rất hy vọng có thể bắt đầu việc chuyển phát trong tháng 10/2018. Việc chuyển phát được làm theo thứ tự đặt sách và thông tin đã điền trong Mục d) trên đây. 
+
+
 <a name="-bo-cuc-muc-luc-ngan"></a>
 
-## 0. Bố cục (Mục lục ngắn)
+## 1. Bố cục (Mục lục ngắn)
 
 <hr>
 <div class="imgcap">
 <img src ="/images/content.png" align = "center" width = "800">
 </div>
 <hr>
-<a name="-gia-moi-ebook"></a>
+<a name="-gia"></a>
 
-## 1. Giá mỗi ebook 
+[**Đọc thử phần kiến thức toán**](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/Math_ML.pdf)
 
-Giá mỗi cuốn sách sẽ là $20 nếu thanh toán qua Paypal hoặc 475k VND nếu chuyển khoản qua tài khoản Vietcombank. Ngoài ra, nếu bạn đọc là sinh viên và có _email còn hoạt động_ theo trường đại học thì sẽ được giảm giá khoảng 25%, tức $15 hoặc 350k VND. Tôi sẽ gửi ebook tới các bạn qua email này khi nó được hoàn thành. Vì tôi không có tài khoản ngân hàng ở Việt Nam nên tôi ưu tiên các bạn gửi qua Paypal trực tiếp tới tôi. 
 
-_Trong trường hợp trường bạn không có email riêng, bạn có thể chụp ảnh sinh viên, upload ảnh đó lên một server nào đó rồi copy đường link vào trong mục 'Một vài lời nhắn gửi :)' ở trong Form được cho trong Bước 2 của mục 2 dưới đây._
+<a name="-gia"></a>
 
-Các bạn có thể tham khảo thêm giá của các khoá học/cuốn sách Machine Learning khác (nhiều khoá lên tới nhiều triệu động), cũng như so sánh chất lượng giữa chúng trước khi đưa ra quyết định. 
+## 2. Giá 
 
-**Cuốn sách sẽ được xuất bản vào mùa hè năm 2018. Tất cả các bạn order ebook trước ngày 20/03/2018 sẽ được tặng sách giấy. Sau đó chỉ có các bạn mua với giá thông thường ($20/475k VND) mới được tặng sách giấy.**
+* __Ebook__: $15 qua Paypal hoặc 350k qua Vietcombank (thông tin tài khoản ở dưới). Chú ý: giá này áp dụng với cả các đối tượng không phải sinh viên. 
+
+* __Sách giấy__: $20 qua Paypal hoặc 475k qua Vietcombank. Các bạn đặt sách giấy cũng sẽ nhận được ebook ngay sau khi tôi nhận được thông tin chuyển khoản từ ngân hàng. Các bạn đặt ebook trước ngày 21/03/2018 cũng sẽ nhận được sách giấy. 
+
 
 
 <a name="-cac-buoc-dat-sach"></a>
 
-## 2. Các bước đặt sách
+## 3. Các bước đặt sách
 
 <a name="buoc-"></a>
 
 ### Bước 1
 **Nếu bạn chọn thanh toán bằng Paypal:**
 
-Bạn có thể chuyển khoản trực tiếp qua [https://www.paypal.me/TiepVu](https://www.paypal.me/TiepVu).  
+Bạn có thể chuyển khoản trực tiếp qua [https://www.paypal.me/TiepVu](https://www.paypal.me/TiepVu) hoặc vuhuutiep@gmail.com.  
 
 Các bạn chú ý chọn 'Send money to friends and family' để hạn chế việc mất phí ở phía người nhận. 
 
@@ -89,16 +118,16 @@ Số tài khoản: **0081001280321**
 
 Ngân hàng Vietcombank, chi nhánh Vũng Tàu. 
 
-Sau khi chuyển khoản, các bạn cần lưu lại **nội dung chuyển khoản**. Xin nhắc lại, nội dung chuyển khoản tốt nhất là họ tên của bạn, để tôi có thể đối chiếu nhanh chóng với ngân hàng và form. Nếu nội dung chuyển khoản không tồn tại, bạn cần lưu lại mã giao dịch (ref). Nếu gặp khó khăn trong việc tìm mã, bạn có thể chụp lại hoá đơn và đính kèm.
+Sau khi chuyển khoản, các bạn cần lưu lại **nội dung chuyển khoản**. Xin nhắc lại, nội dung chuyển khoản tốt nhất là họ tên của bạn để tôi có thể đối chiếu nhanh chóng với ngân hàng và form. Nếu nội dung chuyển khoản không tồn tại, bạn cần lưu lại mã giao dịch (ref). Nếu gặp khó khăn trong việc tìm mã, bạn có thể chụp lại hoá đơn và đính kèm.
 
 <a name="buoc--1"></a>
 
 ### Bước 2
-Bạn điền thông tin về tên, cách thức bạn chuyển tiền, **Tracsaction ID (với Paypal)** hoặc **Nội dung chuyển khoản hoặc mã giao dịch (với Vietcombank)** và email mà bạn sẽ nhận sách vào Form dưới đây. **Với các bạn là sinh viên, bạn cần sử dụng email của trường đại học để được giảm giá.**
+Bạn điền thông tin về tên, cách thức bạn chuyển tiền, **Tracsaction ID (với Paypal)** hoặc **Nội dung chuyển khoản hoặc mã giao dịch (với Vietcombank)** và email mà bạn sẽ nhận sách vào Form dưới đây. 
 
-<a name="link-dang-ky-pre-order-ebook-machine-learning-co-ban-i"></a>
+<a name="link-dang-ky-dat-ebooksach-giay-machine-learning-co-ban-i"></a>
 
-#### [**Link đăng ký pre-order ebook 'Machine Learning cơ bản I'**](https://docs.google.com/forms/d/e/1FAIpQLSefMyP_SH2LYMwrqV23AHd06xZxhNLOZ6PLGWSwoulN3XeMMQ/viewform?usp=sf_link)
+#### [**Link đăng ký đặt ebook/sách giấy 'Machine Learning cơ bản I'**](https://docs.google.com/forms/d/e/1FAIpQLSfARljrCOACDPav1QGmiFrk4-QURoQSooQzPneGHcybMvtc3A/viewform?c=0&w=1)
 
 
 <a name="buoc--2"></a>
@@ -112,9 +141,9 @@ Ebook sẽ được tải về tại [https://fundaml.com/ebook](https://fundaml
 
 <a name="-van-de-ban-quyen"></a>
 
-## 3. Vấn đề bản quyền 
+## 4. Vấn đề bản quyền 
 
-Vì vấn đề bản quyền rất khó được xử lý ở Việt Nam, tôi chắc chắn cuốn sách này sẽ được sao lưu và upload lên các trang khác mà không có sự cho phép của tác giả. Để giảm thiểu vấn đề đau đầu này, tôi quyết định nhận **pre-order**, tức **thanh toán trước** trước khi gửi sách tới các bạn. 
+Vì vấn đề bản quyền rất khó được xử lý ở Việt Nam, tôi chắc chắn cuốn sách này sẽ được sao lưu và upload lên các trang khác mà không có sự cho phép của tác giả. 
 
 Tôi hy vọng các bạn cũng ủng hộ và tôn trọng vấn đề bản quyền, như là một cách gián tiếp giúp cho cộng đồng có nhiều tác phẩm mang giá trị cao hơn. Tôi tin rằng, nếu vấn đề bản quyền được tôn trọng, sẽ có nhiều tài liệu tiếng Việt chất lượng khác xuất hiện trong tương lai. 
 

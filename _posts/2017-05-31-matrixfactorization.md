@@ -17,20 +17,20 @@ summary: Trong bài viết này, chúng ta sẽ làm quen với một hướng t
 **Trong trang này:**
 <!-- MarkdownTOC -->
 
-- [1. Giới thiệu](#-gioi-thieu)
-- [2. Xây dựng và tối ưu hàm mất mát](#-xay-dung-va-toi-uu-ham-mat-mat)
-    - [2.1. Hàm mất mát](#-ham-mat-mat)
-    - [2.2. Tối ưu hàm mất mát](#-toi-uu-ham-mat-mat)
-- [3. Lập trình Python](#-lap-trinh-python)
-    - [3.1. `class MF`](#-class-mf)
-    - [3.2. Áp dụng lên MovieLens 100k](#-ap-dung-len-movielens-k)
-    - [3.3. Áp dụng lên MovieLens 1M](#-ap-dung-len-movielens-m)
-- [4. Thảo luận](#-thao-luan)
-    - [4.1. Khi có bias](#-khi-co-bias)
-    - [4.2. Nonnegative Matrix Factorization](#-nonnegative-matrix-factorization)
-    - [4.3. Incremental Matrix Factorization](#-incremental-matrix-factorization)
-    - [4.4. Others](#-others)
-- [6. Tài liệu tham khảo](#-tai-lieu-tham-khao)
+- 1. Giới thiệu
+- 2. Xây dựng và tối ưu hàm mất mát
+    - 2.1. Hàm mất mát
+    - 2.2. Tối ưu hàm mất mát
+- 3. Lập trình Python
+    - 3.1. `class MF`
+    - 3.2. Áp dụng lên MovieLens 100k
+    - 3.3. Áp dụng lên MovieLens 1M
+- 4. Thảo luận
+    - 4.1. Khi có bias
+    - 4.2. Nonnegative Matrix Factorization
+    - 4.3. Incremental Matrix Factorization
+    - 4.4. Others
+- 6. Tài liệu tham khảo
 
 <!-- /MarkdownTOC -->
 
@@ -236,7 +236,7 @@ class MF(object):
 
         users = self.Y_raw_data[:, user_col] 
         self.mu = np.zeros((n_objects,))
-        for n in xrange(n_objects):
+        for n in range(n_objects):
             # row indices of rating done by user n
             # since indices need to be integers, we need to convert
             ids = np.where(users == n)[0].astype(np.int32)
@@ -258,7 +258,7 @@ class MF(object):
 ```python            
     def loss(self):
         L = 0 
-        for i in xrange(self.n_ratings):
+        for i in range(self.n_ratings):
             # user, item, rating
             n, m, rate = int(self.Y_data_n[i, 0]), int(self.Y_data_n[i, 1]), self.Y_data_n[i, 2]
             L += 0.5*(rate - self.X[m, :].dot(self.W[:, n]))**2
@@ -297,7 +297,7 @@ class MF(object):
 
 ```python
     def updateX(self):
-        for m in xrange(self.n_items):
+        for m in range(self.n_items):
             user_ids, ratings = self.get_users_who_rate_item(m)
             Wm = self.W[:, user_ids]
             # gradient
@@ -306,7 +306,7 @@ class MF(object):
             self.X[m, :] -= self.learning_rate*grad_xm.reshape((self.K,))
     
     def updateW(self):
-        for n in xrange(self.n_users):
+        for n in range(self.n_users):
             item_ids, ratings = self.get_items_rated_by_user(n)
             Xn = self.X[item_ids, :]
             # gradient
@@ -320,7 +320,7 @@ class MF(object):
 ```python
     def fit(self):
         self.normalize_Y()
-        for it in xrange(self.max_iter):
+        for it in range(self.max_iter):
             self.updateX()
             self.updateW()
             if (it + 1) % self.print_every == 0:
@@ -360,7 +360,7 @@ class MF(object):
         
         y_pred = self.X.dot(self.W[:, user_id]) + self.mu[user_id]
         predicted_ratings= []
-        for i in xrange(self.n_items):
+        for i in range(self.n_items):
             if i not in items_rated_by_u:
                 predicted_ratings.append((i, y_pred[i]))
         
@@ -373,7 +373,7 @@ class MF(object):
     def evaluate_RMSE(self, rate_test):
         n_tests = rate_test.shape[0]
         SE = 0 # squared error
-        for n in xrange(n_tests):
+        for n in range(n_tests):
             pred = self.pred(rate_test[n, 0], rate_test[n, 1])
             SE += (pred - rate_test[n, 2])**2 
 

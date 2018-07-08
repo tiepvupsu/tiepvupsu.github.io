@@ -329,6 +329,9 @@ Các thuật toán machine learning cổ điển khác vẫn có thể xuất hi
 
 <a name="tai-lieu-tham-khao"></a>
 
+
+<a name="tai-lieu-tham-khao"></a>
+
 ## Tài liệu tham khảo 
 [1] [Deep Learning 101 - Part 1: History and Background](https://beamandrew.github.io/deeplearning/2017/02/23/deep_learning_101_part1.html)
 
