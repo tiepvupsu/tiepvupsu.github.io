@@ -12,14 +12,14 @@ comments: true
 
 <!-- MarkdownTOC -->
 
-- 0. Bố cục \(Mục lục ngắn\)
-- 1. Giá mỗi ebook
-- 2. Các bước đặt sách
-    - Bước 1
-    - Bước 2
-        - **Link đăng ký pre-order ebook 'Machine Learning cơ bản I'**
-    - Bước 3
-- 3. Vấn đề bản quyền
+- [0. Bố cục \(Mục lục ngắn\)](#-bo-cuc-muc-luc-ngan)
+- [1. Giá mỗi ebook](#-gia-moi-ebook)
+- [2. Các bước đặt sách](#-cac-buoc-dat-sach)
+    - [Bước 1](#buoc-)
+    - [Bước 2](#buoc--1)
+        - [**Link đăng ký pre-order ebook 'Machine Learning cơ bản I'**](#link-dang-ky-pre-order-ebook-machine-learning-co-ban-i)
+    - [Bước 3](#buoc--2)
+- [3. Vấn đề bản quyền](#-van-de-ban-quyen)
 
 <!-- /MarkdownTOC -->
 
