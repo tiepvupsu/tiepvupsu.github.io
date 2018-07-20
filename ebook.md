@@ -58,7 +58,7 @@ _Trong trường hợp trường bạn không có email riêng, bạn có thể 
 
 Các bạn có thể tham khảo thêm giá của các khoá học/cuốn sách Machine Learning khác (nhiều khoá lên tới nhiều triệu động), cũng như so sánh chất lượng giữa chúng trước khi đưa ra quyết định. 
 
-**Cuốn sách sẽ được xuất bản vào mùa hè năm 2018. Tất cả các bạn order ebook trước ngày 20/03/2018 sẽ được tặng sách giấy. Sau đó chỉ có các bạn mua với giá thông thường ($20/475k VND) mới được tặng sách giấy.**
+**Hiện tôi đang làm việc với một nhà xuất bản để in sách giấy. Hy vọng có thể xong bản giấy sớm nhất có thể. Tất cả các bạn order ebook trước ngày 20/03/2018 sẽ được tặng sách giấy. Sau đó chỉ có các bạn mua với giá thông thường ($20/475k VND) mới được tặng sách giấy.**
 
 
 <a name="-cac-buoc-dat-sach"></a>
