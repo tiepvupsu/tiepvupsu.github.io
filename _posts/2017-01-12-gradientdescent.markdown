@@ -16,23 +16,23 @@ summary: Gradient Descent một trong những thuật toán quan trọng nhất 
 **Trong trang này:**
 <!-- MarkdownTOC -->
 
-- [1. Giới thiệu](#-gioi-thieu)
+- [1. Giới thiệu](#1-gii-thiu)
     - [Gradient Descent](#gradient-descent)
-- [2. Gradient Descent cho hàm 1 biến](#-gradient-descent-cho-ham--bien)
-    - [Ví dụ đơn giản với Python](#vi-du-don-gian-voi-python)
-        - [Điểm khởi tạo khác nhau](#diem-khoi-tao-khac-nhau)
+- [2. Gradient Descent cho hàm 1 biến](#2-gradient-descent-cho-ham-1-bin)
+    - [Ví dụ đơn giản với Python](#vi-d-n-gin-vi-python)
+        - [Điểm khởi tạo khác nhau](#im-khi-to-khac-nhau)
         - [Learning rate khác nhau](#learning-rate-khac-nhau)
-- [3. Gradient Descent cho hàm nhiều biến](#-gradient-descent-cho-ham-nhieu-bien)
-    - [Quay lại với bài toán Linear Regression](#quay-lai-voi-bai-toan-linear-regression)
-    - [Sau đây là ví dụ trên Python và một vài lưu ý khi lập trình](#sau-day-la-vi-du-tren-python-va-mot-vai-luu-y-khi-lap-trinh)
-        - [Kiểm tra đạo hàm](#kiem-tra-dao-ham)
-            - [Giải thích bằng hình học](#giai-thich-bang-hinh-hoc)
-            - [Giải thích bằng giải tích](#giai-thich-bang-giai-tich)
-            - [Với hàm nhiều biến](#voi-ham-nhieu-bien)
-        - [Đường đồng mức \(level sets\)](#duong-dong-muc-level-sets)
-- [4. Một ví dụ khác](#-mot-vi-du-khac)
-- [5. Thảo luận](#-thao-luan)
-- [6. Tài liệu tham khảo](#-tai-lieu-tham-khao)
+- [3. Gradient Descent cho hàm nhiều biến](#3-gradient-descent-cho-ham-nhiu-bin)
+    - [Quay lại với bài toán Linear Regression](#quay-li-vi-bai-toan-linear-regression)
+    - [Sau đây là ví dụ trên Python và một vài lưu ý khi lập trình](#sau-ay-la-vi-d-tren-python-va-mt-vai-lu--khi-lp-trinh)
+        - [Kiểm tra đạo hàm](#kim-tra-o-ham)
+            - [Giải thích bằng hình học](#gii-thich-bng-hinh-hc)
+            - [Giải thích bằng giải tích](#gii-thich-bng-gii-tich)
+            - [Với hàm nhiều biến](#vi-ham-nhiu-bin)
+        - [Đường đồng mức (level sets)](#ng-ng-mc-level-sets)
+- [4. Một ví dụ khác](#4-mt-vi-d-khac)
+- [5. Thảo luận](#5-tho-lun)
+- [6. Tài liệu tham khảo](#6-tai-liu-tham-kho)
 
 <!-- /MarkdownTOC -->
 

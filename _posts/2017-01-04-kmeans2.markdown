@@ -32,18 +32,18 @@ Trong bài này, tôi sẽ áp dụng thuật toán [K-means clustering](/2017/0
 **Trong trang này:**
 <!-- MarkdownTOC -->
 
-- [1. Phân nhóm chữ số viết tay](#-phan-nhom-chu-so-viet-tay)
-    - [Bộ cơ sở dữ liệu MNIST](#bo-co-so-du-lieu-mnist)
-    - [Bài toán phân nhóm giả định](#bai-toan-phan-nhom-gia-dinh)
-    - [Làm việc trên Python](#lam-viec-tren-python)
-- [2. Object Segmentation \(tách vật thể trong ảnh\)](#-object-segmentation-tach-vat-the-trong-anh)
-    - [Đặt vấn đề](#dat-van-de)
-    - [Lên ý tưởng](#len-y-tuong)
-    - [Làm việc trên Python](#lam-viec-tren-python-1)
-- [3. Image Compression \(nén ảnh và nén dữ liệu nói chung\)](#-image-compression-nen-anh-va-nen-du-lieu-noi-chung)
-- [4. Thảo luận](#-thao-luan)
-- [5. Souce code](#-souce-code)
-- [6. Tài liệu tham khảo](#-tai-lieu-tham-khao)
+- [1. Phân nhóm chữ số viết tay](#1-phan-nhom-ch-s-vit-tay)
+    - [Bộ cơ sở dữ liệu MNIST](#b-c-s-d-liu-mnist)
+    - [Bài toán phân nhóm giả định](#bai-toan-phan-nhom-gi-nh)
+    - [Làm việc trên Python](#lam-vic-tren-python)
+- [2. Object Segmentation (tách vật thể trong ảnh)](#2-object-segmentation-tach-vt-th-trong-nh)
+    - [Đặt vấn đề](#t-vn)
+    - [Lên ý tưởng](#len--tng)
+    - [Làm việc trên Python](#lam-vic-tren-python)
+- [3. Image Compression (nén ảnh và nén dữ liệu nói chung)](#3-image-compression-nen-nh-va-nen-d-liu-noi-chung)
+- [4. Thảo luận](#4-tho-lun)
+- [5. Souce code](#5-souce-code)
+- [6. Tài liệu tham khảo](#6-tai-liu-tham-kho)
 
 <!-- /MarkdownTOC -->
 
