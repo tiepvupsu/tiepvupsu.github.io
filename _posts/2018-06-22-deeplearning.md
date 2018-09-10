@@ -22,16 +22,16 @@ Tôi sẽ quay lại với các thuật toán Machine Learning cổ điển khi 
 Trong trang này: 
 <!-- MarkdownTOC -->
 
-- Giới thiệu
-- Những dấu mốc quan trọng của deep learning
-    - Perceptron \(60s\)
-    - MLP và Backpropagation ra đời \(80s\)
-    - Mùa đông AI thứ hai \(90s - đầu 2000s\)
-    - Cái tên được làm mới -- Deep Learning \(2006\)
-    - Đột phá \(2012\)
-- Điều gì mang đến sự thành công của deep learning?
-- Kết luận
-- Tài liệu tham khảo
+- [Giới thiệu](#gioi-thieu)
+- [Những dấu mốc quan trọng của deep learning](#nhung-dau-moc-quan-trong-cua-deep-learning)
+    - [Perceptron \(60s\)](#perceptron-s)
+    - [MLP và Backpropagation ra đời \(80s\)](#mlp-va-backpropagation-ra-doi-s)
+    - [Mùa đông AI thứ hai \(90s - đầu 2000s\)](#mua-dong-ai-thu-hai-s---dau-s)
+    - [Cái tên được làm mới -- Deep Learning \(2006\)](#cai-ten-duoc-lam-moi----deep-learning-)
+    - [Đột phá \(2012\)](#dot-pha-)
+- [Điều gì mang đến sự thành công của deep learning?](#dieu-gi-mang-den-su-thanh-cong-cua-deep-learning)
+- [Kết luận](#ket-luan)
+- [Tài liệu tham khảo](#tai-lieu-tham-khao)
 
 <!-- /MarkdownTOC -->
 
@@ -329,6 +329,8 @@ Các thuật toán machine learning cổ điển khác vẫn có thể xuất hi
 
 <a name="tai-lieu-tham-khao"></a>
 
+
+<a name="tai-lieu-tham-khao"></a>
 
 ## Tài liệu tham khảo 
 [1] [Deep Learning 101 - Part 1: History and Background](https://beamandrew.github.io/deeplearning/2017/02/23/deep_learning_101_part1.html)
