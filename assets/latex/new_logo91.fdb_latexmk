@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1500412287 "new_logo91.tex" "new_logo91.pdf" "new_logo91" 1500412287
-  "/dev/null" 1500412287 0 d41d8cd98f00b204e9800998ecf8427e ""
+["pdflatex"] 1539289892 "new_logo91.tex" "new_logo91.pdf" "new_logo91" 1539289892
+  "/dev/null" 1539289852 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/usr/local/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmss10.tfm" 1136768653 1316 b636689f1933f24d1294acdf6041daaa ""
   "/usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1461363279 71627 94eb9990bed73c364d7f53f960cc8c5b ""
@@ -96,9 +96,9 @@
   "/usr/local/texlive/2016/texmf-dist/web2c/texmf.cnf" 1463093894 31953 b9489e6e586f798610c60aec1f5ec548 ""
   "/usr/local/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt" 1463979169 3873397 413fbfbbedb8e719ddc392043a7add02 ""
   "/usr/local/texlive/2016/texmf.cnf" 1463979140 577 2938757e76f31531e65cc647e3507693 ""
-  "new_logo91.aux" 1500412287 8 a94a2480d3289e625eea47cd1b285758 ""
-  "new_logo91.tex" 1500412287 4223 6813599c8bd344a943ab47b0e1911dc4 ""
+  "new_logo91.aux" 1539289892 8 a94a2480d3289e625eea47cd1b285758 ""
+  "new_logo91.tex" 1539289892 4223 6813599c8bd344a943ab47b0e1911dc4 ""
   (generated)
-  "new_logo91.aux"
   "new_logo91.log"
   "new_logo91.pdf"
+  "new_logo91.aux"
