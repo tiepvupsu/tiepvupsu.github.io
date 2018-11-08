@@ -12,15 +12,15 @@ comments: true
 
 <!-- MarkdownTOC -->
 
-- [0. Một vài lưu ý](#-mot-vai-luu-y)
-- [1. Bố cục \(Mục lục ngắn\)](#-bo-cuc-muc-luc-ngan)
-- [2. Giá](#-gia)
-- [3. Các bước đặt sách](#-cac-buoc-dat-sach)
-    - [Bước 1](#buoc-)
-    - [Bước 2](#buoc--1)
-        - [**Link đăng ký đặt ebook/sách giấy 'Machine Learning cơ bản I'**](#link-dang-ky-dat-ebooksach-giay-machine-learning-co-ban-i)
-    - [Bước 3](#buoc--2)
-- [4. Vấn đề bản quyền](#-van-de-ban-quyen)
+- 0. Một vài lưu ý
+- 1. Bố cục \(Mục lục ngắn\)
+- 2. Giá
+- 3. Các bước đặt sách
+    - Bước 1
+    - Bước 2
+        - **Link đăng ký đặt ebook/sách giấy 'Machine Learning cơ bản I'**
+    - Bước 3
+- 4. Vấn đề bản quyền
 
 <!-- /MarkdownTOC -->
 
@@ -50,7 +50,7 @@ Tôi chưa có ý định dừng việc bán sách nên các bạn không cần 
 
 b) __Bạn sẽ nhận được ebook và sách giấy__ nếu: 
 
-* Bạn đặt mua trước ngày 21/03/2018
+* Bạn đặt mua trước ngày 21/03/2018, hoặc
 
 * Bạn đặt mua với mức giá thông thường sau ngày 20/03/2018 ($20 qua Paypal hoặc 475k qua Vietcombank)
 
