@@ -150,8 +150,9 @@ J(\mathbf{w}; \mathbf{x}_i; y\_i) = -y\_i\mathbf{w}^T\mathbf{x}\_i
 Đạo hàm tương ứng:
 
 \\[
-\nabla\_{\mathbf{w}}J(\mathbf{w}; \mathbf{x}_i; y\_i) = -y_i\mathbf{x}_i
+\nabla_{\mathbf{w}}J(\mathbf{w}; \mathbf{x}_i; y_i) = -y_i\mathbf{x}_i
 \\]
+
 Vậy quy tắc cập nhật là:
 \\[
 \mathbf{w} = \mathbf{w} + \eta y_i\mathbf{x}_i
