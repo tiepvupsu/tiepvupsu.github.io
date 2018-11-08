@@ -54,7 +54,7 @@ b) __Bạn sẽ nhận được ebook và sách giấy__ nếu:
 
 * Bạn đặt mua với mức giá thông thường sau ngày 20/03/2018 ($20 qua Paypal hoặc 475k qua Vietcombank)
 
-c) __Bạn sẽ chỉ nhận được ebook__ nếu đặt mua sau ngày 20/03/2018 ($15 qua Paypal hoặc 350k qua Vietcombank). Từ hôm nay, _mức giá này áp dụng cho tất cả các đối tượng, không nhất thiết là sinh viên_. 
+c) __Bạn sẽ chỉ nhận được ebook__ nếu đặt mua sau ngày 20/03/2018 với mức giá $15 qua Paypal hoặc 350k qua Vietcombank. Từ hôm nay, _mức giá này áp dụng cho tất cả các đối tượng, không nhất thiết là sinh viên_. 
 
 __d) Nếu bạn đặt trước ngày 09/10/2018 và thuộc diện nhận sách giấy, bạn cần điền thông tin người nhận qua mẫu:__
 
