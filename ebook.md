@@ -12,15 +12,15 @@ comments: true
 
 <!-- MarkdownTOC -->
 
-- 0. Một vài lưu ý
-- 1. Bố cục \(Mục lục ngắn\)
-- 2. Giá
-- 3. Các bước đặt sách
-    - Bước 1
-    - Bước 2
-        - **Link đăng ký đặt ebook/sách giấy 'Machine Learning cơ bản I'**
-    - Bước 3
-- 4. Vấn đề bản quyền
+- [0. Một vài lưu ý](#-mot-vai-luu-y)
+- [1. Bố cục \(Mục lục ngắn\)](#-bo-cuc-muc-luc-ngan)
+- [2. Giá](#-gia)
+- [3. Các bước đặt sách](#-cac-buoc-dat-sach)
+    - [Bước 1](#buoc-)
+    - [Bước 2](#buoc--1)
+        - [**Link đăng ký đặt ebook/sách giấy 'Machine Learning cơ bản I'**](#link-dang-ky-dat-ebooksach-giay-machine-learning-co-ban-i)
+    - [Bước 3](#buoc--2)
+- [4. Vấn đề bản quyền](#-van-de-ban-quyen)
 
 <!-- /MarkdownTOC -->
 
@@ -44,7 +44,7 @@ Ebook 'Machine Learning cơ bản' đã hoàn thành, bạn có thể order và 
 
 ## 0. Một vài lưu ý
 
-a) Nếu bạn muốn đặt ebook/sách giấy bây giờ, bạn có thể làm theo hướng dẫn ở phía dưới
+a) Nếu bạn muốn đặt ebook/sách giấy bây giờ, bạn có thể làm theo hướng dẫn ở [phía dưới](#-gia).
 
 Tôi chưa có ý định dừng việc bán sách nên các bạn không cần hỏi 'còn đặt sách được không?' :). 
 
