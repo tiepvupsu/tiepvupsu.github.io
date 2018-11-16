@@ -98,7 +98,7 @@ Sách hiện đang được in, tôi rất hy vọng có thể bắt đầu vi�
 ### Bước 1
 **Nếu bạn chọn thanh toán bằng Paypal:**
 
-Bạn có thể chuyển khoản trực tiếp qua [https://www.paypal.me/TiepVu](https://www.paypal.me/TiepVu).  
+Bạn có thể chuyển khoản trực tiếp qua [https://www.paypal.me/TiepVu](https://www.paypal.me/TiepVu) hoặc vuhuutiep@gmail.com.  
 
 Các bạn chú ý chọn 'Send money to friends and family' để hạn chế việc mất phí ở phía người nhận. 
 
