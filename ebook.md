@@ -12,15 +12,16 @@ comments: true
 
 <!-- MarkdownTOC -->
 
-- [0. Một vài lưu ý](#-mot-vai-luu-y)
-- [1. Bố cục \(Mục lục ngắn\)](#-bo-cuc-muc-luc-ngan)
-- [2. Giá](#-gia)
-- [3. Các bước đặt sách](#-cac-buoc-dat-sach)
-    - [Bước 1](#buoc-)
-    - [Bước 2](#buoc--1)
-        - [**Link đăng ký đặt ebook/sách giấy 'Machine Learning cơ bản I'**](#link-dang-ky-dat-ebooksach-giay-machine-learning-co-ban-i)
-    - [Bước 3](#buoc--2)
-- [4. Vấn đề bản quyền](#-van-de-ban-quyen)
+- 0. Một vài lưu ý
+    - __d) Nếu bạn đặt trước ngày 09/10/2018 và thuộc diện nhận sách giấy, bạn cần điền thông tin người nhận qua mẫu:__
+- 1. Bố cục \(Mục lục ngắn\)
+- 2. Giá
+- 3. Các bước đặt sách
+    - Bước 1
+    - Bước 2
+        - **Link đăng ký đặt ebook/sách giấy 'Machine Learning cơ bản I'**
+    - Bước 3
+- 4. Vấn đề bản quyền
 
 <!-- /MarkdownTOC -->
 
@@ -56,7 +57,7 @@ b) __Bạn sẽ nhận được ebook và sách giấy__ nếu:
 
 c) __Bạn sẽ chỉ nhận được ebook__ nếu đặt mua sau ngày 20/03/2018 với mức giá $15 qua Paypal hoặc 350k qua Vietcombank. Từ hôm nay, _mức giá này áp dụng cho tất cả các đối tượng, không nhất thiết là sinh viên_. 
 
-__d) Nếu bạn đặt trước ngày 09/10/2018 và thuộc diện nhận sách giấy, bạn cần điền thông tin người nhận qua mẫu:__
+### __d) Nếu bạn đặt trước ngày 09/10/2018 và thuộc diện nhận sách giấy, bạn cần điền thông tin người nhận qua mẫu:__
 
 [__Mẫu cập nhật thông tin nhận sách__](https://goo.gl/forms/eVuA1a9is4FyIqUk2).
 
