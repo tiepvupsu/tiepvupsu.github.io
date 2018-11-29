@@ -17,23 +17,23 @@ summary: Hệ thống đơn giản gợi ý sản phẩm tới người dùng.
 **Trong trang này:**
 <!-- MarkdownTOC -->
 
-- [1. Giới thiệu](#-gioi-thieu)
-    - [1.1. Hiện tượng _Long Tail_ trong thương mại](#-hien-tuong-long-tail-trong-thuong-mai)
-    - [1.2. Hai nhóm chính của Recommendation Systems](#-hai-nhom-chinh-cua-recommendation-systems)
-- [2. Utility matrix](#-utility-matrix)
-    - [2.1. Ví dụ về Utility matrix](#-vi-du-ve-utility-matrix)
-    - [2.2. Xây dựng Utility Matrix](#-xay-dung-utility-matrix)
-- [3. Content-Based Recommendations](#-content-based-recommendations)
-    - [3.1. Item profiles](#-item-profiles)
-    - [3.2. Xây dựng hàm mất mát](#-xay-dung-ham-mat-mat)
-    - [3.3. Ví dụ về hàm mất mát cho user E](#-vi-du-ve-ham-mat-mat-cho-user-e)
-- [4. Bài toán với cơ sở dữ liệu MovieLens 100k](#-bai-toan-voi-co-so-du-lieu-movielens-k)
-    - [4.1. Cơ sở dữ liệu MovieLens 100k](#-co-so-du-lieu-movielens-k)
-    - [4.2. Xây dựng item profiles](#-xay-dung-item-profiles)
-    - [4.3. Tìm mô hình cho mỗi user](#-tim-mo-hinh-cho-moi-user)
-    - [4.4. Đánh giá mô hình](#-danh-gia-mo-hinh)
-- [5. Thảo luận](#-thao-luan)
-- [6. Tài liệu tham khảo](#-tai-lieu-tham-khao)
+- 1. Giới thiệu
+    - 1.1. Hiện tượng _Long Tail_ trong thương mại
+    - 1.2. Hai nhóm chính của Recommendation Systems
+- 2. Utility matrix
+    - 2.1. Ví dụ về Utility matrix
+    - 2.2. Xây dựng Utility Matrix
+- 3. Content-Based Recommendations
+    - 3.1. Item profiles
+    - 3.2. Xây dựng hàm mất mát
+    - 3.3. Ví dụ về hàm mất mát cho user E
+- 4. Bài toán với cơ sở dữ liệu MovieLens 100k
+    - 4.1. Cơ sở dữ liệu MovieLens 100k
+    - 4.2. Xây dựng item profiles
+    - 4.3. Tìm mô hình cho mỗi user
+    - 4.4. Đánh giá mô hình
+- 5. Thảo luận
+- 6. Tài liệu tham khảo
 
 <!-- /MarkdownTOC -->
 
@@ -203,7 +203,7 @@ Xét một _user_ thứ \\(n\\) bất kỳ, nếu ta coi training set là tập 
 Trong đó, thành phần thứ hai là regularization term và \\(\lambda\\) là một tham số dương. Chú ý rằng regularization thường không được áp dụng lên bias \\(b_n\\). Trong thực hành, trung bình cộng của _lỗi_ thường được dùng, và _mất mát_ \\(\mathcal{L}\_n\\) được viết lại thành: 
 
 \\[
-\mathcal{L}\_n = \frac{1}{2s_n} \sum_{m~:~ r_{mn} = 1}(\mathbf{x}\_m \mathbf{w}\_n + b_n - y_{mn})^2 + \frac{\lambda}{s_n} \|\|\mathbf{w}_n\|\|_2^2 
+\mathcal{L}\_n = \frac{1}{2s_n} \sum_{m~:~ r_{mn} = 1}(\mathbf{x}\_m \mathbf{w}\_n + b_n - y_{mn})^2 + \frac{\lambda}{2s_n} \|\|\mathbf{w}_n\|\|_2^2 
 \\]
 
 Trong đó \\(s_n\\) là số lượng các _items_ mà _user_ thứ \\(n\\) đã _rated_. Nói cách khác: 
