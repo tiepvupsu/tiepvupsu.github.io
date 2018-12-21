@@ -45,6 +45,8 @@ Ebook 'Machine Learning cơ bản' đã hoàn thành, bạn có thể order và 
 
 ## 0. Một vài lưu ý
 
+_Mọi thắc mắc về việc gửi nhận sách, bạn vui lòng gửi email tới_ **sachmachinelearningcoban@gmail.com** _để được hỗ trợ nhanh nhất._
+
 a) Nếu bạn muốn đặt ebook/sách giấy bây giờ, bạn có thể làm theo hướng dẫn ở [phía dưới](#-gia).
 
 Tôi chưa có ý định dừng việc bán sách nên các bạn không cần hỏi 'còn đặt sách được không?' :). 
@@ -161,3 +163,4 @@ Vũ Hữu Tiệp
 
 
 
+j
