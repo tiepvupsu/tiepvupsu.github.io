@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Đặt mua ebook/sách giấy 'Machine Learning cơ bản'
-permalink: /ebook/
+permalink: /ebook_old/
 sc_project: 11420197
 sc_security: 38b33822
 comments: true
