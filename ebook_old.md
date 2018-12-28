@@ -24,6 +24,8 @@ Tôi vô cũng xin lỗi một lần nữa và nhận trách nhiệm về mình.
 
 Vũ Hữu Tiệp
 
+
+
 ==============
 
 
@@ -67,5 +69,6 @@ c) __Bạn sẽ chỉ nhận được ebook__ nếu đặt mua sau ngày 20/03/2
 _Bạn không cần lo lắng về chuyện có được nhận email thông báo hay không. Sau khi điền xong mẫu, bạn sẽ không nhận được email nào khác. Tôi sẽ tự so sánh email và chuyển sách cho các bạn._ 
 
 Sách hiện đang được in, tôi rất hy vọng có thể bắt đầu việc chuyển phát trong tháng 10/2018. Việc chuyển phát được làm theo thứ tự đặt sách và thông tin đã điền trong Mục d) trên đây. 
+
 
 
