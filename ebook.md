@@ -45,7 +45,7 @@ Ebook 'Machine Learning cơ bản' đã hoàn thành, bạn có thể order và 
 
 ## 0. Một vài lưu ý
 
-_Mọi thắc mắc về việc gửi nhận sách, bạn vui lòng gửi email tới_ **sachmachinelearningcoban@gmail.com** _để được hỗ trợ nhanh nhất._
+_Mọi thắc mắc về việc gửi nhận sách, bạn vui lòng gửi email tới_ **vuhuutiep@gmail.com** _để được hỗ trợ nhanh nhất._
 
 b) __Bạn sẽ nhận được ebook và sách giấy__ nếu: 
 
