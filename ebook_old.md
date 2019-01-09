@@ -16,7 +16,7 @@ Tôi rất xin lỗi các bạn đặt sách đã lâu mà vẫn chưa nhận đ
 
 Các cuốn thất lạc sẽ được gửi lại ngay sau đó.
 
-Hiện tại tôi bận nhiều việc nên không trả lời trực tiếp các tin nhắn trên page được. Các bạn có thể email tới vuhuutiep@gmail.com hoặc sachmachinelearningcoban@gmail.com để nhận được phản hồi nhanh hơn.
+Hiện tại tôi bận nhiều việc nên không trả lời trực tiếp các tin nhắn trên page được. Các bạn có thể email tới vuhuutiep@gmail.com để nhận được phản hồi nhanh hơn.
 
 Tôi vô cũng xin lỗi một lần nữa và nhận trách nhiệm về mình.
 
