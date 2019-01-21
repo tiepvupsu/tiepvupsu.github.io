@@ -12,8 +12,6 @@ comments: true
 
 <!-- MarkdownTOC -->
 
-- [0. Một vài lưu ý](#-mot-vai-luu-y)
-    - [__d\) Nếu bạn đặt trước ngày 09/10/2018 và thuộc diện nhận sách giấy, bạn cần điền thông tin người nhận qua Mẫu cập nhật thông tin nhận sách.__](#d-neu-ban-dat-truoc-ngay--va-thuoc-dien-nhan-sach-giay-ban-can-dien-thong-tin-nguoi-nhan-qua-mau-cap-nhat-thong-tin-nhan-sach)
 - [1. Bố cục \(Mục lục ngắn\)](#-bo-cuc-muc-luc-ngan)
 - [2. Giá](#-gia)
 - [3. Các bước đặt sách](#-cac-buoc-dat-sach)
@@ -26,45 +24,8 @@ comments: true
 <!-- /MarkdownTOC -->
 
 
-Ebook 'Machine Learning cơ bản' đã hoàn thành, bạn có thể order và nhận ebook ngay trong ngày. Dưới đây là một vài [review về cuốn ebook](https://fundaml.com/ebook):
 
-
-<div>
-<table width = "100%" style = "border: 0px solid white">
-
-    <tr >
-        <td width="40%" style = "border: 0px solid white" align = "center">
-        <a href = "https://fundaml.com/ebook"><img  style="display:block;" width = "100%" src = "/images/ebook_review.png"></a>
-         </td>
-        
-    </tr>
-</table>
-</div>
-
-<a name="-mot-vai-luu-y"></a>
-
-## 0. Một vài lưu ý
-
-a) Nếu bạn muốn đặt ebook/sách giấy bây giờ, bạn có thể làm theo hướng dẫn ở [phía dưới](#-gia).
-
-Tôi chưa có ý định dừng việc bán sách nên các bạn không cần hỏi 'còn đặt sách được không?' :). 
-
-b) __Bạn sẽ nhận được ebook và sách giấy__ nếu: 
-
-* Bạn đặt mua trước ngày 21/03/2018, hoặc
-
-* Bạn đặt mua với mức giá thông thường sau ngày 20/03/2018 ($20 qua Paypal hoặc 475k qua Vietcombank)
-
-c) __Bạn sẽ chỉ nhận được ebook__ nếu đặt mua sau ngày 20/03/2018 với mức giá $15 qua Paypal hoặc 350k qua Vietcombank. Từ hôm nay, _mức giá này áp dụng cho tất cả các đối tượng, không nhất thiết là sinh viên_. 
-
-<a name="d-neu-ban-dat-truoc-ngay--va-thuoc-dien-nhan-sach-giay-ban-can-dien-thong-tin-nguoi-nhan-qua-mau-cap-nhat-thong-tin-nhan-sach"></a>
-
-### __d) Nếu bạn đặt trước ngày 09/10/2018 và thuộc diện nhận sách giấy, bạn cần điền thông tin người nhận qua [Mẫu cập nhật thông tin nhận sách](https://goo.gl/forms/eVuA1a9is4FyIqUk2).__
-
-_Bạn không cần lo lắng về chuyện có được nhận email thông báo hay không. Sau khi điền xong mẫu, bạn sẽ không nhận được email nào khác. Tôi sẽ tự so sánh email và chuyển sách cho các bạn._ 
-
-Sách hiện đang được in, tôi rất hy vọng có thể bắt đầu việc chuyển phát trong tháng 10/2018. Việc chuyển phát được làm theo thứ tự đặt sách và thông tin đã điền trong Mục d) trên đây. 
-
+**Sách Machine Learning cơ bản đã mở cửa nhận đơn đặt hàng trở lại.
 
 <a name="-bo-cuc-muc-luc-ngan"></a>
 
