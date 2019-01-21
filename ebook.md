@@ -25,7 +25,7 @@ comments: true
 
 
 
-**Sách Machine Learning cơ bản đã mở cửa nhận đơn đặt hàng trở lại.
+**Sách Machine Learning cơ bản đã mở cửa nhận đơn đặt hàng trở lại.**
 
 <a name="-bo-cuc-muc-luc-ngan"></a>
 
