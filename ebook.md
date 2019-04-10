@@ -25,7 +25,7 @@ comments: true
 
 
 
-**Sách Machine Learning cơ bản đã mở cửa nhận đơn đặt hàng trở lại.**
+**Cập nhật ngày 10/4/2019: Sách Machine learning cơ bản vẫn tiếp tục nhận order**
 
 <a name="-bo-cuc-muc-luc-ngan"></a>
 
