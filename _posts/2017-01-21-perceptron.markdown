@@ -154,10 +154,12 @@ J(\mathbf{w}; \mathbf{x}_i; y\_i) = -y\_i\mathbf{w}^T\mathbf{x}\_i
 \\]
 
 Vậy quy tắc cập nhật là:
+
 \\[
-\mathbf{w} = \mathbf{w} + \eta y_i\mathbf{x}_i
+\mathbf{w} = \mathbf{w} + \eta y\_i\mathbf{x}\_i
 \\]
-với \\(\eta\\) là learning rate được chọn bằng 1. Ta có một quy tắc cập nhật rất gọn là: \\(\mathbf{w}\_{t+1} = \mathbf{w}_{t} + y\_i\mathbf{x}\_i\\). Nói cách khác, với mỗi điểm \\(\mathbf{x}_i\\) bị misclassifed, ta chỉ cần nhân điểm đó với nhãn \\(y_i\\) của nó, lấy kết quả cộng vào \\(\mathbf{w}\\) ta sẽ được \\(\mathbf{w}\\) mới.
+
+với \\(\eta\\) là learning rate được chọn bằng 1. Ta có một quy tắc cập nhật rất gọn là: \\(\mathbf{w}\_{t+1} = \mathbf{w}\_{t} + y\_i\mathbf{x}\_i\\). Nói cách khác, với mỗi điểm \\(\mathbf{x}_i\\) bị misclassifed, ta chỉ cần nhân điểm đó với nhãn \\(y_i\\) của nó, lấy kết quả cộng vào \\(\mathbf{w}\\) ta sẽ được \\(\mathbf{w}\\) mới.
 
 Ta có một quan sát nhỏ ở đây:
 \\[
