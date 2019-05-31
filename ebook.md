@@ -7,45 +7,18 @@ sc_security: 38b33822
 comments: true
 ---
 
+Bạn đọc đã có thể [đặt sách Machine Learning cơ bản trên Tiki](https://tiki.vn/machine-learning-co-ban-p10833675.html?fbclid=IwAR3gNqtHEGsQWyqWaYvarRIbEZf4tOhrA0QeQZqQNZOUJFm05IkSU5oMGXI).
 
-**Trong trang này:**
-
-<!-- MarkdownTOC -->
-
-- [1. Bố cục \(Mục lục ngắn\)](#-bo-cuc-muc-luc-ngan)
-- [2. Giá](#-gia)
-- [3. Các bước đặt sách](#-cac-buoc-dat-sach)
-    - [Bước 1](#buoc-)
-    - [Bước 2](#buoc--1)
-        - [**Link đăng ký đặt ebook/sách giấy 'Machine Learning cơ bản I'**](#link-dang-ky-dat-ebooksach-giay-machine-learning-co-ban-i)
-    - [Bước 3](#buoc--2)
-- [4. Vấn đề bản quyền](#-van-de-ban-quyen)
-
-<!-- /MarkdownTOC -->
-
-
-
-**Cập nhật ngày 10/4/2019: Sách Machine learning cơ bản vẫn tiếp tục nhận order**
-
-<a name="-bo-cuc-muc-luc-ngan"></a>
-
-## 1. Bố cục (Mục lục ngắn)
-
-<hr>
-<div class="imgcap">
-<img src ="/images/content.png" align = "center" width = "800">
-</div>
-<hr>
-<a name="-gia"></a>
+Ngoài ra, các bạn cũng có thể đặt sách trực tiếp tại blog này
 
 [**Đọc thử phần kiến thức toán**](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/Math_ML.pdf)
 
 
 <a name="-gia"></a>
 
-## 2. Giá 
+## 1. Giá 
 
-* __Ebook__: $15 qua Paypal hoặc 350k qua Vietcombank (thông tin tài khoản ở dưới). Chú ý: giá này áp dụng với cả các đối tượng không phải sinh viên. 
+* __Ebook__: $15 qua Paypal hoặc 350k qua Vietcombank (thông tin tài khoản ở dưới).
 
 * __Sách giấy__: $20 qua Paypal hoặc 475k qua Vietcombank. Các bạn đặt sách giấy cũng sẽ nhận được ebook ngay sau khi tôi nhận được thông tin chuyển khoản từ ngân hàng. Các bạn đặt ebook trước ngày 21/03/2018 cũng sẽ nhận được sách giấy. 
 
@@ -53,7 +26,7 @@ comments: true
 
 <a name="-cac-buoc-dat-sach"></a>
 
-## 3. Các bước đặt sách
+## 2. Các bước đặt sách
 
 <a name="buoc-"></a>
 
@@ -70,7 +43,6 @@ _Sau khi chuyển khoản, các bạn cần lưu lại **Transaction ID** để 
 
 Bạn có thể chuyển tới:
 
-
 (Khi chuyển các bạn vui lòng kèm trong ghi chú/mục đích chuyển từ khóa là **họ tên của bạn**. Vì VCB chỉ hiển thị rất giới hạn ký tự trong nội dung tin nhắn, bạn nên viết tên bạn vào nội dung này để tôi dễ đối chiếu.)
 
 Chủ tài khoản: **VU HUU LONG**
@@ -79,7 +51,7 @@ Số tài khoản: **0081001280321**
 
 Ngân hàng Vietcombank, chi nhánh Vũng Tàu. 
 
-Sau khi chuyển khoản, các bạn cần lưu lại **nội dung chuyển khoản**. Xin nhắc lại, nội dung chuyển khoản tốt nhất là họ tên của bạn để tôi có thể đối chiếu nhanh chóng với ngân hàng và form. Nếu nội dung chuyển khoản không tồn tại, bạn cần lưu lại mã giao dịch (ref). Nếu gặp khó khăn trong việc tìm mã, bạn có thể chụp lại hoá đơn và đính kèm.
+Sau khi chuyển khoản, các bạn cần lưu lại **nội dung chuyển khoản**. Xin nhắc lại, nội dung chuyển khoản tốt nhất là họ tên của bạn để tôi có thể đối chiếu nhanh chóng với ngân hàng và form. Nếu nội dung chuyển khoản không tồn tại, bạn cần lưu lại mã giao dịch (ref). Nếu gặp khó khăn trong việc tìm mã, bạn có thể chụp lại hoá đơn và đính kèm trong phần "Một vài lời nhắn gửi" trong link ở dưới.
 
 <a name="buoc--1"></a>
 
@@ -94,15 +66,11 @@ Bạn điền thông tin về tên, cách thức bạn chuyển tiền, **Tracsa
 <a name="buoc--2"></a>
 
 ### Bước 3
-Sau khi đã chuyển khoản và điền form, bạn sẽ nhận được email hướng dẫn download ebook. Hướng dẫn này sẽ được gửi sau khi tôi xác nhận với ngân hàng rằng bạn đã chuyển khoản. Thông thường, Paypal sẽ báo email ngay, còn VCB có thể đợi sau vài giờ. 
-
-Ebook sẽ được tải về tại [https://fundaml.com/ebook](https://fundaml.com/ebook) bằng tải khoản đăng ký bởi email nêu trên.
-
-
+Sau khi đã chuyển khoản và điền form, bạn sẽ nhận được email hướng dẫn download ebook. Hướng dẫn này sẽ được gửi sau khi tôi xác nhận với ngân hàng rằng bạn đã chuyển khoản. Thông thường, Paypal sẽ báo email ngay, còn VCB có thể đợi sau vài giờ.
 
 <a name="-van-de-ban-quyen"></a>
 
-## 4. Vấn đề bản quyền 
+## 3. Vấn đề bản quyền 
 
 Vì vấn đề bản quyền rất khó được xử lý ở Việt Nam, tôi chắc chắn cuốn sách này sẽ được sao lưu và upload lên các trang khác mà không có sự cho phép của tác giả. 
 
