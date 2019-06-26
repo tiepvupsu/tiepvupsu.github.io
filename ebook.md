@@ -7,9 +7,8 @@ sc_security: 38b33822
 comments: true
 ---
 
-Bạn đọc đã có thể [đặt sách Machine Learning cơ bản trên Tiki](https://tiki.vn/machine-learning-co-ban-p10833675.html?fbclid=IwAR3gNqtHEGsQWyqWaYvarRIbEZf4tOhrA0QeQZqQNZOUJFm05IkSU5oMGXI).
+**Sách Machine Learning cơ bản hiện được bán duy nhất tại blog này. Hiện tại mình không chuyển thêm cho Tiki nữa vì số lượng sách còn ít. Mọi đơn vị bán sách ngoài blog này đều không phải bản chính thống.**
 
-Ngoài ra, các bạn cũng có thể đặt sách trực tiếp tại blog này
 
 [**Đọc thử phần kiến thức toán**](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/Math_ML.pdf)
 
