@@ -6,8 +6,9 @@ sc_project: 11420197
 sc_security: 38b33822
 comments: true
 ---
+# Cập nhật ngày 18/08/2019
 
-**Sách Machine Learning cơ bản hiện được bán duy nhất tại blog này. Hiện tại mình không chuyển thêm cho Tiki nữa vì số lượng sách còn ít. Mọi đơn vị bán sách ngoài blog này đều không phải bản chính thống.**
+**Sách Machine Learning cơ bản hiện vẫn được bán (duy nhất tại blog này). Hiện tại mình không chuyển thêm cho Tiki nữa vì số lượng sách còn ít. Mọi đơn vị bán sách ngoài blog này đều không phải bản chính thống.**
 
 
 [**Đọc thử phần kiến thức toán**](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/Math_ML.pdf)
