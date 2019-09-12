@@ -6,13 +6,19 @@ sc_project: 11420197
 sc_security: 38b33822
 comments: true
 ---
-# Cập nhật ngày 03/09/2019
+# Cập nhật ngày 12/09/2019
 
 **Sách Machine Learning cơ bản hiện vẫn được bán (duy nhất tại blog này). Hiện tại mình không chuyển thêm cho Tiki nữa vì số lượng sách còn ít. Mọi đơn vị bán sách ngoài blog này đều không phải bản chính thống.**
 
 
 [**Đọc thử phần kiến thức toán**](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/Math_ML.pdf)
 
+Cuốn sách có 400 trang, bố cục của cuốn sách như sau:
+<hr>
+<div class="imgcap">
+<img src ="\images\content.png" align = "center" width = "800">
+</div>
+<hr>
 
 <a name="-gia"></a>
 
