@@ -11,8 +11,11 @@ comments: true
 **Sách Machine Learning cơ bản hiện vẫn được bán (duy nhất tại blog này). Hiện tại mình không chuyển thêm cho Tiki nữa vì số lượng sách còn ít.**
 
 Các bạn ở Hà Nội có thể đến lấy trực tiếp bằng cách liên lạc với chị Xuân.
+
 Chị Xuân
+
 Điện thoại: 0915466366
+
 Địa chỉ: Sảnh G5 - chung cư Five Star số 2 Kim Giang (ngõ 460 Khương Đình)- Thanh Xuân - HN
 
 Khi lấy sách trực tiếp, các bạn sẽ được giảm giá 40k phí vận chuyển.
