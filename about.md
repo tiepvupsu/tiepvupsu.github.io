@@ -8,7 +8,7 @@ sc_security: bf94eebb
 
 Cảm ơn bạn đã ghé thăm blog của tôi. 
 
-Tôi là Vũ Hữu Tiệp, tốt nghiệp Tiến sĩ ngành Học Máy và Thị Giác Máy Tính (Machine Learning and Computer Vision) tại Đại học bang Pennsylvania (Pennsylvania State University), Hoa Kỳ. Hiện tại tôi đang là chuyên viên nghiên cứu ứng dụng Deep Learning vào việc phát triển xe tự hành cho một công ty khởi nghiệp tại Thung Lũng Silicon. Các thông tin khác về tôi có thể được tim thấy ở [website học thuật của tôi](http://www.personal.psu.edu/thv102/), hoặc [Linkedin của tôi.](https://www.linkedin.com/in/tiephuuvu/). Tôi rất vui nếu bạn có thể giúp tôi 'endorse' một vài 'skills' mà bạn nghĩ rằng tôi có.
+Tôi là Vũ Hữu Tiệp, tốt nghiệp Tiến sĩ ngành Học Máy và Thị Giác Máy Tính (Machine Learning and Computer Vision) tại Đại học bang Pennsylvania (Pennsylvania State University), Hoa Kỳ. Hiện tại tôi đang là chuyên viên nghiên cứu ứng dụng Deep Learning vào việc phát triển xe tự hành cho một công ty khởi nghiệp tại Thung Lũng Silicon. Các thông tin khác về tôi có thể được tim thấy ở [website học thuật của tôi](http://www.personal.psu.edu/thv102/), hoặc [Linkedin của tôi](https://www.linkedin.com/in/tiephuuvu/). Tôi rất vui nếu bạn có thể giúp tôi 'endorse' một vài 'skills' mà bạn nghĩ rằng tôi có.
 
 Tôi viết blog này với hai mục đích chính. Một là tổng hợp lại các kiến thức của bản thân về Machine Learning. Hai là tôi có mong muốn mang Machine Learning tới càng nhiều bạn đọc Việt Nam càng tốt, vì đây sẽ là một xu hướng được dự đoán là cực kỳ nổi bật trong những năm sắp tới.
 
