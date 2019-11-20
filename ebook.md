@@ -6,7 +6,7 @@ sc_project: 11420197
 sc_security: 38b33822
 comments: true
 ---
-# Cập nhật ngày 14/10/2019
+# Cập nhật ngày 20/11/2019
 
 **Sách Machine Learning cơ bản hiện vẫn được bán (duy nhất tại blog này). Hiện tại mình không chuyển thêm cho Tiki nữa vì số lượng sách còn ít.**
 
