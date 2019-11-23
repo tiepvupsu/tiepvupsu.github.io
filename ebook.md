@@ -10,6 +10,9 @@ comments: true
 
 **Sách Machine Learning cơ bản hiện vẫn được bán (duy nhất tại blog này). Hiện tại mình không chuyển thêm cho Tiki nữa vì số lượng sách còn ít.**
 
+
+**Bản ebook hiện không còn được bán. Tôi sẽ chia sẻ miễn phí bản này vào đầu năm 2020.**
+
 Các bạn ở Hà Nội có thể đến lấy trực tiếp bằng cách liên lạc với chị Xuân.
 
 Chị Xuân
@@ -34,17 +37,13 @@ Cuốn sách có 400 trang, bố cục của cuốn sách như sau:
 
 ## 1. Giá 
 
-* __Ebook__: __Bản ebook hiện không còn được bán. Tôi sẽ công bố miễn phí bản này vào đầu năm 2020.__
-
 * __Sách giấy__: $20 qua Paypal hoặc 475k qua Vietcombank. Các bạn đặt sách giấy sẽ nhận được ebook ngay sau khi tôi nhận được thông tin chuyển khoản từ ngân hàng. Các bạn đặt ebook trước ngày 21/03/2018 nếu chưa nhận sách giấy có thể liên lạc để nhận.
-
-
 
 <a name="-cac-buoc-dat-sach"></a>
 
 ## 2. Các bước đặt sách
 
-<a name="buoc-"></a>
+<a name="buoc--1"></a>
 
 ### Bước 1
 **Nếu bạn chọn thanh toán bằng Paypal:**
@@ -53,7 +52,6 @@ Bạn có thể chuyển khoản trực tiếp qua [https://www.paypal.me/TiepVu
 
 Các bạn chú ý chọn 'Send money to friends and family' để hạn chế việc mất phí ở phía người nhận. 
 
-_Sau khi chuyển khoản, các bạn cần lưu lại **Transaction ID** để điền form ở Bước 2._ 
 
 **Nếu bạn chọn thanh toán qua Vietcombank:**
 
@@ -69,17 +67,17 @@ Ngân hàng Vietcombank, chi nhánh Vũng Tàu.
 
 Sau khi chuyển khoản, các bạn cần lưu lại **nội dung chuyển khoản**. Xin nhắc lại, nội dung chuyển khoản tốt nhất là họ tên của bạn để tôi có thể đối chiếu nhanh chóng với ngân hàng và form. Nếu nội dung chuyển khoản không tồn tại, bạn cần lưu lại mã giao dịch (ref). Nếu gặp khó khăn trong việc tìm mã, bạn có thể chụp lại hoá đơn và đính kèm trong phần "Một vài lời nhắn gửi" trong link ở dưới.
 
-<a name="buoc--1"></a>
+<a name="buoc--2"></a>
 
 ### Bước 2
-Bạn điền thông tin về tên, cách thức bạn chuyển tiền, **Tracsaction ID (với Paypal)** hoặc **Nội dung chuyển khoản hoặc mã giao dịch (với Vietcombank)** và email mà bạn sẽ nhận sách vào Form dưới đây. 
+Bạn điền thông tin về tên, cách thức bạn chuyển tiền, **Tracsaction ID (với Paypal)** hoặc **Nội dung chuyển khoản hoặc mã giao dịch (với Vietcombank)** và thông tin người nhận sách vào Form dưới đây. 
 
 <a name="link-dang-ky-dat-ebooksach-giay-machine-learning-co-ban-i"></a>
 
 #### [**Link đăng ký đặt ebook/sách giấy 'Machine Learning cơ bản I'**](https://docs.google.com/forms/d/e/1FAIpQLSfARljrCOACDPav1QGmiFrk4-QURoQSooQzPneGHcybMvtc3A/viewform?c=0&w=1)
 
 
-<a name="buoc--2"></a>
+<a name="buoc--3"></a>
 
 ### Bước 3
 Sau khi đã chuyển khoản và điền form, bạn sẽ nhận được email hướng dẫn download ebook. Hướng dẫn này sẽ được gửi sau khi tôi xác nhận với ngân hàng rằng bạn đã chuyển khoản. Thông thường, Paypal sẽ báo email ngay, còn VCB có thể đợi sau vài giờ.
