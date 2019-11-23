@@ -34,9 +34,9 @@ Cuốn sách có 400 trang, bố cục của cuốn sách như sau:
 
 ## 1. Giá 
 
-* __Ebook__: $15 qua Paypal hoặc 350k qua Vietcombank (thông tin tài khoản ở dưới).
+* __Ebook__: __Bản ebook hiện không còn được bán. Tôi sẽ công bố miễn phí bản này vào đầu năm 2020.__
 
-* __Sách giấy__: $20 qua Paypal hoặc 475k qua Vietcombank. Các bạn đặt sách giấy cũng sẽ nhận được ebook ngay sau khi tôi nhận được thông tin chuyển khoản từ ngân hàng. Các bạn đặt ebook trước ngày 21/03/2018 cũng sẽ nhận được sách giấy. 
+* __Sách giấy__: $20 qua Paypal hoặc 475k qua Vietcombank. Các bạn đặt sách giấy sẽ nhận được ebook ngay sau khi tôi nhận được thông tin chuyển khoản từ ngân hàng. Các bạn đặt ebook trước ngày 21/03/2018 nếu chưa nhận sách giấy có thể liên lạc để nhận.
 
 
 
