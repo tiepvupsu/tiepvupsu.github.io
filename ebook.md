@@ -6,12 +6,12 @@ sc_project: 11420197
 sc_security: 38b33822
 comments: true
 ---
-# Cập nhật ngày 20/11/2019
+# Cập nhật ngày 3/1/2020
 
 **Sách Machine Learning cơ bản hiện vẫn được bán (duy nhất tại blog này). Hiện tại mình không chuyển thêm cho Tiki nữa vì số lượng sách còn ít.**
 
 
-**Bản ebook hiện không còn được bán. Tôi sẽ chia sẻ miễn phí bản này vào đầu năm 2020.**
+**Bản ebook có thể download [tại đây](https://github.com/tiepvupsu/ebookMLCB)**
 
 Các bạn ở Hà Nội có thể đến lấy trực tiếp bằng cách liên lạc với chị Xuân.
 
