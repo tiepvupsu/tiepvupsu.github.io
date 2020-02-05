@@ -13,7 +13,6 @@ comments: true
 
 **Bản ebook có thể download [tại đây](https://github.com/tiepvupsu/ebookMLCB)**
 
-## Hiện đơn vị chuyển phát sách đã nghỉ Tết, các bạn ở xa Hà Nội nếu mua sách bây giờ thì sau Tết mới có sách.
 Các bạn ở Hà Nội có thể đến lấy trực tiếp bằng cách liên lạc với chị Xuân.
 
 Chị Xuân
