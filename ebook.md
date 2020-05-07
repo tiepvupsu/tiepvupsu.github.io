@@ -8,9 +8,9 @@ comments: true
 ---
 # Cập nhật ngày 07/05/2020
 
-**Sách Machine Learning cơ bản đã dừng bán và chưa có kế hoạch in thêm.**
+**Sách Machine Learning cơ bản đã hết và tác giả chưa có kế hoạch in thêm.**
 
-**Bản ebook có thể download miến phí [tại đây](https://github.com/tiepvupsu/ebookMLCB)**
+**Bản ebook vẫn có thể download miến phí [tại đây](https://github.com/tiepvupsu/ebookMLCB)**
 
 <!--
 Các bạn ở Hà Nội có thể đến lấy trực tiếp bằng cách liên lạc với chị Xuân.
