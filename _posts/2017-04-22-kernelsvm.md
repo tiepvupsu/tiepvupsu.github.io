@@ -4,7 +4,7 @@ comments: true
 title:  "Bài 21: Kernel Support Vector Machine"
 title2:  "21. Kernel SVM"
 date:   2017-04-22 15:22:00
-permalink: 2017/04/22/kernelsvm/
+permalink: 2017/04/22/kernelsmv/
 mathjax: true
 tags: Linear-models Classification
 category: Support-Vector-Machine
