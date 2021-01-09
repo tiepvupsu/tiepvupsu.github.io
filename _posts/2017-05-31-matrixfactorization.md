@@ -17,20 +17,21 @@ summary: Trong bài viết này, chúng ta sẽ làm quen với một hướng t
 **Trong trang này:**
 <!-- MarkdownTOC -->
 
-- 1. Giới thiệu
-- 2. Xây dựng và tối ưu hàm mất mát
-    - 2.1. Hàm mất mát
-    - 2.2. Tối ưu hàm mất mát
-- 3. Lập trình Python
-    - 3.1. `class MF`
-    - 3.2. Áp dụng lên MovieLens 100k
-    - 3.3. Áp dụng lên MovieLens 1M
-- 4. Thảo luận
-    - 4.1. Khi có bias
-    - 4.2. Nonnegative Matrix Factorization
-    - 4.3. Incremental Matrix Factorization
-    - 4.4. Others
-- 6. Tài liệu tham khảo
+- [1. Giới thiệu](#-gioi-thieu)
+- [2. Xây dựng và tối ưu hàm mất mát](#-xay-dung-va-toi-uu-ham-mat-mat)
+    - [2.1. Hàm mất mát](#-ham-mat-mat)
+    - [2.2. Tối ưu hàm mất mát](#-toi-uu-ham-mat-mat)
+- [3. Lập trình Python](#-lap-trinh-python)
+    - [3.1.`class MF`](#-class-mf)
+    - [3.2. Áp dụng lên MovieLens 100k](#-ap-dung-len-movielens-k)
+    - [3.3. Áp dụng lên MovieLens 1M](#-ap-dung-len-movielens-m)
+- [4. Thảo luận](#-thao-luan)
+    - [4.1. Khi có bias](#-khi-co-bias)
+    - [4.2. Nonnegative Matrix Factorization](#-nonnegative-matrix-factorization)
+    - [4.3. Incremental Matrix Factorization](#-incremental-matrix-factorization)
+    - [4.4. Others](#-others)
+- [5. Tài liệu tham khảo](#-tai-lieu-tham-khao)
+
 
 <!-- /MarkdownTOC -->
 
