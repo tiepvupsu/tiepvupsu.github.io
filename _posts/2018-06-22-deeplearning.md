@@ -189,7 +189,7 @@ tiếp tục kéo dài ta sẽ được một network đủ _sâu_ mà output c�
 (chính là hidden layer của autoencoder cuối cùng) mang thông tin của input ban
 đầu. Sau đó ta có thể thêm các layer khác tuỳ thuộc vào bài toán (chẳng hạn thêm
 softmax layer ở cuối cho bài toán classification). Cả network được huấn luyện
-thêm một vài epoch nữa. Quá trình này được gọi là _tinh chỉnh_ (_fine tuining_).
+thêm một vài epoch nữa. Quá trình này được gọi là _tinh chỉnh_ (_fine tuning_).
 
 Tại sao quá trình huấn luyện như trên mang lại nhiều lợi ích? 
 
