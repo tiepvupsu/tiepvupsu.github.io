@@ -50,10 +50,10 @@ Với cách làm trên, [_Utility Matrix_](/2017/05/17/contentbasedrecommendersy
 
 \\[
 \mathbf{Y} \approx \left[ \begin{matrix}
-\mathbf{x}_1\mathbf{w}_1 & \mathbf{x}_1\mathbf{w}_2 & \dots & \mathbf{x}\_1 \mathbf{w}_N \\\
-\mathbf{x}_2\mathbf{w}_1 & \mathbf{x}_2\mathbf{w}_2 & \dots & \mathbf{x}\_2 \mathbf{w}_N \\\
+\mathbf{x}_1\mathbf{w}_1 & \mathbf{x}_1\mathbf{w}_2 & \dots & \mathbf{x}\_1 \mathbf{w}_N \\
+\mathbf{x}_2\mathbf{w}_1 & \mathbf{x}_2\mathbf{w}_2 & \dots & \mathbf{x}\_2 \mathbf{w}_N \\
 \dots & \dots & \ddots & \dots \\\
-\mathbf{x}_M\mathbf{w}_1 & \mathbf{x}_M\mathbf{w}_2 & \dots & \mathbf{x}\_M \mathbf{w}_N \\\
+\mathbf{x}_M\mathbf{w}_1 & \mathbf{x}_M\mathbf{w}_2 & \dots & \mathbf{x}\_M \mathbf{w}_N \\
 \end{matrix} \right]
  = \left[ \begin{matrix}
 \mathbf{x}_1 \\\
