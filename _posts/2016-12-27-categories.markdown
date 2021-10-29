@@ -47,7 +47,7 @@ Có hai cách phổ biến phân nhóm các thuật toán Machine learning. Mộ
 
 ## 1. Phân nhóm dựa trên phương thức học
 
-Theo phương thức học, các thuật toán Machine Learning thường được chia làm 4 nhóm: Supervised learning, Unsupervised learning, Semi-supervised lerning và Reinforcement learning. _Có một số cách phân nhóm không có Semi-supervised learning hoặc Reinforcement learning._
+Theo phương thức học, các thuật toán Machine Learning thường được chia làm 4 nhóm: Supervised learning, Unsupervised learning, Semi-supervised learning và Reinforcement learning. _Có một số cách phân nhóm không có Semi-supervised learning hoặc Reinforcement learning._
 
 <!-- ========================== New Heading ==================== -->
 <a name="supervised-learning-hoc-co-giam-sat"></a>
