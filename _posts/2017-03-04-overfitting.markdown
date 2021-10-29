@@ -86,7 +86,7 @@ Rõ ràng là một đa thức bậc không vượt quá 29 có thể _fit_ đư
 
 _Nếu bạn nào biết về Đa thức nội suy Lagrange thì có thể hiểu được hiện tượng sai số lớn với các điểm nằm ngoài khoảng của các điểm đã cho. Đó chính là lý do phương pháp đó có từ "nội suy", với các trường hợp "ngoại suy", kết quả thường không chính xác._
 
-Với \\(d = 4\\), ta được mô hình dự đoán khá giống với mô hình thực. Hệ số bậc cao nhất tìm được rất gần với 0 (xem kết quả trong [source code](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/15_overfitting/LinReg.ipynb)), vì vậy đa thưc bậc 4 này khá gần với đa thức bậc 3 ban đầu. Đây chính là một mô hình tốt.
+Với \\(d = 4\\), ta được mô hình dự đoán khá giống với mô hình thực. Hệ số bậc cao nhất tìm được rất gần với 0 (xem kết quả trong [source code](https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/15_overfitting/LinReg.ipynb)), vì vậy đa thức bậc 4 này khá gần với đa thức bậc 3 ban đầu. Đây chính là một mô hình tốt.
 
 Overfitting là hiện tượng mô hình tìm được _quá khớp_ với dữ liệu training. Việc _quá khớp_ này có thể dẫn đến việc dự đoán nhầm nhiễu, và chất lượng mô hình không còn tốt trên dữ liệu test nữa. [Dữ liệu test được giả sử là không được biết trước, và không được sử dụng để xây dựng các mô hình Machine Learning](/general/2017/02/06/featureengineering/#main-algorithms).
 
@@ -133,7 +133,7 @@ Phương pháp đơn giản nhất là _trích_ từ tập training data ra mộ
 
 
 
-Với khái niệm mới này, ta tìm mô hình sao cho cả _train eror_ và _validation error_ đều nhỏ, qua đó có thể dự đoán được rằng _test error_ cũng nhỏ. Phương pháp thường được sử dụng là sử dụng nhiều mô hình khác nhau. Mô hình nào cho _validation error_ nhỏ nhất sẽ là mô hình tốt.
+Với khái niệm mới này, ta tìm mô hình sao cho cả _train error_ và _validation error_ đều nhỏ, qua đó có thể dự đoán được rằng _test error_ cũng nhỏ. Phương pháp thường được sử dụng là sử dụng nhiều mô hình khác nhau. Mô hình nào cho _validation error_ nhỏ nhất sẽ là mô hình tốt.
 
 Thông thường, ta bắt đầu từ mô hình đơn giản, sau đó tăng dần độ phức tạp của mô hình. Tới khi nào _validation error_ có chiều hướng tăng lên thì chọn mô hình ngay trước đó. Chú ý rằng mô hình càng phức tạp, _train error_ có xu hướng càng nhỏ đi.
 
@@ -158,7 +158,7 @@ Trong nhiều trường hợp, chúng ta có rất hạn chế số lượng d�
 
 Câu trả lời là _cross-validation_.
 
-_Cross validation_ là một cải tiến của _validation_ với lượng dữ liệu trong tập validation là nhỏ nhưng chất lượng mô hình được đánh giá trên nhiều tập _validation_ khác nhau. Một cách thường đường sử dụng là chia tập training ra \\(k\\) tập con không có phần tử chung, có kích thước gần bằng nhau. Tại mỗi lần kiểm thử , được gọi là _run_, một trong số \\(k\\) tập con được lấy ra làm _validata set_. Mô hình sẽ được xây dựng dựa vào hợp của \\(k-1\\) tập con còn lại. Mô hình cuối được xác định dựa trên trung bình của các _train error_ và _validation error_. Cách làm này còn có tên gọi là __k-fold cross validation__.
+_Cross validation_ là một cải tiến của _validation_ với lượng dữ liệu trong tập validation là nhỏ nhưng chất lượng mô hình được đánh giá trên nhiều tập _validation_ khác nhau. Một cách thường đường sử dụng là chia tập training ra \\(k\\) tập con không có phần tử chung, có kích thước gần bằng nhau. Tại mỗi lần kiểm thử , được gọi là _run_, một trong số \\(k\\) tập con được lấy ra làm _validate set_. Mô hình sẽ được xây dựng dựa vào hợp của \\(k-1\\) tập con còn lại. Mô hình cuối được xác định dựa trên trung bình của các _train error_ và _validation error_. Cách làm này còn có tên gọi là __k-fold cross validation__.
 
 Khi \\(k\\) bằng với số lượng phần tử trong tập _training_ ban đầu, tức mỗi tập con có đúng 1 phần tử, ta gọi kỹ thuật này là __leave-one-out__.
 
@@ -210,7 +210,7 @@ J_{\text{reg}}(\theta) = J(\theta) + \lambda R(\theta)
 Nhắc lại rằng \\(\theta\\) được dùng để ký hiệu các biến trong mô hình, chẳng hạn như các hệ số \\(\mathbf{w}\\) trong Neural Networks. \\(J(\theta)\\) ký hiệu cho hàm mất mát (_loss function_) và \\(R(\theta)\\) là số hạng _regularization_. \\(\lambda\\) thường là một số dương để cân bằng giữa hai đại lượng ở vế phải.
 
 
-Việc tối thiểu _regularized loss function_, nói một cách tương đối, đồng nghĩa với việc tối thiểu cả _loss function_ và số hạng _regularization_. Tôi dùng cụm "nói một cách tương đối" vì nghiệm của bài toán tối ưu _loss function_ và __regularized loss function__ là khác nhau.  Chúng ta vẫn mong muốn rằng sự khác nhau này là nhỏ, vì vậy tham số regularization (_regularizaton parameter_) \\(\lambda\\) thường được chọn là một số nhỏ để biểu thức regularization không làm giảm quá nhiều chất lượng của nghiệm.
+Việc tối thiểu _regularized loss function_, nói một cách tương đối, đồng nghĩa với việc tối thiểu cả _loss function_ và số hạng _regularization_. Tôi dùng cụm "nói một cách tương đối" vì nghiệm của bài toán tối ưu _loss function_ và __regularized loss function__ là khác nhau.  Chúng ta vẫn mong muốn rằng sự khác nhau này là nhỏ, vì vậy tham số regularization (_regularization parameter_) \\(\lambda\\) thường được chọn là một số nhỏ để biểu thức regularization không làm giảm quá nhiều chất lượng của nghiệm.
 
 Với các mô hình Neural Networks, một số kỹ thuật regularization thường được sử dụng là:
 
@@ -228,11 +228,11 @@ _Nếu bạn đọc chưa quen thuộc với khái niệm norm, bạn được k
 
 Hàm số này có một vài đặc điểm đang lưu ý:
 
-* Thứ nhất, \\(\\|\mathbf{w}\\|\_2^2\\) là một hàm số _rất mượt_, tức có đạo hàm tại mọi , đạo hàm của nó đơn giản là \\(\mathbf{w}\\), vì vậy đạo hàm của _regularized loss function_ cũng rất dễ tính, chúng ta có thể hoàn toàn dùng các phương pháp dựa trên gradient để cập nhật nghiệm. Cụ thể:
+* Thứ nhất, \\(\\|\mathbf{w}\\|\_2^2\\) là một hàm số _rất mượt_, tức có đạo hàm tại mọi điểm, đạo hàm của nó đơn giản là \\(\mathbf{w}\\), vì vậy đạo hàm của _regularized loss function_ cũng rất dễ tính, chúng ta có thể hoàn toàn dùng các phương pháp dựa trên gradient để cập nhật nghiệm. Cụ thể:
 \\[
 \frac{\partial J_{\text{reg}} }{\partial \mathbf{w}} = \frac{\partial J}{\partial \mathbf{w}} + \lambda \mathbf{w}
 \\]
-* Thứ hai, việc tối thiểu \\(\\|\mathbf{w}\\|\_2^2\\) đồng nghĩa với việc khiến cho các giá trị của hệ số \\(\mathbf{w}\\) trở nên nhỏ gần với 0. Với Polynomial Regression, việc các hệ số này nhỏ có thể giúp các hệ số ứng với các số hạng bậc cao là nhỏ, giúp tránh overfitting. Với Multi-layer Pereceptron, việc các hệ số này nhỏ giúp cho nhiều hệ số trong các ma trận trọng số là nhỏ. Điều này tương ứng với việc số lượng các hidden units _hoạt động_ (khác không) là nhỏ, cũng giúp cho MLP tránh được hiện tượng overfitting.
+* Thứ hai, việc tối thiểu \\(\\|\mathbf{w}\\|\_2^2\\) đồng nghĩa với việc khiến cho các giá trị của hệ số \\(\mathbf{w}\\) trở nên nhỏ gần với 0. Với Polynomial Regression, việc các hệ số này nhỏ có thể giúp các hệ số ứng với các số hạng bậc cao là nhỏ, giúp tránh overfitting. Với Multi-layer Perceptron, việc các hệ số này nhỏ giúp cho nhiều hệ số trong các ma trận trọng số là nhỏ. Điều này tương ứng với việc số lượng các hidden units _hoạt động_ (khác không) là nhỏ, cũng giúp cho MLP tránh được hiện tượng overfitting.
 
 \\(l_2\\) regularization là kỹ thuật được sử dụng nhiều nhất để giúp Neural Networks tránh được overfitting. Nó còn có tên gọi khác là __weight decay__. _Decay_ có nghĩa là _tiêu biến_.
 
@@ -348,7 +348,7 @@ R(\mathbf{W}) = \\|\mathbf{w}\\|\_1 = \sum_{i=0}^d \|w\_i\|
 
 Norm 1 là tổng các trị tuyệt đối của tất cả các phần tử. Người ta đã chứng minh được rằng tối thiểu norm 1 sẽ dẫn tới nghiệm có nhiều phần tử bằng 0. Ngoài ra, vì norm 1 là một _norm thực sự_ (proper norm) nên hàm số này là _convex_, và hiển nhiên là liên tục, việc giải bài toán này dễ hơn việc giải bài toán tổi thiểu norm 0. Về \\(l_1\\) regularization, bạn đọc có thể đọc thêm trong [lecture note](\\(l_1\\) regularization) này. Việc giải bài toán \\(l_1\\) regularization nằm ngoài mục đích của tôi trong bài viết này. Tôi hứa sẽ quay lại phần này sau. (Vì đây là phần chính trong nghiên cứu của tôi).
 
-Trong Thống Kê, việc sử dụng \\(l_1\\) regularization còn được gọi là [LASSO](https://en.wikipedia.org/wiki/Lasso_(statistics)) (Least Absolute Shrinkage and Selection Operator)).
+Trong Thống Kê, việc sử dụng \\(l_1\\) regularization còn được gọi là [LASSO](https://en.wikipedia.org/wiki/Lasso_(statistics)) (Least Absolute Shrinkage and Selection Operator).
 
 Khi cả \\(l_2\\) và \\(l_1\\) regularization được sử dụng, ta có mô hình gọi là [Elastic Net Regression](https://en.wikipedia.org/wiki/Elastic_net_regularization).
 
@@ -365,7 +365,7 @@ Trong [sklearn](http://scikit-learn.org/stable/modules/generated/sklearn.linear_
 ## 4. Các phương pháp khác
 Ngoài các phương pháp đã nêu ở trên, với mỗi mô hình, nhiều phương pháp tránh overfitting khác cũng được sử dụng. Điển hình là [Dropout trong Deep Neural Networks mới được đề xuất gần đây](http://jmlr.org/papers/volume15/srivastava14a/srivastava14a.pdf). Một cách ngắn gọn, dropout là một phương pháp _tắt_ ngẫu nhiên các units trong Networks. _Tắt_ tức cho các unit giá trị bằng không và tính toán feedforward và backpropagation bình thường trong khi training. Việc này không những giúp lượng tính toán giảm đi mà còn làm giảm việc overffitng. Tôi xin được quay lại vấn đề này nếu có dịp nói  sâu về Deep Learning trong tương lai.
 
-Bạn đọc có thể tìm đọc thêm với các từ khóa: [pruning](https://en.wikipedia.org/wiki/Pruning_(decision_trees)) (tránh overftting trong Decision Trees), [VC dimension](https://en.wikipedia.org/wiki/VC_dimension) (đo độ phức tạp của mô hình, độ phức tạp càng lớn thì càng dễ bị overfitting).
+Bạn đọc có thể tìm đọc thêm với các từ khóa: [pruning](https://en.wikipedia.org/wiki/Pruning_(decision_trees)) (tránh overfitting trong Decision Trees), [VC dimension](https://en.wikipedia.org/wiki/VC_dimension) (đo độ phức tạp của mô hình, độ phức tạp càng lớn thì càng dễ bị overfitting).
 
 <a name="-tom-tat-noi-dung"></a>
 
