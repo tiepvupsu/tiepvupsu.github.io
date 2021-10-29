@@ -176,7 +176,7 @@ thấp hơn. Ví dụ, vector ban đầu có số chiều là 784, chọn _ma tr
 thước (100x784), khi đó nếu nhân ma trận chéo này với vector ban đầu, ta sẽ được
 một vector mới có số chiều là 100, nhỏ hơn số chiều ban đầu rất nhiều. Lúc này,
 có thể ta không có tên gọi cho mỗi feature nữa vì các feature ở vector ban đầu
-đã được trộn lẫn với nhau theo một tỉ lệ nào đó rồi lưu và vector mới này. Mỗi
+đã được trộn lẫn với nhau theo một tỉ lệ nào đó rồi lưu vào vector mới này. Mỗi
 thành phần của vector mới này được coi là một feature (không tên).
 
 Việc chọn một ma trận chiếu ngẫu nhiên đôi khi mang lại kết quả tệ không mong
@@ -235,11 +235,11 @@ Có một vài điều cần lưu ý trong BoW:
 
 * Thi thoảng có những từ hiếm gặp không nằm trong từ điển, vậy ta sẽ làm gì? Một cách thường được dùng là _mở rộng_ vector đặc trưng thêm 1 phần tử, gọi là phẩn tử `<Unknown>`. Mọi từ không có trong từ điền đều được coi là `<Unknown>`.
 
-* Nghĩ kỹ một chút, những từ hiếm đôi khi lại mang những thông tin qua trọng nhất mà chỉ loại văn bản đó có. Đây là một nhược điểm của BoW. Có một phương pháp cải tiến khác giúp khắc phục nhược điểm này có tên là Term Frequency-Inverse Document Frequency (TF-IDF) dùng để xác định tầm quan trọng của một từ trong một văn bản dựa trên toàn bộ văn bản trong cơ sở dữ liệu (corpus). Bạn đọc muốn tìm hiểu thêm có thể xem [5 Algorithms Every Web Developer Can Use and Understand, section 5.](https://www.gitbook.com/book/lizrush/algorithms-for-webdevs-ebook/details)
+* Nghĩ kỹ một chút, những từ hiếm đôi khi lại mang những thông tin quan trọng nhất mà chỉ loại văn bản đó có. Đây là một nhược điểm của BoW. Có một phương pháp cải tiến khác giúp khắc phục nhược điểm này có tên là Term Frequency-Inverse Document Frequency (TF-IDF) dùng để xác định tầm quan trọng của một từ trong một văn bản dựa trên toàn bộ văn bản trong cơ sở dữ liệu (corpus). Bạn đọc muốn tìm hiểu thêm có thể xem [5 Algorithms Every Web Developer Can Use and Understand, section 5.](https://www.gitbook.com/book/lizrush/algorithms-for-webdevs-ebook/details)
 
 * Nhược điểm lớn nhất của BoW là nó không mang thông tin về thứ tự của các từ. Cũng như sự liên kết giữa các câu, các đoạn văn trong văn bản. Ví dụ, ba câu sau đây: "_Em yêu anh không?_", "_Em không yêu anh_", và "_Không, (nhưng) anh yêu em_" khi được trích chọn đặc trưng bằng BoW sẽ cho ra ba vector giống hệt nhau, mặc dù ý nghĩa khác hẳn nhau.
 
-**Bonus:** hình dưới đay là tần suất sử dụng các từ (coi mỗi âm tiết là một từ) trong Truyện Kiều ([theo bản này](https://bitbucket.org/tiepvupsu/vietnamese/src/c6f3af6050f8ca911ed0fa209220ce3c99010075/TruyenKieu2.txt?at=master&fileviewer=file-view-default)) nếu ta chỉ sử dụng 30 từ có tần suất cao nhất. :
+**Bonus:** hình dưới đây là tần suất sử dụng các từ (coi mỗi âm tiết là một từ) trong Truyện Kiều ([theo bản này](https://bitbucket.org/tiepvupsu/vietnamese/src/c6f3af6050f8ca911ed0fa209220ce3c99010075/TruyenKieu2.txt?at=master&fileviewer=file-view-default)) nếu ta chỉ sử dụng 30 từ có tần suất cao nhất. :
 <div class="imgcap">
 <img src ="\assets\FeatureEngineering\truyenkieu.png" align = "center" width = "400">
 <div class = "thecap">Hình 2: Bag of Words cho Truyện Kiều với 30 từ có tần suất cao nhất.</div>
@@ -282,7 +282,7 @@ Tương tự thế, với ảnh là ô tô, các patch thu được có thể l�
 <div class = "thecap">Hình 4: Bag of Words cho ảnh ô tô. (Nguồn: tôi cố gắng tìm nguồn cho hình này nhưng tất cả các tài liệu tôi tìm được đều ghi "Source: B. Leibe", tôi cũng xin được trích nguồn tương tự)</div>
 </div> 
 
-Có một câu hỏi đặt ra là, trong xử lý văn bản, hai từ được coi là như nhau nếu nó được biểu diễn bởi các ký tự giống nhau. Vậy trong xử lý ảnh, hai patchés được coi là như nhau khi nào? Khi mọi pixel trong hai patches có giá trị bằng nhau sao? 
+Có một câu hỏi đặt ra là, trong xử lý văn bản, hai từ được coi là như nhau nếu nó được biểu diễn bởi các ký tự giống nhau. Vậy trong xử lý ảnh, hai patches được coi là như nhau khi nào? Khi mọi pixel trong hai patches có giá trị bằng nhau sao? 
 
 Câu trả lời là không. Xác suất để hai patches giống hệt nhau từng pixel là rất thấp vì có thể một phần của vật thể trong một patch bị lệch đi vài pixel so với phần đó trong patch kia; hoặc phần vật thể trong patch bị méo, hoặc có độ sáng khác nhau, mặc dù ta vẫn nhìn thấy hai patches đó _rất giống nhau_. Vậy thì hai patch được coi là như nhau khi nào? Và _từ điển_ ở đây được định nghĩa như thế nào? 
 
