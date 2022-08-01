@@ -38,7 +38,7 @@ Bạn sẽ hiểu rõ hơn nếu đã đọc các bài:
     - [2.1. Nhắc lại Softmax Regression.](#-nhac-lai-softmax-regression)
     - [2.3. Hinge losss tổng quát cho Multi-class SVM](#-hinge-losss-tong-quat-cho-multi-class-svm)
     - [2.4. Regularization](#-regularization)
-    - [2.5. Chọn giá trị \\\(\Delta\\\)](#-chon-gia-tri-\\\delta\\)
+    - [2.5. Chọn giá trị \newline(\Delta\newline)](#-chon-gia-tri-\newlinedelta\\)
     - [2.6. Soft Margin SVM là một trường hợp đặc biệt của Multi-class SVM](#-soft-margin-svm-la-mot-truong-hop-dac-biet-cua-multi-class-svm)
 - [3. Tinh toán hàm mất mát và đạo hàm của nó](#-tinh-toan-ham-mat-mat-va-dao-ham-cua-no)
     - [3.1. Tính hàm mất mát và đạo hàm của nó bằng cách _naive_](#-tinh-ham-mat-mat-va-dao-ham-cua-no-bang-cach-naive)
@@ -233,7 +233,7 @@ Có một _bug_ trong lỗi này, chúng ta cùng phân tích tiếp.
 với \\(\|\|\bullet\|\|\_F\\) là [Frobenius norm](/math/#chuan-cua-ma-tran), và \\(\lambda\\) là một giá trị dương giúp cân bằng giữa _data loss_ và _regularization loss_, thường được chọn bằng [cross-validation](/2017/03/04/overfitting/#-cross-validation).
 
 
-<a name="-chon-gia-tri-\\\delta\\"></a>
+<a name="-chon-gia-tri-\newlinedelta\\"></a>
 
 ### 2.5. Chọn giá trị \\(\Delta\\)
 
@@ -354,14 +354,14 @@ Về cách tính _gradient_ cho phần _data loss_, mặc dù [hàm \\(\max\\) l
 \frac{\partial }{\partial \mathbf{w}\_{y_n}}\max(0, 1 - \mathbf{w}\_{y_n}^T \mathbf{x}\_n + \mathbf{w}\_j^T\mathbf{x}\_n) &=& 
 \left\\{
 \begin{matrix}
-0 & \text{if}& 1 - \mathbf{w}\_{y_n}^T \mathbf{x}\_n + \mathbf{w}\_j^T\mathbf{x}\_n < 0 \\\
+0 & \text{if}& 1 - \mathbf{w}\_{y_n}^T \mathbf{x}\_n + \mathbf{w}\_j^T\mathbf{x}\_n < 0 \newline
 -\mathbf{x}\_n & \text{if} &1 - \mathbf{w}\_{y_n}^T \mathbf{x}\_n + \mathbf{w}\_j^T\mathbf{x}\_n > 0
 \end{matrix}
-\right. && ~~~~(5)\\\
+\right. && ~~~~(5)\newline
 \frac{\partial }{\partial \mathbf{w}\_{j}}\max(0, 1 - \mathbf{w}_{y_n}^T \mathbf{x}_n + \mathbf{w}_j^T\mathbf{x}_n) &=& 
 \left\\{
 \begin{matrix}
-0 & \text{if}& 1 - \mathbf{w}\_{y_n}^T \mathbf{x}\_n + \mathbf{w}\_j^T\mathbf{x}\_n < 0 \\\
+0 & \text{if}& 1 - \mathbf{w}\_{y_n}^T \mathbf{x}\_n + \mathbf{w}\_j^T\mathbf{x}\_n < 0 \newline
 \mathbf{x}\_n & \text{if} &1 - \mathbf{w}\_{y_n}^T \mathbf{x}\_n + \mathbf{w}\_j^T\mathbf{x}\_n > 0
 \end{matrix}
 \right. && ~~~~(6)

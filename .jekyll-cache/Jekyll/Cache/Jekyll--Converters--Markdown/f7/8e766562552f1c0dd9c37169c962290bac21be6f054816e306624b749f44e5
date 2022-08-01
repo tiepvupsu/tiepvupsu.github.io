@@ -1,0 +1,556 @@
+I"��<p><strong>Trong trang này:</strong></p>
+
+<!-- MarkdownTOC -->
+
+<ul>
+  <li><a href="#-gioi-thieu">1. Giới thiệu</a></li>
+  <li><a href="#-linear-discriminant-analysis-cho-bai-toan-voi--classes">2. Linear Discriminant Analysis cho bài toán với 2 classes</a>
+    <ul>
+      <li><a href="#-y-tuong-co-ban">2.1. Ý tưởng cơ bản</a></li>
+      <li><a href="#-xay-dung-ham-muc-tieu">2.2. Xây dựng hàm mục tiêu</a></li>
+      <li><a href="#-nghiem-cua-bai-toan-toi-uu">2.3. Nghiệm của bài toán tối ưu</a></li>
+    </ul>
+  </li>
+  <li><a href="#-linear-discriminant-analysis-cho-multi-class-classification-problems">3. Linear Discriminant Analysis cho multi-class classification problems</a>
+    <ul>
+      <li><a href="#-xay-dung-ham-mat-mat">3.1. Xây dựng hàm mất mát</a>
+        <ul>
+          <li><a href="#-within-class-nho">3.1.1. Within-class nhỏ</a></li>
+          <li><a href="#-between-class-lon">3.1.2. Between-class lớn</a></li>
+        </ul>
+      </li>
+      <li><a href="#-ham-mat-mat-cho-multi-class-lda">3.2. Hàm mất mát cho multi-class LDA</a></li>
+    </ul>
+  </li>
+  <li><a href="#-vi-du-tren-python">4. Ví dụ trên Python</a>
+    <ul>
+      <li><a href="#-lda-voi--classes">4.1. LDA với 2 classes</a></li>
+    </ul>
+  </li>
+  <li><a href="#thao-luan">5.Thảo luận</a></li>
+  <li><a href="#-tai-lieu-tham-khao">6. Tài liệu tham khảo</a></li>
+</ul>
+
+<!-- /MarkdownTOC -->
+
+<p><a name="-gioi-thieu"></a></p>
+
+<h2 id="1-giới-thiệu">1. Giới thiệu</h2>
+<p>Trong hai bài viết trước, tôi đã giới thiệu về thuật toán giảm chiều dữ liệu được sử dụng rộng rãi nhất - Principle Component Analysis (PCA). Như đã đề cập, PCA là một phương pháp thuộc loại <a href="/2016/12/27/categories/#unsupervised-learning-hoc-khong-giam-sat">unsupervised learning</a>, tức là nó chỉ sử dụng các vector mô tả dữ liệu mà không dùng tới labels, nếu có, của dữ liệu. Trong bài toán classification, dạng điển hình nhất của <a href="/2016/12/27/categories/#supervised-learning-hoc-co-giam-sat">supervised learning</a>, việc sử dụng labels sẽ mang lại kết quả phân loại tốt hơn.</p>
+
+<p>Nhắc lại một lần nữa, <a href="http://machinelearningcoban.com/2017/06/15/pca/#-principal-component-analysis">PCA là phương pháp giảm chiều dữ liệu sao cho lượng thông tin về dữ liệu, thể hiện ở tổng phương sai, được giữ lại là nhiều nhất</a>. Tuy nhiên, trong nhiều trường hợp, ta không cần giữ lại lượng thông tin lớn nhất mà chỉ cần giữ lại thông tin cần thiết cho riêng bài toán. Xét ví dụ về bài toán phân lớp với 2 classes được mô tả trong Hình 1.</p>
+
+<hr />
+
+<div class="imgcap">
+<img src="/assets/29_lda/lda.png" align="center" width="600" />
+</div>
+
+<div class="thecap" style="text-align: justify">Hình 1: Chiếu dữ liệu lên các đường thẳng khác nhau. Có hai lớp dữ liệu minh hoạ bởi các điểm màu xanh và đỏ. Dữ liệu được giảm số chiều về 1 bằng cách chiếu chúng lên các đường thẳng khác nhau \(d_1\) và \(d_2\). Trong hai cách chiều này, phương của \(d_1\) gần giống với phương của thành phần chính thứ nhất của dữ liệu, phương của \(d_2\) gần với thành phần phụ của dữ liệu nếu dùng PCA. Khi chiếu lên \(d_1\), các điểm màu đỏ và xanh bị chồng lấn lên nhau, khiến cho việc phân loại dữ liệu là không khả thi trên đường thẳng này. Ngược lại, khi được chiếu lên \(d_2\), dữ liệu của hai class được chia thành các cụm tương ứng tách biệt nhau, khiến cho việc classification trở nên đơn giản hơn và hiệu quả hơn. Các đường cong hình chuông thể hiện xấp xỉ phân bố xác suất của dữ liệu hình chiếu trong mỗi class.</div>
+<hr />
+
+<p>Trong Hình 1, ta giả sử rằng dữ liệu được chiếu lên 1 đường thẳng và mỗi điểm được đại diện bởi hình chiếu của nó lên đường thẳng kia. Như vậy, từ dữ liệu nhiều chiều, ta đã giảm nó về 1 chiều. Câu hỏi đặt ra là, đường thẳng cần có phương như thế nào để hình chiếu của dữ liệu trên đường thẳng này <em>giúp ích cho việc classification nhất</em>? Việc classification đơn giản nhất có thể được hiểu là việc tìm ra một ngưỡng giúp phân tách hai class một cách đơn giản và đạt kết quả tốt nhất.</p>
+
+<p>Xét hai đường thằng \(d_1\) và \(d_2\). Trong đó phương của \(d_1\) gần với phương của thành phần chính nếu làm PCA, phương của \(d_2\) gần với phương của thành phần phụ tìm được bằng PCA. Nếu ra làm giảm chiều dữ liệu bằng PCA, ta sẽ thu được dữ liệu gần với các điểm được chiếu lên \(d_1\). Lúc này việc phân tách hai class trở nên phức tạp vì các điểm đại diện cho hai classes chồng lấn lên nhau. Ngược lại, nếu ta chiếu dữ liệu lên đường thẳng gần với thành phần phụ tìm được bởi PCA, tức \(d_2\), các điểm hình chiếu nằm hoàn toàn về hai phía khác nhau của điểm màu lục trên đường thẳng này. Với bài toán classification, việc chiếu dữ liệu lên \(d_2\) vì vậy sẽ mang lại hiệu quả hơn. Việc phân loại một điểm dữ liệu mới sẽ được xác định nhanh chóng bằng cách so sánh hình chiếu của nó lên \(d_2\) với điểm màu xanh lục này.</p>
+
+<p>Qua ví dụ trên ta thấy, <strong>không phải việc giữ lại thông tin nhiều nhất sẽ luôn mang lại kết quả tốt nhất.</strong> Chú ý rằng kết quả của phân tích trên đây không có nghĩa là thành phần phụ mang lại hiệu quả tốt hơn thành phần chính, nó chỉ là một trường hợp đặc biệt. Việc chiếu dữ liệu lên đường thẳng nào cần nhiều phân tích cụ thể hơn nữa. Cũng xin nói thêm, hai đường thằng \(d_1\) và \(d_2\) trên đây không vuông góc với nhau, tôi chỉ chọn ra hai hướng gần với các thành phần chính và phụ của dữ liệu để minh hoạ. Nếu bạn cần đọc thêm về thành phần chính/phụ, bạn sẽ thấy <a href="/2017/06/15/pca/">Bài 27</a> và <a href="/2017/06/21/pca2/">Bài 28</a> về Principal Component Analysis (Phân tích thành phần chính) có ích.</p>
+
+<p>Linear Discriminant Analysis (LDA) được ra đời nhằm giải quyết vấn đề này. LDA là một phương pháp giảm chiều dữ liệu cho bài toán classification. LDA có thể được coi là một phương pháp giảm chiều dữ liệu (dimensionality reduction), và cũng có thể được coi là một phương pháp phân lớp (classification), và cũng có thể được áp dụng đồng thời cho cả hai, tức giảm chiều dữ liệu sao cho việc phân lớp hiệu quả nhất. Số chiều của dữ liệu mới là nhỏ hơn hoặc bằng \(C-1\) trong đó \(C\) là số lượng classes. Từ ‘Discriminant’ được hiểu là <em>những thông tin đặc trưng cho mỗi class, khiến nó không bị lẫn với các classes khác</em>. Từ ‘Linear’ được dùng vì cách giảm chiều dữ liệu được thực hiện bởi một ma trận chiếu (projection matrix), là một phép biến đổi tuyến tính (linear transform).</p>
+
+<p>Trong Mục 2 dưới đây, tôi sẽ trình bày về trường hợp binary classification, tức có 2 classes. Mục 3 sẽ tổng quát lên cho trường hợp với nhiều classes hơn 2. Mục 4 sẽ có các ví dụ và code Python cho LDA.</p>
+
+<p><a name="-linear-discriminant-analysis-cho-bai-toan-voi--classes"></a></p>
+
+<h2 id="2-linear-discriminant-analysis-cho-bài-toán-với-2-classes">2. Linear Discriminant Analysis cho bài toán với 2 classes</h2>
+<p><a name="-y-tuong-co-ban"></a></p>
+
+<h3 id="21-ý-tưởng-cơ-bản">2.1. Ý tưởng cơ bản</h3>
+<p>Mọi phương pháp classification đều được bắt đầu với bài toán binary classification, và LDA cũng không phải ngoại lệ.</p>
+
+<p>Quay lại với Hinh 1, các đường hình chuông thể hiện đồ thị của các hàm mật độ xác suất (probability density function - pdf) của dữ liệu được chiếu xuống theo từng class. <em>Phân phối chuẩn ở đây được sử dụng như là một đại diện, dữ liệu không nhất thiết luôn phải tuân theo phân phối chuẩn.</em></p>
+
+<p>Độ rộng của mỗi đường hình chuông thể hiện độ lệch chuẩn của dữ liệu. Dữ liệu càng tập trung thì độ lệch chuẩn càng nhỏ, càng phân tán thì độ lệch chuẩn càng cao. Khi được chiếu lên \(d_1\), dữ liệu của hai classes bị phân tán quá nhiều, khiến cho chúng bị trộn lẫn vào nhau. Khi được chiếu lên \(d_2\), mỗi classes đều có độ lệch chuẩn nhỏ, khiến cho dữ liệu trong từng class tập trung hơn, dẫn đến kết quả tốt hơn.</p>
+
+<p>Tuy nhiên, việc độ lệch chuẩn nhỏ trong mỗi class chưa đủ để đảm bảo độ <em>Discriminant</em> của dữ liệu. Xét các ví dụ trong Hình 2.</p>
+
+<hr />
+
+<div class="imgcap">
+<img src="/assets/29_lda/lda4.png" align="center" width="800" />
+</div>
+
+<div class="thecap" style="text-align: justify">Hình 2: Khoảng cách giữa các kỳ vọng và tổng các phương sai ảnh hưởng tới độ <em>discriminant</em> của dữ liệu. a) Khoảng cách giữa hai kỳ vọng là lớn nhưng phương sai trong mỗi class cũng lớn, khiến cho hai phân phối chồng lấn lên nhau (phần màu xám). b) Phương sai cho mỗi class là rất nhỏ nhưng hai kỳ vọng quá gần nhau, khiến khó phân biệt 2 class. c) Khi phương sai đủ nhỏ và khoảng cách giữa hai kỳ vọng đủ lớn, ta thấy rằng dữ liệu <em>discriminant</em> hơn.</div>
+<hr />
+
+<p>Hình 2a) giống với dữ liệu khi chiếu lên \(d_1\) ở Hình 1. Cả hai class đều quá phân tán khiến cho tỉ lệ chồng lấn (phần diện tích màu xám) là lớn, tức dữ liệu chưa thực sự <em>discriminative</em>.</p>
+
+<p>Hình 2b) là trường hợp khi độ lệch chuẩn của hai class đều nhỏ, tức dữ liệu tập trung hơn. Tuy nhiên, vấn đề với trường hợp này là khoảng cách giữa hai class, được đo bằng khoảng cách giữa hai kỳ vọng \(m_1\) và \(m_2\), là quá nhỏ, khiến cho phần chồng lấn cũng chiếm môt tỉ lệ lớn, và tất nhiên, cũng không tốt cho classification.</p>
+
+<p>Hình 2c) là trường hợp khi hai độ lệch chuẩn là nhỏ và khoảng cách giữa hai kỳ vọng là lớn, phần chống lấn nhỏ không đáng kể.</p>
+
+<p>Có thể bạn đang tự hỏi, độ lệch chuẩn và khoảng cách giữa hai kỳ vọng đại diện cho các tiêu chí gì:</p>
+
+<ul>
+  <li>
+    <p>Như đã nói, độ lệch chuẩn nhỏ thể hiện việc dữ liệu ít phân tán. Điều này có nghĩa là dữ liệu trong mỗi class có xu hướng giống nhau. Hai phương sai \(s_1^2, s_2^2\) còn được gọi là các <strong>within-class variances</strong>.</p>
+  </li>
+  <li>
+    <p>Khoảng cách giữa các kỳ vọng là lớn chứng tỏ rằng hai classes nằm xa nhau, tức dữ liệu giữa các classes là khác nhau nhiều. Bình phương khoảng cách giữa hai kỳ vọng \((m_1 - m_2)^2\) còn được gọi là <strong>between-class variance</strong>.</p>
+  </li>
+</ul>
+
+<p>Hai classes được gọi là <em>discriminative</em> nếu hai class đó cách xa nhau (between-class variance lớn) và dữ liệu trong mỗi class có xu hướng giống nhau (within-class variance nhỏ). Linear Discriminant Analysis là thuật toán đi tìm một phép chiếu sao cho tỉ lệ giữa <em>between-class variance</em> và <em>within-class variance</em> lớn nhất có thể.</p>
+
+<p><a name="-xay-dung-ham-muc-tieu"></a></p>
+
+<h3 id="22-xây-dựng-hàm-mục-tiêu">2.2. Xây dựng hàm mục tiêu</h3>
+<p>Giả sử rằng có \(N\) điểm dữ liệu \(\mathbf{x}_1, \mathbf{x}_2, \dots, \mathbf{x}_N\) trong đó \(N_1 &lt; N\) điểm đầu tiên thuộc class thứ nhất, \(N_2 = N - N_1\) điểm cuối cùng thuộc class thứ hai. Ký hiệu \(\mathcal{C}_1 = \{n | 1 \leq n \leq N_1\}\) là tập hợp các chỉ số của các điểm thuộc class 1 và \(\mathcal{C}_2 = \{m| N_1 + 1 \leq m \leq N\newline})\) là tập hợp các chỉ số của các điểm thuộc class 2. Phép chiếu dữ liệu xuống 1 đường thẳng có thể được mô tả bằng một vector hệ số \(\mathbf{w}\), giá trị tương ứng của mỗi điểm dữ liệu mới được cho bởi:
+\[
+y_n = \mathbf{w}^T\mathbf{x}_n, 1 \leq n \leq N
+\]</p>
+
+<p>Vector kỳ vọng của mỗi class:
+\[
+\mathbf{m}_k = \frac{1}{N_k}\sum_{n \in \mathcal{C}_k}\mathbf{x}_n,~~~ k = 1, 2 ~~~~ (1)
+\]</p>
+
+<p>Khi đó:
+\[
+m_1 - m_2 = \frac{1}{N_1}\sum_{i \in \mathcal{C}_1}y_i - \frac{1}{N_2}\sum_{j \in \mathcal{C}_2}y_j =  \mathbf{w}^T(\mathbf{m}_1 - \mathbf{m}_2) ~~~~ (2)
+\]</p>
+
+<p>Các <strong>within-class variances</strong> được định nghĩa là:
+\[
+s_k^2 = \sum_{n \in \mathcal{C}_k} (y_n - m_k)^2, ~~ k = 1, 2 ~~~~ (3)
+\]</p>
+
+<p><em>Chú ý rằng các within-class variances ở đây không được lấy trung bình như variance thông thường. Điều này được lý giải là tầm quan trọng của mỗi within-class variance nên tỉ lệ thuận với số lượng điểm dữ liệu trong class đó, tức within-class variance bằng variance nhân với số điểm trong class đó. Thế nên ta không chia trung bình nữa.</em></p>
+
+<p>LDA là thuật toán đi tìm giá trị lớn nhất của hàm mục tiêu:
+\[
+J(\mathbf{w}) = \frac{(m_1 - m_2)^2}{s_1^2 + s_2^2} ~~~~~~~~~ (4)
+\]</p>
+
+<p>Tiếp theo, chúng ta sẽ đi tìm biểu thức phụ thuộc giữa tử số và mẫu số trong vế phải của \((4)\) vào \(\mathbf{w}\).</p>
+
+<p>Với tử số:
+\[
+\begin{eqnarray}
+(m_1 - m_2)^2 = \mathbf{w}^T \underbrace{(\mathbf{m}_1 - \mathbf{m}_2)(\mathbf{m}_1 - \mathbf{m}_2)^T}_{\mathbf{S}_B} \mathbf{w} = \mathbf{w}^T\mathbf{S}_B \mathbf{w} ~~~~ (5)
+\end{eqnarray}
+\]
+\(\mathbf{S}_B\) còn được gọi là <strong>between-class covariance matrix</strong>. Đây là một ma trận đối xứng nửa xác định dương.</p>
+
+<p>Với mẫu số:</p>
+
+<p>\[
+\begin{eqnarray}
+s_1^2 + s_2^2 &amp;=&amp; \sum_{k=1}^2 \sum_{n \in \mathcal{C}_k} \left(\mathbf{w}^T(\mathbf{x}_n - \mathbf{m}_k)\right)^2 \newline
+&amp;=&amp;\mathbf{w}^T \underbrace{\sum_{k=1}^2 \sum_{n \in \mathcal{C}_k} (\mathbf{x}_n - \mathbf{m}_k)(\mathbf{x}_n - \mathbf{m}_k)^T}_{\mathbf{S}_W} \mathbf{w} = \mathbf{w}^T\mathbf{S}_W \mathbf{w}~~~~~(6)
+\end{eqnarray}
+\]
+\(\mathbf{S}_W\) còn được gọi là <strong>within-class covariance matrix</strong>. Đây cũng là một ma trận đối xứng nửa xác định dương vì nó là tổng của hai ma trận đối xứng nửa xác định dương.</p>
+
+<p>Trong \((5)\) và \((6)\), ta đã sử dụng đẳng thức:
+\[
+(\mathbf{a}^T\mathbf{b})^2 = (\mathbf{a}^T\mathbf{b})(\mathbf{a}^T\mathbf{b}) = \mathbf{a}^T\mathbf{b}\mathbf{b}^T\mathbf{a}
+\]
+với \(\mathbf{a}, \mathbf{b}\) là hai vectors cùng chiều bất kỳ.</p>
+
+<!-- Như vậy, hàm mục tiêu có thể được viết lại thành:  -->
+<p>Như vậy, bài toán tối ưu cho LDA trở thành:
+\[
+\mathbf{w}  = \arg\max_{\mathbf{w}}\frac{\mathbf{w}^T\mathbf{S}_B \mathbf{w}}{\mathbf{w}^T\mathbf{S}_W\mathbf{w}} ~~~~~~~~ (7)
+\]</p>
+
+<p><a name="-nghiem-cua-bai-toan-toi-uu"></a></p>
+
+<h3 id="23-nghiệm-của-bài-toán-tối-ưu">2.3. Nghiệm của bài toán tối ưu</h3>
+<p>Nghiệm \(\mathbf{w}\) của \((7)\) sẽ là nghiệm của phương trình đạo hàm hàm mục tiêu bằng 0. Sử dụng <a href="http://127.0.0.1:4000/math/#chain-rules">chain rule</a> cho <a href="http://127.0.0.1:4000/math/#-dao-ham-cua-ham-nhieu-bien">đạo hàm hàm nhiều biến</a> và công thức \(\nabla_{\mathbf{w}}\mathbf{w} \mathbf{A}\mathbf{w} = 2\mathbf{Aw}\) nếu \(\mathbf{A}\) là một ma trận đối xứng, ta có:</p>
+
+<p>\[
+\begin{eqnarray}
+\nabla_{\mathbf{w}} J(\mathbf{w}) &amp;=&amp; \frac{1}{(\mathbf{w}^T\mathbf{S}_{W}\mathbf{w})^2} \left(
+2\mathbf{S}_B \mathbf{w} (\mathbf{w}^T\mathbf{S}_{W}\mathbf{w}) - 2\mathbf{w}^T\mathbf{S}_{B}\mathbf{w}^T\mathbf{S}_W \mathbf{w}
+\right) = \mathbf{0}&amp; (8)\newline
+\Leftrightarrow \mathbf{S}_B\mathbf{w} &amp;=&amp; \frac{\mathbf{w}^T\mathbf{S}_B \mathbf{w}}{\mathbf{w}^T\mathbf{S}_W\mathbf{w}}\mathbf{S}_W\mathbf{w}&amp; (9) \newline
+\mathbf{S}_W^{-1}\mathbf{S}_B \mathbf{w} &amp;=&amp; J(\mathbf{w})\mathbf{w} &amp; (10)
+\end{eqnarray}
+\]</p>
+
+<hr />
+
+<p><strong>Lưu ý:</strong> Trong \((10)\), ta đã giả sử rằng ma trận \(\mathbf{S}_W\) là khả nghịch. Điều này không luôn luôn đúng, nhưng có một <em>trick</em> nhỏ là ta có thể xấp xỉ \(\mathbf{S}_W\) bởi \( \bar{\mathbf{S}}_W \approx \mathbf{S}_W + \lambda\mathbf{I}\) với \(\lambda\) là một số thực dương nhỏ. Ma trận mới này là khả nghịch vì trị riêng nhỏ nhất của nó bằng với trị riêng nhỏ nhất của \(\mathbf{S}_W\) cộng với \(\lambda\) tức không nhỏ hơn \(\lambda &gt; 0\). Điều này được suy ra từ việc \(\mathbf{S}_W\) là một ma trận nửa xác định dương. Từ đó suy ra \(\bar{\mathbf{S}}_W\) là một ma trận xác định dương vì mọi trị riêng của nó là thực dương, và vì thế, nó khả nghịch. Khi tính toán, ta có thể sử dụng nghịch đảo của \(\bar{\mathbf{S}}_W\).</p>
+
+<p>Kỹ thuật này được sử dụng rất nhiều khi ta cần sử dụng nghịch đảo của một ma trận nửa xác định dương và chưa biết nó có thực sự là xác định dương hay không.</p>
+<hr />
+
+<p>Quay trở lại với \((10)\), vì \(J(\mathbf{w})\) là một số vô hướng, ta suy ra \(\mathbf{w}\) phải là một vector riêng của \(\mathbf{S}_W^{-1}\mathbf{S}_B\) ứng với một trị riêng nào đó. Hơn nữa, giá trị của trị riêng này bằng với \(J(\mathbf{w})\). Vậy, để hàm mục tiêu là lớn nhất thì \(J(\mathbf{w})\) chính là trị riêng lớn nhất của \(\mathbf{S}_W^{-1}\mathbf{S}_B\). Dấu bằng xảy ra khi \(\mathbf{w}\) là vector riêng ứng với trị riêng lớn nhất đó. Bạn đọc có thể hiểu phần này hơn khi xem cách lập trình trên Python ở Mục 4.</p>
+
+<p>Từ có thể thấy ngay rằng nếu \(\mathbf{w}\) là nghiệm của \((7)\) thì \(k\mathbf{w}\) cũng là nghiệm với \(k\) là số thực khác không bất kỳ. Vậy ta có thể chọn \(\mathbf{w}\) sao cho \((\mathbf{m}_1 - \mathbf{m}_2)^T\mathbf{w} = J(\mathbf{w}) = L =\) trị riêng lớn nhất của \(\mathbf{S}_W^{-1}\mathbf{S}_B\) . Khi đó, thay định nghĩa của \(\mathbf{S}_B\) ở \((5)\) vào \((10)\) ta có:</p>
+
+<p>\[
+L \mathbf{w} = \mathbf{S}_{W}^{-1}(\mathbf{m}_1 - \mathbf{m}_2)\underbrace{(\mathbf{m}_1 - \mathbf{m}_2)^T\mathbf{w}}_L =  L\mathbf{S}_{W}^{-1}(\mathbf{m}_1 - \mathbf{m}_2)
+\]
+Điều này có nghĩa là ta có thể chọn:
+\[
+\mathbf{w} = \alpha\mathbf{S}_{W}^{-1}(\mathbf{m}_1 - \mathbf{m}_2) ~~~~ (11)
+\]
+với \(\alpha \neq 0\) bất kỳ.</p>
+
+<p>Biểu thức \((11)\) còn được biết như là <em>Fisher’s linear discriminant</em>, được đặt theo tên nhà khoa học <a href="https://en.wikipedia.org/wiki/Ronald_Fisher">Ronald  Fisher</a>.</p>
+
+<p><a name="-linear-discriminant-analysis-cho-multi-class-classification-problems"></a></p>
+
+<h2 id="3-linear-discriminant-analysis-cho-multi-class-classification-problems">3. Linear Discriminant Analysis cho multi-class classification problems</h2>
+
+<p><a name="-xay-dung-ham-mat-mat"></a></p>
+
+<h3 id="31-xây-dựng-hàm-mất-mát">3.1. Xây dựng hàm mất mát</h3>
+<p>Trong mục này, chúng ta sẽ xem xét trường hợp tổng quát khi có nhiều hơn 2 classes. Giả sử rằng chiều của dữ liệu \(D\) lớn hơn số lượng classes \(C\).</p>
+
+<p>Giả sử rằng chiều mà chúng ta muốn giảm về là \(D’ &lt; D\) và dữ liệu mới ứng với mỗi điểm dữ liệu \(\mathbf{x}\) là:
+\[
+\mathbf{y} = \mathbf{W}^T\mathbf{x}
+\]
+với \(\mathbf{W} \in \mathbb{R}^{D\times D’}\).</p>
+
+<p><em>Chú ý rằng LDA ở đây không sử dụng bias.</em></p>
+
+<p>Một vài ký hiệu:</p>
+<ul>
+  <li>
+    <p>\(\mathbf{X}_k, \mathbf{Y}_k = \mathbf{W}^T\mathbf{X}_k\) lần lượt là ma trận dữ liệu của class \(k\) trong không gian ban đầu và không gian mới với số chiều nhỏ hơn.</p>
+  </li>
+  <li>
+    <p>\(\mathbf{m}_k = \frac{1}{N_k}\sum_{n \in \mathcal{C}_k}\mathbf{x}_k \in \mathbb{R}^{D}\) là vector kỳ vọng của class \(k\) trong không gian ban đầu.</p>
+  </li>
+  <li>
+    <p>\(\mathbf{e}_k = \frac{1}{N_k}\sum_{n \in \mathcal{C}_k} \mathbf{y}_n = \mathbf{W}^T\mathbf{m}_k \in \mathbb{R}^{D’}\) là vector kỳ vọng của class \(k\) trong không gian mới.</p>
+  </li>
+  <li>
+    <p>\(\mathbf{m}\) là vector kỳ vọng của toàn bộ dữ liệu trong không gian ban đầu và \(\mathbf{e}\) là vector kỳ vọng trong không gian mới.</p>
+  </li>
+</ul>
+
+<!-- Lúc này, **within-class covariance matrix** được định nghĩa là:
+\\[
+\mathbf{S}\_W = \sum\_{k = 1}^C \mathbf{S}\_k ~~~ (12)
+\\]
+trong đó:
+\\[
+\begin{eqnarray}
+    \mathbf{S}\_k &=& \sum_{k \in \mathcal{C}\_k} (\mathbf{x}\_n - \mathbf{m}\_k )(\mathbf{x}\_n - \mathbf{m}\_k )^T & (13)\newline
+    \mathbf{m}\_k &=& \frac{1}{N_k} \sum_{n \in \mathcal{C}\_k}\mathbf{x}\_n, ~~ k = 1, 2, \dots, C &(14)
+\end{eqnarray}
+\\]
+
+với \\(\mathcal{C}\_k\\) là tập hợp các chỉ số tương ứng với dữ liệu thuộc lớp thứ \\(k\\) và \\(N_k\\) là số phần tử của \\(\mathcal{C}_k\\).
+
+Biểu thức tổng quá của **between-class covariance matrix** có khác đi một chút. Trước tiên ta xét ma trận hiệp phương sai của toàn bộ dữ liệu:
+\\[
+\mathbf{S}\_T \sum_{n=1}^N (\mathbf{x}\_n - \mathbf{m}) (\mathbf{x}\_n - \mathbf{m})^T ~~~ (13)
+\\]
+với \\(\mathbf{m}\\) là vector kỳ vọng của toàn bộ dữ liệu:
+\\[
+\mathbf{m} = \frac{1}{N} \sum_{n=1}^N\mathbf{x}\_n = \frac{1}{N}\sum\_{k=1}^CN_k\mathbf{m}\_k ~~~ (14)
+\\]
+và \\(N = \sum_{k=1}^C N_k\\) là tổng toàn bộ số điểm dữ liệu trong tập training.
+
+-------------- -->
+
+<p>Một trong những cách xây dựng hàm mục tiêu cho multi-class LDA được minh họa trong Hình 3.</p>
+<hr />
+
+<div>
+<table width="100%" style="border: 0px solid white">
+
+    <tr>
+        <td width="40%" style="border: 0px solid white" align="center">
+        <img style="display:block;" width="100%" src="/assets/29_lda/multi_LDA.png" />
+         </td>
+        <td width="40%" style="border: 0px solid white" align="justify">
+        Hình 3: LDA cho multi-class classification problem. Mục đích cũng là sự khác nhau giữa các thành phần trong 1 class (within-class) là nhỏ và sự khác nhau giữa các classes là lớn. Các điểm dữ liệu có màu khác nhau thể hiện các class khác nhau.
+
+        </td>
+    </tr>
+</table>
+</div>
+<hr />
+
+<p>Độ phân tán của một tập hợp dữ liệu có thể được coi như tổng bình phương khoảng cách từ mỗi điểm tới vector kỳ vọng của chúng. Nếu tất cả các điểm đều gần vector kỳ vọng của chúng thì độ phân tán của tập dữ liệu đó được coi là nhỏ. Ngược lại, nếu tổng này là lớn, tức trung bình các điểm đều xa trung tâm, tập hợp này có thể được coi là có độ phân tán cao.</p>
+
+<p>Dựa vào nhận xét này, ta có thể xây dựng các đại lượng:</p>
+
+<p><a name="-within-class-nho"></a></p>
+
+<h4 id="311-within-class-nhỏ">3.1.1. Within-class nhỏ</h4>
+<p>Within-class variance của class \(k\) có thể được tính như sau:
+\[
+\begin{eqnarray}
+\sigma_k^2 &amp;=&amp; \sum_{n \in \mathcal{C}_k} ||\mathbf{y}_n -\mathbf{e}_k||_F^2 = ||\mathbf{Y}_k - \mathbf{E}_k||_2^2 &amp; (15) \newline
+&amp;=&amp; ||\mathbf{W}^T (\mathbf{X}_k - \mathbf{M}_k) ||_F^2 &amp; (16)\newline
+&amp;=&amp; \text{trace}\left(\mathbf{W}^T (\mathbf{X}_k - \mathbf{M}_k)(\mathbf{X}_k - \mathbf{M}_k)^T \mathbf{W}\right)
+\end{eqnarray}
+\]
+Với \(\mathbf{E}_k\) một ma trận có các cột giống hệt nhau và bằng với vector kỳ vọng \(\mathbf{e}_k\). Có thể nhận thấy \( \mathbf{E}_k = \mathbf{W}^T\mathbf{M}_k\) với \(\mathbf{M}_k\) là ma trận có các cột giống hệt nhau và bằng với vector kỳ vọng \(\mathbf{m}_k\) trong không gian ban đầu.</p>
+
+<p>Vậy đại lượng đo within-class trong multi-class LDA có thể được đo bằng:
+\[
+\begin{eqnarray}
+s_W = \sum_{k = 1}^C \sigma_k^2 &amp;=&amp; \sum_{k=1}^C \text{trace}\left(\mathbf{W}^T (\mathbf{X}_k - \mathbf{M}_k)(\mathbf{X}_k - \mathbf{M}_k)^T \mathbf{W}\right)&amp; (17)\newline
+&amp;=&amp; \text{trace}\left( \mathbf{W}^T\mathbf{S}_W \mathbf{W}\right) &amp; (18)
+\end{eqnarray}
+\]
+với:
+\[
+\mathbf{S}_W = \sum_{k=1}^C ||\mathbf{X}_k- \mathbf{M}_k ||_F^2 = \sum_{k=1}^C \sum_{n \in \mathcal{C}_k} (\mathbf{x}_n - \mathbf{m}_k)(\mathbf{x}_n - \mathbf{m}_k)^T ~~~~~(19)
+\]
+và nó có thể được coi là <strong>within-class covariance matrix của multi-class LDA</strong>. Ma trận \(\mathbf{S}_B\) này là một ma trận nửa xác định dương theo định nghĩa.</p>
+
+<p><a name="-between-class-lon"></a></p>
+
+<h4 id="312-between-class-lớn">3.1.2. Between-class lớn</h4>
+<p>Việc betwwen-class lớn, như đã đề cập, có thể đạt được nếu tất cả các điểm trong không gian mới đều xa vector kỳ vọng chung \(\mathbf{e}\). Việc này cũng có thể đạt được nếu các vector kỳ vọng của mỗi class xa các vector kỳ vọng chung (trong không gian mới). Vậy ta có thể định nghĩa đại lượng between-class như sau:
+\[
+s_B = \sum_{k=1}^C N_k ||\mathbf{e}_k - \mathbf{e} ||_F^2 = \sum_{k=1}^C ||\mathbf{E}_k - \mathbf{E} ||_F^2~~~~~ (20)
+\]
+Ta lấy \(N_k\) làm trọng số vì có thể có những class có nhiều phần tử so với các classes còn lại.</p>
+
+<p>Chú ý rằng ma trận \(\mathbf{E}\) có thể có số cột <em>linh động</em>, phụ thuộc vào số cột của ma trận \(\mathbf{E}_k\) mà nó đi cùng (và bằng \(N_k\)).</p>
+
+<p>Lập luận tương tự như \((17), (18)\), bạn đọc có thể chứng minh được:
+\[
+s_B = \text{trace} \left(\mathbf{W}^T \mathbf{S}_B \mathbf{W} \right) ~~~ (21)
+\]</p>
+
+<p>với:
+\[
+\mathbf{S}_B = \sum_{k = 1}^C (\mathbf{M}_k - \mathbf{M})(\mathbf{M}_k - \mathbf{M})^T = \sum_{k=1}^C N_k (\mathbf{m}_k - \mathbf{m})(\mathbf{m}_k - \mathbf{m})^T ~~~~~ (22)
+\]</p>
+
+<p>và số cột của ma trận \(\mathbf{M}\) cũng <em>linh động</em> theo số cột của \(\mathbf{M}_k\). Ma trận này là tổng của các ma trận đối xứng nửa xác định dương, nên nó là một ma trận đối xứng nửa xác định dương.</p>
+
+<p><a name="-ham-mat-mat-cho-multi-class-lda"></a></p>
+
+<h3 id="32-hàm-mất-mát-cho-multi-class-lda">3.2. Hàm mất mát cho multi-class LDA</h3>
+<p>Với cách định nghĩa và ý tưởng về within-class nhỏ và between-class lớn như trên, ta có thể xây dựng bài toán tối ưu:</p>
+
+<p>\[
+  \mathbf{W} = \arg\max_{\mathbf{W}}J(\mathbf{W}) =  \arg\max_{\mathbf{W}} \frac{\text{trace}(\mathbf{W}^T\mathbf{S}_B\mathbf{W})}{\text{trace}(\mathbf{W}^T\mathbf{S}_W\mathbf{W})}
+\]</p>
+
+<p>Nghiệm cũng được tìm bằng cách giải phương trình đạo hàm hàm mục tiêu bằng 0. Nhắc lại về đạo hàm của hàm \(\text{trace}\) theo ma trận:
+\[
+  \nabla_{\mathbf{W}} \text{trace}(\mathbf{W}^T\mathbf{A} \mathbf{W}) = 2\mathbf{A}\mathbf{W}
+\]
+với \(\mathbf{A} \in \mathbb{R}^{D \times D}\) là một ma trận đối xứng. (Xem trang 597 <a href="https://ccrma.stanford.edu/~dattorro/matrixcalc.pdf">của tài liệu này</a>).</p>
+
+<p>Với cách tính tương tự như \((8) - (10)\), ta có:
+\[
+\begin{eqnarray}
+  \nabla_{\mathbf{W}} J(\mathbf{W}) &amp;=&amp; \frac{2 \left( \mathbf{S}_B\mathbf{W} \text{trace}(\mathbf{W}^T\mathbf{S}_W\mathbf{W}) - \text{trace}(\mathbf{W}^T\mathbf{S}_B\mathbf{W})\mathbf{S}_W \mathbf{W} \right)}{\left(\text{trace}(\mathbf{W}^T\mathbf{S}_W\mathbf{W})\right)^2}  = \mathbf{0} &amp; (23)\newline
+  \Leftrightarrow \mathbf{S}_W^{-1}\mathbf{S}_B\mathbf{W}&amp;=&amp; J \mathbf{W} &amp; (24)
+\end{eqnarray}
+\]</p>
+
+<p>Từ đó suy ra mỗi cột của \(\mathbf{W}\) là một vector riêng của \(\mathbf{S}_W^{-1} \mathbf{S}_B\) ứng với trị riêng lớn nhất của ma trận này.</p>
+
+<p>Nhận thấy rằng các cột của \(\mathbf{W}\) cần phải độc lập tuyến tính. Vì nếu không, dữ liệu trong không gian mới \(\mathbf{y} = \mathbf{W}^T\mathbf{x}\) sẽ phụ thuộc tuyến tính và có thể tiếp tục được giảm số chiều mà không ảnh hưởng gì.</p>
+
+<p>Vậy các cột của \(\mathbf{W}\) là các vector độc lập tuyến tính ứng với trị riêng cao nhất của \(\mathbf{S}_W^{-1} \mathbf{S}_B\). Câu hỏi đặt ra là: Có nhiều nhất bao nhiêu vector riêng độc lập tuyến tính ứng với trị riêng lớn nhất của \(\mathbf{S}_W^{-1} \mathbf{S}_B\)?</p>
+
+<p>Số lượng lớn nhất các vector riêng độc lập tuyến tính ứng với 1 trị riêng chính là rank của không gian riêng ứng với trị riêng đó, và không thể lớn hơn rank của ma trận.</p>
+
+<p>Ta có một bổ đề quan trọng:</p>
+
+<hr />
+
+<p><strong>Bổ đề:</strong>
+\[
+\text{rank}(\mathbf{S}_B) \leq C - 1 ~~~~~~ (23)
+\]</p>
+
+<p><strong>Chứng minh:</strong> (<em>Tuy nhiên, việc chứng minh này không thực sự quan trọng, chỉ phù hợp với những bạn muốn hiểu sâu</em>)</p>
+
+<p>Viết lại \((22)\) dưới dạng:
+\[
+\mathbf{S}_B = \mathbf{P}\mathbf{P}^T
+\]
+với \(\mathbf{P} \in {R}^{D \times C}\) mà cột thứ \(k\) cuả nó là:
+\[
+\mathbf{p}_k = \sqrt{N_k} (\mathbf{m}_k - \mathbf{m})
+\]</p>
+
+<p>Thêm nữa, cột cuối cùng là một tổ hợp tuyến tính của các cột còn lại. Lý do là:
+\[
+\mathbf{m}_C - \mathbf{m} = \mathbf{m}_C - \frac{\sum_{k=1}^C N_k \mathbf{m}_k}{N} = \sum_{k=1}^{C-1} \frac{N_k}{N} (\mathbf{m}_k - \mathbf{m})
+\]</p>
+
+<p>Như vậy ma trận \(\mathbf{P}\) có nhiều nhất \(C-1\) cột độc lập tuyến tính, vậy nên rank của nó không vượt quá \(C -1\).</p>
+
+<p>Cuối cùng, \(\mathbf{S}_B\) là tích của hai ma trận với rank không quá \(C-1\), nên \(\text{rank}(\mathbf{S}_B)\) không vượt quá \(C-1\). \(~~~~~~\square\).</p>
+
+<p>Nếu bạn cần ôn lại vài kiến thức về rank:</p>
+
+<ul>
+  <li>
+    <p>Hạng (rank) của một ma trận, không nhất thiết vuông, là số lượng lớn nhất các cột độc lập tuyến tính của ma trận đó. Vậy nên rank của một ma trận không thể lớn hơn số cột của ma trận đó.</p>
+  </li>
+  <li>
+    <p>\(\text{rank}(\mathbf{A}) = \text{rank}(\mathbf{A}^T)\). Vậy nên số lượng lớn nhất các cột độc lập tuyến tính cũng chính bằng số lượng lớn nhất các hàng độc lập tuyến tính.</p>
+  </li>
+  <li>
+    <p>\(\text{rank}(\mathbf{AB}) \leq \min \left\{\text{rank}(\mathbf{A}), \text{rank}(\mathbf{B}) \right\}\) với \(\mathbf{A}, \mathbf{B}\) là hai ma trận bất kỳ có thể nhân với nhau được.</p>
+  </li>
+  <li>
+    <p>\(\text{rank}(\mathbf{A} + \mathbf{B}) \leq \text{rank}(\mathbf{A}) + \text{rank}(\mathbf{B})\) với \(\mathbf{A}, \mathbf{B}\) là hai ma trận cùng chiều bất kỳ.</p>
+  </li>
+</ul>
+
+<hr />
+
+<p>Từ đó ra có \(\text{rank}\left(\mathbf{S}_W^{-1} \mathbf{S}_B\right) \leq \text{rank}\mathbf{S}_B \leq C - 1\).</p>
+
+<p>Vậy số chiều của không gian mới là một số không lớn hơn \(C-1\). Xem ra số chiều theo multi-class LDA đã được giảm đi rất nhiều. Nhưng chất lượng của dữ liệu mới như thế nào, chúng ta cần làm một vài thí nghiệm.</p>
+
+<p>Tóm lại, nghiệm của bài toán multi-class LDA là các vector riêng độc lập tuyến tính ứng với trị riêng cao nhất của \(\mathbf{S}_W^{-1} \mathbf{S}_B\).</p>
+
+<p><strong>Lưu ý:</strong> Có nhiều cách khác nhau để xây dựng hàm mục tiêu cho multi-class LDA dựa trên việc định nghĩa within-class variance nhỏ và between-class variance lớn. Chúng ta đang sử dụng hàm \(\text{trace}\) để đong đếm hai đại lượng này. Có nhiều cách khác nữa, ví dụ như sử dụng định thức. Tuy nhiên, có một điểm chung giữa các cách tiếp cận này là chiều của không gian mới sẽ không vượt quá \(C-1\).</p>
+
+<p><a name="-vi-du-tren-python"></a></p>
+
+<h2 id="4-ví-dụ-trên-python">4. Ví dụ trên Python</h2>
+
+<p><a name="-lda-voi--classes"></a></p>
+
+<h3 id="41-lda-với-2-classes">4.1. LDA với 2 classes</h3>
+
+<p>Tạo dữ liệu giả:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># To support both python 2 and python 3
+</span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">unicode_literals</span>
+<span class="c1"># list of points
+</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib.backends.backend_pdf</span> <span class="kn">import</span> <span class="n">PdfPages</span>
+<span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">22</span><span class="p">)</span>
+
+<span class="n">means</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+<span class="n">cov0</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+<span class="n">cov1</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+<span class="n">N0</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">N1</span> <span class="o">=</span> <span class="mi">40</span>
+<span class="n">N</span> <span class="o">=</span> <span class="n">N0</span> <span class="o">+</span> <span class="n">N1</span>
+<span class="n">X0</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">means</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cov0</span><span class="p">,</span> <span class="n">N0</span><span class="p">)</span> <span class="c1"># each row is a data point
+</span><span class="n">X1</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">means</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cov1</span><span class="p">,</span> <span class="n">N1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Các điểm cho 2 classes này được minh hoạ bởi các điểm màu lam và đỏ trên Hình 4.</p>
+
+<p>Tiếp theo, chúng ta đi tính các within-class và between-class covariance matrices:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Build S_B
+</span><span class="n">m0</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">X0</span><span class="p">.</span><span class="n">T</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+<span class="n">m1</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">X1</span><span class="p">.</span><span class="n">T</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">m0</span> <span class="o">-</span> <span class="n">m1</span><span class="p">)</span>
+<span class="n">S_B</span> <span class="o">=</span> <span class="n">a</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">T</span><span class="p">)</span>
+
+<span class="c1"># Build S_W
+</span><span class="n">A</span> <span class="o">=</span> <span class="n">X0</span><span class="p">.</span><span class="n">T</span> <span class="o">-</span> <span class="n">np</span><span class="p">.</span><span class="n">tile</span><span class="p">(</span><span class="n">m0</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N0</span><span class="p">))</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">X1</span><span class="p">.</span><span class="n">T</span> <span class="o">-</span> <span class="n">np</span><span class="p">.</span><span class="n">tile</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N1</span><span class="p">))</span>
+
+<span class="n">S_W</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">.</span><span class="n">T</span><span class="p">)</span> <span class="o">+</span> <span class="n">B</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">.</span><span class="n">T</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Nghiệm của bài toán là vector riêng ứng với trị riêng lớn nhất của <code class="language-plaintext highlighter-rouge">np.linalg.inv(S_W).dot(S_B)</code></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">_</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">eig</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">inv</span><span class="p">(</span><span class="n">S_W</span><span class="p">).</span><span class="n">dot</span><span class="p">(</span><span class="n">S_B</span><span class="p">))</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">W</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[ 0.75091074 -0.66040371]
+</code></pre></div></div>
+
+<p>Đường thẳng có phương <code class="language-plaintext highlighter-rouge">w</code> được minh hoạ bởi đường màu lục trên Hình 4. Ta thấy rằng nghiệm này hợp lý với dữ liệu có được.</p>
+<hr />
+
+<div>
+<table width="100%" style="border: 0px solid white">
+
+    <tr>
+        <td width="50%" style="border: 0px solid white" align="center">
+        <img style="display:block;" width="100%" src="/assets/29_lda/res.png" />
+         </td>
+         <td width="40%" style="border: 0px solid white" align="justify">
+         Hình 4: Ví dụ minh hoạ về LDA trong không gian 2 chiều. Đường thẳng màu lục là đường thẳng mà dữ liệu sẽ được chiếu lên. Ta có thể thấy rằng, nếu chiếu lên được thẳng này, dữ liệu của hai classes sẽ nằm về hai phía của một điểm trên đường thẳng đó. 
+         </td>
+      </tr>
+</table>
+</div>
+<hr />
+
+<p>Để kiểm chứng độ chính xác của nghiệm tìm được, ta cùng so sánh nó với nghiệm tìm được bởi thư viện <code class="language-plaintext highlighter-rouge">sklearn</code>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.discriminant_analysis</span> <span class="kn">import</span> <span class="n">LinearDiscriminantAnalysis</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">X0</span><span class="p">,</span> <span class="n">X1</span><span class="p">))</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">N0</span> <span class="o">+</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">N1</span><span class="p">)</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">LinearDiscriminantAnalysis</span><span class="p">()</span>
+<span class="n">clf</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">clf</span><span class="p">.</span><span class="n">coef_</span><span class="o">/</span><span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="n">clf</span><span class="p">.</span><span class="n">coef_</span><span class="p">))</span> <span class="c1"># normalize
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    [[ 0.75091074 -0.66040371]]
+</code></pre></div></div>
+
+<p>Ta thấy rằng nghiệm tìm theo công thức và nghiệm tìm theo thư viện là như nhau. Như vậy việc phân tích ở Mục 2 là hoàn toàn chính xác.</p>
+
+<!-- ### Iris Classification với PCA và LDA
+Tiếp theo, chúng ta cùng làm một thí nghiệm nhỏ trên [Iris dataset](/2017/01/08/knn/#bo-co-so-du-lieu-iris-iris-flower-dataset) với 3 classes, mỗi classes có 50 dữ liệu tổng cộng, mỗi điểm dữ liệu có số chiều là 4.
+
+Chúng ta sẽ lấy 100 điểm ra làm dữ liệu training, 50 điểm còn lại làm dữ liệu test. Ta sẽ dùng 2 cách khác nhau, PCA và LDA, để giảm chiều dữ liệu trước khi đưa dữ liệu mới vào môt bộ phân lớp [Kernel SVM](/2017/04/22/kernelsmv/).
+
+Vì có 3 classes nên ta chọn số chiều của dữ liệu mới là 2 cho các PCA và LDA.
+ -->
+
+<p>Một ví dụ khác so sánh PCA và LDA có thể được tìm thấy tại đây: <a href="http://scikit-learn.org/stable/auto_examples/decomposition/plot_pca_vs_lda.html">Comparison of LDA and PCA 2D projection of Iris dataset</a>.</p>
+
+<p><a name="thao-luan"></a></p>
+
+<h2 id="5thảo-luận">5.Thảo luận</h2>
+
+<ul>
+  <li>
+    <p>LDA là một phương pháp giảm chiều dữ liệu có sử dụng thông tin về label của dữ liệu. LDA là một thuật toán supervised.</p>
+  </li>
+  <li>
+    <p>Ý tưởng cơ bản của LDA là tìm một không gian mới với số chiều nhỏ hơn không gian ban đầu sao cho hình chiếu của các điểm trong cùng 1 class lên không gian mới này là gần nhau trong khi hình chiếu của các điểm của các classes khác nhau là khác nhau.</p>
+  </li>
+  <li>
+    <p>Trong PCA, số chiều của không gian mới có thể là bất kỳ số nào không lớn hơn số chiều và số điểm của dữ liệu. Trong LDA, với bài toán có \(C\) classes, số chiều của không gian mới chỉ có thể không vượt quá \(C-1\).</p>
+  </li>
+  <li>
+    <p>LDA có giả sử ngầm rằng dữ liệu của các classes đều tuân theo phân phối chuẩn và các ma trận hiệp phương sai của các classes là gần nhau.</p>
+  </li>
+  <li>
+    <p>Với bài toán có 2 classes, từ Hình 1 ta có thể thấy rằng hai classes là linearly separable nếu và chỉ nếu tồn tại một đường thẳng và 1 điểm trên đường thẳng đó (điểm mùa lục) sao cho: dữ liệu hình chiếu trên đường thẳng của hai classes nằm về hai phía khác nhau của điểm đó.</p>
+  </li>
+  <li>
+    <p>LDA hoạt động rất tốt nếu các classes là linearly separable, tuy nhiên, chất lượng mô hình giảm đi rõ rệt nếu các classes là không linearly separable. Điều này dễ hiểu vì khi đó, chiếu dữ liệu lên phương nào thì cũng bị chồng lần, và việc tách biệt không thể thực hiện được như ở không gian ban đầu.</p>
+  </li>
+  <li>
+    <p>Mặc dù có hạn chế, ý tưởng về <em>small within-class</em> và <em>large between-class</em> được sử dụng rất nhiều trong các mô hình classification khác. Ví dụ <a href="http://www4.comp.polyu.edu.hk/~cslzhang/paper/conf/iccv11/FDDL_ICCV_final.pdf">Fisher discrimination dictionary learning for sparse representation - ICCV 2011</a>.</p>
+  </li>
+</ul>
+
+<p><a name="-tai-lieu-tham-khao"></a></p>
+
+<h2 id="6-tài-liệu-tham-khảo">6. Tài liệu tham khảo</h2>
+
+<p>[1] <a href="https://en.wikipedia.org/wiki/Linear_discriminant_analysis">Linear discriminant analysis</a>.</p>
+
+<p>[2] Bishop, Christopher M. “Pattern recognition and Machine Learning.”, Springer (2006). Chapter 4. (<a href="http://users.isr.ist.utl.pt/~wurmd/Livros/school/Bishop%20-%20Pattern%20Recognition%20And%20Machine%20Learning%20-%20Springer%20%202006.pdf">book</a>)</p>
+
+<p>[3] <a href="http://scikit-learn.org/stable/auto_examples/decomposition/plot_pca_vs_lda.html">Comparison of LDA and PCA 2D projection of Iris dataset</a></p>
+:ET

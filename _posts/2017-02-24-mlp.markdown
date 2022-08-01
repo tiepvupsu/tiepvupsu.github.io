@@ -32,8 +32,8 @@ summary: Giới thiệu về Neural Network nhiều lớp và phương pháp t�
         - [2.4.4. Một vài lưu ý](#-mot-vai-luu-y)
 - [3. Backpropagation](#-backpropagation)
     - [3.1. Backpropagation cho Stochastic Gradient Descent](#-backpropagation-cho-stochastic-gradient-descent)
-        - [3.1.1. Đạo hàm theo từng hệ số \\\(w_{ij}^{\(l\)}, b_{i}^{\(l\)}\\\)](#-dao-ham-theo-tung-he-so-\\wij^l-bi^l\\)
-        - [3.1.2. Đạo hàm theo ma trận \\\(\mathbf{W}^{\(l\)}, \mathbf{b}^{\(l\)}\\\)](#-dao-ham-theo-ma-tran-\\\mathbfw^l-\mathbfb^l\\)
+        - [3.1.1. Đạo hàm theo từng hệ số \newline(w_{ij}^{\(l\)}, b_{i}^{\(l\)}\newline)](#-dao-ham-theo-tung-he-so-\\wij^l-bi^l\\)
+        - [3.1.2. Đạo hàm theo ma trận \newline(\mathbf{W}^{\(l\)}, \mathbf{b}^{\(l\)}\newline)](#-dao-ham-theo-ma-tran-\newlinemathbfw^l-\mathbfb^l\\)
     - [3.2. Backpropagation cho Batch \(mini-batch\) Gradient Descent](#-backpropagation-cho-batch-mini-batch-gradient-descent)
 - [4. Ví dụ trên Python](#-vi-du-tren-python)
     - [4.1. Tạo dữ liệu giả](#-tao-du-lieu-gia)
@@ -238,10 +238,10 @@ _Phần này khá nặng về Đại Số Tuyến Tính, bạn đọc không mu�
 Phương pháp phổ biến nhất để tối ưu MLP vẫn là Gradient Descent (GD). Để áp dụng GD, chúng ta cần tính được gradient của hàm mất mát theo từng ma trận trọng số \\(\mathbf{W}^{(l)}\\) và vector bias \\(\mathbf{b}^{(l)}\\). Trước hết, chúng ta cần tính _predicted output_ \\( \mathbf{\hat{y}}\\)  với một input \\(\mathbf{x}\\):
 \\[
 \begin{eqnarray}
-\mathbf{a}^{(0)} &=& \mathbf{x} \\\
-z_{i}^{(l)} &=& \mathbf{w}_i^{(l)T}\mathbf{a}^{(l-1)} + b\_i^{(l)} \\\
-\mathbf{z}^{(l)}  &=& \mathbf{W}^{(l)T}\mathbf{a}^{(l-1)} + \mathbf{b}^{(l)},~~ l =  1, 2, \dots, L \\\
-\mathbf{a}^{(l)} &=& f(\mathbf{z}^{(l)}), ~~ l =  1, 2, \dots, L \\\
+\mathbf{a}^{(0)} &=& \mathbf{x} \newline
+z_{i}^{(l)} &=& \mathbf{w}_i^{(l)T}\mathbf{a}^{(l-1)} + b\_i^{(l)} \newline
+\mathbf{z}^{(l)}  &=& \mathbf{W}^{(l)T}\mathbf{a}^{(l-1)} + \mathbf{b}^{(l)},~~ l =  1, 2, \dots, L \newline
+\mathbf{a}^{(l)} &=& f(\mathbf{z}^{(l)}), ~~ l =  1, 2, \dots, L \newline
 \mathbf{\hat{y}} &=& \mathbf{a}^{(L)}
 \end{eqnarray}
 \\]
@@ -256,7 +256,7 @@ Giả sử \\(J(\mathbf{W, b, X, Y})\\) là một hàm mất mát của bài to�
 Một ví dụ của hàm mất mát là hàm Mean Square Error (MSE) tức _trung bình của bình phương lỗi_.
 \\[
 \begin{eqnarray}
-J(\mathbf{W, b, X, Y}) &=& \frac{1}{N}\sum\_{n=1}^N \|\| \mathbf{y}\_n - \mathbf{\hat{y}}\_n\|\|\_2^2 \\\
+J(\mathbf{W, b, X, Y}) &=& \frac{1}{N}\sum\_{n=1}^N \|\| \mathbf{y}\_n - \mathbf{\hat{y}}\_n\|\|\_2^2 \newline
 &=&\frac{1}{N}\sum\_{n=1}^N \|\| \mathbf{y}_n - \mathbf{a}\_n^{(L)}\|\|\_2^2
 \end{eqnarray}
 \\]
@@ -270,7 +270,7 @@ Stochastic Gradient Descent có thể được sử dụng để tính gradient 
 
 \\[
 \begin{eqnarray}
-\frac{\partial J}{\partial w_{ij}^{(L)}} &=& \frac{\partial J}{\partial z_j^{(L)}}. \frac{\partial z_j^{(L)}}{\partial w_{ij}^{(L)}} \\\
+\frac{\partial J}{\partial w_{ij}^{(L)}} &=& \frac{\partial J}{\partial z_j^{(L)}}. \frac{\partial z_j^{(L)}}{\partial w_{ij}^{(L)}} \newline
 &=& e_j^{(L)} a_i^{(L-1)}
 \end{eqnarray}
 \\]
@@ -294,7 +294,7 @@ Dựa vào hính trên, ta có thể tính được:
 
 \\[
 \begin{eqnarray}
-\frac{\partial J}{\partial w_{ij}^{(l)}} &=& \frac{\partial J}{\partial z_j^{(l)}}. \frac{\partial z_j^{(l)}}{\partial w_{ij}^{(l)}} \\\
+\frac{\partial J}{\partial w_{ij}^{(l)}} &=& \frac{\partial J}{\partial z_j^{(l)}}. \frac{\partial z_j^{(l)}}{\partial w_{ij}^{(l)}} \newline
 &=& e_j^{(l)} a_i^{(l-1)}
 \end{eqnarray}
 \\]
@@ -302,10 +302,10 @@ với:
 
 \\[
 \begin{eqnarray}
-e_j^{(l)} &=& \frac{\partial J}{\partial z_j^{(l)}} = \frac{\partial J}{\partial a_j^{(l)}} . \frac{\partial a_j^{(l)}}{\partial z_j^{(l)}} \\\
-&=& \left( \sum_{k = 1}^{d^{(l+1)}} \frac{\partial J}{\partial z_k^{(l+1)}} .\frac{\partial z_k^{(l+1)}}{\partial a_j^{(l)}} \right) f'(z_j^{(l)}) \\\
- &=&\left( \sum_{k = 1}^{d^{(l+1)}} e_k^{(l+1)} w_{jk}^{(l+1)} \right) f'(z_j^{(l)}) \\\
- &=&\left( \mathbf{w}_{j:}^{(l+1)} \mathbf{e}^{(l+1)} \right) f'(z_j^{(l)}) \\\
+e_j^{(l)} &=& \frac{\partial J}{\partial z_j^{(l)}} = \frac{\partial J}{\partial a_j^{(l)}} . \frac{\partial a_j^{(l)}}{\partial z_j^{(l)}} \newline
+&=& \left( \sum_{k = 1}^{d^{(l+1)}} \frac{\partial J}{\partial z_k^{(l+1)}} .\frac{\partial z_k^{(l+1)}}{\partial a_j^{(l)}} \right) f'(z_j^{(l)}) \newline
+ &=&\left( \sum_{k = 1}^{d^{(l+1)}} e_k^{(l+1)} w_{jk}^{(l+1)} \right) f'(z_j^{(l)}) \newline
+ &=&\left( \mathbf{w}_{j:}^{(l+1)} \mathbf{e}^{(l+1)} \right) f'(z_j^{(l)}) \newline
 \end{eqnarray}
 \\]
 
@@ -335,7 +335,7 @@ Việc tính toán các đạo hàm khi sử dụng SGD có thể tóm tắt nh�
 3. Từ đó suy ra:
 \\[
 \begin{eqnarray}
-\frac{\partial J}{\partial w_{ij}^{(L)}} &=& a_i^{(L-1)}e_j^{(L)} \\\
+\frac{\partial J}{\partial w_{ij}^{(L)}} &=& a_i^{(L-1)}e_j^{(L)} \newline
 \frac{\partial J}{\partial b_{j}^{(L)}} &=& e_j^{(L)}
 \end{eqnarray}
 \\]
@@ -346,7 +346,7 @@ e_j^{(l)} = \left( \mathbf{w}_{j:}^{(l+1)} \mathbf{e}^{(l+1)} \right) f'(z_j^{(l
 5. Cập nhật đạo hàm cho từng hệ số:
 \\[
 \begin{eqnarray}
-\frac{\partial J}{\partial w_{ij}^{(l)}} &=& a_i^{(l-1)} e_j^{(l)} \\\
+\frac{\partial J}{\partial w_{ij}^{(l)}} &=& a_i^{(l-1)} e_j^{(l)} \newline
 \frac{\partial J}{\partial b_{j}^{(l)}} &=& e_j^{(l)}
 \end{eqnarray}
 \\]
@@ -354,7 +354,7 @@ e_j^{(l)} = \left( \mathbf{w}_{j:}^{(l+1)} \mathbf{e}^{(l+1)} \right) f'(z_j^{(l
 <hr>
 
 
-<a name="-dao-ham-theo-ma-tran-\\\mathbfw^l-\mathbfb^l\\"></a>
+<a name="-dao-ham-theo-ma-tran-\newlinemathbfw^l-\mathbfb^l\\"></a>
 
 #### 3.1.2. Đạo hàm theo ma trận \\(\mathbf{W}^{(l)}, \mathbf{b}^{(l)}\\)
 Việc tính toán theo từng hệ số như trên chỉ phù hợp cho việc hiểu nguyên lý tính toán, trong khi lập trình, ta cần tìm cách thu gọn chúng về dạng vector và ma trận để tăng tốc độ cho thuật toán. Đặt \\(\mathbf{e}^{(l)} = [e_1^{(l)}, e_2^{(l)}, ..., e_{d^{(l)}}^{(l)}]^T \in \mathbb{R}^{d^{(l)}\times 1} \\). Ta sẽ có quy tắc tính như sau:
@@ -365,7 +365,7 @@ Việc tính toán theo từng hệ số như trên chỉ phù hợp cho việc 
 3. Từ đó suy ra:
 \\[
 \begin{eqnarray}
-\frac{\partial J}{\partial \mathbf{W}^{(L)}} &=& \mathbf{a}^{(L-1)}\mathbf{e}^{(L)T}\\\
+\frac{\partial J}{\partial \mathbf{W}^{(L)}} &=& \mathbf{a}^{(L-1)}\mathbf{e}^{(L)T}\newline
 \frac{\partial J}{\partial \mathbf{b}^{(L)}} &=&  \mathbf{e}^{(L)}
 \end{eqnarray}
 \\]
@@ -377,7 +377,7 @@ trong đó \\(\odot\\) là _element-wise product_ hay _Hadamard product_ tức l
 5. Cập nhật đạo hàm cho ma trận trọng số và vector biases:
 \\[
 \begin{eqnarray}
-\frac{\partial J}{\partial \mathbf{W}^{(l)}} &=& \mathbf{a}^{(l-1)}\mathbf{e}^{(l)T}\\\
+\frac{\partial J}{\partial \mathbf{W}^{(l)}} &=& \mathbf{a}^{(l-1)}\mathbf{e}^{(l)T}\newline
 \frac{\partial J}{\partial \mathbf{b}^{(l)}} &=& \mathbf{e}^{(l)}
 \end{eqnarray}
 \\]
@@ -402,7 +402,7 @@ Khi đó, cặp (input, output) sẽ ở dạng ma trận \\((\mathbf{X, Y})\\).
  3. Từ đó suy ra:
  \\[
  \begin{eqnarray}
- \frac{\partial J}{\partial \mathbf{W}^{(L)}} &=&  \mathbf{A}^{(L-1)}\mathbf{E}^{(L)T}\\\
+ \frac{\partial J}{\partial \mathbf{W}^{(L)}} &=&  \mathbf{A}^{(L-1)}\mathbf{E}^{(L)T}\newline
  \frac{\partial J}{\partial \mathbf{b}^{(L)}} &=&  \sum_{n=1}^N\mathbf{e}_n^{(L)}
  \end{eqnarray}
  \\]
@@ -414,7 +414,7 @@ Khi đó, cặp (input, output) sẽ ở dạng ma trận \\((\mathbf{X, Y})\\).
  5. Cập nhật đạo hàm cho ma trận trọng số và vector biases:
  \\[
  \begin{eqnarray}
- \frac{\partial J}{\partial \mathbf{W}^{(l)}} &=&  \mathbf{A}^{(l-1)}\mathbf{E}^{(l)T}\\\
+ \frac{\partial J}{\partial \mathbf{W}^{(l)}} &=&  \mathbf{A}^{(l-1)}\mathbf{E}^{(l)T}\newline
  \frac{\partial J}{\partial \mathbf{b}^{(l)}} &=&  \sum_{n=1}^N\mathbf{e}_n^{(l)}
  \end{eqnarray}
  \\]
@@ -499,9 +499,9 @@ Bây giờ chúng ta sẽ áp dụng Batch Gradient Descent cho bài toán này 
 ### 4.2. Tính toán Feedforward
 \\[
 \begin{eqnarray}
-\mathbf{Z}^{(1)} &=& \mathbf{W}^{(1)T}\mathbf{X} \\\
-\mathbf{A}^{(1)} &=& \max(\mathbf{Z}^{(1)}, \mathbf{0}) \\\
-\mathbf{Z}^{(2)} &=& \mathbf{W}^{(2)T}\mathbf{A}^{(1)} \\\
+\mathbf{Z}^{(1)} &=& \mathbf{W}^{(1)T}\mathbf{X} \newline
+\mathbf{A}^{(1)} &=& \max(\mathbf{Z}^{(1)}, \mathbf{0}) \newline
+\mathbf{Z}^{(2)} &=& \mathbf{W}^{(2)T}\mathbf{A}^{(1)} \newline
 \mathbf{\hat{Y}} = \mathbf{A}^{(2)} &=& \text{softmax}(\mathbf{Z}^{(2)})
 \end{eqnarray}
 \\]
@@ -521,12 +521,12 @@ J \triangleq J(\mathbf{W, b}; \mathbf{X, Y}) = -\frac{1}{N}\sum\_{i = 1}^N \sum_
 
 \\[
 \begin{eqnarray}
-\mathbf{E}^{(2)} &=& \frac{\partial J}{\partial \mathbf{Z}^{(2)}} =\frac{1}{N}(\mathbf{\hat{Y}} - \mathbf{Y}) \\\
-\frac{\partial J}{\partial \mathbf{W}^{(2)}} &=& \mathbf{A}^{(1)}  \mathbf{E}^{(2)T} \\\
-\frac{\partial J}{\partial \mathbf{b}^{(2)}} &=& \sum_{n=1}^N\mathbf{e}\_n^{(2)} \\\
-\mathbf{E}^{(1)} &=& \left(\mathbf{W}^{(2)}\mathbf{E}^{(2)}\right) \odot f'(\mathbf{Z}^{(1)}) \\\
-\frac{\partial J}{\partial \mathbf{W}^{(1)}} &=& \mathbf{A}^{(0)}  \mathbf{E}^{(1)T} = \mathbf{X}\mathbf{E}^{(1)T}\\\
-\frac{\partial J}{\partial \mathbf{b}^{(1)}} &=& \sum_{n=1}^N\mathbf{e}\_n^{(1)} \\\
+\mathbf{E}^{(2)} &=& \frac{\partial J}{\partial \mathbf{Z}^{(2)}} =\frac{1}{N}(\mathbf{\hat{Y}} - \mathbf{Y}) \newline
+\frac{\partial J}{\partial \mathbf{W}^{(2)}} &=& \mathbf{A}^{(1)}  \mathbf{E}^{(2)T} \newline
+\frac{\partial J}{\partial \mathbf{b}^{(2)}} &=& \sum_{n=1}^N\mathbf{e}\_n^{(2)} \newline
+\mathbf{E}^{(1)} &=& \left(\mathbf{W}^{(2)}\mathbf{E}^{(2)}\right) \odot f'(\mathbf{Z}^{(1)}) \newline
+\frac{\partial J}{\partial \mathbf{W}^{(1)}} &=& \mathbf{A}^{(0)}  \mathbf{E}^{(1)T} = \mathbf{X}\mathbf{E}^{(1)T}\newline
+\frac{\partial J}{\partial \mathbf{b}^{(1)}} &=& \sum_{n=1}^N\mathbf{e}\_n^{(1)} \newline
 \end{eqnarray}
 \\]
 

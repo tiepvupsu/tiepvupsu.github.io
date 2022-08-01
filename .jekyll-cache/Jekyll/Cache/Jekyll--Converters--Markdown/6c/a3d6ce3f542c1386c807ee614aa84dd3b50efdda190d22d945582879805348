@@ -1,0 +1,554 @@
+I"O�<p><strong>Trong trang này:</strong>
+<!-- MarkdownTOC --></p>
+
+<ul>
+  <li>
+    <ol>
+      <li>Giới thiệu
+        <ul>
+          <li>1.1. Hiện tượng <em>Long Tail</em> trong thương mại</li>
+          <li>1.2. Hai nhóm chính của Recommendation Systems</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Utility matrix
+        <ul>
+          <li>2.1. Ví dụ về Utility matrix</li>
+          <li>2.2. Xây dựng Utility Matrix</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Content-Based Recommendations
+        <ul>
+          <li>3.1. Item profiles</li>
+          <li>3.2. Xây dựng hàm mất mát</li>
+          <li>3.3. Ví dụ về hàm mất mát cho user E</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Bài toán với cơ sở dữ liệu MovieLens 100k
+        <ul>
+          <li>4.1. Cơ sở dữ liệu MovieLens 100k</li>
+          <li>4.2. Xây dựng item profiles</li>
+          <li>4.3. Tìm mô hình cho mỗi user</li>
+          <li>4.4. Đánh giá mô hình</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Thảo luận</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Tài liệu tham khảo</li>
+    </ol>
+  </li>
+</ul>
+
+<!-- /MarkdownTOC -->
+
+<p><a name="-gioi-thieu"></a></p>
+
+<p><a name="-gioi-thieu"></a></p>
+<h2 id="1-giới-thiệu">1. Giới thiệu</h2>
+
+<p>Các bạn có lẽ đã gặp những hiện tượng này nhiều lần:</p>
+
+<ul>
+  <li>
+    <p>Youtube tự động chuyển các clip liên quan đến clip bạn đang xem. Youtube cũng tự gợi ý những clip mà có thể bạn sẽ thích.</p>
+  </li>
+  <li>
+    <p>Khi bạn mua một món hàng trên Amazon, hệ thống sẽ tự động gợi ý “Frequently bought together”, hoặc nó biết bạn có thể thích món hàng nào dựa trên lịch sử mua hàng của bạn.</p>
+  </li>
+  <li>
+    <p>Facebook hiển thị quảng cáo những sản phẩm có liên quan đến từ khoá bạn vừa tìm kiếm.</p>
+  </li>
+  <li>
+    <p>Facebook gợi ý kết bạn.</p>
+  </li>
+  <li>
+    <p>Netflix tự động gợi ý phim cho người dùng.</p>
+  </li>
+</ul>
+
+<p>Và rất nhiều ví dụ khác mà hệ thống có khả năng tự động gợi ý cho ngừời dùng những sản phẩm họ <em>có thể thích</em>. Bằng cách <em>quảng cáo hướng đúng đội tượng</em> như thế này, hiệu quả của việc marketing cũng sẽ tăng lên. Những thuật toán đằng sau những ứng dụng này là những thuật toán Machine Learning có tên gọi chung là <em>Recommender Systems</em> hoặc <em>Recommendation Systems</em>, tức <em>Hệ thống gợi ý</em>.</p>
+
+<p>Recommendation Systems là một mảng khá rộng của Machine Learning và có <em>tuổi đời</em> ít hơn so với Classification vì internet mới chỉ thực sự bùng nổ khoảng 10-15 năm đổ lại đây. Có hai thực thể chính trong Recommendation Systems là <em>users</em> và <em>items</em>. <em>Users</em> là người dùng. <em>Items</em> là sản phẩm, ví dụ như các bộ phim, bài hát, cuốn sách, clip, hoặc cũng có thể là các <em>users</em> khác trong bài toán gợi ý kết bạn. Mục đích chính của các Recommender Systems là dự đoán <em>mức độ quan tâm</em> của một <em>user</em> tới một <em>item</em> nào đó, qua đó có chiến lược <em>recommend</em> phù hợp.</p>
+
+<p><a name="-hien-tuong-long-tail-trong-thuong-mai"></a></p>
+
+<p><a name="-hien-tuong-long-tail-trong-thuong-mai"></a></p>
+<h3 id="11-hiện-tượng-long-tail-trong-thương-mại">1.1. Hiện tượng <em>Long Tail</em> trong thương mại</h3>
+<p>Chúng ta cùng đi vào việc so sánh điểm khác nhau căn bản giữa các <em>cửa hàng thực</em> và <em>cửa hàng điện tử</em>, xét trên khía cạnh lựa chọn sản phẩm để quảng bá.</p>
+
+<p>Có thể các bạn đã biết tới <a href="https://en.wikipedia.org/wiki/Pareto_principle">Nguyên lý Pareto (hay quy tắc 20/80)</a>: <em>phần lớn kết quả được gây ra bởi phẩn nhỏ nguyên nhân</em>. Phần lớn số từ sử dụng hàng ngày chỉ là một phần nhỏ số từ trong bộ từ điển. Phần lớn của cải được sở hữu bởi phần nhỏ số người. Khi làm thương mại cũng vậy, những sản phẩm bán chạy nhất chỉ chiếm phần nhỏ tổng số sản phẩm.</p>
+
+<p>Các <em>cửa hàng thực</em> thường có hai khu vực, một là khu trưng bày, hai là kho. Nguyên tắc dễ thấy để đạt doanh thu cao là trưng ra các sản phẩm phổ biến nhất ở những nơi dễ nhìn thấy và những sản phẩm ít phổ biến hơn được cất trong kho. Cách làm này có một hạn chế rõ rệt: những sản phẩm được trưng ra mang tính phổ biến chứ chưa chắc đã phù hợp với một khách hàng cụ thể. Một cửa hàng có thể có món hàng một khách hàng tìm kiếm nhưng có thể không bán được vì khách hàng không nhìn thấy sản phẩm đó trên giá; việc này dẫn đến việc khách hàng không tiếp cận được sản phẩm ngay cả khi chúng đã được trưng ra. Ngoài ra, vì không gian có hạn, cửa hàng không thể trưng ra tất cả các sản phẩm mà mỗi loại chỉ đưa ra một số lượng nhỏ. Ở đây, phần lớn doanh thu (80%) đến từ phần nhỏ số sản phẩm phổ biến nhất (20%). Nếu sắp xếp các sản phẩm của cửa hàng theo doanh số từ cao đến thấp, ta sẽ nhận thấy có thể phần nhỏ các sản phẩm tạo ra phần lớn doanh số; và một danh sách dài phía sau chỉ tạo ra một lượng nhỏ đóng góp. Hiện tượng này còn được gọi là <em>long tail phenomenon</em>, tức phần <em>đuôi dài</em> của những sản phẩm ít phổ biến.</p>
+
+<p>Với các <em>cửa hàng online</em>, nhược điểm trên hoàn toàn có thể tránh được. Vì <em>gian trưng bày</em> của các <em>cửa hàng online</em> gần như là vô tận, mọi sản phẩm đều có thể được trưng ra. Hơn nữa, việc sắp xếp online là linh hoạt, tiện lợi với chi phí chuyển đổi gần như bằng 0 khiến việc mang đúng sản phẩm tới khách hàng trở nên thuận tiện hơn. Doanh thu, vì thế có thể được tăng lên.</p>
+
+<p>(<em>Ở đây, chúng ta tạm quên đi khía cạnh <strong>có cảm giác thật chạm vào sản phẩm</strong> của các cửa hàng thực. Hãy cùng tập trung vào phần làm thế nào để quảng bá đúng sản phẩm tới đúng khách hàng</em>)</p>
+
+<p><a name="-hai-nhom-chinh-cua-recommendation-systems"></a></p>
+
+<p><a name="-hai-nhom-chinh-cua-recommendation-systems"></a></p>
+<h3 id="12-hai-nhóm-chính-của-recommendation-systems">1.2. Hai nhóm chính của Recommendation Systems</h3>
+
+<p>Các Recommendation Systems thường được chia thành hai nhóm lớn:</p>
+
+<ol>
+  <li>
+    <p><em>Content-based systems</em>: đánh giá đặc tính của <em>items</em> được <em>recommended</em>. Ví dụ: một <em>user</em> xem rất nhiều các bộ phim về cảnh sát hình sự, vậy thì gơi ý một bộ phim trong cơ sở dữ liệu có chung đặc tính <em>hình sự</em> tới <em>user</em> này, ví dụ phim <em>Người phán xử</em>. Cách tiếp cận này yêu cầu việc sắp xếp các <em>items</em> vào từng nhóm hoặc đi tìm các đặc trưng của từng <em>item</em>. Tuy nhiên, có những <em>items</em> không có nhóm cụ thể và việc xác định nhóm hoặc đặc trưng của từng <em>item</em> đôi khi là bất khả thi.</p>
+  </li>
+  <li>
+    <p><em>Collaborative filtering</em>: hệ thống gợi ý <em>items</em> dựa trên sự tương quan (similarity) giữa các <em>users</em> và/hoặc <em>items</em>. Có thể hiểu rằng ở nhóm này một <em>item</em> được <em>recommended</em> tới một <em>user</em> dựa trên những <em>users</em> có <em>hành vi</em> tương tự. Ví dụ: <em>users A, B, C</em> đều thích các bài hát của Noo Phước Thịnh. Ngoài ra, hệ thống biết rằng <em>users B, C</em> cũng thích các bài hát của  Bích Phương nhưng chưa có thông tin về việc liệu <em>user A</em> có thích Bích Phương hay không. Dựa trên thông tin của những <em>users</em> tương tự là <em>B và C</em>, hệ thống có thể dự đoán rằng <em>A</em> cũng thích Bích Phương và gợi ý các bài hát của ca sĩ này tới <em>A</em>.</p>
+  </li>
+</ol>
+
+<p>Trong bài viết này, chúng ta sẽ làm quen với nhóm thứ nhất: <em>Content-based systems</em>. Tôi sẽ nói về <em>Collaborative filtering</em> trong bài viết tiếp theo.</p>
+
+<p><a name="-utility-matrix"></a></p>
+
+<p><a name="-utility-matrix"></a></p>
+<h2 id="2-utility-matrix">2. Utility matrix</h2>
+<p><a name="-vi-du-ve-utility-matrix"></a></p>
+
+<p><a name="-vi-du-ve-utility-matrix"></a></p>
+<h3 id="21-ví-dụ-về-utility-matrix">2.1. Ví dụ về Utility matrix</h3>
+
+<p>Như đã đề cập, có hai thực thể chính trong các Recommendation Systems là <em>users</em> và <em>items</em>. Mỗi <em>user</em> sẽ có <em>mức độ quan tâm</em> (<em>degree of preference</em>) tới từng <em>item</em> khác nhau. Mức độ quan tâm này, <em>nếu đã biết trước</em>, được gán cho một giá trị ứng với mỗi cặp <em>user-item</em>. Giả sử rằng <em>mức độ quan tâm</em> được đo bằng giá trị <em>user</em> rate cho <em>item</em>, ta tạm gọi giá trị này là <em>rating</em>. Tập hợp tất cả các <em>ratings</em>, bao gồm cả những giá trị chưa biết cần được dự đoán, tạo nên một ma trận gọi là <em>utility matrix</em>. Xét ví dụ sau:</p>
+
+<hr />
+
+<div>
+<table width="100%" style="border: 0px solid white">
+    <tr>
+        <td width="40%" style="border: 0px solid white" align="center">
+        <img style="display:block;" width="100%" src="/assets/23_contentbasedrecommendersys/utility1.png" />
+         </td>
+        <td width="40%" style="border: 0px solid white" align="justify">
+        Hình 1: Ví dụ về utility matrix với hệ thống Gợi ý bài hát. Các bài hát được người dùng đánh giá theo mức độ từ 0 đến 5 sao. Các dấu '?' nền màu xám ứng với việc dữ liệu chưa tồn tại trong cơ sở dữ liệu. Recommendation Systems cần phải <em>tự điền</em> các giá trị này.        
+        </td>
+    </tr>
+</table>
+</div>
+<hr />
+
+<p>Trong ví dụ này, có 6 <em>users A, B, C, D, E, F</em> và 5 bài hát. Các ô màu xanh thể hiện việc một <em>user</em> đã đánh giá một bài hát với <em>ratings</em> từ 0 (không thích) đến 5 (rất thích). Các ô có dấu ‘?’ màu xám tương ứng với các ô chưa có dữ liệu. Công việc của một Recommendation Systems là dự đoán giá trị tại các ô màu xám này, từ đó đưa ra gợi ý cho người dùng. Recommendation Systems, vì vậy, đôi khi cũng được coi là bài toán <em>Matrix Completion</em> (<em>Hoàn thiện ma trận</em>).</p>
+
+<p>Trong ví dụ đơn giản này, dễ thấy có 2 thể loại nhạc khác nhau: 3 bài đầu là nhạc <em>Bolero</em> và 2 bài sau là nhạc <em>Thiếu nhi</em>. Từ dữ liệu này, ta cũng có thể đoán được rằng <em>A, B</em> thích thể loại <em>Bolero</em>; <em>C, D</em>, E, F thích thể loại <em>Thiếu nhi</em>. Từ đó, một hệ thống tốt nên gợi ý <em>Cỏ úa</em> cho <em>B</em>; <em>Vùng lá me bay</em> cho <em>A,</em>; <em>Em yêu trường em</em> cho <em>D, E, F</em>. Giả sử chỉ có hai thể loại nhạc này, khi có một bài hát mới, ta chỉ cần phân lớp nó vào thể loại nào, từ đó đưa ra gợi ý với từng người dùng.</p>
+
+<p>Thông thường, có rất nhiều <em>users</em> và <em>items</em> trong hệ thống, và mỗi <em>user</em> thường chỉ <em>rate</em> một số lượng rất nhỏ các <em>item</em>, thậm chí có những <em>user</em> không rate <em>item</em> nào (với những <em>users</em> này thì cách tốt nhất là gợi ý các <em>items</em> phổ biến nhất). Vì vậy, lượng ô màu xám của utility matrix trong các bài toán đó thường là rất lớn, và lượng các ô đã được điền là một số rất nhỏ.</p>
+
+<p>Rõ ràng rằng càng nhiều ô được điền thì độ chính xác của hệ thống sẽ càng được cải thiện. Vì vậy, các hệ thống luôn luôn <em>hỏi</em> người dùng về sự quan tâm của họ tới sản phẩm, và muốn người dùng đánh giá càng nhiều sản phẩm càng tốt. Việc đánh giá các sản phẩm, vì thế, không những giúp các người dùng khác biết được chất lượng sản phẩm mà còn giúp hệ thống <em>biết</em> được sở thích của người dùng, qua đó có chính sách quảng cáo hợp lý.</p>
+
+<p><a name="-xay-dung-utility-matrix"></a></p>
+
+<p><a name="-xay-dung-utility-matrix"></a></p>
+<h3 id="22-xây-dựng-utility-matrix">2.2. Xây dựng Utility Matrix</h3>
+
+<p>Không có Utility matrix, gần như không thể gợi ý được sản phẩm tới ngừời dùng, ngoài cách luôn luôn gợi ý các sản phẩm phổ biến nhất. Vì vậy, trong các Recommender Systems, việc xây dựng Utility Matrix là tối quan trọng. Tuy nhiên, việc xây dựng ma trận này thường có gặp nhiều khó khăn. Có hai hướng tiếp cận phổ biến để xác định giá trị <em>rating</em> cho mỗi cặp <em>user-item</em> trong Utility Matrix:</p>
+
+<ol>
+  <li>
+    <p><em>Nhờ</em> người dùng <em>rate</em> sản phẩm. Amazon luôn <em>nhờ</em> người dùng <em>rate</em> các sản phẩm của họ bằng cách gửi các email nhắc nhở nhiều lần. Rất nhiều hệ thống khác cũng làm việc tương tự. Tuy nhiên, cách tiếp cận này có một vài hạn chế, vì thường thì người dùng ít khi <em>rate</em> sản phẩm. Và nếu có, đó có thể là những đánh giá thiên lệch bởi những người sẵn sàng <em>rate</em>.</p>
+  </li>
+  <li>
+    <p>Hướng tiếp cận thứ hai là dựa trên hành vi của <em>users</em>. Rõ ràng, nếu một người dùng mua một sản phẩm trên Amazon, xem một clip trên Youtube (có thể là nhiều lần), hay đọc một bài báo, thì có thể khẳng định rằng ngừời dùng đó <em>thích</em> sản phẩm đó. Facebook cũng dựa trên việc bạn <em>like</em> những nội dung nào để hiển thị <em>newsfeed</em> của bạn những nội dung liên quan. Bạn càng đam mê facebook, facebook càng được hưởng lợi, thế nên nó luôn mang tới bạn những thông tin mà khả năng cao là bạn <em>muốn</em> đọc. (<em>Đừng đánh giá xã hội qua facebook</em>). Thường thì với cách này, ta chỉ xây dựng được một ma trận với các thành phần là <code class="language-plaintext highlighter-rouge">1</code> và <code class="language-plaintext highlighter-rouge">0</code>, với <code class="language-plaintext highlighter-rouge">1</code> thể hiện người dùng thích sản phẩm, <code class="language-plaintext highlighter-rouge">0</code> thể hiện chưa có thông tin. Trong trường hợp này, <code class="language-plaintext highlighter-rouge">0</code> không có nghĩa là thấp hơn <code class="language-plaintext highlighter-rouge">1</code>, nó chỉ có nghĩa là ngừời dùng chưa cung cấp thông tin. Chúng ta cũng có thể xây dựng ma trận với các giá trị cao hơn 1 thông qua thời gian hoặc số lượt mà người dùng xem một sản phẩm nào đó. Đôi khi, nút <em>dislike</em> cũng mang lại những lợi ích nhất định cho hệ thống, lúc này có thể gán giá trị tương ứng bằng <code class="language-plaintext highlighter-rouge">-1</code> chẳng hạn.</p>
+  </li>
+</ol>
+
+<p><a name="-content-based-recommendations"></a></p>
+
+<p><a name="-content-based-recommendations"></a></p>
+<h2 id="3-content-based-recommendations">3. Content-Based Recommendations</h2>
+
+<p><a name="-item-profiles"></a></p>
+
+<p><a name="-item-profiles"></a></p>
+<h3 id="31-item-profiles">3.1. Item profiles</h3>
+
+<p>Trong các hệ thống content-based, tức dựa trên <em>nội dung</em> của mỗi <em>item</em>, chúng ta cần xây dựng một bộ hộ sơ (profile) cho mỗi item. <em>Profile</em> này được biểu diễn dưới dạng toán học là một feature vector. Trong những trường hợp đơn giản, <em>feature vector</em> được trực tiếp trích xuất từ <em>item</em>. Ví dụ, xem xét các <em>features</em> của một bài hát mà có thể được sử dụng trong các Recommendation Systems:</p>
+
+<ol>
+  <li><em>Ca sĩ</em>. Cùng là bài <em>Thành phố buồn</em> nhưng có người thích bản của Đan Nguyên, có người lại thích bản của Đàm Vĩnh Hưng.</li>
+  <li><em>Nhạc sĩ sáng tác</em>. Cùng là nhạc trẻ nhưng có người thích Phan Mạnh Quỳnh, người khác lại thích MTP.</li>
+  <li><em>Năm sáng tác</em>. Một số người thích nhạc xưa cũ hơn nhạc hiện đại.</li>
+  <li><em>Thể loại</em>. Điều này thì chắc rồi, Quan họ và Bolero sẽ có thể thu hút những nhóm người khác nhau.</li>
+</ol>
+
+<p>Có rất nhiều yếu tố khác của một bài hát có thể được sử dụng. Ngoại trừ <em>Thể loại</em> khó định nghĩa, các yếu tố khác đều được xác định rõ ràng.</p>
+
+<p>Trong ví dụ ở Hình 1 phía trên, chúng ta đơn giản hoá bài toán bằng việc xây dựng một feature vector hai chiều cho mỗi bài hát: chiều thứ nhất là mức độ <em>Bolero</em>, chiều thứ hai là mức độ <em>Thiếu nhi</em> của bài đó. Đặt các feature vector cho mỗi bài hát là \(\mathbf{x}_1, \mathbf{x}_2, \mathbf{x}_3, \mathbf{x}_4, \mathbf{x}_5\). Giả sử các feature vector (ở dạng hàng) cho mỗi bài hát được cho trong Hình 2 dưới đây:</p>
+
+<hr />
+
+<div class="imgcap">
+<img src="/assets/23_contentbasedrecommendersys/contentbased.png" align="center" width="800" />
+<br />
+<div class="thecap">Hình 2: Giả sử feature vector cho mỗi <em>item</em> được cho trong cột cuối cùng. Với mỗi <em>user</em>, chúng ta cần tìm một mô hình \(\theta_i\) tương ứng sao cho mô hình thu được là <em>tốt nhất</em>.</div>
+</div>
+<hr />
+
+<p>Bài toán đi tìm mô hình \(\theta_i\) cho mỗi <em>user</em> có thể được coi là một bài toán Regression trong trường hợp <em>ratings</em> là một dải giá trị, hoặc bài toán <em>Classification</em> trong trường hợp <em>ratings</em> là một vài trường hợp cụ thể, như <em>like/dislike</em> chẳng hạn. Dữ liệu training để xây dựng mỗi mô hình \(\theta_i\) là các cặp (<em>item profile, ratings</em>) tương ứng với các <em>items</em> mà <em>user</em> đó đã <em>rated</em>. Việc <em>điền</em> các giá trị còn thiếu trong ma trận Utility chính là việc dự đoán đầu ra cho các <em>unrated items</em> khi áp dụng mô hình \(\theta_i\) lên chúng.</p>
+
+<p>Việc lựa chọn mô hình Regression/Classification nào tuỳ thuộc vào ứng dụng. Tôi sẽ lấy ví dụ về một mô hình đơn giản nhất: mô hình tuyến tính, mà cụ thể là <a href="/2017/03/04/overfitting/#-\\l\\-regularization">Linear Regression với regularization, tức Ridge Regression</a>.</p>
+
+<p><a name="-xay-dung-ham-mat-mat"></a></p>
+
+<p><a name="-xay-dung-ham-mat-mat"></a></p>
+<h3 id="32-xây-dựng-hàm-mất-mát">3.2. Xây dựng hàm mất mát</h3>
+
+<p>Giả sử rằng số <em>users</em> là \(N\), số <em>items</em> là \(M\), <em>utility maxtrix</em> được mô tả bởi ma trận \(\mathbf{Y}\). Thành phần ở hàng thứ \(m\), cột thứ \(n\) của \(\mathbf{Y}\) là <em>mức độ quan tâm</em> (ở đây là số sao đã <em>rate</em>) của <em>user</em> thứ \(n\) lên sản phẩm thứ \(m\) mà hệ thống đã thu thập được. Ma trận \(\mathbf{Y}\) bị khuyết rất nhiều thành phần tương ứng với các giá trị mà hệ thống cần dự đoán. Thêm nữa, gọi \(\mathbf{R}\) là ma trận <em>rated or not</em> thể hiện việc một <em>user</em> đã <em>rated</em> một <em>item</em> hay chưa. Cụ thể, \(r_{ij}\) bằng 1 nếu <em>item</em> thứ \(i\) đã được <em>rated</em> bởi <em>user</em> thứ \(j\), bằng 0 trong trường hợp ngược lại.</p>
+
+<p><strong>Mô hình tuyến tính:</strong></p>
+
+<p>Giả sử rằng ta có thể tìm được một mô hình cho mỗi <em>user</em>, minh hoạ bởi vector cột hệ số \(\mathbf{w}_i\) và bias \(b_n\) sao cho <em>mức độ quan tâm</em> của một <em>user</em> tới một <em>item</em> có thể tính được bằng một hàm tuyến tính:</p>
+
+<p>\[
+y_{mn} = \mathbf{x}_m \mathbf{w}_n + b_n ~~~~(1)
+\]</p>
+
+<p>(<em>Chú ý rằng \(\mathbf{x}_m\) là một vector hàng, \(\mathbf{w}_n\) là một vector cột</em>.)</p>
+
+<p>Xét một <em>user</em> thứ \(n\) bất kỳ, nếu ta coi training set là tập hợp các thành phần đã được <em>điền</em> của \(\mathbf{y}_n\), ta có thể xây dựng hàm mất mát tương tự như Ridge Regression như sau:</p>
+
+<p>\[
+\mathcal{L}_n = \frac{1}{2} \sum_{m~:~ r_{mn} = 1}(\mathbf{x}_m \mathbf{w}_n + b_n - y_{mn})^2 + \frac{\lambda}{2} ||\mathbf{w}_n||_2^2 
+\]</p>
+
+<p>Trong đó, thành phần thứ hai là regularization term và \(\lambda\) là một tham số dương. Chú ý rằng regularization thường không được áp dụng lên bias \(b_n\). Trong thực hành, trung bình cộng của <em>lỗi</em> thường được dùng, và <em>mất mát</em> \(\mathcal{L}_n\) được viết lại thành:</p>
+
+<p>\[
+\mathcal{L}_n = \frac{1}{2s_n} \sum_{m~:~ r_{mn} = 1}(\mathbf{x}_m \mathbf{w}_n + b_n - y_{mn})^2 + \frac{\lambda}{2s_n} ||\mathbf{w}_n||_2^2 
+\]</p>
+
+<p>Trong đó \(s_n\) là số lượng các <em>items</em> mà <em>user</em> thứ \(n\) đã <em>rated</em>. Nói cách khác: 
+\[
+s_n = \sum_{m=1}^M r_{mn},
+\]
+là tổng các phần tử trên cột thứ \(n\) của ma trận <em>rated or not</em> \(\mathbf{R}\).</p>
+
+<p>Các bạn đã thấy <em>loss function</em> này <em>quen</em> chưa?</p>
+
+<p>Vì biểu thức <em>loss function</em> chỉ phụ thuộc vào các <em>items</em> đã được rated, ta có thể rút gọn nó bằng cách đặt \(\hat{\mathbf{y}}_n\) là <em>sub vector</em> của \(\mathbf{y}\) được xây dựng bằng cách <em>trích</em> các thành phần <em>khác dấu ?</em> ở cột thứ \(n\), tức đã được <em>rated</em> bởi <em>user</em> thứ \(n\) trong Utility Matrix \(\mathbf{Y}\). Đồng thời, đặt \(\hat{\mathbf{X}}_n\) là <em>sub matrix</em> của ma trận feature \(\mathbf{X}\), được tạo bằng cách <em>trích</em> các hàng tương ứng với các <em>items</em> đã được <em>rated</em> bởi <em>user</em> thứ \(n\). (<em>Xem ví dụ phía dưới để hiểu rõ hơn</em>). Khi đó, biểu thức hàm mất mát của mô hình cho <em>user</em> thứ \(n\) được viết gọn thành:</p>
+
+<p>\[
+\mathcal{L}_n = \frac{1}{2s_n} ||\hat{\mathbf{X}}_n\mathbf{w}_n + b_n \mathbf{e}_n- \hat{\mathbf{y}}_n||_2^2 + \frac{\lambda}{2s_n} ||\mathbf{w}_n||_2^2
+\]
+trong đó, \(\mathbf{e}_n\) là vector cột chứa \(s_n\) phần tử 1.</p>
+
+<p>Đây <em>chính xác</em> là hàm mất mát của Ridge Regression. Cặp nghiệm \(\mathbf{w}_n, b_n\) có thể được tìm qua Stochastic Gradient Descent (SGD), hoặc Mini-batch GD. Tôi không đi sâu vào việc tính đạo hàm theo \(\mathbf{w}_n\) và \(b_n\) của \(\mathcal{L}_n\) nữa. Việc này đã được đề cập nhiều trong các bài trước. Trong bài này, tôi sẽ sử dụng class <code class="language-plaintext highlighter-rouge">Ridge</code> trong <code class="language-plaintext highlighter-rouge">sklearn.linear_model</code>.</p>
+
+<p>Nếu vẫn có điểm chưa hiểu, bạn đọc có thể xem ví dụ nhỏ dưới đây:</p>
+
+<p><a name="-vi-du-ve-ham-mat-mat-cho-user-e"></a></p>
+
+<p><a name="-vi-du-ve-ham-mat-mat-cho-user-e"></a></p>
+<h3 id="33-ví-dụ-về-hàm-mất-mát-cho-user-e">3.3. Ví dụ về hàm mất mát cho user E</h3>
+
+<p>Quay trở lại với ví dụ trong hình 2, <em>feature matrix</em> cho các <em>items</em> (mỗi hàng tương ứng với một <em>item</em>) là: 
+\[
+\mathbf{X} = 
+\left[
+\begin{matrix}
+0.99 &amp; 0.02 \newline
+0.91 &amp; 0.11 \newline
+0.95 &amp; 0.05 \newline
+0.01 &amp; 0.99 \newline
+0.03 &amp; 0.98
+\end{matrix}
+\right]
+\]</p>
+
+<p>Xét trường hợp của <em>user E</em> với \(n = 5\), \(\mathbf{y}_5 = [1, ?, ?, 4, ?]^T \Rightarrow \mathbf{r}_5 = [1, 0, 0, 1, 0]^T\). Vì <em>E</em> mới chỉ <em>rated</em> cho <em>items</em> thứ nhất và thứ tư nên \(s_5 = 2\). Hơn nữa:
+\[
+\hat{\mathbf{X}}_5 = 
+\left[
+\begin{matrix}
+0.99 &amp; 0.02 \newline
+0.01 &amp; 0.99
+\end{matrix}
+\right],
+\hat{\mathbf{y}}_5 = \left[
+\begin{matrix}
+1 \newline
+4 
+\end{matrix}
+\right], ~
+\mathbf{e}_5 = \left[
+\begin{matrix}
+1 \newline
+1 
+\end{matrix}
+\right]
+\]</p>
+
+<p>Khi đó, hàm mất mát cho hệ số tương ứng với <em>user E</em> là: 
+\[
+\mathcal{L}_5 = \frac{1}{4} ||\left[
+\begin{matrix}
+0.99 &amp; 0.02 \newline
+0.01 &amp; 0.99
+\end{matrix}
+\right]\mathbf{w}_5  + b_5\left[
+\begin{matrix}
+1 \newline
+1
+\end{matrix}
+\right] -
+\left[
+\begin{matrix}
+1 \newline
+4
+\end{matrix}
+\right]||_2^2 + \frac{\lambda}{4} ||\mathbf{w}_5||_2^2
+\]</p>
+
+<p>Chúng ta sẽ áp dụng những phân tích trên đây để đi tìm nghiệm cho một bài toán gần với thực tế dưới đây.</p>
+
+<p><a name="-bai-toan-voi-co-so-du-lieu-movielens-k"></a></p>
+
+<p><a name="-bai-toan-voi-co-so-du-lieu-movielens-k"></a></p>
+<h2 id="4-bài-toán-với-cơ-sở-dữ-liệu-movielens-100k">4. Bài toán với cơ sở dữ liệu MovieLens 100k</h2>
+
+<p><a name="-co-so-du-lieu-movielens-k"></a></p>
+
+<p><a name="-co-so-du-lieu-movielens-k"></a></p>
+<h3 id="41-cơ-sở-dữ-liệu-movielens-100k">4.1. Cơ sở dữ liệu MovieLens 100k</h3>
+
+<p><a href="https://grouplens.org/datasets/movielens/100k/">Bộ cơ sở dữ liệu MovieLens 100k</a> được công bố năm 1998 bởi <a href="https://grouplens.org">GroupLens</a>. Bộ cơ sở dữ liệu này bao gồm 100,000 (100k) <em>ratings</em> từ 943 <em>users</em> cho 1682 bộ phim. Các bạn cũng có thể tìm thấy các bộ cơ sở dữ liệu tương tự với khoảng 1M, 10M, 20M ratings. Trong bài viết này, tôi sử dụng bộ cơ sở dữ liệu nhỏ nhất này nhằm mục đích minh hoạ.</p>
+
+<p>Sau khi download và giải nén, chúng ta sẽ thu được rất nhiều các file nhỏ, chúng ta chỉ cần quan tâm các file sau:</p>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">u.data</code>: Chứa toàn bộ các <em>ratings</em> của 943 <em>users</em> cho 1682 movies. Mỗi user <em>rate</em> ít nhất 20 movies. Thông tin về thời gian rate cũng được cho nhưng chúng ta không sử dụng trong bài viết này.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">ua.base, ua.test, ub.base, ub.test</code>: là hai cách chia toàn bộ dữ liệu ra thành hai tập con, một cho training, một cho test. Chúng ta sẽ thực hành trên <code class="language-plaintext highlighter-rouge">ua.base</code> và <code class="language-plaintext highlighter-rouge">ua.test</code>. Bạn đọc có thể thử với cách chia dữ liệu còn lại.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">u.user</code>: Chứa thông tin về <em>users</em>, bao gồm: id, tuổi, giới tính, nghề nghiệp, zipcode (vùng miền), vì những thông tin này cũng có thể ảnh hưởng tới sở thích của các <em>users</em>. Tuy nhiên, trong bài viết này, chúng ta sẽ không sử dụng các thông tin này, trừ thông tin về <em>id</em> để xác định các user khác nhau.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">u.genre</code>: Chứa tên của 19 thể loại phim. Các thể loại bao gồm: <code class="language-plaintext highlighter-rouge">unknown, Action, Adventure, Animation, Children's, Comedy, Crime, Documentary, Drama, Fantasy, Film-Noir, Horror, Musical, Mystery, Romance, Sci-Fi, Thriller, War, Western,</code></p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">u.item</code>: thông tin về mỗi bộ phim. Một vài dòng đầu tiên của file:</p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1|Toy Story (1995)|01-Jan-1995||http://us.imdb.com/M/title-exact?Toy%20Story%20(1995)|0|0|0|1|1|1|0|0|0|0|0|0|0|0|0|0|0|0|0
+2|GoldenEye (1995)|01-Jan-1995||http://us.imdb.com/M/title-exact?GoldenEye%20(1995)|0|1|1|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0
+3|Four Rooms (1995)|01-Jan-1995||http://us.imdb.com/M/title-exact?Four%20Rooms%20(1995)|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0
+4|Get Shorty (1995)|01-Jan-1995||http://us.imdb.com/M/title-exact?Get%20Shorty%20(1995)|0|1|0|0|0|1|0|0|1|0|0|0|0|0|0|0|0|0|0
+</code></pre></div>    </div>
+    <p>Trong mỗi dòng, chúng ta sẽ thấy <em>id</em> của phim, tên phim, ngày phát hành, link trên imdb, và các số nhị phân <code class="language-plaintext highlighter-rouge">0</code>, <code class="language-plaintext highlighter-rouge">1</code> phía cuối để chỉ ra bộ phim thuộc các thể loại nào trong 19 thể loại đã cho trong <code class="language-plaintext highlighter-rouge">u.genre</code>. Một bộ phim có thể thuộc nhiều thể loại khác nhau. Thông tin về thể loại này sẽ được dùng để xây dựng item profiles.</p>
+  </li>
+</ul>
+
+<p>Với cơ sở dữ liệu này, chúng ta sẽ sử dụng thư viện <a href="http://pandas.pydata.org"><code class="language-plaintext highlighter-rouge">pandas</code></a> để trích xuất dữ liệu, có thể được cài đặt bằng <code class="language-plaintext highlighter-rouge">pip install pandas</code>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span> 
+<span class="c1">#Reading user file:
+</span><span class="n">u_cols</span> <span class="o">=</span>  <span class="p">[</span><span class="s">'user_id'</span><span class="p">,</span> <span class="s">'age'</span><span class="p">,</span> <span class="s">'sex'</span><span class="p">,</span> <span class="s">'occupation'</span><span class="p">,</span> <span class="s">'zip_code'</span><span class="p">]</span>
+<span class="n">users</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'ml-100k/u.user'</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">'|'</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="n">u_cols</span><span class="p">,</span>
+ <span class="n">encoding</span><span class="o">=</span><span class="s">'latin-1'</span><span class="p">)</span>
+
+<span class="n">n_users</span> <span class="o">=</span> <span class="n">users</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">print</span> <span class="s">'Number of users:'</span><span class="p">,</span> <span class="n">n_users</span>
+<span class="c1"># users.head() #uncomment this to see some few examples
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Number of users: 943
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#Reading ratings file:
+</span><span class="n">r_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s">'user_id'</span><span class="p">,</span> <span class="s">'movie_id'</span><span class="p">,</span> <span class="s">'rating'</span><span class="p">,</span> <span class="s">'unix_timestamp'</span><span class="p">]</span>
+
+<span class="n">ratings_base</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'ml-100k/ua.base'</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">'</span><span class="se">\t</span><span class="s">'</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="n">r_cols</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">'latin-1'</span><span class="p">)</span>
+<span class="n">ratings_test</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'ml-100k/ua.test'</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">'</span><span class="se">\t</span><span class="s">'</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="n">r_cols</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">'latin-1'</span><span class="p">)</span>
+
+<span class="n">rate_train</span> <span class="o">=</span> <span class="n">ratings_base</span><span class="p">.</span><span class="n">as_matrix</span><span class="p">()</span>
+<span class="n">rate_test</span> <span class="o">=</span> <span class="n">ratings_test</span><span class="p">.</span><span class="n">as_matrix</span><span class="p">()</span>
+
+<span class="k">print</span> <span class="s">'Number of traing rates:'</span><span class="p">,</span> <span class="n">rate_train</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">print</span> <span class="s">'Number of test rates:'</span><span class="p">,</span> <span class="n">rate_test</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Number of traing rates: 90570
+Number of test rates: 9430
+</code></pre></div></div>
+
+<p><a name="-xay-dung-item-profiles"></a></p>
+
+<p><a name="-xay-dung-item-profiles"></a></p>
+<h3 id="42-xây-dựng-item-profiles">4.2. Xây dựng item profiles</h3>
+
+<p>Công việc quan trọng trong content-based recommendation system là xây dựng profile cho mỗi item, tức feature vector cho mỗi item. Trước hết, chúng ta cần load toàn bộ thông tin về các <em>items</em> vào biến <code class="language-plaintext highlighter-rouge">items</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">#Reading items file:
+</span><span class="n">i_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s">'movie id'</span><span class="p">,</span> <span class="s">'movie title'</span> <span class="p">,</span><span class="s">'release date'</span><span class="p">,</span><span class="s">'video release date'</span><span class="p">,</span> <span class="s">'IMDb URL'</span><span class="p">,</span> <span class="s">'unknown'</span><span class="p">,</span> <span class="s">'Action'</span><span class="p">,</span> <span class="s">'Adventure'</span><span class="p">,</span>
+ <span class="s">'Animation'</span><span class="p">,</span> <span class="s">'Children</span><span class="se">\'</span><span class="s">s'</span><span class="p">,</span> <span class="s">'Comedy'</span><span class="p">,</span> <span class="s">'Crime'</span><span class="p">,</span> <span class="s">'Documentary'</span><span class="p">,</span> <span class="s">'Drama'</span><span class="p">,</span> <span class="s">'Fantasy'</span><span class="p">,</span>
+ <span class="s">'Film-Noir'</span><span class="p">,</span> <span class="s">'Horror'</span><span class="p">,</span> <span class="s">'Musical'</span><span class="p">,</span> <span class="s">'Mystery'</span><span class="p">,</span> <span class="s">'Romance'</span><span class="p">,</span> <span class="s">'Sci-Fi'</span><span class="p">,</span> <span class="s">'Thriller'</span><span class="p">,</span> <span class="s">'War'</span><span class="p">,</span> <span class="s">'Western'</span><span class="p">]</span>
+
+<span class="n">items</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'ml-100k/u.item'</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">'|'</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="n">i_cols</span><span class="p">,</span>
+ <span class="n">encoding</span><span class="o">=</span><span class="s">'latin-1'</span><span class="p">)</span>
+
+<span class="n">n_items</span> <span class="o">=</span> <span class="n">items</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">print</span> <span class="s">'Number of items:'</span><span class="p">,</span> <span class="n">n_items</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Number of items: 1682
+</code></pre></div></div>
+
+<p>Vì ta đang dựa trên thể loại của phim để xây dựng profile, ta sẽ chỉ quan tâm tới 19 giá trị nhị phân ở cuối mỗi hàng:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">X0</span> <span class="o">=</span> <span class="n">items</span><span class="p">.</span><span class="n">as_matrix</span><span class="p">()</span>
+<span class="n">X_train_counts</span> <span class="o">=</span> <span class="n">X0</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">19</span><span class="p">:]</span>
+</code></pre></div></div>
+
+<p>Tiếp theo, chúng ta sẽ xây dựng feature vector cho mỗi item dựa trên ma trận thể loại phim và feature <a href="https://stanford.edu/~rjweiss/public_html/IRiSS2013/text2/notebooks/tfidf.html">TF-IDF</a>. Tôi sẽ mô tả kỹ hơn về TF-IDF trong một bài viết khác. Tạm thời, chúng ta sử dụng thư viện <code class="language-plaintext highlighter-rouge">sklearn</code>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#tfidf
+</span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfTransformer</span>
+<span class="n">transformer</span> <span class="o">=</span> <span class="n">TfidfTransformer</span><span class="p">(</span><span class="n">smooth_idf</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">norm</span> <span class="o">=</span><span class="s">'l2'</span><span class="p">)</span>
+<span class="n">tfidf</span> <span class="o">=</span> <span class="n">transformer</span><span class="p">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train_counts</span><span class="p">.</span><span class="n">tolist</span><span class="p">()).</span><span class="n">toarray</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>Sau bước này, mỗi hàng của <code class="language-plaintext highlighter-rouge">tfidf</code> tương ứng với feature vector của một bộ phim.</p>
+
+<p>Tiếp theo, với mỗi <em>user</em>, chúng ta cần đi tìm những bộ phim nào mà <em>user</em> đó đã <em>rated</em>, và giá trị của các <em>rating</em> đó.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="k">def</span> <span class="nf">get_items_rated_by_user</span><span class="p">(</span><span class="n">rate_matrix</span><span class="p">,</span> <span class="n">user_id</span><span class="p">):</span>
+    <span class="s">"""
+    in each line of rate_matrix, we have infor: user_id, item_id, rating (scores), time_stamp
+    we care about the first three values
+    return (item_ids, scores) rated by user user_id
+    """</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">rate_matrix</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># all users
+</span>    <span class="c1"># item indices rated by user_id
+</span>    <span class="c1"># we need to +1 to user_id since in the rate_matrix, id starts from 1 
+</span>    <span class="c1"># while index in python starts from 0
+</span>    <span class="n">ids</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">where</span><span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="n">user_id</span> <span class="o">+</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> 
+    <span class="n">item_ids</span> <span class="o">=</span> <span class="n">rate_matrix</span><span class="p">[</span><span class="n">ids</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span> <span class="c1"># index starts from 0 
+</span>    <span class="n">scores</span> <span class="o">=</span> <span class="n">rate_matrix</span><span class="p">[</span><span class="n">ids</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">item_ids</span><span class="p">,</span> <span class="n">scores</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><a name="-tim-mo-hinh-cho-moi-user"></a></p>
+
+<p><a name="-tim-mo-hinh-cho-moi-user"></a></p>
+<h3 id="43-tìm-mô-hình-cho-mỗi-user">4.3. Tìm mô hình cho mỗi user</h3>
+<p>Bây giờ, ta có thể đi tìm các hệ số của Ridge Regression cho mỗi <em>user</em>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Ridge</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">linear_model</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="n">tfidf</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># data dimension
+</span><span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">d</span><span class="p">,</span> <span class="n">n_users</span><span class="p">))</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_users</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_users</span><span class="p">):</span>    
+    <span class="n">ids</span><span class="p">,</span> <span class="n">scores</span> <span class="o">=</span> <span class="n">get_items_rated_by_user</span><span class="p">(</span><span class="n">rate_train</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">clf</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">fit_intercept</span>  <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+    <span class="n">Xhat</span> <span class="o">=</span> <span class="n">tfidf</span><span class="p">[</span><span class="n">ids</span><span class="p">,</span> <span class="p">:]</span>
+    
+    <span class="n">clf</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Xhat</span><span class="p">,</span> <span class="n">scores</span><span class="p">)</span> 
+    <span class="n">W</span><span class="p">[:,</span> <span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">clf</span><span class="p">.</span><span class="n">coef_</span>
+    <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">clf</span><span class="p">.</span><span class="n">intercept_</span>
+
+</code></pre></div></div>
+
+<p>Sau khi tính được các hệ số <code class="language-plaintext highlighter-rouge">W</code> và <code class="language-plaintext highlighter-rouge">b</code>, <em>ratings</em> cho mỗi <em>items</em> được dự đoán bằng cách tính:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># predicted scores
+</span><span class="n">Yhat</span> <span class="o">=</span> <span class="n">tfidf</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">W</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span>
+</code></pre></div></div>
+
+<p>Dưới đây là một ví dụ với <em>user</em> có <em>id</em> là <code class="language-plaintext highlighter-rouge">10</code>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">np</span><span class="p">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># 2 digits after . 
+</span><span class="n">ids</span><span class="p">,</span> <span class="n">scores</span> <span class="o">=</span> <span class="n">get_items_rated_by_user</span><span class="p">(</span><span class="n">rate_test</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">Yhat</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="n">ids</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Rated movies ids :'</span><span class="p">,</span> <span class="n">ids</span> <span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'True ratings     :'</span><span class="p">,</span> <span class="n">scores</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Predicted ratings:'</span><span class="p">,</span> <span class="n">Yhat</span><span class="p">[</span><span class="n">ids</span><span class="p">,</span> <span class="n">n</span><span class="p">])</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Rated movies ids: [ 37 109 110 226 424 557 722 724 731 739]
+True ratings: [3 3 4 3 4 3 5 3 3 4]
+Predicted ratings: [3.18 3.13 3.42 3.09 3.35 5.2  4.01 3.35 3.42 3.72]
+</code></pre></div></div>
+
+<p><a name="-danh-gia-mo-hinh"></a></p>
+
+<p><a name="-danh-gia-mo-hinh"></a></p>
+<h3 id="44-đánh-giá-mô-hình">4.4. Đánh giá mô hình</h3>
+<p>Để đánh giá mô hình tìm được, chúng ta sẽ sử dụng Root Mean Squared Error (RMSE), tức căn bậc hai của trung bình cộng bình phương của lỗi. Lỗi được tính là hiệu của <em>true rating</em> và <em>predicted rating</em>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="n">Yhat</span><span class="p">,</span> <span class="n">rates</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">se</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">n_users</span><span class="p">):</span>
+        <span class="n">ids</span><span class="p">,</span> <span class="n">scores_truth</span> <span class="o">=</span> <span class="n">get_items_rated_by_user</span><span class="p">(</span><span class="n">rates</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+        <span class="n">scores_pred</span> <span class="o">=</span> <span class="n">Yhat</span><span class="p">[</span><span class="n">ids</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span>
+        <span class="n">e</span> <span class="o">=</span> <span class="n">scores_truth</span> <span class="o">-</span> <span class="n">scores_pred</span> 
+        <span class="n">se</span> <span class="o">+=</span> <span class="p">(</span><span class="n">e</span><span class="o">*</span><span class="n">e</span><span class="p">).</span><span class="nb">sum</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">cnt</span> <span class="o">+=</span> <span class="n">e</span><span class="p">.</span><span class="n">size</span> 
+    <span class="k">return</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">se</span><span class="o">/</span><span class="n">cnt</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="s">'RMSE for training:'</span><span class="p">,</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">Yhat</span><span class="p">,</span> <span class="n">rate_train</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">'RMSE for test    :'</span><span class="p">,</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">Yhat</span><span class="p">,</span> <span class="n">rate_test</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>RMSE for training: 0.908980456283
+RMSE for test    : 1.27032827004
+</code></pre></div></div>
+
+<p>Như vậy, với tập training, sai số vào khoảng 0.9 <em>sao</em>; với tập test, sai số lớn hơn một chút, rơi vào khoảng 1.3. Chúng ta thấy rằng kết quả này chưa thực sự tốt vì chúng ta đã đơn giản hoá mô hình đi quá nhiều. Kết quả tốt hơn có thể được thấy trong bài tiếp theo: Collaborative Filtering.</p>
+
+<p><a name="-thao-luan"></a></p>
+
+<p><a name="-thao-luan"></a></p>
+<h2 id="5-thảo-luận">5. Thảo luận</h2>
+
+<ul>
+  <li>
+    <p>Content-based Recommendation Systems là phương pháp đơn giản nhất trong các hệ thống Recommendation Systems. Đặc điểm của phương pháp này là việc xây dựng mô hình cho mỗi <em>user</em> không phụ thuộc vào các <em>users</em> khác.</p>
+  </li>
+  <li>
+    <p>Việc xây dựng mô hình cho mỗi <em>users</em> có thể được coi như bài toán Regression hoặc Classsification với training data là cặp dữ liệu (<em>item profile</em>, <em>rating</em>) mà <em>user</em> đó đã <em>rated</em>. <em>item profile</em> không phụ thuộc vào <em>user</em>, nó thường phụ thuộc vào các đặc điểm mô tả của <em>item</em> hoặc cũng có thể được xác định bằng cách yêu cầu người dùng gắn <em>tag</em>.</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/23_contentbasedrecommendersys/python/MovieLens%20100k.ipynb">Source code</a></p>
+  </li>
+</ul>
+
+<p><a name="-tai-lieu-tham-khao"></a></p>
+
+<p><a name="-tai-lieu-tham-khao"></a></p>
+<h2 id="6-tài-liệu-tham-khảo">6. Tài liệu tham khảo</h2>
+
+<p>[1] <a href="http://infolab.stanford.edu/~ullman/mmds/ch9.pdf">Recommendation Systems - Stanford InfoLab</a></p>
+
+<p>[2] <a href="https://www.youtube.com/watch?v=saXRzxgFN0o&amp;list=PL_npY1DYXHPT-3dorG7Em6d18P4JRFDvH">Recommendation systems - Machine Learning - Andrew Ng</a></p>
+
+<p>[3] <a href="https://stanford.edu/~rjweiss/public_html/IRiSS2013/text2/notebooks/tfidf.html">The Vector Space Model of text</a></p>
+
+<p>[4] <a href="https://www.youtube.com/watch?v=2uxXPzm-7FY">Content Based Recommendations - Stanford University</a></p>
+:ET

@@ -35,7 +35,7 @@ summary:
         - [5.1.2. Giải bài toán bằng thư viện sklearn](#-giai-bai-toan-bang-thu-vien-sklearn)
         - [5.1.3. Tìm nghiệm bằng giải bài toán đối ngẫu](#-tim-nghiem-bang-giai-bai-toan-doi-ngau)
         - [5.1.4. Tìm nghiệm bằng giải bài toán không ràng buộc](#-tim-nghiem-bang-giai-bai-toan-khong-rang-buoc)
-    - [5.2. Ảnh hưởng của \\\(C\\\) lên nghiệm](#-anh-huong-cua-\\c\\-len-nghiem)
+    - [5.2. Ảnh hưởng của \newline(C\newline) lên nghiệm](#-anh-huong-cua-\\c\\-len-nghiem)
 - [6. Tóm tắt và thảo luận](#-tom-tat-va-thao-luan)
 - [7. Tài liệu tham khảo](#-tai-lieu-tham-khao)
 
@@ -127,7 +127,7 @@ Nhận thấy rằng nếu \\(y_i= \pm 1\\) là _nhãn_ của \\(\mathbf{x}\_i\\
 Nhắc lại bài toán tối ưu cho _Hard Margin SVM_:
 \\[
 \begin{eqnarray}
-    (\mathbf{w}, b) &=& \arg \min_{\mathbf{w}, b} \frac{1}{2}{\|\|\mathbf{w}\|\|_2^2}   \\\
+    (\mathbf{w}, b) &=& \arg \min_{\mathbf{w}, b} \frac{1}{2}{\|\|\mathbf{w}\|\|_2^2}   \newline
     \text{subject to:}~ && y\_n(\mathbf{w}^T\mathbf{x}\_n + b) \geq 1, \forall n = 1, 2, \dots, N ~~~~(1)
 \end{eqnarray}
 \\]
@@ -149,8 +149,8 @@ Và ràng buộc phụ \\(\xi\_n \geq 0, ~\forall n = 1, 2, \dots, N\\).
 Tóm lại, ta sẽ có bài toán tối ưu ở dạng chuẩn cho _Soft-margin SVM_:
 \\[
 \begin{eqnarray}
-    (\mathbf{w}, b, \xi) &=& \arg \min_{\mathbf{w}, b, \xi} \frac{1}{2}{\|\|\mathbf{w}\|\|\_2^2} + C \sum_{n=1}^N \xi\_n  \\\
-    \text{subject to:}~ && 1 - \xi\_n - y\_n(\mathbf{w}^T\mathbf{x}\_n + b) \leq 0, \forall n = 1, 2, \dots, N ~~~~(2) \\\
+    (\mathbf{w}, b, \xi) &=& \arg \min_{\mathbf{w}, b, \xi} \frac{1}{2}{\|\|\mathbf{w}\|\|\_2^2} + C \sum_{n=1}^N \xi\_n  \newline
+    \text{subject to:}~ && 1 - \xi\_n - y\_n(\mathbf{w}^T\mathbf{x}\_n + b) \leq 0, \forall n = 1, 2, \dots, N ~~~~(2) \newline
     && -\xi_n \leq 0,  ~\forall n = 1, 2, \dots, N
 \end{eqnarray}
 \\]
@@ -208,8 +208,8 @@ Với mỗi cặp \\((\lambda,\mu)\\), chúng ta sẽ quan tâm tới \\((\mathb
 
 \\[
 \begin{eqnarray}
-\frac{\partial \mathcal{L}}{\partial \mathbf{w}} & = & 0 \Leftrightarrow \mathbf{w} = \sum_{n=1}^N \lambda_n y_n \mathbf{x}\_n &&(4)\\\
-\frac{\partial \mathcal{L}}{\partial b} & = & 0 \Leftrightarrow \sum_{n=1}^N \lambda_n y_n = 0 && (5)\\\
+\frac{\partial \mathcal{L}}{\partial \mathbf{w}} & = & 0 \Leftrightarrow \mathbf{w} = \sum_{n=1}^N \lambda_n y_n \mathbf{x}\_n &&(4)\newline
+\frac{\partial \mathcal{L}}{\partial b} & = & 0 \Leftrightarrow \sum_{n=1}^N \lambda_n y_n = 0 && (5)\newline
 \frac{\partial \mathcal{L}}{\partial \xi_n} & = & 0 \Leftrightarrow \lambda_n = C - \mu_n && (6)
 \end{eqnarray}
 \\]
@@ -222,8 +222,8 @@ Chú ý rằng hàm này không phụ thuộc vào \\(\mu\\) nhưng ta cần lư
 
 \\[
  \begin{eqnarray}
-     \lambda &=& \arg \max_{\lambda} g(\lambda)   &&\\\
-     \text{subject to:}~ && \sum_{n=1}^N \lambda_ny_n = 0 && (7)\\\
+     \lambda &=& \arg \max_{\lambda} g(\lambda)   &&\newline
+     \text{subject to:}~ && \sum_{n=1}^N \lambda_ny_n = 0 && (7)\newline
      && 0 \leq \lambda_n \leq C, ~\forall n= 1, 2, \dots, N && (8)
  \end{eqnarray}
  \\] 
@@ -240,14 +240,14 @@ Sau khi tìm được \\(\lambda\\) của bài toán đối ngẫu, ta vẫn ph�
 [Hệ điều kiện KKT](/2017/04/02/duality/#-kkt-optimality-conditions) của bài toán tối ưu Soft Margin SVM là, với mọi \\(n = 1, 2, \dots, N\\): 
 \\[
 \begin{eqnarray}
-1 - \xi\_n - y\_n(\mathbf{w}^T\mathbf{x}\_n + b) &\leq& 0 && (9) \\\
--\xi\_n &\leq& 0 &&(10)\\\
-\lambda_n &\geq& 0 &&(11)\\\
-\mu_n &\geq & 0 && (12)\\\
-\lambda\_n ( 1 - \xi\_n - y\_n(\mathbf{w}^T\mathbf{x}\_n + b)) &=& 0 && (13)\\\
-\mu_n \xi_n &=& 0 &&(14)\\\
-\mathbf{w} &=& \sum_{n=1}^N \lambda_n y_n \mathbf{x}\_n &&(4)\\\
-\sum_{n=1}^N \lambda_n y_n &=& 0 && (5)\\\
+1 - \xi\_n - y\_n(\mathbf{w}^T\mathbf{x}\_n + b) &\leq& 0 && (9) \newline
+-\xi\_n &\leq& 0 &&(10)\newline
+\lambda_n &\geq& 0 &&(11)\newline
+\mu_n &\geq & 0 && (12)\newline
+\lambda\_n ( 1 - \xi\_n - y\_n(\mathbf{w}^T\mathbf{x}\_n + b)) &=& 0 && (13)\newline
+\mu_n \xi_n &=& 0 &&(14)\newline
+\mathbf{w} &=& \sum_{n=1}^N \lambda_n y_n \mathbf{x}\_n &&(4)\newline
+\sum_{n=1}^N \lambda_n y_n &=& 0 && (5)\newline
 \lambda_n &=& C - \mu_n && (6)
 \end{eqnarray}
 \\]
@@ -272,7 +272,7 @@ Như vậy, dựa trên các giá trị của \\(\lambda_n\\) ta có thể dự 
 Đặt \\(\mathcal{M} = \\{n: 0 < \lambda_n < C \\}\\) và \\(\mathcal{S} = \\{m: 0 < \lambda_m \leq C\\}\\). Tức \\(\mathcal{M}\\) là tập hợp các chỉ số của các điểm nằm chính xác trên _margins_ - hỗ trợ cho việc tính \\(b\\), \\(\mathcal{S}\\) là tập hợp các chỉ số của các _support vectors_ - hỗ trợ trực tiếp cho việc tính \\(\mathbf{w}\\). Tương tự như với Hard Margin SVM, các hệ số \\(\mathbf{w}, b\\) có thể được xác định bởi:
 \\[
 \begin{eqnarray}
-\mathbf{w} &=& \sum_{m \in \mathcal{S}} \lambda_m y_m \mathbf{x}\_m & ~~~(15)  \\\
+\mathbf{w} &=& \sum_{m \in \mathcal{S}} \lambda_m y_m \mathbf{x}\_m & ~~~(15)  \newline
 b &=& \frac{1}{N_{\mathcal{M}}} \sum_{n \in \mathcal{M}} (y_n - \mathbf{w}^T\mathbf{x}\_n) = \frac{1}{N\_{\mathcal{M}}} \sum_{n \in \mathcal{M}} \left\(y\_n - \sum_{m \in \mathcal{S}} \lambda\_m y\_m \mathbf{x}_m^T\mathbf{x}_n\right\) & ~~~ (16)
 \end{eqnarray}
 \\]
@@ -299,7 +299,7 @@ Kết hợp với điều kiện \\(\xi\_n \geq 0\\) ta sẽ thu được bài t
 
 \\[
 \begin{eqnarray}
-    (\mathbf{w}, b, \xi) &=& \arg \min_{\mathbf{w}, b, \xi} \frac{1}{2}{\|\|\mathbf{w}\|\|\_2^2} + C \sum_{n=1}^N \xi\_n  \\\
+    (\mathbf{w}, b, \xi) &=& \arg \min_{\mathbf{w}, b, \xi} \frac{1}{2}{\|\|\mathbf{w}\|\|\_2^2} + C \sum_{n=1}^N \xi\_n  \newline
     \text{subject to:}~ && \xi\_n \geq \max(0, 1 - y_n(\mathbf{w}^T\mathbf{x} + b)), ~\forall n = 1, 2, \dots, N~~~ (17)
 \end{eqnarray}
 \\]
@@ -323,7 +323,7 @@ Vậy nhận xét \\((18)\\) được chứng minh.
 Khi đó, ta thay toàn bộ các giá trị của \\(\xi_n\\) trong \\((18)\\) vào hàm mục tiêu: 
 \\[
 \begin{eqnarray}
-    (\mathbf{w}, b, \xi) &=& \arg \min_{\mathbf{w}, b, \xi} \frac{1}{2}{\|\|\mathbf{w}\|\|\_2^2} + C \sum_{n=1}^N \max(0, 1 - y_n(\mathbf{w}^T\mathbf{x}\_n + b)) \\\
+    (\mathbf{w}, b, \xi) &=& \arg \min_{\mathbf{w}, b, \xi} \frac{1}{2}{\|\|\mathbf{w}\|\|\_2^2} + C \sum_{n=1}^N \max(0, 1 - y_n(\mathbf{w}^T\mathbf{x}\_n + b)) \newline
     \text{subject to:}~ && \xi\_n = \max(0, 1 - y_n(\mathbf{w}^T\mathbf{x}\_n + b)), ~\forall n = 1, 2, \dots, N~~~ (19)
 \end{eqnarray}
 \\]
@@ -398,7 +398,7 @@ Trong trường hợp dữ liệu trong hai class là _linearly separable_, ta s
 Nhân cả hai về với một hằng số \\(a > 1\\) ta có: 
 \\[
 \begin{eqnarray}
-a - y_n (a\mathbf{w}^T\mathbf{x}\_n + ab) &\leq& 0, ~\forall n = 1, 2, \dots, N \\\
+a - y_n (a\mathbf{w}^T\mathbf{x}\_n + ab) &\leq& 0, ~\forall n = 1, 2, \dots, N \newline
 \Rightarrow 1 - y_n (a\mathbf{w}^T\mathbf{x}\_n + ab) &\leq& 1 - a < 0, ~\forall n = 1, 2, \dots, N
 \end{eqnarray}
 \\]
@@ -441,7 +441,7 @@ Vì bài toán tối ưu bây giờ là không ràng buộc, chúng ta có thể
 Trước hết ta cần tính được đạo hàm của hàm mất mát theo \\(\mathbf{\bar{w}}\\). Việc này thoáng qua có vẻ hơi phức tạp vì ta cần tính đạo hàm của hàm \\(\max\\), nhưng nếu chúng ta nhìn vào đạo hàm của hinge loss, ta có thể tính được đạo hàm theo \\(\mathbf{\bar{w}}\\) một cách đơn giản. 
 
 Chúng ta tạm quên đi đạo hàm của phần regularization vì nó đơn giản bằng \\(\lambda \left\[\begin{matrix}
-\mathbf{w}\\\
+\mathbf{w}\newline
 0
 \end{matrix}\right\]\\) với thành phần 0 ở cuối chính là đạo hàm theo bias của thành phần regularization.
 
@@ -457,7 +457,7 @@ Với phần hinge loss, xét từng điểm dữ liệu, ta có hai trường h
 Đặt: 
 \\[
 \begin{eqnarray}
-\mathbf{Z} &=& [y\_1 \mathbf{\bar{x}}\_1, y\_2 \mathbf{\bar{x}}\_2, \dots, y\_N\mathbf{\bar{x}}\_N] & ~~~(22) \\\
+\mathbf{Z} &=& [y\_1 \mathbf{\bar{x}}\_1, y\_2 \mathbf{\bar{x}}\_2, \dots, y\_N\mathbf{\bar{x}}\_N] & ~~~(22) \newline
 \mathbf{u} &=& [y\_1\mathbf{\bar{w}}^T\mathbf{\bar{x}}\_1,y\_2\mathbf{\bar{w}}^T\mathbf{\bar{x}}\_2, \dots, y\_N \mathbf{\bar{w}}^T \mathbf{\bar{x}}_N] = \mathbf{\bar{w}}^T\mathbf{Z} & ~~~ (23)
 \end{eqnarray}
 \\]
@@ -472,7 +472,7 @@ ta có thể suy ra cách tính đạo hàm theo \\(\mathbf{\bar{w}}\\) của h�
 \\[
 \nabla J(\mathbf{\bar{w}}) = \sum_{n \in \mathcal{H}} - y_n\mathbf{\bar{x}}_n  + \lambda 
 \left\[\begin{matrix}
-\mathbf{w}\\\
+\mathbf{w}\newline
 0
 \end{matrix}\right\] ~~~ (24)
 \\]
@@ -481,7 +481,7 @@ Các bạn sẽ thấy cách tính toán giá trị này một cách hiệu qu�
 Vậy quy tắc cập nhật của \\(\mathbf{\bar{w}}\\) sẽ là: 
 \\[
 \mathbf{\bar{w}} = \mathbf{\bar{w}} - \eta \left\(\sum_{n \in \mathcal{H}} - y\_n\mathbf{\bar{x}}\_n  + \lambda \left\[\begin{matrix}
-\mathbf{w}\\\
+\mathbf{w}\newline
 0
 \end{matrix}\right\]\right\) ~~~ (25)
 \\]

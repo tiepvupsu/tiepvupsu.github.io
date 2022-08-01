@@ -1,0 +1,852 @@
+I"q2<!-- MarkdownTOC -->
+
+<ul>
+  <li><a href="#-gioi-thieu">1. Giới thiệu</a></li>
+  <li><a href="#-phan-tich-toan-hoc">2. Phân tích toán học</a></li>
+  <li><a href="#-bai-toan-doi-ngau-lagrange">3. Bài toán đối ngẫu Lagrange</a>
+    <ul>
+      <li><a href="#-kiem-tra-tieu-chuan-slater">3.1. Kiểm tra tiêu chuẩn Slater</a></li>
+      <li><a href="#-lagrangian-cua-bai-toan-soft-margin-svm">3.2. Lagrangian của bài toán Soft-margin SVM</a></li>
+      <li><a href="#-bai-toan-doi-ngau">3.3. Bài toán đối ngẫu</a></li>
+      <li><a href="#-he-dieu-kien-kkt">3.4. Hệ điều kiện KKT</a></li>
+    </ul>
+  </li>
+  <li><a href="#-bai-toan-toi-uu-khong-rang-buoc-cho-soft-margin-svm">4. Bài toán tối ưu không ràng buộc cho Soft Margin SVM</a>
+    <ul>
+      <li><a href="#-bai-toan-toi-uu-khong-rang-buoc-tuong-duong">4.1. Bài toán tối ưu không ràng buộc tương đương</a></li>
+      <li><a href="#-hinge-loss">4.2. Hinge loss</a></li>
+      <li><a href="#-xay-dung-ham-mat-mat">4.3. Xây dựng hàm mất mát</a></li>
+      <li><a href="#-toi-uu-ham-mat-mat">4.4. Tối ưu hàm mất mát</a></li>
+    </ul>
+  </li>
+  <li><a href="#-kiem-chung-bang-lap-trinh">5. Kiểm chứng bằng lập trình</a>
+    <ul>
+      <li><a href="#-giai-bai-toan-soft-margin-bang--cach-khac-nhau">5.1. Giải bài toán Soft Margin bằng 3 cách khác nhau</a>
+        <ul>
+          <li><a href="#-khai-bao-thu-vien-va-tao-du-lieu-gia">5.1.1. Khai báo thư viện và tạo dữ liệu giả</a></li>
+          <li><a href="#-giai-bai-toan-bang-thu-vien-sklearn">5.1.2. Giải bài toán bằng thư viện sklearn</a></li>
+          <li><a href="#-tim-nghiem-bang-giai-bai-toan-doi-ngau">5.1.3. Tìm nghiệm bằng giải bài toán đối ngẫu</a></li>
+          <li><a href="#-tim-nghiem-bang-giai-bai-toan-khong-rang-buoc">5.1.4. Tìm nghiệm bằng giải bài toán không ràng buộc</a></li>
+        </ul>
+      </li>
+      <li><a href="#-anh-huong-cua-\\c\\-len-nghiem">5.2. Ảnh hưởng của \newline(C\newline) lên nghiệm</a></li>
+    </ul>
+  </li>
+  <li><a href="#-tom-tat-va-thao-luan">6. Tóm tắt và thảo luận</a></li>
+  <li><a href="#-tai-lieu-tham-khao">7. Tài liệu tham khảo</a></li>
+</ul>
+
+<!-- /MarkdownTOC -->
+
+<p><a name="-gioi-thieu"></a></p>
+
+<h2 id="1-giới-thiệu">1. Giới thiệu</h2>
+<p>Giống như <a href="/2017/01/21/perceptron/">Perceptron Learning Algorithm (PLA)</a>, <a href="/2017/04/09/smv/">Support Vector Machine (SVM) <em>thuần</em></a> chỉ làm việc khi dữ liệu của 2 classes là <a href="/2017/01/21/perceptron/#bai-toan-perceptron"><em>linearly separable</em></a>. Một cách tự nhiên, chúng ta cũng mong muốn rằng SVM có thể làm việc với dữ liệu <em>gần linearly separable</em> giống như <a href="/2017/01/27/logisticregression/">Logistic Regression</a> đã làm được.</p>
+
+<p><em>Bạn được khuyến khích đọc bài <a href="(/2017/04/09/smv/)">Support Vector Machine</a> trước khi đọc bài này.</em></p>
+
+<p>Xét 2 ví dụ trong Hình 1 dưới đây:</p>
+
+<hr />
+
+<div>
+<table width="100%" style="border: 0px solid white; align = center">
+   <tr>
+        <td width="40%" style="border: 0px solid white" align="center">
+        <img style="display:block;" width="100%" src="/assets/20_softmarginsvm/ssvm1.png" />
+        <br />
+        a)
+         </td>
+
+        <td width="40%" style="border: 0px solid white" align="center">
+        <img style="display:block;" width="100%" src="/assets/20_softmarginsvm/ssvm2.png" />
+        <br />
+        b)
+        </td>
+
+    </tr>
+
+</table>
+<div class="thecap"> Hình 1: Soft margin SVM. Khi a) có nhiễu hoặc b) dữ liệu gần linearly separable, SVM thuần sẽ không hoạt động hiệu quả.
+</div>
+</div>
+<hr />
+
+<p>Có hai trường hợp dễ nhận thấy SVM làm việc không hiệu quả hoặc thậm chí không làm việc:</p>
+
+<ul>
+  <li>
+    <p>Trường hợp 1: Dữ liệu vẫn <em>linearly separable</em> như Hình 1a) nhưng có một điểm <em>nhiễu</em> của lớp tròn đỏ ở quá gần so với lớp vuông xanh. Trong trường hợp này, nếu ta sử dụng SVM <em>thuần</em> thì sẽ tạo ra một <em>margin</em> rất nhỏ. Ngoài ra, đường phân lớp nằm quá gần lớp vuông xanh và xa lớp tròn đỏ. Trong khi đó, nếu ta <em>hy sinh</em> điểm nhiễu này thì ta được một <em>margin</em> tốt hơn rất nhiều được mô tả bởi các đường nét đứt. SVM <em>thuần</em> vì vậy còn được coi là <em>nhạy cảm với nhiễu</em> (<em>sensitive to noise</em>).</p>
+  </li>
+  <li>
+    <p>Trường hợp 2: Dữ liệu không <em>linearly separable</em> nhưng <em>gần linearly separable</em> như Hình 1b). Trong trường hợp này, nếu ta sử dụng SVM <em>thuần</em> thì rõ ràng bài toán tối ưu là <em>infeasible</em>, tức <em>feasible set</em> là một tập rỗng, vì vậy bài toán tối ưu SVM trở nên vô nghiệm. Tuy nhiên, nếu ta lại <em>chịu hy sinh một chút</em> những điểm ở gần biên giữa hai classes, ta vẫn có thể tạo được một đường phân chia khá tốt như đường nét đứt đậm. Các <em>đường support</em> đường nét đứt mảnh vẫn giúp tạo được một margin lớn cho bộ phân lớp này. Với mỗi điểm nằm lần sang phía bên kia của các đường suport (hay <em>đường margin</em>, hoặc <em>đường biên</em>) tương ứng, ta gọi điểm đó rơi vào <em>vùng không an toàn</em>. Chú ý rằng vùng an toàn của hai classes là khác nhau, giao nhau ở phần nằm giữa hai đường support.</p>
+  </li>
+</ul>
+
+<p><a name="hard-margin"></a>
+Trong cả hai trường hợp trên, <em>margin</em> tạo bởi đường phân chia và đường nét đứt mảnh còn được gọi là <em>soft margin</em> (<em>biên mềm</em>). Cũng theo cách gọi này, SVM <em>thuần</em> còn được gọi là <em>Hard Margin SVM</em> (<em>SVM biên cứng</em>).</p>
+
+<p>Trong bài này, chúng ta sẽ tiếp tục tìm hiểu một biến thể của <em>Hard Margin SVM</em> có tên gọi là <em>Soft Margin SVM</em>.</p>
+
+<p>Bài toán tối ưu cho <em>Soft Margin SVM</em> có hai cách tiếp cận khác nhau, cả hai đều mang lại những kết quả thú vị và có thể phát triển tiếp thành các thuật toán SVM phức tạp và hiệu quả hơn.</p>
+
+<p>Cách giải quyết thứ nhất là giải một bài toán tối ưu có ràng buộc bằng cách giải bài toán đối ngẫu giống như <em>Hard Margin SVM</em>; cách giải dựa vào bài toán đối ngẫu này là cơ sở cho phương pháp <em>Kernel SVM</em> cho dữ liệu thực sự không <em>linearly separable</em> mà tôi sẽ đề cập trong bài tiếp theo. Hướng giải quyết này sẽ được tôi trình bày trong Mục 3 bên dưới.</p>
+
+<p>Cách giải quyết thứ hai là đưa về một bài toán tối ưu <em>không</em> ràng buộc. Bài toán này có thể giải bằng các phương pháp Gradient Descent. Nhờ đó, cách giải quyết này có thể được áp dụng cho các bài toán <a href="/2017/01/12/gradientdescent/#large-scale">large cale</a>. Ngoài ra, trong cách giải này, chúng ta sẽ làm quen với một hàm mất mát mới có tên là <em>hinge loss</em>. Hàm mất mát này có thể mở rộng ra cho bài toán <em>multi-class classification</em> mà tôi sẽ đề cập sau 2 bài nữa (<em>Multi-class SVM</em>). Cách phát triển từ <em>Soft Margin SVM</em> thành <em>Multi-class SVM</em> có thể so sánh với cách phát triển từ Logistic Regression thành <a href="/2017/02/17/softmax/">Softmax Regression</a>. Hướng giải quyết này sẽ được tôi trình bày trong Mục 4 bên dưới.</p>
+
+<p>Trước hết, chúng ta cùng đi phân tích bài toán.</p>
+
+<p><a name="-phan-tich-toan-hoc"></a></p>
+
+<h2 id="2-phân-tích-toán-học">2. Phân tích toán học</h2>
+
+<p>Như đã đề cập phía trên, để có một <em>margin</em> lớn hơn trong <em>Soft Margin SVM</em>, chúng ta cần <em>hy sinh</em> một vài điểm dữ liệu bằng cách chấp nhận cho chúng rơi vào vùng <em>không an toàn</em>. Tất nhiên, chúng ta phải hạn chế <em>sự hy sinh</em> này, nếu không, chúng ta có thể tạo ra một biên cực lớn bằng cách <em>hy sinh</em> hầu hết các điểm. Vậy hàm mục tiêu nên là một sự kết hợp để tối đa <em>margin</em> và tối thiểu <em>sự hy sinh</em>.</p>
+
+<p>Giống như với <em>Hard Margin SVM</em>, việc tối đa <em>margin</em> có thể đưa về việc tối thiểu \(||\mathbf{w}||_2^2\). Để xác định <em>sự hy sinh</em>, chúng ta cùng theo dõi Hình 2 dưới đây:</p>
+
+<hr />
+
+<div>
+<table width="100%" style="border: 0px solid white; align = center">
+   <tr>
+        <td width="40%" style="border: 0px solid white" align="">
+        <img style="display:block;" width="100%" src="/assets/20_softmarginsvm/ssvm3.png" />
+        </td>
+
+        <td width="40%" style="border: 0px solid white" align="justify">
+        Hình 2: Giới thiệu các biến slack \(\xi_n\). Với những điểm nằm trong <em>vùng an toàn</em>, \(\xi_n = 0\). Những điểm nằm trong vùng không an toàn nhưng vẫn đúng phía so với đường phân chia tương ứng với các \(0 &lt; \xi_n &lt; 1\), ví dụ \(\mathbf{x}_2\). Những điểm nằm ngược phía với class của chúng so với đường boundary ứng với các \(\xi_n &gt; 1\), ví dụ như \(\mathbf{x}_1\) và \(\mathbf{x}_3\).
+        </td>
+    </tr>
+
+</table>
+</div>
+<hr />
+
+<p>Với mỗi điểm \(\mathbf{x}_n\) trong tập toàn bộ dữ liệu huấn luyện, ta <em>giới thiệu</em> thêm một biến đo <em>sự hy sinh</em> \(\xi_n\) tương ứng. Biến này còn được gọi là <em>slack variable</em>. Với những điểm \(\mathbf{x}_n\) nằm trong <em>vùng an toàn</em>, \(\xi_n = 0\). Với mỗi điểm nằm trong <em>vùng không an toàn</em> như \(\mathbf{x}_1, \mathbf{x}_2\) hay \(\mathbf{x}_3\), ta có \(\xi_i &gt; 0\). 
+<!-- Hơn nữa, ta có thể thấy: \\(1 < \xi\_1 < 2, 0 < \xi\_2 < 1, 2 < \xi\_3\\).  -->
+Nhận thấy rằng nếu \(y_i= \pm 1\) là <em>nhãn</em> của \(\mathbf{x}_i\) trong <em>vùng không an toàn</em> thì \(\xi_i = |\mathbf{w}^T\mathbf{x}_i + b - y_i|\). (<em>Bạn có nhận ra không?</em>)</p>
+
+<p>Nhắc lại bài toán tối ưu cho <em>Hard Margin SVM</em>:
+\[
+\begin{eqnarray}
+    (\mathbf{w}, b) &amp;=&amp; \arg \min_{\mathbf{w}, b} \frac{1}{2}{||\mathbf{w}||_2^2}   \newline
+    \text{subject to:}~ &amp;&amp; y_n(\mathbf{w}^T\mathbf{x}_n + b) \geq 1, \forall n = 1, 2, \dots, N ~~~~(1)
+\end{eqnarray}
+\]</p>
+
+<p>Với <em>Soft Margin SVM</em>, hàm mục tiêu sẽ có thêm một số hạng nữa giúp tối thiểu <em>sự hy sinh</em>. Từ đó ta có hàm mục tiêu:
+\[
+\frac{1}{2}{||\mathbf{w}||_2^2} + C \sum_{n=1}^N \xi_n
+\]
+trong đó \(C\) là một hằng số dương và \(\xi = [\xi_1, \xi_2, \dots, \xi_N]\).</p>
+
+<p>Hằng số \(C\) được dùng để điều chỉnh tầm quan trọng giữa <em>margin</em> và sự hy sinh. Hằng số này được xác định từ trước bởi người lập trình hoặc có thể được xác định bởi <a href="/2017/03/04/overfitting/#-cross-validation">cross-validation</a>.</p>
+
+<p>Điều kiện ràng buộc sẽ thay đổi một chút. Với mỗi cặp dữ liệu \((\mathbf{x}_n, y_n)\), thay vì ràng buộc <em>cứng</em> \(y_n(\mathbf{w}^T\mathbf{x}_n + b) \geq 1\), chúng ta sẽ có ràng buộc <em>mềm</em>: 
+\[
+y_n(\mathbf{w}^T\mathbf{x}_n + b) \geq 1 - \xi_n \Leftrightarrow 1 - \xi_n - y_n(\mathbf{w}^T\mathbf{x}_n + b) \leq 0, ~~ \forall n = 1, 2, \dots, n
+\]
+Và ràng buộc phụ \(\xi_n \geq 0, ~\forall n = 1, 2, \dots, N\).</p>
+
+<p>Tóm lại, ta sẽ có bài toán tối ưu ở dạng chuẩn cho <em>Soft-margin SVM</em>:
+\[
+\begin{eqnarray}
+    (\mathbf{w}, b, \xi) &amp;=&amp; \arg \min_{\mathbf{w}, b, \xi} \frac{1}{2}{||\mathbf{w}||_2^2} + C \sum_{n=1}^N \xi_n  \newline
+    \text{subject to:}~ &amp;&amp; 1 - \xi_n - y_n(\mathbf{w}^T\mathbf{x}_n + b) \leq 0, \forall n = 1, 2, \dots, N ~~~~(2) \newline
+    &amp;&amp; -\xi_n \leq 0,  ~\forall n = 1, 2, \dots, N
+\end{eqnarray}
+\]</p>
+
+<p><strong>Nhận xét:</strong></p>
+
+<ul>
+  <li>
+    <p>Nếu \(C\) nhỏ, việc <em>sự hy sinh</em> cao hay thấp không gây ảnh hưởng nhiều tới giá trị của hàm mục tiêu, thuật toán sẽ điều chỉnh sao cho \(||\mathbf{x}||_2^2\) là nhỏ nhất, tức <em>margin</em> là lớn nhất, điều này sẽ dẫn tới \(\sum_{n=1}^N\xi_n\) sẽ lớn theo. Ngược lại, nếu \(C\) quá lớn, để hàm mục tiêu đạt giá trị nhỏ nhất, thuật toán sẽ tập trung vào làm giảm \(\sum_{n=1}^N\xi_n\). Trong trường hợp \(C\) rất rất lớn và hai classes là <em>linearly separable</em>, ta sẽ thu được \(\sum_{n=1}^N\xi_n = 0\). Chú ý rằng giá trị này không thể nhỏ hơn 0. Điều này đồng nghĩa với việc không có điểm nào phải <em>hy sinh</em>, tức ta thu được nghiệm cho <em>Hard Margin SVM</em>. Nói cách khác, <em>Hard Margin SVM</em> chính là một trường hợp đặc biệt của <em>Soft Margin SVM</em>.</p>
+  </li>
+  <li>
+    <p>Bài toán tối ưu \((2)\) có thêm sự xuất hiện của <em>slack variables</em> \(\xi_n\). Những \(\xi_n = 0\) tương ứng với những điểm dữ liệu nằm trong <em>vùng an toàn</em>. Những \(0 &lt; \xi_n \leq 1\) tương ứng với những điểm nằm trong <em>vùng không an toàn</em> những vẫn được phân loại đúng, tức vẫn nằm về đúng phía so với đường phân chia. Những \(\xi_n &gt; 1\) tương ứng với các điểm bị phân loại sai.</p>
+  </li>
+  <li>
+    <p>Hàm mục tiêu trong bài toán tối ưu \((2)\) là một hàm lồi vì nó là tổng của hai hàm lồi: hàm norm và hàm tuyến tính. Các hàm ràng buộc cũng là các hàm tuyến tính theo \((\mathbf{w}, b, \xi)\). Vì vậy bải toán tối ưu \((2)\) là một bài toán lồi, hơn nữa nó có thể biểu diễn dưới dạng một <a href="/2017/03/19/convexopt/#-quadratic-programming">Quadratic Programming (QP)</a>.</p>
+  </li>
+</ul>
+
+<p>Dưới đây, chúng ta sẽ cùng giải quyết bài toán tối ưu \((2)\) bằng hai cách khác nhau.</p>
+
+<p><a name="-bai-toan-doi-ngau-lagrange"></a></p>
+
+<h2 id="3-bài-toán-đối-ngẫu-lagrange">3. Bài toán đối ngẫu Lagrange</h2>
+<p>Chú ý rằng bài toán này có thể giải trực tiếp bằng các toolbox hỗ trợ QP, nhưng giống như với <em>Hard Margin SVM</em>, chúng ta sẽ quan tâm hơn tới bài toán đối ngẫu.</p>
+
+<p>Trước kết, ta cần kiểm tra <a href="/2017/04/02/duality/#-strong-duality-va-slaters-constraint-qualification">tiêu chuẩn Slater</a> cho bài toán tối ưu lồi \((2)\). Nếu tiêu chuẩn này được thoả mãn, <em>strong duality</em> sẽ thoả mãn, và ta sẽ có nghiệm của bài toán tối ưu \((2)\) là nghiệm của <a href="/2017/04/02/duality/#-kkt-optimality-conditions">hệ điều kiện KKT</a>. (Những kiến thức được đề cập trong mục này có thể được tìm thấy trong Bài 18).</p>
+
+<p><a name="-kiem-tra-tieu-chuan-slater"></a></p>
+
+<h3 id="31-kiểm-tra-tiêu-chuẩn-slater">3.1. Kiểm tra tiêu chuẩn Slater</h3>
+
+<p>Rõ ràng là với mọi \(n = 1, 2, \dots, N\) và mọi \((\mathbf{w}, b)\), ta luôn có thể tìm được các số <strong>dương</strong> \(\xi_n, n = 1, 2, \dots, N\) đủ lớn sao cho:
+\[
+y_n(\mathbf{w}^T\mathbf{x}_n + b) + \xi_n &gt; 1, ~\forall n = 1, 2, \dots, N
+\]</p>
+
+<p>Vậy nên bài toán này thoả mãn tiêu chuẩn Slater.</p>
+
+<p><a name="-lagrangian-cua-bai-toan-soft-margin-svm"></a></p>
+
+<h3 id="32-lagrangian-của-bài-toán-soft-margin-svm">3.2. Lagrangian của bài toán Soft-margin SVM</h3>
+
+<p><a href="/2017/04/02/duality/#-ham-doi-ngau-lagrange-the-lagrange-dual-function">Lagrangian</a> cho bài toán \((2)\) là:</p>
+
+<p>\[
+\mathcal{L}(\mathbf{w}, b, \xi, \lambda, \mu) = \frac{1}{2}{||\mathbf{w}||_2^2} + C \sum_{n=1}^N \xi_n + \sum_{n=1}^N \lambda_n ( 1 - \xi_n - y_n(\mathbf{w}^T\mathbf{x}_n + b)) - \sum_{n=1}^N \mu_n \xi_n ~ (3)
+\]</p>
+
+<p>với \(\lambda = [\lambda_1, \lambda_2, \dots, \lambda_N]^T \succeq 0\) và \(\mu = [\mu_1, \mu_2, \dots, \mu_N]^T \succeq 0\) là các biến đối ngẫu Lagrange (vector nhân tử Lagrange).</p>
+
+<p><a name="-bai-toan-doi-ngau"></a></p>
+
+<h3 id="33-bài-toán-đối-ngẫu">3.3. Bài toán đối ngẫu</h3>
+
+<p>Hàm số đối ngẫu của bài toán tối ưu \((2)\) là:
+\[
+g(\lambda, \mu) = \min_{\mathbf{w}, b, \xi} \mathcal{L}(\mathbf{w}, b, \xi, \lambda, \mu)
+\]
+Với mỗi cặp \((\lambda,\mu)\), chúng ta sẽ quan tâm tới \((\mathbf{w}, b, \xi)\) thoả mãn điều kiện đạo hàm của Lagrangian bằng 0:</p>
+
+<p>\[
+\begin{eqnarray}
+\frac{\partial \mathcal{L}}{\partial \mathbf{w}} &amp; = &amp; 0 \Leftrightarrow \mathbf{w} = \sum_{n=1}^N \lambda_n y_n \mathbf{x}_n &amp;&amp;(4)\newline
+\frac{\partial \mathcal{L}}{\partial b} &amp; = &amp; 0 \Leftrightarrow \sum_{n=1}^N \lambda_n y_n = 0 &amp;&amp; (5)\newline
+\frac{\partial \mathcal{L}}{\partial \xi_n} &amp; = &amp; 0 \Leftrightarrow \lambda_n = C - \mu_n &amp;&amp; (6)
+\end{eqnarray}
+\]</p>
+
+<p>Từ \((6)\) ta thấy rằng ta chỉ quan tâm tới những cặp \((\lambda, \mu)\) sao cho \(\lambda_n = C - \mu_n\). Từ đây ta cũng suy ra \(0 \leq \lambda_n, \mu_n \leq C, n = 1, 2, \dots, N\). Thay các biểu thức này vào Lagrangian ta sẽ thu được hàm đối ngẫu: 
+\[
+g(\lambda, \mu) = \sum_{n=1}^N \lambda_n - \frac{1}{2} \sum_{n=1}^N\sum_{m=1}^N \lambda_n \lambda_m y_n y_m \mathbf{x}_n^T\mathbf{x}_m
+\]
+Chú ý rằng hàm này không phụ thuộc vào \(\mu\) nhưng ta cần lưu ý ràng buộc \((6)\), ràng buộc này và điều kiện không âm của \(\lambda\) có thể được viết gọn lại thành \(0 \leq \lambda_n \leq C\), và ta đã giảm được biến \(\mu\). Lúc này, bài toán đối ngẫu được xác định bới:</p>
+
+<p>\[
+ \begin{eqnarray}
+     \lambda &amp;=&amp; \arg \max_{\lambda} g(\lambda)   &amp;&amp;\newline
+     \text{subject to:}~ &amp;&amp; \sum_{n=1}^N \lambda_ny_n = 0 &amp;&amp; (7)\newline
+     &amp;&amp; 0 \leq \lambda_n \leq C, ~\forall n= 1, 2, \dots, N &amp;&amp; (8)
+ \end{eqnarray}
+ \]</p>
+
+<p>Bài toán này gần giống với <a href="/2017/04/09/smv/#-ham-doi-ngau-lagrange">bài toán đối ngẫu của <em>Hard Margin SVM</em></a>, chỉ khác là ta có chặn trên cho mỗi \(\lambda_n\). Khi \(C\) rất lớn, ta có thể coi hai bài toán là như nhau. Ràng buộc \((8)\) còn được gọi là <em>box constraint</em> vì không gian các điểm \(\lambda\) thoả mãn ràng buộc này giống như một hình hộp chữ nhật trong không gian nhiều chiều.</p>
+
+<p>Bài toán này cũng hoàn toàn giải được bằng các công cụ giải QP thông thường, ví dụ CVXOPT như tôi đã thực hiện trong bài <em>Hard Margin SVM</em>.</p>
+
+<p>Sau khi tìm được \(\lambda\) của bài toán đối ngẫu, ta vẫn phải quay lại tìm nghiệm \((\mathbf{w}, b, \xi)\) của bài toán gốc. Để làm điều này, chúng ta cùng xem xét hệ điều kiện KKT.</p>
+
+<p><a name="-he-dieu-kien-kkt"></a></p>
+
+<h3 id="34-hệ-điều-kiện-kkt">3.4. Hệ điều kiện KKT</h3>
+<p><a href="/2017/04/02/duality/#-kkt-optimality-conditions">Hệ điều kiện KKT</a> của bài toán tối ưu Soft Margin SVM là, với mọi \(n = 1, 2, \dots, N\): 
+\[
+\begin{eqnarray}
+1 - \xi_n - y_n(\mathbf{w}^T\mathbf{x}_n + b) &amp;\leq&amp; 0 &amp;&amp; (9) \newline
+-\xi_n &amp;\leq&amp; 0 &amp;&amp;(10)\newline
+\lambda_n &amp;\geq&amp; 0 &amp;&amp;(11)\newline
+\mu_n &amp;\geq &amp; 0 &amp;&amp; (12)\newline
+\lambda_n ( 1 - \xi_n - y_n(\mathbf{w}^T\mathbf{x}_n + b)) &amp;=&amp; 0 &amp;&amp; (13)\newline
+\mu_n \xi_n &amp;=&amp; 0 &amp;&amp;(14)\newline
+\mathbf{w} &amp;=&amp; \sum_{n=1}^N \lambda_n y_n \mathbf{x}_n &amp;&amp;(4)\newline
+\sum_{n=1}^N \lambda_n y_n &amp;=&amp; 0 &amp;&amp; (5)\newline
+\lambda_n &amp;=&amp; C - \mu_n &amp;&amp; (6)
+\end{eqnarray}
+\]
+(Để cho dễ hình dung, tôi đã viết lại các điều kiện \((4), (5), (6)\) trong hệ này.)</p>
+
+<p>Ta có một vài quan sát như sau:</p>
+
+<ul>
+  <li>
+    <p>Nếu \(\lambda_n = 0\) thì từ \((6)\) ta suy ra \(\mu_n = C \neq 0\). Kết hợp với \((14)\) ta suy ra \(\xi_n = 0\). Nói cách khác, không có <em>sự hy sinh</em> nào xảy ra ở \(\mathbf{x}_n\), tức \(\mathbf{x}_n\) nằm trong vùng an toàn.</p>
+  </li>
+  <li>
+    <p>Nếu \(\lambda_n &gt; 0\), từ \((13)\) ta có:
+\[
+y_n(\mathbf{w}^T\mathbf{x}_n + b) = 1 - \xi_n
+\]</p>
+    <ul>
+      <li>Nếu \(0 &lt; \lambda_n &lt; C\), từ \((6)\) ta suy ra \(\mu_n \neq 0\) và từ \((14)\) ta lại có \(\xi_n = 0\). Nói cách khác, \(y_n(\mathbf{w}^T\mathbf{x}_n + b) = 1\), hay những điểm \(\mathbf{x}_n\) nằm <em>chính xác</em> trên margin.</li>
+      <li>Nếu \(\lambda_n = C\), thì \(\mu_n = 0\) và \(\xi_n\) có thể nhận bất kỳ giá trị nào không âm. Nếu \(\xi_n \leq 1, \mathbf{x}_n\) sẽ được phân lớp đúng (vẫn đúng phía so với đường phân chia). Ngược lại, các điểm tương ứng với \(\xi_n &gt; 1\) sẽ bị phân lớp sai.</li>
+      <li>\(\lambda_n\) không thể lớn hơn \(C\) vì khi đó theo \((6)\), \(\mu_n &lt; 0\), mâu thuẫn với \((12)\).
+  <!-- - Với những điềm nằm nằm _hoàn toàn_ trong _vùng không an toàn_, tức \\(\xi_n > 0\\). Ta có thể suy ra \\(\mu_n = 0\\) và \\(\lambda_n = C\\).  --></li>
+    </ul>
+  </li>
+</ul>
+
+<p>Ngoài ra, những điểm tương ứng với \(0 &lt; \lambda_n \leq C\) bây giờ là sẽ là các <em>support vectors</em>. Mặc dù những điểm này có thể không nằm trên <em>margins</em>, chúng vẫn được coi là <em>support vectors</em> vì có công đóng góp cho việc tính toán \(\mathbf{w}\) thông qua phương trình \((4)\).</p>
+
+<p>Như vậy, dựa trên các giá trị của \(\lambda_n\) ta có thể dự đoán được vị trí tương đối của \(\mathbf{x}_n\) so với hai <em>margins</em>.
+Đặt \(\mathcal{M} = \{n: 0 &lt; \lambda_n &lt; C \}\) và \(\mathcal{S} = \{m: 0 &lt; \lambda_m \leq C\}\). Tức \(\mathcal{M}\) là tập hợp các chỉ số của các điểm nằm chính xác trên <em>margins</em> - hỗ trợ cho việc tính \(b\), \(\mathcal{S}\) là tập hợp các chỉ số của các <em>support vectors</em> - hỗ trợ trực tiếp cho việc tính \(\mathbf{w}\). Tương tự như với Hard Margin SVM, các hệ số \(\mathbf{w}, b\) có thể được xác định bởi:
+\[
+\begin{eqnarray}
+\mathbf{w} &amp;=&amp; \sum_{m \in \mathcal{S}} \lambda_m y_m \mathbf{x}_m &amp; ~~~(15)  \newline
+b &amp;=&amp; \frac{1}{N_{\mathcal{M}}} \sum_{n \in \mathcal{M}} (y_n - \mathbf{w}^T\mathbf{x}_n) = \frac{1}{N_{\mathcal{M}}} \sum_{n \in \mathcal{M}} \left(y_n - \sum_{m \in \mathcal{S}} \lambda_m y_m \mathbf{x}_m^T\mathbf{x}_n\right) &amp; ~~~ (16)
+\end{eqnarray}
+\]</p>
+
+<p>Nhắc lại rằng mục đích cuối cùng là xác định nhãn cho một điểm mới chứ không phải là tính \(\mathbf{w}\) và \(b\) nên ta quan tâm hơn tới cách xác định giá trị của biếu thức sau với một điểm dữ liệu \(\mathbf{x}\) bất kỳ:
+\[
+\mathbf{w}^T\mathbf{x} + b = \sum_{m \in \mathcal{S}} \lambda_m y_m \mathbf{x}_m^T \mathbf{x} + \frac{1}{N_{\mathcal{M}}} \sum_{n \in \mathcal{M}} \left(y_n - \sum_{m \in \mathcal{S}} \lambda_m y_m \mathbf{x}_m^T\mathbf{x}_n\right)
+\]</p>
+
+<p>Và trong cách tính này, ta chỉ cần quan tâm tới tích vô hướng của hai điểm bất kỳ. Ở bài sau các bạn sẽ thấy rõ lợi ích của việc này nhiều hơn.
+<a name="-bai-toan-toi-uu-khong-rang-buoc-cho-soft-margin-svm"></a></p>
+
+<h2 id="4-bài-toán-tối-ưu-không-ràng-buộc-cho-soft-margin-svm">4. Bài toán tối ưu không ràng buộc cho Soft Margin SVM</h2>
+<p>Trong mục này, chúng ta sẽ đưa bài toán tối ưu có ràng buộc \((2)\) về một bài toán tối ưu không ràng buộc, và có có khả năng giải được bằng các phương pháp Gradient Descent.</p>
+
+<p><a name="-bai-toan-toi-uu-khong-rang-buoc-tuong-duong"></a></p>
+
+<h3 id="41-bài-toán-tối-ưu-không-ràng-buộc-tương-đương">4.1. Bài toán tối ưu không ràng buộc tương đương</h3>
+<p>Để ý thấy rằng điều kiện ràng buộc thứ nhất:
+\[
+1 - \xi_n -y_n(\mathbf{w}^T\mathbf{x} + b)) \leq 0 \Leftrightarrow \xi_n \geq 1 - y_n(\mathbf{w}^T\mathbf{x} + b))
+\]
+Kết hợp với điều kiện \(\xi_n \geq 0\) ta sẽ thu được bài toán ràng buộc tương đương với bài toán \((2)\) như sau:</p>
+
+<p>\[
+\begin{eqnarray}
+    (\mathbf{w}, b, \xi) &amp;=&amp; \arg \min_{\mathbf{w}, b, \xi} \frac{1}{2}{||\mathbf{w}||_2^2} + C \sum_{n=1}^N \xi_n  \newline
+    \text{subject to:}~ &amp;&amp; \xi_n \geq \max(0, 1 - y_n(\mathbf{w}^T\mathbf{x} + b)), ~\forall n = 1, 2, \dots, N~~~ (17)
+\end{eqnarray}
+\]</p>
+
+<p>Tiếp theo, để đưa bài toán \((17)\) về dạng không ràng buộc, chúng ta sẽ chứng minh nhận xét sau đây bằng phương pháp phản chứng:</p>
+
+<p>Nếu \((\mathbf{w}, b, \xi)\) là nghiệm của bài toán tối ưu \((17)\), tức tại đó hàm mục tiêu đạt giá trị nhỏ nhất, thì:
+\[
+\xi_n = \max(0, 1 - y_n(\mathbf{w}^T\mathbf{x}_n + b)), ~\forall n = 1, 2, \dots, N ~~~ (18)
+\]</p>
+
+<p>Thật vậy, giả sử ngược lại, tồn tại \(n\) sao cho: 
+\[
+\xi_n &gt; \max(0, 1 - y_n(\mathbf{w}^T\mathbf{x}_n + b))
+\]
+ta chọn \(\xi_n’ = \max(0, 1 - y_n(\mathbf{w}^T\mathbf{x}_n + b))\), ta sẽ thu được một giá trị thấp hơn của hàm mục tiêu, trong khi tất cả các ràng buộc vẫn được thoả mãn. Điều này mâu thuẫn với việc hàm mục tiêu đã đạt giá trị nhỏ nhất!</p>
+
+<p>Vậy nhận xét \((18)\) được chứng minh.</p>
+
+<p>Khi đó, ta thay toàn bộ các giá trị của \(\xi_n\) trong \((18)\) vào hàm mục tiêu: 
+\[
+\begin{eqnarray}
+    (\mathbf{w}, b, \xi) &amp;=&amp; \arg \min_{\mathbf{w}, b, \xi} \frac{1}{2}{||\mathbf{w}||_2^2} + C \sum_{n=1}^N \max(0, 1 - y_n(\mathbf{w}^T\mathbf{x}_n + b)) \newline
+    \text{subject to:}~ &amp;&amp; \xi_n = \max(0, 1 - y_n(\mathbf{w}^T\mathbf{x}_n + b)), ~\forall n = 1, 2, \dots, N~~~ (19)
+\end{eqnarray}
+\]</p>
+
+<p>Rõ ràng rằng biến số \(\xi\) không còn quan trọng trong bài toán này nữa, ta có thể lược bỏ nó mà không làm thay đổi nghiệm của bài toán: 
+\[
+(\mathbf{w}, b)= \arg \min_{\mathbf{w}, b} \frac{1}{2}{||\mathbf{w}||_2^2} + C \sum_{n=1}^N \max(0, 1 - y_n(\mathbf{w}^T\mathbf{x}_n + b)) \triangleq \arg\min_{\mathbf{w}, b} J(\mathbf{w}, b) ~~~~ (20)
+\]
+Đây là một bài toán tối ưu không ràng buộc với hàm mất mát \(J(\mathbf{w}, b)\). Bài toán này có thể giải được bằng các phương pháp Gradient Descent. Nhưng trước hết, chúng ta cùng xem xét hàm mất mát này từ một góc nhìn khác, bằng định nghĩa của một hàm gọi là <em>hinge loss</em></p>
+
+<p><a name="-hinge-loss"></a></p>
+
+<h3 id="42-hinge-loss">4.2. Hinge loss</h3>
+<p>Nhắc lại một chút về hàm <a href="/2017/02/17/softmax/#-cross-entropy"><em>cross entropy</em></a> chúng ta đã biết từ bài <a href="/2017/01/27/logisticregression/">Logistic Regression</a> và <a href="/2017/02/17/softmax/">Softmax Regression</a>. Với mỗi cặp hệ số \((\mathbf{w}, b)\) và cặp dữ liệu, nhãn \((\mathbf{x}_n, y_n)\), đặt \(z_n = \mathbf{w}^T\mathbf{x}_n + b\) và \(a_n = \sigma(z_n)\) ( \(\sigma\) là <a href="/2017/01/27/logisticregression/#sigmoid-function">sigmoid function</a>). Hàm cross entropy được định nghĩa là: 
+\[
+J_n^1(\mathbf{w}, b) = -(y_n \log(a_n) + (1 - y_n) \log(1 - a_n))
+\]
+Chúng ta đã biết rằng, hàm cross entropy đạt giá trị càng nhỏ nếu xác suất \(a_n\) càng gần với \(y_n\) \((0 &lt; a_n &lt; 1)\).</p>
+
+<p>Ở đây, chúng ta làm quen với một hàm số khác cũng được sử dụng nhiều trong các classifiers:
+\[
+J_n(\mathbf{w}, b) = \max(0, 1 - y_nz_n)
+\]
+Hàm này có tên là <em>hinge loss</em>. Trong đó, \(z_n\) có thể được coi là <em>score</em> của \(\mathbf{x}_n\) ứng với cặp hệ số \((\mathbf{w}, b)\), \(y_n\) chính là đầu ra mong muốn.</p>
+
+<p>Hình 3 đưới dây mô tả hàm số <em>hinge loss</em> \(f(ys) = \max(0, 1 - ys)\) và so sánh với hàm zero-one loss. Hàm zero-one loss là hàm đếm các điểm bị <em>misclassified</em>.</p>
+
+<hr />
+
+<div>
+<table width="100%" style="border: 0px solid white; align = center">
+   <tr>
+        <td width="40%" style="border: 0px solid white" align="">
+        <img style="display:block;" width="100%" src="/assets/20_softmarginsvm/hinge.png" />
+                 </td>
+
+        <td width="40%" style="border: 0px solid white" align="justify">
+        Hình 3: Hinge loss (màu xanh) và zeros-one loss (màu đen). Với zero-one loss, những điểm nằm xa margin (hoành độ bằng 1) và boundary (hoành độ bằng 0) được <i>đối xử</i> như nhau. Trong khi đó, với hinge loss, những điểm ở xa gây ra mất mát nhiều hơn.
+        </td>
+    </tr>
+
+</table>
+</div>
+<hr />
+
+<p>Trong Hình 3, biến số là \(y\) là tích của đầu ra mong muốn (ground truth) và đầu ra tính được (score). Những điểm ở phía phải của trục tung ứng với những điểm được phân loại đúng, tức \(s\) tìm được cùng dấu với \(y\). Những điểm ở phía trái của trục tung ứng với các điểm bị phân loại sai. Ta có các nhận xét:</p>
+
+<ul>
+  <li>
+    <p>Với hàm zero-one loss, các điểm có <em>score</em> ngược dấu với đầu ra mong muốn sẽ gây ra mất mát như nhau (bằng 1), bất kể chúng ở gần hay xa đường phân chia (trục tung). Đây là một hàm rời rạc, rất khó tối ưu và ta cũng khó có thể đo đếm được <em>sự hy sinh</em> như đã định nghĩa ở phần đầu.</p>
+  </li>
+  <li>
+    <p>Với hàm <em>hinge loss</em>, những điểm nằm trong vùng an toàn, ứng với \(ys \geq 1\), sẽ không gây ra mất mát gì. Những điểm nằm giữa margin của class tương ứng và đường phân chia tương ứng với \(0 &lt; y &lt; 1\), những điểm này gây ra một mất mát nhỏ. Những điểm bị <em>misclassifed</em>, tức \(y &lt; 0\) sẽ gây ra mất mát lớn hơn, vì vậy, khi tối thiểu hàm mất mát, ta sẽ tránh được những điểm bị <em>misclassifed</em> và <em>lấn</em> sang phần class còn lại quá nhiều. Đây chính là một ưu điểm của hàm <em>hinge loss</em>.</p>
+  </li>
+  <li>
+    <p>Hàm hinge loss là một hàm liên tục, và <em>có đạo hàm tại gần như mọi nơi</em> (<em>almost everywhere differentiable</em>) trừ điểm có hoành độ bằng 1. Ngoài ra, đạo hàm của hàm này cũng rất dễ xác định: bằng -1 tại các điểm nhỏ hơn 1 và bằng 0 tại các điểm lớn hơn 1. Tại 1, ta có thể coi như đạo hàm của nó bằng 0 giống như cách tính đạo hàm của <a href="/2017/02/24/mlp/#-relu">hàm ReLU</a>.</p>
+  </li>
+</ul>
+
+<p><a name="-xay-dung-ham-mat-mat"></a></p>
+
+<h3 id="43-xây-dựng-hàm-mất-mát">4.3. Xây dựng hàm mất mát</h3>
+<p>Bây giờ, nếu ta xem xét bài toán Soft Margin SVM dưới góc nhìn hinge loss:</p>
+
+<p>Với mỗi cặp \((\mathbf{w}, b)\), đặt: 
+\[
+L_n(\mathbf{w}, b) = \max(0, 1 - y_n(\mathbf{w}^T\mathbf{x}_n + b))
+\] 
+Lấy tổng tất cả các <em>loss</em> này (giống như cách mà Logistic Regression hay Softmax Regression lấy tổng của tất cả các cross entropy loss) theo \(n\) ta được: 
+\[
+L(\mathbf{w}, b) = \sum_{n=1}^N L_i = \sum_{n=1}^N \max(0, 1 - y_n(\mathbf{w}^T\mathbf{x}_n + b))
+\]</p>
+
+<p>Câu hỏi đặt ra là, nếu ta trực tiếp tối ưu tổng các hinge loss này thì điều gì sẽ xảy ra?</p>
+
+<p>Trong trường hợp dữ liệu trong hai class là <em>linearly separable</em>, ta sẽ có giá trị tối ưu tìm được của \(L(\mathbf{w}, b)\) là bằng 0. Điều này có nghĩa là: 
+\[
+1 - y_n (\mathbf{w}^T\mathbf{x}_n + b) \leq 0, ~\forall n = 1, 2, \dots, N
+\]
+Nhân cả hai về với một hằng số \(a &gt; 1\) ta có: 
+\[
+\begin{eqnarray}
+a - y_n (a\mathbf{w}^T\mathbf{x}_n + ab) &amp;\leq&amp; 0, ~\forall n = 1, 2, \dots, N \newline
+\Rightarrow 1 - y_n (a\mathbf{w}^T\mathbf{x}_n + ab) &amp;\leq&amp; 1 - a &lt; 0, ~\forall n = 1, 2, \dots, N
+\end{eqnarray}
+\]
+Điều này nghĩa là \((a\mathbf{w}, ab)\) cũng là nghiệm của bài toán. Nếu không có điều kiện gì thêm, bài toán có thể dẫn tới nghiệm không ổn định vì các hệ số của nghiệm có thể lớn tuỳ ý!</p>
+
+<p>Để tránh <em>bug</em> này, chúng ta cần thêm một số hạng nữa vào \(L(\mathbf{w}, b)\) gọi là số hạng <a href="/2017/03/04/overfitting/#-regularization"><em>regularization</em></a>, giống như cách chúng ta đã làm để tránh <em>overfitting</em> trong neural networks. Lúc này, ta sẽ có hàm mất mát tổng cộng là: 
+\[
+J(\mathbf{w}, b) = L(\mathbf{w}, b) + \lambda R(\mathbf{w}, b)
+\]
+với \(\lambda\) là một số dương, gọi là <em>regularization parameter</em>, hàm \(R()\) sẽ giúp hạn chế việc các hệ số \((\mathbf{w}, b)\) trở nên quá lớn. Có nhiều cách chọn hàm \(R()\), nhưng cách phổ biến nhất là \(l_2\), khi đó hàm mất mát của Soft Margin SVM sẽ là:
+\[
+J(\mathbf{w}, b) = \sum_{n=1}^N \max(0, 1 - y_n(\mathbf{w}^T\mathbf{x}_n + b)) + \frac{\lambda}{2} ||\mathbf{w}||_2^2 ~~~~~~~~~~~(21)
+\]</p>
+
+<p>Kỹ thuật này còn gọi là <a href="http://deeplearning.stanford.edu/wiki/index.php/Backpropagation_Algorithm">weight decay</a>. <strong>Chú ý rằng weight decay thường không được áp dụng lên thành phần bias \(b\)</strong>.</p>
+
+<p>Ta thấy rằng hàm mất mát \((21)\) giống với hàm mất mát \((20)\) với \(\lambda = \frac{1}{C}\). Ở đây, tôi đã lấy \(\lambda /2\) để biểu thức đạo hàm được <em>đẹp hơn</em>.</p>
+
+<p>Trong phần tiếp theo của mục này, chúng ta sẽ quan tâm tới bài toán tối ưu hàm mất mát được cho trong \((21)\).</p>
+
+<p>Nhận thấy rằng ta có thể khiến biểu thức \((19)\) gọn hơn một chút bằng cách sử dụng <em>bias trick</em> như đã làm trong Linear Regression hay các bài về neurel networks. Bằng cách <em>mở rộng</em> thêm một thành phần bằng 1 vào các điểm dữ liệu \(\mathbf{x}_n \in \mathbb{R}^d\) để được \(\bar{\mathbf{x}}_n \in \mathbb{R}^{d+1}\) và kết hợp \(\mathbf{w}, b\) thành một vector \(\bar{\mathbf{w}} = [\mathbf{w}^T, b]^T \in \mathbb{R}^{d+1}\) ta sẽ có một biểu thức gọn hơn. Khi đó, hàm mất mát trong \((21)\) có thể được viết gọn thành: 
+\[
+J(\mathbf{\bar{w}}) = \underbrace{\sum_{n=1}^N \max(0, 1 - y_n\bar{\mathbf{w}}^T\mathbf{\bar{x}}_n)}_{\text{hinge loss}} + \underbrace{\frac{\lambda}{2} ||\mathbf{w}||_2^2}_{\text{regularization}}
+\]</p>
+
+<p>Các bạn có thể nhận thấy rằng đây là một hàm lồi theo \(\mathbf{\bar{w}}\) vì:</p>
+
+<ul>
+  <li>
+    <p>\(1 - y_n\bar{\mathbf{w}}^T\mathbf{\bar{x}}_n\) là 1 hàm tuyến tính nên nó là một hàm lồi. Hàm hằng số là một hàm lồi, \(\max\) cuả hai hàm lồi là một hàm lồi. Vậy biểu thức hinge loss là một hàm lồi.</p>
+  </li>
+  <li>
+    <p>Norm là một hàm lồi, vậy số hạng regularization cũng là một hàm lồi.</p>
+  </li>
+  <li>
+    <p>Tổng của hai hàm lồi là một hàm lồi.</p>
+  </li>
+</ul>
+
+<p>Vì bài toán tối ưu bây giờ là không ràng buộc, chúng ta có thể sử dụng các phương pháp Gradient Descent để tối ưu. Hơn nữa, vì tính chất lồi của hàm mất mát, nếu chọn <em>learning rate</em> không quá lớn và số vòng lặp đủ nhiều, thuật toán sẽ hội tụ tới điểm <em>global optimal</em> của bài toán.</p>
+
+<p><a name="-toi-uu-ham-mat-mat"></a></p>
+
+<h3 id="44-tối-ưu-hàm-mất-mát">4.4. Tối ưu hàm mất mát</h3>
+<p>Trước hết ta cần tính được đạo hàm của hàm mất mát theo \(\mathbf{\bar{w}}\). Việc này thoáng qua có vẻ hơi phức tạp vì ta cần tính đạo hàm của hàm \(\max\), nhưng nếu chúng ta nhìn vào đạo hàm của hinge loss, ta có thể tính được đạo hàm theo \(\mathbf{\bar{w}}\) một cách đơn giản.</p>
+
+<p>Chúng ta tạm quên đi đạo hàm của phần regularization vì nó đơn giản bằng \(\lambda \left[\begin{matrix}
+\mathbf{w}\newline
+0
+\end{matrix}\right]\) với thành phần 0 ở cuối chính là đạo hàm theo bias của thành phần regularization.</p>
+
+<p>Với phần hinge loss, xét từng điểm dữ liệu, ta có hai trường hợp:</p>
+
+<ul>
+  <li>
+    <p>TH1: Nếu \( 1 - y_n \mathbf{\bar{w}}^T\mathbf{\bar{x}}_n \leq 0\), ta có ngay đạo hàm theo \(\mathbf{\bar{w}}\) bằng 0.</p>
+  </li>
+  <li>
+    <p>TH2: Nếu \( 1 - y_n \mathbf{\bar{w}}^T\mathbf{\bar{x}}_n &gt; 0\), đạo hàm theo \(\mathbf{w}\) chính là \(-y_n\mathbf{x}_n\).</p>
+  </li>
+</ul>
+
+<p>Để tính gradient cho toàn bộ dữ liệu, chúng ta cần một chút kỹ năng biến đổi đại số tuyến tính.</p>
+
+<p>Đặt: 
+\[
+\begin{eqnarray}
+\mathbf{Z} &amp;=&amp; [y_1 \mathbf{\bar{x}}_1, y_2 \mathbf{\bar{x}}_2, \dots, y_N\mathbf{\bar{x}}_N] &amp; ~~~(22) \newline
+\mathbf{u} &amp;=&amp; [y_1\mathbf{\bar{w}}^T\mathbf{\bar{x}}_1,y_2\mathbf{\bar{w}}^T\mathbf{\bar{x}}_2, \dots, y_N \mathbf{\bar{w}}^T \mathbf{\bar{x}}_N] = \mathbf{\bar{w}}^T\mathbf{Z} &amp; ~~~ (23)
+\end{eqnarray}
+\]</p>
+
+<p>với chú ý rằng \(\mathbf{u}\) là một vector hàng.</p>
+
+<p>Tiếp tục, ta cần xác định các vị trí của \(\mathbf{u}\) có giá trị nhỏ hơn 1, tức ứng với TH2 ở trên. Bằng cách đặt: 
+\[
+\mathcal{H} = \{n: u_n &lt; 1\}
+\]
+ta có thể suy ra cách tính đạo hàm theo \(\mathbf{\bar{w}}\) của hàm mất mát là
+\[
+\nabla J(\mathbf{\bar{w}}) = \sum_{n \in \mathcal{H}} - y_n\mathbf{\bar{x}}_n  + \lambda 
+\left[\begin{matrix}
+\mathbf{w}\newline
+0
+\end{matrix}\right] ~~~ (24)
+\]
+Các bạn sẽ thấy cách tính toán giá trị này một cách hiệu quả trong phần lập trình.</p>
+
+<p>Vậy quy tắc cập nhật của \(\mathbf{\bar{w}}\) sẽ là: 
+\[
+\mathbf{\bar{w}} = \mathbf{\bar{w}} - \eta \left(\sum_{n \in \mathcal{H}} - y_n\mathbf{\bar{x}}_n  + \lambda \left[\begin{matrix}
+\mathbf{w}\newline
+0
+\end{matrix}\right]\right) ~~~ (25)
+\]
+với \(\eta\) là <em>learning rate</em>.</p>
+
+<p>Với các bài toán large-scale, ta có thể sử dụng phương pháp Mini-batch Gradient Descent để tối ưu. Đây chính là một ưu điểm của hướng tiếp cận theo hinge loss.</p>
+
+<p><a name="-kiem-chung-bang-lap-trinh"></a></p>
+
+<h2 id="5-kiểm-chứng-bằng-lập-trình">5. Kiểm chứng bằng lập trình</h2>
+<p>Trong mục này, chúng ta cùng làm hai thí nghiệm nhỏ. Thứ nghiệm thứ nhất sẽ đi tìm nghiệm của một bài toán Soft Margin SVM bằng ba cách khác nhau: Sử dụng thư viện sklearn, Giải bài toán đối ngẫu bằng CVXOPT, và Tối ưu hàm mất mát không ràng  bằng phương pháp Gradient Descent. Nếu mọi tính toán ở trên là chính xác, nghiệm của ba cách làm này sẽ giống nhau, khác nhau có thể một chút bởi sai số trong tính toán. Ở thí nghiệm thứ hai, chúng ta sẽ thay \(C\) bởi những giá trị khác nhau và cùng xem các margin thay đổi như thế nào.</p>
+
+<p><a name="-giai-bai-toan-soft-margin-bang--cach-khac-nhau"></a></p>
+
+<h3 id="51-giải-bài-toán-soft-margin-bằng-3-cách-khác-nhau">5.1. Giải bài toán Soft Margin bằng 3 cách khác nhau</h3>
+
+<p>Source code cho phần này có thể được tìm thấy <a href="https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/20_softmarginsvm/plt/softmargin%20SVM%20Example.ipynb">tại đây</a>.
+<a name="-khai-bao-thu-vien-va-tao-du-lieu-gia"></a></p>
+
+<h4 id="511-khai-báo-thư-viện-và-tạo-dữ-liệu-giả">5.1.1. Khai báo thư viện và tạo dữ liệu giả</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># generate data
+# list of points 
+</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span> 
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.spatial.distance</span> <span class="kn">import</span> <span class="n">cdist</span>
+<span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">21</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">matplotlib.backends.backend_pdf</span> <span class="kn">import</span> <span class="n">PdfPages</span>
+
+<span class="n">means</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+<span class="n">cov</span> <span class="o">=</span> <span class="p">[[.</span><span class="mi">3</span><span class="p">,</span> <span class="p">.</span><span class="mi">2</span><span class="p">],</span> <span class="p">[.</span><span class="mi">2</span><span class="p">,</span> <span class="p">.</span><span class="mi">3</span><span class="p">]]</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">X0</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">means</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cov</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">X1</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">means</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cov</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">X1</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.7</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">X0</span><span class="p">.</span><span class="n">T</span><span class="p">,</span> <span class="n">X1</span><span class="p">.</span><span class="n">T</span><span class="p">),</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">np</span><span class="p">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">)),</span> <span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">np</span><span class="p">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">))),</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Hình 4 minh hoạ các điểm dữ liệu của hai classes.</p>
+
+<hr />
+
+<div>
+<table width="100%" style="border: 0px solid white; align = center">
+   <tr>
+        <td width="40%" style="border: 0px solid white" align="">
+        <img style="display:block;" width="100%" src="/assets/20_softmarginsvm/data.png" />
+                 </td>
+
+        <td width="40%" style="border: 0px solid white" align="justify">
+        Hình 4: Tạo dữ liệu cho thí nghiệm. Dữ liệu của hai class là gần như <em>linearly separable</em>. 
+        </td>
+    </tr>
+
+</table>
+</div>
+<hr />
+
+<p><a name="-giai-bai-toan-bang-thu-vien-sklearn"></a></p>
+
+<h4 id="512-giải-bài-toán-bằng-thư-viện-sklearn">5.1.2. Giải bài toán bằng thư viện sklearn</h4>
+<p>Ta chọn \(C = 100\) trong thí nghiệm này:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+<span class="n">C</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span> <span class="o">=</span> <span class="s">'linear'</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="n">C</span><span class="p">)</span>
+<span class="n">clf</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> 
+
+<span class="n">w_sklearn</span> <span class="o">=</span> <span class="n">clf</span><span class="p">.</span><span class="n">coef_</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">b_sklearn</span> <span class="o">=</span> <span class="n">clf</span><span class="p">.</span><span class="n">intercept_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">w_sklearn</span><span class="p">.</span><span class="n">T</span><span class="p">,</span> <span class="n">b_sklearn</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Nghiệm tìm được:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[[-1.87461946 -1.80697358]] 8.49691190196
+</code></pre></div></div>
+
+<p><a name="-tim-nghiem-bang-giai-bai-toan-doi-ngau"></a></p>
+
+<h4 id="513-tìm-nghiệm-bằng-giải-bài-toán-đối-ngẫu">5.1.3. Tìm nghiệm bằng giải bài toán đối ngẫu</h4>
+<p>Tương tự như việc giải bài toán Hard Margin SVM, chỉ khác rằng ta có thêm ràng buộc về chặn trên của các nhân thử Lagrange:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">cvxopt</span> <span class="kn">import</span> <span class="n">matrix</span><span class="p">,</span> <span class="n">solvers</span>
+<span class="c1"># build K
+</span><span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">X0</span><span class="p">.</span><span class="n">T</span><span class="p">,</span> <span class="o">-</span><span class="n">X1</span><span class="p">.</span><span class="n">T</span><span class="p">),</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">K</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">V</span><span class="p">.</span><span class="n">T</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">V</span><span class="p">))</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="p">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="o">*</span><span class="n">N</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+<span class="c1"># build A, b, G, h 
+</span><span class="n">G</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">vstack</span><span class="p">((</span><span class="o">-</span><span class="n">np</span><span class="p">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">N</span><span class="p">),</span> <span class="n">np</span><span class="p">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">N</span><span class="p">))))</span>
+
+<span class="n">h</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="o">*</span><span class="n">N</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">C</span><span class="o">*</span><span class="n">np</span><span class="p">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="o">*</span><span class="n">N</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))))</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">y</span><span class="p">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">N</span><span class="p">)))</span> 
+<span class="n">b</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span> 
+<span class="n">solvers</span><span class="p">.</span><span class="n">options</span><span class="p">[</span><span class="s">'show_progress'</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="n">sol</span> <span class="o">=</span> <span class="n">solvers</span><span class="p">.</span><span class="n">qp</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+<span class="n">l</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">sol</span><span class="p">[</span><span class="s">'x'</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'lambda = </span><span class="se">\n</span><span class="s">'</span><span class="p">,</span> <span class="n">l</span><span class="p">.</span><span class="n">T</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lambda = 
+ [[  1.11381472e-06   9.99999967e+01   1.10533112e-06   6.70163540e-06
+    3.40838760e+01   4.73972850e-06   9.99999978e+01   3.13320446e-06
+    9.99999985e+01   5.06729333e+01   9.99999929e+01   3.23564235e-06
+    9.99999984e+01   9.99999948e+01   1.37977626e-06   9.99997155e+01
+    3.45005660e-06   1.46190314e-06   5.50601997e-06   1.45062544e-06
+    1.85373848e-06   1.14181647e-06   8.47565685e+01   9.99999966e+01
+    9.99999971e+01   8.00764708e-07   2.65537193e-06   1.45230729e-06
+    4.15737085e-06   9.99999887e+01   9.99999761e+01   8.98414770e-07
+    9.99999979e+01   1.75651607e-06   8.27947897e-07   1.04289116e-06
+    9.99999969e+01   9.07920759e-07   8.83138295e-07   9.99999971e+01]]
+</code></pre></div></div>
+
+<p>Trong các thành phần của <code class="language-plaintext highlighter-rouge">lambda</code> tìm được, có rất nhiều thành phần nhỏ tới <code class="language-plaintext highlighter-rouge">1e-6</code> hay <code class="language-plaintext highlighter-rouge">1e-7</code>. Đây chính là các <code class="language-plaintext highlighter-rouge">lambda_i = 0</code>. Có rất nhiều phần tử xấp xỉ <code class="language-plaintext highlighter-rouge">9.99e+01</code>, đây chính là các <code class="language-plaintext highlighter-rouge">lambda_i</code> bằng với <code class="language-plaintext highlighter-rouge">C = 100</code>, tương ứng với các support vectors không nằm trên margins, các sai số nhỏ xảy ra do tính toán. Các giá trị còn lại nằm giữa <code class="language-plaintext highlighter-rouge">0</code> và <code class="language-plaintext highlighter-rouge">100</code> là các giá trị tương ứng với các điểm nằm chính xác trên hai margins.</p>
+
+<p>Tiếp theo, ta cần tính <code class="language-plaintext highlighter-rouge">w</code> và <code class="language-plaintext highlighter-rouge">b</code> theo công thức \((15)\) và \((16)\). Trước đó ta cần tìm tập hợp các điểm support và những điểm nằm trên margins.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">S</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">where</span><span class="p">(</span><span class="n">l</span> <span class="o">&gt;</span> <span class="mf">1e-5</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># support set 
+</span><span class="n">S2</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">where</span><span class="p">(</span><span class="n">l</span> <span class="o">&lt;</span> <span class="p">.</span><span class="mi">999</span><span class="o">*</span><span class="n">C</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> 
+
+<span class="n">M</span> <span class="o">=</span> <span class="p">[</span><span class="n">val</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">S</span> <span class="k">if</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">S2</span><span class="p">]</span> <span class="c1"># intersection of two lists
+</span>
+<span class="n">XT</span> <span class="o">=</span> <span class="n">X</span><span class="p">.</span><span class="n">T</span> <span class="c1"># we need each column to be one data point in this alg
+</span><span class="n">VS</span> <span class="o">=</span> <span class="n">V</span><span class="p">[:,</span> <span class="n">S</span><span class="p">]</span>
+<span class="n">lS</span> <span class="o">=</span> <span class="n">l</span><span class="p">[</span><span class="n">S</span><span class="p">]</span>
+<span class="n">yM</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">M</span><span class="p">]</span>
+<span class="n">XM</span> <span class="o">=</span> <span class="n">XT</span><span class="p">[:,</span> <span class="n">M</span><span class="p">]</span>
+
+<span class="n">w_dual</span> <span class="o">=</span> <span class="n">VS</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">lS</span><span class="p">).</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">b_dual</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">yM</span><span class="p">.</span><span class="n">T</span> <span class="o">-</span> <span class="n">w_dual</span><span class="p">.</span><span class="n">T</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">XM</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">w_dual</span><span class="p">.</span><span class="n">T</span><span class="p">,</span> <span class="n">b_dual</span><span class="p">)</span> 
+</code></pre></div></div>
+
+<p>Kết quả:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[[-1.87457279 -1.80695039]] 8.49672109815
+</code></pre></div></div>
+
+<p>Kết quả này gần giống với kết quả tìm được bằng sklearn.</p>
+
+<p><a name="-tim-nghiem-bang-giai-bai-toan-khong-rang-buoc"></a></p>
+
+<h4 id="514-tìm-nghiệm-bằng-giải-bài-toán-không-ràng-buộc">5.1.4. Tìm nghiệm bằng giải bài toán không ràng buộc</h4>
+
+<p>Trong phương pháp này, chúng ta cần tính gradient của hàm mất mát. Như thường lệ, chúng ta cần kiểm chứng  này bằng cách so sánh  với <em>numerical gradient</em>.</p>
+
+<p>Chú ý rằng trong phương pháp này, ta cần dùng tham số <code class="language-plaintext highlighter-rouge">lam = 1/C</code>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">X0_bar</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">X0</span><span class="p">.</span><span class="n">T</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">))))</span> <span class="c1"># extended data
+</span><span class="n">X1_bar</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">X1</span><span class="p">.</span><span class="n">T</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">))))</span> <span class="c1"># extended data 
+</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">X0_bar</span><span class="p">,</span> <span class="o">-</span> <span class="n">X1_bar</span><span class="p">))</span> <span class="c1"># as in (22)
+</span><span class="n">lam</span> <span class="o">=</span> <span class="mf">1.</span><span class="o">/</span><span class="n">C</span>
+
+<span class="k">def</span> <span class="nf">cost</span><span class="p">(</span><span class="n">w</span><span class="p">):</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">w</span><span class="p">.</span><span class="n">T</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span> <span class="c1"># as in (23)
+</span>    <span class="k">return</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">maximum</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">u</span><span class="p">))</span> <span class="o">+</span> \
+        <span class="p">.</span><span class="mi">5</span><span class="o">*</span><span class="n">lam</span><span class="o">*</span><span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">w</span><span class="o">*</span><span class="n">w</span><span class="p">))</span> <span class="o">-</span> <span class="p">.</span><span class="mi">5</span><span class="o">*</span><span class="n">lam</span><span class="o">*</span><span class="n">w</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">w</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># no bias 
+</span>
+<span class="k">def</span> <span class="nf">grad</span><span class="p">(</span><span class="n">w</span><span class="p">):</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">w</span><span class="p">.</span><span class="n">T</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span> <span class="c1"># as in (23)
+</span>    <span class="n">H</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">where</span><span class="p">(</span><span class="n">u</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">ZS</span> <span class="o">=</span> <span class="n">Z</span><span class="p">[:,</span> <span class="n">H</span><span class="p">]</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">ZS</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span> <span class="o">+</span> <span class="n">lam</span><span class="o">*</span><span class="n">w</span><span class="p">)</span>
+    <span class="n">g</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-=</span> <span class="n">lam</span><span class="o">*</span><span class="n">w</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># no weight decay on bias
+</span>    <span class="k">return</span> <span class="n">g</span>
+
+<span class="n">eps</span> <span class="o">=</span> <span class="mf">1e-6</span>
+<span class="k">def</span> <span class="nf">num_grad</span><span class="p">(</span><span class="n">w</span><span class="p">):</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">w</span><span class="p">)):</span>
+        <span class="n">wp</span> <span class="o">=</span> <span class="n">w</span><span class="p">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">wm</span> <span class="o">=</span> <span class="n">w</span><span class="p">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">wp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">eps</span> 
+        <span class="n">wm</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="n">eps</span> 
+        <span class="n">g</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">cost</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="o">-</span> <span class="n">cost</span><span class="p">(</span><span class="n">wm</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">eps</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">g</span> 
+
+<span class="n">w0</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="n">X0_ext</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span> 
+<span class="n">g1</span> <span class="o">=</span> <span class="n">grad</span><span class="p">(</span><span class="n">w0</span><span class="p">)</span>
+<span class="n">g2</span> <span class="o">=</span> <span class="n">num_grad</span><span class="p">(</span><span class="n">w0</span><span class="p">)</span>
+<span class="n">diff</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="n">g1</span> <span class="o">-</span> <span class="n">g2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Gradient different: %f'</span> <span class="o">%</span><span class="n">diff</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Gradient difference: 0.000000
+</code></pre></div></div>
+<p>Vì sự khác nhau giữa hai cách tính gradient là bằng 0, ta có thể yên tâm rằng gradient tính được là chính xác.</p>
+
+<p>Sau khi chắc chắn rằng gradient tìm được đã chính xác, ta có thể bắt đầu làm Gradient Descent:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">grad_descent</span><span class="p">(</span><span class="n">w0</span><span class="p">,</span> <span class="n">eta</span><span class="p">):</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">w0</span>
+    <span class="n">it</span> <span class="o">=</span> <span class="mi">0</span> 
+    <span class="k">while</span> <span class="n">it</span> <span class="o">&lt;</span> <span class="mi">100000</span><span class="p">:</span>
+        <span class="n">it</span> <span class="o">=</span> <span class="n">it</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">grad</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+        <span class="n">w</span> <span class="o">-=</span> <span class="n">eta</span><span class="o">*</span><span class="n">g</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">it</span> <span class="o">%</span> <span class="mi">10000</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">'iter %d'</span> <span class="o">%</span><span class="n">it</span> <span class="o">+</span> <span class="s">' cost: %f'</span> <span class="o">%</span><span class="n">cost</span><span class="p">(</span><span class="n">w</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-5</span><span class="p">:</span>
+            <span class="k">break</span> 
+    <span class="k">return</span> <span class="n">w</span> 
+<span class="n">w0</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="n">X0_ext</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span> 
+<span class="n">w</span> <span class="o">=</span> <span class="n">grad_descent</span><span class="p">(</span><span class="n">w0</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">)</span>
+<span class="n">w_hinge</span> <span class="o">=</span> <span class="n">w</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">].</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">b_hinge</span> <span class="o">=</span> <span class="n">w</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">w_hinge</span><span class="p">.</span><span class="n">T</span><span class="p">,</span> <span class="n">b_hinge</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Kết quả:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[[-1.8623959  -1.79532187]] [ 8.4493419]
+</code></pre></div></div>
+<p>Ta thấy rằng kết quả tìm được bằng ba cách là như nhau. Hình 5 dưới đây minh hoạ kết quả bằng ba cách tính:</p>
+
+<hr />
+
+<div>
+<table width="100%" style="border: 0px solid white">
+   <tr>
+        <td width="40%" style="border: 0px solid white" align="center">
+        <img style="display:block;" width="100%" src="/assets/20_softmarginsvm/svm_sklearn.png" />
+         <br />
+        a)
+         </td>
+        <td width="40%" style="border: 0px solid white" align="center">
+        <img style="display:block;" width="100%" src="/assets/20_softmarginsvm/svm_dual.png" />
+         <br />
+        b)
+        </td>
+
+    </tr>
+    <tr>
+        <td width="40%" style="border: 0px solid white" align="center">
+        <img style="display:block;" width="100%" src="/assets/20_softmarginsvm/svm_hinge.png" />
+         <br />
+        c)
+         </td>
+        <td width="40%" style="border: 0px solid white" align="justify">
+        Hình 5: Các đường phân chia tìm được bởi ba cách khác nhau: a) hư viện sklearn, b) Bài toán đối ngẫu, c) Hàm hinge loss. Các kết quả tìm được là như nhau.       
+        </td>
+    </tr>
+</table>
+</div>
+<hr />
+
+<p>Trong thực hành, phương pháp 1 chắc chắn được lựa chọn. Hai phương pháp còn lại được dùng làm cơ sở cho các phương pháp SVM nâng cao hơn trong các bài sau.</p>
+
+<p><a name="-anh-huong-cua-\\c\\-len-nghiem"></a></p>
+
+<h3 id="52-ảnh-hưởng-của-c-lên-nghiệm">5.2. Ảnh hưởng của \(C\) lên nghiệm</h3>
+
+<p>Hình 6 dưới đây minh hoạ nghiệm tìm được cho bài toán phía trên nhưng với các giá trị \(C\) khác nhau. Nghiệm được tìm bằng thư viện sklearn.</p>
+
+<hr />
+
+<div>
+<table width="100%" style="border: 0px solid white">
+   <tr>
+        <td width="40%" style="border: 0px solid white" align="center">
+        <img style="display:block;" width="100%" src="/assets/20_softmarginsvm/ssvm5_01.png" />
+         <br />
+        a)
+         </td>
+        <td width="40%" style="border: 0px solid white" align="center">
+        <img style="display:block;" width="100%" src="/assets/20_softmarginsvm/ssvm5_1.png" />
+         <br />
+        b)
+        </td>
+
+    </tr>
+    <tr>
+        <td width="40%" style="border: 0px solid white" align="center">
+        <img style="display:block;" width="100%" src="/assets/20_softmarginsvm/ssvm5_10.png" />
+         <br />
+        c)
+         </td>
+        <td width="40%" style="border: 0px solid white" align="center">
+        <img style="display:block;" width="100%" src="/assets/20_softmarginsvm/ssvm5_100.png" />
+         <br />
+        d)
+        </td>
+
+    </tr>
+
+</table>
+<div class="thecap"> Hình 6: Ảnh hưởng của \(C\) lên nghiệm của Soft Margin SVM. Khi \(C\) càng lớn thì biên càng nhỏ. 
+</div>
+</div>
+<hr />
+
+<p>Chúng ta nhận thấy rằng khi (C) càng lớn thì biên càng nhỏ đi. Điều này phù hợp với suy luận của chúng ta ở <a href="/2017/04/13/smv/#-phan-tich-toan-hoc">Mục 2</a>.</p>
+
+<p><a name="-tom-tat-va-thao-luan"></a></p>
+
+<h2 id="6-tóm-tắt-và-thảo-luận">6. Tóm tắt và thảo luận</h2>
+
+<ul>
+  <li>
+    <p>SVM thuần (Hard Margin SVM) hoạt động không hiệu quả khi có nhiễu ở gần biên hoặc thậm chí khi dữ liệu giữa hai lớp gần <em>linearly separable</em>. Soft Margin SVM có thể giúp khắc phục điểm này.</p>
+  </li>
+  <li>
+    <p>Trong Soft Margin SVM, chúng ta chấp nhận lỗi xảy ra ở một vài điểm dữ liệu. Lỗi này được xác định bằng khoảng cách từ điểm đó tới đường biên tương ứng. Bài toán tối ưu sẽ tối thiểu lỗi này bằng cách sử dụng thêm các biến được gọi là <em>slack varaibles</em>.</p>
+  </li>
+  <li>
+    <p>Để giải bài toán tối ưu, có hai cách khác nhau. Mỗi cách có những ưu, nhược điểm riêng, các bạn sẽ thấy trong các bài tới.</p>
+  </li>
+  <li>
+    <p>Cách thứ nhất là giải bài toán đối ngẫu. Bài toán đối ngẫu của Soft Margin SVM rất giống với bài toán đối ngẫu của Hard Margin SVM, chỉ khác ở ràng buộc chặn trên của các nhân tử Laggrange. Ràng buộc này còn được gọi là <em>box costraint</em>.</p>
+  </li>
+  <li>
+    <p>Cách thứ hai là đưa bài toán về dạng không ràng buộc dựa trên một hàm mới gọi là <em>hinge loss</em>. Với cách này, hàm mất mát thu được là một hàm lồi và có thể giải được khá dễ dàng và hiệu quả bằng các phương pháp Gradient Descent.</p>
+  </li>
+  <li>
+    <p>Trong Soft Margin SVM, có một hằng số phải được chọn, đó là \(C\). Hướng tiếp cận này còn được gọi là C-SVM. Ngoài ra, còn có một hướng tiếp cận khác cũng hay được sử dụng, gọi là \(\nu\)-SVM, bạn đọc có thể đọc thêm <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.94.2928&amp;rep=rep1&amp;type=pdf">tại đây</a>.</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/20_softmarginsvm/plt/softmargin%20SVM%20Example.ipynb">Source code</a>
+<a name="-tai-lieu-tham-khao"></a></p>
+  </li>
+</ul>
+
+<h2 id="7-tài-liệu-tham-khảo">7. Tài liệu tham khảo</h2>
+<p>[1] Bishop, Christopher M. “Pattern recognition and Machine Learning.”, Springer  (2006). (<a href="http://users.isr.ist.utl.pt/~wurmd/Livros/school/Bishop%20-%20Pattern%20Recognition%20And%20Machine%20Learning%20-%20Springer%20%202006.pdf">book</a>)</p>
+
+<p>[2] Duda, Richard O., Peter E. Hart, and David G. Stork. Pattern classification. John Wiley &amp; Sons, 2012.</p>
+
+<p>[3] <a href="http://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html"><code class="language-plaintext highlighter-rouge">sklearn.svm.SVC</code></a></p>
+
+<p>[4] <a href="https://www.csie.ntu.edu.tw/~cjlin/libsvm/">LIBSVM – A Library for Support Vector Machines</a></p>
+
+<p>[5] Bennett, K. P. (1992). “<a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.23.3307&amp;rep=rep1&amp;type=pdf">Robust linear programming discrimination of two linearly separable sets</a>”. <em>Optimization Methods and Software</em> 1, 23–34.</p>
+
+<p>[6] Sch¨olkopf, B., A. Smola, R. C.Williamson, and P. L. Bartlett (2000). “<a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.94.2928&amp;rep=rep1&amp;type=pdf">New support vector algorithms</a>”. <em>Neural Computation 12</em>(5), 1207–1245</p>
+
+<p>[7]  Rosasco, L.; De Vito, E. D.; Caponnetto, A.; Piana, M.; Verri, A. (2004). “<a href="http://web.mit.edu/lrosasco/www/publications/loss.pdf">Are Loss Functions All the Same?</a>”. <em>Neural Computation</em>. 16 (5): 1063–1076</p>
+:ET

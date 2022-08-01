@@ -1,0 +1,597 @@
+I"��<!-- MarkdownTOC -->
+
+<ul>
+  <li><a href="#-gioi-thieu">1. Giới thiệu</a></li>
+  <li><a href="#--phuong-phap-nhan-tu-lagrange">2.  Phương pháp nhân tử Lagrange</a>
+    <ul>
+      <li><a href="#vi-du">Ví dụ</a></li>
+    </ul>
+  </li>
+  <li><a href="#-ham-doi-ngau-lagrange-the-lagrange-dual-function">3. Hàm đối ngẫu Lagrange (The Lagrange dual function)</a>
+    <ul>
+      <li><a href="#-lagrangian">3.1. Lagrangian</a></li>
+      <li><a href="#-ham-doi-ngau-lagrange">3.2. Hàm đối ngẫu Lagrange</a></li>
+      <li><a href="#-chan-duoi-cua-gia-tri-toi-uu">3.3. Chặn dưới của giá trị tối ưu</a></li>
+      <li><a href="#-vi-du">3.4. Ví dụ</a>
+        <ul>
+          <li><a href="#vi-du-">Ví dụ 1</a></li>
+          <li><a href="#vi-du--1">Ví dụ 2</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#-bai-toan-doi-ngau-lagrange-the-lagrange-dual-problem">4. Bài toán đối ngẫu Lagrange (The Lagrange dual problem)</a>
+    <ul>
+      <li><a href="#-weak-duality">4.1. Weak duality</a></li>
+      <li><a href="#-strong-duality-va-slaters-constraint-qualification">4.2. Strong duality và Slater’s constraint qualification</a></li>
+    </ul>
+  </li>
+  <li><a href="#-optimality-conditions">5. Optimality conditions</a>
+    <ul>
+      <li><a href="#-complementary-slackness">5.1. Complementary slackness</a></li>
+      <li><a href="#-kkt-optimality-conditions">5.2. KKT optimality conditions</a>
+        <ul>
+          <li><a href="#-kkt-condition-cho-bai-toan-khong-loi">5.2.1. KKT condition cho bài toán <em>không</em> lồi</a></li>
+          <li><a href="#-kkt-conditions-cho-bai-toan-loi">5.2.2. KKT conditions cho bài toán lồi</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#-tom-tat">5. Tóm tắt</a></li>
+  <li><a href="#-ket-luan">6. Kết luận</a></li>
+  <li><a href="#-tai-lieu-tham-khao">7. Tài liệu tham khảo</a></li>
+</ul>
+
+<!-- /MarkdownTOC -->
+
+<p><strong>Trong bài viết này, chúng ta giả sử rằng các đạo hàm tồn tại.</strong></p>
+
+<p><strong>Bài viết này chủ yếu được dịch lại từ Chương 5 của cuốn <em>Convex Optimization</em> trong tài liệu tham khảo.</strong></p>
+
+<p>Bạn đọc có thể xem bản pdf <a href="https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/latex/book_CVX.pdf">tại đây</a>.</p>
+
+<p><em>Nếu bạn gặp khó khăn trong việc hiểu đạo hàm trong bài viết này, bạn được khuyến khích đọc <a href="/math/#-dao-ham-cua-ham-nhieu-bien">Đạo hàm của hàm nhiều biến</a>. Ngoài ra, các kiến thức trong <a href="/2017/03/12/convexity/">Bài 16</a> và <a href="/2017/03/19/convexopt/">Bài 17</a> là quan trọng để hiểu rõ hơn bài viết này.</em></p>
+
+<p><a name="-gioi-thieu"></a></p>
+
+<h2 id="1-giới-thiệu">1. Giới thiệu</h2>
+<p>Trong <a href="/2017/03/12/convexity/">Bài 16</a>, chúng ta đã làm quen với các khái niệm về tập hợp lồi và hàm số lồi. Tiếp theo đó, trong <a href="/2017/03/19/convexopt/">Bài 17</a>, tôi cũng đã trình bày về các bài toán tối ưu lồi, cách nhận dạng và cách sử dụng thư viện để giải các bài toán lồi cơ bản. Trong bài này, chúng ta sẽ tiếp tục tiếp cận một cách sâu hơn: các điều kiện về nghiệm của các bài toán tối ưu, cả lồi và không lồi; bài toán đối ngẫu (dual problem) và điều kiện KKT.</p>
+
+<p>Trước tiên, chúng ta lại bắt đầu bằng những kỹ thuật đơn giản cho các bài toán cơ bản. Kỹ thuật này có lẽ các bạn đã từng nghe đến: Phương pháp nhân tử Lagrange (method of <a href="https://en.wikipedia.org/wiki/Lagrange_multiplier">Lagrange multipliers</a>). Đây là một phương pháp giúp tìm các điểm cực trị của hàm mục tiêu trên feasible set của bài toán.</p>
+
+<p>Nhắc lại rằng giá trị lớn nhất và nhỏ nhất (nếu có) của một hàm số \(f_0(\mathbf{x})\) khả vi (và tập xác định là một <a href="https://en.wikipedia.org/wiki/Open_set"><em>tập mở</em></a>) đạt được tại một trong các điểm cực trị của nó. Và điều kiện cần để một điểm là điểm cực trị là đạo hàm của hàm số tại điểm này \(f_0’(x) = 0\). Chú ý rằng một điểm thoả mãn \(f_0’(\mathbf{x})\) = 0 thì được gọi là <em>điểm dừng</em> hay <em>stationary point</em>. Điểm cực trị là một điểm dừng nhưng không phải điểm dừng nào cũng là điểm cực trị. Ví dụ hàm \(f(x) = x^3\) có \(0\) là một điểm dừng nhưng không phải là điểm cực trị.</p>
+
+<p>Với hàm nhiều biến, ta cũng có thể áp dụng quan sát này. Tức chúng ta cần đi tìm nghiệm của phương trình đạo hàm <em>theo mỗi biến</em> bằng 0. Tuy nhiên, đó là với các bài toán không ràng buộc (unconstrained optimization problems), với các bài toán có ràng buộc như chúng ta đã gặp trong Bài 17 thì sao?</p>
+
+<p>Trước tiên chúng ta xét bài toán mà ràng buộc chỉ là một phương trình:
+\[
+\begin{eqnarray}
+    \mathbf{x}=&amp; \arg\min_{\mathbf{x}} f_0(\mathbf{x}) \newline
+    \text{subject to:}~&amp; f_1(\mathbf{x}) = 0~~~~~~~~~(1)
+\end{eqnarray}
+\]</p>
+
+<p>Bài toán này là bài toán tổng quát, không nhất thiết phải lồi. Tức hàm mục tiêu và hàm ràng buộc không nhất thiết phải lồi. 
+<a name="--phuong-phap-nhan-tu-lagrange"></a></p>
+
+<h2 id="2--phương-pháp-nhân-tử-lagrange">2.  Phương pháp nhân tử Lagrange</h2>
+<p>Nếu chúng ta đưa được bài toán này về một bài toán không ràng buộc thì chúng ta có thể tìm được nghiệm bằng cách giải hệ phương trình đạo hàm theo từng thành phần bằng 0 (giả sử rằng việc giải hệ phương trình này là khả thi).</p>
+
+<!-- Một cách đơn giản nhất để đạt được mục đích này là kết hợp _hàm đẳng thức ràng buộc_ \\(f_1(\mathbf{x})\\) vào với hàm mục tiêu \\(f_0(\mathbf{x})\\) để được một hàm số \\(\mathcal{L}(\mathbf{x})\\) sao cho:
+
+* Nghiệm của \\(\nabla f_0(\mathbf{x})\\) có thể được suy ra từ nghiệm của \\(\nabla \mathcal{L}(\mathbf{x})= 0\\). 
+
+* Hơn nữa, nghiệm này phải thoả mãn điều kiện ràng buộc \\(f_1(\mathbf{x}) = 0\\). -->
+
+<p>Điều này là động lực để nhà toán học <a href="https://en.wikipedia.org/wiki/Joseph-Louis_Lagrange">Lagrange</a> sử dụng hàm số: \(\mathcal{L}(\mathbf{x}, \lambda) = f_0(\mathbf{x}) + \lambda f_1(\mathbf{x})\). Chú ý rằng, trong hàm số này, chúng ta có thêm một biến nữa là \(\lambda\), biến này được gọi là nhân tử Lagrange (Lagrange multiplier). Hàm số \(\mathcal{L}(\mathbf{x}, \lambda)\) được gọi là <em>hàm hỗ trợ</em> (<em>auxiliary function</em>), hay <em>the Lagrangian</em>. Người ta đã chứng minh được rằng, điểm <em>optimal value</em> của bài toán \((1)\) thoả mãn điều kiện \(\nabla_{\mathbf{x}, \lambda} \mathcal{L}(\mathbf{x}, \lambda) = 0\) (tôi xin được bỏ qua chứng minh của phần này). Điều này tương đương với:</p>
+
+<p>\[
+\begin{eqnarray}
+    \nabla_{\mathbf{x}}f_0(\mathbf{x}) + \lambda \nabla_{\mathbf{x}} f_1(\mathbf{x}) &amp;=&amp; 0~~~~(2) \newline
+    f_1(\mathbf{x}) &amp; = &amp; 0  ~~~~(3)
+\end{eqnarray}
+\]</p>
+
+<p>Để ý rằng điều kiện thứ hai chính là \(\nabla_{\lambda}\mathcal{L}(\mathbf{x}, \lambda) = 0\), và cũng chính là ràng buộc trong bài toán \((1)\).</p>
+
+<p>Việc giải hệ phương trình \((2) - (3)\), trong nhiều trường hợp, đơn giản hơn việc trực tiếp đi tìm <em>optimal value</em> của bài toán \((1)\).</p>
+
+<p>Xét các ví dụ đơn giản sau đây.
+<a name="vi-du"></a></p>
+
+<h3 id="ví-dụ">Ví dụ</h3>
+<p><strong>Ví dụ 1:</strong> Tìm giá trị lớn nhất và nhỏ nhất của hàm số \(f_0(x, y) = x + y\) thoả mãn điều kiện \(f_1(x, y) = x^2 + y^2 = 2\). Ta nhận thấy rằng đây không phải là một bài toán tối ưu lồi vì <em>feasible set</em> \(x^2 + y^2 = 2\) không phải là một tập lồi (nó chỉ là một đường tròn).</p>
+
+<p><strong><em>Lời giải:</em></strong></p>
+
+<p><em>Lagrangian</em> của bài toán này là: \(\mathcal{L}(x, y, \lambda) = x + y + \lambda(x^2 + y^2 - 2)\). Các điểm cực trị của hàm số Lagrange phải thoả mãn điều kiện:</p>
+
+<p>\[
+\nabla_{x, y, \lambda} \mathcal{L}(x, y, \lambda) = 0 \Leftrightarrow
+\left\{
+\begin{matrix}
+    1 + 2\lambda x &amp;= 0~~~ (4) \newline
+    1 + 2\lambda y &amp;= 0~~~ (5) \newline
+    x^2 + y^2 &amp;=     2 ~~~~(6)
+\end{matrix}
+\right.
+\]</p>
+
+<p>Từ \((4)\) và \((5)\) ta suy ra \(x = y = \frac{-1}{2\lambda}\). Thay vào \((6)\) ta sẽ có \(\lambda^2 = \frac{1}{4} \Rightarrow \lambda = \pm \frac{1}{2}\). Vậy ta được 2 cặp nghiệm \((x, y) \in \{(1, 1), (-1, -1)\}\). Bằng cách thay các giá trị này vào hàm mục tiêu, ta tìm được giá trị nhỏ nhất và lớn nhất của hàm số cần tìm.</p>
+
+<p><strong>Ví dụ 2: Cross-entropy</strong>. Trong <a href="/2017/01/27/logisticregression/">Bài 10</a> và <a href="/2017/02/17/softmax/">Bài 13</a>, chúng ta đã được biết đến hàm mất mát ở dạng <a href="/2017/02/17/softmax/#-cross-entropy"><em>cross entropy</em></a>. Chúng ta cũng đã biết rằng hàm cross entropy được dùng để đo sự giống nhau của hai phân phối xác suất với giá trị của hàm số này càng nhỏ thì hai xác suất càng gần nhau. Chúng ta cũng đã phát biểu rằng giá trị nhỏ nhất của hàm cross entropy đạt được khi từng cặp xác suất là giống nhau. Bây giờ, tôi xin phát biểu lại và chứng minh nhận định trên.</p>
+
+<p>Cho một phân bố xác xuất \(\mathbf{p} = [p_1, p_2, \dots, p_n]^T\) với \(p_i \in [0, 1]\) và \(\sum_{i=1}^n p_i = 1\). Với một phân bố xác suất bất kỳ \(\mathbf{q} = [q_1, q_2, \dots, q_n]\) và giả sử rằng \(q_i \neq 0, \forall i\), hàm số cross entropy được định nghĩa là:
+\[
+f_0(\mathbf{q}) = -\sum_{i=1}^n p_i \log(q_i)
+\]
+Hãy tìm \(\mathbf{q}\) để hàm cross entropy đạt giá trị nhỏ nhất.</p>
+
+<p>Trong bài toán này, ta có ràng buộc là \(\sum_{i=1}^n q_i = 1\). <em>Lagrangian</em> của bài toán là: 
+\[
+\mathcal{L}(q_1, q_2, \dots, q_n, \lambda) = -\sum_{i=1}^n p_i \log(q_i) + \lambda(\sum_{i=1}^n q_i - 1)
+\]
+Ta cần giải hệ phương trình:</p>
+
+<p>\[
+\nabla_{q_1, \dots, q_n, \lambda} \mathcal{L}(q_1, \dots, q_n, \lambda) = 0 \Leftrightarrow
+\left\{
+\begin{matrix}
+   -\frac{p_i}{q_i} + \lambda &amp;=&amp; 0, ~~ i = 1, \dots, n ~~~(7)\newline
+   q_1 + q_2 + \dots + q_n &amp;=&amp; 1 ~~~~~~ (8)
+\end{matrix}
+\right.
+\]</p>
+
+<p>Từ \((7)\) ta có \(p_i = \lambda q_i\). Vậy nên: \( 1 = \sum_{i=1}^n p_i = \lambda\sum_{i=1}^n q_i = \lambda \Rightarrow \lambda = 1 \Rightarrow q_i = p_i, \forall i\).</p>
+
+<p>Qua đây, chúng ta đã hiểu rằng vì sao hàm số cross entropy được dùng để <em>ép</em> hai xác suất <em>gần nhau</em>.</p>
+
+<p><a name="-ham-doi-ngau-lagrange-the-lagrange-dual-function"></a></p>
+
+<h2 id="3-hàm-đối-ngẫu-lagrange-the-lagrange-dual-function">3. Hàm đối ngẫu Lagrange (The Lagrange dual function)</h2>
+
+<p><a name="-lagrangian"></a></p>
+
+<h3 id="31-lagrangian">3.1. Lagrangian</h3>
+<p>Với bài toán tối ưu tổng quát:
+\[
+\begin{eqnarray}
+\mathbf{x}^* &amp;=&amp; \arg\min_{\mathbf{x}} f_0(\mathbf{x}) \newline
+\text{subject to:}~ &amp;&amp; f_i(\mathbf{x}) \leq 0, ~~ i = 1, 2, \dots, m ~~~(9)\newline
+&amp;&amp; h_j(\mathbf{x}) = 0, ~~ j = 1, 2, \dots, p
+\end{eqnarray}
+\]
+với miền xác đinh \(\mathcal{D} = (\cap_{i=0}^m \text{dom}f_i) \cap (\cap_{j=1}^p \text{dom}h_j)\). Chú ý rằng, chúng ta đang không giả sử về tính chất lồi của hàm tối ưu hay các hàm ràng buộc ở đây. Giả sử duy nhất ở đây là \(\mathcal{D} \neq \emptyset\) (tập rỗng).</p>
+
+<p><em>Lagrangian</em> cũng được xây dựng tương tự với mỗi nhân tử Lagrange cho một (bất) phương trình ràng buộc:
+\[
+\mathcal{L}(\mathbf{x}, \lambda, \nu) = f_0(\mathbf{x}) + \sum_{i=1}^m \lambda_if_i(\mathbf{x}) + \sum_{j=1}^p \nu_j h_j(\mathbf{x})
+\]</p>
+
+<p>với \(\lambda = [\lambda_1, \lambda_2, \dots, \lambda_m]; \nu = [\nu_1, \nu_2, \dots, \nu_p]\) (<em>ký hiệu \(\nu\) này không phải là chữ v mà là chữ nu trong tiếng Hy Lạp, đọc như từ new</em>) là các vectors và được gọi là <em>dual variables</em> (<em>biến đối ngẫu</em>) hoặc <em>Lagrange multiplier vectors</em> (vector nhân tử Lagrange). Lúc này nếu biến chính \(\mathbf{x} \in \mathbb{R}^n\) thì tổng số biến của hàm số này sẽ là \(n + m + p\).</p>
+
+<p>(<em>Thông thường, tôi dùng các chữ cái viết thường in đậm để biểu diễn một vector, trong trường hợp này tôi không bôi đậm được \(\lambda\) và \(\nu\) do hạn chế của LaTeX khi viết cùng markdown. Tôi lưu ý điều này để hạn chế nhầm lẫn cho bạn đọc</em>)</p>
+
+<p><a name="-ham-doi-ngau-lagrange"></a></p>
+
+<h3 id="32-hàm-đối-ngẫu-lagrange">3.2. Hàm đối ngẫu Lagrange</h3>
+
+<p>Hàm đối ngẫu Lagrange của bài toán tối ưu (hoặc gọn là <em>hàm số đối ngẫu</em>) \((9)\) là một hàm của các biến đối ngẫu, được định nghĩa là giá trị nhỏ nhất theo \(\mathbf{x}\) của <em>Lagrangian</em>:
+\[
+\begin{eqnarray}
+g(\lambda, \nu) &amp;=&amp; \inf_{\mathbf{x} \in \mathcal{D}} \mathcal{L}(\mathbf{x}, \lambda, \nu)\newline
+&amp;=&amp; \inf_{\mathbf{x} \in \mathcal{D}}\left( f_0(\mathbf{x}) + \sum_{i=1}^m \lambda_if_i(\mathbf{x}) + \sum_{j=1}^p \nu_j h_j(\mathbf{x})\right)
+\end{eqnarray}
+\]</p>
+
+<p>Nếu <em>Lagrangian không bị chặn dưới</em>, hàm đối ngẫu tại \(\lambda, \nu\) sẽ lấy giá trị \(-\infty\).</p>
+
+<p><strong>Đặc biệt quan trọng:</strong></p>
+
+<ul>
+  <li>
+    <p>\(\inf\) được lấy trên miền \(x \in \mathcal{D}\), tức miền xác định của bài toán (là giao của miền xác định của mọi hàm trong bài toán). Miền xác định này khác với <em>feasible set</em>. Thông thường, <em>feasible set</em> là tập con của miền xác định \(\mathcal{D}\).</p>
+  </li>
+  <li>
+    <p>Với mỗi \(\mathbf{x}\), <em>Lagrangian</em> là một hàm <em>affine</em> của \((\lambda, \nu)\), tức là một <a href="/2017/03/12/convexity/#concave-function">hàm <em>concave</em></a>. Vậy, <em>hàm đối ngẫu</em> chính là <em>pointwise infimum</em> của (có thể vô hạn) các hàm concave, tức là một hàm concave. Vậy <strong>hàm đối ngẫu của một bài toán tối ưu bất kỳ là một hàm concave, bất kể bài toán ban đầu có phải là convex hay không</strong>. Nhắc lại rằng <em>pointwise supremum</em> của các hàm <em>convex</em> là một hàm <em>convex</em>, và một hàm là <em>concave</em> nếu khi đổi dấu hàm đó, ta được một hàm <em>convex</em>.</p>
+  </li>
+</ul>
+
+<p><a name="-chan-duoi-cua-gia-tri-toi-uu"></a></p>
+
+<h3 id="33-chặn-dưới-của-giá-trị-tối-ưu">3.3. Chặn dưới của giá trị tối ưu</h3>
+<p>Nếu \(p^*\) là <a href="/2017/03/19/convexopt/#-cac-khai-niem-co-ban"><em>optimal value</em></a> (giá trị tối ưu) của bài toán \((9)\), thì với các biến đối ngẫu \(\lambda_i \geq 0, \forall i\) và \(\nu\) <em>bất kỳ</em>, chúng ta sẽ có: 
+\[
+g(\lambda, \nu) \leq p^*~~~~ (10)
+\]
+Tính chất này có thể được chứng minh dễ dàng. Giả sử \(\mathbf{x}_0\) là một điểm <em>feasible</em> bất kỳ của bài toán \((9)\), tức thoả mãn các điều kiện ràng buộc \(f_i(\mathbf{x}_0) \leq 0, \forall i = 1, \dots, m; h_j(\mathbf{x}_0) = 0, \forall j = 1, \dots, p\), ta sẽ có: 
+\[
+\sum_{i=1}^m \lambda_if_i(\mathbf{x}_0) + \sum_{j=1}^p \nu_j h_j(\mathbf{x}_0) \leq 0 \Rightarrow \mathcal{L}(\mathbf{x}_0, \lambda, \nu) \leq f_0(\mathbf{x}_0)
+\]
+Vì điều này đúng với mọi \(\mathbf{x}_0\) <em>feasible</em>, ta sẽ có tính chất quan trọng sau đây: 
+\[
+g(\lambda, \nu) = \inf_{\mathbf{x} \in \mathcal{D}} \mathcal{L}(\mathbf{x}, \lambda, \nu) \leq \mathcal{L}(\mathbf{x}_0, \lambda, \nu) \leq f_0(\mathbf{x}_0).
+\]</p>
+
+<p>Khi \(\mathbf{x}_0 = \mathbf{x}^*\), ta có bất đẳng thức \((10)\).</p>
+
+<p><a name="-vi-du"></a></p>
+
+<h3 id="34-ví-dụ">3.4. Ví dụ</h3>
+<p><a name="vi-du-"></a></p>
+
+<h4 id="ví-dụ-1">Ví dụ 1</h4>
+<p>Xét bài toán tối ưu sau:
+\[
+\begin{eqnarray}
+    x=&amp; \arg\min_{x} x^2 + 10\sin(x) + 10 \newline
+    \text{subject to:}~&amp; (x-2)^2 \leq 4 
+\end{eqnarray}
+\]</p>
+
+<p>Chú ý: Với bài toán này, miền xác định \(\mathcal{D} = \mathbb{R}\) nhưng <em>feasible set</em> là \(0 \leq x \leq 4\).</p>
+
+<p>Với hàm mục tiêu là đường đậm màu xanh lam trong Hình 1 dưới đây. Ràng buộc thực ra \(0 \leq x \leq 4\), nhưng tôi viết ở dạng này để bài toán thêm phần thú vị. Hàm số ràng buộc \(f_1(x) = (x-2)^2 - 4\) được cho bởi đường nét đứt màu xanh lục. Optimal value của bài toán này có thể được nhận ra là điểm trên đồ thị có hoành độ bằng 0. Chú ý rằng hàm mục tiêu ở đây không phải là hàm lồi nên bài toán tối ưu này cũng không phải là lồi, mặc dù hàm bất phương trình ràng buộc \(f_1(x)\) là lồi.</p>
+
+<p><em>Lagrangian</em> của bài toàn này có dạng:
+\[
+\mathcal{L}(x, \lambda) = x^2 + 10\sin(x) +10+ \lambda((x-2)^2 - 4) 
+\]
+Các đường dấu chấm màu đỏ trong Hình 1 là các đường ứng với các \(\lambda \) khác nhau. Vùng bị chặn giữa hai đường thẳng đứng màu đen thể hiện miền <em>feasible</em> của bài toán tối ưu.</p>
+<hr />
+
+<div>
+<table width="100%" style="border: 0px solid white">
+   <tr>
+        <td width="40%" style="border: 0px solid white">
+        <img style="display:block;" width="100%" src="/assets/18_duality/dual_func.png" />
+         </td>
+        <td width="40%" style="border: 0px solid white">
+        <img style="display:block;" width="100%" src="/assets/18_duality/dual_func2.png" />
+        </td>
+
+    </tr>
+
+</table>
+<div class="thecap"> Hình 1: Ví dụ về dual function.
+</div>
+</div>
+<hr />
+
+<p>Với mỗi \(\lambda\), <em>dual function</em> được định nghĩa là:
+\[
+g(\lambda) = \inf_{x} \left(x^2 + 10\sin(x) + 10+ \lambda((x-2)^2 - 4) \right), ~~ \lambda \geq 0.
+\]</p>
+
+<p>Từ hình 1 bên trái, ta có thể thấy ngay rằng với các \(\lambda\) khác nhau, \(g(\lambda)\) hoặc tại điểm có hoành độ bằng 0, hoặc tại một điểm thấp hơn điểm tối ưu của bài toán. Đồ thị của hàm \(g(\lambda)\) được cho bởi đường liền màu đỏ ở Hình 1 bên phải. Đường nét đứt màu lam thể hiện <em>optimal value</em> của bài toán tối ưu ban đầu. Ta có thể thấy ngay hai điều:</p>
+
+<ul>
+  <li>
+    <p>Đường liền màu đỏ luôn nằm dưới (hoặc có đoạn trùng) với đường nét đứt màu lam.</p>
+  </li>
+  <li>
+    <p>Hàm \(g(\lambda)\) có dạng một hàm <em>concave</em>, tức nếu ta <em>lật</em> đồ thị này theo hướng trên-dưới thì ta sẽ có đồ thị của một hàm <em>convex</em>. (Mặc dù bài toán tối ưu gốc là không phải là một bài toán lồi.)</p>
+  </li>
+</ul>
+
+<p>(<em>Để vẽ được hình bên phải, tôi đã dùng <a href="/2017/01/12/gradientdescent/">Gradient Descent</a> để tìm giá trị nhỏ nhất ứng với mỗi \(\lambda\)</em>)</p>
+
+<p><a name="vi-du--1"></a></p>
+
+<h4 id="ví-dụ-2">Ví dụ 2</h4>
+<p>Xét một bài toán Linear Programming:
+\[
+\begin{eqnarray}
+    x &amp;=&amp; \arg \min_{\mathbf{x}}{\mathbf{c}^T\mathbf{x}} \newline
+    \text{s.t.:} ~ &amp;&amp;\mathbf{Ax} = \mathbf{b} \newline
+                &amp;&amp; \mathbf{x} \succeq 0 
+\end{eqnarray}
+\]
+Hàm ràng buộc cuối cùng có thể được viết lại là: \(f_i(\mathbf{x}) = -x_i, i = 1, \dots, n\). Lagrangigan của bài toán này là: 
+\[
+\mathcal{L}(\mathbf{x}, \lambda, \nu) = \mathbf{c}^T\mathbf{x} - \sum_{i=1}^n \lambda_i x_i + \nu^T(\mathbf{Ax} - \mathbf{b})  = -\mathbf{b}^T\nu + (\mathbf{c} + \mathbf{A}^T\nu - \lambda)^T\mathbf{x}
+\]
+(đừng quên điều kiện \(\lambda \succeq 0\).)
+Dual function là: 
+\[
+\begin{eqnarray}
+g(\lambda, \nu) &amp;=&amp; \inf_{\mathbf{x}}\mathcal{L}(\mathbf{x}, \lambda, \nu) \newline
+&amp;=&amp;  -\mathbf{b}^T\nu + \inf_{\mathbf{x}} (\mathbf{c} + \mathbf{A}^T\nu - \lambda)^T\mathbf{x}
+\end{eqnarray}
+\]
+Nhận thấy rằng một hàm tuyến tính \(\mathbf{d}^T\mathbf{x}\) của \(\mathbf{x}\) bị chặn dưới khi vào chỉ khi \(\mathbf{d} = 0\). Vì chỉ nếu một phần tử \(d_i\) của \(\mathbf{d}\) khác 0, ta chỉ cần chọn \(x_i\) rất lớn và ngược dấu với \(d_i\), ta sẽ có một giá trị nhỏ tuỳ ý.</p>
+
+<p>Nói cách khác, \(g(\lambda, \nu) = -\infty\) trừ khi \(\mathbf{c} + \mathbf{A}^T\nu - \lambda = 0\). Tóm lại:</p>
+
+<p>\[
+\begin{eqnarray}
+    g(\lambda, \nu) = \left\{
+    \begin{matrix}
+     -\mathbf{b}^T\nu &amp; ~\text{if}~  \mathbf{c}+ \mathbf{A}^T\nu - \lambda = 0\newline
+    -\infty &amp;\text{otherwise}
+    \end{matrix} \right.
+\end{eqnarray}
+\]</p>
+
+<p>Trường hợp thứ hai khi \(g(\lambda,\nu) = -\infty\) các bạn sẽ gặp rất nhiều sau này. Trường hợp này không nhiều thú vị vì hiển nhiên \(g(\lambda, \nu) \leq p^*\). Vì mục đích chính là đi tìm chặn dưới của \(p^*\) nên ta sẽ chỉ quan tâm tới các giá trị của \(\lambda\) và \(\nu\) sao cho \(g(\lambda, \nu)\) càng lớn càng tốt. Trong bài toán này, ta sẽ quan tâm tới các \(\lambda\) và \(\nu\) sao cho \(\mathbf{c}+ \mathbf{A}^T\nu - \lambda = 0\).</p>
+
+<p><a name="-bai-toan-doi-ngau-lagrange-the-lagrange-dual-problem"></a></p>
+
+<h2 id="4-bài-toán-đối-ngẫu-lagrange-the-lagrange-dual-problem">4. Bài toán đối ngẫu Lagrange (The Lagrange dual problem)</h2>
+<p>Với mỗi cặp \((\lambda, \nu)\), hàm đối ngẫu Lagrange cho chúng ta một chặn dưới cho <em>optimal value</em> \(p^*\) của bài toán gốc \((9)\). Câu hỏi đặt ra là: với cặp giá trị nào của \((\lambda, \nu)\), chúng ta sẽ có một chặn dưới tốt nhất của \(p^*\)? Nói cách khác, ta đi cần giải bài toán:</p>
+
+<p>\[
+\begin{eqnarray}
+    \lambda^*, \nu^* &amp;=&amp; \arg \max_{\lambda, \nu} g(\lambda, \nu)   \newline
+    \text{subject to:}~ &amp;&amp; \lambda \succeq 0 ~~~~~~~~~(11)
+\end{eqnarray}
+\]
+Một điểm quan trọng: vì \(g(\lambda, \nu)\) là <em>concave</em> và hàm ràng buộc \(f_i(\lambda) = -\lambda_i\) là các hàm <em>convex</em>. Vậy bài toán \((11)\) chính là một bài toán lồi. Vì vậy trong nhiều trường hợp, lời giải có thể dễ tìm hơn là bài toán gốc. Chú ý rằng, bài toán đối ngẫu \((11)\) là lồi bất kể bài toán gốc \((9)\) có là lồi hay không.</p>
+
+<p>Bài toán này dược gọi là <em>Lagrange dual problem</em> (bài toán đối ngẫu Largange) ứng với bài toán \((9)\). Bài toán \((9)\) còn có tên gọi khác là <em>primal problem</em> (bài toán gốc). Ngoài ra, có một khái niệm nữa, gọi là <em>dual feasible</em> tức là <em>feasible set</em> của bài toán đối ngẫu, bao gồm điều kiện \(\lambda \succeq 0 \) và điều kiện ẩn \(g(\lambda, \nu) &gt; -\infty\) (vì ta đang đi tìm giá trị lớn nhất của hàm số nên \(g(\lambda, \nu) = -\infty\) rõ ràng là không thú vị).</p>
+
+<p>Nghiệm của bài toán \((11)\), ký hiệu là \(\lambda^*, \nu^*\) được gọi là <em>dual optimal</em> hoặc <em>optimal Lagrange multipliers</em>.</p>
+
+<p>Chú ý rằng điều kiện ẩn \(g(\lambda, \nu) &gt; -\infty\), trong nhiều trường hợp, cũng có thể được viết cụ thể. Quay lại với ví dụ phía trên, điệu kiện ẩn có thể được viết thành \(\mathbf{c}+ \mathbf{A}^T\nu - \lambda = 0\). Đây là một hàm affine. Vì vậy, khi có thêm ràng buộc này, ta vẫn được một bài toán lồi.</p>
+
+<p><a name="-weak-duality"></a></p>
+
+<h3 id="41-weak-duality">4.1. Weak duality</h3>
+<p>Ký hiệu giá trị tối ưu của bài toán đối ngẫu \((11)\) là \(d^*\). Theo \((11)\), ta đã biết rằng:
+\[
+d^* \leq p^*
+\]
+ngay cả khi bài toán gốc không phải là lồi.</p>
+
+<p>Tính chất đơn giản này được gọi là <em>weak duality</em>. Tuy đơn giản nhưng nó cực kỳ quan trọng.</p>
+
+<p>Từ đây ta quan sát thấy hai điều:</p>
+
+<ul>
+  <li>
+    <p>Nếu bài toán gốc không bị chặn dưới, tức \(p^* = -\infty\), ta phải có \(d^* = -\infty\), tức là bài toán đối ngẫu Lagrange là <em>infeasible</em> (tức không có giá trị nào thoả mãn ràng buộc).</p>
+  </li>
+  <li>
+    <p>Nếu bài toàn đối ngẫu là không bị chặn trên, tức \(d^* = +\infty\), chúng ta phải có \(p^* = +\infty\), tức bài toán gốc là <em>infeasible</em>.</p>
+  </li>
+</ul>
+
+<p>Giá trị \(p^* - d^*\) được gọi là <em>optimal duality gap</em> (dịch thô là <em>khoảng cách đối ngẫu tối ưu</em>). Khoảng cách này luôn luôn là một số không âm.</p>
+
+<p>Đôi khi có những bài toán (lồi hoặc không) rất khó giải, nhưng ít nhất nếu ta có thể tìm được \(d^*\), ta có thể biết được chặn dưới của bài toán gốc. Việc tìm \(d^*\) thường có thể thực hiện được vì bài toán đối ngẫu luôn luôn là lồi.</p>
+
+<p><a name="-strong-duality-va-slaters-constraint-qualification"></a></p>
+
+<h3 id="42-strong-duality-và-slaters-constraint-qualification">4.2. Strong duality và Slater’s constraint qualification</h3>
+
+<p>Nếu đẳng thức \(p^* = d^*\) thoả mãn, <em>the optimal duality gap</em> bằng không, ta nói rằng <em>strong duality</em> xảy ra. Lúc này, việc giải bài toán đối ngẫu đã giúp ta tìm được <em>chính xác</em> giá trị tối ưu của bài toán gốc.</p>
+
+<p>Thật không may, <em>strong duality</em> không thường xuyên xảy ra trong các bài toán tối ưu. Tuy nhiên, nếu bài toán gốc là lồi, tức có dạng:</p>
+
+<p>\[
+\begin{eqnarray}
+    x &amp;=&amp; \arg \min_{\mathbf{x}} f_0(\mathbf{x})   \newline
+    \text{subject to:}~ &amp;&amp; f_i(\mathbf{x}) \leq 0, i = 1, 2, \dots, m ~~~~~ (12)\newline
+    &amp;&amp; \mathbf{Ax} = \mathbf{b}
+\end{eqnarray}
+\]
+trong đó \(f_0, f_1, \dots, f_m\) là các hàm lồi, chúng ta <em>thường</em> (không luôn luôn) có <em>strong duality</em>. Có rất nhiều nghiên cứu thiết lập các điều kiện, ngoài tính chất lồi, để <em>strong duality</em> xảy ra. Những điều kiện đó thường có tên là <em>constraint qualifications</em>.</p>
+
+<p>Một trong các <em>constraint qualification</em> đơn giản nhất là <em>Slater’s condition</em>.</p>
+
+<p><strong>Định nghĩa:</strong> Một điểm <em>feasible</em> của bài toán \((12)\) được gọi là <em>strictly feasible</em> nếu: 
+\[
+f_i(\mathbf{x}) &lt; 0, ~i = 1, 2, \dots, m, ~~~ \mathbf{Ax} = \mathbf{b}
+\]</p>
+
+<p><strong>Định lý Slater:</strong> Nếu tồn tại một điểm <em>strictly feasible</em> (và bài toán gốc là lồi), thì <em>strong duality</em> xảy ra.</p>
+
+<p>Điều kiện khá đơn giản sẽ giúp ích cho nhiều bài toán tối ưu sau này.</p>
+
+<p>Chú ý:</p>
+<ul>
+  <li><em>Strong duality</em> không thường xuyên xảy ra. Với các bài toán lồi, việc này xảy ra thường xuyên hơn. Tồn tại những bài toán lồi mà <em>strong duality</em> không xảy ra.</li>
+</ul>
+
+<!-- Bạn đọc có thể coi ví dụ về bài toán lồi nhưng không có _strong duality_ dưới đây:
+\\[
+\begin{eqnarray}
+    x &=& \arg \min_{\mathbf{x}} \mathbf{x}^T\mathbf{Ax} + 2\mathbf{b}^T\mathbf{x}   \newline
+    \text{subject to:}~ && \mathbf{x}^T\mathbf{x} \leq 1
+\end{eqnarray}
+\\]
+ -->
+<ul>
+  <li>Có những bài toán không lồi nhưng <em>strong duality</em> vẫn xảy ra. Ví dụ như bài toán trong Hình 1 phía trên.</li>
+</ul>
+
+<p><a name="-optimality-conditions"></a></p>
+
+<h2 id="5-optimality-conditions">5. Optimality conditions</h2>
+<p><a name="-complementary-slackness"></a></p>
+
+<h3 id="51-complementary-slackness">5.1. Complementary slackness</h3>
+<p>Giả sử rằng <em>strong duality</em> xảy ra. Gọi \(\mathbf{x}^*\) là một điểm <em>optimal</em> của bài toán gốc và \((\lambda^*, \nu^*)\) là cặp điểm <em>optimal</em> của bài toán đối ngẫu. Ta có: 
+\[
+\begin{eqnarray}
+    f_0(\mathbf{x}^*) &amp;=&amp; g(\lambda^*,\nu^*) \newline
+    &amp;=&amp; \inf_{\mathbf{x}} \left(f_0(\mathbf{x}) + \sum_{i=1}^m \lambda_i^* f_i(\mathbf{x}) + \sum_{j=1}^p \nu_j^* h_i(\mathbf{x})\right)\newline
+    &amp;\leq&amp; f_0(\mathbf{x}^*) + \sum_{i=1}^m \lambda_i^* f_i(\mathbf{x}^*) + \sum_{j=1}^p \nu_j^* h_j(\mathbf{x}^*) \newline
+    &amp;\leq&amp; f_0(\mathbf{x}^*)
+\end{eqnarray}
+\]</p>
+
+<ul>
+  <li>
+    <p>Dòng đầu là do chính là <em>strong duality</em>.</p>
+  </li>
+  <li>
+    <p>Dòng hai là do định nghĩa của hàm đối ngẫu.</p>
+  </li>
+  <li>
+    <p>Dòng ba là hiển nhiên vì infimum của một hàm nhỏ hơn giá trị của hàm đó tại bất kỳ một điểm nào khác.</p>
+  </li>
+  <li>
+    <p>Dòng bốn là vì các ràng buộc \(f_i(\mathbf{x}^*) \leq 0, \lambda_i \geq 0, i = 1, 2, \dots, m\) và \(h_j(\mathbf{x}^*) = 0\).</p>
+  </li>
+</ul>
+
+<p>Từ đây có thể thế rằng dấu đẳng thức ở dòng ba và dòng bốn phải đồng thời xảy ra. Và ta lại có thêm hai quan sát thú vị nữa:</p>
+
+<ul>
+  <li>
+    <p>\(\mathbf{x}^*\) chính là một điểm <em>optimal</em> của \(g(\lambda^*, \nu^*)\).</p>
+  </li>
+  <li>
+    <p>Thú vị hơn: 
+\[
+\sum_{i=1}^m \lambda_i^* f_i(\mathbf{x}^*) = 0
+\]</p>
+  </li>
+</ul>
+
+<p>Vì mỗi phần tử trong tổng trên là không dương do \(\lambda_i^* \geq 0, f_i \leq 0\), ta kết luận rằng: 
+\[
+\lambda_i^*f_i(\mathbf{x}^*) = 0, i = 1, 2, \dots, m
+\]</p>
+
+<p>Điều kiện cuối cùng này được gọi là <em>complementary slackness</em>. Từ đây có thể suy ra: 
+\[
+\begin{eqnarray}
+\lambda_i^* &gt; 0 &amp;\Rightarrow&amp; f_i(\mathbf{x}^*) = 0 \newline
+f_i(\mathbf{x}^*) &lt; 0 &amp;\Rightarrow&amp; \lambda_i^* = 0 
+\end{eqnarray}
+\]
+Tức ta luôn có một trong hai giá trị này bằng 0.</p>
+
+<p><a name="-kkt-optimality-conditions"></a></p>
+
+<h3 id="52-kkt-optimality-conditions">5.2. KKT optimality conditions</h3>
+<p>Chúng ta vẫn giả sử rằng các hàm đang xét có đạo hàm và bài toán tối ưu không nhất thiết là lồi.</p>
+
+<p><a name="-kkt-condition-cho-bai-toan-khong-loi"></a></p>
+
+<h4 id="521-kkt-condition-cho-bài-toán-không-lồi">5.2.1. KKT condition cho bài toán <em>không</em> lồi</h4>
+<p>Giả sử rằng <em>strong duality</em> xảy ra. Gọi \(\mathbf{x}^*\) và \((\lambda^*, \nu^*)\) là <em>bất kỳ primal và dual optimal points</em>. Vì \(\mathbf{x}^*\) tối ưu hàm khả vi \(\mathcal{L}(\mathbf{x}, \lambda^*, \nu^*)\), ta có đạo hàm  của Lagrangian tại \(\mathbf{x}^*\) phải bằng 0.</p>
+
+<p>Điều kiện Karush-Kuhn-Tucker (KKT)) nói rằng \(\mathbf{x}^*, \lambda^*, \nu^*\) phải thoả mãn điều kiện:</p>
+
+<p>\[
+\begin{eqnarray}
+    f_i(\mathbf{x}^*) &amp;\leq&amp; 0, i = 1, 2, \dots, m \newline
+    h_j(\mathbf{x}^*) &amp;=&amp; 0, j = 1, 2, \dots, p \newline
+    \lambda_i^* &amp;\geq&amp; 0, i = 1, 2, \dots, m \newline
+    \lambda_i^*f_i(\mathbf{x}^*) &amp;=&amp; 0, i = 1, 2, \dots, m \newline
+    \nabla f_0(\mathbf{x}^*) + \sum_{i=1}^m \lambda_i^* \nabla f_i(\mathbf{x}^*) + \sum_{j=1}^p\nu_j^* \nabla h_j(\mathbf{x}^*) &amp;=&amp; 0 
+\end{eqnarray}
+\]</p>
+
+<p>Đây là <em>điều kiện cần</em> để \(\mathbf{x}^*, \lambda^*, \nu^*\) là nghiệm của hai bài toán.</p>
+
+<p><a name="-kkt-conditions-cho-bai-toan-loi"></a></p>
+
+<h4 id="522-kkt-conditions-cho-bài-toán-lồi">5.2.2. KKT conditions cho bài toán lồi</h4>
+<p>Với các bài toán lồi và <em>strong duality</em> xảy ra, các điệu kiện KKT phía trên cũng là <em>điều kiện đủ</em>. Vậy với các bài toán lồi với hàm mục tiêu và hàm ràng buộc là khả vi, bất kỳ điểm nào thoả mãn các điều kiện KKT đều là <em>primal và dual optimal</em> của bài toán gốc và bài toán đối ngẫu.</p>
+
+<!-- Xin nhắc lại rằng việc kiểm tra điều kiện Slater ở trên với các bài toán lồi thường (không phải luôn luôn)  -->
+<p><strong>Từ đây ta có thể thấy rằng: Với một bài toán lồi và điều kiện Slater thoả mãn (suy ra <em>strong duality</em>) thì các điều kiện KKT là điều cần và đủ của nghiệm.</strong></p>
+
+<p>Các điều kiện KKT rất quan trọng trong tối ưu. Trong một vài trường hợp đặc biệt (chúng ta sẽ thấy trong bài Support Vector Machine sắp tới), việc giải hệ (bất) phương trình các điều kiện KKT là khả thi. Rất nhiều các thuật toán tối ưu được xây dựng giả trên việc giải hệ điều kiện KKT.</p>
+
+<p><strong>Ví dụ:</strong> <em>Equality constrained convex quadratic minimization</em>. Xét bài toán: 
+\[
+\begin{eqnarray}
+    \mathbf{x} &amp;=&amp; \arg \min_{\mathbf{x}} \frac{1}{2}\mathbf{x}^T\mathbf{Px} + \mathbf{q}^T\mathbf{x} + r  \newline
+    \text{subject to:}~ &amp;&amp; \mathbf{Ax} = \mathbf{b}
+\end{eqnarray}
+\]
+trong đó \(\mathbf{P} \in \mathbb{S}_+^n\) (tập các ma trận đối xứng nửa xác định dương).</p>
+
+<p>Lagrangian: 
+\[
+\mathcal{L}(\mathbf{x}, \nu) = \frac{1}{2}\mathbf{x}^T\mathbf{Px} + \mathbf{q}^T\mathbf{x} + r  + \nu^T(\mathbf{Ax} - \mathbf{b})
+\] 
+ĐIều kiện KKT cho bài toán này là: 
+\[
+\begin{eqnarray}
+    \mathbf{Ax}^* &amp;=&amp; \mathbf{b} \newline
+    \mathbf{P}\mathbf{x}^* + \mathbf{q} + \mathbf{A}^T\nu^* &amp;=&amp; 0
+\end{eqnarray}
+\]
+Phương trình thứ hai chính là phương trình đạo hàm của Lagrangian tại \(\mathbf{x}^*\) bằng 0.</p>
+
+<p>Hệ phương trình này có thể được viết lại đơn giản là: 
+\[
+\left[\begin{matrix}
+\mathbf{P} &amp; \mathbf{A}^T \newline 
+\mathbf{A} &amp; \mathbf{0}
+\end{matrix} \right]
+\left[\begin{matrix}
+\mathbf{x}^* \newline
+\nu^*
+\end{matrix}\right]
+= 
+\left[\begin{matrix}
+-\mathbf{q} \newline
+\mathbf{b}
+\end{matrix}\right]
+\]
+đây là một phương trình tuyến tính đơn giản!</p>
+
+<p><a name="-tom-tat"></a></p>
+
+<h2 id="5-tóm-tắt">5. Tóm tắt</h2>
+<p>Giả sử rằng các hàm số đều khả vi:</p>
+
+<ul>
+  <li>
+    <p>Các bài toán tối ưu với chỉ ràng buộc là đẳng thức có thể được giải quyết bằng phương pháp nhân tử Lagrange. Ta cũng có định nghĩa về Lagrangian. Điều kiện cần để một điểm là nghiệm của bài toán tối ưu là nó phải làm cho đạo hàm của Lagrangian bằng 0.</p>
+  </li>
+  <li>
+    <p>Với các bài toán tối ưu có thêm ràng buộc là bất đẳng thức (không nhất thiết là lồi), chúng ta có Lagrangian tổng quát và các biến Lagrange \(\lambda, \nu\). Với các giá trị \((\lambda, \nu)\) cố định, ta có định nghĩa về <strong>hàm đối ngẫu Lagrange</strong> (Lagrange dual function) \(g(\lambda, \nu)\) được xác định là infimum của Lagrangian khi \(\mathbf{x}\) thay đổi trên miền xác định của bài toán.</p>
+  </li>
+  <li>
+    <p>Miền xác định và tập các điểm <em>feasible</em> thường khác nhau. <em>Feasible set</em> là tập con của tập xác định.</p>
+  </li>
+  <li>
+    <p>Với mọi \((\lambda, \nu)\), \(g(\lambda, \nu) \leq p^*\).</p>
+  </li>
+  <li>
+    <p>Hàm số \(g(\lambda,\nu)\) <strong>là lồi</strong> bất kể bài toán tối ưu có là lồi hay không. Hàm số này được gọi là <em>dual Lagrange fucntion</em> hay <em>hàm đối ngẫu Lagrange</em>.</p>
+  </li>
+  <li>
+    <p>Bài toán đi tìm giá trị lớn nhất của hàm đối ngẫu Lagrange với điều kiện \(\lambda \succeq 0\) được gọi là bài toán <em>đối ngẫu</em> (<em>dual problem</em>). Bài toán này <strong>là lồi</strong> bất kể bài toán gốc có lồi hay không.</p>
+  </li>
+  <li>
+    <p>Gọi giá trị tối ưu của bài toán đối ngẫu là \(d^*\) thì ta có: \(d^* \leq p^*\). Đây được gọi là <em>weak duality</em>.</p>
+  </li>
+  <li>
+    <p><em>Strong duality</em> xảy ra khi \(d^* = p^*\). Thường thì <em>strong duality</em> không xảy ra, nhưng với các bài toán lồi thì <em>strong duality</em> thường (không luôn luôn) xảy ra.</p>
+  </li>
+  <li>
+    <p>Nếu bài toán là lồi và điều kiện Slater thoả mãn, thì <em>strong duality</em> xảy ra.</p>
+  </li>
+  <li>
+    <p>Nếu bài toán lồi và có <em>strong duality</em> thì nghiệm của bài toán thoả mãn các điều kiện KKT (điều kiện cần và đủ).</p>
+  </li>
+  <li>
+    <p>Rất nhiều các bài toán tối ưu được giải quyết thông qua KKT conditions.</p>
+  </li>
+</ul>
+
+<p><a name="-ket-luan"></a></p>
+
+<h2 id="6-kết-luận">6. Kết luận</h2>
+
+<p>Trong ba bài 16, 17, 18, tôi đã giới thiệu <em>sơ lược</em> về tập lồi, hàm lồi, bài toán lồi, và các điệu kiện tối ưu được xây dựng thông qua <em>duality</em>. Ý định ban đầu của tôi là tránh phần này vì khá nhiều toán, tuy nhiên trong quá trình chuẩn bị cho bài Support Vector Machine, tôi nhận thấy rằng cần phải giải thích về Lagrangian - kỹ thuật được sử dụng rất nhiều trong Tối ưu. Thêm nữa, để giải thích về Lagrangian, tôi cần nói về các bài toán lồi. Chính vì vậy tôi thấy có trách nhiệm <em>phải</em> viết về ba bài này.</p>
+
+<p>Trong loạt bài tiếp theo, chúng ta sẽ lại quay lại với các thuật toán Machine Learning với rất nhiều ví dụ, hình vẽ và code mẫu. Nếu bạn nào có cảm thấy hơi đuối sau ba bài tối ưu này thì cũng đừng lo, mọi chuyện rồi sẽ ổn cả thôi.</p>
+
+<p><a name="-tai-lieu-tham-khao"></a></p>
+
+<h2 id="7-tài-liệu-tham-khảo">7. Tài liệu tham khảo</h2>
+<p>[1] <a href="http://stanford.edu/~boyd/cvxbook/">Convex Optimization</a> – Boyd and Vandenberghe, Cambridge University Press, 2004.</p>
+
+<p>[2] <a href="https://en.wikipedia.org/wiki/Lagrange_multiplier">Lagrange Multipliers - Wikipedia</a>.</p>
+:ET

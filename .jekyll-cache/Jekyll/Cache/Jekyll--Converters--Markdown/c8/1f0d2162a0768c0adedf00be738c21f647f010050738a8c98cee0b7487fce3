@@ -1,0 +1,992 @@
+I"<!-- MarkdownTOC depth = 3 -->
+
+<ul>
+  <li><a href="#-gioi-thieu">1. Giới thiệu</a>
+    <ul>
+      <li><a href="#-bai-toan-nha-xuat-ban">1.1. Bài toán nhà xuất bản</a>
+        <ul>
+          <li><a href="#bai-toan">Bài toán</a></li>
+          <li><a href="#phan-tich">Phân tích</a></li>
+        </ul>
+      </li>
+      <li><a href="#-bai-toan-canh-tac">1.2. Bài toán canh tác</a>
+        <ul>
+          <li><a href="#bai-toan-1">Bài toán</a></li>
+          <li><a href="#phan-tich-1">Phân tích</a></li>
+        </ul>
+      </li>
+      <li><a href="#-bai-toan-dong-thung">1.3. Bài toán đóng thùng</a>
+        <ul>
+          <li><a href="#bai-toan-2">Bài toán</a></li>
+          <li><a href="#phan-tich-2">Phân tích</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#-nhac-lai-bai-toan-toi-uu">2. Nhắc lại bài toán tối ưu</a>
+    <ul>
+      <li><a href="#-cac-khai-niem-co-ban">2.1. Các khái niệm cơ bản</a></li>
+      <li><a href="#-optimal-and-locally-optimal-points">2.2. Optimal and locally optimal points</a></li>
+      <li><a href="#-mot-vai-luu-y">2.3. Một vài lưu ý</a></li>
+    </ul>
+  </li>
+  <li><a href="#-bai-toan-toi-uu-loi">3. Bài toán tối ưu lồi</a>
+    <ul>
+      <li><a href="#-dinh-nghia">3.1. Định nghĩa</a></li>
+      <li><a href="#-cuc-tieu-cua-bai-toan-toi-uu-loi-chinh-la-diem-toi-uu">3.2. Cực tiểu của bài toán tối ưu lồi chính là điểm tối ưu.</a></li>
+      <li><a href="#-dieu-kien-toi-uu-cho-ham-muc-tieu-kha-vi">3.3. Điều kiện tối ưu cho hàm mục tiêu khả vi</a></li>
+      <li><a href="#-gioi-thieu-thu-vien-cvxopt">3.4. Giới thiệu thư viện CVXOPT</a></li>
+    </ul>
+  </li>
+  <li><a href="#-linear-programming">4. Linear Programming</a>
+    <ul>
+      <li><a href="#-dang-tong-quat-cua-lp">4.1. Dạng tổng quát của LP</a></li>
+      <li><a href="#-dang-tieu-chuan-cua-lp">4.2. Dạng tiêu chuẩn của LP</a></li>
+      <li><a href="#-minh-hoa-bang-hinh-hoc-cua-bai-toan-lp">4.3. Minh hoạ bằng hình học của bài toán LP</a></li>
+      <li><a href="#giai-lp-bang-cvxopt">Giải LP bằng CVXOPT</a></li>
+    </ul>
+  </li>
+  <li><a href="#-quadratic-programming">5. Quadratic Programming</a>
+    <ul>
+      <li><a href="#-dinh-nghia-bai-toan-quadratic-programming">5.1. Định nghĩa bài toán Quadratic Programming</a></li>
+      <li><a href="#-vi-du-ve-qp">5.2. Ví dụ về QP</a></li>
+      <li><a href="#-vi-du-ve-giai-qp-bang-cvxopt">5.3. Ví dụ về giải QP bằng CVXOPT</a></li>
+    </ul>
+  </li>
+  <li><a href="#-geometric-programming">6. Geometric Programming</a>
+    <ul>
+      <li><a href="#-monomials-va-posynomials">6.1. Monomials và posynomials</a></li>
+      <li><a href="#-geometric-programming-1">6.2. Geometric Programming</a></li>
+      <li><a href="#-bien-doi-gp-ve-dang-convex">6.3. Biến đổi GP về dạng convex</a></li>
+      <li><a href="#-giai-gp-bang-cvxopt">6.4. Giải GP bằng CVXOPT</a></li>
+    </ul>
+  </li>
+  <li><a href="#-tom-tat">7. Tóm tắt</a></li>
+  <li><a href="#-tai-lieu-tham-khao">8. Tài liệu tham khảo</a></li>
+</ul>
+
+<!-- /MarkdownTOC -->
+
+<p><strong>Bạn được khuyến khích đọc <a href="/2017/03/12/convexity/">Bài 16</a> trước khi đọc bài này. Nội dung trong bài viết này chủ yếu được dịch từ Chương 4 của cuốn <em>Convex Optimization</em> trong phần Tài liệu tham khảo.</strong>.</p>
+
+<p>Bài này cũng có rất nhiều khái niệm mới và nhiều lý thuyết nên có thể không hấp dẫn như các bài khác. Tuy nhiên, tôi không thể bỏ qua vì không muốn các bạn hoàn toàn mất phương hướng khi đọc các bài sau.</p>
+
+<p>Bạn đọc có thể xem bản pdf <a href="https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/latex/book_CVX.pdf">tại đây</a>.</p>
+
+<p><a name="-gioi-thieu"></a></p>
+
+<h2 id="1-giới-thiệu">1. Giới thiệu</h2>
+<p>Tôi xin bắt đầu bài viết này bằng ba bài toán khá gần với thực tế:
+<a name="-bai-toan-nha-xuat-ban"></a></p>
+
+<h3 id="11-bài-toán-nhà-xuất-bản">1.1. Bài toán nhà xuất bản</h3>
+<p><a name="bai-toan"></a></p>
+
+<h4 id="bài-toán">Bài toán</h4>
+<p>Một nhà xuấn bản (NXB) nhận được đơn hàng 600 bản của cuốn “Machine Learning cơ bản” tới Thái Bình và 400 bản tới Hải Phòng. NXB đó có 800 cuốn ở kho Nam Định và 700 cuốn ở kho Hải Dương. Giá chuyển phát một cuốn sách từ Nam Định tới Thái Bình là 50,000 VND (50k), tới Hải Phòng là 100k. Giá chuyển phát một cuốn từ Hải Dương  tới Thái Bình là 150k, trong khi tới Hải Phòng chỉ là 40k. Hỏi để tốn ít chi phí chuyển phát nhất, công ty đó nên phân phối mỗi kho chuyển bao nhiêu cuốn tới mỗi địa điểm?</p>
+
+<p><a name="phan-tich"></a></p>
+
+<h4 id="phân-tích">Phân tích</h4>
+<p>Để cho đơn giản, ta xây dựng bảng số lượng chuyển sách từ nguồn tới đích như sau:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Nguồn</th>
+      <th style="text-align: center">Đích</th>
+      <th style="text-align: center">Đơn giá (\(\times\)10k)</th>
+      <th style="text-align: center">Số lượng</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">Nam Định</td>
+      <td style="text-align: center">Thái Bình</td>
+      <td style="text-align: center">5</td>
+      <td style="text-align: center">\(x\)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Nam Định</td>
+      <td style="text-align: center">Hải Phỏng</td>
+      <td style="text-align: center">10</td>
+      <td style="text-align: center">\(y\)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Hải Dương</td>
+      <td style="text-align: center">Thái Bình</td>
+      <td style="text-align: center">15</td>
+      <td style="text-align: center">\(z\)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Hải Dương</td>
+      <td style="text-align: center">Hải Phòng</td>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">\(t\)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Tổng chi phí (objective function) sẽ là \(f(x, y, z, t) = 5x + 10y + 15z + 4t\). Các điều kiện ràng buộc (constraints) viết dưới dạng biểu thức toán học là:</p>
+
+<ul>
+  <li>
+    <p>Chuyển 600 cuốn tới Thái Bình: \(x + z = 600\).</p>
+  </li>
+  <li>
+    <p>Chuyển 400 cuốn tới Hải Phòng: \(y + t = 400\).</p>
+  </li>
+  <li>
+    <p>Lấy từ kho Nam Định không quá 800: \(x + y \leq 800\).</p>
+  </li>
+  <li>
+    <p>Lấy từ kho Hải Dương không quá 700: \(z + t \leq 700\).</p>
+  </li>
+  <li>
+    <p>\(x, y, z, t\) là các số tự nhiên. Ràng buộc là số tự nhiên sẽ khiến cho bài toán rất khó giải nếu số lượng biến là rất lớn. Với bài toán này, ta giả sử rằng \(x, y, z, t\) là các số thực dương. Khi tìm được nghiệm, nếu chúng không phải là số tự nhiên, ta sẽ lấy các giá trị tự nhiên gần nhất.</p>
+  </li>
+</ul>
+
+<p>Vậy ta cần giải bài toán tối ưu sau đây:</p>
+<hr />
+
+<p><strong>Bài toán NXB:</strong>
+\[
+\begin{eqnarray}
+    (x, y, z, t) =&amp; \arg\min_{x, y, z, t} 5x + 10y + 15z + 4t ~~~~ (1)\<br />
+    \text{subject to:}~ &amp; x + z = 600 ~~~~ (2)\<br />
+                        &amp; y + t = 400 ~~~~ (3) \<br />
+                        &amp; x + y \leq 800 ~~~(4) \<br />
+                        &amp; z + t \leq 700 ~~~ (5)\<br />
+                        &amp; x, y, z, t \geq 0 ~~~ (7)
+\end{eqnarray}
+\]</p>
+<hr />
+
+<p>Nhận thấy rằng hàm mục tiêu (objective function) là một hàm tuyến tính của các biến \(x, y, z, t\). Các điều kiện ràng buộc đều có dạng <em>hyperplanes</em> hoặc <em>haflspaces</em>, đều là các ràng buộc tuyến tính (linear constraints). Bài toán tối ưu với cả <em>objective function</em> và <em>constraints</em> đều là <em>linear</em> được gọi là <strong>Linear Programming (LP)</strong>. Dạng tổng quát và cách thức lập trình để giải một bài toán thuộc loại này sẽ được cho trong phần sau của bài viết này.</p>
+
+<p><em>Nghiệm cho bài toán này có thể nhận thấy ngay là \(x = 600, y = 0, z = 0, t = 400\). Nếu ràng buộc nhiều hơn và số biến nhiều hơn, chúng ta cần một lời giải có thể tính được bằng cách lập trình.</em></p>
+
+<p><a name="-bai-toan-canh-tac"></a></p>
+
+<h3 id="12-bài-toán-canh-tác">1.2. Bài toán canh tác</h3>
+<p><a name="bai-toan-1"></a></p>
+
+<h4 id="bài-toán-1">Bài toán</h4>
+<p>Một anh nông dân có tổng cộng 10ha (10 hecta) đất canh tác. Anh dự tính trồng cà phê và hồ tiêu trên số đất này với tổng chi phí cho việc trồng này là không quá 16T (triệu đồng). Chi phí để trồng cà phê là 2T cho 1ha, để trồng hồ tiêu là 1T/ha/. Thời gian trồng cà phê là 1 ngày/ha và hồ tiêu là 4 ngày/ha; trong khi anh chỉ có thời gian tổng cộng là 32 ngày. Sau khi trừ tất cả các chi phí (bao gồm chi phí trồng cây), mỗi ha cà phê mang lại lợi nhuận 5T, mỗi ha hồ tiêu mang lại lợi nhuận 3T. Hỏi anh phải trồng như thế nào để tối đa lợi nhuận? (<em>Các số liệu có thể vô lý vì chúng đã được chọn để bài toán ra nghiệm đẹp</em>)</p>
+
+<p><a name="phan-tich-1"></a></p>
+
+<h4 id="phân-tích-1">Phân tích</h4>
+<p>Gọi \(x\) và \(y\) lần lượt là số ha cà phê và hồ tiêu mà anh nông dân nên trồng. Lợi nhuận anh ấy thu được là \(f(x, y) = 5x + 3y\) (triệu đồng).</p>
+
+<p>Các ràng buộc trong bài toán này là:</p>
+
+<ul>
+  <li>
+    <p>Tổng diện tích trồng không vượt quá 10: \(x + y \leq 10\).</p>
+  </li>
+  <li>
+    <p>Tổng chi phí trồng không vượt quá 16T: \(2x + y \leq 16\).</p>
+  </li>
+  <li>
+    <p>Tổng thời gian trồng không vượt quá 32 ngày: \(x + 4y \leq 32\).</p>
+  </li>
+  <li>
+    <p>Diện tích cà phê và hồ tiêu là các số không âm: \(x, y \geq 0\).</p>
+  </li>
+</ul>
+
+<p>Vậy ta có bài toán tối ưu sau đây:</p>
+<hr />
+
+<p><strong>Bài toán canh tác:</strong>
+\[
+\begin{eqnarray}
+    (x, y) =&amp; \arg\max_{x, y} 5x + 3y ~~~~ (7)\<br />
+    \text{subject to:}~ &amp; x + y \leq 10 ~~~~ (8)\<br />
+                        &amp; 2x + y \leq 16 ~~~(9) \<br />
+                        &amp; x + 4y \leq 32 ~~~ (10)\<br />
+                        &amp; x, y \geq 0 ~~~ (11)
+\end{eqnarray}
+\]</p>
+<hr />
+
+<p>Bài toán này hơi khác một chút là ta cần <em>tối đa hàm mục tiêu</em> thay vì tối thiểu nó. Việc chuyển bài toán này về bài toán <em>tối thiểu</em> có thể được thực hiện đơn giản bằng cách đổi dấu hàm mục tiêu. Khi đó hàm mục tiêu vẫn là <em>linear</em>, các ràng buộc vẫn là các <em>linear constraints</em>, ta lại có một bài toán <strong>Linear Programming (LP)</strong> nữa.</p>
+
+<p>Bạn cũng có thể dựa vào hình minh hoạ dưới đây để suy ra nghiệm của bài toán:</p>
+<hr />
+
+<div class="imgcap">
+ <img src="/assets/17_convexopt/planting.png" align="center" width="400" />
+ <div class="thecap">Hình 1. Minh hoạ nghiệm cho bài toán canh tác.</div>
+</div>
+<hr />
+
+<p>Vùng màu xám có dạng <em>polyhedron</em> (trong trường hợp này là đa giác) chính là tập hợp các điểm thoả mãn các ràng buộc từ \(8)\) đến \((11)\). Các đường nét đứt có màu chính là các đường đồng mức của hàm mục tiêu \(5x + 3y\), mỗi đường ứng với một giá trị khác nhau với đường càng đỏ ứng với giá trị càng cao. Một cách trực quan, nghiệm của bài toán có thể tìm được bằng cách di chuyển đường nét đứt màu xanh về phía bên phải (phía làm cho giá trị của hàm mục tiêu lớn hơn) đến khi nó không còn điểm chung với phần đa giác màu xám nữa.</p>
+
+<p>Có thể nhận thấy nghiệm của bài toán chính là điểm màu xanh là giao điểm của hai đường thẳng \(x + y = 10\) và \(2x + y = 16\). Giải hệ phương trình này ta có \(x^* = 6\) và \(y^* = 4\). Tức anh nông dân nên trồng 6ha cà phê và 4ha hồ tiêu. Lúc đó lợi nhuận thu được là \(5x^* + 3y^* = 42 \) triệu đồng, trong khi anh chỉ mất thời gian là 22 ngày. (<em>Chịu tính toán cái là khác ngay, làm ít, hưởng nhiều</em>).</p>
+
+<p>Đây chính là cách giải trong sách toán lớp 10 (ngày tôi học lớp 10).</p>
+
+<p>Với nhiều biến hơn và nhiều ràng buộc hơn, chúng ta liệu có thể vẽ được hình như thế này để nhìn ra nghiệm hay không? Câu trả lời của tôi là nên tìm một công cụ để với nhiều biến hơn và với các ràng buộc khác nhau, chúng ta có thể tìm ra nghiệm gần như ngay lập tức.
+<a name="-bai-toan-dong-thung"></a></p>
+
+<h3 id="13-bài-toán-đóng-thùng">1.3. Bài toán đóng thùng</h3>
+<p><a name="bai-toan-2"></a></p>
+
+<h4 id="bài-toán-2">Bài toán</h4>
+<p>Một công ty phải chuyển 400 \(m^3\) cát tới địa điểm xây dựng ở bên kia sông bằng cách thuê một chiếc xà lan. Ngoài chi phí vận chuyển một lượt đi về là 100k của chiếc xà lan, công ty đó phải thiết kế một thùng hình hộp chữ nhật đặt trên xà lan để đựng cát. Chiếc thùng này không cần nắp, chi phí cho các mặt xung quanh là 1T/\(m^2\), cho mặt đáy là 2T/\(m^2\). Hỏi kích thước của chiếc thùng đó như thế nào để tổng chi phí vận chuyển là nhỏ nhất. Để cho đơn giản, giả sử cát chỉ được đổ ngang hoặc thấp hơn với phần trên của thành thùng, không có ngọn. Giả sử thêm rằng xà lan <em>rộng vô hạn</em> và chứa được sức nặng vô hạn, giả sử này khiến bài toán dễ giải hơn.</p>
+
+<p><a name="phan-tich-2"></a></p>
+
+<h4 id="phân-tích-2">Phân tích</h4>
+<p>Giả sử chiếc thùng cần làm có chiều dài là \(x\) (\(m\)), chiều rộng là \(y\) và chiều cao là \(z\). Thể tích của thùng là \(xyz\) (đơn vị là \(m^3\)). Có hai loại chi phí là:</p>
+
+<ul>
+  <li>
+    <p><em>Chi phí thuê xà lan:</em> số chuyến xà lan phải thuê là \(\frac{400}{xyz}\) (ta hãy tạm giả sử rằng đây là một số tự nhiên, việc làm tròn này sẽ không thay đổi kết quả đáng kể vì chi phí vận chuyển một chuyến là nhỏ so với chi phí làm thùng). Số tiền phải trả cho xà lan sẽ là \(0.1\frac{400}{xyz} = \frac{40}{xyz}\).</p>
+  </li>
+  <li>
+    <p><em>Chi phí làm thùng:</em> Diện tích xung quanh của thùng là \(2 (x + y)z \). Diện tích đáy là \(xy\). Vậy tổng chi phí làm thùng là \(2(x +y)z + 2xy = 2(xy + yz + zx)\).</p>
+  </li>
+</ul>
+
+<p>Tổng toàn bộ chi phí là \(f(x, y, z) = 40x^{-1}y^{-1}z^{-1} + 2(xy + yz + zx)\). Điều kiện ràng buộc duy nhất là kích thước thùng phải là các số dương. Vậy ta có bài toán tối ưu sau:</p>
+<hr />
+
+<p><strong>Bài toán vận chuyển:</strong>
+\[
+\begin{eqnarray}
+    (x, y) =&amp; \arg\min_{x, y, z} 40x^{-1}y^{-1}z^{-1} + 2(xy + yz + zx) ~~~~ (13)\<br />
+    \text{subject to:}~ &amp; x, y, z &gt; 0 ~~~~ (14)\<br />
+\end{eqnarray}
+\]</p>
+<hr />
+
+<p>Bài toán này thuộc loại <strong>Geometric Programming (GP)</strong>. Định nghĩa của GP và cách dùng công cụ tối ưu sẽ được trình bày trong phần sau của bài viết.</p>
+
+<p><em>Nhận thấy rằng bài này hoàn toàn có thể dùng bất đẳng thức Cauchy để giải được, nhưng tôi vẫn muốn một lời giải cho bài toán tổng quát sao cho có thể lập trình được.</em></p>
+
+<p>(Lời giải:
+\[
+\begin{eqnarray}
+    f(x, y, z) &amp;=&amp; \frac{20}{xyz} + \frac{20}{xyz} + 2xy + 2yz + 2zx \<br />
+               &amp;\geq &amp; 5\sqrt[5]{3200}
+\end{eqnarray}
+\]
+dấu bằng xảy ra khi và chỉ khi \(x = y = z = \sqrt[5]{10}\). Bài này có lẽ hợp với các kỳ thi vì dữ kiện quá đẹp. Cá nhân tôi thích các đề bài ra kiểu này hơn là yêu cầu đi tìm giá trị nhỏ nhất của một biểu thức nhàm chán, nhiều học sinh cho rằng không biết học bất đẳng thức để làm gì!)
+<!-- http://www.pitt.edu/~jrclass/opt/notes6.pdf --></p>
+
+<p>Nếu có các ràng buộc về kích thước của thùng và trọng lượng mà xà lan tải được thì có thể tìm được lời giải đơn giản như thế này không?</p>
+
+<p>Những bài toán trên đây đều là các bài toán tối ưu. Chính xác hơn nữa, chúng đều là các bài toán tối ưu lồi (<em>convex optimization problems</em>) như các bạn sẽ thấy ở phần sau. Và việc tìm lời giải có thể không mấy khó khăn, thậm chí giải bằng tay cũng có thể ra kết quả. Tuy nhiên, mục đích của bài viết này không phải là hướng dẫn các bạn giải các bài toán trên <em>bằng tay</em>, mà là cách nhận diện các bài toán và đưa chúng về các dạng mà các toolboxes sẵn có có thể giúp chúng ta. Trên thực tế, lượng dữ kiện và số biến cần tối ưu lớn hơn nhiều, chúng ta không thể giải các bài toán trên <em>bằng tay</em> được.</p>
+
+<p>Trước hết, chúng ta cần hiểu các khái niệm về <em>convex optimization problems</em> và tại sao <em>convex</em> lại quan trọng. (Bạn đọc có thể đọc tới <a href="/2017/03/19/convexopt/#-linear-programming">phần 4</a> nếu không muốn biết các khái niệm và định lý toán  trong phần 2 và 3.)</p>
+
+<p><a name="-nhac-lai-bai-toan-toi-uu"></a></p>
+
+<h2 id="2-nhắc-lại-bài-toán-tối-ưu">2. Nhắc lại bài toán tối ưu</h2>
+<p><a name="-cac-khai-niem-co-ban"></a></p>
+
+<h3 id="21-các-khái-niệm-cơ-bản">2.1. Các khái niệm cơ bản</h3>
+<p>Tôi xin nhắc lại bài toán tối ưu ở dạng tổng quát:
+\[
+\begin{eqnarray}
+\mathbf{x}^* &amp;=&amp; \arg\min_{\mathbf{x}} f_0(\mathbf{x}) \<br />
+\text{subject to:}~ &amp;&amp; f_i(\mathbf{x}) \leq 0, ~~ i = 1, 2, \dots, m ~~~(15)\<br />
+&amp;&amp; h_j(\mathbf{x}) = 0, ~~ j = 1, 2, \dots, p
+\end{eqnarray}
+\]</p>
+
+<p>Phát biểu bằng lời: Tìm giá trị của biến \(\mathbf{x}\) để tối thiểu hàm \(f_0(\mathbf{x})\) trong số các giá trị của \(\mathbf{x}\) thoả mãn các điệu hiện ràng buộc. Ta có bảng các tên gọi tiếng Anh và tiếng Việt như sau:</p>
+
+<hr />
+
+<table>
+  <thead>
+    <tr>
+      <th>Ký hiệu</th>
+      <th>Tiếng Anh</th>
+      <th>Tiếng Việt</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>\(\mathbf{x} \in \mathbb{R}^n\)</td>
+      <td>optimization variable</td>
+      <td>biến tối ưu</td>
+    </tr>
+    <tr>
+      <td>\(f_0: \mathbb{R}^n \rightarrow \mathbb{R}\)</td>
+      <td>objective/los/cost function</td>
+      <td>hàm mục tiêu</td>
+    </tr>
+    <tr>
+      <td>\(f_i(\mathbf{x}) \leq 0 \)</td>
+      <td>inequality constraints</td>
+      <td>bất đẳng thức ràng buộc</td>
+    </tr>
+    <tr>
+      <td>\(f_i: \mathbb{R}^n \rightarrow \mathbb{R}\)</td>
+      <td>inequality constraint functions</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>\(h_j(\mathbf{x}) = 0 \)</td>
+      <td>equality constraints</td>
+      <td>đẳng thức ràng buộc</td>
+    </tr>
+    <tr>
+      <td>\(h_j: \mathbb{R}^n \rightarrow \mathbb{R}\)</td>
+      <td>equality constraint functions</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>\(\mathcal{D} = \bigcap_{i=0}^m \text{dom}f_i \cap \bigcap_{pj=1}^p \text{dom}h_i \)</td>
+      <td>domain</td>
+      <td>tập xác định</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<p>Ngoài ra:</p>
+
+<ul>
+  <li>
+    <p>Khi \(m = p = 0\), bài toán \((15)\) được gọi là <em>unconstrained optimization problem</em> (bài toán tối ưu không ràng buộc).</p>
+  </li>
+  <li>
+    <p>\(\mathcal{D}\) chỉ là tập xác định, tức giao của tất cả các tập xác định của mọi hàm số xuất hiện trong bài toán. Tập hợp các điểm thoả mãn mọi điều kiện ràng buộc, thông thường, là một tập con của \(\mathcal{D}\) được gọi là <em>feasible set</em> hoặc <em>constraint set</em>. Khi <em>feasible set</em> là một tập rỗng thì ta nói bài toán tối ưu \((15)\) là <em>infeasible</em>. Nếu một điểm nằm trong <em>feasible set</em>, ta gọi điểm đó là <em>feasible</em>.</p>
+  </li>
+  <li>
+    <p><em>Optimal value</em> (<em>giá trị tối ưu</em>) của bài toán tối ưu \((15)\) được định nghĩa là:
+\[
+p^* = \text{inf}\{f_0(\mathbf{x}) | f_i(\mathbf{x}) \leq 0, i = 1, \dots, m; h_j(\mathbf{x}) = 0, j = 1, \dots, p\}
+\]
+trong đó \(\text{inf}\) là viết tắt của hàm <a href="http://mathworld.wolfram.com/Infimum.html">infimum</a>. \(p^*\) có thể nhận các giá trị \(\pm \infty\). Nếu bài toán là <em>infeasible</em>, ta coi \(p^* = + \infty\), Nếu hàm mục tiêu không bị chặn dưới (<em>unbounded below</em>) trong tập xác định, ta coi \(p^* = - \infty\).</p>
+  </li>
+</ul>
+
+<p><a name="-optimal-and-locally-optimal-points"></a></p>
+
+<h3 id="22-optimal-and-locally-optimal-points">2.2. Optimal and locally optimal points</h3>
+<!-- _Một vài khái niệm trong này các bạn có thể đã gặp trong chương trình toán cấp ba ở Việt Nam_. -->
+
+<p>Một điểm \(\mathbf{x}^*\) được gọi là một điểm <em>optimal point</em> (<em>điểm tối ưu</em>), hoặc là <em>nghiệm</em> của bài toán \((15)\) nếu \(\mathbf{x}^*\) là <em>feasible</em> và \(f_0(\mathbf{x}^*) = p^*\). Tất hợp tất cả các <em>optimal points</em> được gọi là <em>optimal set</em>.</p>
+
+<p>Nếu <em>optimal set</em> là một tập <em>không</em> rỗng, ta nói bài toán \((15)\) là <em>solvable</em> (<em>giải được</em>). Ngược lại, nếu <em>optimal set</em> là một tập rỗng, ta nói <em>optimal value</em> là <em>không thể đạt được</em> (<em>not attained/ not achieved</em>).</p>
+
+<p>Ví dụ: xét hàm mục tiêu \(f(x) = 1/x\) với ràng buộc \(x &gt; 0\). <em>Optimal value</em> của bài toán này là \(p^* = 0\) nhưng <em>optimal set</em> là một tập rỗng vì không có giá trị nào của \(x\) để hàm mục tiêu đạt giá trị 0. Lúc này ta nói <em>giá trị tối ưu</em> là <em>không đạt được</em>.</p>
+
+<p>Với hàm một biến, một điểm là <em>cực tiểu</em> của một hàm số nếu tại đó, hàm số đạt giá trị nhỏ nhất trong một lân cận (và lân cận này thuộc tập xác định của hàm số). Trong không gian 1 chiều, <em>lân cận</em> được hiểu là trị tuyệt tối của hiệu 2 điểm nhỏ hơn một giá trị nào đó.</p>
+
+<p>Trong toán tối ưu (thường là không gian nhiều chiều), ta gọi một điểm \(\mathbf{x}\) là <strong>locally optimal</strong> (cực tiểu) nếu tồn tại một giá trị (thường được gọi là bán kinh) \(R\) sao cho:
+\[
+\begin{eqnarray}
+    f_0(\mathbf{x}) = &amp;\text{inf}\{f_0(\mathbf{z}) | f_i(\mathbf{z}) \leq 0, i = 1, \dots, m, \<br />
+                 &amp; h_j(\mathbf{z}) = 0, j = 1, \dots, p, ||\mathbf{z} - \mathbf{x}||_2 \leq R\}
+\end{eqnarray}
+\]</p>
+
+<p>Nếu một điểm <em>feasible</em> \(\mathbf{x}\) thoả mãn \(f_i(\mathbf{x}) = 0\), ta nói rằng bất đẳng thức ràng buộc thứ \(i: f_i(\mathbf{x}) = 0\) là <em>active</em>. Nếu \(f_i(\mathbf{x}) &lt; 0\), ta nói rằng ràng buộc này là <em>inactive</em> tại \(\mathbf{x}\).</p>
+
+<p><a name="-mot-vai-luu-y"></a></p>
+
+<h3 id="23-một-vài-lưu-ý">2.3. Một vài lưu ý</h3>
+<p>Mặc dù trong định nghĩa bài toán tối ưu \((15)\) là cho bài toán <em>tối thiểu hàm mục tiêu</em> với các ràng buộc thoả mãn các điều kiện nhỏ hơn hoặc bằng 0, các bài toán tối ưu với <em>tối đa hàm mục tiêu</em> và điều kiện ràng buộc ở dạng khác đều có thể đưa về được dạng này:</p>
+
+<ul>
+  <li>
+    <p>\(\max f_0(\mathbf{x}) \Leftrightarrow\min -f_0(\mathbf{x}) \).</p>
+  </li>
+  <li>
+    <p>\(f_i(\mathbf{x}) \leq g(\mathbf{x}) \Leftrightarrow\ f_i(\mathbf{x}) - g(\mathbf{x}) \leq 0\).</p>
+  </li>
+  <li>
+    <p>\(f_i(\mathbf{x}) \geq 0 \Leftrightarrow\ -f_i(\mathbf{x}) \leq 0 \).</p>
+  </li>
+  <li>
+    <p>\(a \leq f_i(\mathbf{x}) \leq b \Leftrightarrow\ f_i(\mathbf{x}) -b \leq 0\) và \(a - f_i(\mathbf{x}) \leq 0\).</p>
+  </li>
+  <li>
+    <p>\(f_i(\mathbf{x}) \leq 0 \Leftrightarrow f_i(\mathbf{x}) + s_i = 0 \) và \(s_i \geq 0\). \(s_i\) được gọi là <em>slack variable</em>. Phép biến đổi đơn giản này trong nhiều trường hợp lại tỏ ra hiệu quả vì bất đẳng thức \(s_i \geq 0\) thường dễ giải quyết hơn là \(f_i(\mathbf{x}) \leq 0\).</p>
+  </li>
+</ul>
+
+<p><a name="-bai-toan-toi-uu-loi"></a></p>
+
+<h2 id="3-bài-toán-tối-ưu-lồi">3. Bài toán tối ưu lồi</h2>
+
+<p>Trong toán tối ưu, chúng ta đặc biệt quan tâm tới những bài toán mà hàm mục tiêu là một hàm lồi, và <em>feasible set</em> cũng là một tập lồi.
+<a name="-dinh-nghia"></a></p>
+
+<h3 id="31-định-nghĩa">3.1. Định nghĩa</h3>
+<p>Một <em>bài toán tối ưu lồi</em> (<em>convex optimization problem</em>) là một bài toán tối ưu có dạng:
+\[
+\begin{eqnarray}
+\mathbf{x}^* &amp;=&amp; \arg\min_{\mathbf{x}} f_0(\mathbf{x}) \<br />
+\text{subject to:}~ &amp;&amp; f_i(\mathbf{x}) \leq 0, ~~ i = 1, 2, \dots, m ~~~(16)\<br />
+&amp;&amp; \mathbf{a}_j^T\mathbf{x} - b_j = 0, j = 1, \dots,
+\end{eqnarray}
+\]
+trong đó \(f_0, f_1, \dots, f_m\) là các hàm lồi.</p>
+
+<p>So với bài toán tối ưu \((15)\), bài toán tối ưu lồi \((16)\) có thêm ba điều kiện nữa:</p>
+
+<ul>
+  <li>
+    <p><em>Hàm mục tiêu</em> là một <em>hàm lồi</em>.</p>
+  </li>
+  <li>
+    <p>Các hàm bất đẳng thức ràng buộc \(f_i\) là các hàm lồi.</p>
+  </li>
+  <li>
+    <p>Hàm đẳng thức ràng buộc \(h_j\) là <em>affine</em> (hàm <em>linear</em> cộng với một hẳng số nữa được gọi là <em>affine</em>).</p>
+  </li>
+</ul>
+
+<p>Một vài nhận xét:</p>
+
+<ul>
+  <li>
+    <p>Tập hợp các điểm thoả mãn \(h_j(\mathbf{x}) = 0\) là một tập lồi vì nó có dạng một <em>hyperplane</em>.</p>
+  </li>
+  <li>
+    <p>Khi \(f_i\) là một <em>hàm lồi</em> thì tập hợp các điểm thoả mãn \(f_i(\mathbf{x}) \leq 0 \) chính là <a href="/2017/03/12/convexity/#-\\\alpha-\\-sublevel-sets">0-sublevel set của \(f_i\) và là một tập lồi</a>.</p>
+  </li>
+  <li>
+    <p>Như vậy tập hợp các điểm thoả mãn mọi điều kiện ràng buộc chính là <a href="/2017/03/12/convexity/#-giao-cua-cac-tap-loi-la-mot-tap-loi">giao điểm của các <em>tập lồi</em>, vì vậy nó là một <em>tập lồi</em></a>.</p>
+  </li>
+</ul>
+
+<p><strong>Vậy, trong một bài toán tối ưu lồi, ta <em>tối thiểu một hàm mục tiêu lồi</em> trên một <em>tập lồi</em></strong>.</p>
+
+<p><a name="-cuc-tieu-cua-bai-toan-toi-uu-loi-chinh-la-diem-toi-uu"></a></p>
+
+<h3 id="32-cực-tiểu-của-bài-toán-tối-ưu-lồi-chính-là-điểm-tối-ưu">3.2. Cực tiểu của bài toán tối ưu lồi chính là điểm tối ưu.</h3>
+<p>TÍnh chất quan trọng nhất của bài toán tối ưu lồi chính là bất kỳ <em>locally optimal point</em> chính là một điểm <em>(globally) optimal point</em>.</p>
+
+<p>Tính chất quan trọng này có thể chứng minh bằng phản chứng như sau. Gọi  \(\mathbf{x}_0\) là một điểm <em>locally optimal</em>, tức:</p>
+
+<p>\[
+f_0(\mathbf{x}_0) = \text{inf} \{f_0(\mathbf{x}) | \mathbf{x} ~\text{is feasible}, ||\mathbf{x} - \mathbf{x}_0||_2 \leq R\}
+\]</p>
+
+<p>với \(R &gt; 0\) nào đó. Giả sử \(\mathbf{x}_0\) không phải là <em>globally optimal point</em>, tức tồn tại một <em>feasible point</em> \(\mathbf{y}\) sao cho \(f(\mathbf{y}) &lt; f(\mathbf{x}_0)\) (hiển nhiên rằng \(\mathbf{y}\) không nằm trong lân cận đang xét). Ta có thể tìm được \(\theta \in [0, 1]\) đủ nhỏ sao cho \(\mathbf{z} = (1 - \theta)\mathbf{x}_0 + \theta\mathbf{y}\) nằm trong lân cận của \(\mathbf{x}_0\), tức \(||\mathbf{z} - \mathbf{x}_0||_2 &lt; R\). Chú ý rằng \(\mathbf{z}\) cũng là một <em>feasible point</em> vì <em>feasible set</em> là một <em>tập lồi</em>. Hơn nữa, vì <em>hàm mục tiêu</em> \(f_0\) là một hàm lồi, ta có:</p>
+
+<p>\[
+\begin{eqnarray}
+    f_0(\mathbf{z}) &amp;=&amp; f_0((1 - \theta)\mathbf{x}_0 + \theta \mathbf{y})  \<br />
+                    &amp;\leq&amp; (1 - \theta)f_0(\mathbf{x}_0) + \theta f_0(\mathbf{y})\<br />
+                    &amp; &lt; &amp; (1 - \theta)f_0(\mathbf{x}_0) + \theta f_0(\mathbf{x}_0) \<br />
+                    &amp;=&amp; f_0(\mathbf{x}_0)
+\end{eqnarray}
+\]</p>
+
+<p>điều này mâu thuẫn với giả thiết \(\mathbf{x}_0\) là một điểm cực tiểu. Vậy giả sử sai, tức \(\mathbf{x}_0\) chính là <em>globally optimal point</em> và ta có điều phải chứng minh.</p>
+
+<p>Chứng minh bằng lời: giả sử một điểm cực tiểu không phải là điểm làm cho hàm số đạt giá trị nhỏ nhất. Với điều kiện <em>feasible set</em> và <em>hàm mục tiêu</em> là lồi, ta luôn tìm được một điểm khác trong lân cận của điểm cực tiểu đó sao cho giá trị của hàm mục tiêu tại điểm mới này nhỏ hơn giá trị của hàm mục tiêu tại điểm cực tiểu. Sự mâu thuẫn này chỉ ra rằng với một bài toán tối ưu lồi, điểm cực tiểu phải là điểm làm cho hàm số đạt giá trị nhỏ nhất.</p>
+
+<p><a name="-dieu-kien-toi-uu-cho-ham-muc-tieu-kha-vi"></a></p>
+
+<h3 id="33-điều-kiện-tối-ưu-cho-hàm-mục-tiêu-khả-vi">3.3. Điều kiện tối ưu cho hàm mục tiêu khả vi</h3>
+
+<p>Nếu hàm mục tiêu \(f_0\) là khả vi (differentiable), theo <a href="/2017/03/12/convexity/#-first-order-condition">first-order condition</a>, với mọi \(\mathbf{x}, \mathbf{y} \in \text{dom}f_0\), ta có:
+\[
+f_0(\mathbf{x}) \geq f_0(\mathbf{x}_0) + \nabla f_0(\mathbf{x}_0)^T (\mathbf{x} - \mathbf{x}_0)~~~(17)
+\]</p>
+
+<p>Đặt \(\mathcal{X}\) là <em>feasible set</em>. <strong>Điều kiện cần và đủ</strong> để một điểm \(\mathbf{x}_0 \in \mathcal{X}\) là <em>optimal point</em> là:
+\[
+\nabla f_0(\mathbf{x}_0)^T(\mathbf{x} - \mathbf{x}_0) \geq 0, ~\forall \mathbf{x} \in \mathcal{X} ~~~(18)
+\]
+Tôi xin được bỏ qua việc chứng minh điều kiện cần và đủ này, bạn đọc có thể tìm trong trang 139-140 của cuốn Convex Optimization trong Tài liệu tham khảo.</p>
+
+<p>Xem hình vẽ dưới đây:</p>
+<hr />
+
+<div class="imgcap">
+ <img src="/assets/17_convexopt/optimalitycondition.png" align="center" width="600" />
+ <div class="thecap">Hình 2. Biểu diễn hình học của điều kiện tối ưu cho hàm mục tiêu khả vi. Các đường nét đứt có màu tương ứng với các level sets (đường đồng mức).</div>
+</div>
+<hr />
+
+<p>Một cách hình học, điều kiện này nói rằng: Nếu \(\mathbf{x}_0\) là điểm <em>optimal</em> thì với mọi \(\mathbf{x} \in \mathcal{X}\), vector đi từ \(\mathbf{x}_0\) tới \(\mathbf{x}\) hợp với vector \(-\nabla f_0 (\mathbf{x}_0)\) một góc tù. Nói cách khác, nếu ta vẽ <em>mặt tiếp tuyến</em> của hàm mục tiêu tại \(\mathbf{x}_0\) thì mọi điểm <em>feasible</em> nằm về một phía so với <em>mặt tiếp tuyến này</em>. Hơn nữa, <em>feasible set</em> nằm về phía làm cho hàm mục tiêu đạt giá trị cao hơn \(f_0(\mathbf{x}_0)\). Mặt tiếp tuyến này chính là <em>supporting hyperplane</em> của <em>feasible set</em> tại điểm \(\mathbf{x}_0\). Nhắc lại rằng khi vẽ các <em>level set</em>, tôi thường dùng màu lam để chỉ giá trị nhỏ, màu đỏ để chỉ giá trị lớn của hàm số.</p>
+
+<p>(Một mặt phẳng đi qua một điểm trên biên của một tập hợp sao cho mọi điểm trong tập hợp đó nằm về một phía (hoặc nằm trên) so với mặt phẳng đó được gọi là <em>supporting hyperplane</em> (<em>siêu phẳng hỗ trợ</em>). Nếu một tập hợp là <em>lồi</em>, tồn tại <em>supporting hyperplane</em> tại mọi điểm trên biên của nó.)</p>
+
+<p>Nếu tồn tại một điểm \(\mathbf{x}_0\) trong <em>feasible set</em> sao cho \(\nabla f_0(\mathbf{x}_0) = 0\), đây chính là <em>optimal point</em>. Điều này dễ hiểu vì đó chính là điểm làm cho gradient bằng 0, tức điểm cực tiểu của hàm mục tiêu. Nếu \(\nabla f_0(\mathbf{x}_0) \neq 0\), vector \(-\nabla f_0 (\mathbf{x}_0)\) chính là <em>vector pháp tuyến</em> của <em>supporting hyperplane</em> tại \(\mathbf{x}_0\).</p>
+
+<p><a name="-gioi-thieu-thu-vien-cvxopt"></a></p>
+
+<h3 id="34-giới-thiệu-thư-viện-cvxopt">3.4. Giới thiệu thư viện CVXOPT</h3>
+<p><a href="http://cvxopt.org/">CVXOPT</a> là một thư viện miễn phí trên Python giúp giải rất nhiều các bài toán trong cuốn sách Convex Optimization ở phần Tài liệu tham khảo. Tác giả thứ hai của cuốn sách này, Lieven Vandenberghe, chính là đồng tác giả của thư viện này. Hướng dẫn cài đặt, tài liệu hướng dẫn, và các ví dụ mẫu của thư viện này cũng có đầy đủ trên trang web <a href="http://cvxopt.org/">CVXOPT</a>.</p>
+
+<p>Trong phần còn lại của bài viết, tôi sẽ giới thiệu 3 bài toán rất cơ bản trong Convex Optimization: Linear Programming, Quadratic Programming, và Geometric Programming. Tôi cũng sẽ cùng các bạn lập trình để giải các ví dụ đã nêu ở phần đầu bài viết dựa trên thư viện CVXOPT này.</p>
+
+<p><a name="-linear-programming"></a></p>
+
+<h2 id="4-linear-programming">4. Linear Programming</h2>
+<p>Chúng ta cùng bắt đầu với lớp các bài toán đơn giản nhất trong Convex Optimization - Linear Programming (LP, một số tài liệu cũng gọi là <em>Linear Program</em>), trong đó hàm mục tiêu \(f_0\) và hàm bất đẳng thức ràng buộc \(f_i, i = 1, \dots, m\) đều là các hàm tuyến tính cộng với một hằng số (tức <a href="/2017/03/19/convexopt/#-linear-programming">hàm <em>affine</em></a>).</p>
+
+<p><a name="-dang-tong-quat-cua-lp"></a></p>
+
+<h3 id="41-dạng-tổng-quát-của-lp">4.1. Dạng tổng quát của LP</h3>
+<hr />
+
+<p><strong>A general LP:</strong>
+\[
+\begin{eqnarray}
+\mathbf{x} &amp;=&amp; \arg\min_{\mathbf{x}} \mathbf{c}^T\mathbf{x} + d \<br />
+\text{subject to:}~ &amp;&amp; \mathbf{Gx} \preceq \mathbf{h} ~~~~~~~~~~~~~~~~~~~~(19)\<br />
+&amp;&amp; \mathbf{Ax} = \mathbf{b}
+\end{eqnarray}
+\]</p>
+<hr />
+
+<p>Trong đó \(\mathbf{G} \in \mathbb{R}^{m\times n}, \mathbf{h} \in \mathbb{R}^m\) và, \(\mathbf{A}\in \mathbb{R}^{p\times n}, \mathbf{b} \in\mathbb{R}^p\). \(\mathbf{c}, \mathbf{x} \in\mathbb{R}^n\) và \(d\) là một số vô hướng (số vô hướng này có thể bỏ qua vì nó không ảnh hưởng tới nghiệm của bài toán tối ưu, nó chỉ làm thay đổi giá trị của hàm mục tiêu). Nhắc lại rằng ký hiệu \(\preceq\) nghĩa là mỗi phần tử trong vector (ma trận) ở vế trái nhỏ hơn hoặc bằng phần tử tương ứng trong vector (ma trân) ở về phải.</p>
+
+<p>Chú ý rằng nhiều bất đẳng thức dạng \(\mathbf{g}_i\mathbf{x} \leq h_i\), với \(\mathbf{g}_i\) là các vector hàng, có thể viết gộp dưới dạng \(\mathbf{Gx} \preceq \mathbf{h}\) trong đó mỗi hàng của \(\mathbf{G}\) ứng với một \(\mathbf{g}_i\), mỗi phần tử của \(\mathbf{h}\) tương ứng với một \(h_i\).</p>
+
+<p><a name="-dang-tieu-chuan-cua-lp"></a></p>
+
+<h3 id="42-dạng-tiêu-chuẩn-của-lp">4.2. Dạng tiêu chuẩn của LP</h3>
+<p>Trong dạng tiêu chuẩn (<em>standard form</em>) LP, các bất đẳng thức ràng buộc chỉ là điều kiện các nghiệm có thành phần không âm:</p>
+<hr />
+
+<p><strong>A standard form LP:</strong>
+\[
+\begin{eqnarray}
+\mathbf{x} &amp;=&amp; \arg\min_{\mathbf{x}} \mathbf{c}^T\mathbf{x} \<br />
+\text{subject to:}~ &amp;&amp; \mathbf{Ax} = \mathbf{b} ~~~~~~~~~~~~~~~~~~~~(20)\<br />
+&amp;&amp; \mathbf{x} \succeq \mathbf{0}
+\end{eqnarray}
+\]</p>
+<hr />
+
+<p>Bài toán \((19)\) có thể đưa về bài toán \((20)\) bằng cách đặt thêm biến <em>slack</em> \(\mathbf{s}\)</p>
+<hr />
+
+<p>\[
+\begin{eqnarray}
+\mathbf{x} &amp;=&amp; \arg\min_{\mathbf{x}, \mathbf{s}} \mathbf{c}^T\mathbf{x} \<br />
+\text{subject to:}~ &amp;&amp; \mathbf{Ax} = \mathbf{b} ~~~~~~~~~~~~~~~~~~~~(21)\<br />
+&amp;&amp; \mathbf{Gx} + \mathbf{s} = \mathbf{h} \<br />
+&amp;&amp; \mathbf{s} \succeq \mathbf{0}
+\end{eqnarray}
+\]</p>
+<hr />
+
+<p>Tiếp theo, nếu ta biểu diễn \(\mathbf{x}\) dưới dạng hiệu của hai vector mà thành phần của nó đều không âm, tức: \(\mathbf{x} = \mathbf{x}^+ - \mathbf{x}^-\), với \(\mathbf{x}^+, \mathbf{x}^- \succeq 0\). Ta có thể tiếp tục viết lại \((21)\) dưới dạng:</p>
+<hr />
+
+<p>\[
+\begin{eqnarray}
+\mathbf{x} &amp;=&amp; \arg\min_{\mathbf{x}^+,\mathbf{x}^-, \mathbf{s}} \mathbf{c}^T\mathbf{x}^+ - \mathbf{c}^T\mathbf{x}^- \<br />
+\text{subject to:}~ &amp;&amp; \mathbf{Ax}^+ - \mathbf{Ax}^- = \mathbf{b} ~~~~~~~~~~~~~~~~~~~~(22)\<br />
+&amp;&amp; \mathbf{Gx}^+ - \mathbf{Gx}^- + \mathbf{s} = \mathbf{h} \<br />
+&amp;&amp; \mathbf{x}^+ \succeq 0, \mathbf{x}^- \succeq 0, \mathbf{s} \succeq \mathbf{0}
+\end{eqnarray}
+\]</p>
+<hr />
+
+<p>Tới đây, bạn đọc có thể thấy rằng \((22)\) có thể viết gọn lại như \((20)\).</p>
+
+<p>Bài toán nhà xuất bản và Bài toán canh tác trong phần đầu của bài viết này chính là các LP.</p>
+
+<p><a name="-minh-hoa-bang-hinh-hoc-cua-bai-toan-lp"></a></p>
+
+<h3 id="43-minh-hoạ-bằng-hình-học-của-bài-toán-lp">4.3. Minh hoạ bằng hình học của bài toán LP</h3>
+<p>Các bài toán LP có thể được minh hoạ như hình dưới đây:</p>
+
+<hr />
+
+<div class="imgcap">
+ <img src="/assets/17_convexopt/lp.png" align="center" width="600" />
+ <div class="thecap">Hình 3. Biểu diễn hình học của Linear Programming.</div>
+</div>
+<hr />
+
+<p>Điểm \(\mathbf{x}_0\) chính là điểm làm cho hàm mục tiêu đạt giá trị nhỏ nhất, điểm \(\mathbf{x}_1\) chính là điểm làm cho hàm mục tiêu đạt giá trị lớn nhất. Với các bài toán LP, nghiệm, nếu có, thường là một điểm ở <em>đỉnh</em> của polyheron hoặc là một <em>mặt</em> của polyhedron đó (trong trường hợp các đường level sets của hàm mục tiêu song song với mặt đó, và trên mặt đó, hàm mục tiêu đạt giá trị tối ưu).</p>
+
+<p>Về LP, các bạn có thể tìm thấy rất nhiều tài liệu cả tiếng Việt (Quy hoạch tuyến tính) và tiếng Anh. Có rất nhiều các bài toán trong thực tế có thể đưa về dạng LP. Phương pháp thường được dùng để giải bài toán này có tên là <em>simplex</em> (<em>đơn hình</em>). Tôi sẽ không đề cập đến các phương pháp này, thay vào đó, tôi sẽ hướng dẫn các bạn dùng thư viện CVXOPT để giải quyết các bài toán thuộc dạng này.</p>
+
+<p><a name="giai-lp-bang-cvxopt"></a></p>
+
+<h3 id="giải-lp-bằng-cvxopt">Giải LP bằng CVXOPT</h3>
+
+<p>Tôi sẽ dùng thư viện CVPOPT để giải Bài toán canh tác ở phía trên. Nhắc lại bài toán canh tác:</p>
+<hr />
+
+<p><strong>Bài toán canh tác:</strong>
+\[
+\begin{eqnarray}
+(x, y) =&amp; \arg\max_{x, y} 5x + 3y \<br />
+\text{subject to:}~ &amp; x + y \leq 10 \<br />
+                    &amp; 2x + y \leq 16  \<br />
+                    &amp; x + 4y \leq 32 \<br />
+                    &amp; x, y \geq 0
+\end{eqnarray}
+\]</p>
+<hr />
+
+<p>Các điều kiện ràng buộc có thể viết lại dưới dạng \( \mathbf{Gx} \preceq \mathbf{h}\), trong đó:</p>
+
+<p>\[
+\mathbf{G} = \left[\begin{matrix}
+1 &amp; 1 \<br />
+2 &amp; 1 \<br />
+1 &amp; 4 \<br />
+-1 &amp; 0 \<br />
+0 &amp; -1
+\end{matrix}\right], ~~~~
+\mathbf{h} = \left[\begin{matrix}
+10\<br />
+16 \<br />
+32 \<br />
+0 \<br />
+0
+\end{matrix}\right]
+\]</p>
+
+<p>Lời giải cho bài toán này khi dùng CVXOPT là:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">cvxopt</span> <span class="kn">import</span> <span class="n">matrix</span><span class="p">,</span> <span class="n">solvers</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">([</span><span class="o">-</span><span class="mf">5.</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.</span><span class="p">])</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">([[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">]])</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">([</span><span class="mf">10.</span><span class="p">,</span> <span class="mf">16.</span><span class="p">,</span> <span class="mf">32.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">])</span>
+
+<span class="n">solvers</span><span class="p">.</span><span class="n">options</span><span class="p">[</span><span class="s">'show_progress'</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="n">sol</span> <span class="o">=</span> <span class="n">solvers</span><span class="p">.</span><span class="n">lp</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">'Solution"'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">sol</span><span class="p">[</span><span class="s">'x'</span><span class="p">])</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Solution:
+[ 6.00e+00]
+[ 4.00e+00]
+</code></pre></div></div>
+<p>Nghiệm này chính là nghiệm mà tôi đã tìm được trong phần đầu của bài viết.</p>
+
+<p>Một vài lưu ý:</p>
+
+<ul>
+  <li>
+    <p>Hàm <code class="language-plaintext highlighter-rouge">solvers.lp</code> của <code class="language-plaintext highlighter-rouge">cvxopt</code> giải bài toán \((21)\).</p>
+  </li>
+  <li>
+    <p>Trong bài toán của chúng ta, vì ta cần tìm giá trị lớn nhất nên ta phải đổi hàm mục tiêu về dạng \(-5x - 3y\). Chính vì vậy mà <code class="language-plaintext highlighter-rouge">c = matrix([-5., -3.])</code>.</p>
+  </li>
+  <li>
+    <p>Hàm <code class="language-plaintext highlighter-rouge">matrix</code> nhận đầu vào là một <code class="language-plaintext highlighter-rouge">list</code> (trong Python), <code class="language-plaintext highlighter-rouge">list</code> này thể hiện một vector cột. Nếu muốn biểu diễn một ma trận, đầu vào của <code class="language-plaintext highlighter-rouge">matrix</code> là một <code class="language-plaintext highlighter-rouge">list</code> của <code class="language-plaintext highlighter-rouge">list</code>, trong đó mỗi <code class="language-plaintext highlighter-rouge">list</code> bên trong thể hiện một vector cột của ma trận đó.</p>
+  </li>
+  <li>
+    <p>Các hằng số trong bài toán cần ở dạng số thực. Nếu chúng là các số nguyên, ta cần thêm dấu <code class="language-plaintext highlighter-rouge">.</code> vào sau các số đó thể thể hiện đó là số thực. (Tôi thấy điểm này hơi thừa, nhưng nếu không có dấu <code class="language-plaintext highlighter-rouge">.</code> thì chương trình sẽ báo lỗi.)</p>
+  </li>
+  <li>
+    <p>Với đẳng thức ràng buộc \(\mathbf{Ax} = \mathbf{b}\), <code class="language-plaintext highlighter-rouge">solvers.lp</code> lấy giá trị mặc định của <code class="language-plaintext highlighter-rouge">A</code> và <code class="language-plaintext highlighter-rouge">b</code> là <code class="language-plaintext highlighter-rouge">None</code>, tức nếu không khái báo thì nghĩa là không có đẳng thức ràng buộc nào.</p>
+  </li>
+  <li>
+    <p>Với các tuỳ chọn khác, bạn đọc có thể tìm trong Tài liệu của CVXOPT.</p>
+  </li>
+</ul>
+
+<p>Việc giải Bài toán nhà xuất bản bằng CVXOPT xin nhường lại cho bạn đọc như một bài tập đơn giản.</p>
+
+<p><a name="-quadratic-programming"></a></p>
+
+<h2 id="5-quadratic-programming">5. Quadratic Programming</h2>
+<p><a name="-dinh-nghia-bai-toan-quadratic-programming"></a></p>
+
+<h3 id="51-định-nghĩa-bài-toán-quadratic-programming">5.1. Định nghĩa bài toán Quadratic Programming</h3>
+<p>Một dạng Convex Optimization mà các bạn sẽ gặp rất nhiều trong các bài sau của blog là <em>Quadratic Programming</em> (QP, hoặc <em>Quadratic Program</em>). Khác biệt duy nhất của QP so với LP là hàm mục tiêu có dạng <em>Quadratic form</em>:</p>
+
+<hr />
+
+<p>\[
+\begin{eqnarray}
+\mathbf{x} &amp;=&amp; \arg\min_{\mathbf{x}} \frac{1}{2} \mathbf{x}^T\mathbf{P}\mathbf{x} + \mathbf{q}^T\mathbf{x} + \mathbf{r} \<br />
+\text{subject to:} &amp;&amp;\mathbf{Gx} \preceq \mathbf{h} ~~~~~~~~~~~~~(23)\<br />
+&amp;&amp; \mathbf{Ax} = \mathbf{b}
+\end{eqnarray}
+\]</p>
+<hr />
+
+<p>Trong đó \(\mathbf{P} \in \mathbb{S}_+^n\) (tập các ma trận vuông nửa xác định dương có số cột là \(n\)), \(\mathbf{G}\in \mathbb{R}^{m\times n}, \mathbf{A}\in\mathbb{R}^{p \times n}\). <a href="http://machinelearningcoban.com/2017/03/12/convexity/#-quadratic-forms">Điều kiện \(\mathbf{P}\) là <em>nửa xác định dương</em> để đảm bảo hàm mục tiêu là <em>convex</em></a>.</p>
+
+<p>Chúng ta có thể thấy rằng LP chính là một trường hợp đặc biệt của QP với \(\mathbf{P} = \mathbf{0}\).</p>
+
+<p>Diễn đạt bằng lời: trong QP, chúng ta tối thiểu một hàm quadratic lồi trên một <em>polyhedron</em>. Xem hình dưới đây:</p>
+<hr />
+
+<div class="imgcap">
+ <img src="/assets/17_convexopt/qp.png" align="center" width="600" />
+ <div class="thecap">Hình 4. Biểu diễn hình học của Quadratic Programming.</div>
+</div>
+<hr />
+
+<p><a name="-vi-du-ve-qp"></a></p>
+
+<h3 id="52-ví-dụ-về-qp">5.2. Ví dụ về QP</h3>
+<p>Bài toán vui: Có một hòn đảo mà hình dạng của nó có dạng một đa giác lồi. Một con thuyền ở ngoài biển thì cần đi theo hướng nào để tới đảo nhanh nhất, giả sử rằng tốc độ của sóng và gió bằng 0.</p>
+
+<!-- (_polyhedron_ - đa giác trong không gian nhiều chiều, _polyhedra_ - số nhiều của _polyhedron_.) -->
+
+<p>Bài toán khoảng cách từ một điểm tới một polyhedron được phát biểu như sau:</p>
+
+<p>Cho một polyhedron được biểu diễn bởi \(\mathbf{Ax} \preceq \mathbf{b}\) và một điểm \(\mathbf{u}\), tìm điểm \(\mathbf{x}\) thuộc polyhedron đó sao cho khoảng cách Euclidean giữa \(\mathbf{x}\) và \(\mathbf{u}\) là nhỏ nhất.</p>
+
+<p>Bài toán này có thể phát biểu như sau:
+\[
+\begin{eqnarray}
+\mathbf{x} &amp;=&amp; \arg\min_{\mathbf{x}} \frac{1}{2}||\mathbf{x} - \mathbf{u}||_2^2 \<br />
+\text{subject to:} &amp;&amp;\mathbf{Gx} \preceq \mathbf{h}\<br />
+\end{eqnarray}
+\]
+Hàm mục tiêu đạt giá trị nhỏ nhất bằng 0 nếu \(\mathbf{u}\) nằm trong polyheron đó và <em>optimal point</em> chính là \(\mathbf{x} = \mathbf{u}\). Khi \(\mathbf{u}\) không nằm trong polyhedron, ta viết:
+\[
+\frac{1}{2} ||\mathbf{x} - \mathbf{u}||_2^2 = \frac{1}{2} (\mathbf{x} - \mathbf{u})^T(\mathbf{x} - \mathbf{u}) = \frac{1}{2} \mathbf{x}^T\mathbf{x} - \mathbf{u}^T\mathbf{x} + \frac{1}{2} \mathbf{u}^T\mathbf{u}
+\]</p>
+
+<p>Biểu thức này có dạng hàm mục tiêu như trong \((23)\) với \(\mathbf{P = I}, \mathbf{q} = - \mathbf{u}, \mathbf{r} = \frac{1}{2} \mathbf{u}^T\mathbf{u}\), trong đó \(\mathbf{I}\) là ma trận đơn vị.</p>
+
+<p><a name="-vi-du-ve-giai-qp-bang-cvxopt"></a></p>
+
+<h3 id="53-ví-dụ-về-giải-qp-bằng-cvxopt">5.3. Ví dụ về giải QP bằng CVXOPT</h3>
+
+<p>Xét bài toán sau đây:</p>
+
+<p>\[
+\begin{eqnarray}
+(x, y) &amp;=&amp; \arg\min_{x, y} (x - 10)^2 + (y - 10)^2 \<br />
+\text{subject to:}~&amp;&amp;
+\left[\begin{matrix}
+1 &amp; 1 \<br />
+2 &amp; 1 \<br />
+1 &amp; 4 \<br />
+-1 &amp; 0 \<br />
+0 &amp; -1
+\end{matrix}\right]
+\left[
+\begin{matrix}
+x \<br />
+y
+\end{matrix}
+\right]
+\preceq
+\left[\begin{matrix}
+10\<br />
+16 \<br />
+32 \<br />
+0 \<br />
+0
+\end{matrix}\right]
+\end{eqnarray}
+\]</p>
+
+<hr />
+
+<div class="imgcap">
+ <img src="/assets/17_convexopt/qp_ex.png" align="center" width="400" />
+ <div class="thecap">Hình 5. Ví dụ về khoảng cách giữa một điểm và một polyhedron.</div>
+</div>
+<hr />
+
+<p><em>Feasible set</em> trong bài toán này tôi lấy trực tiếp từ Bài toán canh tác và \(\mathbf{u} = [10, 10]^T\).
+Bài toán này có thể được giải bằng CVXOPT như sau:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">cvxopt</span> <span class="kn">import</span> <span class="n">matrix</span><span class="p">,</span> <span class="n">solvers</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">([[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">]])</span>
+<span class="n">q</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">([</span><span class="o">-</span><span class="mf">10.</span><span class="p">,</span> <span class="o">-</span><span class="mf">10.</span><span class="p">])</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">([[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">]])</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">([</span><span class="mf">10.</span><span class="p">,</span> <span class="mf">16.</span><span class="p">,</span> <span class="mf">32.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+
+<span class="n">solvers</span><span class="p">.</span><span class="n">options</span><span class="p">[</span><span class="s">'show_progress'</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="n">sol</span> <span class="o">=</span> <span class="n">solvers</span><span class="p">.</span><span class="n">qp</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">'Solution:'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">sol</span><span class="p">[</span><span class="s">'x'</span><span class="p">])</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Solution:
+[ 5.00e+00]
+[ 5.00e+00]
+</code></pre></div></div>
+
+<p>Trong các thuật toán Machine Learning, các bạn sẽ gặp các bài toán về tìm <em>hình chiếu</em> (projection) của một điểm lên một <em>tập lồi</em> nói chung rất nhiều. Tới từng phần, tôi sẽ đề cập hướng giải quyết của các bài toán đó.</p>
+
+<p><a name="-geometric-programming"></a></p>
+
+<h2 id="6-geometric-programming">6. Geometric Programming</h2>
+<p>Trong mục này, chúng ta sẽ thấy một lớp các bài toán <em>không lồi</em> khi nhìn vào hàm mục tiêu và các hàm ràng buộc, nhưng có thể được biến đổi về dạng <em>lồi</em> bằng một vài kỹ thuật.</p>
+
+<p>Trước hết, chúng ta cần có một vài định nghĩa:</p>
+
+<p><a name="-monomials-va-posynomials"></a></p>
+
+<h3 id="61-monomials-và-posynomials">6.1. Monomials và posynomials</h3>
+
+<p>Một hàm số \(f: \mathbb{R}^n \rightarrow \mathbb{R}\) với tập xác đinh \(\text{dom}f = \mathbf{R}_{++}^n\) (tất cả các phần tử đều là số dương) có dạng:
+\[
+f(\mathbf{x}) = c x_1^{a_1} x_2^{a_2} \dots x_n^{a_n}~~~~~~~~(24)
+\]
+trong đó \(c &gt; 0\) và \(a_i \in \mathbb{R}\), được gọi là một <em>monomial function</em> (khái niệm này khá giống với <em>đơn thức</em> khi tôi học lớp 8, nhưng khi đó SGK định nghĩa với \(c\) bất kỳ và \(a_i\) là các số tự nhiên).</p>
+
+<p>Tổng của các monomials:
+\[
+f(\mathbf{x}) = \sum_{k=1}^K c_k x_1^{a_{1k}}x_2^{a_{2k}}\dots x_n^{a_{nk}}~~~~~~~~~~(24)
+\]
+trong đó các \(c_k &gt; 0\) được gọi là <em>posynomial function</em> (<em>đa thức</em>), hoặc đơn giản là <em>posynomial</em>.</p>
+
+<p><a name="-geometric-programming-1"></a></p>
+
+<h3 id="62-geometric-programming">6.2. Geometric Programming</h3>
+
+<p>Một bài toán tối ưu có dạng:</p>
+
+<hr />
+
+<p>\[
+\begin{eqnarray}
+\mathbf{x}   &amp;=&amp; \arg\min_{\mathbf{x}} f_0(\mathbf{x}) \<br />
+\text{subject to:}~ &amp;&amp; f_i(x) \leq 1,  ~~ i = 1, 2, \dots, m ~~~~~~~~~~~(25)\<br />
+                    &amp;&amp; h_j(x) = 1, ~~ j = 1, 2, \dots, p
+\end{eqnarray}
+\]</p>
+<hr />
+
+<p>trong đó \(f_0, f_1, \dots, f_m\) là các <em>posynomials</em> và \(h_1, \dots, h_p\) là các <em>monomials</em>, được gọi là <em>Geometric Programming</em> (GP). Điều kiện \(\mathbf{x} \succ 0\) được ẩn đi.</p>
+
+<p>Chú ý rằng nếu \(f\) là một <em>posynomial</em>, \(h\) là một <em>monomial</em> thì \(f/h\) là một <em>posynomial</em>.</p>
+
+<p><strong>Ví dụ:</strong>
+\[
+\begin{eqnarray}
+    (x, y, z)    &amp;=&amp; \arg\min_{x, y, z} x/y                          \<br />
+\text{subject to:}~ &amp;&amp; 1 \leq x \leq 2 \<br />
+ &amp;&amp; x^3 + 2y/z \leq \sqrt{y} \<br />
+ &amp;&amp; x/y = z
+\end{eqnarray}
+\]
+Có thể được viết lại dưới dạng GP:
+\[
+\begin{eqnarray}
+    (x, y, z)    &amp;=&amp; \arg\min_{x, y, z} xy ^{-1}                        \<br />
+\text{subject to:}~ &amp;&amp; x^{-1} \leq 1 \<br />
+&amp;&amp; (1/2)x \leq 1 \<br />
+&amp;&amp; x^3y^{-1/2} + 2y^{1/2}z^{-1} \leq 1 \<br />
+&amp;&amp; xy^{-1}z^{-1} = 1
+\end{eqnarray}
+\]
+Bài toán này rõ ràng là <em>nonconvex</em> vì cả hàm mục tiêu và điều kiển ràng buộc đều không lồi.</p>
+
+<p><a name="-bien-doi-gp-ve-dang-convex"></a></p>
+
+<h3 id="63-biến-đổi-gp-về-dạng-convex">6.3. Biến đổi GP về dạng convex</h3>
+<p>GP có thể được biến đổi về dạng lồi như sau:</p>
+
+<p>Đặt \(y_i = \log(x_i)\), tức \(x_i = \exp({y_i})\). Nếu \(f\) là một <em>monomial function</em> của \(\mathbf{x}\) thì:
+\[
+f(\mathbf{x}) = c(\exp({y_1}))^{a_1} \dots (\exp({y_n}))^{a_n} = \exp({\mathbf{a}^T\mathbf{y} + b})
+\]
+với \(b = \log(c)\). Lúc này, hàm số \(g(y) = \exp({\mathbf{a}^T\mathbf{y} + b})\) là một hàm lồi theo \(\mathbf{y}\). (Bạn đọc có thể chứng minh theo định nghĩa rằng hợp của hai hàm lồi là một hàm lồi. Trong trường hợp này, hàm \(\exp\) và hàm <em>affine</em> trên đều là các hàm lồi.)</p>
+
+<p>Tương tự như thế, <em>posynomial</em> trong đẳng thức \((24)\) có thể viết dưới dạng:
+\[
+f(\mathbf{x}) = \sum_{k = 1}^K \exp(\mathbf{a}_k^T\mathbf{y} + b_k)
+\]
+trong đó \(\mathbf{a}_k = [a_{1k}, \dots, a_{nk}]^T\) và \(b_k = \log(c_k)\). Lúc này, <em>posynomial</em> đã được viết dưới dạng tổng của các hàm \(\exp\) của các hàm <em>affine</em> (và vì vậy là một hàm lồi, nhớ lại rằng tổng của các hàm lồi là một hàm lồi).</p>
+
+<p>Bài toán GP \((25)\) được viết lại dưới dạng:
+\[
+\begin{eqnarray}
+    \mathbf{y}    &amp;=&amp; \arg\min_{\mathbf{y}} \sum_{k=1}^{K_0} \exp(\mathbf{a}_{0k}^T\mathbf{y} + b_{0k})                      \<br />
+\text{subject to:}~ &amp;&amp; \sum_{k=1}^{K_i} \exp(\mathbf{a}_{ik}^T\mathbf{y} + b_{ik}) \leq 1, ~~, i = 1, \dots, m ~~~~~~(26)\<br />
+&amp;&amp; \exp(\mathbf{g}_j^T\mathbf{y} + h_j) = 1, ~ j= 1, \dots, p
+\end{eqnarray}
+\]</p>
+
+<p>với \(\mathbf{a}_{ik} \in \mathbb{R}^n, i = 1, \dots, p\) và \(\mathbf{g}_i \in \mathbb{R}^n\).</p>
+
+<p>Với chú ý rằng hàm số \(\log \sum_{i=1}^m \exp(g_i(\mathbf{x}))\) là môt hàm <em>lồi</em> nếu \(g_i\) là các hàm <em>lồi</em> (tôi xin bỏ qua phần chứng minh), ta có thể viết lại bài toán \((26)\) dưới dạng <em>lồi</em> bằng cách lấy \(\log\) của các hàm như sau:</p>
+<hr />
+
+<p>GP in convex form:
+\[
+\begin{eqnarray}
+    \text{minimize}_{\mathbf{y}} \tilde{f}_0(\mathbf{y}) &amp;=&amp; \log\left(\sum_{k=1}^{K_0} \exp(\mathbf{a}_{0k}^T \mathbf{y} + b_{i0})\right)                          \<br />
+\text{subject to:}~ \tilde{f}_i(\mathbf{y}) &amp;=&amp; \log \left(\sum_{k=1}^{K_i} \exp(\mathbf{a}_{ik}^T \mathbf{y} + b_{ik})\right) \leq 0, ~~ i = 1, \dots, m ~~~~ (27)\<br />
+\tilde{h}_j(\mathbf{y}) &amp;=&amp; \mathbf{g}_j^T\mathbf{y} + h_j = 0,~~ j = 1, \dots, p
+\end{eqnarray}
+\]</p>
+<hr />
+
+<p>Lúc này, ta có thể nói rằng GP tương đương với một bài toán tối ưu lồi vì hàm mục tiêu và các hàm bất đẳng thức ràng buộc trong \((27)\) đều là hàm lồi, đồng thời điều hiện đẳng thức cuối cùng chính là dạng <em>affine</em>. Dạng này thường được gọi là <em>geometric program in convex form</em> (để phân biệt nó với định nghĩa của GP).</p>
+
+<p><a name="-giai-gp-bang-cvxopt"></a></p>
+
+<h3 id="64-giải-gp-bằng-cvxopt">6.4. Giải GP bằng CVXOPT</h3>
+<p>Chúng ta quay lại ví dụ về Bài toán đóng thùng <em>không có ràng buộc</em> và hàm mục tiêu là \(f(x, y, z) = 40x^{-1}y^{-1}z^{-1} + 2xy + 2yz + 2zx\) là một posynomial. Vậy đây là một GP.</p>
+
+<p>Code cho việc tìm <em>optimal point</em> của bài toán này bằng CVXOPT như sau:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">cvxopt</span> <span class="kn">import</span> <span class="n">matrix</span><span class="p">,</span> <span class="n">solvers</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">log</span><span class="p">,</span> <span class="n">exp</span><span class="c1"># gp
+</span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">array</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="n">K</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">F</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">([[</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
+            <span class="p">[</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">],</span>
+            <span class="p">[</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">]])</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">([</span><span class="n">log</span><span class="p">(</span><span class="mf">40.</span><span class="p">),</span> <span class="n">log</span><span class="p">(</span><span class="mf">2.</span><span class="p">),</span> <span class="n">log</span><span class="p">(</span><span class="mf">2.</span><span class="p">),</span> <span class="n">log</span><span class="p">(</span><span class="mf">2.</span><span class="p">)])</span>
+<span class="n">solvers</span><span class="p">.</span><span class="n">options</span><span class="p">[</span><span class="s">'show_progress'</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="n">sol</span> <span class="o">=</span> <span class="n">solvers</span><span class="p">.</span><span class="n">gp</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="n">g</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">'Solution:'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">exp</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">sol</span><span class="p">[</span><span class="s">'x'</span><span class="p">])))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">checking sol^5'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">exp</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">sol</span><span class="p">[</span><span class="s">'x'</span><span class="p">]))</span><span class="o">**</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Solution:
+[[ 1.58489319]
+ [ 1.58489319]
+ [ 1.58489319]]
+
+checking sol^5
+[[ 9.9999998]
+ [ 9.9999998]
+ [ 9.9999998]]
+</code></pre></div></div>
+
+<p>Nghiệm thu được chính là \(x = y = z = \sqrt[5]{10}\). Bạn đọc được khuyến khích đọc thêm chỉ dẫn của hàm <code class="language-plaintext highlighter-rouge">solvers.gp</code> để hiểu cách thiết lập bài toán.</p>
+
+<p><a name="-tom-tat"></a></p>
+
+<h2 id="7-tóm-tắt">7. Tóm tắt</h2>
+
+<ul>
+  <li>
+    <p>Các bài toán tối ưu xuất hiện rất nhiều trong thực tế, trong đó Tối Ưu Lồi đóng một vai trò quan trọng. Trong bài toán Tối Ưu Lồi, nếu tìm được cực trị thì cực trị đó chính là một điểm <em>optimal</em> của bài toán (nghiệm của bài toán).</p>
+  </li>
+  <li>
+    <p>Có nhiều bài toán tối ưu không được viết dưới dạng <em>convex</em> nhưng có thể biến đổi về dạng <em>convex</em>, ví dụ như bài toán Geometric Programming.</p>
+  </li>
+  <li>
+    <p>Linear Programming và Quadratic Programming đóng một vài trò quan trọng trong toán tối ưu, được sử dụng nhiều trong các thuật toán Machine Learning.</p>
+  </li>
+  <li>
+    <p>Thư viện CVXOPT được dùng để tối ưu nhiều bài toán tối ưu lồi, rất dễ sử dụng và thời gian chạy tương đối nhanh.</p>
+  </li>
+</ul>
+
+<p><a name="-tai-lieu-tham-khao"></a></p>
+
+<h2 id="8-tài-liệu-tham-khảo">8. Tài liệu tham khảo</h2>
+<p>[1] <a href="http://stanford.edu/~boyd/cvxbook/">Convex Optimization</a> – Boyd and Vandenberghe, Cambridge University Press, 2004.</p>
+
+<p>[2] <a href="http://cvxopt.org/">CVXOPT</a>.</p>
+:ET

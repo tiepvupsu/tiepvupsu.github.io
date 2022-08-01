@@ -1,0 +1,584 @@
+I"
+�<!-- MarkdownTOC -->
+
+<ul>
+  <li><a href="#-gioi-thieu">1. Giới thiệu</a></li>
+  <li><a href="#-co-so-toan-hoc">2. Cơ sở toán học</a></li>
+  <li><a href="#-ham-so-kernel">3. Hàm số kernel</a>
+    <ul>
+      <li><a href="#-tinh-chat-cua-cac-ham-kerrnel">3.1. Tính chất của các hàm kerrnel</a></li>
+      <li><a href="#-mot-so-ham-kernel-thong-dung">3.2. Một số hàm kernel thông dụng</a>
+        <ul>
+          <li><a href="#-linear">3.2.1. Linear</a></li>
+          <li><a href="#-polynomial">3.2.2. Polynomial</a></li>
+          <li><a href="#-radial-basic-function">3.2.3. Radial Basic Function</a></li>
+          <li><a href="#-sigmoid">3.2.4. Sigmoid</a></li>
+          <li><a href="#-bang-tom-tat-cac-kernel-thong-dung">3.2.5. Bảng tóm tắt các kernel thông dụng</a></li>
+          <li><a href="#-kernel-tu-dinh-nghia">3.2.6. Kernel tự định nghĩa</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#-vi-du-minh-hoa">4. Ví dụ minh họa</a>
+    <ul>
+      <li><a href="#-bai-toan-xor">4.1. Bài toán XOR</a></li>
+      <li><a href="#-du-lieu-gan-linearly-separable">4.2. Dữ liệu gần linearly separable</a></li>
+      <li><a href="#-bai-toan-phan-biet-gioi-tinh">4.3. Bài toán phân biệt giới tính</a></li>
+    </ul>
+  </li>
+  <li><a href="#-tom-tat">5. Tóm tắt</a></li>
+  <li><a href="#-tai-lieu-tham-khao">6. Tài liệu tham khảo</a></li>
+</ul>
+
+<!-- /MarkdownTOC -->
+
+<p><em>Bạn đọc được khuyến khích đọc <a href="https://machinelearningcoban.com/2017/04/09/smv/">Bài 19</a> và <a href="https://machinelearningcoban.com/2017/04/13/softmarginsmv/">Bài 20</a> trước khi đọc bài này.</em>
+<a name="-gioi-thieu"></a></p>
+
+<h2 id="1-giới-thiệu">1. Giới thiệu</h2>
+
+<p>Có một sự tương ứng thú vị giữa hai nhóm thuật toán phân lớp phổ biến nhất: Neural Network và Support Vector Machine. Chúng đều bắt đầu từ bài toán phân lớp với 2 <em>linearly separable classes</em>, tiếp theo đến 2 <em>almost linear separable classes</em>, đến bài toán có nhiều classes rồi các bài toán với biên không tuyến tính. Sự tương ứng được cho trong bảng dưới đây:</p>
+
+<hr />
+
+<table>
+  <thead>
+    <tr>
+      <th>Neural Networks</th>
+      <th>Support Vector Machine</th>
+      <th>Tính chất chung</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://machinelearningcoban.com/2017/01/21/perceptron/">PLA</a></td>
+      <td><a href="https://machinelearningcoban.com/2017/04/09/smv/">Hard Margin SVM</a></td>
+      <td>Hai classes là <em>linearly separable</em></td>
+    </tr>
+    <tr>
+      <td><a href="https://machinelearningcoban.com/2017/01/27/logisticregression/">Logistic Regression</a></td>
+      <td><a href="https://machinelearningcoban.com/2017/04/13/softmarginsmv/">Soft Margin SVM</a></td>
+      <td>Hai classes là <em>gần linearly separable</em></td>
+    </tr>
+    <tr>
+      <td><a href="https://machinelearningcoban.com/2017/02/17/softmax/">Softmax Regression</a></td>
+      <td>Multi-class SVM</td>
+      <td>Bài toán phân loại nhiều classes (biên là tuyến tính)</td>
+    </tr>
+    <tr>
+      <td><a href="https://machinelearningcoban.com/2017/02/24/mlp/">Multi-layer Perceptron</a></td>
+      <td>Kernel SVM</td>
+      <td>Bài toán với dữ liệu không <em>linearly separable</em></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<p>Trong Bài 21 này, tôi sẽ viết về Kernel SVM, tức việc áp dụng SVM lên bài toán mà dữ liệu giữa hai classes là hoàn toàn <em>không linear separable</em> (tôi tạm dịch là <em>không phân biệt tuyến tính</em>). Bài toán phân biệt nhiều classes sẽ được tôi trình bày trong Bài 22: Multiclass SVM.</p>
+
+<p>Ý tưởng cơ bản của Kernel SVM và các phương pháp kernel nói chung là tìm một phép biến đổi sao cho dữ liệu ban đầu là <em>không phân biệt tuyến tính</em> được biến sang không gian mới. Ở không gian mới này, dữ liệu trở nên <em>phân biệt tuyến tính</em>.</p>
+
+<p>Xét ví dụ dưới đây với việc biến dữ liệu <em>không phân biệt tuyến tính</em> trong không gian hai chiều thành <em>phân biệt tuyến tính</em> trong không gian ba chiều bằng cách giới thiệu thêm một chiều mới:</p>
+
+<hr />
+
+<div>
+<table width="100%" style="border: 0px solid white">
+   <tr>
+        <td width="40%" style="border: 0px solid white" align="center">
+        <img style="display:block;" width="100%" src="/assets/21_kernelsvm/5.png" />
+         <br />
+        a)
+         </td>
+        <td width="40%" style="border: 0px solid white" align="center">
+        <img style="display:block;" width="100%" src="/assets/21_kernelsvm/4.png" />
+         <br />
+        b)
+        </td>
+
+    </tr>
+    <tr>
+        <td width="40%" style="border: 0px solid white" align="center">
+        <img style="display:block;" width="100%" src="/assets/21_kernelsvm/6.png" />
+         <br />
+        c)
+         </td>
+        <td width="40%" style="border: 0px solid white" align="justify">
+        Hình 1: Ví dụ về Kernel SVM. a) Dữ liệu của hai classes là <em>không phân biệt tuyến tính</em> trong không gian hai chiều. b) Nếu coi thêm chiều thứ ba là một hàm số của hai chiều còn lại \(z = x^2 + y^2\), các điểm dữ liệu sẽ được phân bố trên 1 parabolic và đã trở nên <em>phân biệt tuyến tính </em>. Mặt phẳng màu vàng là mặt phân chia, có thể tìm được bởi Hard/Soft Margin SVM. c) Giao điểm của mặt phẳng tìm được và mặt parabolic là một đường ellipse, khi chiếu toàn bộ dữ liệu cũng như đường ellipse này xuống không gian hai chiều ban đầu, ta đã tìm được đường phân chia hai classses.
+        </td>
+    </tr>
+</table>
+</div>
+<hr />
+
+<p>Để xem ví dụ này một cách sinh động hơn, bạn có thể xem clip nhỏ dưới đây:</p>
+
+<div style="text-align:center;">
+<iframe width="600" height="400" src="https://www.youtube.com/embed/04eOsL5vrWc" frameborder="0" allowfullscreen=""></iframe>
+<div class="thecap">Một ví dụ về phương pháp kernel.</div>
+</div>
+
+<p>Nói một cách ngắn gọn, Kernel SVM là việc đi tìm một hàm số biến đổi dữ liệu \(\mathbf{x}\) từ không gian <em>feature</em> ban đầu thành dữ liệu trong một không gian mới bằng hàm số \(\Phi(\mathbf{x})\). Trong ví dụ này, hàm \(\Phi()\) đơn giản là giới thiệu thêm một chiều dữ liệu mới (một feature mới) là một hàm số của các <em>features</em> đã biết. Hàm số này cần thỏa mãn mục đích của chúng ta: trong không gian mới, dữ liệu giữa hai classes là <em>phân biệt tuyến tính</em> hoặc <em>gần như phần biệt tuyến tính</em>. Khi đó, ta có thể dùng các bộ phân lớp tuyến tính thông thường như PLA, Logistic Regression, hay Hard/Soft Margin SVM.</p>
+
+<p>Nếu phải so sánh, ta có thể thấy rằng hàm biến đổi \(\Phi()\) tương tự như <a href="/2017/02/24/mlp/#-activation-functions"><em>activation functions</em></a> trong Neural Networks. Tuy nhiên, có một điểm khác biệt ở đây là: trong khi nhiệm vụ của activation function là phá vỡ tính tuyến tính của <em>mô hình</em>, hàm biến đổi \(\Phi()\) đi biến <em>dữ liệu</em> không phân biệt tuyến tính thành phân biệt tuyến tính. Như vậy là để đạt được mục đích chung, ta có hai cách nhìn khác nhau về cách giải quyết.</p>
+
+<p>Các hàm \(\Phi()\) thường tạo ra dữ liệu mới có số chiều cao hơn số chiều của dữ liệu ban đầu, thậm chí là vô hạn chiều. Nếu tính toán các hàm này trực tiếp, chắc chắn chúng ta sẽ gặp các vấn đề về bộ nhớ và hiệu năng tính toán. Có một cách tiếp cận là sử dụng các <em>kernel functions</em> mô tả quan hệ giữa hai điểm dữ liệu bất kỳ trong không gian mới, thay vì đi tính toán trực tiếp từng điểm dữ liệu trong không gian mới. Kỹ thuật này được xây dựng dựa trên quan sát về <a href="/2017/04/09/smv/#-bai-toan-doi-ngau-cho-svm">bài toán đối ngẫu của SVM</a>.</p>
+
+<p>Trong Mục 2 dưới đây, chúng ta cùng tìm hiểu cơ sở toán học của Kernel SVM và Mục 3 sẽ giới thiệu một số hàm Kernel thường được sử dụng.</p>
+
+<p><a name="-co-so-toan-hoc"></a></p>
+
+<h2 id="2-cơ-sở-toán-học">2. Cơ sở toán học</h2>
+<p>Tôi xin nhắc lại bài toán đối ngẫu trong Soft Margin SVM cho dữ liệu <em>gần phân biệt tuyến tính</em>:</p>
+
+<p>\begin{eqnarray}
+     \lambda &amp;=&amp; \arg \max_{\lambda} \sum_{n=1}^N \lambda_n - \frac{1}{2} \sum_{n=1}^N\sum_{m=1}^N \lambda_n \lambda_m y_n y_m \mathbf{x}_n^T \mathbf{x}_m &amp;&amp;\newline
+     \text{subject to:}~ &amp;&amp; \sum_{n=1}^N \lambda_ny_n = 0 &amp;&amp;\quad\quad\quad\quad(1)\newline
+     &amp;&amp; 0 \leq \lambda_n \leq C, ~\forall n= 1, 2, \dots, N 
+ \end{eqnarray}</p>
+
+<p>Trong đó:</p>
+
+<ul>
+  <li>
+    <p>\(N\): số cặp điểm dữ liệu trong tập training.</p>
+  </li>
+  <li>
+    <p>\(\mathbf{x}_n\): feature vector của dữ liệu thứ \(n\) trong tập training.</p>
+  </li>
+  <li>
+    <p>\(y_n\): <em>nhãn</em> của dữ liệu thứ \(n\), bằng 1 hoặc -1.</p>
+  </li>
+  <li>
+    <p>\(\lambda_n\): nhân tử Lagrange ứng với điểm dữ liệu thứ \(n\).</p>
+  </li>
+  <li>
+    <p>\(C\): hằng số dương giúp cân đối độ lớn của <em>margin</em> và <em>sự hy sinh</em> của các điểm nằm trong vùng <em>không an toàn</em>. Khi \(C = \infty\) hoặc rất lớn, Soft Margin SVM trở thành Hard Margin SVM.</p>
+  </li>
+</ul>
+
+<p>Sau khi giải được \(\lambda\) cho bài toán \((1)\), <em>nhãn</em> của một điểm dữ liệu mới sẽ được xác định bởi dấu của biểu thức: 
+\[
+\sum_{m \in \mathcal{S}} \lambda_m y_m \mathbf{x}_m^T \mathbf{x} + \frac{1}{N_{\mathcal{M}}} \sum_{n \in \mathcal{M}} \left(y_n - \sum_{m \in \mathcal{S}} \lambda_m y_m \mathbf{x}_m^T\mathbf{x}_n\right)~~~~~~~~~ (2)
+\]</p>
+
+<p>Trong đó:</p>
+
+<ul>
+  <li>
+    <p>\(\mathcal{M} = \{n: 0 &lt; \lambda_n &lt; C\}\) là tập hợp những điểm nằm trên margin.</p>
+  </li>
+  <li>
+    <p>\(\mathcal{S} = \{n: 0 &lt; \lambda_n\}\) là tập hợp các điểm support.</p>
+  </li>
+  <li>
+    <p>\(N_{\mathcal{M}}\) là số phần tử của \(\mathcal{M}\).</p>
+  </li>
+</ul>
+
+<p>Với dữ liệu thực tế, rất khó để có dữ liệu <em>gần phân biệt tuyến tính</em>, vì vậy nghiệm của bài toán \((1)\) có thể không thực sự tạo ra một bộ phân lớp tốt. Giả sử rằng ta có thể tìm được hàm số \(\Phi()\) sao cho sau khi được biến đổi sang không gian mới, mỗi điểm dữ liệu \(\mathbf{x}\) trở thành \(\Phi(\mathbf{x})\), và trong không gian mới này, dữ liệu trở nên <em>gần phân biệt tuyến tính</em>. Lúc này, <em>hy vọng rằng</em> nghiệm của bài toán Soft Margin SVM sẽ cho chúng ta một bộ phân lớp tốt hơn.</p>
+
+<p>Trong không gian mới, bài toán \((1)\) trở thành: 
+ \begin{eqnarray}
+     \lambda &amp;=&amp; \arg \max_{\lambda} \sum_{n=1}^N \lambda_n - \frac{1}{2} \sum_{n=1}^N\sum_{m=1}^N \lambda_n \lambda_m y_n y_m \Phi(\mathbf{x}_n)^T \Phi(\mathbf{x}_m) &amp;&amp;\newline
+     \text{subject to:}~ &amp;&amp; \sum_{n=1}^N \lambda_ny_n = 0 &amp;&amp;\quad\quad\quad\quad(3)\newline
+     &amp;&amp; 0 \leq \lambda_n \leq C, ~\forall n= 1, 2, \dots, N 
+ \end{eqnarray}</p>
+
+<p>và <em>nhãn</em> của một điểm dữ liệu mới được xác định bởi dấu của biểu thức:</p>
+
+<p>\[
+\mathbf{w}^T\Phi(\mathbf{x}) + b = \sum_{m \in \mathcal{S}} \lambda_m y_m \Phi(\mathbf{x}_m)^T \Phi(\mathbf{x}) + \frac{1}{N_{\mathcal{M}}} \sum_{n \in \mathcal{M}} \left(y_n - \sum_{m \in \mathcal{S}} \lambda_m y_m \Phi(\mathbf{x}_m)^T\Phi(\mathbf{x}_n)\right)~~~~~~~~~ (4)
+\]</p>
+
+<p>Như đã nói ở trên, việc tính toán trực tiếp \(\Phi(\mathbf{x})\) cho mỗi điểm dữ liệu có thể sẽ tốn rất nhiều bộ nhớ và thời gian vì số chiều của \(\Phi(\mathbf{x})\) thường là rất lớn, có thể là vô hạn! Thêm nữa, để tìm <em>nhãn</em> của một điểm dữ liệu mới \(\mathbf{x}\), ta lại phải tìm biến đổi của nó \(\Phi(\mathbf{x})\) trong không gian mới rồi lấy tích vô hướng của nó với tất cả các \(\Phi(\mathbf{x}_m)\) với \(m\) trong tập hợp support. Để tránh việc này, ta quan sát thấy một điều thú vị sau đây.</p>
+
+<p>Trong bài toán \((3)\) và biểu thức \((4)\), chúng ta không cần tính trực tiếp \(\Phi(\mathbf{x})\) cho mọi điểm dữ liệu. Chúng ta chỉ cần tính được \(\Phi(\mathbf{x})^T\Phi(\mathbf{z})\) dựa trên hai điểm dữ liệu \(\mathbf{x}, \mathbf{z}\) bất kỳ! Kỹ thuật này còn được gọi là <strong>kernel trick</strong>. Những phương pháp dựa trên kỹ thuật này, tức thay vì trực tiếp tính tọa độ của một điểm trong không gian mới, ta đi tính tích vô hướng giữa hai điểm trong không gian mới, được gọi chung là <strong>kernel method</strong>.</p>
+
+<p>Lúc này, bằng cách định nghĩa <em>hàm kernel</em> \(k(\mathbf{x}, \mathbf{z}) = \Phi(\mathbf{x})^T\Phi(\mathbf{z}) \), ta có thể viết lại bài toán \((3)\) và biểu thức \((4)\) như sau:</p>
+
+<p>\begin{eqnarray}
+    \lambda &amp;=&amp; \arg \max_{\lambda} \sum_{n=1}^N \lambda_n - \frac{1}{2} \sum_{n=1}^N\sum_{m=1}^N \lambda_n \lambda_m y_n y_m k(\mathbf{x}_n,\mathbf{x}_m) &amp;&amp;\newline
+    \text{subject to:}~ &amp;&amp; \sum_{n=1}^N \lambda_ny_n = 0 &amp;&amp;\quad\quad\quad\quad(5)\newline
+    &amp;&amp; 0 \leq \lambda_n \leq C, ~\forall n= 1, 2, \dots, N &amp;&amp;
+\end{eqnarray}
+và:</p>
+
+<p>\[
+\sum_{m \in \mathcal{S}} \lambda_m y_m k(\mathbf{x}_m, \mathbf{x}) + \frac{1}{N_{\mathcal{M}}} \sum_{n \in \mathcal{M}} \left(y_n - \sum_{m \in \mathcal{S}} \lambda_m y_m k(\mathbf{x}_m, \mathbf{x}_n)\right)~~~~~~~~~ (6)
+\]</p>
+
+<p><strong>Ví dụ:</strong> Xét phép biến đổi 1 điểm dữ liệu trong không gian hai chiều \(\mathbf{x} = [x_1, x_2]^T\) thành một điểm trong không gian 5 chiều \(\Phi(\mathbf{x}) = [1, \sqrt{2} x_1, \sqrt{2} x_2, x_1^2, \sqrt{2} x_1x_2, x_2^2]^T\). Ta có:</p>
+
+<p>\begin{eqnarray}
+\Phi(\mathbf{x})^T\Phi(\mathbf{z}) &amp;=&amp; [1, \sqrt{2} x_1, \sqrt{2} x_2, x_1^2, \sqrt{2} x_1x_2, x_2^2] [1, \sqrt{2} z_1, \sqrt{2} z_2, z_1^2, \sqrt{2} z_1z_2, z_2^2]^T \newline
+&amp;=&amp; 1 + 2x_1z_1 + 2x_2z_2 + x_1^2x_2^2 + 2x_1z_1x_2z_2 + x_2^2z_2^2 \newline
+&amp;=&amp; (1 + x_1z_1 + x_2z_2)^2 = (1 + \mathbf{x}^T\mathbf{z})^2 = k(\mathbf{x}, \mathbf{z})
+\end{eqnarray}</p>
+
+<p>Trong ví dụ này, rõ ràng rằng việc tính toán hàm kernel \(k()\) cho hai điểm dữ liệu dễ dàng hơn việc tính từng \(\Phi()\) rồi nhân chúng với nhau.</p>
+
+<p>Vậy những hàm số kernel cần có những tính chất gì, và những hàm như thế nào được sử dụng trong thực tế?
+<a name="-ham-so-kernel"></a></p>
+
+<h2 id="3-hàm-số-kernel">3. Hàm số kernel</h2>
+<p><a name="-tinh-chat-cua-cac-ham-kerrnel"></a></p>
+
+<h3 id="31-tính-chất-của-các-hàm-kerrnel">3.1. Tính chất của các hàm kerrnel</h3>
+<p>Không phải hàm \(k()\) bất kỳ nào cũng được sử dụng. Các hàm kerrnel cần có các tính chất:</p>
+
+<ul>
+  <li>
+    <p>Đối xứng: \(k(\mathbf{x}, \mathbf{z}) = k(\mathbf{z}, \mathbf{x}) \). Điều này dễ nhận ra vì tích vô hướng của hai vector có tính đối xứng.</p>
+  </li>
+  <li>
+    <p><em>Về lý thuyết</em>, hàm kerrnel cần thỏa mãn <a href="https://en.wikipedia.org/wiki/Mercer%27s_theorem#Mercer.27s_condition">điều kiện Mercer</a>: 
+\[
+\sum_{n=1}^N \sum_{m=1}^N k(\mathbf{x}_m, \mathbf{x}_n) c_nc_m \geq 0, ~~ \forall c_i \in \mathbb{R}, i = 1, 2, \dots, N \quad \quad (7)
+\]
+Tính chất này để đảm bảo cho việc hàm mục tiêu của bài toán đối ngẫu \((5)\) là <em>lồi</em>.</p>
+  </li>
+  <li>
+    <p><em>Trong thực hành</em>, có một vài hàm số \(k()\) không thỏa mãn điều kiện Merrcer nhưng vẫn cho kết quả chấp nhận được. Những hàm số này vẫn được gọi là kernel. Trong bài viết này, tôi chỉ tập trung vào các hàm kernel thông dụng và có sẵn trong các thư viện.</p>
+  </li>
+</ul>
+
+<p>Nếu một hàm kerrnel thỏa mãn điều kiện \((7)\), xét \(c_n = y_n \lambda_n\), ta sẽ có: 
+\[
+\lambda^T \mathbf{K} \lambda = \sum_{n=1}^N \sum_{m=1}^N k(\mathbf{x}_m, \mathbf{x}_n) y_ny_m \lambda_n \lambda_m \geq 0, ~\forall \lambda_n \quad\quad (8)
+\]
+với \(\mathbf{K}\) là một ma trận đối xứng mà phần tử ở hàng thứ \(n\) cột thứ \(m\) của nó được định nghĩa bởi: 
+\(
+k_{nm} = y_ny_m k(\mathbf{x}_n, \mathbf{x}_m)
+\)</p>
+
+<p>Từ \((8)\) ta suy ra \(\mathbf{K}\) là một ma trận nửa xác định dương. Vì vậy, bài toán tối ưu \((5)\) có ràng buộc là lồi và hàm mục tiêu là một hàm lồi (một quadratic form). Vì vậy chúng ta có thể giải quyết bài toán này một cách hiệu quả.</p>
+
+<p>Trong bài viết này, tôi sẽ không đi sâu vào việc giải quyết bài toán \((5)\) vì nó hoàn toàn tương tự như bài toán đối ngẫu của Soft Margin SVM. Thay vào đó, tôi sẽ trình bày các hàm kernel thông dụng và hiệu năng của chúng trong các bài toán thực tế. Việc này sẽ được thực hiện thông qua các ví dụ và cách sử dụng thư viện sklearn.</p>
+
+<p><a name="-mot-so-ham-kernel-thong-dung"></a></p>
+
+<h3 id="32-một-số-hàm-kernel-thông-dụng">3.2. Một số hàm kernel thông dụng</h3>
+<p><a name="-linear"></a></p>
+
+<h4 id="321-linear">3.2.1. Linear</h4>
+<p>Đây là trường hợp đơn giản với kernel chính tích vô hướng của hai vector: 
+\[
+k(\mathbf{x}, \mathbf{z}) = \mathbf{x}^T\mathbf{z}
+\]</p>
+
+<p>Hàm số này, <a href="/2017/04/09/smv/#-bai-toan-doi-ngau-lagrange">như đã chứng minh trong Bài 19</a>, thỏa mãn điều kiện \((7)\).</p>
+
+<p>Khi sử dụng hàm <code class="language-plaintext highlighter-rouge">sklearn.svm.SVC</code>, kernel này được chọn bằng cách đặt <code class="language-plaintext highlighter-rouge">kernel = 'linear'</code></p>
+
+<p><a name="-polynomial"></a></p>
+
+<h4 id="322-polynomial">3.2.2. Polynomial</h4>
+
+<p>\[
+k(\mathbf{x}, \mathbf{z}) = (r + \gamma \mathbf{x}^T\mathbf{z})^d
+\]</p>
+
+<p>Với \(d\) là một số dương để chỉ bậc của đa thức. \(d\) có thể không là số tự nhiên vì mục đích chính của ta không phải là bậc của đa thức mà là cách tính kernel. Polynomial kernel có thể dùng để mô tả hầu hết các đa thức có bậc không vượt quá \(d\) nếu \(d\) là một số tự nhiên.</p>
+
+<p>Phần kiểm tra liệu hàm này có thỏa mãn điều kiện \((7)\) hay không xin được bỏ qua.</p>
+
+<p>Khi sử dụng thư viện <code class="language-plaintext highlighter-rouge">sklearn</code>, kerrnel này được chọn bằng cách đặt <code class="language-plaintext highlighter-rouge">kernel = 'poly'</code>. Thông tin cụ thể về cách sử dụng có thể xem <a href="http://scikit-learn.org/stable/modules/svm.html#svm-kernels">tại đây</a>.</p>
+
+<p><a name="-radial-basic-function"></a></p>
+
+<h4 id="323-radial-basic-function">3.2.3. Radial Basic Function</h4>
+<p>Radial Basic Function (RBF) kernel hay Gaussian kernel được sử dụng nhiều nhất trong thực tế, và là lựa chọn mặc định trong sklearn. Nó được định nghĩa bởi:
+\[
+k(\mathbf{x}, \mathbf{z}) = \exp(-\gamma ||\mathbf{x} - \mathbf{z}||_2^2), ~~ \gamma &gt; 0
+\]</p>
+
+<p>Trong sklearn, <code class="language-plaintext highlighter-rouge">kernel = 'rbf'</code>.</p>
+
+<p><a name="-sigmoid"></a></p>
+
+<h4 id="324-sigmoid">3.2.4. Sigmoid</h4>
+
+<p><a href="/2017/01/27/logisticregression/#sigmoid-function">Sigmoid function</a> cũng được sử dụng làm kernel:
+\[
+k(\mathbf{x}, \mathbf{z}) = \text{tanh}(\gamma \mathbf{x}^T\mathbf{z} + r)
+\]</p>
+
+<p><code class="language-plaintext highlighter-rouge">kernel = 'sigmoid'</code></p>
+
+<p><a name="-bang-tom-tat-cac-kernel-thong-dung"></a></p>
+
+<h4 id="325-bảng-tóm-tắt-các-kernel-thông-dụng">3.2.5. Bảng tóm tắt các kernel thông dụng</h4>
+
+<p>Dưới đây là bảng tóm tắt các kernel thông dụng và cách sử dụng trong <code class="language-plaintext highlighter-rouge">sklearn</code>.</p>
+<hr />
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Tên</strong></th>
+      <th><strong>Công thức</strong></th>
+      <th><code class="language-plaintext highlighter-rouge">kernel</code></th>
+      <th><strong>Thiết lập hệ số</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>linear</td>
+      <td>\(\mathbf{x}^T\mathbf{z}\)</td>
+      <td><code class="language-plaintext highlighter-rouge">'linear'</code></td>
+      <td>không có hệ số</td>
+    </tr>
+    <tr>
+      <td>polynomial</td>
+      <td>\((r + \gamma \mathbf{x}^T\mathbf{z})^d \)</td>
+      <td><code class="language-plaintext highlighter-rouge">'poly'</code></td>
+      <td>\(d\): <code class="language-plaintext highlighter-rouge">degree</code>, \(\gamma\): <code class="language-plaintext highlighter-rouge">gamma</code>, \(r\): <code class="language-plaintext highlighter-rouge">coef0</code></td>
+    </tr>
+    <tr>
+      <td>sigmoid</td>
+      <td>\(\text{tanh}(\gamma \mathbf{x}^T\mathbf{z} + r)\)</td>
+      <td><code class="language-plaintext highlighter-rouge">'sigmoid'</code></td>
+      <td>\(\gamma\): <code class="language-plaintext highlighter-rouge">gamma</code>, \(r\): <code class="language-plaintext highlighter-rouge">coef0</code></td>
+    </tr>
+    <tr>
+      <td>rbf</td>
+      <td>\(\exp(-\gamma ||\mathbf{x} - \mathbf{z}||_2^2)\)</td>
+      <td><code class="language-plaintext highlighter-rouge">'rbf'</code></td>
+      <td>\(\gamma &gt;0\): <code class="language-plaintext highlighter-rouge">gamma</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<p>Nếu bạn muốn sử dụng các thư viện cho C/C++, các bạn có thể tham khảo <a href="http://www.csie.ntu.edu.tw/~cjlin/papers/libsvm.pdf">LIBSVM</a> và <a href="http://www.csie.ntu.edu.tw/~cjlin/liblinear/">LIBLINEAR</a></p>
+
+<p><a name="-kernel-tu-dinh-nghia"></a></p>
+
+<h4 id="326-kernel-tự-định-nghĩa">3.2.6. Kernel tự định nghĩa</h4>
+
+<p>Ngoài các hàm kernel thông dụng như trên, chúng ta cũng có thể tự định nghĩa các kernel của mình <a href="http://scikit-learn.org/stable/modules/svm.html#svm-kernels">như trong hướng dẫn này</a>. 
+<a name="-vi-du-minh-hoa"></a></p>
+
+<h2 id="4-ví-dụ-minh-họa">4. Ví dụ minh họa</h2>
+
+<p><a name="-bai-toan-xor"></a></p>
+
+<h3 id="41-bài-toán-xor">4.1. Bài toán XOR</h3>
+<p>Chúng ta cùng quay lại với bài toán XOR. Chúng ta biết rằng <a href="/2017/02/24/mlp/#-pla-cho-cac-ham-logic-co-ban">bài toán XOR không thể giải quyết nếu chỉ dùng một bộ phân lớp tuyến tính</a>. Neurrel Network cần 2 layers để giải quyết bài toán này. Với SVM, chúng ta có cách để chỉ cần sử dụng một bộ phân lớp. Dưới đây là ví dụ:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">svm</span>
+
+<span class="c1"># XOR dataset and targets
+</span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">c_</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+          <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+          <span class="c1">#---
+</span>          <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+          <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)].</span><span class="n">T</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="c1"># figure number
+</span><span class="n">fignum</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># fit the model
+</span><span class="k">for</span> <span class="n">kernel</span> <span class="ow">in</span> <span class="p">(</span><span class="s">'sigmoid'</span><span class="p">,</span> <span class="s">'poly'</span><span class="p">,</span> <span class="s">'rbf'</span><span class="p">):</span>
+    <span class="n">clf</span> <span class="o">=</span> <span class="n">svm</span><span class="p">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="n">kernel</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">coef0</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">clf</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">PdfPages</span><span class="p">(</span><span class="n">kernel</span> <span class="o">+</span> <span class="s">'2.pdf'</span><span class="p">)</span> <span class="k">as</span> <span class="n">pdf</span><span class="p">:</span>
+        <span class="c1"># plot the line, the points, and the nearest vectors to the plane
+</span>        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplots</span><span class="p">()</span>
+        <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">fignum</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+        <span class="n">plt</span><span class="p">.</span><span class="n">clf</span><span class="p">()</span>
+
+        <span class="n">plt</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">clf</span><span class="p">.</span><span class="n">support_vectors_</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">clf</span><span class="p">.</span><span class="n">support_vectors_</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span>
+                    <span class="n">facecolors</span><span class="o">=</span><span class="s">'None'</span><span class="p">)</span>
+        <span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s">'ro'</span><span class="p">,</span> <span class="n">markersize</span> <span class="o">=</span> <span class="mi">8</span><span class="p">)</span>
+        <span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s">'bs'</span><span class="p">,</span> <span class="n">markersize</span> <span class="o">=</span> <span class="mi">8</span><span class="p">)</span>
+
+        <span class="n">plt</span><span class="p">.</span><span class="n">axis</span><span class="p">(</span><span class="s">'tight'</span><span class="p">)</span>
+        <span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
+        <span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
+        
+        <span class="n">XX</span><span class="p">,</span> <span class="n">YY</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">mgrid</span><span class="p">[</span><span class="n">x_min</span><span class="p">:</span><span class="n">x_max</span><span class="p">:</span><span class="mf">200j</span><span class="p">,</span> <span class="n">y_min</span><span class="p">:</span><span class="n">y_max</span><span class="p">:</span><span class="mf">200j</span><span class="p">]</span>
+        <span class="n">Z</span> <span class="o">=</span> <span class="n">clf</span><span class="p">.</span><span class="n">decision_function</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">c_</span><span class="p">[</span><span class="n">XX</span><span class="p">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">YY</span><span class="p">.</span><span class="n">ravel</span><span class="p">()])</span>
+
+        <span class="c1"># Put the result into a color plot
+</span>        <span class="n">Z</span> <span class="o">=</span> <span class="n">Z</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">XX</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+        <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">fignum</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+        <span class="n">CS</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">XX</span><span class="p">,</span> <span class="n">YY</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">sign</span><span class="p">(</span><span class="n">Z</span><span class="p">),</span> <span class="mi">200</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s">'jet'</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="p">.</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">plt</span><span class="p">.</span><span class="n">contour</span><span class="p">(</span><span class="n">XX</span><span class="p">,</span> <span class="n">YY</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s">'k'</span><span class="p">,</span> <span class="s">'k'</span><span class="p">,</span> <span class="s">'k'</span><span class="p">],</span> <span class="n">linestyles</span><span class="o">=</span><span class="p">[</span><span class="s">'--'</span><span class="p">,</span> <span class="s">'-'</span><span class="p">,</span> <span class="s">'--'</span><span class="p">],</span>
+                    <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">.</span><span class="mi">5</span><span class="p">])</span>
+        <span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="n">kernel</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">15</span><span class="p">)</span>
+        <span class="n">plt</span><span class="p">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">)</span>
+        <span class="n">plt</span><span class="p">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">)</span>
+
+        <span class="n">plt</span><span class="p">.</span><span class="n">xticks</span><span class="p">(())</span>
+        <span class="n">plt</span><span class="p">.</span><span class="n">yticks</span><span class="p">(())</span>
+        <span class="n">fignum</span> <span class="o">=</span> <span class="n">fignum</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">pdf</span><span class="p">.</span><span class="n">savefig</span><span class="p">()</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p>Kết quả được cho trong Hình 2 dưới đây:</p>
+
+<hr />
+
+<div>
+<table width="100%" style="border: 0px solid white">
+   <tr>
+        <td width="40%" style="border: 0px solid white" align="center">
+        <img style="display:block;" width="100%" src="/assets/21_kernelsvm/sigmoid2.png" />
+         <br />
+        a)
+         </td>
+        <td width="40%" style="border: 0px solid white" align="center">
+        <img style="display:block;" width="100%" src="/assets/21_kernelsvm/poly1.png" />
+         <br />
+        b)
+        </td>
+
+    </tr>
+    <tr>
+        <td width="40%" style="border: 0px solid white" align="center">
+        <img style="display:block;" width="100%" src="/assets/21_kernelsvm/rbf1.png" />
+         <br />
+        c)
+         </td>
+        <td width="40%" style="border: 0px solid white" align="justify">
+        Hình 2: Sử dụng kerrnel SVM để giải quyết bài toán XOR. a) sigmoid kernel. b) polynomial kernel. c) RBF kernel. Các đường nét liền là các đường phân lớp, ứng với giá trị của biểu thức \((6)\) bằng 0. Các đường nét đứt là các đường đồng mức ứng với giá trị của biểu thức \((6)\) bằng \(\pm 0.5\).
+        Trong ba phương pháp, RBF cho kết quả tốt nhất vì chúng cho kết quả đối xứng, hợp lý với dữ liệu bài toán. 
+        </td>
+    </tr>
+</table>
+</div>
+<hr />
+
+<p>Ta có các nhận xét đối với mỗi kernel như sau:</p>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">sigmoid</code>: nghiệm tìm được không thật tốt vì có 3 trong 4 điểm nằm chính xác trên đường phân chia. Nói cách khác, nghiệm này rất <em>nhạy cảm với nhiễu</em>.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">poly</code>: Nghiệm này có tốt hơn nghiệm của <code class="language-plaintext highlighter-rouge">sigmoid</code> nhưng kết quả có phần giống với <a href="/2017/03/04/overfitting/">overfitting</a>.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">rbf</code>: Dữ liệu được tạo ra một cách đối xứng, đường phân lớp tìm được cũng tạo ra các vùng đối xứng với mỗi class. Nghiệm này được cho là <em>hợp lý hơn</em>. Trên thực tế, các <code class="language-plaintext highlighter-rouge">rbf</code> kernel được sử dụng nhiều nhất và cũng là lựa chọn mặc định trong hàm <code class="language-plaintext highlighter-rouge">sklearn.svm.SVC</code>.</p>
+  </li>
+</ul>
+
+<p><a name="-du-lieu-gan-linearly-separable"></a></p>
+
+<h3 id="42-dữ-liệu-gần-linearly-separable">4.2. Dữ liệu gần linearly separable</h3>
+
+<p>Xét một ví dụ khác với dữ liệu giữa hai classes là <em>gần phân biệt tuyến tính</em> như HÌnh 3 dưới đây:</p>
+<hr />
+
+<div>
+<table width="100%" style="border: 0px solid white">
+   <tr>
+        <td width="40%" style="border: 0px solid white" align="center">
+        <img style="display:block;" width="100%" src="/assets/21_kernelsvm/sigmoid3.png" />
+         <br />
+        a)
+         </td>
+        <td width="40%" style="border: 0px solid white" align="center">
+        <img style="display:block;" width="100%" src="/assets/21_kernelsvm/poly3.png" />
+         <br />
+        b)
+        </td>
+
+    </tr>
+    <tr>
+        <td width="40%" style="border: 0px solid white" align="center">
+        <img style="display:block;" width="100%" src="/assets/21_kernelsvm/rbf3.png" />
+         <br />
+        c)
+         </td>
+        <td width="40%" style="border: 0px solid white" align="justify">
+        Hình 3: Sử dụng kerrnel SVM để giải quyết bài toán với dữ liệu <em>gần phân biệt tuyến tính</em>. a) sigmoid kernel. b) polynomial kernel. c) RBF kernel. Các đường nét liền là các đường phân lớp, ứng với giá trị của biểu thức \((6)\) bằng 0. Các đường nét đứt là các đường đồng mức ứng với giá trị của biểu thức \((6)\) bằng \(\pm 0.5\). Với bài toán này, polynomial kernel cho kết quả tốt hơn.
+        
+        </td>
+    </tr>
+</table>
+</div>
+<hr />
+
+<p>Trong ví dụ này, <code class="language-plaintext highlighter-rouge">kernel = 'poly'</code> cho kết quả tốt hơn <code class="language-plaintext highlighter-rouge">kernel = 'rbf'</code> vì trực quan cho ta thấy rằng nửa bên phải của mặt phẳng nên hoàn thoàn thuộc vào class xanh. <code class="language-plaintext highlighter-rouge">sigmoid</code> kernel cho kết quả không thực sự tốt và ít được sử dụng.</p>
+
+<p><a name="-bai-toan-phan-biet-gioi-tinh"></a></p>
+
+<h3 id="43-bài-toán-phân-biệt-giới-tính">4.3. Bài toán phân biệt giới tính</h3>
+<p>Bài toán này đã được đề cập ở Bài 12 với dữ liệu đầu vào là các ảnh khuôn mặt. Vì tôi không được phép phân phối cơ sở dữ liệu gốc này, tôi sẽ chia sẻ cho các bạn về dữ liệu đã qua xử lý, được lưu trong file <code class="language-plaintext highlighter-rouge">myARgender.mat</code>, có thể được <a href="https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/21_kernelsvm/plt/myARgender.mat">download tại đây</a>. Dưới đây là ví dụ về cách sử dụng thư viện <code class="language-plaintext highlighter-rouge">sklearn.svm.SVC</code> để giải quyết bài toán:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">scipy.io</span> <span class="k">as</span> <span class="n">sio</span>
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">sio</span><span class="p">.</span><span class="n">loadmat</span><span class="p">(</span><span class="s">'myARgender.mat'</span><span class="p">)</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="s">'Y_train'</span><span class="p">].</span><span class="n">T</span> 
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="s">'Y_test'</span><span class="p">].</span><span class="n">T</span> 
+<span class="n">N</span> <span class="o">=</span> <span class="mi">700</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="s">'label_train'</span><span class="p">].</span><span class="n">reshape</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="s">'label_test'</span><span class="p">].</span><span class="n">reshape</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+
+<span class="n">clf</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s">'poly'</span><span class="p">,</span> <span class="n">degree</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">clf</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Accuracy: %.2f %%"</span> <span class="o">%</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Accuracy: 92.86 %
+</code></pre></div></div>
+
+<p>Kết quả không tệ! Các bạn thử thay các <code class="language-plaintext highlighter-rouge">kernel</code> và thiết lập các tham số khác xem kết quả thay đổi như thế nào. Vì dữ liệu giữa hai classes là <em>gần phân biệt tuyến tính</em> nên không có sự khác nhau nhiều giữa các kernel.</p>
+
+<p><a name="-tom-tat"></a></p>
+
+<h2 id="5-tóm-tắt">5. Tóm tắt</h2>
+
+<ul>
+  <li>
+    <p>Nếu dữ liệu của hai lớp là <em>không phân biệt tuyến tính</em>, chúng ta có thể tìm cách biến đổi dữ liệu sang một không gian mới sao cho trong không gian mới ấy, dữ liệu của hai lớp là <em>phân biệt tuyến tính</em> hoặc <em>gần phân biệt tuyến tính</em>.</p>
+  </li>
+  <li>
+    <p>Việc tính toán trực tiếp hàm \(\Phi()\) đôi khi phức tạp và tốn nhiều bộ nhớ. Thay vào đó, ta có thể sử dụng <strong>kernel trick</strong>. Trong cách tiếp cận này, ta chỉ cần tính tích vô hướng của hai vector bất kỳ trong không gian mới: \(k(\mathbf{x}, \mathbf{z}) = \Phi(\mathbf{x})^T\Phi(\mathbf{z})\).</p>
+  </li>
+  <li>
+    <p>Thông thường, các hàm \(k()\) thỏa mãn điều kiện Merrcer, và được gọi là <em>kernel</em>. Cách giải bài toán SVM với kernel hoàn toàn giống với cách giải bài toán Soft Margin SVM.</p>
+  </li>
+  <li>
+    <p>Có 4 loại kernel thông dụng: <code class="language-plaintext highlighter-rouge">linear</code>, <code class="language-plaintext highlighter-rouge">poly</code>, <code class="language-plaintext highlighter-rouge">rbf</code>, <code class="language-plaintext highlighter-rouge">sigmoid</code>. Trong đó, <code class="language-plaintext highlighter-rouge">rbf</code> được sử dụng nhiều nhất và là lựa chọn mặc định trong các thư viện SVM.</p>
+  </li>
+  <li>
+    <p>Với dữ liệu <em>gần phân biệt tuyến tính</em>, <code class="language-plaintext highlighter-rouge">linear</code> và <code class="language-plaintext highlighter-rouge">poly</code> kernels cho kết quả tốt hơn.</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/21_kernelsvm/plt/KSVM.ipynb">Source code</a>.</p>
+  </li>
+</ul>
+
+<p><a name="-tai-lieu-tham-khao"></a></p>
+
+<h2 id="6-tài-liệu-tham-khảo">6. Tài liệu tham khảo</h2>
+<p>[1] Bishop, Christopher M. “Pattern recognition and Machine Learning.”, Springer  (2006). (<a href="http://users.isr.ist.utl.pt/~wurmd/Livros/school/Bishop%20-%20Pattern%20Recognition%20And%20Machine%20Learning%20-%20Springer%20%202006.pdf">book</a>)</p>
+
+<p>[2] Duda, Richard O., Peter E. Hart, and David G. Stork. Pattern classification. John Wiley &amp; Sons, 2012.</p>
+
+<p>[3] <a href="http://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html"><code class="language-plaintext highlighter-rouge">sklearn.svm.SVC</code></a></p>
+
+<p>[4] <a href="https://www.csie.ntu.edu.tw/~cjlin/libsvm/">LIBSVM – A Library for Support Vector Machines</a></p>
+
+<p>[5] Bennett, K. P. (1992). “<a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.23.3307&amp;rep=rep1&amp;type=pdf">Robust linear programming discrimination of two linearly separable sets</a>”. <em>Optimization Methods and Software</em> 1, 23–34.</p>
+
+<p>[6] Sch¨olkopf, B., A. Smola, R. C.Williamson, and P. L. Bartlett (2000). “<a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.94.2928&amp;rep=rep1&amp;type=pdf">New support vector algorithms</a>”. <em>Neural Computation 12</em>(5), 1207–1245</p>
+
+<p>[7]  Rosasco, L.; De Vito, E. D.; Caponnetto, A.; Piana, M.; Verri, A. (2004). “<a href="http://web.mit.edu/lrosasco/www/publications/loss.pdf">Are Loss Functions All the Same?</a>”. <em>Neural Computation</em>. 16 (5): 1063–1076</p>
+
+<p>[8] <a href="http://scikit-learn.org/stable/modules/svm.html#svm-kernels">slearn Kernel functions</a></p>
+
+<p>[9] <a href="https://en.wikipedia.org/wiki/Kernel_method">Kernel method</a></p>
+
+<p>[10] <a href="http://www.support-vector-machines.org/">http://www.support-vector-machines.org/</a></p>
+:ET
