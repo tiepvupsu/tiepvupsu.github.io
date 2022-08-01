@@ -34,3 +34,5 @@ assets/*/.ipynb_checkpoints
 .sass-cache
 .DS_Store
 _posts/.fuse_hidden*
+
+**/.jekyll-cache
