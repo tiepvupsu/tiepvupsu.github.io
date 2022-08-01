@@ -32,7 +32,7 @@ summary: Giới thiệu về Neural Network nhiều lớp và phương pháp t�
         - [2.4.4. Một vài lưu ý](#-mot-vai-luu-y)
 - [3. Backpropagation](#-backpropagation)
     - [3.1. Backpropagation cho Stochastic Gradient Descent](#-backpropagation-cho-stochastic-gradient-descent)
-        - [3.1.1. Đạo hàm theo từng hệ số \newline(w_{ij}^{\(l\)}, b_{i}^{\(l\)}\newline)](#-dao-ham-theo-tung-he-so-\\wij^l-bi^l\\)
+        - [3.1.1. Đạo hàm theo từng hệ số \\\(w_{ij}^{\(l\)}, b_{i}^{\(l\)}\\\)](#-dao-ham-theo-tung-he-so-\\wij^l-bi^l\\)
         - [3.1.2. Đạo hàm theo ma trận \newline(\mathbf{W}^{\(l\)}, \mathbf{b}^{\(l\)}\newline)](#-dao-ham-theo-ma-tran-\newlinemathbfw^l-\mathbfb^l\\)
     - [3.2. Backpropagation cho Batch \(mini-batch\) Gradient Descent](#-backpropagation-cho-batch-mini-batch-gradient-descent)
 - [4. Ví dụ trên Python](#-vi-du-tren-python)
