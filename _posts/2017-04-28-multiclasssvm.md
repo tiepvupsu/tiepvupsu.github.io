@@ -233,7 +233,7 @@ Có một _bug_ trong lỗi này, chúng ta cùng phân tích tiếp.
 với \\(\|\|\bullet\|\|\_F\\) là [Frobenius norm](/math/#chuan-cua-ma-tran), và \\(\lambda\\) là một giá trị dương giúp cân bằng giữa _data loss_ và _regularization loss_, thường được chọn bằng [cross-validation](/2017/03/04/overfitting/#-cross-validation).
 
 
-<a name="-chon-gia-tri-\newlinedelta\\"></a>
+<a name="-chon-gia-tri-\\\delta\\"></a>
 
 ### 2.5. Chọn giá trị \\(\Delta\\)
 
