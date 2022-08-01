@@ -354,7 +354,7 @@ e_j^{(l)} = \left( \mathbf{w}_{j:}^{(l+1)} \mathbf{e}^{(l+1)} \right) f'(z_j^{(l
 <hr>
 
 
-<a name="-dao-ham-theo-ma-tran-\newlinemathbfw^l-\mathbfb^l\\"></a>
+<a name="-dao-ham-theo-ma-tran-\\\mathbfw^l-\mathbfb^l\\"></a>
 
 #### 3.1.2. Đạo hàm theo ma trận \\(\mathbf{W}^{(l)}, \mathbf{b}^{(l)}\\)
 Việc tính toán theo từng hệ số như trên chỉ phù hợp cho việc hiểu nguyên lý tính toán, trong khi lập trình, ta cần tìm cách thu gọn chúng về dạng vector và ma trận để tăng tốc độ cho thuật toán. Đặt \\(\mathbf{e}^{(l)} = [e_1^{(l)}, e_2^{(l)}, ..., e_{d^{(l)}}^{(l)}]^T \in \mathbb{R}^{d^{(l)}\times 1} \\). Ta sẽ có quy tắc tính như sau:
