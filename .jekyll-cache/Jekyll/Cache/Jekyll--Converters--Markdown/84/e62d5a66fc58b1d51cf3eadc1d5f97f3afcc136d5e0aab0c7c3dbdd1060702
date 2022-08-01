@@ -1,0 +1,29 @@
+I"�
+<p>Giới thiệu trang web <a href="https://fundaml.com">FundaML.com</a>.</p>
+
+<p>Tôi vẫn thường nói rằng: Đại Số Tuyến Tính, Xác Suất Thống Kê và lập trình là ba vấn đề quan trọng nhất các bạn cần nắm vững nếu muốn đi sâu vào Machine Learning.</p>
+
+<p>Về lập trình, hiện có rất nhiều ngôn ngữ khác nhau có các thư viện hỗ trợ Machine Learning. Tuy nhiên, dựa trên kinh nghiệm cá nhân, tôi thấy rằng Python là ngôn ngữ được sử dụng phổ biến nhất vì có nhiều thư viện hỗ trợ rất tốt cho Machine Learning và Data Science:</p>
+
+<ul>
+  <li>scipy, numpy cho tính toán khoa học với mảng nhiều chiều</li>
+  <li>sklearn cho các thuật toán Machine Learning cơ bản</li>
+  <li>tensorflow, pytorch, keras, theano, … cho các thuật toán Deep Learning</li>
+  <li>pandas cho xử lý dữ liệu dạng bảng</li>
+  <li>…</li>
+</ul>
+
+<p>Đó cũng là lý do mà các bài viết trong blog machinelearningcoban.com đều sử dụng các ví dụ được viết bằng Python.</p>
+
+<p>Theo dõi comment của các bạn trên cả blog, page và forum, tôi nhận thấy rằng rất nhiều bạn còn gặp khó khăn trong Đại Số Tuyến Tính và lập trình Python. Việc này thôi thúc tôi tạo một trang web giúp các bạn làm quen dần với lập trình Python cho Machine Learning thông qua việc thực hành các bài tập nhỏ trực tiếp trên trình duyệt. Ban đầu, tôi xin bắt đầu với thư viện Numpy của Python. Đây là một thư viện quan trọng, được sử dụng rất nhiều cho việc xử lý các mảng dữ liệu nhiều chiều. Trong đây tôi cũng nhắc lại nhiều vấn đề của Đại Số Tuyến Tính thường được sử dụng trong Machine Learning.</p>
+
+<p>Hiện tại, tôi đã xây dựng được những bài học đầu tiên và sẽ tiếp tục thêm các bài trong thời gian tới. Rất hy vọng các bạn có thể vào học thử và đánh giá nội dung cũng như trang web. Tôi hy vọng trang web ngày một hoàn thiện và giúp đỡ được nhiều sinh viên, kỹ sư Việt Nam khác.</p>
+
+<p>FundaML.com cũng nằm trong dự án viết <a href="https://machinelearningcoban.com/ebook/">ebook Machine Learning cơ bản</a> của tôi.</p>
+
+<p>Một phần kinh phí trong dự án đã được dùng để xây dựng và duy trì trang web mới này.</p>
+
+<p>Tôi xin chân thành cảm ơn Huy Hoàng, Linh Nguyễn (Đại học Waterloo - Canada) đã nhiệt tình giúp đỡ xây dựng FundaML.com để nó được ra mắt ngày hôm nay.</p>
+
+<p>Chúc các bạn cuối tuần vui vẻ.</p>
+:ET

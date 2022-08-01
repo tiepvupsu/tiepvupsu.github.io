@@ -1,0 +1,650 @@
+I"A <p>Bạn sẽ hiểu rõ hơn nếu đã đọc các bài:</p>
+
+<ul>
+  <li>
+    <p><a href="https://machinelearningcoban.com/general/2017/02/06/featureengineering/">Bài 11: Feature Engineering</a></p>
+  </li>
+  <li>
+    <p><a href="https://machinelearningcoban.com/2017/02/11/binaryclassifiers/">Bài 12: Binary Classifiers</a></p>
+  </li>
+  <li>
+    <p><a href="https://machinelearningcoban.com/2017/02/17/softmax/">Bài 13: Softmax Regression</a></p>
+  </li>
+  <li>
+    <p><a href="https://machinelearningcoban.com/2017/04/13/softmarginsmv/">Bài 20: Soft Margin SVM</a></p>
+  </li>
+</ul>
+
+<p><strong>Trong trang này:</strong>
+<!-- MarkdownTOC --></p>
+
+<ul>
+  <li><a href="#-gioi-thieu">1. Giới thiệu</a>
+    <ul>
+      <li><a href="#tu-binary-classification-toi-multi-class-classification">1.1.Từ Binary classification tới multi-class classification</a></li>
+      <li><a href="#-mo-hinh-end-to-end">1.2. Mô hình end-to-end</a></li>
+      <li><a href="#-bo-co-so-du-lieu-cifar">1.3. Bộ cơ sở dữ liệu CIFAR10</a></li>
+      <li><a href="#-image-data-preprocessing">1.4. Image data preprocessing</a></li>
+      <li><a href="#-bias-trick">1.5. Bias trick</a></li>
+    </ul>
+  </li>
+  <li><a href="#-xay-dung-ham-mat-mat-cho-multi-class-support-vector-machine">2. Xây dựng hàm mất mát cho Multi-class Support Vector Machine</a>
+    <ul>
+      <li><a href="#-nhac-lai-softmax-regression">2.1. Nhắc lại Softmax Regression.</a></li>
+      <li><a href="#-hinge-losss-tong-quat-cho-multi-class-svm">2.3. Hinge losss tổng quát cho Multi-class SVM</a></li>
+      <li><a href="#-regularization">2.4. Regularization</a></li>
+      <li><a href="#-chon-gia-tri-\\\delta\\">2.5. Chọn giá trị \(\Delta\)</a></li>
+      <li><a href="#-soft-margin-svm-la-mot-truong-hop-dac-biet-cua-multi-class-svm">2.6. Soft Margin SVM là một trường hợp đặc biệt của Multi-class SVM</a></li>
+    </ul>
+  </li>
+  <li><a href="#-tinh-toan-ham-mat-mat-va-dao-ham-cua-no">3. Tinh toán hàm mất mát và đạo hàm của nó</a>
+    <ul>
+      <li><a href="#-tinh-ham-mat-mat-va-dao-ham-cua-no-bang-cach-naive">3.1. Tính hàm mất mát và đạo hàm của nó bằng cách <em>naive</em></a></li>
+      <li><a href="#-tinh-ham-mat-mat-va-dao-ham-cua-no-bang-cach-vectorized">3.2. Tính hàm mất mát và đạo hàm của nó bằng cách <em>vectorized</em></a></li>
+      <li><a href="#-gradient-descent-cho-multi-class-svm">3.3. Gradient Descent cho Multi-class SVM</a></li>
+      <li><a href="#-minh-hoa-nghiem-tim-duoc">3.4. Minh họa nghiệm tìm được</a></li>
+    </ul>
+  </li>
+  <li><a href="#-thao-luan">4. Thảo luận</a></li>
+  <li><a href="#-tai-lieu-tham-khao">5. Tài liệu tham khảo</a></li>
+</ul>
+
+<!-- /MarkdownTOC -->
+
+<p><a name="-gioi-thieu"></a></p>
+
+<h2 id="1-giới-thiệu">1. Giới thiệu</h2>
+
+<p><a name="tu-binary-classification-toi-multi-class-classification"></a></p>
+
+<h3 id="11từ-binary-classification-tới-multi-class-classification">1.1.Từ Binary classification tới multi-class classification</h3>
+
+<p>Các phương pháp Support Vector Machine đã đề cập (Hard Margin, Soft Margin, Kernel) đều được xây dựng nhằm giải quyết bài toán <a href="/2017/02/11/binaryclassifiers/">Binary Classification</a>, tức bài toán phân lớp với chỉ hai classes. Việc này cũng tương tự như <a href="/2017/01/21/perceptron/">Percetron Learning Algorithm</a> hay <a href="/2017/01/27/logisticregression/">Logistic Regression</a> vậy. Các mô hình làm việc với bài toán có 2 classes còn được gọi là Binary classifiers. Một cách tự nhiên để mở rộng các mô hình này áp dụng cho các bài toán multi-class classification, tức có nhiều classes dữ liệu khác nhau, là <a href="/2017/02/11/binaryclassifiers/#-binary-classifiers-cho-multi-class-classification-problems">sử dụng nhiều binary classifiers và các kỹ thuật như one-vs-one hoặc one-vs-rest</a>. Cách làm này có những hạn chế như đã trình bày trong bài <a href="/2017/02/17/softmax/">Softmax Regression</a>.</p>
+
+<p><a name="-mo-hinh-end-to-end"></a></p>
+
+<h3 id="12-mô-hình-end-to-end">1.2. Mô hình end-to-end</h3>
+
+<p>Softmax Regression là mở rộng của Logistic Regression cho bài toán multi-class classification, có thể được coi là một layer của Neural Networks. Nhờ đó, Softmax Regression thường đươc sử dụng rất nhiều trong các bộ phân lớp hiện nay. Các bộ phân lớp cho kết quả cao nhất thường là một Neural Network với rất nhiều layers và layer cuối là một softmax regression, đặc biệt là các Convolutional Neural Networks. Các layer trước thường là kết hợp của các Convolutional layers và các nonlinear activation functions và pooling, các bạn tạm thời chưa cần quan tâm đến các layers phía trước này, tôi sẽ giới thiệu khi có dịp. Có thể coi các layer trước layer cuối là một công cụ giúp trích chọn đặc trưng của dữ liệu (Feature extraction), layer cuối là softmax regression, là một bộ phân lớp tuyến tính đơn giản nhưng rất hiệu quả. Bằng cách này, ta có thể coi là nhiều one-vs-rest classifers được huấn luyện cùng nhau, hỗ trợ lẫn nhau, vì vậy, một cách tự nhiên, sẽ có thể tốt hơn là huấn luyện từng classifier riêng lẻ.</p>
+
+<p>Sự hiệu quả của Softmax Regression nói riêng và Convolutional Neural Networks nói chung là cả <em>bộ trích chọn đặc trưng</em> (feature extractor) và <em>bộ phân lớp</em> (classifier) được <em>huấn luyện</em> đồng thời. Điều này nghĩa là hai <em>bộ phận</em> này bổ trợ cho nhau trong quá trình huấn luyện. Classifier giúp tìm ra các hệ số hợp lý phù hợp với feature vector tìm được, ngược lại, feature extractor lại điều chỉnh các hệ số của các convolutional layer sao cho feature thu được là tuyến tính, phù hợp với classifier ở layer cuối cùng.</p>
+
+<p>Tôi viết đến đây không phải là để giới thiệu về Softmax Regression, mà là đang nói chung đến các mô hình phân lớp <em>hiện đại</em>. Đặc điểm chung của chúng là feature extractor và classifier được huấn luyện một cách đồng thời. Những mô hình như thế này còn được gọi là <em>end-to-end</em>. Cùng xem lại mô hình chung cho các bài toán Machine Learning mà tôi đã đề cập trong Bài 11:</p>
+
+<hr />
+
+<div class="imgcap">
+<img src="\assets\FeatureEngineering\ML_models.png" align="center" width="800" />
+<div class="thecap">Hình 1: Mô hình chung cho các bài toán Machine Learning.</div>
+</div>
+<hr />
+
+<p>Trong Hình 1, phần TRAINING PHASE, chúng ta có thể thấy rằng có hai khối chính là <em>Feature Extraction</em> và <em>Classification/Regression/Clustering…</em> Các phương pháp <em>truyền thống</em> thường xây dựng hai khối này qua các bước riêng rẽ. Phần Feature Extraction với dữ liệu ảnh có thể dùng các feature descriptor như <a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_feature2d/py_sift_intro/py_sift_intro.html">SIFT</a>, <a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_feature2d/py_surf_intro/py_surf_intro.html">SURF</a>, <a href="http://www.learnopencv.com/histogram-of-oriented-gradients/">HOG</a>; với dữ liệu văn bản thì có thể là <a href="2017/02/06/featureengineering/#bag-of-words">Bag of Words</a> hoặc <a href="http://www.tfidf.com/">TF-IDF</a>. Nếu là các bài toán classification, phần còn lại có thể là SVM thông thường hay các bộ phân lớp <em>truyền thống</em> khác.</p>
+
+<p>Với sự phát triển của Deep Learning trong những năm gần đây, người ta cho rằng các hệ thống <em>end-to-end</em> (từ đầu đến cuối) mang lại kết quả tốt hơn nhờ và việc các hai khối phía trên được huấn luyện cùng nhau, bổ trợ lẫn nhau. Thực tế cho thấy, các phương pháp <em>state-of-the-art</em> thường là các mô hình <em>end-to-end</em>.</p>
+
+<p>Các phương pháp Support Vector Machine được chứng minh là tốt hơn Logistic Regression vì chúng có quan tâm đến việc tạo <em>margin</em> lớn nhất giữa các classes. Câu hỏi đặt ra là:</p>
+
+<p><strong>Liệu có cách nào giúp kết hợp SVM với Neural Networks để tạo ra một bộ phân lớp tốt với bài toán multi-class classification? Hơn nữa, toàn bộ hệ thống có thể được huấn luyện theo kiểu <em>end-to-end</em>?</strong></p>
+
+<p>Câu trả lời sẽ được tìm thấy trong bài viết này, bằng một phương pháp được gọi là <em>Multi-class Support Vector Machine</em>.</p>
+
+<p>Và để cho bài viết hấp dẫn hơn, tôi xin giới thiệu luôn, ở phần cuối, chúng ta sẽ cùng lập trình từ đầu đến cuối để giải quyết bài toán phân lớp với bộ cơ sở dữ liệu nổi tiếng: CIFAR10.</p>
+
+<p><a name="-bo-co-so-du-lieu-cifar"></a></p>
+
+<h3 id="13-bộ-cơ-sở-dữ-liệu-cifar10">1.3. Bộ cơ sở dữ liệu CIFAR10</h3>
+
+<p>Bộ cơ sở dữ liệu CIFAR10 gồm 51000 ảnh khác nhau thuộc 10 classes: <em>plane, car, bird, cat, deer, dog, frog, horse, ship, và truck</em>. Mỗi bức ảnh có kích thước \(32 \times 32\) pixel. Một vài ví dụ cho mỗi class được cho trong Hình 2 dưới đây. 50000 ảnh được sử dụng cho training, 1000 ảnh còn lại được dùng cho test. Trong số 50000 ảnh training, 1000 ảnh sẽ được lấy ra ngẫu nghiên để làm <a href="/2017/03/04/overfitting/#-validation-1">validation set</a>.</p>
+
+<hr />
+
+<div class="imgcap">
+<img src="\assets\22_multiclasssvm\cifar.png" align="center" width="800" />
+<div class="thecap">Hình 2: Ví dụ về 10 classes trong bộ dữ liệu CIFAR10.</div>
+</div>
+
+<p>Đây là một bộ cơ sở dữ liệu tương đối khó vì ảnh nhỏ và object trong cùng một class cũng biến đổi rất nhiều về màu sắc, hình dáng, kích thước. <a href="http://rodrigob.github.io/are_we_there_yet/build/classification_datasets_results.html#43494641522d3130">Thuật toán tốt nhất hiện nay cho bài toán này</a> đã đạt được độ chính xác trên 90%, sử dụng một Convolutional Neural Network nhiều lớp kết hợp với Softmax regression ở layer cuối cùng. Trong bài này, chúng ta sẽ sử dụng một mô hình neural network đơn giản không có hidden layer nào để giải quyết, kết quả đạt được là khoảng 40%, nhưng cũng là đã rất ấn tượng. Layer cuối là một layer Multi-class SVM. Tôi sẽ hướng dẫn các bạn lập trình cho mô hình này <em>từ đầu đến cuối</em> mà không sử dụng một thư viện đặc biệt nào ngoài numpy.</p>
+
+<p>Bài toán này cũng như nội dung chính của bài viết được lấy từ Lecture notes: <a href="http://cs231n.github.io/linear-classify/">Linear Classifier II</a> và <a href="http://cs231n.github.io/assignments2016/assignment1/">Assignment #1</a> trong khoá học <a href="http://cs231n.github.io/"><em>CS231n: Convolutional Neural Networks for Visual Recognition</em></a> kỳ Winter 2016 của Stanford.</p>
+
+<p>Trước khi đi vào mục xây dựng hàm mất mát cho Multi-class SVM, tôi muốn nhắc lại một chút về một chút <em>feature engineering</em> cho ảnh trong CIFAR-10 và <strong>bias trick</strong> nói chung trong Neural Networks.</p>
+
+<p><a name="-image-data-preprocessing"></a></p>
+
+<h3 id="14-image-data-preprocessing">1.4. Image data preprocessing</h3>
+
+<p>Để cho mọi thứ được đơn giản và có được một mô hình hoàn chỉnh, chúng ta sẽ sử dụng phương pháp <em>feature engineering</em> đơn giản nhất: lấy trực tiếp tất cả các pixel trong mỗi ảnh và thêm một chút normalization.</p>
+
+<ul>
+  <li>
+    <p>Mỗi ảnh của CIFAR-10 đã có kích thước giống nhau \(32 \times 32\) pixel, vì vậy việc đầu tiên chúng ta cần làm là <em>kéo dài</em> mỗi trong ba channels Red, Green, Blue của bức ảnh ra thành một vector có kích thước là \(3 \times 32 \times 32 = 3072\).</p>
+  </li>
+  <li>
+    <p>Vì mỗi pixel có giá trị là một số tự nhiên từ 0 đến 255 nên chúng ta cần một chút <a href="/general/2017/02/06/featureengineering/#feature-scaling-and-normalization">chuẩn hóa dữ liệu</a>. Trong Machine Learning, một cách đơn giản nhất để chuẩn hóa dữ liệu là <strong>center data</strong>, tức làm cho mỗi feature có trung bình cộng bằng 0. Một cách đơn giản để làm việc này là ta tính trung bình cộng của tất cả các ảnh trong tập training để được <em>ảnh trung bình</em>, sau đó trừ từ tất cả các ảnh đi <em>ảnh trung bình</em> này. Tương tự, ta cũng dùng <em>ảnh trung bình</em> này để chuẩn hoá dữ liệu trong <em>validation set</em> và <em>test set</em>.</p>
+  </li>
+</ul>
+
+<p><a name="-bias-trick"></a></p>
+
+<h3 id="15-bias-trick">1.5. Bias trick</h3>
+
+<p>Thông thường, với một ma trận hệ số \(\mathbf{W} \in \mathbb{R}^{d\times C}\), một đầu vào \(\mathbf{x} \in \mathbb{R}^d\) và vector bias \(\mathbf{b} \in \mathbb{R}^C\), chúng ta có thể tính được đầu ra của layer này là:
+\[
+f(\mathbf{x}, \mathbf{W}, \mathbf{b}) = \mathbf{W}^T\mathbf{x} + \mathbf{b}
+\]</p>
+
+<p>Để cho biểu thức trên đơn giản hơn, ta có thể thêm một phần từ bằng 1 vào cuối của \(\mathbf{x}\) và <em>ghép</em> vector \(\mathbf{b}\) vào ma trận \(\mathbf{W}\) như ví dụ dưới đây:</p>
+
+<hr />
+
+<div class="imgcap">
+<img src="\assets\22_multiclasssvm\biastrick.png" align="center" width="800" />
+<div class="thecap">Hình 3: Bias trick.</div>
+</div>
+<hr />
+
+<p>Bây giờ thì ta chỉ còn 1 biến dữ liệu là \(\mathbf{W}\) thay vì hai biến dữ liệu như trước. Từ giờ trở đi, khi viết \(\mathbf{W}\) và \(\mathbf{x}\), chúng ta ngầm hiểu là biến mới và dữ liệu mới như ở phần bên phải của Hình 3. 
+<a name="-xay-dung-ham-mat-mat-cho-multi-class-support-vector-machine"></a></p>
+
+<h2 id="2-xây-dựng-hàm-mất-mát-cho-multi-class-support-vector-machine">2. Xây dựng hàm mất mát cho Multi-class Support Vector Machine</h2>
+<p>Chúng ta cùng quay lại một chút với ý tưởng của Softmax Regression với hàm mất mát Cross-entropy. Sau đó, chúng ta sẽ làm quen với Multi-class SVM với hàm mất mát hinge loss mở rộng.</p>
+
+<p><a name="-nhac-lai-softmax-regression"></a></p>
+
+<h3 id="21-nhắc-lại-softmax-regression">2.1. Nhắc lại Softmax Regression.</h3>
+<p>Chúng ta cùng xem lại <a href="/2017/02/17/softmax/#-softmax-function">Softmax layer đã được trình bày trong Bài 13</a>.</p>
+<hr />
+
+<div class="imgcap">
+<img src="\assets\13_softmax\softmax_nn.png" align="center" width="800" />
+<div class="thecap">Hình 4: Mô hình Softmax Regression dưới dạng Neural network.</div>
+</div>
+<hr />
+
+<p>Trong Hình 4 ở trên, dữ liệu trong lớp màu xanh lục được coi như <em>feature vector</em> của dữ liệu. Với dữ liệu CIFAR-10, nếu ta coi mỗi feature là giá trị của từng pixel trong ảnh, tổng số chiều của <em>feature vector</em> cho mỗi bức ảnh là \(32\times 32 \times 3 +1 = 3073\), với 3 là số channels trong bức ảnh (Red, Green, Blue).</p>
+
+<p>Qua ma trận hệ số \(\mathbf{W}\), dữ liệu ban đầu trở thành \(\mathbf{z} = \mathbf{W}^T\mathbf{x}\).</p>
+
+<p>Lúc này, ứng với mỗi một trong \(C\) classes, chúng ta nhận được một giá trị tương ứng \(z_i\) ứng với class thứ \(i\). Giá trị \(z_i\) này còn được gọi là <em>score</em> của dữ liệu \(\mathbf{x}\) ứng với class thứ \(i\).</p>
+
+<p>Ý tưởng chính trong Sofftmax Regression là đi tìm ma trận hệ số \(\mathbf{W}\), mỗi cột của ma trận này ứng với một class, sao cho <em>score vector</em> \(\mathbf{z}\) đạt giá trị lớn nhất tại phần tử tương ứng với class chính xác của nó. Sau khi mô hình đã được <em>trained</em>, <em>nhãn</em> của một điểm dữ liệu mới được tính là vị trí của thành phần score có giá trị lớn nhất trong <em>score vector</em>. Xem ví dụ trong Hình 5 dưới đây:</p>
+
+<hr />
+
+<div class="imgcap">
+<img src="\assets\22_multiclasssvm\scores.png" align="center" width="800" />
+<div class="thecap">Hình 5: Ví dụ về cách tính score vector. Khi test, nhãn của dữ liệu được xác định dựa trên class có score cao nhất.</div>
+</div>
+<hr />
+
+<p>Để huấn luyện trên tập các cặp (<em>dữ liệu</em>, <em>nhãn</em>), Softmax Regression sử dụng hàm softmax để đưa <em>score vector</em> về dạng phân phối xác suất có các phần tử là dương và có tổng bằng 1. Sau đó dùng hàm cross entropy để <em>ép</em> vector xác suất này gần với vector xác suất <em>thật sự</em> của dữ liệu - tức one-hot vector mà chỉ có đúng 1 phần tử bằng 1 tại class tương ứng, các phần tử còn lại bằng 0.</p>
+
+<p><a name="-hinge-losss-tong-quat-cho-multi-class-svm"></a></p>
+
+<h3 id="23-hinge-losss-tổng-quát-cho-multi-class-svm">2.3. Hinge losss tổng quát cho Multi-class SVM</h3>
+
+<p>Với Multi-class SVM, trong khi tesst, class của một input cũng được xác định bởi thành phần có giá trị lớn nhất trong score vector. Điều này giống với Softmax Regression.</p>
+
+<p>Softmax Regression sử dụng cross-entropy để <em>ép</em> hai vector xác suất bằng nhau, tức ép phần tử tương ứng với <em>correct class</em> trong vector xác suất gần với 1, đồng thời, các phần tử còn lại trong vector đó gần với 0. Nói cách khác, cách làm này khiến cho phần tử tương ứng với <em>correct class</em> càng lớn hơn các phần tử còn lại càng tốt. Trong khi đó, Multi-class SVM sử dụng một chiến thuật khác cho mục đích tương tự dựa trên <em>score vector</em>. Điểm khác biệt là Multi-class SVM xây dựng hàm mất mát dựa trên định nghĩa của <em>biên an toàn</em>, giống như trong Hard/Soft Margin vậy. Multi-class SVM <em>muốn</em> thành phần ứng với <em>correct class</em> của <em>score vector</em> lớn hơn các phần tử khác, không những thế, nó còn lớn hơn một đại lượng \(\Delta &gt; 0\) gọi là <em>biên an toàn</em>. Hãy xem Hình 6 dưới đây:</p>
+
+<hr />
+
+<div class="imgcap">
+<img src="\assets\22_multiclasssvm\hinge.png" align="center" width="800" />
+<div class="thecap" align="justify">Hình 6: Mô tả hinge loss cho Multi-class Support Vector Machine. Multi-class SVM <em> muốn </em> score của <em> correct class </em>, được minh hoạ bởi điểm màu lam, cao hơn các scores khác, minh hoạ bởi các điểm màu lục, một khoảng cách an toàn \(\Delta\) là đoạn màu đỏ. Những scores khác nằm trong vùng an toàn (phía trái của điểm x màu đỏ) sẽ không gây ra mất mát gì, những scores nằm trong hoặc bên phải vùng màu đỏ đã <em>vi phạm</em> quy tắc và cần được <em>xử phạt</em>. </div>
+</div>
+<hr />
+
+<p>Với cách xác định biên như trên, Multi-class SVM sẽ <em>cho qua</em> những scores nằm về phía trước vùng màu đỏ. Những điểm có scores nằm phía phải của ngưỡng (chữ x màu đỏ) sẽ bị <em>xử phạt</em>, và càng vi phạm nhiều sẽ càng bị xử lý ở mức cao.</p>
+
+<p>Để mô tả các mức vi phạm này dưới dạng toán học, trước hết ta giả sử rằng các thành phần của score vector được đánh số thứ tự từ 1. Các classes cũng được đánh số thứ tự từ 1. Giả sử rằng điểm dữ liệu \(\mathbf{x}\) đang xét thuộc class \(y\) và score vector của nó là vector \(\mathbf{z}\). Thế thì score của <em>correct class</em> là \(z_y\), scores của các classes khác là các \(z_i, i \neq y\). Xét ví dụ như trong Hình 6 với hai score \(z_i\) trong vùng an toàn và \(z_j\) trong vùng vi phạm.</p>
+
+<ul>
+  <li>
+    <p>Với mỗi score \(z_i\) trong vùng an toàn, <em>loss</em> bằng 0.</p>
+  </li>
+  <li>
+    <p>Với mỗi socre \(z_j\) vượt quá điểm an toàn (điểm x đỏ), <em>loss</em> do nó gây ra được tính bằng lượng vượt quá so với điểm x đỏ, đại lượng này có thể tính được là: \(z_j - (z_y - \Delta) = \Delta - z_y + z_j\).</p>
+  </li>
+</ul>
+
+<p>Tóm lại, với một score \(z_j, j \neq y\), <em>loss</em> do nó gây ra có thể được viết gọn thành:
+\[
+\max(0, \Delta - z_y + z_j) = \max(0, \Delta - \mathbf{w}_y^T\mathbf{x} + \mathbf{w}_j^T\mathbf{x}) ~~~~~ (1)
+\]
+trong đó \(\mathbf{w}_j\) là <em>cột</em> thứ \(j\) của ma trận hệ số \(\mathbf{W}\).</p>
+
+<p>Như vậy, với một điểm dữ liệu \(\mathbf{x}_n, n = 1, 2, \dots, N\), tổng cộng <em>loss</em> do nó gây ra là:
+\[
+\mathcal{L}_n = \sum_{j \neq y_n} \max(0, \Delta  - z_{y_n}^n + z_j^n)
+\]</p>
+
+<p>trong đó \(\mathbf{z}^n = \mathbf{w}^T\mathbf{x}_n = [z^n_1, z^n_2, \dots, z^n_C]^T \in \mathbb{R}^{C \times 1}\) là scores tương ứng với điểm dữ liệu \(\mathbf{x}_n\); \(y_n\) là <em>correct class</em> của điểm dữ liệu đó.</p>
+
+<p>Với toàn bộ các điểm dữ liệu \(\mathbf{X} = [\mathbf{x}_1, \mathbf{x}_2, \dots, \mathbf{x}_N ]\), <em>loss</em> tổng cộng là:
+\[
+\mathcal{L}(\mathbf{X}, \mathbf{y}, \mathbf{W}) = \frac{1}{N}\sum_{n=1}^N \sum_{j \neq y_n} \max(0, \Delta - z_{y_n}^n + z_j^n) ~~~~~ (2)
+\]
+với \(\mathbf{y} = [y_1, y_2, \dots, y_N]\) là vector chứa <em>corect class</em> của toàn bộ các điểm dữ liệu trong <em>training set</em>. Hệ số \(\frac{1}{N}\) tính trung bình của <em>loss</em> để tránh việc biểu thức này quá lớn gây tràn số máy tính.</p>
+
+<p>Có một <em>bug</em> trong lỗi này, chúng ta cùng phân tích tiếp.</p>
+
+<p><a name="-regularization"></a></p>
+
+<h3 id="24-regularization">2.4. Regularization</h3>
+<p>Điều gì sẽ xảy ra nếu nghiệm tìm được \(\mathbf{w}\) là <em>hoàn hảo</em>, tức không có score nào <em>vi phạm</em> và biểu thức \((2)\) đạt giá trị bằng 0? Nói cách khác: 
+\[
+ \Delta - z_{y_n}^n + z_j^n =  \leq 0 \Leftrightarrow \Delta \leq \mathbf{w}_{y_n}^T \mathbf{x}_n - \mathbf{w}_j^T\mathbf{x}_n~\forall n = 1, 2, \dots, N; j = 1, 2, \dots, C; j \neq y_n
+\]</p>
+
+<p>Điều này có nghĩa là \(k\mathbf{W}\) cũng là một nghiệm của bài toán với \(k &gt; 1\) bất kỳ. Việc bài toán có vô số nghiệm và có những nghiệm có những phần tử tiến tới vô cùng khiến cho bài toán rất <em>unstable</em> khi giải. Một phương pháp quen thuộc để tránh hiện tượng này là cộng thêm số hạng <a href="/2017/03/04/overfitting/#-regularization"><em>regularization</em></a> vào hàm mất mát. Số hạng này giúp <em>ngăn chặn</em> việc các hệ số của \(\mathbf{W}\) trở nên quá lớn. Và để cho hàm mất mát vẫn có đạo hàm đơn giản, chúng ta lại sử dụng \(l_2\) regularization:</p>
+
+<p>\[
+\mathcal{L}(\mathbf{X}, \mathbf{y}, \mathbf{W}) = \underbrace{\frac{1}{N}\sum_{n=1}^N \sum_{j \neq y_n} \max(0, \Delta - \mathbf{w}_{y_n}^T \mathbf{x}_n + \mathbf{w}_j^T\mathbf{x}_n)}_{\text{data loss }} + \underbrace{\frac{\lambda}{2} ||\mathbf{W}||_F^2}_{\text{regularization loss}}~~~~~ (3)
+\]
+với \(||\bullet||_F\) là <a href="/math/#chuan-cua-ma-tran">Frobenius norm</a>, và \(\lambda\) là một giá trị dương giúp cân bằng giữa <em>data loss</em> và <em>regularization loss</em>, thường được chọn bằng <a href="/2017/03/04/overfitting/#-cross-validation">cross-validation</a>.</p>
+
+<p><a name="-chon-gia-tri-\\\delta\\"></a></p>
+
+<h3 id="25-chọn-giá-trị-delta">2.5. Chọn giá trị \(\Delta\)</h3>
+
+<p>Có hai <em>hyperparameter</em> trong hàm mất mát \((3)\) là \(\Delta\) và \(\lambda\), câu hỏi đặt ra là làm thế nào để chọn ra cặp giá trị hợp lý nhất cho từng bài toán. Liệu chúng ta có cần làm <a href="/2017/03/04/overfitting/#-cross-validation">cross-validation</a> cho từng giá trị không?</p>
+
+<p>Trong thực tế, người ta nhận thấy rằng \(\Delta\) có thể được chọn bằng 1 mà không ảnh hưởng nhiều tới chất lượng của nghiệm. Thực tế cho thấy cả hai tham số \(\Delta\) và \(\lambda\) đều giúp cân bằng giữa <em>data loss</em> và <em>regularization loss</em>. Thực vậy, độ lớn của các hệ số trong \(\mathbf{W}\) có tác động trực tiếp lên các <em>score vectors</em>, và vì vậy ảnh hưởng tới sự khác nhau giữa chúng. Khi chúng ta giảm các hệ số của \(\mathbf{W}\), sự khác nhau giữa các scores cũng giảm một tỉ lệ tương tự; và khi ta tăng các hệ số của \(\mathbf{W}\), sự khác nhau giữa các scores cũng tăng lên. Bởi vậy, giá trị chính xác \(\Delta\) của <em>margin</em> giữa các scores trở nên không quan trọng vì chúng ta có thể tăng hoặc giảm \(\mathbf{W}\) một cách tùy ý. Việc quan trọng hơn là hạn chế việc \(\mathbf{W}\) trở nên quá lớn. Việc này đã được điều chỉnh bởi tham số \(\lambda\).</p>
+
+<p>Cuối cùng, chúng ta sẽ đi tối ưu hàm mất mát sau đây cho Multi-class SVM:</p>
+
+<p>\[
+\mathcal{L}(\mathbf{X}, \mathbf{y}, \mathbf{W}) = \frac{1}{N}\sum_{n=1}^N \sum_{j \neq y_n} \max(0, 1 - \mathbf{w}_{y_n}^T \mathbf{x}_n + \mathbf{w}_j^T\mathbf{x}_n) + \frac{\lambda}{2} ||\mathbf{W}||_F^2~~~~~ (4)
+\]</p>
+
+<p>Một lần nữa, chúng ta có thể dùng <a href="/2017/01/12/gradientdescent/">Gradient Descent</a> để tối ưu bài toán tối ưu không ràng buộc này. Chúng ta sẽ đi sâu vào việc tính đạo hàm của hàm mất mát <em>một cách hiệu quả</em> ở mục 3.</p>
+
+<p>Trước hết, có một nhận xét thú vị:</p>
+
+<p><a name="-soft-margin-svm-la-mot-truong-hop-dac-biet-cua-multi-class-svm"></a></p>
+
+<h3 id="26-soft-margin-svm-là-một-trường-hợp-đặc-biệt-của-multi-class-svm">2.6. Soft Margin SVM là một trường hợp đặc biệt của Multi-class SVM</h3>
+
+<p>Phát biểu này có vẻ hiển nhiên vì bài toán phân lớp với hai classes là một trường hợp đặc biệt của bài toán phân lớp với nhiều classes! Nhưng điều tôi muốn nói đến là cách xây dựng hàm mất mát. Điều này có thể được nhận ra bằng cách xét từng điểm dữ liệu.</p>
+
+<p>Trong \((4)\), nếu \(C = 2\) (số classes bằng 2), hàm mất mát tại mỗi điểm dữ liệu trở thành (tạm bỏ qua <em>regularization loss</em>):
+\[
+\mathcal{L}_n = \sum_{j \neq y_n} \max(0, 1 - \mathbf{w}_{y_n}^T \mathbf{x}_n + \mathbf{w}_j^T\mathbf{x}_n)
+\]
+Xét hai trường hợp:</p>
+
+<ul>
+  <li>
+    <p>\(y_n = 1 \Rightarrow \mathcal{L}_n = \max(0, 1 - \mathbf{w}_1^T\mathbf{x}_n + \mathbf{w}_2^T\mathbf{x}_n) = \max(0, 1 - (1)(\mathbf{w}_1 - \mathbf{w}_2)^T\mathbf{x})\)</p>
+  </li>
+  <li>
+    <p>\(y_n = 2 \Rightarrow \mathcal{L}_n = \max(0, 1 - \mathbf{w}_2^T\mathbf{x}_n + \mathbf{w}_1^T\mathbf{x}_n) = \max(0, 1 - (-1)(\mathbf{w}_1 - \mathbf{w}_2)^T\mathbf{x})\)</p>
+  </li>
+</ul>
+
+<p>Nếu ta thay \(y_n = -1\) cho dữ liệu thuộc class 2, và đặt \(\mathbf{\bar{w}} = \mathbf{w}_1 - \mathbf{w}_2\), hai trường hợp trên có thể được viết gọn thành: 
+\[
+\mathcal{L}_n = \max(0, 1 - y_n\mathbf{\bar{w}}^T\mathbf{x}_n)
+\]
+tức chính là Hinge loss cho Soft Margin SVM.</p>
+
+<p><a name="-tinh-toan-ham-mat-mat-va-dao-ham-cua-no"></a></p>
+
+<h2 id="3-tinh-toán-hàm-mất-mát-và-đạo-hàm-của-nó">3. Tinh toán hàm mất mát và đạo hàm của nó</h2>
+<p>Để tối ưu hàm mất mát, chúng ta sử dụng phương pháp Stochastic Gradient Method. Điều này có nghĩa là chúng ta cần tính gradient tại mỗi vòng lặp. Đồng thời, <em>loss</em> sau mỗi vòng lặp cũng cần được tính để kiểm tra liệu thuật toán có hoạt động như ý muốn hay không.</p>
+
+<p>Việc tính toán <em>loss</em> và <em>gradient</em> này không những cần phải chính xác mà còn cần được thực hiện càng nhanh càng tốt. Trong khi việc tính <em>loss</em> thường dễ thực hiện, việc tính <em>gradient</em> cần phải được kiểm tra kỹ càng hơn.</p>
+
+<p>Để đảm bảo rằng <em>loss</em> và <em>gradient</em> được tính một cách chính xác và nhanh, chúng ta sẽ làm từng bước một. Bước thứ nhất là đảm bảo rằng các tính toán là chính xác, dù cách tính có rất chậm. Bước thứ hai là phải đảm bảo có cách tính hiệu quả để thuật toán chạy nhanh hơn. Hai bước này cần được thực hiện trên một lượng dữ liệu nhỏ để đảm bảo chúng được tính chính xác trước khi áp dụng thuật toán vào dữ liệu thật, thường có số điểm dữ liệu lớn và mỗi điểm dữ liệu cũng có số chiều lớn.</p>
+
+<p>Hai mục nhỏ tiếp theo sẽ mô tả hai bước đã nêu ở trên.</p>
+
+<p><a name="-tinh-ham-mat-mat-va-dao-ham-cua-no-bang-cach-naive"></a></p>
+
+<h3 id="31-tính-hàm-mất-mát-và-đạo-hàm-của-nó-bằng-cách-naive">3.1. Tính hàm mất mát và đạo hàm của nó bằng cách <em>naive</em></h3>
+
+<p><em>Naive</em> dịch tạm ra tiếng Việt có nghĩa là <em>ngây thơ</em>, hoặc <em>ngây ngô</em>. Trong Machine Learning, từ này cũng hay được sử dụng với ý chỉ sự đơn giản.</p>
+
+<p>Dưới đây là cách tính đơn giản <em>loss</em> và <em>gradient</em> của hàm mất mát trong \((4)\). Chú ý thành phần <em>regularization</em>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">shuffle</span>
+
+<span class="c1"># naive way to calculate loss and grad
+</span><span class="k">def</span> <span class="nf">svm_loss_naive</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">reg</span><span class="p">):</span>
+    <span class="n">d</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="n">W</span><span class="p">.</span><span class="n">shape</span> 
+    <span class="n">_</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="n">X</span><span class="p">.</span><span class="n">shape</span> 
+    
+    <span class="c1">## naive loss and grad
+</span>    <span class="n">loss</span> <span class="o">=</span> <span class="mi">0</span> 
+    <span class="n">dW</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">W</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="n">xn</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="n">n</span><span class="p">]</span>
+        <span class="n">score</span> <span class="o">=</span> <span class="n">W</span><span class="p">.</span><span class="n">T</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">xn</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">C</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">j</span> <span class="o">==</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">]:</span>
+                <span class="k">continue</span> 
+            <span class="n">margin</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">score</span><span class="p">[</span><span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">]]</span> <span class="o">+</span> <span class="n">score</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">margin</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">loss</span> <span class="o">+=</span> <span class="n">margin</span> 
+                <span class="n">dW</span><span class="p">[:,</span> <span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="n">xn</span> 
+                <span class="n">dW</span><span class="p">[:,</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">]]</span> <span class="o">-=</span> <span class="n">xn</span>
+    
+    <span class="n">loss</span> <span class="o">/=</span> <span class="n">N</span> 
+    <span class="n">loss</span> <span class="o">+=</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">reg</span><span class="o">*</span><span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">W</span> <span class="o">*</span> <span class="n">W</span><span class="p">)</span> <span class="c1"># regularization
+</span>    
+    <span class="n">dW</span> <span class="o">/=</span> <span class="n">N</span> 
+    <span class="n">dW</span> <span class="o">+=</span> <span class="n">reg</span><span class="o">*</span><span class="n">W</span> <span class="c1"># gradient off regularization 
+</span>    <span class="k">return</span> <span class="n">loss</span><span class="p">,</span> <span class="n">dW</span>
+    
+<span class="c1"># random, small data
+</span><span class="n">N</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span>
+<span class="n">reg</span> <span class="o">=</span> <span class="p">.</span><span class="mi">1</span> 
+<span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="n">N</span><span class="p">)</span>
+
+<span class="c1"># sanity check
+</span><span class="k">print</span> <span class="s">'loss without regularization:'</span><span class="p">,</span> <span class="n">svm_loss_naive</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">print</span> <span class="s">'loss with regularization:'</span><span class="n">svm_loss_naive</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">.</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>loss without regularization: 4.68441457903
+loss with regularization: 6.25136675351
+</code></pre></div></div>
+
+<p>Cách tính với hai vòng for lồng nhau như trên mô tả lại chính xác <em>loss</em> trong \((4)\) nên sai sót, nếu có, ở đây có thể được kiểm tra và sửa lại dễ dàng. Việc kiểm tra ở cuối cho cái nhìn ban đầu về hàm mất mát: dương và không có <em>regularization</em> sẽ có <em>loss</em> tổng cộng nhỏ hơn.</p>
+
+<p>Về cách tính <em>gradient</em> cho phần <em>data loss</em>, mặc dù <a href="/2017/03/12/convexity/#-cac-tinh-chat-co-ban">hàm \(\max\) là <em>convex</em></a> nhưng nó không có đạo hàm tại mọi nơi. Cụ thể:</p>
+
+<p>\[
+\begin{eqnarray}
+\frac{\partial }{\partial \mathbf{w}_{y_n}}\max(0, 1 - \mathbf{w}_{y_n}^T \mathbf{x}_n + \mathbf{w}_j^T\mathbf{x}_n) &amp;=&amp; 
+\left\{
+\begin{matrix}
+0 &amp; \text{if}&amp; 1 - \mathbf{w}_{y_n}^T \mathbf{x}_n + \mathbf{w}_j^T\mathbf{x}_n &lt; 0 \<br />
+-\mathbf{x}_n &amp; \text{if} &amp;1 - \mathbf{w}_{y_n}^T \mathbf{x}_n + \mathbf{w}_j^T\mathbf{x}_n &gt; 0
+\end{matrix}
+\right. &amp;&amp; ~~~~(5)\<br />
+\frac{\partial }{\partial \mathbf{w}_{j}}\max(0, 1 - \mathbf{w}_{y_n}^T \mathbf{x}_n + \mathbf{w}_j^T\mathbf{x}_n) &amp;=&amp; 
+\left\{
+\begin{matrix}
+0 &amp; \text{if}&amp; 1 - \mathbf{w}_{y_n}^T \mathbf{x}_n + \mathbf{w}_j^T\mathbf{x}_n &lt; 0 \<br />
+\mathbf{x}_n &amp; \text{if} &amp;1 - \mathbf{w}_{y_n}^T \mathbf{x}_n + \mathbf{w}_j^T\mathbf{x}_n &gt; 0
+\end{matrix}
+\right. &amp;&amp; ~~~~(6)
+\end{eqnarray}
+\]</p>
+
+<p>Rõ ràng là các đạo hàm này không xác định tại các điểm mà \(1 - \mathbf{w}_{y_n}^T \mathbf{x}_n + \mathbf{w}_j^T\mathbf{x}_n = 0\). Tuy nhiên, khi thực hành, ta có thể giả sử rằng tại 0, các đạo hàm này cũng bằng 0.</p>
+
+<p>Để kiểm tra lại cách tính đạo hàm như trên dựa vào \((5)\) và \((6)\) có chính xác không, chúng ta sẽ làm một bước quen thuộc là so sánh nó với <a href="/2017/01/12/gradientdescent/#kiem-tra-dao-ham"><em>numerical gradient</em></a>. Nếu sự sai khác là nhỏ, nhỏ hơn <code class="language-plaintext highlighter-rouge">1e-7</code> thì ta có thể coi là <em>gradient</em> tính được là chính xác:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">W</span><span class="p">:</span> <span class="n">svm_loss_naive</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">.</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># for checking if calculated grad is correct
+</span><span class="k">def</span> <span class="nf">numerical_grad_general</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+    <span class="n">eps</span> <span class="o">=</span> <span class="mf">1e-6</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">W</span><span class="p">)</span>
+    <span class="c1"># flatening variable -&gt; 1d. Then we need 
+</span>    <span class="c1"># only one for loop
+</span>    <span class="n">W_flattened</span> <span class="o">=</span> <span class="n">W</span><span class="p">.</span><span class="n">flatten</span><span class="p">()</span>
+    <span class="n">g_flattened</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">W_flattened</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">W</span><span class="p">.</span><span class="n">size</span><span class="p">):</span>
+        <span class="n">W_p</span> <span class="o">=</span> <span class="n">W_flattened</span><span class="p">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">W_n</span> <span class="o">=</span> <span class="n">W_flattened</span><span class="p">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">W_p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">eps</span> 
+        <span class="n">W_n</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="n">eps</span> 
+        
+        <span class="c1"># back to shape of W 
+</span>        <span class="n">W_p</span> <span class="o">=</span> <span class="n">W_p</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">W</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+        <span class="n">W_n</span> <span class="o">=</span> <span class="n">W_n</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">W</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+        <span class="n">g_flattened</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">W_p</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">W_n</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">eps</span><span class="p">)</span>
+        
+    <span class="c1"># convert back to original shape
+</span>    <span class="k">return</span> <span class="n">g_flattened</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">W</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span> 
+
+<span class="c1"># compare two ways of computing gradient
+</span><span class="n">g1</span> <span class="o">=</span> <span class="n">svm_loss_naive</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">.</span><span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">g2</span> <span class="o">=</span> <span class="n">numerical_grad_general</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">'gradient difference: %f'</span> <span class="o">%</span><span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="n">g1</span> <span class="o">-</span> <span class="n">g2</span><span class="p">)</span> 
+<span class="c1"># this should be very small
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gradient difference: 0.000000
+</code></pre></div></div>
+
+<p>Sự sai khác là xấp xỉ 0, vậy chúng ta có thể yên tâm khi nói rằng cách tính <em>gradient</em> đã thỏa mãn sự <em>chính xác</em>, chúng ta cần tính nó một cách <em>hiệu quả</em> nữa.</p>
+
+<p>Các cách tính hiệu quả thường không chứa các vòng <code class="language-plaintext highlighter-rouge">for</code> mà được viết gọn lại dưới dạng ma trận và vector, việc này đòi hỏi các kỹ năng về Đại số tuyến tính và <code class="language-plaintext highlighter-rouge">numpy</code> một chút. Cách tính này thường được gọi là <em>vectorized</em>.</p>
+
+<p><a name="-tinh-ham-mat-mat-va-dao-ham-cua-no-bang-cach-vectorized"></a></p>
+
+<h3 id="32-tính-hàm-mất-mát-và-đạo-hàm-của-nó-bằng-cách-vectorized">3.2. Tính hàm mất mát và đạo hàm của nó bằng cách <em>vectorized</em></h3>
+
+<p>Để giúp các bạn dễ hình dung hơn, tôi đã chuẩn bị Hình dưới đây:</p>
+<hr />
+
+<div class="imgcap">
+<img src="\assets\22_multiclasssvm\vectorized_loss.png" align="center" width="800" />
+<div class="thecap" align="justify">Hình 7: Mô phỏng cách tính <em>loss</em> và <em>gradient</em> của Multi-class SVM.</div>
+</div>
+<hr />
+
+<p>Ở đây, chúng ta tạm quên phần <em>regularization loss</em> đi vì cả <em>loss</em> và <em>gradient</em> của phần này đều có cách tính đơn giản. Với phần <em>data loss</em>, chúng ta cũng bỏ qua hệ số \(\frac{1}{N}\) đi cho dễ hình dung.</p>
+
+<p>Giả sử rằng có 4 classes và mini-batch gồm có 3 điểm dữ liệu \(\mathbf{x}_1, \mathbf{x}_2, \mathbf{x}_3\). 3 điểm này lần lượt thuộc vào các class 1, 3, 2. Các ô có nền màu đỏ nhạt ở mỗi cột tương ứng với <em>correct class</em> của điểm dữ liệu của cột đó. Các bước tính <em>loss</em> và <em>gradient</em> có thể được hình dung như sau:</p>
+
+<ul>
+  <li>
+    <p><strong>Bước 1:</strong> Tính <em>score matrix</em> \(\mathbf{Z} = \mathbf{W}^T\mathbf{X}\).</p>
+  </li>
+  <li>
+    <p><strong>Bước 2:</strong> Với mỗi ô, tính \(\max(0, 1 - \mathbf{w}_{y_n}^T \mathbf{x}_n + \mathbf{w}_j^T\mathbf{x}_n)\). Chú ý rằng ta không cần tính các ô có nền màu đỏ nhạt vì có thể coi chúng bằng 0 do trong biểu thức <em>data loss</em>. Sau khi tính được giá trị của từng ô, ta chỉ quan tâm tới các ô có giá trị lớn hơn 0 - là các ô được tô nền màu xanh lục. Lấy tổng của tất cả các phần tử ở các ô xanh lục, ta sẽ được <em>data loss</em>. (<em>Có thể bạn sẽ phải dừng lại một chút để hiểu. Không sao, take your time</em>).</p>
+  </li>
+  <li>
+    <p><strong>Bước 3:</strong> Theo công thức \((6)\), với ô màu xanh lục ở hàng 2, cột 1, thì đạo hàm theo vector hệ số \(\mathbf{w}_2\) sẽ được cộng thêm một lượng \(\mathbf{x}_1\) và đạo hàm theo vector hệ số \(\mathbf{w}_1\) sẽ được trừ đi một lượng \(\mathbf{x}_1\). Tương tự với các ô màu xanh lục còn lại. Với các ô màu đỏ ở hàng 1 cột 1, chúng ta chú ý rằng trong cùng cột 1, có bao nhiêu ô màu xanh lục thì có bấy nhiêu lần đạo hàm của \(\mathbf{w}_1\) bị trừ đi một lượng \(\mathbf{x}_1\). Điều này được suy ra từ \((5)\). Từ đó suy ra trong khối ô vuông thứ 3, giá trị của ô màu đỏ sẽ bằng đối số của tổng số lượng các ô màu xanh lục. Vậy nên ô màu đỏ ở hàng 1 cột 1 phải bằng -2.</p>
+  </li>
+  <li>
+    <p><strong>Bước 4:</strong> Bây giờ cộng theo các hàng, ta sẽ được đạo hàm theo hệ số của class tương ứng.</p>
+  </li>
+</ul>
+
+<p>Trong đoạn code dưới đây, <code class="language-plaintext highlighter-rouge">correct_class_score</code> chính là tập hợp các giá trị trong các ô màu đỏ ở khối thứ nhất.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># more efficient way to compute loss and grad
+</span><span class="k">def</span> <span class="nf">svm_loss_vectorized</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">reg</span><span class="p">):</span>
+    <span class="n">d</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="n">W</span><span class="p">.</span><span class="n">shape</span> 
+    <span class="n">_</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="n">X</span><span class="p">.</span><span class="n">shape</span> 
+    <span class="n">loss</span> <span class="o">=</span> <span class="mi">0</span> 
+    <span class="n">dW</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">W</span><span class="p">)</span>
+    
+    <span class="n">Z</span> <span class="o">=</span> <span class="n">W</span><span class="p">.</span><span class="n">T</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>     
+    
+    <span class="n">correct_class_score</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">choose</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">Z</span><span class="p">).</span><span class="n">reshape</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="mi">1</span><span class="p">).</span><span class="n">T</span>     
+    <span class="n">margins</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">maximum</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">Z</span> <span class="o">-</span> <span class="n">correct_class_score</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> 
+    <span class="n">margins</span><span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="n">margins</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">margins</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">loss</span> <span class="o">/=</span> <span class="n">N</span> 
+    <span class="n">loss</span> <span class="o">+=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">reg</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">W</span> <span class="o">*</span> <span class="n">W</span><span class="p">)</span>
+    
+    <span class="n">F</span> <span class="o">=</span> <span class="p">(</span><span class="n">margins</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">).</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">F</span><span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="n">F</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="o">-</span><span class="n">F</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">dW</span> <span class="o">=</span> <span class="n">X</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">F</span><span class="p">.</span><span class="n">T</span><span class="p">)</span><span class="o">/</span><span class="n">N</span> <span class="o">+</span> <span class="n">reg</span><span class="o">*</span><span class="n">W</span>
+    <span class="k">return</span> <span class="n">loss</span><span class="p">,</span> <span class="n">dW</span>
+</code></pre></div></div>
+
+<p>Sau khi đã viết đoạn code mà chúng ta <em>cho rằng</em> đã hiệu quả (không còn vòng <code class="language-plaintext highlighter-rouge">for</code> nào) này, chúng ta cần phải kiểm chứng hai điều:</p>
+
+<ol>
+  <li>Quy trình 4 bước tôi nêu ở trên có chính xác không. Việc này được kiểm chứng bằng cách so sánh đạo hàm này với đạo hàm nhận được bằng cách tính <em>naive</em>.</li>
+  <li>Cách tính thứ hai này liệu có thực sự <em>hiệu quả</em>, tức có nhanh hơn cách <em>naive</em> nhiều không.</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">N</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">49000</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3073</span>
+<span class="n">reg</span> <span class="o">=</span> <span class="p">.</span><span class="mi">1</span> 
+<span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="n">N</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">time</span> 
+<span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">l1</span><span class="p">,</span> <span class="n">dW1</span> <span class="o">=</span> <span class="n">svm_loss_naive</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">reg</span><span class="p">)</span>
+<span class="n">t2</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+<span class="k">print</span> <span class="s">'Naive     : run time:'</span><span class="p">,</span> <span class="n">t2</span> <span class="o">-</span> <span class="n">t1</span><span class="p">,</span> <span class="s">'(s)'</span>
+
+<span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">l2</span><span class="p">,</span> <span class="n">dW2</span> <span class="o">=</span> <span class="n">svm_loss_vectorized</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">reg</span><span class="p">)</span>
+<span class="n">t2</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+<span class="k">print</span> <span class="s">'Vectorized: run time:'</span><span class="p">,</span> <span class="n">t2</span> <span class="o">-</span> <span class="n">t1</span><span class="p">,</span> <span class="s">'(s)'</span>
+<span class="k">print</span> <span class="s">'loss difference:'</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="n">l1</span> <span class="o">-</span> <span class="n">l2</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">'gradient difference:'</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="n">dW1</span> <span class="o">-</span> <span class="n">dW2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Naive     : run time: 34.326472044 (s)
+Vectorized: run time: 0.267823934555 (s)
+loss difference: 3.63797880709e-12
+gradient difference: 2.70855454684e-14
+</code></pre></div></div>
+
+<p>Kết quả nhận được cho chúng ta thấy rằng cách tính bằng <em>vectorized</em> nhanh hơn rất nhiều (khoảng 120 lần) so với cách tính <em>naive</em>. Hơn nữa, sự chênh lệch giữa kết quả của hai cách tính là rất nhỏ, đều nhỏ hơn <code class="language-plaintext highlighter-rouge">1e-10</code> (tức \(10^{-10})\). Vậy thì chúng ta có thể <em>yên tâm</em> sử dụng cách <em>vectorized</em> này để cập nhật nghiệm.</p>
+
+<p><a name="-gradient-descent-cho-multi-class-svm"></a></p>
+
+<h3 id="33-gradient-descent-cho-multi-class-svm">3.3. Gradient Descent cho Multi-class SVM</h3>
+
+<p>Mọi việc giờ thật là đơn giản, giống như mọi phương pháp giải bằng Gradient Descent tôi đã nêu trước đây:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Mini-batch gradient descent
+</span><span class="k">def</span> <span class="nf">multiclass_svm_GD</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">Winit</span><span class="p">,</span> <span class="n">reg</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="p">.</span><span class="mi">1</span><span class="p">,</span> \
+        <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">num_iters</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">print_every</span> <span class="o">=</span> <span class="mi">100</span><span class="p">):</span>
+    <span class="n">W</span> <span class="o">=</span> <span class="n">Winit</span> 
+    <span class="n">loss_history</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_iters</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">num_iters</span><span class="p">):</span>
+        <span class="c1"># randomly pick a batch of X
+</span>        <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">choice</span><span class="p">(</span><span class="n">X</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">batch_size</span><span class="p">)</span>
+        <span class="n">X_batch</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="n">idx</span><span class="p">]</span>
+        <span class="n">y_batch</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+
+        <span class="n">loss_history</span><span class="p">[</span><span class="n">it</span><span class="p">],</span> <span class="n">dW</span> <span class="o">=</span> \
+            <span class="n">svm_loss_vectorized</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">X_batch</span><span class="p">,</span> <span class="n">y_batch</span><span class="p">,</span> <span class="n">reg</span><span class="p">)</span>
+
+        <span class="n">W</span> <span class="o">-=</span> <span class="n">lr</span><span class="o">*</span><span class="n">dW</span> 
+        <span class="k">if</span> <span class="n">it</span> <span class="o">%</span> <span class="n">print_every</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s">'it %d/%d, loss = %f'</span> \
+                <span class="o">%</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="n">num_iters</span><span class="p">,</span> <span class="n">loss_history</span><span class="p">[</span><span class="n">it</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">W</span><span class="p">,</span> <span class="n">loss_history</span> 
+
+<span class="n">N</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">49000</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3073</span>
+<span class="n">reg</span> <span class="o">=</span> <span class="p">.</span><span class="mi">1</span> 
+<span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="n">N</span><span class="p">)</span>
+
+<span class="n">W</span><span class="p">,</span> <span class="n">loss_history</span> <span class="o">=</span> <span class="n">multiclass_svm_GD</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">reg</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>it 1/1000, loss = 1802.750975
+it 101/1000, loss = 251.495825
+it 201/1000, loss = 62.021015
+it 301/1000, loss = 45.626031
+it 401/1000, loss = 38.334262
+it 501/1000, loss = 43.666638
+it 601/1000, loss = 45.649841
+it 701/1000, loss = 35.401936
+it 801/1000, loss = 36.211475
+it 901/1000, loss = 41.676211
+</code></pre></div></div>
+
+<p>Chúng ta thử <em>visisualize</em> giá trị của <em>loss</em> sau mỗi vòng lặp:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="c1"># plot loss as a function of iteration
+</span><span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">loss_history</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<!-- ![png](output_5_0.png) -->
+
+<hr />
+
+<div>
+<table width="100%" style="border: 0px solid white">
+    <tr>
+        <td width="40%" style="border: 0px solid white" align="center">
+        <img style="display:block;" width="100%" src="/assets/22_multiclasssvm/loss_history.png" />
+         </td>
+        <td width="40%" style="border: 0px solid white" align="justify">
+        Hình 8: <em>Lịch sử loss</em> qua các vòng lặp. Ta thấy rằng <em>loss</em> có xu hướng giảm và hội tụ.
+        </td>
+    </tr>
+</table>
+</div>
+<hr />
+
+<p>Từ <em>lịch sử loss</em> này ta thấy rằng giá trị của <em>loss</em> sau mỗi vòng lặp có xu hướng giảm và hội tụ, đây chính là điều mà chúng ta mong muốn.</p>
+
+<p>Phần code còn lại để giải quyết bài toán phân loại cho cơ sở dữ liệu CIFAR-10 có thể tìm thấy trong <a href="https://github.com/tiepvupsu/CS231n_2016/blob/master/assignment1/svm.ipynb">ipython notebook này</a></p>
+
+<p>(<em>đây chính là lời giải của tôi cho Assignment #1 của CS231n, WInter 2016, Stanford.</em>)</p>
+
+<p>Kết quả đạt được cho CIFAR-10 là khoảng 40%. Như thế là đã rất tốt với một bài toán khó với 10 classes như thế này, nhất là khi chúng ta chưa phải làm thêm bước feature engineering phức tạp nào. Kết quả của Softmax Regression là khoảng 35%, các bạn cũng có thể tìm thấy <a href="https://github.com/tiepvupsu/CS231n_2016/blob/master/assignment1/softmax.ipynb">tại đây</a>.</p>
+
+<p><strong>Chú ý:</strong> Trong các bài tập này, dữ liệu được tính toán theo dạng hàng, tức mỗi hàng của \(\mathbf{X}\) là một điểm dữ liệu. Khi đó, <em>score</em> được tính theo công thức: \(\mathbf{Z} = \mathbf{XW}\). Các phép biến đổi có khác một chút so với trường hợp dữ liệu ở dạng cột. Hy vọng các bạn không gặp khó khăn nhiều.</p>
+
+<p><a name="-minh-hoa-nghiem-tim-duoc"></a></p>
+
+<h3 id="34-minh-họa-nghiệm-tìm-được">3.4. Minh họa nghiệm tìm được</h3>
+
+<p>Để ý rằng mỗi \(\mathbf{w}_i\) có chiều giống như chiều của dữ liệu, trong trường hợp này, chúng là các bức ảnh. Bằng cách <em>sắp xếp</em> lại các điểm trong mỗi trong 10 vector hệ số tìm được, chúng ta sẽ thu được <em>bức ảnh</em> cũng có kích thước \(3\times 32\times32\) như mỗi ảnh nhỏ trong cơ sở dữ liệu. Dưới đây là hình thù của mỗi \(\mathbf{w}_i\):</p>
+
+<hr />
+
+<div class="imgcap">
+<img src="\assets\22_multiclasssvm\learned_ws_2.png" align="center" width="800" />
+<div class="thecap" align="justify">Hình 9: Minh họa hệ số tìm được dưới dạng các bức ảnh.</div>
+</div>
+<hr />
+
+<p>Từ đây chúng ta sẽ thấy một điều thú vị.</p>
+
+<p>Hệ số tương ứng với mỗi class đều mang những tính chất giống với các bức ảnh trong class đó, ví dụ như <em>car</em> và <em>truck</em> trông khá giống với các bức ảnh trong class <em>car</em> và <em>truck</em>. Hệ số của <em>ship</em> và <em>plane</em> có mang màu xanh của nước biển và bầu trời. Trong khi <em>horse</em> trông giống như 1 con ngựa 2 đầu; điều này dễ hiểu vì trong tập training, các con ngựa có thể quay đầu về hai phía. Có thể nói theo một cách khác rằng các hệ số tìm được được coi như là các <em>ảnh đại diện</em> cho mỗi class. Vì sao chúng ta có thể nói như vậy?</p>
+
+<p>Nếu chúng ta cùng xem lại cách xác định class cho một dữ liệu mới được thực hiện bằng cách tìm vị trí của giá trị lớn nhất trong <em>score vector</em> \(\mathbf{W}^T\mathbf{x}\), tức:</p>
+
+<p>\[
+\text{class}(\mathbf{x}) = \arg\max_{i = 1, 2, \dots, C} \mathbf{w}_i^T\mathbf{x}
+\]</p>
+
+<p>Nếu bạn để ý chút nữa thì tích vô hướng chính là đại lượng đo sự tương quan giữa hai vector. Đại lượng này càng lớn thì sự tương quan càng cao, tức hai vector càng giống nhau. Như vậy, việc đi tìm class của một bức ảnh mới chính là việc đi tìm xem hệ số tìm được nào gần với bức ảnh đó nhất. Nói thêm một cách khác nữa, đây chính là <a href="/2017/01/08/knn/">K-nearest neighbors</a>, nhưng thay vì thực hiện KNN trên toàn bộ training data, chúng ta chỉ thực hiện trên 10 <em>bức ảnh</em> đại diện tìm được bằng Multi-class SVM (hoặc Softmax Regression). Chính vì vậy, hai phương pháp này có thể coi là cách đi tìm mỗi điểm dữ liệu đại diện cho mỗi class!</p>
+
+<p><a name="-thao-luan"></a></p>
+
+<h2 id="4-thảo-luận">4. Thảo luận</h2>
+<ul>
+  <li>
+    <p><a href="/2017/02/17/softmax/#-boundary-tao-boi-softmax-regression-la-linear">Giống như Softmax Regression</a>,  Multi-class SVM vẫn được coi là một bộ phân lớp tuyến tính vì đường phân chia giữa các class là các đường tuyến tính.</p>
+  </li>
+  <li>
+    <p>Kernel SVM cũng hoạt động khá tốt, nhưng việc tính toán ma trận kernel có thể tốn nhiều thời gian và bộ nhớ. Hơn nữa, việc mở rộng nó ra cho bài toán multi-class classification thường không hiệu quả bằng Multi-class SVM. Một ưu điểm nữa của Multi-class SVM là nó có thể được tối ưu bằng (Stochastic) Gradient Descnet, tức là nó phù hợp với các bài toán large-scale. Việc boundary giữa các class là tuyến tính có thể được giải quyết bằng cách kết hợp nó với Deep Neurel Networks. Bạn đọc có thể so sánh hiệu quả của hai phương pháp này bằng cách giải quyết bài toán CIFAR-10 bằng thư viện sklearn như tôi đã trình bày trong bài trước. Tôi đã thử, Kernel cho kết quả thấp và tốn hơn 1 giờ để huấn luyện, so với vài phút của Multi-class SVM. Có thể tôi chưa lựa chọn các tham số hợp lý, nhưng chắc chắn một điều rằng, Kernel SVM tốn nhiều thời gian huấn luyện hơn.</p>
+  </li>
+  <li>
+    <p>Có một cách nữa mở rộng <em>hinge loss</em> cho bài toán multi-class classification là dùng <em>loss</em>: \(\max(0, 1 - \mathbf{w}_{y_n}^T\mathbf{x}_n + \max_{j \neq y_n}\mathbf{w}_{j}^T\mathbf{x}_n)\). Đây chính là <em>vi phạm lớn nhất</em>, so với <em>tổng vi pham</em> mà chúng ta sử dụng trong bài này.</p>
+  </li>
+  <li>
+    <p>Trên thực tế, <a href="http://cs231n.github.io/linear-classify/#svmvssoftmax"><strong>Multi-class SVM và Softmax Regression có hiệu quả tương đương nhau</strong></a>. Có thể trong một bài toán cụ thể, phương pháp này tốt hơn phương pháp kia, nhưng điều ngược lại xảy ra trong các bài toán khác.</p>
+  </li>
+</ul>
+
+<p><a name="-tai-lieu-tham-khao"></a></p>
+
+<h2 id="5-tài-liệu-tham-khảo">5. Tài liệu tham khảo</h2>
+
+<p>[1] <a href="http://cs231n.github.io/linear-classify/">CS231n Convolutional Neural Networks for Visual Recognition</a></p>
+
+<p>[2] <a href="https://en.wikipedia.org/wiki/Hinge_loss">Hinge loss - Wikipedia</a></p>
+:ET

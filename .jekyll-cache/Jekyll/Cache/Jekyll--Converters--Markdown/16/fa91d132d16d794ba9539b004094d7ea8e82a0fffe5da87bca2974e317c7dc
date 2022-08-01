@@ -1,0 +1,52 @@
+I"�<p>Những năm gần đây, AI - Artificial Intelligence (Trí Tuệ Nhân Tạo), và cụ thể hơn là Machine Learning (Học Máy hoặc Máy Học) nổi lên như một bằng chứng của cuộc cách mạng công nghiệp lần thứ tư (1 - động cơ hơi nước, 2 - năng lượng điện, 3 - công nghệ thông tin). Trí Tuệ Nhân Tạo đang len lỏi vào mọi lĩnh vực trong đời sống mà có thể chúng ta không nhận ra. Xe tự hành của Google và Tesla, hệ thống tự tag khuôn mặt trong ảnh của Facebook, trợ lý ảo Siri của Apple, hệ thống gợi ý sản phẩm của Amazon, hệ thống gợi ý phim của Netflix, máy chơi cờ vây AlphaGo của Google DeepMind, …, chỉ là một vài trong vô vàn những ứng dụng của AI/Machine Learning. (Xem thêm <a href="https://www.facebook.com/zuck/posts/10103351073024591">Jarvis - trợ lý thông minh cho căn nhà của Mark Zuckerberg</a>)</p>
+
+<p>Machine Learning là một tập con của AI. Theo định nghĩa của Wikipedia, <em>Machine learning is the subfield of computer science that “gives computers the ability to learn without being explicitly programmed”</em>. Nói đơn giản, Machine Learning là một lĩnh vực nhỏ của Khoa Học Máy Tính, nó có khả năng tự học hỏi dựa trên dữ liệu đưa vào mà không cần phải được lập trình cụ thể. Bạn Nguyễn Xuân Khánh tại đại học Maryland đang viết một cuốn sách về Machine Learning bằng tiếng Việt khá thú vị, các bạn có thể tham khảo bài <a href="https://khanh-personal.gitbook.io/ml-book-vn/machine-learning-la-gi">Machine Learning là gì?</a>.</p>
+
+<p>Những năm gần đây, khi mà khả năng tính toán của các máy tính được nâng lên một tầm cao mới và lượng dữ liệu khổng lồ được thu thập bởi các hãng công nghệ lớn, Machine Learning đã tiến thêm một bước dài và một lĩnh vực mới được ra đời gọi là Deep Learning (Học Sâu - <em>thực sự tôi không muốn dịch từ này ra tiếng Việt</em>). Deep Learning đã giúp máy tính thực thi những việc tưởng chừng như không thể vào 10 năm trước: phân loại cả ngàn vật thể khác nhau trong các bức ảnh, tự tạo chú thích cho ảnh, bắt chước giọng nói và chữ viết của con người, giao tiếp với con người, hay thậm chí cả sáng tác văn hay âm nhạc (Xem thêm <a href="http://machinelearningmastery.com/inspirational-applications-deep-learning/">8 Inspirational Applications of Deep Learning</a>)</p>
+
+<hr />
+
+<div class="imgcap">
+<div>
+    <img src="/assets/introduce/aimldl.png" width="800" />
+</div>
+<div class="thecap">Mối quan hệ giữa AI, Machine Learning và Deep Learning. <br /> (Nguồn: <a href="https://blogs.nvidia.com/blog/2016/07/29/whats-difference-artificial-intelligence-machine-learning-deep-learning-ai/">What’s the Difference Between Artificial Intelligence, Machine Learning, and Deep Learning?</a>)</div>
+</div>
+<hr />
+
+<h2 id="mục-đích-viết-blog">Mục đích viết Blog</h2>
+<p>Nhu cầu về nhân lực ngành Machine Learning (Deep Learning) đang ngày một cao, kéo theo đó nhu cầu học Machine Learning trên thế giới và ở Việt Nam ngày một lớn. Cá nhân tôi cũng muốn hệ thống lại kiến thức của mình về lĩnh vực này để chuẩn bị cho tương lai (đây là một trong những mục tiêu của tôi trong năm 2017). Tôi sẽ cố gắng đi từ những thuật toán cơ bản nhất của Machine Learning kèm theo các ví dụ và mã nguồn trong mỗi bài viết. Tôi sẽ viết 1-2 tuần 1 bài (việc viết các công thức toán và code trên blog thực sự tốn nhiều thời gian hơn tôi từng nghĩ). Đồng thời, tôi cũng mong muốn nhận được phản hồi của bạn đọc để qua những thảo luận, tôi và các bạn có thể nắm bắt được các thuật toán này.</p>
+
+<p><em>Với những từ chuyên ngành, tôi sẽ dùng song song cả tiếng Anh và tiếng Việt, tuy nhiên sẽ ưu tiên tiếng Anh vì thuận tiện hơn cho các bạn  trong việc tra cứu các tài liệu tiếng Anh.</em></p>
+
+<p>Khi chuẩn bị các bài viết, tôi sẽ giả định rằng bạn đọc có một chút kiến thức về Đại Số Tuyến Tính (Linear Algebra), Xác Suất Thống Kê (Probability and Statistics) và có kinh nghiệm về lập trình Python. Nếu bạn chưa có nhiều kinh nghiệm về các lĩnh vực này, đừng quá lo lắng vì mỗi bài sẽ chỉ sử dụng một vài kỹ thuật cơ bản. Hãy để lại câu hỏi của bạn ở phần Comment bên dưới mỗi bài, tôi sẽ thảo luận thêm với các bạn.</p>
+
+<!-- _Nội dung trên blog này là hoàn toàn miễn phí. Tôi cũng không sử dụng dịch vụ quảng cáo nào vì không muốn làm phiền các bạn trong khi đọc. Tuy nhiên, nếu bạn thấy nội dung blog hữu ích và muốn ủng hộ blog, bạn có thể **Mời tôi một ly cà phê** bằng cách click vào nút 'Buy me a coffee' ở phía trên cột bên trái của blog, loại cà phê mà bạn vẫn thích uống :). Tôi xin chân thành cảm ơn._ -->
+
+<p><a href="/2016/12/27/categories/">Trong bài tiếp theo của blog này</a>, tôi sẽ giới thiệu về các nhóm thuật toán Machine learning cơ bản. Mời các bạn theo dõi.</p>
+
+<h2 id="tham-khảo-thêm">Tham khảo thêm</h2>
+
+<h3 id="các-khóa-học">Các khóa học</h3>
+
+<h4 id="tiếng-anh">Tiếng Anh</h4>
+<ol>
+  <li><a href="https://www.coursera.org/learn/machine-learning">Machine Learning với thầy Andrew Ng trên Coursera</a> (<em>Khóa học nổi tiếng nhất về Machine Learning</em>)</li>
+  <li><a href="https://www.udacity.com/course/deep-learning--ud730">Deep Learning by Google trên Udacity</a> (<em>Khóa học nâng cao hơn về Deep Learning với Tensorflow</em>)</li>
+  <li><a href="http://machinelearningmastery.com/">Machine Learning mastery</a> (<em>Các thuật toán Machine Learning cơ bản</em>)</li>
+</ol>
+
+<!-- #### Tiếng Việt 
+**Lưu ý**: _Các khóa học này tôi chưa từng tham gia, chỉ đưa ra để các bạn tham khảo._
+
+1. [Machine Learning 1/2017](http://tuanvannguyen.blogspot.com/2016/12/cap-nhat-khoa-hoc-ve-machine-learning.html)
+2. [Nhập môn Machine Learning - Cao Thanh Hà _POSTECH_](https://techmaster.vn/khoa-hoc/25511/machine-learning-co-ban) (_Tech Master_) -->
+
+<h3 id="các-trang-machine-learning-tiếng-việt">Các trang Machine Learning tiếng Việt</h3>
+<ol>
+  <li><a href="http://viet.jnlp.org/kien-thuc-co-ban-ve-xu-ly-ngon-ngu-tu-nhien/machine-learning-trong-nlp">Machine Learning trong Xử Lý Ngôn Ngữ Tự Nhiên - Nhóm Đông Du <em>Nhật Bản</em></a></li>
+  <li><a href="https://ongxuanhong.wordpress.com/">Machine Learning cho người mới bắt đầu - Ông Xuân Hồng <em>JAIST</em></a>.</li>
+  <li><a href="https://khanh-personal.gitbook.io/ml-book-vn/">Machine Learning book for Vietnamese - Nguyễn Xuân Khánh <em>University of Maryland</em></a></li>
+</ol>
+
+:ET

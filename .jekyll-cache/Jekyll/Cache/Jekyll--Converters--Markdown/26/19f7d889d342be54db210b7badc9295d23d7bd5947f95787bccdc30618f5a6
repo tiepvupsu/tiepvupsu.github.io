@@ -1,0 +1,197 @@
+I"�l<p><strong>Trong trang này:</strong></p>
+
+<!-- MarkdownTOC -->
+
+<ul>
+  <li><a href="#-imbalanced-data-trong-bai-toan-classification">6. Imbalanced data trong bài toán classification</a></li>
+  <li><a href="#-similarity-search">5. Similarity search</a></li>
+  <li><a href="#-binary-hashing-cho-bai-toan-information-retrieval">4. Binary Hashing cho bài toán Information Retrieval</a></li>
+  <li><a href="#-ban-co-can-hoc-machine-learning-co-ban">3. Bạn có cần học Machine Learning cơ bản?</a></li>
+  <li><a href="#-captcha">2. CAPTCHA</a></li>
+  <li><a href="#-wordvec">1. word2vec</a></li>
+</ul>
+
+<!-- /MarkdownTOC -->
+
+<p>Post ngắn tổng hợp các ‘ghi chú nhanh’ nhận được nhiều quan tâm trên <a href="https://www.facebook.com/machinelearningbasicvn/">Facebook page Machine Learning cơ bản</a>.
+Lưu ý: các phần ghi chú nhanh này không có toán và hình, chỉ gồm ngôn ngữ thông thường để các bạn có một cái nhìn nhanh về các vấn đề.</p>
+
+<p><a name="-imbalanced-data-trong-bai-toan-classification"></a></p>
+
+<h2 id="6-imbalanced-data-trong-bài-toán-classification">6. Imbalanced data trong bài toán classification</h2>
+<p><a href="https://www.facebook.com/machinelearningbasicvn/posts/449220955437741">Link gốc</a>.</p>
+
+<p>Trong bài toán Classification, phải làm như thế nào khi dữ liệu giữa các class quá chênh lệch?</p>
+
+<p>Đường link dưới đây có thể mang lại nhiều thông tin có ích cho bạn:</p>
+
+<p><a href="https://www.kaggle.com/joparga3/in-depth-skewed-data-classif-93-recall-acc-now">In depth skewed data classification - Kaggle Kernel</a></p>
+
+<p>Tôi xin được tóm tắt vài điểm như sau.</p>
+
+<p>Trong nhiều bài toán thực tế, việc dữ liệu chênh lệch (imbalanced data) xảy ra rất thường xuyên. Bài toán trong link phía trên là bài toán ‘Credit Card Fraud Detection’, tức xác định các giao dịch lừa đảo trong credit card. Dữ liệu training bao gồm rất nhiều các giao dịch trong lịch sử và nhãn của chúng: ‘Normal’ hoặc ‘Fraud’. Tỉ lệ ‘Fraud’ thường là rất nhỏ so với ‘Normal’, giả sử là 1%. Như vậy hai class này là cực kỳ chênh lệch.</p>
+
+<p>Vậy có điểm gì đáng chú ý trong bài toán này:</p>
+
+<p>Trước tiên, chúng ta cần đi xác định một Phương pháp đánh giá hiệu quả cho mô hình. Khi đánh giá các thuật toán Classification thông thường, ta thường sử dụng ‘độ chính xác’ như là tỉ lệ giữa các dữ liệu được phân loại đúng trên toàn bộ dữ liệu. Cách làm này không phù hợp trong bài toán của chúng ta vì nếu mô hình dự đoán toàn bộ các giao dịch là ‘Normal’ thì độ chính xác cũng đã là 99%?? Như vậy ta cần phải tìm một phép đo khác. Các phép đo thường được sử dụng với dữ liệu chênh lệch là: Precision, Recall, F1 score, ROC curves, etc. Trong đó, theo kinh nghiệm của tôi, Precision và Recall được sử dụng nhiều, bạn đọc có thể theo link dưới đây để hiểu thế nào là <a href="https://en.wikipedia.org/wiki/Precision_and_recall">Precision và Recall - Wiki</a>.</p>
+
+<p>Điều thứ hai cần lưu ý là các thuật toán Classification thông thường thường hoạt động tốt nếu các class có lượng dữ liệu training tương đối như nhau. Nếu không, hiện tượng overfitting rất dễ xảy ra vì mô hình cố gắng ‘fit’ dữ liệu ở class trội hơn. Về Overfitting, bạn có thể đọc <a href="/2017/03/04/overfitting/">Bài 15: Overfitting</a>.</p>
+
+<p>Có một hướng tiếp cận được gọi là ‘Resampling’ để hai classes có lượng dữ liệu tương đối như nhau. Cách thứ nhất là UNDER-sampling, tức chỉ chọn ra vài phần tử của class trội hơn và kết hợp với class còn lại để làm dữ liệu training. Cách thứ hai là OVER-sampling, tức có thể lặp lại dữ liệu, hoặc tìm cách kết hợp để tạo ra dữ liệu mới, của class ít hơn, và kết hợp với class còn lại để làm dữ liệu training. Như trong bài viết, cách UNDER-sampling khá hiệu quả.</p>
+
+<p>Đây là một bài toán binary classification, hướng tiếp cận đầu tiên bạn có thể nghĩ đến là dùng Logistic Regression. Trong Logistic Regression, dữ liệu đầu ra sẽ là một số dương nằm trong khoảng (0, 1) thể hiện xác suất để đầu ra bằng 1. Khi đó, ta có thể coi ‘1’ là ‘Fraud’, ‘0’ là ‘Normal’. Việc xác định ‘Fraud’ hay ‘Normal’ được xác định dựa trên một ngưỡng nào đó, ví dụ 0.5; các giá trị lớn hơn 0.5 được coi là 1 và ngược lại. Tuy nhiên, ta có thể thay đổi ngưỡng này cho phù hợp với bài toán. Chẳng hạn, nếu việc ‘miss’ các giao dịch ‘Fraud’ là nghiêm trọng thì ta cần hạ thấp ngưỡng xuống mức thấp hơn, ví dụ 0.3 để tỉ lệ ‘miss’ thấp xuống. Tuy nhiên, lúc này ta cần lưu ý về việc rất nhiều giao dịch ‘Normal’ bị biến thành ‘Fraud’.</p>
+
+<p>Với bài toán này, tác giả đã chỉ ra rằng Logistic Regression hoạt động rất hiệu quả.</p>
+
+<p>Bạn có thể muốn đọc lại <a href="/2017/01/27/logisticregression/">Logistic Regression</a>.</p>
+
+<p>Với bài toán có nhiều classes, bạn có thể đọc thuật toán mở rộng của Logistic Regression, có tên là <a href="/2017/02/17/softmax/">Softmax Regression</a>.</p>
+
+<p>Cảm ơn và chúc các bạn buổi tối vui vẻ,
+Tiệp Vũ</p>
+
+<p><a name="-similarity-search"></a></p>
+
+<h2 id="5-similarity-search">5. Similarity search</h2>
+<p><a href="https://www.facebook.com/machinelearningbasicvn/posts/448109285548908">Link gốc</a>.</p>
+
+<p>Similarity Search là một chủ đề đang được quan tâm nhiều gần đây. Chủ đề này khá gần với Information Retrieval. Tôi cũng đã có một bài viết ngắn nói về vấn đề Information Retrieval, đặc biệt là Image Retrieval trong link dưới đây:</p>
+
+<p><a href="https://www.facebook.com/machinelearningbasicvn/posts/436628436696993">Chia sẻ về bài toán Image Retrieval</a></p>
+
+<p>Ở link trên, tôi đã đề cập đến những khó khăn của việc tìm kiếm khi mà lượng ảnh trong cơ sở dữ liệu ngày một lớn trong khi việc tìm kiếm yêu cầu trả về kết quả gần như tức thì. Các phương pháp tôi đề cập trong đó dựa trên Binary Hashing, tức tìm một mô hình tạo ra một binary vector ngắn cho mỗi bức ảnh để thuận tiện lưu trữ và tính toán.</p>
+
+<p>Trong post này, tôi xin giới thiệu một kỹ thuật khác mà tôi tìm thấy trong bài viết thú vị về cách thức tìm kiếm các ảnh giống nhau của Flickr - Một trang chia sẻ ảnh và video:</p>
+
+<p><a href="http://code.flickr.net/2017/03/07/introducing-similarity-search-at-flickr/">Introducing Similarity Search at Flickr</a></p>
+
+<p>Trong Flickr, việc tìm kiếm các ảnh giống với một ảnh cho trước là một việc mấu chốt được thực hiện nhiều lần và kết quả tìm kiếm cho thấy thuật toán hoạt động rất hiệu quả.</p>
+
+<p>Ý tưởng rất cơ bản xuất phát từ k-means clustering. Việc tìm kiếm dựa trên rất nhiều, giả sử 1 tỉ, bức ảnh tốn khá nhiều thời gian. Thay vào đó, ta có thể cluster các bức ảnh thành khoảng 1 triệu clusters, mỗi clusters được biểu diễn bởi một centroid. Khi tìm kiếm các ảnh gần giống với một bức ảnh (gọi là query), ta thực hiện 2 bước. Ở bước thứ nhất, centroid gần nhất với query sẽ được chọn. Ở bước thứ hai, các bức ảnh trong cluster ứng với centroid đó sẽ được chọn để so sánh với ảnh query. Đây chính là kỹ thuật xấp xỉ mỗi vector bằng 1 vector khác, trong trường hợp này là centroid, tên tiếng Anh là Vector Quantization (VQ).</p>
+
+<p>(Tôi xin bỏ qua phần <a href="/general/2017/02/06/featureengineering/">feature engineering</a> cho mỗi bức ảnh mà coi như các feature vectors đã được cho trước.)</p>
+
+<p>Tuy nhiên, việc clustering từ 1 tỉ bức ảnh ra 1 triệu clusters (training process) và so sánh 1 query với từng cluster (test process) vẫn tốn rất nhiều thời gian. Một kỹ thuật đơn giản nhưng hiệu quả giúp vẫn tạo ra 1 triệu clusters nhưng cả training và test được thực hiện rất nhanh được gọi là Product Quantization (PQ).</p>
+
+<p>Trong PQ, mỗi vector được chia đôi thành 2 vectors con. Như vậy ta sẽ có 2 nhóm, mỗi nhóm có 1 tỉ vectors con. Ta thực hiện k-means clustering trên mỗi nhóm này với k = 1000. Như vậy, với mỗi nhóm, ta có 1000 centroids, tổng cộng là 2000 centroids, tạm gọi là các sub-centroids. Với mỗi sub-centroid thuộc nhóm 1 và 1 sub-centroid thuộc nhóm 2, ta sẽ có 1 full-centroid. Vậy tổng cộng ta vẫn có 1000x1000 = 1 triệu cluster nhưng việc training đã giảm đi rất nhiều. Khi test, ta cũng chia query vector thành 2 phần và tìm centroid gần nhất ứng với mỗi phần. Vector ghép bởi 2 sub-centroids này chính là full-centroid gần nhất ứng với query đó. Vì có tổng cộng chỉ 2000 sub-centroids nên việc tính toán đã nhanh hơn rất nhiều.</p>
+
+<p>PQ chỉ là ý tưởng ban đầu, nó có nhiều hạn chế. Và Flickr dùng một kỹ thuật khác dựa trên PQ, được gọi là LOPQ, bạn đọc có thể đọc thêm trong bài.</p>
+
+<p>Bạn đọc có thể thấy bài viết về <a href="/2017/01/01/kmeans/">K-means clustering</a> có ích.</p>
+
+<p>Chúc các bạn một buổi tối vui vẻ.</p>
+
+<p>Tiệp Vũ</p>
+
+<p><a name="-binary-hashing-cho-bai-toan-information-retrieval"></a></p>
+
+<h2 id="4-binary-hashing-cho-bài-toán-information-retrieval">4. Binary Hashing cho bài toán Information Retrieval</h2>
+<p><a href="https://www.facebook.com/machinelearningbasicvn/posts/436628436696993">Link gốc</a>.</p>
+
+<p>Chia sẻ về Information Retrieval.</p>
+
+<p>Information Retrieval hiểu một cách cơ bản là tìm những items trong cơ sở dữ liệu có liên quan đến query, thường là chưa có trong cơ sở dữ liệu. Ví dụ như Google Search và Google Search Image.</p>
+
+<p>Bài toán đặt ra là cho một query, bạn phải sắp xếp, hoặc ít nhất là tìm kiếm, những items có liên quan trong cơ sở dữ liệu. Khi cơ sở dữ liệu là các hình ảnh thì nhánh này được gọi là Image Retrieval. Phần sau của post này sẽ chủ yếu nói về Image Retrieval.</p>
+
+<p>Có hai hướng tiếp cận trong Image Retrieval : Concept-based và Content-based Image Retrieval.</p>
+
+<ol>
+  <li>
+    <p>Concept-based IR là việc tìm kiếm dựa trên các thông tin liên quan đến một bức ảnh như caption, labels, tag và phần text xung quanh. Khi bạn search Google hình ảnh bằng 1 text query thì, theo tôi hiểu, chính là Concept-based IR. Cách này phụ thuộc nhiều vào phần thông tin text liên quan đến ảnh mà không phụ thuộc trực tiếp vào nội dung ảnh.</p>
+  </li>
+  <li>
+    <p>Content-based IR là việc tìm kiếm dựa trên nội dung của ảnh (giá trị các pixel trong ảnh). Ví dụ của việc này chính là Google Hình ảnh nhưng query là 1 bức ảnh. Bạn có thể upload bức ảnh hoặc link tới 1 bức ảnh trên internet, Google sẽ trả về các bức ảnh có nội dung tương tự.</p>
+  </li>
+</ol>
+
+<p>Image Retrieval khác với Image Classification ở điểm nào? Trong các bài toán Image classification, mỗi bức ảnh sẽ được phân loại vào 1 hoặc một vài class. Ví dụ, bức ảnh có một chú chó thì có thể được phân loại vào ‘dog’, ‘pet’, hay ‘animal’. Việc xác định một bức ảnh thuộc nhóm nào thường trả về các class mà bức ảnh đó có thể thuộc về, tức kết quả là một vài words. Image Retrieval thì khác, kết quả trả về là các bức ảnh, và khi query là 1 bức ảnh thì kết quả trả về có thể là các bức ảnh thuộc class khác. Ví dụ, nếu bức ảnh là 1 con chó cưng thì các ảnh trả về sẽ là các con chó cưng hoặc thậm chí là mèo cưng. Nhưng nếu bức ảnh là 1 con chó chăn cừu thì kết quả trả về có thể là các bức ảnh có cừu và thảo nguyên. Đây là một thách thức (challenge) của Image Retrieval so với Image Classification.</p>
+
+<p>Phương pháp phổ biến nhất trong Image Retrieval là dùng Similarity Search. Tức là đi tìm độ giống nhau giữa bức ảnh query và các bức ảnh khác trong dataset, sau đó trả về kết quả dựa trên sự giống nhau từ cao đến thấp. Khó khăn thứ nhất là phải tìm được một cách ‘biểu diễn’ (representation) ảnh tốt dưới dạng các vector để có thể ‘đong đếm’ được sự giống nhau giữa các bức ảnh. Phần này được gọi là Feature Extraction. Nhưng khó khăn lớn hơn là với cả triệu bức ảnh trong dataset, việc tính toán độ giống nhau giữa bức ảnh query và toàn bộ các bức ảnh khác là rất mất thời gian.</p>
+
+<p>Về khó khắn thứ nhất, hướng tiếp cận phổ biến nhất hiện nay là dùng Deep Learning. Cụ thể là sử dụng các mô hình Convolutional Neural Networks cho Image Classification nổi tiếng, tức đã được trained với các cơ sở dữ liệu lớn và đạt kết quả cao, để tạo ra các feature vector có độ dài như nhau cho mỗi bức ảnh. Cụ thể hơn, đầu ra của layer gần cuối cùng (trước softmax hoặc svm layer) được dùng như là 1 feature tốt (bạn nào quan tâm có thể đọc thêm về Transfer Learning). Những feature này thường có độ dài khoảng vài nghìn, nếu lưu trữ và tính toán trực tiếp trên feature này thì có thể là bất khả thi, đây là khó khăn thứ hai tôi nêu ở trên.</p>
+
+<p>Về khó khăn thứ hai, hướng tiếp cận tôi thấy được sử dụng nhiều là Binary Hashing, tức tiếp tục ‘map’ các feature trên thành 1 vector nhị phân có độ dài nhỏ (32, 64, 128, …). Vector này được gọi là ‘hash code’. Chú ý rằng 2^64 đã là 1 số rất lớn, có thể nhiều hơn toàn bộ số bức ảnh mà con người đã tạo ra. Vì vậy, trong trường hợp lý tưởng, sẽ không có hai bức ảnh khác nhau nào có hash code là như nhau. Sau khi có một mô hình giúp tìm hash code cho từng bức ảnh, việc tính toán similarity trở nên đơn giản hơn vì số chiều thấp hơn và chỉ phải làm việc với các toán tử logic nhị phân đơn giản.</p>
+
+<p>Để đọc tài liệu về những gì tôi đã đề cập, chúng ta có thể bắt đầu tìm kiếm “Deep Binary Hashing for Image Retrieval”.</p>
+
+<p><a name="-ban-co-can-hoc-machine-learning-co-ban"></a></p>
+
+<h2 id="3-bạn-có-cần-học-machine-learning-cơ-bản">3. Bạn có cần học Machine Learning cơ bản?</h2>
+<p><a href="https://www.facebook.com/machinelearningbasicvn/posts/428787870814383">Link gốc</a></p>
+
+<p>Về việc có cần học cơ bản Machine Learning (hay bất cứ lĩnh vực nào khác) hay không, nếu có thì sâu đến mức nào, có cần bằng cấp để học Machine Learning hay không, tôi xin đưa ra quan điểm cá nhân như sau:</p>
+
+<ol>
+  <li>
+    <p>Thật khó để biết mức độ hiểu sâu về một vấn đề nào đó. Cũng không có công thức cụ thể là với background như thế này, mục đích như thế này thì cần hiểu sâu đến đâu. (Trừ khi bạn tìm ra được một mô hình regression cho bạn tính toán được việc này :D).
+Với tôi thì làm gì cũng vậy, bắt đầu từ việc hiểu bài toán, tìm một mô hình đơn giản nhất giúp giải quyết bài toán, mô hình đó không nhất thiệt phải hiệu quả, cứ chạy là được. Sau đó sẽ hiểu dần dần rồi đào sâu vào các hướng cái thiện. Khi làm càng sâu thì sẽ càng cần đọc lại kiến thức cơ bản.</p>
+  </li>
+  <li>
+    <p>Kiến thức cơ bản không phải chỉ để đọc 1 lần rồi hiểu luôn. Bạn chỉ cần đọc và biết rằng nó ở đó, khi nào gặp khúc mắc thì sẽ biết tìm lại nó ở đâu. Có khi phải đọc lại vài lần rồi mới hiểu, hoặc làm vài project rồi mới hiểu.
+Nghiên cứu của tôi ở một nhánh khác, không phải Neural Networks, cũng không phải SVMs. Nhưng đây vẫn là những thứ đầu tiên tôi học khi bắt đầu làm Machine Learning. Đến một mức độ nào đó chúng ta sẽ thấy các mô hình Machine Learning đều có những điểm cốt lõi chung, cần phải nắm rõ cái cốt lõi đó. Đây cũng là mục đích chính của tôi trước khi tạo dựng blog này - hệ thống lại kiến thức. Sự thật là khi viết lại những thứ cơ bản này tôi mới thực sự hiểu hơn về Machine Learning và học thêm được nhiều thứ.</p>
+  </li>
+  <li>
+    <p>Cũng chính vì xác định rằng đây sẽ là một nguồn tham khảo quan trọng và lâu dài cho chính bản thân mình nếu muốn gắn bó với Machine Learning, tôi quyết định viết càng cơ bản càng tốt, các hình vẽ càng chi tiết càng tốt, các công thức càng thống nhất (consistent) càng tốt. Tốt cho tôi và tốt cho cả bạn đọc của tôi. Nếu bạn đọc của tôi thấy hứng thú, tôi cũng có hứng thú để duy trì việc viết. Win-win.</p>
+  </li>
+  <li>
+    <p>Một lần nữa, với các bạn muốn làm Machine Learning, việc đầu tiên là chọn cho mình một bài toán mà mình thấy hứng thú (cái này thì chính các bạn phải trả lời được). Rồi học dần dần để hiểu thêm. Qua thời gian nó sẽ ngấm dần. Cũng đừng quan tâm đến việc mình phải hiểu đến đâu trước khi bắt đầu làm. Không bắt tay vào làm thì bạn không hiểu được đâu. Mỗi người có một background khác nhau, có mục tiêu khác nhau, phải bắt tay vào làm thì mới biết mình hiểu gì và mình cần làm gì, và cũng để hiểu mình đam mê gì.</p>
+  </li>
+  <li>
+    <p>Với những bạn không muốn đi sâu vào cơ bản mà muốn bắt đầu từ các mô hình hiệu quả có sẵn. Hãy cứ làm thế, không có gì sai cả. Quan trọng là sau khi sử dụng các mô hình có sẵn đó, bạn muốn làm gì tiếp. Lúc đó bạn tự đặt ra câu hỏi cho mình rồi google dần dần. Rồi cũng sẽ đến lúc bạn nhận ra là mình cần đọc lại kiến thức cơ bản về phần đó. Chỉ là thứ tự học của mỗi người là khác nhau thôi.</p>
+  </li>
+  <li>
+    <p>Có cần có Master degree hay PhD degree để làm Machine Learning không? Tôi xin trả lời là không. Bằng cấp chỉ là một tờ giấy. Học cao học không phải là một điều đảm bảo cho việc bạn có hợp với Machine Learning hay không. Sự khác nhau chính có lẽ nằm ở việc bạn có bị ngừời khác thúc ép bạn làm hay không mà thôi. Ngoài ra, những kiến thức quan trọng cho Machine Learning đều có sẵn online với lượng tutorial vô cùng dồi dào - và tốt hơn những gì tôi được dạy ở chương trình cao học. Điều quan trọng là bạn có đủ đam mê để duy trì việc tự học tập (có thể là suốt đời) hay không. Ngày càng nhiều người làm Machine Learning, nhưng điều đó không có nghĩa là ai cũng có thể học và làm Machine Learning. Niềm đam mê, sự kiên trì, không phải bằng cấp, là những nhân tố quan trọng khi bạn muốn theo đuổi một mục tiêu. Ở bất cứ lĩnh vực nào cũng thế thôi.</p>
+  </li>
+</ol>
+
+<p>Lời kết:</p>
+
+<p>Mỗi ngừời có một background khác nhau và có một mục tiêu khác nhau. Cách tốt nhất là đặt ra mục tiêu, bắt tay vào làm rồi bạn sẽ biết cần phải học thêm những gì. Khi đã bắt tay vào làm rồi, bạn sẽ hiểu thêm và có thể điều chỉnh lại mục tiêu ban đầu của mình cho phù hợp. Một khi làm đã đủ nhiều, bạn sẽ nhận ra là những kiến thức cơ bản là quan trọng, dù mức độ quan trọng với từng ngừời là khác nhau. Bản thân từ ‘cơ bản’ cũng tự nó mang thông tin là ‘cần thiết’ rồi.
+Thế giới thay đổi rất nhanh, chỉ có liên tục học tập và làm việc mới giúp mình không bị bỏ lại phía sau.</p>
+
+<p>Và đừng bao giờ nói rằng toán là không quan trọng khi làm Machine Learning.</p>
+
+<p><a name="-captcha"></a></p>
+
+<h2 id="2-captcha">2. CAPTCHA</h2>
+<p><a href="https://www.facebook.com/machinelearningbasicvn/posts/417247405301763">Link gốc</a>.</p>
+
+<p>CAPTCHA - công cụ tránh spam và cũng là công cụ thu thập nhãn cho dữ liệu.</p>
+
+<p>Hẳn các bạn đều đã trải qua những bài test nhỏ tương tự như các hình dưới đây. Mục đích chính của nó là để phân biệt ‘human’ và ‘bot’ (tức người và máy), để tránh hiện tượng spam trong các website. Lý dó đơn giản là có những việc con người làm được nhưng ‘bot’ vẫn chưa thể làm được. Ví dụ: Gõ lại các từ trong một bức ảnh mà chữ đã bị làm méo mó; đọc số nhà trong một bức ảnh thật; tìm các ảnh tương ứng trong rất nhiều ảnh; hoặc xác định những ô vuông nhỏ trong một ảnh lớn có chứa một vật thể nào đó.</p>
+
+<p>Những bức ảnh này sẽ ngày một khó hơn, tương ứng với các bài toán thực tế khó hơn, vì các con ‘bot’ ngày một thông minh hơn nhờ vào Machine Learning.</p>
+
+<p>Không chỉ giúp phân biệt người/máy, CAPTCHA còn được sử dụng với một mục đích rất thú vị khác: thu thập nhãn cho dữ liệu chưa có nhãn.</p>
+
+<p>Chúng ta biết rằng có hàng tỉ bức ảnh trên internet nhưng phần lớn không có “nhãn”, tức chưa được máy tính nhận ra nội dung trong đó là gì. Các thuật toán nhận dạng, muốn đạt kết quả cao, cần rất nhiều dữ liệu cho tập huấn luyện (training). Và đây chính là một lợi ích khác của CAPTCHA. Chính người dùng đã giúp các công ty tương tự như CAPTCHA thu thập nhãn cho dữ liệu!</p>
+
+<p>Câu hỏi đặt ra là: Nếu chưa biết nhãn của dữ liệu, làm thế nào để biết một kết quả nhập vào là chính xác? Có một cách đơn giản là cho người dùng làm nhiều bài test khác nhau, trong đó có những bài đã có đáp án (nhãn). Sau đó, nếu những kết quả nhận được ở những bài đã có đáp án là chính xác thì khả năng cao đó chính là con người. Vậy thì các kết quả còn lại cũng có độ tin cậy cao. Và để cho độ chính xác cao hơn, một bức ảnh sẽ được dùng cho nhiều bài test. Nếu nó nhận được kết quả giống nhau ở những trường hợp có khả năng cao là con người thì kết quả đó được cho là nhãn của bức ảnh đó.</p>
+
+<p>Quick thought: sử dụng phương pháp tương tự cho việc thu thập nhãn cho các loại dữ liệu không-phải-là-ảnh, ví dụ như tiếng Việt.</p>
+
+<p>Những trang web tiếng Việt, thay vì sử dụng CAPTCHA, có thể sử dụng một đoạn văn ngắn và trắc nghiệm ngừời dùng về sắc thái/nội dung của đoạn đó. Đoạn văn này có thể là các posts/comments trên mạng xã hội. Qua đó, các công ty có thể thu được một lượng dữ liệu lớn về hành vi người dùng với nhãn cụ thể. Hoặc là dùng chính người dùng làm “classifier” luôn. Khá là tin cậy.</p>
+
+<p>Bài viết được soạn nhanh, chủ yếu dựa trên suy luận cá nhân. Mong bạn đọc cùng thảo luận.</p>
+
+<p><a name="-wordvec"></a></p>
+
+<h2 id="1-word2vec">1. word2vec</h2>
+<p>[Natural Language Processing - NLP]</p>
+
+<p>Trong Xử lý ngôn ngữ tự nhiên, việc biểu diễn một từ (word) dưới dạng 1 vector đóng vai trò cực kỳ quan trọng. Nó giúp ích rất nhiều trong việc tìm từ gần nghĩa, trái nghĩa, mô phỏng câu, thâm chí là tìm các câu có nghĩa tương đồng. Trong các thuật toán biến một từ thành một vector của các số thực, word2vec là một trong các phương pháp đơn giản và quan trọng để hiểu nhất. Đây cũng là nội dung chính trong bài thứ hai của loạt bài giảng về NLP của Stanford mà tôi chia sẻ ngày hôm qua.</p>
+
+<p>Một cách đơn giản nhất để biểu diễn 1 từ bằng 1 vector là dùng one-hot vector. Trong đó, mỗi vector sẽ có độ dài bằng với số từ trong từ điển, và mỗi vector chỉ có 1 phần tử khác không, và bằng 1, tại vị trí tương ứng với vị trí của từ đó trong từ điển. Mô hình này có rất nhiều nhược điểm: i) độ dài của một vector là quá lớn (bằng độ dài của từ điển, có thể lên đến cả triêu ), ii), không xác định được sự tương quan giữa các từ vì tích vô hướng của hai từ nào cũng bằng 0. word2vec giúp biến 1 từ ở dạng one-hot vector thành một vector có số chiều nhỏ hơn rất nhiều (300 đến 1000), và có thể tính được sự tương quan giữa hai từ dựa vào tích vô hướng giữa hai vector biểu diễn hai từ đó.</p>
+
+<p>Tôi mới tìm được một post giải thích cực kỳ dễ hiểu về thuật toán này. Về cơ bản, đó là một mạng neural với 1 hidden layer, không có activation function, và layer cuối là một softmax regression.</p>
+
+<p><a href="http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/">Word2Vec Tutorial - The Skip-Gram Model</a></p>
+
+<p>Nếu bạn chưa rõ về softmax regression và mạng neural nhiều lớp, bạn có thể tìm được những điều lý thú trong hai bài viết này:</p>
+
+<p><a href="/2017/02/17/softmax/">Bài 13: Softmax Regression</a></p>
+
+<p><a href="/2017/02/24/mlp/">Bài 14: Multi-layer Perceptron và Backpropagation</a></p>
+
+:ET

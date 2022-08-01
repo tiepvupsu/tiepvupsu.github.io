@@ -1,0 +1,701 @@
+I"<p><strong>Trong trang này:</strong></p>
+
+<!-- MarkdownTOC -->
+
+<ul>
+  <li><a href="#-gioi-thieu">1. Giới thiệu</a></li>
+  <li><a href="#-accuracy">2. Accuracy</a></li>
+  <li><a href="#-confusion-matrix">3. Confusion matrix</a></li>
+  <li><a href="#-truefalse-positivenegative">4. True/False Positive/Negative</a>
+    <ul>
+      <li><a href="#-truefalse-positivenegative-1">4.1. True/False Positive/Negative</a></li>
+      <li><a href="#-receiver-operating-characteristic-curve">4.2. Receiver Operating Characteristic curve</a></li>
+      <li><a href="#-area-under-the-curve">4.3. Area Under the Curve</a></li>
+    </ul>
+  </li>
+  <li><a href="#-precision-va-recall">5. Precision và Recall</a>
+    <ul>
+      <li><a href="#-dinh-nghia">5.1 Định nghĩa</a></li>
+      <li><a href="#-precision-recall-curve-va-average-precision">5.2. Precision-Recall curve và Average precision</a></li>
+      <li><a href="#-f-score">5.3. F1-score</a></li>
+      <li><a href="#-precision-recall-cho-bai-toan-phan-lop-nhieu-lop">5.4. Precision-recall cho bài toán phân lớp nhiều lớp</a>
+        <ul>
+          <li><a href="#-micro-average">5.4.1. Micro-average</a></li>
+          <li><a href="#-macro-average">5.4.2. Macro-average</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#-tom-tat">6. Tóm tắt</a></li>
+  <li><a href="#-tai-lieu-tham-khao">7. Tài liệu tham khảo</a></li>
+</ul>
+
+<!-- /MarkdownTOC -->
+
+<p>Bạn có thể download toàn bộ source code dưới dạng Jupyter Notebook <a href="https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/33_evaluation/python/Evaluation%20methods.ipynb">tại đây</a>.
+<a name="-gioi-thieu"></a></p>
+
+<h2 id="1-giới-thiệu">1. Giới thiệu</h2>
+<p>Khi xây dựng một mô hình Machine Learning, chúng ta cần một phép đánh giá để xem mô hình sử dụng có hiệu quả không và để so sánh khả năng của các mô hình. Trong bài viết này, tôi sẽ giới thiệu các phương pháp đánh giá các mô hình classification.</p>
+
+<p>Hiệu năng của một mô hình thường được đánh giá dựa trên tập dữ liệu kiểm thử (test data). Cụ thể, giả sử đầu ra của mô hình khi đầu vào là tập kiểm thử được mô tả bởi vector <code class="language-plaintext highlighter-rouge">y_pred</code> - là vector dự đoán đầu ra với mỗi phần tử là class được dự đoán của một điểm dữ liệu trong tập kiểm thử. Ta cần so sánh giữa vector dự đoán <code class="language-plaintext highlighter-rouge">y_pred</code> này với vector class <em>thật</em> của dữ liệu, được mô tả bởi vector <code class="language-plaintext highlighter-rouge">y_true</code>.</p>
+
+<p>Ví dụ với bài toán có 3 lớp dữ liệu được gán nhãn là <code class="language-plaintext highlighter-rouge">0, 1, 2</code>. Trong bài toán thực tế, các class có thể có nhãn bất kỳ, không nhất thiết là số, và không nhất thiết bắt đầu từ <code class="language-plaintext highlighter-rouge">0</code>. Chúng ta hãy tạm giả sử các class được đánh số từ <code class="language-plaintext highlighter-rouge">0</code> đến <code class="language-plaintext highlighter-rouge">C-1</code> trong trường hợp có <code class="language-plaintext highlighter-rouge">C</code> lớp dữ liệu.  Có 10 điểm dữ liệu trong tập kiểm thử với các nhãn thực sự được mô tả bởi <code class="language-plaintext highlighter-rouge">y_true = [0, 0, 0, 0, 1, 1, 1, 2, 2, 2]</code>. Giả sử bộ phân lớp chúng ta đang cần đánh giá dự đoán nhãn cho các điểm này là <code class="language-plaintext highlighter-rouge">y_pred = [0, 1, 0, 2, 1, 1, 0, 2, 1, 2]</code>.</p>
+
+<p>Có rất nhiều cách đánh giá một mô hình phân lớp. Tuỳ vào những bài toán khác nhau mà chúng ta sử dụng các phương pháp khác nhau. Các phương pháp thường được sử dụng là: accuracy score, confusion matrix, ROC curve, Area Under the Curve, Precision and Recall, F1 score, Top R error, etc.</p>
+
+<p>Trong Phần 1 này, tôi sẽ trình bày về accuracy score, confusion matrix, ROC curve, và Area Under the Curve. Các phương pháp còn lại sẽ được trình bày trong Phần 2.</p>
+
+<p><a name="-accuracy"></a></p>
+
+<h2 id="2-accuracy">2. Accuracy</h2>
+<p>Cách đơn giản và hay được sử dụng nhất là <em>accuracy</em> (độ chính xác). Cách đánh giá này đơn giản tính tỉ lệ giữa số điểm được dự đoán đúng và tổng số điểm trong tập dữ liệu kiểm thử.</p>
+
+<p>Trong ví dụ này, ta có thể đếm được có 6 điểm dữ liệu được dự đoán đúng trên tổng số 10 điểm. Vậy ta kết luận độ chính xác của mô hình là 0.6 (hay 60%). Để ý rằng đây là bài toán với chỉ 3 class, nên độ chính xác nhỏ nhất đã là khoảng 1/3, khi tất cả các điểm được dự đoán là thuộc vào một class nào đó.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span> 
+
+<span class="k">def</span> <span class="nf">acc</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+    <span class="n">correct</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">y_true</span> <span class="o">==</span> <span class="n">y_pred</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">correct</span><span class="p">)</span><span class="o">/</span><span class="n">y_true</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">y_true</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'accuracy = '</span><span class="p">,</span> <span class="n">acc</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    accuracy =  0.6
+</code></pre></div></div>
+
+<p>Và đây là <a href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html">cách tính bằng thư viên</a>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'accuracy = '</span><span class="p">,</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    accuracy =  0.6
+</code></pre></div></div>
+
+<p><a name="-confusion-matrix"></a></p>
+
+<h2 id="3-confusion-matrix">3. Confusion matrix</h2>
+<p>Cách tính sử dụng accuracy như ở trên chỉ cho chúng ta biết được bao nhiêu phần trăm lượng dữ liệu được phân loại đúng mà không chỉ ra được cụ thể mỗi loại được phân loại như thế nào, lớp nào được phân loại đúng nhiều nhất, và dữ liệu thuộc lớp nào thường bị phân loại nhầm vào lớp khác. Để có thể đánh giá được các giá trị này, chúng ta sử dụng một ma trận được gọi là <em>confusion matrix</em>.</p>
+
+<p>Về cơ bản, confusion matrix thể hiện có bao nhiêu điểm dữ liệu <em>thực sự</em> thuộc vào một class, và được <em>dự đoán</em> là rơi vào một class. Để hiểu rõ hơn, hãy xem bảng dưới đây:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Total: 10 | Predicted | Predicted | Predicted |   
+           |    as: 0  |    as: 1  |    as: 2  |   
+-----------|-----------|-----------|-----------|---
+ True: 0   |     2     |     1     |     1     | 4 
+-----------|-----------|-----------|-----------|---
+ True: 1   |     1     |     2     |     0     | 3 
+-----------|-----------|-----------|-----------|---
+ True: 2   |     0     |     1     |     2     | 3 
+-----------|-----------|-----------|-----------|---
+
+</code></pre></div></div>
+
+<p>Có tổng cộng 10 điểm dữ liệu. Chúng ta xét ma trận tạo bởi các giá trị tại vùng 3x3 trung tâm của bảng.</p>
+
+<p>Ma trận thu được được gọi là <em>confusion matrix</em>. Nó là một ma trận vuông với kích thước mỗi chiều bằng số lượng lớp dữ liệu. Giá trị tại hàng thứ <code class="language-plaintext highlighter-rouge">i</code>, cột thứ <code class="language-plaintext highlighter-rouge">j</code> là số lượng điểm <strong>lẽ ra thuộc vào class <code class="language-plaintext highlighter-rouge">i</code> nhưng lại được dự đoán là thuộc vào class <code class="language-plaintext highlighter-rouge">j</code></strong>. Như vậy, nhìn vào hàng thứ nhất (<code class="language-plaintext highlighter-rouge">0</code>), ta có thể thấy được rằng trong số bốn điểm thực sự thuộc lớp <code class="language-plaintext highlighter-rouge">0</code>, chỉ có hai điểm được phân loại đúng, hai điểm còn lại bị phân loại nhầm vào lớp <code class="language-plaintext highlighter-rouge">1</code> và lớp <code class="language-plaintext highlighter-rouge">2</code>.</p>
+
+<p><em><strong>Chú ý:</strong> Có một số tài liệu định nghĩa ngược lại, tức giá trị tại <strong>cột</strong> thứ <code class="language-plaintext highlighter-rouge">i</code>, <strong>hàng</strong> thứ <code class="language-plaintext highlighter-rouge">j</code> là số lượng điểm lẽ ra thuộc vào class <code class="language-plaintext highlighter-rouge">i</code> nhưng lại được dự đoán là thuộc vào class <code class="language-plaintext highlighter-rouge">j</code>. Khi đó ta sẽ được confusion matrix là ma trận chuyển vị của confusion matrix như cách tôi đang làm. Tôi chọn cách này vì đây chính là cách thư viện sklearn sử dụng.</em></p>
+
+<p>Chúng ta có thể suy ra ngay rằng tổng các phần tử trong toàn ma trận này chính là số điểm trong tập kiểm thử. Các phần tử trên đường chéo  của ma trận là số điểm được phân loại đúng của mỗi lớp dữ liệu. Từ đây có thể suy ra <em>accuracy</em> chính bằng tổng các phần tử trên đường chéo chia cho tổng các phần tử của toàn ma trận. Đoạn code dưới đây mô tả cách tính confusion matrix:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">my_confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y_true</span><span class="p">).</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># number of classes 
+</span>    <span class="n">cm</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">y_true</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="n">cm</span><span class="p">[</span><span class="n">y_true</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">y_pred</span><span class="p">[</span><span class="n">n</span><span class="p">]]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">cm</span> 
+
+<span class="n">cnf_matrix</span> <span class="o">=</span> <span class="n">my_confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Confusion matrix:'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">cnf_matrix</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">Accuracy:'</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">diagonal</span><span class="p">(</span><span class="n">cnf_matrix</span><span class="p">).</span><span class="nb">sum</span><span class="p">()</span><span class="o">/</span><span class="n">cnf_matrix</span><span class="p">.</span><span class="nb">sum</span><span class="p">())</span>
+
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Confusion matrix:
+[[ 2.  1.  1.]
+ [ 1.  2.  0.]
+ [ 0.  1.  2.]]
+
+Accuracy: 0.6
+</code></pre></div></div>
+
+<p>Cách biểu diễn trên đây của confusion matrix còn được gọi là <em>unnormalized confusion matrix</em>, tức ma <em>confusion matrix</em> chưa chuẩn hoá. Để có cái nhìn rõ hơn, ta có thể dùng <em>normalized confuion matrix</em>, tức <em>confusion matrix</em> được chuẩn hoá. Để có <em>normalized confusion matrix</em>, ta lấy mỗi hàng của <em>unnormalized confusion matrix</em> sẽ được chia cho tổng các phần tử trên hàng đó. Như vậy, ta có nhận xét rằng tổng các phần tử trên một hàng của <em>normalized confusion matrix</em> luôn bằng 1. Điều này thường không đúng trên mỗi cột. Dưới đây là cách tính <em>normalized confusion matrix</em>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">normalized_confusion_matrix</span> <span class="o">=</span> <span class="n">cnf_matrix</span><span class="o">/</span><span class="n">cnf_matrix</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">Confusion matrix (with normalizatrion:)'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">normalized_confusion_matrix</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    Confusion matrix (with normalizatrion:)
+    [[ 0.5         0.25        0.25      ]
+     [ 0.33333333  0.66666667  0.        ]
+     [ 0.          0.33333333  0.66666667]]
+</code></pre></div></div>
+
+<p>Và cách tính <a href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html">sử dụng thư viện</a>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
+<span class="n">cnf_matrix</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Confusion matrix:'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">cnf_matrix</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Confusion matrix:
+[[2 1 1]
+ [1 2 0]
+ [0 1 2]]
+</code></pre></div></div>
+
+<p>Confusion matrix thường được minh hoạ bằng màu sắc để có cái nhìn rõ ràng hơn. Đoạn code dưới đây giúp hiển thị confusion matrix ở cả hai dạng (Nguồn: <a href="http://scikit-learn.org/stable/auto_examples/model_selection/plot_confusion_matrix.html">Confusion matrix</a>):</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
+<span class="k">def</span> <span class="nf">plot_confusion_matrix</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span>
+                          <span class="n">normalize</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+                          <span class="n">title</span><span class="o">=</span><span class="s">'Confusion matrix'</span><span class="p">,</span>
+                          <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="p">.</span><span class="n">cm</span><span class="p">.</span><span class="n">Blues</span><span class="p">):</span>
+    <span class="s">"""
+    This function prints and plots the confusion matrix.
+    Normalization can be applied by setting `normalize=True`.
+    """</span>
+    <span class="k">if</span> <span class="n">normalize</span><span class="p">:</span>
+        <span class="n">cm</span> <span class="o">=</span> <span class="n">cm</span><span class="p">.</span><span class="n">astype</span><span class="p">(</span><span class="s">'float'</span><span class="p">)</span> <span class="o">/</span> <span class="n">cm</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="p">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s">'nearest'</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">colorbar</span><span class="p">()</span>
+    <span class="n">tick_marks</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">classes</span><span class="p">))</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">tick_marks</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">tick_marks</span><span class="p">,</span> <span class="n">classes</span><span class="p">)</span>
+
+    <span class="n">fmt</span> <span class="o">=</span> <span class="s">'.2f'</span> <span class="k">if</span> <span class="n">normalize</span> <span class="k">else</span> <span class="s">'d'</span>
+    <span class="n">thresh</span> <span class="o">=</span> <span class="n">cm</span><span class="p">.</span><span class="nb">max</span><span class="p">()</span> <span class="o">/</span> <span class="mf">2.</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">itertools</span><span class="p">.</span><span class="n">product</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">cm</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">range</span><span class="p">(</span><span class="n">cm</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])):</span>
+        <span class="n">plt</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="nb">format</span><span class="p">(</span><span class="n">cm</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">],</span> <span class="n">fmt</span><span class="p">),</span>
+                 <span class="n">horizontalalignment</span><span class="o">=</span><span class="s">"center"</span><span class="p">,</span>
+                 <span class="n">color</span><span class="o">=</span><span class="s">"white"</span> <span class="k">if</span> <span class="n">cm</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">thresh</span> <span class="k">else</span> <span class="s">"black"</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="p">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'True label'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'Predicted label'</span><span class="p">)</span>
+
+<span class="c1"># Plot non-normalized confusion matrix
+</span><span class="n">class_names</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">cnf_matrix</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="n">class_names</span><span class="p">,</span>
+                      <span class="n">title</span><span class="o">=</span><span class="s">'Confusion matrix, without normalization'</span><span class="p">)</span>
+
+<span class="c1"># Plot normalized confusion matrix
+</span><span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">cnf_matrix</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="n">class_names</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                      <span class="n">title</span><span class="o">=</span><span class="s">'Normalized confusion matrix'</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<hr />
+
+<div>
+<table width="100%" style="border: 0px solid white">
+   <tr>
+        <td width="40%" style="border: 0px solid white">
+        <img style="display:block;" width="100%" src="/assets/33_evaluation/ucm.png" />
+         </td>
+        <td width="40%" style="border: 0px solid white">
+        <img style="display:block;" width="100%" src="/assets/33_evaluation/ncm.png" />
+        </td>
+
+    </tr>
+
+</table>
+<div class="thecap"> Hình 1: Minh hoạ <em> unnormalized confusion matrix </em> và <em> normalized confusion matrix </em>.
+</div>
+</div>
+<hr />
+
+<p>Với các bài toán với nhiều lớp dữ liệu, cách biểu diễn bằng màu này rất hữu ích. Các ô màu đậm thể hiện các giá trị cao. Một mô hình tốt sẽ cho một confusion matrix có các phần tử trên đường chéo chính có giá trị lớn, các phần tử còn lại có giá trị nhỏ. Nói cách khác, khi biểu diễn bằng màu sắc, đường chéo có màu càng đậm so với phần còn lại sẽ càng tốt. Từ hai hình trên ta thấy rằng confusion matrix đã chuẩn hoá mang nhiều thông tin hơn. Sự khác nhau được thấy ở ô trên cùng bên trái. Lớp dữ liệu <code class="language-plaintext highlighter-rouge">0</code> được phân loại không thực sự tốt nhưng trong <em>unnormalized confusion matrix</em>, nó vẫn có màu đậm như hai ô còn lại trên đường chéo chính.</p>
+
+<p><a name="-truefalse-positivenegative"></a></p>
+
+<h2 id="4-truefalse-positivenegative">4. True/False Positive/Negative</h2>
+<p><a name="-truefalse-positivenegative-1"></a></p>
+
+<h3 id="41-truefalse-positivenegative">4.1. True/False Positive/Negative</h3>
+<p>Cách đánh giá này thường được áp dụng cho các bài toán phân lớp có hai lớp dữ liệu. Cụ thể hơn, trong hai lớp dữ liệu này có một lớp <em>nghiêm trọng</em> hơn lớp kia và cần được dự đoán chính xác. Ví dụ, trong bài toán xác định có bệnh ung thư hay không thì việc không bị <em>sót</em> (miss) quan trọng hơn là việc chẩn đoán nhầm <em>âm tính</em> thành <em>dương tính</em>. Trong bài toán xác định có mìn dưới lòng đất hay không thì việc <em>bỏ sót</em> nghiêm trọng hơn việc <em>báo động nhầm</em> rất nhiều. Hay trong bài toán lọc email rác thì việc cho nhầm email quan trọng vào thùng rác nghiêm trọng hơn việc xác định một email rác là email thường.</p>
+
+<p>Trong những bài toán này, người ta thường định nghĩa lớp dữ liệu <em>quan trọng</em> hơn cần được xác định đúng là lớp <em>Positive</em> (P-dương tính), lớp còn lại được gọi là <em>Negative</em> (N-âm tính). Ta định nghĩa <em>True Positive (TP), False Positive (FP), True Negative (TN), False Negative (FN)</em> dựa trên <em>confusion matrix</em> chưa chuẩn hoá như sau:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                  |      Predicted      |      Predicted      |
+                  |     as Positive     |     as Negative     |
+------------------|---------------------|---------------------|
+ Actual: Positive | True Positive (TP)  | False Negative (FN) |
+------------------|---------------------|---------------------|
+ Actual: Negative | False Positive (FP) | True Negative (TN)  |
+------------------|---------------------|---------------------|
+</code></pre></div></div>
+
+<p>Người ta thường quan tâm đến TPR, FNR, FPR, TNR (R - Rate) dựa trên <em>normalized confusion matrix</em> như sau:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                  |     Predicted      |     Predicted      |
+                  |    as Positive     |    as Negative     |
+------------------|--------------------|--------------------|
+ Actual: Positive | TPR = TP/(TP + FN) | FNR = FN/(TP + FN) |
+------------------|--------------------|--------------------|
+ Actual: Negative | FPR = FP/(FP + TN) | TNR = TN/(FP + TN) |
+------------------|--------------------|--------------------|
+</code></pre></div></div>
+
+<p><em>False Positive Rate</em> còn được gọi là <em>False Alarm Rate</em> (tỉ lệ báo động nhầm), <em>False Negative Rate</em> còn được gọi là <em>Miss Detection Rate</em> (tỉ lệ bỏ sót). Trong bài toán dò mìn, <em>thà báo nhầm còn hơn bỏ sót</em>, tức là ta có thể chấp nhận <em>False Alarm Rate</em> cao để đạt được <em>Miss Detection Rate</em> thấp.</p>
+
+<p><strong>Chú ý:</strong>:</p>
+<ul>
+  <li>
+    <p>Việc biết một cột của confusion matrix này sẽ suy ra được cột còn lại vì tổng các hàng luôn bằng 1 và chỉ có hai lớp dữ liệu.</p>
+  </li>
+  <li>
+    <p><strong>Với các bài toán có nhiều lớp dữ liệu</strong>, ta có thể xây dựng bảng True/False Positive/Negative cho <strong>mỗi lớp</strong> nếu coi lớp đó là lớp <em>Positive</em>, các lớp còn lại gộp chung thành lớp <em>Negative</em>, giống như cách làm trong <a href="https://machinelearningcoban.com/2017/02/11/binaryclassifiers/#one-vs-rest-hay-one-hot-coding">one-vs-rest</a>. Bạn có thể xem thêm ví dụ <a href="http://scikit-learn.org/stable/auto_examples/model_selection/plot_roc.html#sphx-glr-auto-examples-model-selection-plot-roc-py">tại đây</a>.</p>
+  </li>
+</ul>
+
+<p><a name="-receiver-operating-characteristic-curve"></a></p>
+
+<h3 id="42-receiver-operating-characteristic-curve">4.2. Receiver Operating Characteristic curve</h3>
+<p>Trong một số bài toán, việc tăng hay giảm FNR, FPR có thể được thực hiện bằng việc thay đổi một <em>ngưỡng</em> (threshold) nào đó. Lấy ví dụ khi ta sử dụng thuật toán <a href="https://machinelearningcoban.com/2017/01/27/logisticregression/">Logistic Regression</a>, đầu ra của mô hình có thể là các <em>lớp cứng</em> <code class="language-plaintext highlighter-rouge">0</code> hay <code class="language-plaintext highlighter-rouge">1</code>, hoặc cũng có thể là các giá trị thể hiện xác suất để dữ liệu đầu vào thuộc vào lớp <code class="language-plaintext highlighter-rouge">1</code>. Khi sử dụng thư viện <a href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html">sklearn Logistic Regression</a>, ta có thể lấy được các giá trị xác xuất này bằng phương thức <code class="language-plaintext highlighter-rouge">predict_proba()</code>. Mặc định, ngưỡng được sử dụng là 0.5, tức là một điểm dữ liệu <code class="language-plaintext highlighter-rouge">x</code> sẽ được dự đoán rơi vào lớp <code class="language-plaintext highlighter-rouge">1</code> nếu giá trị <code class="language-plaintext highlighter-rouge">predict_proba(x)</code> lớn hơn 0.5 và ngược lại.</p>
+
+<p>Nếu bây giờ ta coi lớp <code class="language-plaintext highlighter-rouge">1</code> là lớp <em>Positive</em>, lớp <code class="language-plaintext highlighter-rouge">0</code> là lớp <em>Negative</em>, câu hỏi đặt ra là làm thế nào để tăng mức độ <em>báo nhầm</em> (FPR) để giảm mức độ <em>bỏ sót</em> (FNR)? Chú ý rằng tăng FNR đồng nghĩa với việc giảm TPR vì tổng của chúng luôn bằng 1.</p>
+
+<p>Một kỹ thuật đơn giản là ta thay giá trị threshold từ 0.5 xuống một số nhỏ hơn. Chẳng hạn nếu chọn threshold = 0.3, thì mọi điểm được dự đoán có xác suất đầu ra lớn hơn 0.3 sẽ được dự đoán là thuộc lớp Positive. Nói cách khác, tỉ lệ các điểm được phân loại là Positive sẽ tăng lên, kéo theo cả False Positive Rate và True Positive Rate cùng tăng lên (cột thứ nhất trong ma trận tăng lên). Từ đây suy ra cả FNR và TNR đều giảm.</p>
+
+<p>Ngược lại, nếu ta muốn <em>bỏ sót còn hơn báo nhầm</em>, tất nhiên là ở mức độ nào đó, như bài toán xác định email rác chẳng hạn, ta cần tăng threshold lên một số lớn hơn 0.5. Khi đó, hầu hết các điểm dữ liệu sẽ được dự đoán thuộc lớp <code class="language-plaintext highlighter-rouge">0</code>, tức <em>Negative</em>, và cả TNF và FNR đều tăng lên, tức TPR và FPR giảm xuống.</p>
+
+<p>Như vậy, ứng với mỗi giá trị của threshold, ta sẽ thu được một cặp (FPR, TPR). Biểu diễn các điểm (FPR, TPR) trên đồ thị khi thay đổi threshold từ 0 tới 1 ta sẽ thu được một đường được gọi là <em>Receiver Operating Characteristic curve</em> hay ROC curve. (<em>Chú ý rằng khoảng giá trị của threshold không nhất thiết từ 0 tới 1 trong các bài toán tổng quát. Khoảng giá trị này cần được đảm bảo có trường hợp TPR/FPR nhận giá trị lớn nhất hay nhỏ nhất mà nó có thể đạt được</em>).</p>
+
+<p>Dưới đây là một ví dụ với hai lớp dữ liệu. Lớp thứ nhất là lớp <em>Negative</em> có 20 điểm dữ liệu, 30 điểm còn lại thuộc lớp <em>Positive</em>. Giả sử mô hình đang xét cho các đầu ra của dữ liệu (xác suất) được lưu ở biến <code class="language-plaintext highlighter-rouge">scores</code>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># generate simulated data
+</span><span class="n">n0</span><span class="p">,</span> <span class="n">n1</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span>
+<span class="n">score0</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n0</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+<span class="n">label0</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n0</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span><span class="p">)</span>
+<span class="n">score1</span>  <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span> <span class="p">.</span><span class="mi">2</span>
+<span class="n">label1</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span><span class="p">)</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">score0</span><span class="p">,</span> <span class="n">score1</span><span class="p">))</span>
+<span class="n">y_true</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">label0</span><span class="p">,</span> <span class="n">label1</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">'True labels:'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">y_true</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">Scores:'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    True labels:
+    [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+     1 1 1 1 1 1 1 1 1 1 1 1 1]
+    
+    Scores:
+    [ 0.16987517  0.27608323  0.10851568  0.13395249  0.24878687  0.29100097
+      0.21036182  0.48215779  0.01930099  0.30927599  0.26581374  0.15141354
+      0.26298063  0.10405583  0.30773121  0.39830016  0.04868077  0.17290186
+      0.28717646  0.3340749   0.4174846   0.27292017  0.68740357  0.62108568
+      0.20781968  0.43056031  0.67816027  0.47037842  0.23118192  0.68862749
+      0.24559788  0.58645887  0.69637251  0.5247967   0.24265087  0.60485646
+      0.54800088  0.69565411  0.20509934  0.39638029  0.30860676  0.6267616
+      0.42360257  0.5507021   0.50313701  0.67614457  0.60108083  0.25201502
+      0.27830655  0.58669514]
+</code></pre></div></div>
+
+<p>Nhìn chung, các điểm thuộc lớp <code class="language-plaintext highlighter-rouge">1</code> có <code class="language-plaintext highlighter-rouge">score</code> cao hơn. Thư viện sklearn sẽ giúp chúng ta tính các thresholds cũng như FPR và TPR tương ứng:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">auc</span>
+<span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">thresholds</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">scores</span><span class="p">,</span> <span class="n">pos_label</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Thresholds:'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">thresholds</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    Thresholds:
+    [ 0.69637251  0.50313701  0.48215779  0.4174846   0.39830016  0.39638029
+      0.30927599  0.30860676  0.28717646  0.27830655  0.27608323  0.27292017
+      0.26298063  0.25201502  0.24878687  0.23118192  0.21036182  0.20509934
+      0.01930099]
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">'False Positive Rate:'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">fpr</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    False Positive Rate:
+    [ 0.    0.    0.05  0.05  0.1   0.1   0.2   0.2   0.35  0.35  0.4   0.4
+      0.5   0.5   0.55  0.55  0.6   0.6   1.  ]
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">'True Positive Rate:'</span><span class="p">)</span>
+<span class="n">tpr</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    True Positive Rate:
+    array([ 0.03333333,  0.53333333,  0.53333333,  0.66666667,  0.66666667,
+            0.7       ,  0.7       ,  0.73333333,  0.73333333,  0.76666667,
+            0.76666667,  0.8       ,  0.8       ,  0.83333333,  0.83333333,
+            0.93333333,  0.93333333,  1.        ,  1.        ])
+</code></pre></div></div>
+
+<p>Như vậy, ứng với <code class="language-plaintext highlighter-rouge">threshold = 0.69637251</code>, <code class="language-plaintext highlighter-rouge">fpr = 0</code> và <code class="language-plaintext highlighter-rouge">tpr = 0.03</code>. Đây không phải là một ngưỡng tốt vì mặc dụ False Positive Rate thấp, True Positive Rate cũng rất thấp. Chúng ta luôn muốn rằng FPR thấp và TPR cao.</p>
+
+<p>ROC cho bài toán này được minh hoạ như dưới đây:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">cycle</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">lw</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'darkorange'</span><span class="p">,</span>
+         <span class="n">lw</span><span class="o">=</span><span class="n">lw</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'ROC curve (area = %0.2f)'</span> <span class="o">%</span> <span class="n">auc</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">))</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s">'navy'</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="n">lw</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">'--'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">xlim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">ylim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">])</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'False Positive Rate'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'True Positive Rate'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Receiver operating characteristic example'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s">"lower right"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<hr />
+
+<table width="100%" style="border: 0px solid white">
+   <tr>
+        <td width="40%" style="border: 0px solid white">
+        <img style="display:block;" width="100%" src="/assets/33_evaluation/roc.png" />
+         </td>
+        <td width="40%" style="border: 0px solid white">
+        Hình 2: Ví dụ về Receiver Operating Characteristic curve và Area Under the Curve. 
+        </td>
+    </tr>
+</table>
+<hr />
+
+<p><a name="-area-under-the-curve"></a></p>
+
+<h3 id="43-area-under-the-curve">4.3. Area Under the Curve</h3>
+<p>Dựa trên ROC curve, ta có thể chỉ ra rằng một mô hình có hiệu quả hay không. Một mô hình hiệu quả khi có FPR thấp và TPR cao, tức tồn tại một điểm trên ROC curve gần với điểm có toạ độ (0, 1) trên đồ thị (góc trên bên trái). Curve càng gần thì mô hình càng hiệu quả.</p>
+
+<p>Có một thông số nữa dùng để đánh giá mà tôi đã sử dụng ở trên được gọi là <em>Area Under the Curve</em> hay <em>AUC</em>. Đại lượng này chính là diện tích nằm dưới ROC curve màu cam. Giá trị này là một số dương nhỏ hơn hoặc bằng 1. Giá trị này càng lớn thì mô hình càng tốt.</p>
+
+<p><strong>Chú ý:</strong> <a href="https://machinelearningcoban.com/2017/03/04/overfitting/#-cross-validation">Cross validation</a> cũng có thể được thực hiện bằng cách xác định ROC curve và AUC lên [validation set].</p>
+
+<p><a name="-precision-va-recall"></a></p>
+
+<h2 id="5-precision-và-recall">5. Precision và Recall</h2>
+
+<p><a name="-dinh-nghia"></a></p>
+
+<h3 id="51-định-nghĩa">5.1 Định nghĩa</h3>
+<p>Với bài toán phân loại mà tập dữ liệu của các lớp là chênh lệch nhau rất nhiều, có một phép đó hiệu quả thường được sử dụng là Precision-Recall.</p>
+
+<p>Trước hết xét bài toán phân loại nhị phân. Ta cũng coi một trong hai lớp là <em>positive</em>, lớp còn lại là <em>negative</em>.</p>
+
+<p>Xét Hình 3 dưới đây:</p>
+
+<hr />
+
+<div class="imgcap">
+<img src="/assets/33_evaluation/PR.png" align="center" width="800" />
+</div>
+
+<p><br /></p>
+<div class="thecap" style="text-align: justify">Hình 3: Cách tính Precision và Recall.</div>
+<hr />
+
+<p>Với một cách xác định một lớp là <em>positive</em>, <strong>Precision</strong> được định nghĩa là tỉ
+lệ số điểm <strong>true positive</strong> trong số những điểm <strong>được phân loại là
+<em>positive</em></strong> (TP + FP).</p>
+
+<p><strong>Recall</strong> được định nghĩa là tỉ lệ số điểm <strong>true positive</strong> trong số những
+điểm <strong>thực sự là <em>positive</em></strong> (TP + FN).</p>
+
+<p>Một cách toán học, Precison và Recall là hai phân số có tử số bằng nhau nhưng
+mẫu số khác nhau:</p>
+
+<p>\[
+\begin{eqnarray}
+\text{Precision} &amp;=&amp; \frac{\text{TP}}{\text{TP} + \text{FP}} \<br />
+\text{Recall} &amp;=&amp; \frac{\text{TP}}{\text{TP} + \text{FN}}
+\end{eqnarray}
+\]</p>
+
+<p>Bạn đọc có thể nhận thấy rằng TPR và Recall là hai đại lượng bằng nhau. Ngoài
+ra, cả Precision và Recall đều là các số không âm nhỏ hơn hoặc bằng một.</p>
+
+<p>Precision cao đồng nghĩa với việc độ chính xác của các điểm tìm được là cao. Recall cao đồng nghĩa với việc True Positive Rate cao, tức tỉ lệ bỏ sót các điểm thực sự <em>positive</em> là thấp.</p>
+
+<p>Ví dụ nhỏ dưới đây thể hiện cách tính Precision và Recall dựa vào Confusion Matrix cho bài toán phân loại nhị phân.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span> 
+<span class="c1"># confusion matrix to precision + recall
+</span><span class="k">def</span> <span class="nf">cm2pr_binary</span><span class="p">(</span><span class="n">cm</span><span class="p">):</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">cm</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">cm</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">cm</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">cm</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+
+<span class="c1"># example of a confusion matrix for binary classification problem 
+</span><span class="n">cm</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">100.</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">70</span><span class="p">]])</span>
+<span class="n">p</span><span class="p">,</span><span class="n">r</span> <span class="o">=</span> <span class="n">cm2pr_binary</span><span class="p">(</span><span class="n">cm</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"precition = {0:.2f}, recall = {1:.2f}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">r</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>precition = 0.83, recall = 0.91
+</code></pre></div></div>
+
+<p>Khi Precision = 1, mọi điểm tìm được đều thực sự là <em>positive</em>, tức không có điểm <em>negative</em> nào lẫn vào kết quả. Tuy nhiên, Precision = 1 không đảm bảo mô hình là tốt, vì câu hỏi đặt ra là liệu mô hình đã tìm được tất cả các điểm <em>positive</em> hay chưa. Nếu một mô hình chỉ tìm được đúng một điểm <em>positive</em> mà nó chắc chắn nhất thì ta không thể gọi nó là một mô hình tốt.</p>
+
+<p>Khi Recall = 1, mọi điểm <em>positive</em> đều được tìm thấy. Tuy nhiên, đại lượng này lại không đo liệu có bao nhiêu điểm <em>negative</em> bị lẫn trong đó. Nếu mô hình phân loại mọi điểm là <em>positive</em> thì chắc chắn Recall = 1, tuy nhiên dễ nhận ra đây là một mô hình cực tồi.</p>
+
+<p>Một mô hình phân lớp tốt là mô hình có cả Precision và Recall đều cao, tức càng gần một càng tốt. Có hai cách đo chất lượng của bộ phân lớp dựa vào Precision và Reall: Precision-Recall curve và F-score.</p>
+
+<p><a name="-precision-recall-curve-va-average-precision"></a></p>
+
+<h3 id="52-precision-recall-curve-và-average-precision">5.2. Precision-Recall curve và Average precision</h3>
+<p>Tương tự như ROC curve, chúng ta cũng có thể đánh giá mô hình dựa trên việc thay đổi một ngưỡng và quan sát giá trị của Precision và Recall. Khái niệm Area Under the Curve (AUC) cũng được định nghĩa tương tự. Với Precision-Recall Curve, AUC còn có một tên khác là <strong>Average precision (AP).</strong></p>
+
+<p>Giả sử có \(N\) ngưỡng để tính precision và recall, với mỗi ngưỡng cho một cặp giá trị precision, recall là \(P_n, R_n,~ n= 1, 2, \dots, N\). Precision-Recall curve được vẽ bằng cách vẽ từng điểm có toạ độ \((R_n, P_n)\) trên trục toạ độ và nối chúng với nhau. AP được xác định bằng: 
+\[
+\text{AP} = \sum_{n}(R_{n} - R_{n-1})P_n
+\]</p>
+
+<p>ở đó \((R_{n} - R_{n-1})P_n\) chính là diện tích hình chữ nhật có chiều rộng \((R_{n} - R_{n-1})\) và chiều cao \(P_n\), đây cũng gần với cách tính tích phân dựa trên cách tính diện tích của từng hình chữ nhật nhỏ. (Nếu bạn đọc còn nhớ khái niệm <em>diện tích hình thang cong</em> thì sẽ tưởng tượng ra.)</p>
+
+<p>Xem thêm <a href="http://scikit-learn.org/stable/auto_examples/model_selection/plot_precision_recall.html">Precision-Recall–scikit-learn</a>.</p>
+
+<p><a name="-f-score"></a></p>
+
+<h3 id="53-f1-score">5.3. F1-score</h3>
+<p>$F_1$ score, hay F1-score, là <em>harmonic mean</em> của precision và recall (giả sử rằng hai đại lượng này khác không):
+\[
+\frac{2}{F_1} = \frac{1}{\text{precision}} + \frac{1}{\text{recall}} ~ \text{hay} ~ F_1 = 2\frac{1}{\frac{1}{\text{precision}} + \frac{1}{\text{recall}}} = 2\frac{\text{precion}\cdot{recall}}{\text{precision} + \text{recall}}
+\]</p>
+
+<p>\(F-1\)-score có giá trị nằm trong nửa khoảng \((0, 1]\). \(F_1\) càng cao, bộ phân lớp càng tốt. Khi cả recall và precision đều bằng 1 (tốt nhất có thể), \(F_1 = 1\). Khi cả recall và precision đều thấp, ví dụ bằng 0.1, \(F_1 = 0.1\). Dưới đây là một vài ví dụ về \(F_1\)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">precision</th>
+      <th style="text-align: center">recall</th>
+      <th style="text-align: center">\(F_1\)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">0.1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0.5</td>
+      <td style="text-align: center">0.5</td>
+      <td style="text-align: center">0.5</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">0.182</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0.3</td>
+      <td style="text-align: center">0.8</td>
+      <td style="text-align: center">0.36</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Như vậy, một bộ phân lớp với precision = recall = 0.5 tốt hơn một bộ phân lớp
+khác với precision = 0.3, recall = 0.8 theo cách đo này.</p>
+
+<p>Trường hợp tổng quát của \(F_1\) score là \(F_{\beta}\) score: 
+\[
+F_{\beta} = ( 1 + \beta^2)\frac{\text{precision}\cdot\text{recall}}{\beta^2\cdot\text{precision} + \text{recall}}
+\]</p>
+
+<p>\(F_1\) chính là một trường hợp đặc biệt của \(F_{\beta}\) khi \(\beta =
+1\). Khi \(\beta &gt;1\), recall được coi trọng hơn precision, khi \(\beta &lt;
+1\), precision được coi trọng hơn. Hai đại lượng \(\beta\) thường được sử
+dụng là \(\beta = 2\) và \(\beta = 0.5\).</p>
+
+<p><a name="-precision-recall-cho-bai-toan-phan-lop-nhieu-lop"></a></p>
+
+<h3 id="54-precision-recall-cho-bài-toán-phân-lớp-nhiều-lớp">5.4. Precision-recall cho bài toán phân lớp nhiều lớp</h3>
+<p>Cũng giống như ROC curve, precision-recall curve ban đầu được định nghĩa cho bài
+toán phân lớp nhị phân. Để có thể áp dụng các phép đo này cho bài toán
+multi-class classification, các đại lượng đầu ra (ground truth và predicted
+output) cần được đưa về dạng nhị phân.</p>
+
+<p>Bằng trực giác, ta có thể đưa bài toán phân lớp nhiều lớp về bài toán phân lớp
+nhị phân bằng cách xem xét từng lớp. Với mỗi lớp, ta coi dữ liệu thuộc lớp đó có
+label là <em>positive</em>, tất cả các dữ liệu còn lại có label là <em>negative</em>. Sau đó,
+giá trị Precision, Recall, và PR curve được áp dụng lên từng lớp. Với mỗi lớp,
+ta sẽ nhận được một cặp giá trị  precision và recall. Với các bài toán có ít lớp
+dữ liệu, ta có thể minh hoạ PR curve cho từng lớp trên cùng một đồ thị. Tuy
+nhiên, với các bài toán có rất nhiều lớp dữ liệu, việc này đôi khi không khả
+thi. Thay vào đó, hai phép đánh giá dựa trên Precision-Recall được sử dụng là
+<em>micro-average</em> và <em>macro-average</em>.</p>
+
+<p><a name="-micro-average"></a></p>
+
+<h4 id="541-micro-average">5.4.1. Micro-average</h4>
+<p>Xét ví dụ bài toán với 3 lớp dữ liệu, bộ phân lớp cho các tham số FP, TP, FN của
+mỗi lớp là:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tp1</span><span class="p">,</span> <span class="n">fp1</span><span class="p">,</span> <span class="n">fn1</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span>
+<span class="n">tp2</span><span class="p">,</span> <span class="n">fp2</span><span class="p">,</span> <span class="n">fn2</span> <span class="o">=</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span>
+<span class="n">tp3</span><span class="p">,</span> <span class="n">fp3</span><span class="p">,</span> <span class="n">fn3</span> <span class="o">=</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span> 
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<span class="k">def</span> <span class="nf">PR</span><span class="p">(</span><span class="n">tp</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">fn</span><span class="p">):</span>
+    <span class="n">P</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">tp</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">tp</span> <span class="o">+</span> <span class="n">fp</span><span class="p">)</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">tp</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">tp</span> <span class="o">+</span> <span class="n">fn</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">R</span><span class="p">)</span>
+
+<span class="p">(</span><span class="n">P1</span><span class="p">,</span> <span class="n">R1</span><span class="p">)</span> <span class="o">=</span> <span class="n">PR</span><span class="p">(</span><span class="n">tp1</span><span class="p">,</span> <span class="n">fp1</span><span class="p">,</span> <span class="n">fn1</span><span class="p">)</span>
+<span class="p">(</span><span class="n">P2</span><span class="p">,</span> <span class="n">R2</span><span class="p">)</span> <span class="o">=</span> <span class="n">PR</span><span class="p">(</span><span class="n">tp2</span><span class="p">,</span> <span class="n">fp2</span><span class="p">,</span> <span class="n">fn2</span><span class="p">)</span>
+<span class="p">(</span><span class="n">P3</span><span class="p">,</span> <span class="n">R3</span><span class="p">)</span> <span class="o">=</span> <span class="n">PR</span><span class="p">(</span><span class="n">tp3</span><span class="p">,</span> <span class="n">fp3</span><span class="p">,</span> <span class="n">fn2</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">'(P1, R1) = (%.2f, %.2f)'</span><span class="o">%</span><span class="p">(</span><span class="n">P1</span><span class="p">,</span> <span class="n">R1</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'(P2, R2) = (%.2f, %.2f)'</span><span class="o">%</span><span class="p">(</span><span class="n">P2</span><span class="p">,</span> <span class="n">R2</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'(P3, R3) = (%.2f, %.2f)'</span><span class="o">%</span><span class="p">(</span><span class="n">P3</span><span class="p">,</span> <span class="n">R3</span><span class="p">))</span>
+
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(P1, R1) = (0.67, 0.77)
+(P2, R2) = (0.71, 0.63)
+(P3, R3) = (0.93, 0.71)
+</code></pre></div></div>
+
+<p>Micro-average precision và Micro-average recall đơn giản được tính bằng: 
+\[
+\begin{eqnarray}
+\text{micro-average precision} &amp;=&amp; \frac{\sum_{c=1}^C\text{TP}c}{\sum_{c=1}^C(\text{TP}c + \text{FP}c)}\<br />
+\text{micro-average recall} &amp;=&amp; \frac{\sum_{c=1}^C\text{TP}c}{\sum_{c=1}^C(\text{TP}c + \text{FN}c)}
+\end{eqnarray}
+\]
+với \(\text{TP}c, \text{FP}c, \text{FN}c\) lần lượt là TP, FP, FN của class \(c\).</p>
+
+<p>Tức TP được tính là tổng của toàn bộ TP của mỗi lớp. Tương tự với FP và FN. Với
+ví dụ trên, micro-average precision và recall tính được là:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">total_tp</span> <span class="o">=</span> <span class="n">tp1</span> <span class="o">+</span> <span class="n">tp2</span> <span class="o">+</span> <span class="n">tp3</span>
+<span class="n">total_fp</span> <span class="o">=</span> <span class="n">fp1</span> <span class="o">+</span> <span class="n">fp2</span> <span class="o">+</span> <span class="n">fp3</span> 
+<span class="n">total_fn</span> <span class="o">=</span> <span class="n">fn1</span> <span class="o">+</span> <span class="n">fn2</span> <span class="o">+</span> <span class="n">fn3</span> 
+<span class="n">micro_ap</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">total_tp</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">total_tp</span> <span class="o">+</span> <span class="n">total_fp</span><span class="p">)</span>
+<span class="n">micro_ar</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">total_tp</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">total_tp</span> <span class="o">+</span> <span class="n">total_fn</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'(micro_ap, micro_ar) = (%.2f, %.2f)'</span> <span class="o">%</span> <span class="p">(</span><span class="n">micro_ap</span><span class="p">,</span> <span class="n">micro_ar</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(micro_ap, micro_ar) = (0.79, 0.75)
+</code></pre></div></div>
+
+<p>Micro-average F-Score cũng được tính tương tự như F-score nhưng dựa trên
+micro-average precision và micro-average recall.</p>
+
+<p><a name="-macro-average"></a></p>
+
+<h4 id="542-macro-average">5.4.2. Macro-average</h4>
+<p>Macro-average precision là trung bình cộng của các precision theo class, tương
+tự với Macro-average recall. Với ví dụ trên, ta có</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">macro_ap</span> <span class="o">=</span> <span class="p">(</span><span class="n">P1</span> <span class="o">+</span> <span class="n">P2</span> <span class="o">+</span> <span class="n">P3</span><span class="p">)</span><span class="o">/</span><span class="mi">3</span>
+<span class="n">macro_ar</span> <span class="o">=</span> <span class="p">(</span><span class="n">R1</span> <span class="o">+</span> <span class="n">R2</span> <span class="o">+</span> <span class="n">R3</span><span class="p">)</span><span class="o">/</span><span class="mi">3</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'(micro_ap, micro_ar) = (%.2f, %.2f)'</span> <span class="o">%</span> <span class="p">(</span><span class="n">macro_ap</span><span class="p">,</span> <span class="n">macro_ar</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(micro_ap, micro_ar) = (0.77, 0.70)
+</code></pre></div></div>
+
+<p>Macro-average F-Score cũng được tính tương tự như F-score nhưng dựa trên macro-average precision và macro-average recall.</p>
+
+<p><a name="-tom-tat"></a></p>
+
+<h2 id="6-tóm-tắt">6. Tóm tắt</h2>
+<ul>
+  <li>
+    <p>Accuracy là tỉ lệ giữa số điểm được phân loại đúng và tổng số điểm. Accuracy chỉ phù hợp với các bài toán mà kích thước các lớp dữ liệu là tương đối như nhau.</p>
+  </li>
+  <li>
+    <p>Confusion matrix giúp có cái nhìn rõ hơn về việc các điểm dữ liệu được phân loại đúng/sai như thế nào.</p>
+  </li>
+  <li>
+    <p>True Positive (TP): số lượng điểm của lớp <em>positive</em> được phân loại đúng là <em>positive</em>.</p>
+  </li>
+  <li>
+    <p>True Negative (TN): số lượng điểm của lớp <em>negative</em> được phân loại đúng là <em>negative</em>.</p>
+  </li>
+  <li>
+    <p>False Positive (FP): số lượng điểm của lớp <em>negative</em> bị phân loại nhầm thành <em>positive</em>.</p>
+  </li>
+  <li>
+    <p>False Negative (FN): số lượng điểm của lớp <em>positiv</em> bị phân loại nhầm thành <em>negative</em></p>
+  </li>
+  <li>
+    <p>True positive rate (TPR), false negative rate (FNR), false positive rate (FPR), true negative rate (TNR):</p>
+  </li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                  |     Predicted      |     Predicted      |
+                  |    as Positive     |    as Negative     |
+------------------|--------------------|--------------------|
+ Actual: Positive | TPR = TP/(TP + FN) | FNR = FN/(TP + FN) |
+------------------|--------------------|--------------------|
+ Actual: Negative | FPR = FP/(FP + TN) | TNR = TN/(FP + TN) |
+------------------|--------------------|--------------------|
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>Khi kích thước các lớp dữ liệu là chênh lệch (<em>imbalanced data</em> hay <em>skew data</em>), precision và recall thường được sử dụng: 
+\[
+\begin{eqnarray}
+\text{Precision} &amp;=&amp; \frac{\text{TP}}{\text{TP} + \text{FP}} \<br />
+\text{Recall} &amp;=&amp; \frac{\text{TP}}{\text{TP} + \text{FN}}
+\end{eqnarray}
+\]</p>
+  </li>
+  <li>
+    <p>\(F_1\) score: 
+\[
+F_1 = 2\frac{1}{\frac{1}{\text{precision}} + \frac{1}{\text{recall}}} = 2\frac{\text{precion}\cdot\text{recall}}{\text{precision} + \text{recall}}
+\]</p>
+  </li>
+  <li>
+    <p>Micro-average precision, micro-average recall: 
+\[
+\begin{eqnarray}
+\text{micro-average precision} &amp;=&amp; \frac{\sum_{c=1}^C\text{TP}c}{\sum_{c=1}^C(\text{TP}c + \text{FP}c)}\<br />
+\text{micro-average recall} &amp;=&amp; \frac{\sum_{c=1}^C\text{TP}c}{\sum_{c=1}^C(\text{TP}c + \text{FN}c)}
+\end{eqnarray}
+\]
+với \(\text{TP}c, \text{FP}c, \text{FN}c\) lần lượt là TP, FP, FN của class \(c\).</p>
+  </li>
+  <li>
+    <p>Micro-average precision, macro-average recall là trung bình cộng của các precision, recall cho từng lớp. Micro-average (macro-average) \(F_1\) scores cũng được tính dựa trên các micro-average (macro-average) precision, recall tương ứng.</p>
+  </li>
+</ul>
+
+<p><a name="-tai-lieu-tham-khao"></a></p>
+
+<h2 id="7-tài-liệu-tham-khảo">7. Tài liệu tham khảo</h2>
+<p>[1] <a href="http://scikit-learn.org/stable/auto_examples/model_selection/plot_roc.html">Sklearn: Receiver Operating Characteristic (ROC) </a></p>
+
+<p>[2] <a href="http://scikit-learn.org/stable/auto_examples/model_selection/plot_roc_crossval.html#sphx-glr-auto-examples-model-selection-plot-roc-crossval-py">Receiver Operating Characteristic (ROC) with cross validation</a></p>
+
+<p>[3] <a href="https://www.sciencedirect.com/science/article/pii/S0306457309000259">A systematic analysis of performance measures for classification tasks</a></p>
+:ET

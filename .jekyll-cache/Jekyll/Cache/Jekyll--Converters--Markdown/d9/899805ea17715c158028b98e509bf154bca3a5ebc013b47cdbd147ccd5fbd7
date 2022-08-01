@@ -1,0 +1,541 @@
+I"(�<p><strong>Trong trang này:</strong></p>
+
+<!-- MarkdownTOC -->
+
+<ul>
+  <li><a href="#-gioi-thieu">1. Giới thiệu</a></li>
+  <li><a href="#-maximum-likelihood-estimation">2. Maximum Likelihood Estimation</a>
+    <ul>
+      <li><a href="#-y-tuong">2.1. Ý tưởng</a></li>
+      <li><a href="#-independence-assumption-va-log-likelihood">2.2. Independence Assumption và log-likelihood</a></li>
+      <li><a href="#-vi-du">2.3. Ví dụ</a>
+        <ul>
+          <li><a href="#-vi-du--bernoulli-distribution">2.3.1. Ví dụ 1: Bernoulli distribution</a></li>
+          <li><a href="#-vi-du--categorical-distribution">2.3.2. Ví dụ 2: Categorical distribution</a></li>
+          <li><a href="#-vi-du--univariate-normal-distribution">2.3.3. Ví dụ 3: Univariate normal distribution</a></li>
+          <li><a href="#-vi-du--multivariate-normal-distribution">2.3.4. Ví dụ 4: Multivariate normal distribution</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#-maximum-a-posteriori">3. Maximum a Posteriori</a>
+    <ul>
+      <li><a href="#-y-tuong-1">3.1. Ý tưởng</a></li>
+      <li><a href="#-conjugate-prior">3.2. Conjugate prior</a></li>
+      <li><a href="#-hyperparameters">3.3. Hyperparameters</a></li>
+      <li><a href="#-map-giup-tranh-overfitting">3.4. MAP giúp tránh overfitting</a></li>
+    </ul>
+  </li>
+  <li><a href="#-tom-tat">4. Tóm tắt</a></li>
+  <li><a href="#-tai-lieu-tham-khao">5. Tài liệu tham khảo</a></li>
+</ul>
+
+<!-- /MarkdownTOC -->
+
+<p><a name="-gioi-thieu"></a></p>
+
+<h2 id="1-giới-thiệu">1. Giới thiệu</h2>
+<p><strong>Những sự kiện có xác suất cao là những sự kiện có khả năng xảy ra hơn.</strong></p>
+
+<p>Câu nói <em>nói cũng như không này</em> là khơi nguồn cho rất nhiều các thuật toán Machine Learning có liên quan đến xác suất.</p>
+
+<p>Cách giải quyết bài toán Machine Learning có thể viết gọn lại thành 3 bước chính: <strong>Modeling, Learning</strong> và <strong>Inference</strong>. (Xem <a href="http://www.computervisionmodels.com/">Computer Vision: Models, Learning, and Inference</a>)</p>
+
+<p><strong>Modeling là việc đi tìm môt mô hình thích hợp cho bài toán cần giải quyết.</strong> Với bài toán <a href="/2016/12/28/linearregression/">Linear Regression</a>, modeling chính là việc mô hình dữ liệu đầu ra (output) như là tổ hợp tuyến tính của dữ liệu đầu vào (input). Với bài toán <a href="/2017/01/01/kmeans/">k-means clustering</a>, modeling chính là việc quan sát ra rằng các clusters thường được mô tả bởi các <em>centroids</em> (hoặc <em>centers</em>) và mỗi điểm được xếp vào cluster tương ứng với centroid gần nó nhất. Trong bài toán <a href="/2017/04/09/smv/">Support Vector Machine</a> cho dữ liệu linearly separable, modeling chính là bước quan sát thấy rằng đường thẳng phân chia hai classes phải là đường làm cho margin đạt giá trị lớn nhất. Việc đi tìm ra mô hình nào phù hợp cho bài toán chính là bước <strong>Modeling</strong>.</p>
+
+<p><strong>Learning là bước tiến hành tối ưu các tham số của mô hình.</strong> Mỗi model được mô hình bởi một bộ các tham số (parameters). Với Linear Regression, tham số mô hình là bộ vector hệ số và bias \((\mathbf{w}, b)\). Với K-means clustering, tham số mô hình có thể được coi là các clusters. Với Support Vector Machine, tham số mô hình có thể là vector hệ số và bias mô tả đường thằng \((\mathbf{w}, b)\). Việc đi tìm các tham số cho mô hình thường được thực hiện bằng việc giải một bài toán tối ưu. Quá trình giải bài toán tối ưu, hay chính là quá trình đi tìm tham số của mô hình, chính là quá trình <strong>Learning</strong>. Sau bước Learning này, chúng ta thu được các <em>trained parameters</em>.</p>
+
+<p><strong>Inference là bước dự đoán ouput của mô hình dựa trên các trained parameters.</strong> Với Linear Regression, Inference chính là việc tính \(y = \mathbf{w}^T\mathbf{x} + b\) dựa trên bộ các tham số đã được huấn luyện \((\mathbf{w}, b)\). Với K-means clustering, việc Inference chính là việc đi tìm centroid gần nhất. Với Support Vector Machine, Inference chính là việc xác định class của một dữ liệu mới dựa vào công thức \(y = \text{sgn}(\mathbf{w}^T\mathbf{x} + b)\). So với hai bước Modeling và Learning, Inference thường đơn giản hơn.</p>
+
+<p>Như đã đề cập, ở nửa sau của blog, tôi sẽ giới thiệu rất nhiều các mô hình thống kê. Trong các mô hình này, việc <em>Modeling</em> là việc đi tìm một mô hình thống kê (statistical model) phù hợp với từng loại dữ liệu và bài toán. Việc <em>Learning</em> là việc đi tìm các tham số cho mô hình thống kê đó. Việc <em>Inference</em> có thể coi là việc tính xác suất để xảy ra mỗi giá trị ở đầu ra khi biết các giá trị ở đầu vào và model được mô tả bởi các trained parameters.</p>
+
+<p>Các Mô Hình Thống Kê (Statistical Models) thường là sự kết hợp của các <a href="/2017/07/09/prob/#-mot-vai-xac-suat-thuong-gap.">phân phối xác suất đơn giản</a>. Với <a href="/2017/07/09/prob/#-bernouli-distribution">Bernoulli distribution</a>, tham số là biến \(\lambda\). Với <a href="/2017/07/09/prob/#-multivariate-normal-distribution">Multivariate Normal Distribution</a>, tham số là mean vector \(\mu\) và ma trận hiệp phương sai \(\Sigma\). Với một mô hình thông kê bất kỳ, ký hiệu \(\theta\) là tập hợp tất cả các tham số của mô hình đó. Learning chính là quá trình đánh giá (estimate) bộ tham số \(\theta\) sao cho dữ liệu sẵn có và mô hình <em>khớp</em> với nhau nhất. Quá trình đó còn được gọi là <em>parameter estimation</em>.</p>
+
+<p>Có hai cách đánh giá tham số thường được dùng trong Statistical Machine Learning. Cách thứ nhất chỉ dựa trên dữ liệu đã biết trong tập traing (training data), được gọi là <em>Maximum Likelihood Estimation</em> hay <em>ML Estimation</em> hoặc <em>MLE</em>. Cách thứ hai không những dựa trên training data mà còn dựa trên những thông tin đã biết của các tham số. Những thông tin này có thể có được bằng <em>cảm quan</em> của người xây dựng mô hình. <em>Cảm quan</em> càng rõ ràng, càng hợp lý thì khả năng thu được bộ tham số tốt là càng cao. Chẳng hạn, thông tin biết trước của \(\lambda\) trong Bernoulli distribution là việc nó là một số trong đoạn \([0, 1]\). Với bài toán tung đồng xu, với \(\lambda\) là xác suất có được mặt <em>head</em>, ta dự đoán được rằng giá trị này nên là một số gần với \(0.5\). Cách đánh giá tham số thứ hai này được gọi là <em>Maximum A Posteriori Estimation</em> hay <em>MAP Estimation</em>.</p>
+
+<p>Trong bài viết này, tôi sẽ trình bày về ý tưởng và cách giải quyết bài toán đánh giá tham số mô hình theo <em>MLE</em> hoặc <em>MAP Estimation</em>. Và như thường lệ, chúng ta sẽ cùng thực hiện mộ vài ví dụ đơn giản.</p>
+
+<p><a name="-maximum-likelihood-estimation"></a></p>
+
+<h2 id="2-maximum-likelihood-estimation">2. Maximum Likelihood Estimation</h2>
+
+<p><a name="-y-tuong"></a></p>
+
+<h3 id="21-ý-tưởng">2.1. Ý tưởng</h3>
+<p>Giả sử có các điểm dữ liệu \(\mathbf{x}_1, \mathbf{x}_2, \dots, \mathbf{x}_N\). Giả sử thêm rằng ta đã biết các điểm dữ liệu này tuân theo một phân phối nào đó được mô tả bởi bộ tham số \(\theta\).
+<!-- Với các bài toán Supervised Learning, mỗi điểm dữ liệu này có thể coi như đã bao gồm cả đầu ra. --></p>
+
+<p>Maximum Likelihood Estimation là việc đi tìm bộ tham số \(\theta\) sao cho xác suất sau đây đạt giá trị lớn nhất:</p>
+
+<p>\[
+\theta = \max_{\theta} p(\mathbf{x}_1, \dots, \mathbf{x}_N | \theta) ~~~~ (1)
+\]</p>
+
+<p>Biểu thức \((1)\) có ý nghĩa như thế nào và vì sao việc này có lý?</p>
+
+<p>Giả sử rằng ta đã biết mô hình rồi, và mô hình này được mô tả bởi bộ tham số \(\theta\). Thế thì, \(p(\mathbf{x}_1 | \theta)\) chính là xác suất xảy ra <em>sự kiện</em> \(\mathbf{x}_1\) biết rằng mô hình là (được mô tả bởi) \(\theta\) (đây là một <a href="/2017/07/09/prob/#-conditional-probability">conditional probability</a>). Và \(p(\mathbf{x}_1, \dots, \mathbf{x}_N | \theta)\) chính là xác suất để toàn bộ các <em>sự kiện</em> \(\mathbf{x}_1, \mathbf{x}_2, \dots, \mathbf{x}_N\) xảy ra đồng thời (nó là một <a href="/2017/07/09/prob/#-joint-probability">joint probability</a>), xác suất đồng thời này còn được gọi là <em>likelihood</em>. Ở đây, <em>likelihood</em> chính là hàm mục tiêu.</p>
+
+<p>Bởi vì <em>sự đã rồi</em>, tức dữ liệu training bản thân nó đã là như thế rồi, xác suất đồng thời này cần phải càng cao càng tốt. Việc này cũng giống như việc đã biết <em>kết quả</em>, và ta cần đi tìm <em>nguyên nhân</em> sao cho xác suất xảy ra kết quả này càng cao càng tốt.</p>
+
+<p>Maximum Likelihood chính là việc đi tìm bộ tham số \(\theta\) sao cho Likelihood là lớn nhất.</p>
+
+<p><a name="-independence-assumption-va-log-likelihood"></a></p>
+
+<h3 id="22-independence-assumption-và-log-likelihood">2.2. Independence Assumption và log-likelihood</h3>
+<p>Việc giải trực tiếp bài toán \((1)\) thường là phức tạp vì việc đi tìm mô hình xác suất đồng thời cho toàn bộ dữ liệu là ít khi khả thi. Một cách tiếp cận phổ biến là giả sử đơn giản rằng các điểm dữ liệu \(\mathbf{x}_n\) là <a href="/2017/07/09/prob/#-independence">độc lập</a> với nhau, nếu biết tham số mô hình \(\theta\) (độc lập có điều kiện). Nói cách khác, ta xấp xỉ likelihood trong \((1)\) bởi:
+\[
+p(\mathbf{x}_1, \dots, \mathbf{x}_N | \theta) \approx \prod_{n = 1}^N p(\mathbf{x}_n |\theta) ~~~~ (2)
+\]</p>
+
+<p>(Nhắc lại rằng hai sự kiện \(x, y\) là độc lập nếu xác suất đồng thời của chúng bằng tích xác suất của từng sự kiện: \(p(x, y) = p(x)p(y)\). Và khi là xác suất có điều kiện: \(p(x, y | z) = p(x|z)p(y|z)\))</p>
+
+<p>Lúc đó, bài toán \((1)\) có thể được giải quyết bằng cách giải bài toán tối ưu sau:</p>
+
+<p>\[
+\theta = \max_{\theta} \prod_{n=1}^N p(\mathbf{x}_n| \theta) ~~~~ (3)
+\]</p>
+
+<p>Việc tối ưu hoá một tích thường phức tạp hơn việc tối ưu một tổng, vì vậy việc tối đa hàm mục tiêu thường được chuyển về việc tối đa \(\log\) của hàm mục tiêu. Ôn lại một chút:</p>
+
+<ul>
+  <li>
+    <p>\(\log\) của một tích bằng tổng của các \(\log\).</p>
+  </li>
+  <li>
+    <p>vì rằng \(\log\) là một hàm đồng biến, một biểu thức sẽ là lớn nhất nếu \(\log\) của nó là lớn nhất, và ngược lại.</p>
+  </li>
+</ul>
+
+<p>Bài toán Maximum Likelihood được đưa về bài toán Maximum Log-likelihood:
+\[
+\theta = \max_{\theta} \sum_{n = 1}^N \log\left(p(\mathbf{x}_n | \theta)\right) ~~~~ (4)
+\]</p>
+
+<p>Bạn vẫn chưa hiểu? Không lo, bây giờ chúng ta sẽ làm một vài ví dụ.</p>
+
+<p><a name="-vi-du"></a></p>
+
+<h3 id="23-ví-dụ">2.3. Ví dụ</h3>
+<p><a name="-vi-du--bernoulli-distribution"></a></p>
+
+<h4 id="231-ví-dụ-1-bernoulli-distribution">2.3.1. Ví dụ 1: Bernoulli distribution</h4>
+<hr />
+
+<p><strong>Bài toán</strong>: giả sử tung một đồng xu \(N\) lần và nhận được \(n\) mặt <em>head</em>. Tính xác suất có một mặt <em>head</em> khi tung đồng xu đó ở lần tiếp theo.</p>
+<hr />
+
+<p><strong>Lời giải:</strong>
+Một cách trực quan nhất, ta có thể dự đoán được rằng xác suất đó chính là \(\lambda = \frac{n}{N}\). Tuy nhiên, là một người muốn biết ngọn ngành vấn đề, bạn có thể chưa cảm thấy thuyết phục, và muốn biết liệu có cơ sở toán học <em>vững chắc hơn</em> chứng minh việc đó không.</p>
+
+<p>Việc này có thể thực hiện bằng Maximum Likelihood.</p>
+
+<p>Thật vậy, giả sử \(\lambda\) là xác suất để nhận được một mặt <em>head</em>. Đặt \(x_1, x_2, \dots, x_N\) là các đầu ra nhận được, trong đó có \(n\) giá trị bằng 1 tương ứng với mặt <em>head</em> và \(m = N - n\) giá trị bằng 0 tương ứng với mặt <em>tail</em>. Ta có thể suy ra ngay:
+\[
+  \sum_{i=1}^N x_i = n, ~~N - \sum_{i=1}^N x_i = N - n = m
+\]</p>
+
+<p>Có thể nhận thấy việc nhận được mặt <em>head</em> hay <em>tail</em> khi tung đồng xu tuân theo <a href="/2017/07/09/prob/#-bernouli-distribution">Bernoulli distribution</a>:</p>
+
+<p>\[
+p(x_i | \lambda) = \lambda^{x_i} ( 1- \lambda)^{1 - x_i}
+\]</p>
+
+<p>Khi đó tham số mô hình \(\lambda\) có thể được đánh giá bằng việc giải bài toán tối ưu:
+\[
+\begin{eqnarray}
+  \lambda &amp; = &amp; \arg\max_{\lambda}\left[ p(x_1, x_2, \dots, x_N | \lambda)\right] \<br />
+  &amp; = &amp; \arg\max_{\lambda} \left[\prod_{i = 1}^N p(x_i | \lambda)\right] &amp; (5) \<br />
+  &amp; = &amp; \arg\max_{\lambda} \left[\prod_{i=1}^N  \lambda^{x_i} ( 1- \lambda)^{1 - x_i}\right] &amp; (6)\<br />
+  &amp; = &amp; \arg\max_{\lambda} \left[\lambda^{\sum_{i=1}^N x_i} (1 - \lambda)^{N - \sum_{i=1}^N x_i}\right] &amp; (7) \<br />
+  &amp; = &amp; \arg\max_{\lambda} \left[\lambda^{n} (1 - \lambda)^{m}\right] &amp; (8)\<br />
+  &amp; = &amp; \arg\max_{\lambda} \left[ n\log(\lambda) + m\log(1 - \lambda) \right] &amp; (9)
+\end{eqnarray}
+\]</p>
+
+<p>ở trên, tôi đã giả sử rằng kết quả của mỗi lần tung đồng xu là độc lập với nhau. Từ \((8)\) sang \((9)\) ta đã lấy \(\log\) của hàm mục tiêu.</p>
+
+<p>Tới đây, bài toán tối ưu \((9)\) có thể được giải bằng cách lấy đạo hàm của hàm mục tiêu bằng 0. Tức \(\lambda\) là nghiệm của phương trình:
+\[
+\begin{eqnarray}
+  \frac{n}{\lambda} - \frac{m}{1 - \lambda} &amp; = &amp; 0 \<br />
+  \Leftrightarrow \frac{n}{\lambda} &amp; = &amp; \frac{m}{1 - \lambda} \<br />
+  \Leftrightarrow \lambda &amp; = &amp; \frac{n}{n + m} = \frac{n}{N}
+\end{eqnarray}
+\]</p>
+
+<p>Vậy kết quả ta khẳng định ở trên là có cơ sở.</p>
+
+<p><a name="-vi-du--categorical-distribution"></a></p>
+
+<h4 id="232-ví-dụ-2-categorical-distribution">2.3.2. Ví dụ 2: Categorical distribution</h4>
+<p>Một ví dụ khác khó hơn một chút.</p>
+<hr />
+
+<p><strong>Bài toán:</strong> giả sử tung một viên xúc xắc 6 mặt có xác suất rơi vào các mặt có thể không đều nhau. Giả sử trong \(N\) lần tung, số lượng xuất hiện các mặt thứ nhất, thứ hai,…, thứ sáu lần lượt là \(n_1, n_2, \dots, n_6\) lần với \(\sum_{i=1}^6 n_i = N\). Tính xác suất rơi vào mỗi mặt ở lần tung tiếp theo.</p>
+<hr />
+
+<p><strong>Lời giải:</strong></p>
+
+<p>Bài toán này có vẻ phức tạp hơn bài toán trên một chút, nhưng ta cũng có thể dự đoán được đánh giá tốt nhất của xác suất rơi vào mặt thứ \(i\) là \(\lambda_i = \frac{n_i}{N}\).</p>
+
+<p><em>Mã hoá</em> mỗi quan sát đầu ra thứ \(i\) bởi một vector 6 chiều \(\mathbf{x}_i \in \{0, 1\}^6\) trong đó các phần tử của nó bằng 0 trừ phần tử tương ứng với mặt quan sát được là bằng 1. (Cách làm này giống với <em>one-hot encoding</em>). Ta cũng có thể suy ra:
+\[
+\begin{eqnarray}
+  \sum_{i=1}^N x^j_i = n_j, ~ \forall j = 1, 2, \dots, 6
+\end{eqnarray}
+\]
+trong đó \(x^j_i\) là thành phần thứ \(j\) của vector \(\mathbf{x}_i\).</p>
+
+<p>Có thể thấy rằng xác suất rơi vào mỗi mặt tuân theo <a href="/2017/07/09/prob/#-categorical-distribution">Categorical distribution</a> với các tham số \(\lambda_j &gt; 0, j = 1, 2, \dots, 6\) (ta bỏ qua trường hợp tầm thường khi có một \(\lambda_j = 0\)). Ta dùng \(\lambda\) để thể hiện cho cả 6 tham số này. Với các tham số này, xác suất để sự kiện \(\mathbf{x}_i\) xảy ra là:</p>
+
+<p>\[
+\begin{eqnarray}
+  p(\mathbf{x}_i | \lambda) = \prod_{j = 1}^6 \lambda_j^{x_i^j}
+\end{eqnarray}
+\]</p>
+
+<p>Khi đó, vẫn với giả sử về sự độc lập giữa các lần tung xúc xắc, đánh giá bộ tham số \(\lambda\) dựa trên Maximum log-likelihood ta có:
+\[
+\begin{eqnarray}
+  \lambda &amp; = &amp; \arg\max_{\lambda} \left[ p(\mathbf{x}_1, \dots, \mathbf{x}_N  | \lambda) \right]\<br />
+  &amp; = &amp; \arg\max_{\lambda} \left[ \prod_{i=1}^N p(\mathbf{x}_i | \lambda)  \right] &amp; (10) \<br />
+  &amp; = &amp; \arg\max_{\lambda} \left[ \prod_{i=1}^N  \prod_{j = 1}^6 \lambda_j^{x_i^j} \right] &amp; (11) \<br />
+  &amp; = &amp; \arg\max_{\lambda} \left[  \prod_{j = 1}^6 \lambda_j^{\sum_{i=1}^N x_i^j} \right] &amp; (12) \<br />
+  &amp; = &amp; \arg\max_{\lambda} \left[  \prod_{j = 1}^6 \lambda_j^{n_j} \right] &amp; (13) \<br />
+  &amp; = &amp; \arg\max_{\lambda} \left[  \sum_{j=1}^6 n_j\log(\lambda_j) \right] &amp; (14) \<br />
+\end{eqnarray}
+\]</p>
+
+<p>Khác với bài toán \((9)\) một chút, chúng ta không được quên điều kiện \(\sum_{j=1}^6 \lambda_j = 1\). Vậy ta có bài toán tối ưu có ràng buộc:
+\[
+\begin{eqnarray}
+  \max_{\lambda} &amp; \sum_{j=1}^6 n_j\log(\lambda_j) \<br />
+  \text{subject to:} &amp; \sum_{j=1}^6 \lambda_j = 1~~~~~~~~ (15)
+\end{eqnarray}
+\]
+Bài toán tối ưu này có thể được giải bằng <a href="/2017/04/02/duality/#--phuong-phap-nhan-tu-lagrange">phương pháp nhân tử Lagrange</a>.</p>
+
+<p>Lagrangian của bài toán này là:
+\[
+  \mathcal{L}(\lambda, \mu) = \sum_{j=1}^6 n_j\log(\lambda_j) + \mu (1- \sum_{j=1}^6 \lambda_j)
+\]</p>
+
+<p>Nghiệm của bài toán là nghiệm của hệ đạo hàm của \(\mathcal{L}(.)\) theo từng biến bằng 0:
+\[
+\begin{eqnarray}
+\frac{\partial \mathcal{L}(\lambda, \mu)}{\partial \lambda_j} &amp; = &amp;  \frac{n_j}{\lambda_j} - \mu &amp; = &amp; 0, ~~ \forall j = 1, 2, \dots, 6 ~~~~ (16) \<br />
+\frac{\partial \mathcal{L}(\lambda, \mu)}{\partial \mu} &amp; = &amp; 1-\sum_{j=1}^6 \lambda_j &amp; = &amp; 0 ~~~~ (17)
+\end{eqnarray}
+\]</p>
+
+<p>Từ \((16)\) ta có \(\lambda_j = \frac{n_j}{\mu}\). Thay vào \((17)\):
+\[
+  \sum_{j=1}^6 \frac{n_j}{\mu} = 1 \Rightarrow \mu = \sum_{j=1}^6 n_j = N
+\]</p>
+
+<p>Từ đó ta có đánh giá:
+\[
+  \lambda_j = \frac{n_j}{N}, ~~\forall j = 1, 2, \dots, 6
+\]</p>
+
+<p>Qua hai ví dụ trên ta thấy Maximum Likelihood cho kết quả hợp lý.</p>
+
+<p><a name="-vi-du--univariate-normal-distribution"></a></p>
+
+<h4 id="233-ví-dụ-3-univariate-normal-distribution">2.3.3. Ví dụ 3: Univariate normal distribution</h4>
+
+<hr />
+
+<p><strong>Bài toán:</strong> Khi thực hiện một phép đo, giả sử rằng rất khó để có thể đo chính xác độ dài của một vật. Thay vào đó, người ta thường đo vật đó nhiều lần rồi suy ra kết quả, với giả thiết rằng các phép đo là độc lập với nhau và kết quả mỗi phép đo là một phân phối chuẩn. Đánh giá chiều dài của vật đó.</p>
+<hr />
+
+<p><strong>Lời giải:</strong></p>
+
+<p>Vì ta biết rằng kết quả phép đo tuân theo phân phối chuẩn nên ta sẽ cố gắng đi xây dựng phân phối chuẩn đó. Chiều dài của vật có thể được coi là giá trị mà hàm mật độ xác suất đạt giá trị cao nhất. Trong phân phối chuẩn, ta biết rằng đó chính là kỳ vọng của phân phối đó. Chú ý rằng kỳ vọng của phân phối và kỳ vọng của dữ liệu quan sát được có thể không bằng nhau, chúng chỉ xấp xỉ bằng nhau khi mà số lượng phép đó là một số rất lớn.</p>
+
+<p>Tuy nhiên, nếu đánh giá kỳ vọng của phân phối như cách làm dưới đây sử dụng Maximum Likelihood, ta sẽ thấy rằng kỳ vọng của dữ liệu chính là đánh giá tốt nhất cho kỳ vọng của phân phối.</p>
+
+<p>Thật vậy, giả sử các kích thước quan sát được là \(x_1, x_2, \dots, x_N\). Ta cần đi tìm một phân phối chuẩn, tức một giá trị kỳ vọng \(\mu\) và phương sai \(\sigma^2\), sao cho các giá trị \(x_1, x_2, \dots, x_N\) là <em>likely nhất</em>.</p>
+
+<p>Ta đã biết rằng, hàm mật độ xác suất tại \(x_i\) của một phân phối chuẩn có kỳ vọng \(\mu\) và phương sai \(\sigma^2\) là:
+\[
+  p(x_i | \mu, \sigma^2) = \frac{1}{\sqrt{2\pi \sigma^2}} \exp\left(-\frac{(x_i - \mu)^2}{2\sigma^2}\right)
+\]</p>
+
+<p>Vậy, để đánh giá \(\mu\) và \(\sigma\), ta sử dụng Maximum likelihood với giả thiết rằng kết quả các phép đo là độc lập:
+\[
+\begin{eqnarray}
+  \mu, \sigma &amp; = &amp; \arg\max_{\mu, \sigma} \left[ \prod_{i=1}^N p(x_i | \mu, \sigma^2)\right] &amp; (18)\<br />
+  &amp; = &amp; \arg\max_{\mu, \sigma} \left[ \frac{1}{(2\pi \sigma^2)^{N/2}} \exp\left(-\frac{\sum_{i=1}^N (x_i - \mu)^2}{2\sigma^2} \right) \right] &amp; (19)\<br />
+  &amp; = &amp; \arg\max_{\mu, \sigma}\left[ -N\log(\sigma) - \frac{\sum_{i=1}^N (x_i - \mu)^2}{2\sigma^2}\right] \triangleq \arg\max_{\mu, \sigma} J(\mu, \sigma)(20)
+\end{eqnarray}
+\]</p>
+
+<p>Ta đã lấy \(\log\) của hàm bên trong dấu ngoặc vuông của \((19)\) để được \((20)\), phần hằng số có chứa \(2\pi\) cũng được bỏ đi vì nó không ảnh hưởng tới kết quả.</p>
+
+<p>Một lần nữa, để tìm \(\mu\) và \(\sigma\), ta giải hệ phương trình đạo hàm của \(J(\mu, \sigma)\) theo mỗi biến bằng 0:</p>
+
+<p>\[
+\begin{eqnarray}
+  \frac{\partial J}{\partial \mu} &amp; = &amp; \frac{1}{\sigma^2}\sum_{i=1}^N(x_i - \mu) = 0 &amp; (21) \<br />
+  \frac{\partial J}{\partial \sigma} &amp; = &amp; -\frac{N}{\sigma} + \frac{1}{\sigma^3} \sum_{i=1}^N (x_i - \mu)^2  &amp; (22)
+\end{eqnarray}
+\]</p>
+
+<p>Từ đó ta có:
+\[
+\begin{eqnarray}
+  \mu &amp; = &amp; \frac{\sum_{i=1}^N x_i}{N} &amp; (23)\<br />
+  \sigma^2 &amp; = &amp; \frac{\sum_{i=1}^N (x_i - \mu)^2}{N} &amp; (24)
+\end{eqnarray}
+\]</p>
+
+<p><em>Đây chính là công thức đánh giá hai giá trị kỳ vọng và phương sai của dữ liệu mà chúng ta quen dùng.</em></p>
+
+<p><a name="-vi-du--multivariate-normal-distribution"></a></p>
+
+<h4 id="234-ví-dụ-4-multivariate-normal-distribution">2.3.4. Ví dụ 4: Multivariate normal distribution</h4>
+<hr />
+
+<p><strong>Bài toán:</strong> Giả sử tập dữ liệu ta thu được là các giá trị nhiều chiều \(\mathbf{x}_1, \dots, \mathbf{x}_N\). Giả sử thêm rằng dữ liệu này tuân theo phân phối chuẩn nhiều chiều. Hãy đánh giá các tham số, vector kỳ vọng \(\mu\) và ma trận hiệp phương sai \(\Sigma\), của phân phối này dựa trên Maximum Likelihood, giả sử rằng các \(\mathbf{x}_1, \dots, \mathbf{x}_N\) là độc lập.</p>
+<hr />
+
+<p><strong>Lời giải:</strong></p>
+
+<p>Việc chứng minh các công thức:
+\[
+\begin{eqnarray}
+  \mu &amp; = &amp; \frac{\sum_{i=1}^N \mathbf{x}_i}{N} \<br />
+  \Sigma &amp; = &amp; \frac{1}{N}\sum_{i=1}^N (\mathbf{x} - \mu)(\mathbf{x} - \mu)^T
+\end{eqnarray}
+\]
+xin được dành lại cho bạn đọc như một bài tập nhỏ. Dưới đây là một vài gợi ý:</p>
+
+<ul>
+  <li>Hàm mật độ xác suất của phân phối chuẩn nhiều chiều là:
+\[
+p(\mathbf{x} | \mu, \Sigma) = \frac{1}{(2\pi)^{D/2} |\Sigma|^{1/2}} \exp \left(-\frac{1}{2} (\mathbf{x} - \mu)^T \Sigma^{-1} (\mathbf{x} - \mu)\right) ~~~ (33)
+\]
+Chú ý rằng ma trận hiệp phương sai \(\Sigma\) là ma trận xác định dương nên có nghịch đảo.</li>
+  <li>Một vài đạo hàm theo ma trận:
+\[
+\nabla_{\Sigma} \log |\Sigma| = (\Sigma^{-1})^T \triangleq \Sigma^{-T}~~~ \text{(transpose of inversion)}
+\]</li>
+</ul>
+
+<p>\[
+  \nabla_{\Sigma} (\mathbf{x}_i - \mu)^T \Sigma^{-1} (\mathbf{x}_i-\mu) = -\Sigma^{-T}(\mathbf{x}_i - \mu)(\mathbf{x}_i - \mu)^T\Sigma^{-T}
+\]
+(Xem thêm <a href="https://ccrma.stanford.edu/~dattorro/matrixcalc.pdf">Matrix Calculus</a>, mục D.2.1 và D.2.4.)</p>
+
+<p><a name="-maximum-a-posteriori"></a></p>
+
+<h2 id="3-maximum-a-posteriori">3. Maximum a Posteriori</h2>
+<p><a name="-y-tuong-1"></a></p>
+
+<h3 id="31-ý-tưởng">3.1. Ý tưởng</h3>
+<p>Quay lại với ví dụ 1 về tung đồng xu. Nếu tung 5 lần và chỉ nhận được 1 mặt <em>head</em>, theo Maximum Likelihood, xác suất để có một mặt <em>head</em> được đánh giá là \(1/5\). Nếu tung đồng xu 5000 lần và nhận được 1000 lần <em>head</em>, ta có thể đánh giá xác suất của <em>head</em> là \(1/5\) và việc đánh giá này là đáng tin. Tuy nhiên, vì chỉ có 5 kết quả, thật khó để kết luận rằng kết quả là \(1/5\). <em>Nếu kết luận ngay kết quả là \(1/5\), rất có thể chúng ta đã bị <a href="/2017/03/04/overfitting/#-regularization">overfitting</a></em>.</p>
+
+<p>Khi có quá ít dữ kiện, tương ứng với hiện tượng có quá ít dữ liệu trong training (<em>low-training</em>) chúng ta cần phải tự suy ra một vài giả thiết của các tham số. Chẳng hạn, với việc tung đồng xu, giả thiết của chúng ta là xác suất nhận được mặt <em>head</em> phải gần \(1/2\).</p>
+
+<p>Maximum A Posteriori (MAP) ra đời nhằm giải quyết vấn đề này. Trong MAP, chúng ta giới thiệu một giả thiết biết trước, được gọi là <em>prior</em>, của tham số \(\theta\). Từ những <em>kinh nghiệm</em> trước đây, chúng ta có thể suy ra các khoảng giá trị và phân bố của tham số.</p>
+
+<p>Ngược với MLE, trong MAP, chúng ta sẽ đánh giá tham số như là một conditional probability của dữ liệu:
+\[
+  \theta = \arg\max_{\theta} \underbrace{p(\theta | \mathbf{x}_1, \dots, \mathbf{x}_N)}_{\text{posterior}} ~~~~~~~ (34)
+\]</p>
+
+<p>Biểu thức \(p(\theta | \mathbf{x}_1, \dots, \mathbf{x}_N) \) còn được gọi là <em>posterior probability</em> của \(\theta\). Chính vì vậy mà việc đánh giá \(\theta\) theo \((34)\) được gọi là <em>Maximum A Posteriori</em>.</p>
+
+<p>Thông thường, hàm tối ưu trong \((34)\) khó xác định dạng một cách trực tiếp. Chúng ta thường biết điều ngược lại, tức nếu biết tham số, ta có thể tính được hàm mật độ xác suất của dữ liệu. Vì vậy, để giải bải toán MAP, ta thường sử dụng <a href="/2017/07/09/prob/#-quy-tac-bayes">Bayes’ rule</a>. Bài toán MAP thường được biến đổi thành:</p>
+
+<p>\[
+\begin{eqnarray}
+  \theta &amp; = &amp; \arg\max_{\theta} p(\theta | \mathbf{x}_1, \dots, \mathbf{x}_N) \<br />
+  &amp; = &amp; \arg\max_{\theta} \left[ \frac{\overbrace{p(\mathbf{x}_1, \dots, \mathbf{x}_N | \theta)}^{\text{likelihood}} \overbrace{p(\theta)}^{\text{prior}}}{\underbrace{p(\mathbf{x}_1, \dots, \mathbf{x}_N)}_{\text{evidence}}} \right] &amp; (35)\<br />
+  &amp; = &amp; \arg\max_{\theta} \left[ p(\mathbf{x}_1, \dots, \mathbf{x}_N | \theta) p(\theta) \right] &amp; (36) \<br />
+  &amp; = &amp; \arg\max_{\theta} \left[ \prod_{i=1}^N p(\mathbf{x}_i | \theta) p(\theta) \right] &amp; (37)
+\end{eqnarray}
+\]</p>
+
+<p>Đẳng thức \((35)\) xảy ra là do Bayes’ rule.</p>
+
+<p>Đẳng thức \((36)\) xảy ra vì mẫu số của \((35)\) không phụ thuộc vào tham số \(\theta\).</p>
+
+<p>Đẳng thức \((37)\) xảy ra nếu chúng ta giả thiết về sự độc lập giữa các \(\mathbf{x}_i\). Chú ý rằng giả thiết độc lập thường xuyên được sử dụng.</p>
+
+<!-- Nhắc lại tên các đại lượng trong \\((35)\\): -->
+
+<p>Như vậy, điểm khác biệt lớn nhất giữa hai bài toán tối ưu MLE và MAP là việc hàm mục tiêu của MAP có thêm \(p(\theta)\), tức phân phối của \(\theta\). Phân phối này chính là những thông tin ta biết trước về \(\theta\) và được gọi là <em>prior</em>. Ta có kết luận: <strong><em>posteriori</em> tỉ lệ thuận với tích của <em>likelihood</em> và <em>prior</em></strong>.</p>
+
+<p>Việc lựa chọn các <em>prior</em> như thế nào, chúng ta cùng làm quen với khái niệm mới: <em>Conjugate prior</em>.</p>
+
+<p><a name="-conjugate-prior"></a></p>
+
+<h3 id="32-conjugate-prior">3.2. Conjugate prior</h3>
+<p>Khi nhân một phân phối \(p_1\) một phân phối \(p_2\) khác, kết quả thu được tỉ lệ thuận với một phân phối có dạng giống như phân phối \(p_2\), ta nói \(p_2\) là <em>conjugate distribution</em> của \(p_1\). Nếu điều này xảy ra, việc tối ưu bài toán MAP sẽ trở nên tương tự như việc tôi ưu bài toán MLE vì nghiệm có cấu trúc giống nhau.</p>
+
+<p>Nếu <em>posterior distribution</em> \(p(\theta | \mathbf{X})\) và <em>likelihood</em> \(p(\mathbf{X} |\theta)\) có cùng <em>họ</em> (family), thì <em>prior distribution</em> là <em>conjugate distribution</em> của <em>likelihood distribution</em>.</p>
+
+<p>Tôi sẽ không đi sâu vào phần này, bạn đọc có thể đọc thêm <a href="https://en.wikipedia.org/wiki/Conjugate_prior">Conjugate prior</a>. Tôi sẽ nêu một vài cặp các <em>conjugate distributions</em>:</p>
+
+<ul>
+  <li>
+    <p>Nếu likelihood function là một Gaussian (phân phối chuẩn), và prior cho vector kỳ vọng cũng là một Gaussian, thế thì posterior distribution cũng là một Gaussian. Ta nói rằng Gaussian family conjugate với chính nó (hoặc còn gọi là <em>self-conjugate</em>).</p>
+  </li>
+  <li>
+    <p>Nếu likelihood function là một Gaussian (phân phối chuẩn), và prior cho phương sai là một <a href="https://en.wikipedia.org/wiki/Gamma_distribution">gamma distribution</a>, thì posterior distribution cũng là một Gaussian. Ta nói rằng gamma distribution là conjugate prior cho <em>độ chính xác</em> của Gaussian. Chú ý rằng phương sai có thể được coi là một biến giúp đo <em>độ chính xác</em> của mô hình. Phương sai càng nhỏ thì độ chính xác càng cao.</p>
+  </li>
+  <li>
+    <p>Beta distribution là conjugate của Bernoulli distribution.</p>
+  </li>
+  <li>
+    <p>Dirichlet distribution là conjugate của Categorical distribution.</p>
+  </li>
+</ul>
+
+<p><a name="-hyperparameters"></a></p>
+
+<h3 id="33-hyperparameters">3.3. Hyperparameters</h3>
+<p>Chúng ta sẽ cùng xem xét một ví dụ nhỏ với Bernoulli distribution:
+\[
+  p(x | \lambda) = \lambda^x ( 1 - \lambda)^{1 - x}
+\]</p>
+
+<p>Và conjugate của nó, Beta distribution, có hàm mật độ xác suất:</p>
+
+<p>\[
+  p(\lambda) = \frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha) \Gamma(\beta)} \lambda^{\alpha - 1} ( 1 - \lambda) ^{\beta - 1}
+\]
+Bỏ qua thừa số hằng số chỉ mang mục đích chuẩn hoá cho tích phân của hàm mật độ xác suất bằng 1, ta có thể nhận thấy rằng phần còn lại của Beta distribution có cùng <em>họ</em> với Bernoulli distribution.</p>
+
+<p>Cụ thể, nếu sử dụng Beta distribution làm <em>prior</em> cho tham số \(\lambda\), và bỏ qua phần thừa số hằng số, posterior sẽ có dạng:
+\[
+\begin{eqnarray}
+  p(\lambda | x) &amp; \propto &amp; p(x | \lambda) p(\lambda) \<br />
+      &amp; \propto &amp; \lambda^{x + \alpha - 1}(1 - \lambda)^{1 - x + \beta - 1} ~~~ (38)
+\end{eqnarray}
+\]</p>
+
+<p>trong đó, \(\propto\) là ký hiệu của <em>tỉ lệ với</em>.</p>
+
+<p>Nhận thấy rằng \((38)\) <em>vẫn có dạng của một Bernoulli distribution.</em> Chính vì vậy mà Beta distribution được gọi là một <em>conjugate prior</em> cho Bernoulli distribution.</p>
+
+<p>Trong ví dụ này, tham số \(\lambda\) phụ thuộc vào hai tham số khác là \(\alpha\) và \(\beta\). Để tránh nhầm lẫn, hai tham số \((\alpha, \beta)\) được gọi là <em>siêu tham số</em> (hyperparameters).</p>
+
+<p>Quay trở lại ví dụ về bài toán tung đồng xu \(N\) lần có \(n\) lần nhận được mặt <em>head</em> và \(m = N - n\) lần nhận được mặt <em>tail</em>. Nếu sử dụng MLE, ta nhận được đánh giá \(\lambda = n/M\). Nếu sử dụng MAP với prior là một \(\text{Beta}[\alpha, \beta]\) thì sao:</p>
+
+<p>Bài toán tối ưu MAP:
+\[
+\begin{eqnarray}
+  \lambda &amp; = &amp; \arg\max_{\lambda} \left[p(x_1, \dots, x_N | \lambda) p(\lambda) \right] \<br />
+  &amp; = &amp; \arg\max_{\lambda} \left[\left(\prod_{i=1}^N \lambda^{x_i} ( 1- \lambda)^{1 - x_i}\right) \lambda^{\alpha - 1} ( 1 - \lambda)^{\beta - 1} \right] \<br />
+  &amp; = &amp; \arg\max_{\lambda} \left[ \lambda^{\sum_{i = 1}^N x_i + \alpha - 1} ( 1- \lambda)^{N - \sum_{i=1}^N x_i + \beta - 1} \right] \<br />
+  &amp; = &amp; \arg\max_{\lambda} \left[ \lambda^{n + \alpha - 1} ( 1- \lambda)^{m + \beta - 1} \right] ~~~ (39)
+\end{eqnarray}
+\]</p>
+
+<p>Bài toán tối ưu \((39)\) chính là bài toán tối ưu \((8)\) với tham số thay đổi một chút. Tương tự như \((8)\), nghiệm của \((39)\) có thể được suy ra là:</p>
+
+<p>\[
+\lambda = \frac{n + \alpha - 1}{N + \alpha + \beta - 2} ~~~ (40)
+\]</p>
+
+<p><strong>Chính việc chọn prior phù hợp, ở đây là conjugate prior, mà posterior và likelihood có dạng giống nhau, khiến cho việc tối ưu bài toán MAP được thuận lợi.</strong></p>
+
+<p>Việc còn lại là chọn cặp <em>hyperparameters</em> \(\alpha\) và \(\beta\).</p>
+
+<p>Chúng ta cùng xem lại hình dạng của <a href="/2017/07/09/prob/#-beta-distribution">Beta distribution</a> và nhận thấy rằng khi \(\alpha = \beta &gt; 1\), ta có hàm mật độ xác suất của Beta distribution đối xứng qua điểm 0.5 và đạt giá trị cao nhất tại 0.5. Xét Hình 1, ta nhận thấy rằng khi \(\alpha = \beta &gt; 1\) thì \(\lambda\) có xu hướng đi về điểm 0.5, xu hướng này càng mạnh nên giá trị của chúng càng cao.</p>
+
+<p>Nếu ta chọn \(\alpha = \beta = 1\), ta thấy đây là uniform distribution vì đồ thị hàm mật độ xác suất là 1 đường thẳng. Lúc này, xác suất của \(\lambda\) tại mọi vị trí trong khoảng \([0, 1]\) là như nhau. Thực chất, nếu ta thay \(\alpha = \beta = 1\) vào \((40)\) ta sẽ thu được \(\lambda = n/N\), chính là đánh giá thu được bằng MLE. MLE là một trường hợp đặc biệt của MAP khi prior là một uniform distribution.</p>
+
+<hr />
+
+<div>
+<table width="100%" style="border: 0px solid white">
+    <tr>
+        <td height="100%" style="border: 0px solid white" align="center">
+        <img style="display:block;" width="100%" src="/assets/30_prob/beta1.png" />
+         <br />
+
+         </td>
+         <td width="40%" style="border: 0px solid white" align="justify">
+         Hình 1: Đồ thị hàm mật độ xác suất của Beta distribution khi \(\alpha = \beta\) và nhận các giá trị khác nhau. Khi cả hai giá trị này lớn, xác suất để \(\lambda\) gần 0.5 sẽ cao hơn.
+         </td>
+    </tr>
+</table>
+</div>
+
+<p>Nếu ta chọn \(\alpha = \beta = 2\), ta sẽ thu được:
+\[
+  \lambda= \frac{n + 1}{N + 2}
+\]</p>
+
+<p>Chẳng hạn khi \(N = 5, n = 1\) như trong ví dụ. MLE cho kết quả \(\lambda = 1/5\), MAP sẽ cho kết quả \(\lambda = 2/6 = 1/3\).</p>
+
+<p>Nếu chọn \(\alpha = \beta = 10\) ta sẽ có \(\lambda = (1 + 9)/(5 + 18) = 10/23\). Ta thấy rằng khi \(\alpha = \beta\) và càng lớn thì ta sẽ thu được \(\lambda\) càng gần \(1/2\). Điều này có thể dễ nhận thấy vì prior nhận giá trị rất cao tại 0.5 khi các hyperparameters \(\alpha = \beta\) lớn.</p>
+
+<p><a name="-map-giup-tranh-overfitting"></a></p>
+
+<h3 id="34-map-giúp-tránh-overfitting">3.4. MAP giúp tránh overfitting</h3>
+<p>Việc chọn các hyperparameter thường được dựa trên thực nghiệm, bằng <a href="/2017/03/04/overfitting/#-cross-validation">cross-validation</a> chẳng hạn. Việc thử nhiều bộ tham số rồi chọn ra bộ tốt nhất là việc mà các kỹ sư machine learning thường xuyên phải đối mặt. Cũng giống như chọn <a href="/2017/03/04/overfitting/#-regularization">regularization parameter</a> để tránh overfitting vậy.</p>
+
+<p>Rõ ràng MAP cho chúng ta các kết quả <em>linh hoạt</em> (flexible) với sự thay đổi của hyperparameters. Và là một cách để tránh <a href="/2017/03/04/overfitting/">overfitting</a>.</p>
+
+<p>Nếu viết lại bài toán MAP dưới dạng:
+\[
+\begin{eqnarray}
+  \theta &amp; = &amp; \arg\max_{\theta} p(\mathbf{X}| \theta) p(\theta) \<br />
+  &amp; = &amp; \arg\max_{\lambda} \left[ \log \underbrace{p(\mathbf{X}| \theta)}_{\text{likelihood}} + \log \underbrace{p(\theta)}_{\text{prior}} \right]
+\end{eqnarray}
+\]</p>
+
+<p>ta có thể thấy rằng đây giống như kỹ thuật regularization với \(\log\) của likelihood được coi như phần <em>loss</em> chính, \(\log\) của <em>prior</em> đóng vai trò như phần <em>regularization</em>. Nếu không có <em>regularization</em>, ta được bài toán Maximum (log-)likelihood.</p>
+
+<p><a name="-tom-tat"></a></p>
+
+<h2 id="4-tóm-tắt">4. Tóm tắt</h2>
+<ul>
+  <li>
+    <p>Khi sử dụng các mô hình thống kê Machine Learning, chúng ta thường xuyên phải đi đánh giá các tham số của mô hình, đại diện cho các tham số của các phân phối xác suất. Tập hợp tham số mô hình thường được ký hiệu là \(\theta\). Có hai phương pháp phổ biến được sử dụng để đánh giá \(\theta\) là Maximum Likelihood Estimation (MLE) và Maximum A Posteriori Estimation (MAP).</p>
+  </li>
+  <li>
+    <p>Với MLE, việc xác định tham số \(\theta\) được thực hiện bằng cách đi tìm các tham số sao cho xác suất của training data (sự thật), hay còn gọi là <em>likelihood</em>, là lớn nhất, :
+\[
+\theta = \arg\max_{\theta} p(\mathbf{x}_1, \dots, \mathbf{x}_N |\theta)
+\]</p>
+  </li>
+  <li>
+    <p>Để giải bài toán tối ưu này, giả thiết các dữ liệu \(\mathbf{x}_i\) độc lập thường được sử dụng. Và bài toán MLE trở thành:
+\[
+\theta = \arg\max_{\theta} \prod_{i=1}^N p(\mathbf{x}_i | \theta)
+\]</p>
+  </li>
+  <li>Với MAP, các tham số được đánh giá bằng cách tối đa <em>posterior</em>:
+\[
+  \theta = \arg\max_{\theta} p(\theta | \mathbf{x}_1, \dots, \mathbf{x}_N)
+\]</li>
+  <li>
+    <p>Để giải bài toán này, ta thường sử dụng Bayes’ rule và giả thiết độc lập của dữ liệu:
+\[
+\theta = \arg\max_{\theta} \left[\prod_{i=1}^N p(\mathbf{x}_i | \theta) p(\theta) \right]
+\]
+Hàm mục tiêu chính là tích của <em>likelihood</em> và <em>prior</em>.</p>
+  </li>
+  <li>
+    <p><em>Prior</em> thường được chọn dựa trên các thông tin biết trước của tham số, và phân phối được chọn thường là các <em>conjugate distribution</em> với likelihood, tức các distribution khiến việc nhân thêm <em>prior</em> vẫn giữ được cấu trúc giống như <em>likelihood</em>.</p>
+  </li>
+  <li>
+    <p>MAP có thể được coi là một phương pháp giúp tránh overfitting (hoặc overconfidence). MAP thường mang lại hiệu quả cao hơn MLE với trường hợp có ít dữ liệu training.</p>
+  </li>
+  <li>Trong bài tiếp theo, chúng ta sẽ thấy rõ ưu điểm của MAP trong một trong <a href="http://www.kdnuggets.com/2016/08/10-algorithms-machine-learning-engineers.html">10 thuật toán cần biết trong Machine Learning</a> - Naive Bayes Classifier. Mời bạn đón đọc.</li>
+</ul>
+
+<p><a name="-tai-lieu-tham-khao"></a></p>
+
+<h2 id="5-tài-liệu-tham-khảo">5. Tài liệu tham khảo</h2>
+
+<p>[1] Chapter 4, 6 của <a href="http://www.computervisionmodels.com">Computer Vision:  Models, Learning, and Inference - Simon J.D. Prince</a></p>
+
+<p>[2] <a href="https://en.wikipedia.org/wiki/Conjugate_prior">Conjugate prior</a></p>
+:ET

@@ -1,0 +1,1073 @@
+I"�<p><strong>Trong trang này:</strong></p>
+
+<!-- MarkdownTOC -->
+
+<ul>
+  <li><a href="#-gioi-thieu">1. Giới thiệu</a></li>
+  <li><a href="#-id">2. ID3</a>
+    <ul>
+      <li><a href="#-y-tuong">2.1. Ý tưởng</a></li>
+      <li><a href="#-ham-so-entropy">2.2. Hàm số entropy</a></li>
+      <li><a href="#-thuat-toan-id">2.3. Thuật toán ID3</a></li>
+      <li><a href="#-vi-du">2.4. Ví dụ</a></li>
+      <li><a href="#-dieu-kien-dung">2.5. Điều kiện dừng</a></li>
+      <li><a href="#-pruning">2.6. Pruning</a></li>
+    </ul>
+  </li>
+  <li><a href="#-lap-trinh-python-cho-id">3. Lập trình Python cho ID3</a></li>
+  <li><a href="#-thao-luan">4. Thảo luận</a></li>
+  <li><a href="#-tai-lieu-tham-khao">5. Tài liệu tham khảo</a></li>
+</ul>
+
+<!-- /MarkdownTOC -->
+<p><a name="-gioi-thieu"></a></p>
+
+<h2 id="1-giới-thiệu">1. Giới thiệu</h2>
+<p>Sắp đến kỳ thi, một cậu sinh viên tự đặt ra quy tắc <em>học</em> hay
+<em>chơi</em> của mình như sau. Nếu còn nhiều hơn hai ngày tới ngày thi, cậu ra
+sẽ đi chơi.
+Nếu còn không quá hai ngày và đêm hôm đó có một trận bóng đá, cậu sẽ sang nhà
+bạn chơi và cùng xem bóng đêm đó. Cậu sẽ chỉ học trong các trường hợp còn lại. 
+Việc ra quyết định của cậu sinh viên này có thể được mô tả trên sơ đồ trong
+Hình 1. Hình ellipse nền vàng thể hiện quyết định cần được đưa
+ra. Quyết định này phụ thuộc vào các câu trả lời của các câu hỏi trong các ô
+hình chữ nhật màu xám. Dựa trên các câu trả lời, quyết định cuối cùng được cho
+trong các hình tròn màu lục (<em>chơi</em>) và đỏ (<em>học</em>).
+Sơ đồ trong Hình 1 còn được gọi là một <em>cây quyết định</em>.</p>
+
+<hr />
+
+<table width="100%" style="border: 0px solid white">
+   <tr>
+        <td width="40%" style="border: 0px solid white">
+        <img style="display:block;" width="100%" src="/assets/34_id3/dt_ex1.png" />
+         </td>
+        <td width="40%" style="border: 0px solid white">
+        Hình 1: Ví dụ về việc ra quyết định dựa trên các câu hỏi. 
+        </td>
+    </tr>
+</table>
+<hr />
+
+<p>Việc quan sát, suy nghĩ và ra các quyết định của con người thường được bắt đầu
+từ các câu hỏi. Machine learning cũng có một mô hình ra quyết định dựa trên các
+câu hỏi. Mô hình này có tên là <em>cây quyết định</em> (<em>decision tree</em>).</p>
+
+<p>Xét ví dụ trên Hình 2a với hai class màu lục và đỏ trên không
+gian hai chiều. Nhiệm vụ là đi tìm ranh giới đơn giản giúp phân chia hai class
+này. Hay nói cách khác, đây là một bài toán classification, ta cần xây dựng một
+bộ phân lớp để quyết định việc một điểm dữ liệu mới thuộc vào class nào. Quan
+sát hình ta thấy rằng ranh giới cho hai class trong bài toán này khá đơn
+giản–chúng là các đường song song với các trục toạ độ. Nếu một điểm có thành
+phần thứ nhất, \(x_1\), nhỏ hơn ngưỡng \(t_1\), ta quyết định ngay được rằng nó
+thuộc class lục. Ngoài ra, nếu thành phần thứ hai, \(x_2\) lớn hơn ngưỡng \(t_2\),
+ta quyết định nó cũng thuộc vào class lục. Xét tiếp, nếu thành phần thứ nhất,
+\(x_1\), lớn hơn ngưỡng \(t_3\), ta quyết định nó thuộc vào class lục. Các điểm
+không thoả mãn các điều kiện trên được xếp vào class đỏ. Việc ra quyết định một
+điểm thuộc class nào được mô tả trên decision tree trên Hình 2b.</p>
+
+<hr />
+
+<div class="imgcap">
+<img src="/assets/34_id3/dt_ex2.png" align="center" width="800" />
+</div>
+
+<p><br /></p>
+<div class="thecap" style="text-align: center">Hình 2: Ví dụ về bài toán phân lớp sử dụng decision tree.</div>
+<hr />
+
+<p>Trong decision tree, các ô màu xám, lục, đỏ trên Hình 2 được gọi là các <em>node</em>.
+Các <em>node</em> thể hiện đầu ra (màu lục và đỏ) được gọi là <em>node lá</em> (<em>leaf node</em>
+hoặc <em>terminal node</em>). Các <em>node</em> thể hiện câu hỏi là các <em>non-leaf node</em>.
+<em>Non-leaf node</em> trên cùng (câu hỏi đầu tiên) được gọi là <em>node gốc</em> (<em>root
+node</em>). Các <em>non-leaf node</em> thường có hai hoặc nhiều <em>node con</em> (<em>child node</em>).
+Các <em>child node</em> này có thể là một <em>leaf node</em> hoặc một <em>non-leaf node</em> khác.
+Các <em>child node</em> có cùng <em>bố mẹ</em> được gọi là <em>sibling node</em>. Nếu tất cả các
+<em>non-leaf node</em> chỉ có hai <em>child node</em>, ta nói rằng đó là một <em>binary decision
+tree</em> (<em>cây quyết định nhị phân</em>). Các câu hỏi trong binary decision tree đều có
+thể đưa được về dạng câu hỏi đúng hay sai. Các decision tree mà một <em>leaf
+node</em> có nhiều <em>child node</em> cũng có thể được đưa về dạng một binary decision
+tree. Điều này có thể đạt được vì hầu hết các câu hỏi đều có thể được đưa về
+dạng câu hỏi đúng sai.</p>
+
+<p>Ví dụ, ta có thể xác định được tuổi của một người dựa trên nhiều câu hỏi đúng
+sai dạng: tuổi của bạn lớn hơn \(x\) đúng không? (Đây chính là thuật toán
+<em>tìm kiếm nhị phân</em> – <em>binary search</em>.)</p>
+
+<p>Decision tree là một mô hình supervised learning, có thể được áp dụng vào cả hai
+bài toán classification và regression. Việc xây dựng một decision tree trên dữ
+liệu huấn luyện cho trước là việc đi xác định các <em>câu hỏi</em> và <em>thứ tự của
+chúng</em>. Một điểm đáng lưu ý của decision tree là nó có thể làm việc với các đặc
+trưng (trong các tài liệu về decision tree, các đặc trưng thường được gọi là
+<em>thuộc tính</em> – <em>attribute</em>) dạng <em>categorical</em>, thường là rời rạc và không có thứ
+tự. Ví dụ, <em>mưa, nắng</em> hay <em>xanh, đỏ</em>, v.v. Decision tree cũng làm việc với dữ
+liệu có vector đặc trưng bao gồm cả thuộc tính dạng categorical và liên tục
+(<em>numeric</em>). Một điểm đáng lưu ý nữa là decision tree ít yêu cầu việc chuẩn hoá
+dữ liệu.</p>
+
+<p>Trong bài viết này, chúng ta sẽ làm quen với một thuật toán xây dựng decision
+tree ra đời từ rất sớm và rất phổ biến: <a href="https://en.wikipedia.org/wiki/ID3_algorithm">Iterative Dichotomiser 3
+(ID3)</a>.</p>
+
+<p>Quay trở lại với nhiệm vụ chính của việc xây dựng một decision tree: các
+<em>câu hỏi</em> nên được xây dựng như thế nào, và thứ tự của chúng ra sao. Các
+câu hỏi này thường được áp dụng lên từng thuộc tính, hoặc một tổ hợp tuyến tính
+của các thuộc tính. Cách thứ nhất, áp dụng lên từng thuộc tính, được sử dụng
+nhiều hơn vì tính đơn giản của nó. Với các thuộc tính dạng categorical, câu hỏi
+sẽ là <em>Nó rơi vào category nào?</em> hoặc <em>Nó có rơi vào category nào đó không?</em>
+với trường hợp nhị phân. Với các thuộc tính dạng liên tục, câu hỏi có thể là
+<em>Nó nằm vào khoảng giá trị nào?</em> hoặc <em>Nó có lớn hơn một ngưỡng nào đó
+không?</em>.</p>
+
+<p>ID3 là một thuật toán decision tree được áp dụng cho các bài toán classification
+mà tất cả các thuộc tính đều ở dạng categorical. Trong bài tiếp theo, chúng ta
+sẽ làm quen với một thuật toán khác có tên là Classification and Regression Tree
+(CART)–có thể được áp dụng vào cả hai loại classification và regression, như
+tên gọi của nó–làm việc với cả thuộc tính dạng categorical và liên tục.</p>
+
+<p><a name="-id"></a></p>
+
+<h2 id="2-id3">2. ID3</h2>
+<p><a name="-y-tuong"></a></p>
+
+<h3 id="21-ý-tưởng">2.1. Ý tưởng</h3>
+<p>Trong ID3, chúng ta cần xác định thứ tự của thuộc tính cần được xem xét tại mỗi
+bước. Với các bài toán có nhiều thuộc tính và mỗi thuộc tính có nhiều giá trị
+khác nhau, việc tìm được nghiệm tối ưu thường là không khả thi. Thay vào đó, một
+phương pháp đơn giản thường được sử dụng là tại mỗi bước, một thuộc tính
+<em>tốt nhất</em> sẽ được chọn ra dựa trên một tiêu chuẩn nào đó (chúng ta sẽ
+bàn sớm). Với mỗi thuộc tính được chọn, ta chia dữ liệu vào các <em>child
+node</em> tương ứng với các giá trị của thuộc tính đó rồi tiếp tục áp dụng phương
+pháp này cho mỗi <em>child node</em>. Việc chọn ra thuộc tính <em>tốt nhất</em>
+ở mỗi bước như thế này được gọi là cách chọn <em>greedy</em> (<em>tham
+lam</em>). Cách chọn này có thể không phải là tối ưu, nhưng trực giác cho chúng ta
+thấy rằng cách làm này sẽ gần với cách làm tối ưu. Ngoài ra, cách làm này khiến
+cho bài toán cần giải quyết trở nên đơn giản hơn.</p>
+
+<p>Sau mỗi <em>câu hỏi</em>, dữ liệu được phân chia vào từng <em>child node</em>
+tương ứng với các câu trả lời cho câu hỏi đó. <em>Câu hỏi</em> ở đây chính là
+một thuộc tính, câu trả lời chính là giá trị của thuộc tính đó. Để đánh giá
+<em>chất lượng</em> của một cách phân chia, chúng ta cần đi tìm một phép đo.</p>
+
+<p>Trước hết, thế nào là một phép phân chia tốt? Bằng trực giác, một phép phân chia
+là tốt nhất nếu dữ liệu trong mỗi <em>child node</em> hoàn toàn thuộc vào một
+class–khi đó <em>child node</em> này có thể được coi là một <em>leaf node</em>, tức ta không
+cần phân chia thêm nữa. Nếu dữ liệu trong các <em>child node</em> vẫn lẫn vào nhau theo
+tỉ lệ lớn, ta coi rằng phép phân chia đó chưa thực sự tốt. Từ nhận xét này, ta
+cần có một hàm số đo <em>độ tinh khiết</em> (<em>purity</em>), hoặc <em>độ vẩn đục</em> (<em>impurity</em>)
+của một phép phân chia. Hàm số này sẽ cho giá trị thấp nhất nếu dữ liệu trong
+mỗi <em>child node</em> nằm trong cùng một class (tinh khiết nhất), và cho giá trị cao
+nếu mỗi <em>child node</em> có chứa dữ liệu thuộc nhiều class khác nhau.</p>
+
+<p>Một hàm số có các đặc điểm này và được dùng nhiều trong lý thuyết thông tin là
+hàm <em>entropy</em>.</p>
+
+<p><a name="-ham-so-entropy"></a></p>
+
+<h3 id="22-hàm-số-entropy">2.2. Hàm số entropy</h3>
+<p>Cho một phân phối xác suất của một biến rời rạc \(x\) có thể nhận \(n\) giá trị
+khác nhau \(x_1, x_2, \dots, x_n\). Giả sử rằng xác suất để \(x\) nhận các giá trị
+này là \(p_i = p(x = x_i)\) với \(0 \leq p_i \leq 1, \sum_{i=1}^n p_i = 1\). Ký hiệu
+phân phối này là \(\mathbf{p} = (p_1, p_2, \dots, p_n)\). Entropy của phân phối này được
+định nghĩa là
+\[
+    H(\mathbf{p}) = -\sum_{i=1}^n p_i \log(p_i)\quad\quad (1)
+\]
+trong đó \(\log\) là logarit tự nhiên (<em>Một số tài liệu dùng logarit cơ số
+2, nhưng giá trị của \(H(\mathbf{p})\) chỉ khác đi bằng cách nhân với một hằng số.</em>) và
+quy ước \(0 \log(0) = 0\).</p>
+
+<p>Xét một ví dụ với \(n = 2\) được cho trên Hình 3. Trong trường hợp \(\mathbf{p}\)
+là <em>tinh khiết</em> nhất, tức một trong hai giá trị \(p_i\) bằng 1, giá trị kia
+bằng 0, entropy của phân phối này là \(H(\mathbf{p}) = 0\). Khi \(\mathbf{p}\) là <em>vẩn
+đục</em> nhất, tức cả hai giá trị \(p_i = 0.5\), hàm entropy đạt giá trị cao nhất.</p>
+
+<hr />
+
+<table width="100%" style="border: 0px solid white">
+   <tr>
+        <td width="40%" style="border: 0px solid white">
+        <img style="display:block;" width="100%" src="/assets/34_id3/entropy.png" />
+         </td>
+        <td width="40%" style="border: 0px solid white">
+        Hình 3: Đồ thị của hàm entropy với \(n = 2\).
+        </td>
+    </tr>
+</table>
+<hr />
+
+<p>Tổng quát lên với \(n &gt; 2\), hàm entropy đạt giá trị nhỏ nhất nếu có một giá trị \(p_i = 1\), đạt giá trị lớn nhất nếu tất cả các \(p_i\) bằng nhau ((việc này có thể được chứng minh bằng <a href="/2017/04/02/duality/#--phuong-phap-nhan-tu-lagrange">phương pháp nhân tử Lagrange</a>).</p>
+
+<p>Những tính chất này của hàm entropy khiến nó được sử dụng trong việc đo
+<em>độ vẩn đục</em> của một phép phân chia của ID3. Vì lý do này, ID3 còn được
+gọi là <em>entropy-based decision tree</em>.</p>
+
+<p><a name="-thuat-toan-id"></a></p>
+
+<h3 id="23-thuật-toán-id3">2.3. Thuật toán ID3</h3>
+<p>Trong ID3, <em>tổng có trọng số của entropy tại các leaf-node</em> sau khi xây
+dựng decision tree được coi là hàm mất mát của decision tree đó. Các trọng số ở
+đây tỉ lệ với số điểm dữ liệu được phân vào mỗi node. Công việc của ID3 là tìm
+các cách phân chia hợp lý (thứ tự chọn thuộc tính hợp lý) sao cho hàm mất mát
+cuối cùng đạt giá trị càng nhỏ càng tốt. Như đã đề cập, việc này đạt được bằng
+cách chọn ra thuộc tính sao cho nếu dùng thuộc tính đó để phân chia, entropy tại
+mỗi bước giảm đi một lượng lớn nhất. Bài toán xây dựng một decision tree bằng
+ID3 có thể chia thành các bài toán nhỏ, trong mỗi bài toán, ta chỉ cần chọn ra
+thuộc tính giúp cho việc phân chia đạt kết quả tốt nhất. Mỗi bài toán nhỏ này
+tương ứng với việc phân chia dữ liệu trong một <em>non-leaf node</em>. Chúng ta
+sẽ xây dựng phương pháp tính toán dựa trên mỗi node này.</p>
+
+<p>Xét một bài toán với \(C\) class khác nhau. Giả sử ta đang làm việc với một
+<em>non-leaf node</em> với các điểm dữ liệu tạo thành một tập \(\mathcal{S}\) với số
+phần tử là \(|\mathcal{S}| = N\). Giả sử thêm rằng trong số \(N\) điểm dữ
+liệu này, \(N_c, c= 1, 2, \dots, C\) điểm thuộc vào class \(c\). Xác suất để
+mỗi điểm dữ liệu rơi vào một class \(c\) được xấp xỉ bằng \(\frac{N_c}{N}\)
+(maximum likelihood estimation). Như vậy, entropy tại node này được tính bởi:
+\[ H(\mathcal{S}) = -\sum_{c=1}^C \frac{N_c}{N} \log\left(\frac{N_c}{N}\right) \quad\quad
+    (2)
+\]
+Tiếp theo, giả sử thuộc tính được chọn là \(x\). Dựa trên \(x\), các điểm dữ liệu
+trong \(\mathcal{S}\) được phân ra thành \(K\) child node \(\mathcal{S}_1, \mathcal{S}_2, \dots, \mathcal{S}_K\) với số
+điểm
+trong mỗi child node lần lượt là \(m_1, m_2, \dots, m_K\). Ta định nghĩa</p>
+
+<p>\[
+    H(x, \mathcal{S}) = \sum_{k=1}^K \frac{m_k}{N} H(\mathcal{S}_k) \quad\quad (3)
+\]</p>
+
+<p>là tổng có trọng số entroy của mỗi child node–được tính tương tự
+như (2). Việc lấy trọng số này là quan trọng vì các
+node thường có số lượng điểm khác nhau.</p>
+
+<p>Tiếp theo, ta định nghĩa <em>information gain</em> dựa trên thuộc tính \(x\):</p>
+
+<p>\[
+    G(x, \mathcal{S}) = H(\mathcal{S}) - H(x, \mathcal{S})
+\]</p>
+
+<p>Trong ID3, tại mỗi node, thuộc tính được chọn được xác định dựa trên:</p>
+
+<p>\[
+    x^* = \arg\max_{x} G(x, \mathcal{S}) = \arg\min_{x} H(x, \mathcal{S})
+\]
+tức thuộc tính khiến cho <em>information gain</em> đạt giá trị lớn nhất.</p>
+
+<p>Câu hỏi tiếp theo là khi nào thì dừng cách phân chia? Câu trả
+lời sẽ được đề cập sau mục ví dụ dưới đây.</p>
+
+<p><a name="-vi-du"></a></p>
+
+<h3 id="24-ví-dụ">2.4. Ví dụ</h3>
+<p>Để mọi thứ được rõ ràng hơn, chúng ta cùng xem ví dụ với dữ liệu huấn luyện
+được cho trong Bảng dưới đây. Bảng dữ liệu này được lấy
+từ cuốn sách <a href="ftp://ftp.ingv.it/pub/manuela.sbarra/Data%20Mining%20Practical%20Machine%20Learning%20Tools%20and%20Techniques%20-%20WEKA.pdf">Data Mining: Practical Machine Learning Tools and Techniques</a>, trang 11. Đây là một bảng dữ liệu được sử
+dụng rất nhiều trong các bài giảng về decision tree. Bảng dữ liệu này mô tả mối
+quan hệ giữa thời tiết trong 14 ngày (bốn cột đầu, không tính cột id) và việc một đội bóng có chơi bóng hay
+không (cột cuối cùng). Nói cách khác, ta phải dự đoán giá trị ở cột cuối cùng nếu biết giá trị của bốn cột còn lại.</p>
+
+<hr />
+
+<table>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>outlook</th>
+      <th>temperature</th>
+      <th>humidity</th>
+      <th>wind</th>
+      <th>play</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>sunny</td>
+      <td>hot</td>
+      <td>high</td>
+      <td>weak</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>sunny</td>
+      <td>hot</td>
+      <td>high</td>
+      <td>strong</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>overcast</td>
+      <td>hot</td>
+      <td>high</td>
+      <td>weak</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>rainy</td>
+      <td>mild</td>
+      <td>high</td>
+      <td>weak</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>rainy</td>
+      <td>cool</td>
+      <td>normal</td>
+      <td>weak</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>rainy</td>
+      <td>cool</td>
+      <td>normal</td>
+      <td>strong</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>overcast</td>
+      <td>cool</td>
+      <td>normal</td>
+      <td>strong</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>sunny</td>
+      <td>mild</td>
+      <td>high</td>
+      <td>weak</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>sunny</td>
+      <td>cool</td>
+      <td>normal</td>
+      <td>weak</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>rainy</td>
+      <td>mild</td>
+      <td>normal</td>
+      <td>weak</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>sunny</td>
+      <td>mild</td>
+      <td>normal</td>
+      <td>strong</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>overcast</td>
+      <td>mild</td>
+      <td>high</td>
+      <td>strong</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>overcast</td>
+      <td>hot</td>
+      <td>normal</td>
+      <td>weak</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>rainy</td>
+      <td>mild</td>
+      <td>high</td>
+      <td>strong</td>
+      <td>no</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<p>Có bốn thuộc tính thời tiết:</p>
+
+<ol>
+  <li>
+    <p><em>Outlook</em> nhận một trong ba giá trị: sunny, overcast, rainy.</p>
+  </li>
+  <li>
+    <p><em>Temperature</em> nhận một trong ba giá trị: hot, cool, mild.</p>
+  </li>
+  <li>
+    <p><em>Humidity</em> nhận một trong hai giá trị: high, normal.</p>
+  </li>
+  <li>
+    <p><em>Wind</em> nhận một trong hai giá trị: weak, strong.</p>
+  </li>
+</ol>
+
+<p>(Tổng cộng có \(3\times 3 \times 2 \times 2 = 36\) loại thời tiết khác nhau,
+trong đó 14 loại được thể hiện trong bảng.)</p>
+
+<p>Đây có thể được coi là một bài toán dự đoán liệu đội bóng có chơi bóng không
+dựa trên các quan sát thời tiết. Ở đây, các quan sát đều ở dạng categorical.
+Cách dự đoán dưới đây tương đối đơn giản và khá chính xác, có thể không phải là
+cách ra quyết định tốt nhất:</p>
+<ul>
+  <li>
+    <p>Nếu <em>outlook = sunny</em> và <em>humidity = high</em> thì
+<em>play = no</em>.</p>
+  </li>
+  <li>
+    <p>Nếu <em>outlook = rainy</em> và <em>windy = true</em> thì
+<em>play = no</em>.</p>
+  </li>
+  <li>
+    <p>Nếu <em>outlook = overcast</em> thì <em>play = yes</em>.</p>
+  </li>
+  <li>
+    <p>Ngoài ra, nếu <em>humidity = normal</em> thì <em>play = yes</em>.</p>
+  </li>
+  <li>
+    <p>Ngoài ra, <em>play = yes</em>.</p>
+  </li>
+</ul>
+
+<p>Chúng ta sẽ cùng tìm thứ tự các thuộc tính bằng thuật toán ID3.</p>
+
+<p>Trong 14 giá trị đầu ra ở Bảng trên, có năm giá trị bằng <em>no</em> và chín giá trị
+bằng <em>yes</em>. Entroy tại <em>root node</em> của bài toán là:
+\[
+    H(\mathcal{S}) = - \frac{5}{14}\log\left(\frac{5}{14}\right) - \frac{9}{14}\log\left(\frac{9}{14}\right)
+    \approx 0.65 
+\]
+Tiếp theo, chúng ta tính tổng có trọng số entropy của các <em>child node</em> nếu chọn
+một trong các thuộc tính <em>outlook, temperature, humidity, wind, play</em> để phân
+chia dữ liệu.</p>
+
+<p>Xét thuộc tính <em>outlook</em>. Thuộc tính này có thể nhận một trong ba giá trị
+<em>sunny, overcast, rainy</em>. Mỗi một giá trị sẽ tương ứng với một
+<em>child node</em>. Gọi tập hợp các điểm trong mỗi child node này lần lượt là
+\(\mathcal{S}_s, \mathcal{S}_o, \mathcal{S}_r\) với tương ứng \(m_s, m_o,
+m_r\) phần tử. Sắp xếp lại Bảng ban đầu theo thuộc tính outlook ta đạt được ba
+Bảng nhỏ sau đây.</p>
+
+<hr />
+
+<table>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>outlook</th>
+      <th>temperature</th>
+      <th>humidity</th>
+      <th>wind</th>
+      <th>play</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>sunny</td>
+      <td>hot</td>
+      <td>high</td>
+      <td>weak</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>sunny</td>
+      <td>hot</td>
+      <td>high</td>
+      <td>strong</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>sunny</td>
+      <td>mild</td>
+      <td>high</td>
+      <td>weak</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>sunny</td>
+      <td>cool</td>
+      <td>normal</td>
+      <td>weak</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>sunny</td>
+      <td>mild</td>
+      <td>normal</td>
+      <td>strong</td>
+      <td>yes</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<table>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>outlook</th>
+      <th>temperature</th>
+      <th>humidity</th>
+      <th>wind</th>
+      <th>play</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>3</td>
+      <td>overcast</td>
+      <td>hot</td>
+      <td>high</td>
+      <td>weak</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>overcast</td>
+      <td>cool</td>
+      <td>normal</td>
+      <td>strong</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>overcast</td>
+      <td>mild</td>
+      <td>high</td>
+      <td>strong</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>overcast</td>
+      <td>hot</td>
+      <td>normal</td>
+      <td>weak</td>
+      <td>yes</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<table>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>outlook</th>
+      <th>temperature</th>
+      <th>humidity</th>
+      <th>wind</th>
+      <th>play</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>4</td>
+      <td>rainy</td>
+      <td>mild</td>
+      <td>high</td>
+      <td>weak</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>rainy</td>
+      <td>cool</td>
+      <td>normal</td>
+      <td>weak</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>rainy</td>
+      <td>cool</td>
+      <td>normal</td>
+      <td>strong</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>rainy</td>
+      <td>mild</td>
+      <td>normal</td>
+      <td>weak</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>rainy</td>
+      <td>mild</td>
+      <td>high</td>
+      <td>strong</td>
+      <td>no</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<p>Quan sát nhanh ta thấy rằng <em>child node</em> ứng với <em>outlook = overcast</em> sẽ có
+entropy bằng 0 vì tất cả \(m_o = 4\) output đều là <em>yes</em>. Hai <em>child node</em> còn
+lại với \(m_s = m_r = 5\) có entropy khá cao vì tần suất output bằng <em>yes</em>
+hoặc <em>no</em> là xấp xỉ nhau. Tuy nhiên, hai <em>child node</em> này có thể được phân chia
+tiếp dựa trên hai thuộc tính <em>humidity</em> và <em>wind</em>.</p>
+
+<p>Bạn đọc có thể kiểm tra được rằng
+\[ 
+\begin{eqnarray}
+    H(\mathcal{S}_s) &amp;=&amp;-\frac{2}{5}\log\left(\frac{2}{5}\right) - \frac{3}{5}\log\left(\frac{3}{5}\right)
+            \approx 0.673 \\ 
+    H(\mathcal{S}_o) &amp;=&amp; 0  \\ 
+    H(\mathcal{S}_r) &amp;=&amp; -\frac{3}{5}\log\left(\frac{2}{5}\right) - \frac{3}{5}\log\left(\frac{3}{5}\right) 
+    \approx 0.673 \\ 
+    H({outlook}, \mathcal{S}) &amp;=&amp; \frac{5}{14}H(\mathcal{S}_s) + \frac{4}{14}H(\mathcal{S}_o) +
+    \frac{5}{14}H(\mathcal{S}_r) \approx 0.48
+ \end{eqnarray}
+\]</p>
+
+<p>Xét thuộc tính <em>temperature</em>, ta có phân chia như các Bảng dưới đây.</p>
+
+<hr />
+
+<table>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>outlook</th>
+      <th>temperature</th>
+      <th>humidity</th>
+      <th>wind</th>
+      <th>play</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>sunny</td>
+      <td>hot</td>
+      <td>high</td>
+      <td>weak</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>sunny</td>
+      <td>hot</td>
+      <td>high</td>
+      <td>strong</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>overcast</td>
+      <td>hot</td>
+      <td>high</td>
+      <td>weak</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>overcast</td>
+      <td>hot</td>
+      <td>normal</td>
+      <td>weak</td>
+      <td>yes</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<table>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>outlook</th>
+      <th>temperature</th>
+      <th>humidity</th>
+      <th>wind</th>
+      <th>play</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>4</td>
+      <td>rainy</td>
+      <td>mild</td>
+      <td>high</td>
+      <td>weak</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>sunny</td>
+      <td>mild</td>
+      <td>high</td>
+      <td>weak</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>rainy</td>
+      <td>mild</td>
+      <td>normal</td>
+      <td>weak</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>sunny</td>
+      <td>mild</td>
+      <td>normal</td>
+      <td>strong</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>overcast</td>
+      <td>mild</td>
+      <td>high</td>
+      <td>strong</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>rainy</td>
+      <td>mild</td>
+      <td>high</td>
+      <td>strong</td>
+      <td>no</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<table>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>outlook</th>
+      <th>temperature</th>
+      <th>humidity</th>
+      <th>wind</th>
+      <th>play</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>5</td>
+      <td>rainy</td>
+      <td>cool</td>
+      <td>normal</td>
+      <td>weak</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>rainy</td>
+      <td>cool</td>
+      <td>normal</td>
+      <td>strong</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>overcast</td>
+      <td>cool</td>
+      <td>normal</td>
+      <td>strong</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>sunny</td>
+      <td>cool</td>
+      <td>normal</td>
+      <td>weak</td>
+      <td>yes</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<p>Gọi \(\mathcal{S}_h, \mathcal{S}_m, \mathcal{S}_c\) là ba tập con tương ứng với <em>temperature</em> bằng <em>hot, mild, cool</em>. Bạn đọc có thể tính được
+\[
+\begin{eqnarray}
+    H(\mathcal{S}_h) &amp;=&amp; -\frac{2}{4}\log\left(\frac{2}{4}\right)-\frac{2}{4}\log\left(\frac{2}{4}\right)
+    \approx 0.693 \\ 
+    H(\mathcal{S}_m) &amp;=&amp; - \frac{4}{6}\log\left(\frac{4}{6}\right) - \frac{2}{6}\log\left(\frac{2}{6}\right)
+    \approx 0.637 \\ 
+    H(\mathcal{S}_c) &amp;=&amp; - \frac{3}{4}\log\left(\frac{3}{4}\right) - \frac{1}{4}\log\left(\frac{1}{4}\right)
+    \approx 0.562 \\ 
+    H(temperature, \mathcal{S}) &amp;=&amp; \frac{4}{14}H(\mathcal{S}_h) + \frac{6}{14}H(\mathcal{S}_m) +
+    \frac{4}{14}H(\mathcal{S}_c) \approx 0.631
+\end{eqnarray}
+\]</p>
+
+<p>Việc tính toán với hai thuộc tính còn lại được dành cho bạn đọc. Nếu các kết
+quả là giống nhau, chúng sẽ bằng: 
+\[
+    H(humidity, \mathcal{S}) \approx 0.547, \quad H(wind, \mathcal{S}) \approx 0.618
+\]
+Như vậy, thuộc tính cần chọn ở bước đầu tiên là <em>outlook</em> vì
+\(H(outlook, \mathcal{S})\) đạt giá trị nhỏ nhất (information gain là lớn nhất).</p>
+
+<p>Sau bước phân chia đầu tiên này, ta nhận được ba child node với các phần tử như
+trong ba Bảng phân chia theo <em>outlook</em>. Child node thứ hai không cần phân chia tiếp vì nó
+đã <em>tinh khiết</em>. Với child node thứ nhất, ứng với <em>outlook =
+sunny</em>, kết quả tính được bằng ID3 sẽ cho chúng ta thuộc tính <em>humidity</em>
+vì tổng trọng số của entropy sau bước này sẽ bằng 0 với output bằng <em>yes</em>
+khi và chỉ khi <em>humidity = normal</em>. Tương tự, child node ứng với
+<em>outlook = wind</em> sẽ được tiếp tục phân chia bởi thuộc tính <em>wind</em>
+với output bằng <em>yes</em> khi và chỉ khi <em>wind = weak</em>.</p>
+
+<p>Như vậy, cây quyết định cho bài toán này dựa trên ID3 sẽ có dạng như trong
+Hình 4.</p>
+
+<hr />
+
+<table width="100%" style="border: 0px solid white">
+   <tr>
+        <td width="40%" style="border: 0px solid white">
+        <img style="display:block;" width="100%" src="/assets/34_id3/dt_res.png" />
+         </td>
+        <td width="40%" style="border: 0px solid white">
+        Hình 4: Decision tree cho bài toán ví dụ sử dụng thuật toán ID3. 
+        </td>
+    </tr>
+</table>
+<hr />
+
+<p><a name="-dieu-kien-dung"></a></p>
+
+<h3 id="25-điều-kiện-dừng">2.5. Điều kiện dừng</h3>
+
+<p>Trong các thuật toán decision tree nói chung và ID3 nói riêng, nếu ta tiếp tục
+phân chia các node <em>chưa tinh khiết</em>, ta sẽ thu được một tree mà mọi điểm
+trong tập huấn luyện đều được dự đoán đúng (giả sử rằng không có hai input giống
+nhau nào cho output khác nhau). Khi đó, tree có thể sẽ rất phức tạp (nhiều node)
+với nhiều leaf node chỉ có một vài điểm dữ liệu. Như vậy, nhiều khả năng
+overfitting sẽ xảy ra.</p>
+
+<p>Để tránh overfitting, một trong số các phương pháp sau có thể được sử dụng. Tại một node,
+nếu một trong số các điều kiện sau đây xảy ra, ta không tiếp tục phân chia node đó và coi nó
+là một leaf node:</p>
+
+<ul>
+  <li>
+    <p>nếu node đó có entropy bằng 0, tức mọi điểm trong node đều thuộc một
+  class.</p>
+  </li>
+  <li>
+    <p>nếu node đó có số phần tử nhỏ hơn một ngưỡng nào đó. Trong trường
+  hợp này, ta chấp nhận có một số điểm bị phân lớp sai để tránh overfitting.
+  Class cho leaf node này có thể được xác định dựa trên class chiếm đa số
+  trong node.</p>
+  </li>
+  <li>
+    <p>nếu khoảng cách từ node đó đến root node đạt tới một giá trị nào đó.
+  Việc hạn chế <em>chiều sâu của tree</em> này làm giảm độ phức tạp của tree và phần nào giúp tránh overfitting.</p>
+  </li>
+  <li>
+    <p>nếu tổng số leaf node vượt quá một ngưỡng nào đó.</p>
+  </li>
+  <li>
+    <p>nếu việc phân chia node đó không làm giảm entropy quá nhiều
+  (information gain nhỏ hơn một ngưỡng nào đó).</p>
+  </li>
+</ul>
+
+<p>Ngoài các phương pháp trên, một phương pháp phổ biến khác được sử dụng để tránh
+overfitting là <em>pruning</em>, tạm dịch là <em>cắt tỉa</em>.</p>
+
+<p><a name="-pruning"></a></p>
+
+<h3 id="26-pruning">2.6. Pruning</h3>
+<p>Pruning là một kỹ thuật regularization để tránh overfitting cho decision tree
+nói chung. Trong pruning, một decision tree sẽ được xây dựng tới khi mọi điểm
+trong training set đều được phân lớp đúng. Sau đó, các leaf node có chung một
+non-leaf node sẽ được <em>cắt tỉa</em> và non-leaf node đó trở thành một
+leaf-node, với class tương ứng với class chiếm đa số trong số mọi điểm được
+phân vào node đó. Việc cắt tỉa cây quyết định này có thể được xác định dựa
+vào các cách sau.</p>
+<ol>
+  <li>
+    <p>Dựa vào một validation set. Trước tiên, training set được tách ra
+thành một training set nhỏ hơn và một validation set. Decision tree được
+xây dựng trên training set cho tới khi mọi điểm trong training set được
+phân lớp đúng. Sau đó, đi ngược từ các leaf node, cắt tỉa các sibling node
+của nó và giữ lại node <em>bố mẹ</em> nếu độ chính xác trên validation set
+được cải thiện. Khi nào độ chính xác trên validation set không được cải
+thiện nữa, quá trình pruning dừng lại. Phương pháp này còn được gọi là
+<em>reduced error pruning</em>.</p>
+  </li>
+  <li>
+    <p>Dựa vào toàn bộ data set. Trong phương pháp này, ta không tách tập
+training ban đầu ra mà sử dụng toàn bộ dữ liệu trong tập này cho việc xây
+dựng decision tree. Một ví dụ cho việc này là cộng thêm một đại lượng
+regularization vào hàm mất mát. Đại lượng regularization sẽ lớn nếu số leaf
+node là lớn. Cụ thể, giả sử decision tree cuối cùng có \(K\) leaf node, tập
+hợp các điểm huấn luyện rơi vào mỗi leaf node lần lượt là \(\mathcal{S}_1, \dots,
+\mathcal{S}_K\). Khi đó, regularized loss của ID3 có thể được tính tương tự
+như (3):
+\[
+ \mathcal{L} = \sum_{k = 1}^K \frac{|\mathcal{S}_k|}{|\mathcal{S}|}
+ H(\mathcal{S}_k) + \lambda K \quad\quad (5)
+\]
+với \(|\mathcal{S}_k|\) ký hiệu số phần tử của tập hợp \(\mathcal{S}_k\) và \(H(\mathcal{S}_k)\) chính là
+entropy của leaf node tương ứng với \(\mathcal{S}_k\), được tính tương tự
+như (2), và \(\lambda\) là một số thực dương không
+quá lớn. Giá trị của hàm số này nhỏ nếu cả data loss–số hạng thứ nhất–nhỏ (entropy tại mỗi
+node là thấp) và regularization–số hạng thứ hai–cũng nhỏ (số leaf node là ít).
+Vì hàm mất mát trong (5) là một hàm rời rạc, rất khó để
+trực tiếp tối ưu hàm này. Việc tối ưu có thể được thực hiện thông qua
+pruning như sau. Trước hết, xây dựng một decision tree mà mọi điểm trong tập
+huấn luyện đều được phân loại đúng (toàn bộ các entopy của các node bằng 0).
+Lúc này data loss bằng 0 nhưng regularization có thể lớn, khiến cho
+\(\mathcal{L}\) lớn. 
+Sau đó, ta có thể <em>tỉa</em> dần các leaf node sao cho \(\mathcal{L}\) giảm.
+Việc cắt tỉa được lặp lại đến khi \(\mathcal{L}\) không thể giảm được nữa.</p>
+  </li>
+  <li>
+    <p>Các kỹ thuật pruning khác có thể được tìm thấy <a href="https://link.springer.com/article/10.1023/A:1022604100933">tại đây</a>.</p>
+  </li>
+</ol>
+
+<p><a name="-lap-trinh-python-cho-id"></a></p>
+
+<h2 id="3-lập-trình-python-cho-id3">3. Lập trình Python cho ID3</h2>
+
+<p>Module DecisionTree trong sklearn không thực hiện thuật toán ID3 mà là một
+thuật toán khác được đề cập trong bài tiếp theo. Phiên bản hiện tại trong
+sklearn chưa hỗ trợ các thuộc tính ở dạng categorical. Với dữ liệu có thuộc
+tính categorical, cách thường dùng là chuyển đổi các thuộc tính đó sang dạng
+numerical (1, 2, 3 cho mỗi giá trị). Chẳng hạn, các giá trị <em>hot, mild,
+cool</em> có thể lần lượt được thay bằng <em>1, 2, 3</em>. Cách làm  này có hạn chế
+vì trong cách chuyển đổi này, <em>mild</em> là trung bình cộng của <em>hot</em>
+và <em>cool</em>, nhưng nếu thứ tự các giá trị được đặt khác đi, việc chuyển
+đổi có thể ảnh hưởng lớn tới kết quả. Nhắc lại rằng các thuộc tính
+categorical, ví dụ màu sắc, thường không có tính thứ tự.</p>
+
+<p>Dưới đây là cách lập trình của tôi cho ID3, làm việc với cả dữ liệu ở dạng
+categorical. (Source code có thể được tìm thấy <a href="https://goo.gl/Kz6S9E">tại đây</a>)</p>
+
+<p><strong>Xây dựng <code class="language-plaintext highlighter-rouge">class TreeNode</code></strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span> 
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span> 
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span> 
+
+<span class="k">class</span> <span class="nc">TreeNode</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ids</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span> <span class="n">children</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">entropy</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">depth</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">ids</span> <span class="o">=</span> <span class="n">ids</span>           <span class="c1"># index of data in this node
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">entropy</span> <span class="o">=</span> <span class="n">entropy</span>   <span class="c1"># entropy, will fill later
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">depth</span> <span class="o">=</span> <span class="n">depth</span>       <span class="c1"># distance to root node
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">split_attribute</span> <span class="o">=</span> <span class="bp">None</span> <span class="c1"># which attribute is chosen, it non-leaf
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">children</span> <span class="o">=</span> <span class="n">children</span> <span class="c1"># list of its child nodes
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">order</span> <span class="o">=</span> <span class="bp">None</span>       <span class="c1"># order of values of split_attribute in children
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">label</span> <span class="o">=</span> <span class="bp">None</span>       <span class="c1"># label of node if it is a leaf
+</span>
+    <span class="k">def</span> <span class="nf">set_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">split_attribute</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">split_attribute</span> <span class="o">=</span> <span class="n">split_attribute</span> <span class="c1"># split at which attribute
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">order</span> <span class="o">=</span> <span class="n">order</span> <span class="c1"># order of this node's children 
+</span>
+    <span class="k">def</span> <span class="nf">set_label</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">label</span> <span class="c1"># set label if the node is a leaf 
+</span></code></pre></div></div>
+
+<p><strong>Hàm tính entropy dựa trên tần suất</strong></p>
+
+<p>Trong hàm này, chúng ta phải chú ý bỏ các tần suất bằng 0 đi vì logarit tại đây
+không xác định.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">entropy</span><span class="p">(</span><span class="n">freq</span><span class="p">):</span>
+    <span class="c1"># remove prob 0 
+</span>    <span class="n">freq_0</span> <span class="o">=</span> <span class="n">freq</span><span class="p">[</span><span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">freq</span><span class="p">).</span><span class="n">nonzero</span><span class="p">()[</span><span class="mi">0</span><span class="p">]]</span>
+    <span class="n">prob_0</span> <span class="o">=</span> <span class="n">freq_0</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">freq_0</span><span class="p">.</span><span class="nb">sum</span><span class="p">())</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">prob_0</span><span class="o">*</span><span class="n">np</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="n">prob_0</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>Phần còn lại của source code (bao gồm <code class="language-plaintext highlighter-rouge">class DecisionTreeID3</code>) có
+thể được tìm thấy <a href="https://goo.gl/Kz6S9E">tại đây</a>.</p>
+
+<p>Dữ liệu trong trong ví dụ được được lưu trong file
+<a href="https://github.com/tiepvupsu/DecisionTreeID3/blob/master/weather.csv"><code class="language-plaintext highlighter-rouge">weather.csv</code></a>. Việc huấn luyện decision tree dựa trên ID3 cho tập
+dữ liệu này và đầu ra dự đoán cho training set được cho bởi</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">.</span><span class="n">from_csv</span><span class="p">(</span><span class="s">'weather.csv'</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">tree</span> <span class="o">=</span> <span class="n">DecisionTreeID3</span><span class="p">(</span><span class="n">max_depth</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">min_samples_split</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">tree</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">tree</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p><em>Kết quả</em></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['no', 'no', 'yes', 'yes', 'yes', 'no', 'yes', 'no', 'yes', 'yes', 'yes', 'yes', 'yes', 'no']
+</code></pre></div></div>
+
+<p>Không có gì bất ngờ, decision tree dự đoán đúng 100% các điểm trong training
+set.</p>
+
+<p><a name="-thao-luan"></a></p>
+
+<h2 id="4-thảo-luận">4. Thảo luận</h2>
+<ol>
+  <li>
+    <p>Nếu một thuộc tính có thể nhận rất nhiều giá trị, decision tree thu
+được có thể sẽ có rất nhiều node. Xét một ví dụ về các triệu chứng của các
+bệnh nhân trong một bệnh viện và đầu ra là mắc bệnh hay không. Mỗi bệnh nhân
+có một mã số (id) khác nhau. Nếu ta sử dụng thuộc tính này cho việc huấn
+luyện, ta rất có thể sẽ thu được mộ decision tree mà mỗi leaf node ứng với
+một bệnh nhân. Lúc đó mô hình này là vô dụng, vì không thể dự đoán được việc
+mắc bệnh hay không của một bệnh nhân mới.</p>
+  </li>
+  <li>
+    <p>Khi một thuộc tính nhận giá trị liên tục, chẳng hạn
+<em>temperature</em> không còn là <em>hot, mild, cool</em> nữa mà là các
+giá trị thực liên tục, vẫn có một cách để áp dụng ID3. Ta có thể chia
+khoảng giá trị của thuộc tính này thành nhiều phần, mỗi phần có số lượng
+điểm tương đương, hoặc cũng có thể dùng các thuật toán clustering đơn giản
+cho một chiều dữ liệu để chia thuộc tính thành các cluster nhỏ. Lúc này,
+thuộc tính liên tục được chuyển về thuộc tính dạng categorical.</p>
+  </li>
+  <li>
+    <p>Hạn chế lớn nhất của ID3 và decision tree nói chung là việc nếu một
+điểm dữ liệu mới rơi vào <em>nhầm</em> nhánh ở ngay những lần phân chia đầu
+tiên, kết quả cuối cùng sẽ khác đi rất nhiều. Việc rơi vào nhầm nhánh này
+rất dễ xảy ra trong trường hợp thuộc tính liên tục được chia thành nhiều
+nhóm nhỏ, vì hai điểm có thuộc tính tương ứng rất gần nhau có thể rơi vào
+hai nhóm khác nhau.</p>
+  </li>
+</ol>
+
+<p><a name="-tai-lieu-tham-khao"></a></p>
+
+<h2 id="5-tài-liệu-tham-khảo">5. Tài liệu tham khảo</h2>
+
+<p>[1] <a href="http://web.info.uvt.ro/~dzaharie/dm2016/projects/DecisionTrees/DecisionTrees_ID3Tutorial.pdf">CSE5230 Tutorial: The ID3 Decision Tree Algorithm</a>.</p>
+
+<p>[2] <a href="http://shop.oreilly.com/product/0636920052289.do">Hands-On Machine Learning with Scikit-Learn and TensorFlow</a></p>
+
+:ET

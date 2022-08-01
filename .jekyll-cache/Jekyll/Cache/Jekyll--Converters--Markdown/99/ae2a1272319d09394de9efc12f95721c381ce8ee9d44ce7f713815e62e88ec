@@ -1,0 +1,769 @@
+I"&�<p>Bài này có khá nhiều khái niệm mới, mong bạn đọc thông cảm khi tôi sử dụng các khái niệm này ở cả tiếng Anh và tiếng Việt.</p>
+
+<p><em>Bài chủ yếu nói về toán, nếu bạn đọc không hiểu ngay cũng không sao, ngày đầu tôi làm quen với những khái niệm này cũng không thể hấp thụ được ngay. Làm nhiều, đọc nhiều rồi sẽ ngấm dần.</em></p>
+
+<p>Bạn đọc có thể xem bản pdf <a href="https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/latex/book_CVX.pdf">tại đây</a>.</p>
+
+<!-- MarkdownTOC -->
+
+<ul>
+  <li><a href="#-gioi-thieu">1. Giới thiệu</a></li>
+  <li><a href="#-convex-sets">2. Convex sets</a>
+    <ul>
+      <li><a href="#-dinh-nghia">2.1. Định nghĩa</a></li>
+      <li><a href="#-vi-du">2.2. Ví dụ</a>
+        <ul>
+          <li><a href="#-hyperplanes-va-halfspaces">2.2.1. Hyperplanes và halfspaces</a></li>
+          <li><a href="#-norm-balls">2.2.2. Norm balls</a></li>
+        </ul>
+      </li>
+      <li><a href="#-giao-cua-cac-tap-loi-la-mot-tap-loi">2.3. Giao của các tập lồi là một tập lồi.</a></li>
+      <li><a href="#-convex-combination-va-convex-hulls">2.4. Convex combination và Convex hulls</a></li>
+    </ul>
+  </li>
+  <li><a href="#-convex-functions">3. Convex functions</a>
+    <ul>
+      <li><a href="#-dinh-nghia-1">3.1. Định nghĩa</a></li>
+      <li><a href="#-cac-tinh-chat-co-ban">3.2. Các tính chất cơ bản</a></li>
+      <li><a href="#-vi-du-1">3.3. Ví dụ</a>
+        <ul>
+          <li><a href="#-cac-ham-mot-bien">3.3.1. Các hàm một biến</a></li>
+          <li><a href="#-affine-functions">3.3.3. Affine functions</a></li>
+          <li><a href="#-quadratic-forms">3.3.3. Quadratic forms</a></li>
+          <li><a href="#-norms">3.3.4. Norms</a></li>
+        </ul>
+      </li>
+      <li><a href="#-\\\alpha-\\-sublevel-sets">3.4. \(\alpha-\) sublevel sets</a></li>
+      <li><a href="#-kiem-tra-tinh-chat-loi-dua-vao-dao-ham">3.5. Kiểm tra tính chất lồi dựa vào đạo hàm.</a>
+        <ul>
+          <li><a href="#-first-order-condition">3.5.1. First-order condition</a></li>
+          <li><a href="#-second-order-condition">3.5.2. Second-order condition</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#-tom-tat">4. Tóm tắt</a></li>
+  <li><a href="#-tai-lieu-tham-khao">5. Tài liệu tham khảo</a></li>
+</ul>
+
+<!-- /MarkdownTOC -->
+
+<p><a name="-gioi-thieu"></a></p>
+
+<h2 id="1-giới-thiệu">1. Giới thiệu</h2>
+<p>Từ đầu đến giờ, chúng ta đã làm quen với rất nhiều bài toán tối ưu. Học Machine Learning là phải học Toán Tối Ưu, và để hiểu hơn về Toán Tối Ưu, với tôi cách tốt nhất là tìm hiểu các thuật toán Machine Learning. Cho tới lúc này, những bài toán tối ưu các bạn đã nhìn thấy trong blog đều là các bài toán tối ưu không ràng buộc (unconstrained optimization problems), tức tối ưu hàm mất mát mà không có điều kiện ràng buộc (constraints) nào về nghiệm cả.</p>
+
+<p>Không chỉ trong Machine Learning, trên thực tế các bài toán tối ưu thường có rất nhiều ràng buộc khác nhau. Ví dụ:</p>
+
+<ul>
+  <li>
+    <p>Tôi muốn thuê một ngôi nhà cách trung tâm Hà Nội không quá 5km với giá càng thấp càng tốt. Trong bài toán này, giá thuê nhà chính là hàm mất mát (<em>loss function</em>, đôi khi người ta cũng dùng <em>cost function</em> để chỉ hàm số cần tối ưu), điều kiện khoảng cách không quá 5km chính là ràng buộc (constraint).</p>
+  </li>
+  <li>
+    <p>Quay lại <a href="/2016/12/28/linearregression/#-gioi-thieu">bài toán dự đoán giá nhà theo Linear Regression</a>, giá nhà là một hàm tuyến tính của diện tích, số phòng ngủ và khoảng cách tới trung tâm. Rõ ràng, khi làm bài toán này, ta dự đoán rằng giá nhà tăng theo diện tích và số phòng ngủ, giảm theo khoảng cách. Vậy nên một nghiệm được gọi là <em>có lý một chút</em> nếu hệ số tương ứng với diện tích và số phòng ngủ là dương, hệ số tương ứng với khoảng cách là âm. Để tránh các nghiệm ngoại lai không mong muốn, khi giải bài toán tối ưu, ta nên cho thêm các điều kiện ràng buộc này.</p>
+  </li>
+</ul>
+
+<p>Trong Tối Ưu, một bài toán có ràng buộc thường được viết dưới dạng:</p>
+
+<p>\[
+\begin{eqnarray}
+\mathbf{x}^* &amp;=&amp; \arg\min_{\mathbf{x}} f_0(\mathbf{x})\<br />
+\text{subject to:}~ &amp;&amp; f_i(\mathbf{x}) \leq 0, ~~ i = 1, 2, \dots, m \<br />
+&amp;&amp; h_j(\mathbf{x}) = 0, ~~ j = 1, 2, \dots, p
+\end{eqnarray}
+\]</p>
+
+<p>Trong đó, vector \(\mathbf{x} = [x_1, x_2, \dots, x_n]^T\) được gọi là <em>biến tối ưu</em> (<em>optimization variable</em>). Hàm số \(f_0: \mathbb{R}^n \rightarrow \mathbb{R}\) được gọi là <em>hàm mục tiêu</em> (<em>objective function</em>, các hàm mục tiêu trong Machine Learning thường được gọi là <em>hàm mất mát</em>). Các hàm số \(f_i, h_j: \mathbb{R}^n \rightarrow \mathbb{R}, i = 1, 2, \dots, m; j = 1, 2, \dots, p\) được gọi là các <em>hàm ràng buộc</em> (hoặc đơn giản là <em>ràng buộc</em> - constraints). Tập hợp các điểm \(\mathbf{x}\) thỏa mãn các <em>ràng buộc</em> được gọi là <em>feasible set</em>. Mỗi điểm trong <em>feasible set</em> được gọi là <em>feasible point</em>, các điểm không trong <em>feasible set</em> được gọi là <em>infeasible points</em>.</p>
+
+<p><strong>Chú ý:</strong></p>
+
+<ul>
+  <li>
+    <p>Nếu bài toán là tìm giá trị lớn nhất thay vì nhỏ nhất, ta chỉ cần đổi dấu của \(f_0(\mathbf{x})\).</p>
+  </li>
+  <li>
+    <p>Nếu ràng buộc là <em>lớn hơn hoặc bằng</em>, tức \(f_i(\mathbf{x}) \geq b_i\), ta chỉ cần đổi dấu của ràng buộc là sẽ có điều kiện <em>nhỏ hơn hoặc bằng</em> \(-f_i(\mathbf{x}) \leq -b_i\).</p>
+  </li>
+  <li>
+    <p>Các ràng buộc cũng có thể là <em>lớn hơn</em> hoặc <em>nhỏ hơn</em>.</p>
+  </li>
+  <li>
+    <p>Nếu ràng buộc là <em>bằng nhau</em>, tức \(h_j(\mathbf{x}) = 0\), ta có thể viết nó dưới dạng hai bất đẳng thức \(h_j(\mathbf{x}) \leq 0\) và \(-h_j(\mathbf{x}) \leq 0\). Trong một vài tài liệu, người ta bỏ các phương trình ràng buộc \(h_j(\mathbf{x})= 0\) đi.</p>
+  </li>
+  <li>
+    <p>Trong bài viết này, \(\mathbf{x}, \mathbf{y}\) được dùng chủ yếu để ký hiệu các biến số, không phải là dữ liệu như trong các bài trước. Biến tối ưu chính là biến được ghi dưới dấu \(\arg \min\). Khi viết một bài toán Tối Ưu, ta cần chỉ rõ biến nào cần được tối ưu, biến nào là cố định.</p>
+  </li>
+</ul>
+
+<p>Các bài toán tối ưu, nhìn chung không có cách giải tổng quát, thậm chí có những bài chưa có lời giải. Hầu hết các phương pháp tìm nghiệm không chứng minh được nghiệm tìm được có phải là <em>global optimal</em> hay không, tức đúng là điểm làm cho hàm số đạt giá trị nhỏ nhất hay lớn nhất hay không. Thay vào đó, nghiệm thường là các <em>local optimal</em>, tức các <em>điểm cực trị</em>.</p>
+
+<p>Để bắt đầu học Tối Ưu, chúng ta cần học một mảng rất quan trọng trong đó, có tên là <em>Tối Ưu Lồi</em> (convex optimization), trong đó <em>hàm mục tiêu</em> là một <em>hàm lồi</em> (convex function), <em>feasible set</em> là một <em>tập lồi</em> (convex set). Những tính chất đặc biệt về <em>local optimal</em> và <em>global optimal</em> của một <em>hàm lồi</em> khiến Tối Ưu Lồi trở nên cực kỳ quan trọng. Trong bài viết này, tôi sẽ giới thiệu tới các bạn các định nghĩa và tính chất cơ bản của <em>tập lồi</em> và <em>hàm lồi</em>. <em>Bài toán tối ưu lồi</em> (convex optimization problems) sẽ được đề cập trong bài tiếp theo.</p>
+
+<p><a name="-convex-sets"></a></p>
+
+<h2 id="2-convex-sets">2. Convex sets</h2>
+
+<p><a name="-dinh-nghia"></a></p>
+
+<h3 id="21-định-nghĩa">2.1. Định nghĩa</h3>
+<p>Khái niệm về <em>convex sets</em> có lẽ không xa lạ với các bạn học sinh Việt Nam khi chúng ta đã nghe về <em>đa giác lồi</em>. <em>Lồi</em>, hiểu đơn giản là <em>phình ra ngoài</em>, hoặc <em>nhô ra ngoài</em>. Trong toán học, <em>bằng phẳng</em> cũng được coi là <em>lồi</em>.</p>
+
+<p><strong>Định nghĩa 1:</strong> Một tập hợp được gọi là <em>tập lồi</em> (convex set) nếu đoạn thẳng nối hai điểm <em>bất kỳ</em> trong tập hợp hợp đó nằm trọn vẹn trong tập hợp đó.</p>
+
+<p>Một vài ví dụ về convex sets:</p>
+<hr />
+
+<div class="imgcap">
+ <img src="/assets/16_convexity/convexsets.png" align="center" width="800" />
+ <div class="thecap">Hình 1: Các ví dụ về convex sets.</div>
+</div>
+<hr />
+
+<p>Các hình với đường biên màu đen thể hiện việc bao gồm cả biên, biên màu trắng thể hiện việc biên đó không nằm trong tập hợp đang xét. Đường hoặc đoạn thằng cũng là một tập lồi theo định nghĩa phía trên.</p>
+
+<p>Một vài ví dụ thực tế:</p>
+
+<ul>
+  <li>
+    <p>Giả sử có một căn phòng có dạng hình <em>lồi</em>, nếu ta đặt một bóng đèn đủ sáng ở bất kỳ vị trí nào trong phòng, mọi điểm trong căn phòng đều được chiếu sáng.</p>
+  </li>
+  <li>
+    <p>Nếu một đất nước có bản đồ dạng một hình <em>lồi</em> thì đường bay nối giữa hai thành phố bất kỳ trong đất nước đó đều nằm trọn vẹn trong không phận của nước đó. (Không như Việt Nam, muốn bay thẳng Hà Nội - Hồ Chí Minh phải bay qua không phận Campuchia).</p>
+  </li>
+</ul>
+
+<p>Dưới đây là một vài ví dụ về <em>nonconvex sets</em>, tức tập hợp mà không phải là lồi:</p>
+
+<hr />
+
+<div class="imgcap">
+ <img src="/assets/16_convexity/nonconvexsets.png" align="center" width="800" />
+ <div class="thecap">Hình 2: Các ví dụ về nonconvex sets.</div>
+</div>
+<hr />
+
+<p>Ba hình đầu tiên không phải là lồi vì các đường nét đứt chứa nhiều điểm không nằm trong các tập đó. Hình thứ tư, hình vuông không có biên ở đáy, không phải là <em>tập lồi</em> vì đoạn thẳng nối hai điểm ở đáy có thể chứa phần ở giữa không thuộc tập đang xét (Nếu không có biên thì thình vuông vẫn là một <em>tập lồi</em>, nhưng biên nửa vời như ví dụ này thì hãy chú ý). Một đường cong bất kỳ cũng không phải là <em>tập lồi</em> vì dễ thấy đường thẳng nối hai điểm bất kỳ không thuộc đường cong đó.</p>
+
+<p>Để mô tả một <em>tập lồi</em> dưới dạng toán học, ta sử dụng:</p>
+
+<p><strong>Định nghĩa 2:</strong> Một tập hợp \(\mathcal{C}\) được gọi là <em>convex</em> nếu với hai điểm bất kỳ \(\mathbf{x}_1, \mathbf{x}_2 \in \mathcal{C}\), điểm \( \mathbf{x}_{\theta} = \theta \mathbf{x}_1 + (1 - \theta) \mathbf{x}_2\) cũng nằm trong \(\mathcal{C}\) với bất kỳ \(0 \leq \theta \leq 1\).</p>
+
+<p>Có thể thấy rằng, tập hợp các điểm có dạng \(\left(\theta \mathbf{x}_1 + (1 - \theta) \mathbf{x}_2\right)\) chính là <em>đoạn thẳng</em> nối hai điểm \(\mathbf{x}_1\) và \(\mathbf{x}_2\).</p>
+
+<p>Với các định nghĩa này thì <em>toàn bộ không gian</em> là một <em>tập lồi</em> vì đoạn thằng nào cũng nằm trong không gian đó. Tập rỗng cũng có thể coi là một trường hợp đặc biệt của <em>tập lồi</em>.</p>
+
+<p>Dưới đây là một vài ví dụ hay gặp về <em>tập lồi</em>.
+<a name="-vi-du"></a></p>
+
+<h3 id="22-ví-dụ">2.2. Ví dụ</h3>
+<p><a name="-hyperplanes-va-halfspaces"></a></p>
+
+<h4 id="221-hyperplanes-và-halfspaces">2.2.1. Hyperplanes và halfspaces</h4>
+<p>Một <strong>hyperplane</strong> (siêu mặt phẳng) trong không gian \(n\) chiều là tập hợp các điểm thỏa mãn phương trình:
+\[
+a_1 x_1 + a_2 x_2 + \dots + a_n x_n = \mathbf{a}^T\mathbf{x} = b
+\]
+với \(b, a_i, i = 1, 2, \dots, n\) là các số thực.</p>
+
+<p>Hyperplanes là các <em>tập lồi</em>. Điều này có thể dễ dàng suy ra từ Định nghĩa 1. Với Định nghĩa 2, chúng ta cũng dễ dàng nhận thấy. Nếu:</p>
+
+<p>\[
+\mathbf{a}^T\mathbf{x}_1 = \mathbf{a}^T\mathbf{x}_2 = b
+\]
+thì với \(0 \leq \theta \leq 1\) bất kỳ:
+\[
+\mathbf{a}^T\mathbf{x}_{\theta} = \mathbf{a}^T(\theta \mathbf{x}_1 + (1 - \theta)\mathbf{x}_2)) = \theta b + (1 - \theta) b  = b
+\]</p>
+
+<p>Một <strong>halfspace</strong> (nửa không gian) trong không gian \(n\) chiều là tập hợp các điểm thỏa mãn bất phương trình:
+\[
+a_1 x_1 + a_2 x_2 + \dots + a_n x_n = \mathbf{a}^T\mathbf{x} \leq b
+\]
+với \(b, a_i, i = 1, 2, \dots, n\) là các số thực.</p>
+
+<p>Các halfspace cũng là các tập lồi, bạn đọc có thể dễ dàng nhận thấy theo Định nghĩa 1 hoặc chứng minh theo Định nghĩa 2.</p>
+
+<p><a name="-norm-balls"></a></p>
+
+<h4 id="222-norm-balls">2.2.2. Norm balls</h4>
+<p><strong>Euclidean balls</strong> (hình tròn trong mặt phẳng, hình cầu trong không gian ba chiều) là tập hợp các điểm có dạng:
+\[
+B(\mathbf{x}_c, r) = \{\mathbf{x} ~\big|~ ||\mathbf{x} - \mathbf{x}_c||_2 \leq r \} = \{\mathbf{x}_c + r\mathbf{u} ~\big|~ ||\mathbf{u}||_2 \leq 1\}
+\]</p>
+
+<p>Theo Định nghĩa 1, chúng ta có thể <em>thấy</em> Euclidean balls là các tập lồi, nếu phải chứng minh, ta dùng Định nghĩa 2 và <a href="/math/#-norms-chuan">các tính chất của norms</a>. Với \(\mathbf{x}_1, \mathbf{x}_2\) bất kỳ thuộc \(B(\mathbf{x}_c, r)\) và \(0 \leq \theta \leq 1\) bất kỳ:
+\[
+\begin{eqnarray}
+||\mathbf{x}_{\theta} - \mathbf{x}_c||_2 &amp;=&amp; ||\theta(\mathbf{x}_1 - \mathbf{x}_c)  + (1 - \theta) (\mathbf{x}_2 - \mathbf{x}_c)||_2 \<br />
+&amp;\leq&amp; \theta ||\mathbf{x}_1 - \mathbf{x}_c||_2 + (1 - \theta)||\mathbf{x}_2 - \mathbf{x}_c||_2 \<br />
+&amp;\leq&amp; \theta r + ( 1 - \theta) r = r
+\end{eqnarray}
+\]</p>
+
+<p>Vậy nên \(\mathbf{x}_{\theta} \in B(\mathbf{x}_c, r)\).</p>
+
+<p><strong>Euclidean ball</strong> sử dụng norm 2 làm khoảng cách. Nếu sử dụng norm bất kỳ là khoảng cách, ta vẫn được một <em>tập lồi</em>.</p>
+
+<p><strong>Khi sử dụng norm p:</strong>
+\[
+||\mathbf{x}||_p = (|x_1|^p + |x_2|^p + \dots |x_n|^p)^{\frac{1}{p}} ~~(1)
+\]
+với <strong>p là một số thực bất kỳ không nhỏ hơn 1</strong> ta cũng thu được các <em>tập lồi</em>.</p>
+
+<p>Hình dưới đây minh họa tập hợp các điểm có tọa độ \((x, y)\) trong không gian hai chiều thỏa mãn:
+\[
+(|x|^p + |y|^p)^{1/p} \leq 1 ~~~(1)
+\]
+với hàng trên là các tập với \(0 &lt; p &lt; 1\) (không phải norm) và hàng dưới tương ứng với \(p \geq 1\):</p>
+<hr />
+
+<div class="imgcap">
+ <img src="/assets/16_convexity/normballs.png" align="center" width="800" />
+ <div class="thecap">Hình 3. Hình dạng của các tập hợp bị chặn bởi pseudo-norms (hàng trên) và norm (hàng dưới).</div>
+</div>
+<hr />
+
+<p>Chúng ta có thể thấy rằng khi \(p\) nhỏ gần bằng 0, tập hợp các điểm thỏa mãn bất đẳng thức (1) gần như nằm trên các trục tọa độ và bị chặn trong đoạn \([0, 1]\). Quan sát này sẽ giúp ích cho các bạn khi làm việc với (giả) norm 0 sau này. Khi \(p \rightarrow \infty\), các tập hợp hội tụ về hình vuông.</p>
+
+<p>Đây cũng là một trong các lý do vì sao cần có điều kiện \(p \geq 1\) khi định nghĩa norm.</p>
+
+<p><strong>Ellipsoids</strong></p>
+
+<p>Các ellipsoids (ellipse trong không gian nhiều chiều) cũng là các <em>tập lồi</em>. Thực chất, ellipsoides có mối quan hệ mật thiết tới <a href="https://en.wikipedia.org/wiki/Mahalanobis_distance">Khoảng cách Mahalanobis</a>. Khoảng cách này vốn dĩ là một norm nên ta có thể chứng minh theo Định nghĩa 2 được tính chất lồi của các ellipsoids.</p>
+
+<p><strong>Mahalanobis norm</strong> của một vector \(\mathbf{x} \in \mathbb{R}^n\) được định nghĩa là:
+\[
+||\mathbf{x}||_{\mathbf{A}} = \sqrt{\mathbf{x}^T\mathbf{A}^{-1}\mathbf{x}}
+\]</p>
+
+<p>Với \(\mathbf{A}\) là một ma trận thỏa mãn:
+\[
+\mathbf{x}^T\mathbf{A}^{-1}\mathbf{x} \geq 0, ~~\forall \mathbf{x} \in \mathbb{R}^n ~~ (2)
+\]
+Khi một ma trận \(\mathbf{A}\) thỏa mãn điều kiện \((2)\), ta nói ma trận đó <em>xác định dương</em> (<em>positive definite</em>). 
+<a name="positive-semidefinite"></a>
+Nhân tiện, một ma trận \(\mathbf{B}\) được gọi là <strong>nửa</strong> <em>xác định dương</em> (<em>positive semidefinite</em>) nếu các <em>trị riêng</em> của nó là không âm. Khi đó \(\mathbf{x}^T \mathbf{Bx} \geq 0, \forall \mathbf{x}\). Nếu dấu bằng xảy ra khi và chỉ khi \(\mathbf{x} = 0\) thì ta nói ma trận đó <em>xác định dương</em>. Trong biểu thức \((2)\), vì ma trận \(\mathbf{A}\) có nghịch đảo nên mọi <em>trị riêng</em> của nó phải khác không. Vì vậy, \(\mathbf{A}\) là một ma trận <em>xác định dương</em>.</p>
+
+<p>Một ma trận \(\mathbf{A}\) là <em>xác định dương</em> hoặc <em>nửa xác định dương</em> sẽ được ký hiệu lần lượt như sau:
+\[
+\mathbf{A} \succ 0, ~~~~~ \mathbf{A} \succeq 0.
+\]</p>
+
+<p>Cũng lại nhân tiện, khoảng cách Mahalanobis có liên quan đến <em>khoảng cách từ một điểm tới một phân phối xác suất</em> (from a point to a distribution). 
+<a name="-giao-cua-cac-tap-loi-la-mot-tap-loi"></a></p>
+
+<h3 id="23-giao-của-các-tập-lồi-là-một-tập-lồi">2.3. Giao của các tập lồi là một tập lồi.</h3>
+<p>Việc này có thể nhận dễ nhận thấy với Hình 4 (trái) dưới đây. Giao của hai trong ba hoặc cả ba tập lồi đều là các tập lồi.</p>
+
+<p>Việc chứng minh việc này theo Định nghĩa 2 cũng không khó. Nếu \(\mathbf{x}_1, \mathbf{x}_2\) thuộc vào giao của các tập lồi, tức thuộc tất cả các tập lồi đã cho, thì \(\theta\mathbf{x}_1 + (1 - \theta) \mathbf{x}_2)\) cũng thuộc vào tất cả các tập lồi, tức thuộc vào giao của chúng!</p>
+
+<hr />
+
+<div class="imgcap">
+ <img src="/assets/16_convexity/intersection.png" align="center" width="800" />
+ <div class="thecap">Hình 4. Trái: Giao của các tập lồi là một tập lồi. Phải: giao của các hyperplanes và halfspaces là một tập lồi và được gọi là polyhedron (số nhiều là polyhedra).</div>
+</div>
+<hr />
+
+<p>Từ đó suy ra giao của các <em>halfspaces</em> và các <em>hyperplanes</em> cũng là một tập lồi. Trong không gian hai chiều, tập lồi này chính là <em>đa giác lồi</em>, trong không gian ba chiều, nó có tên là <em>đa diện lồi</em>.</p>
+
+<p>Trong không gian nhiều chiều, giao của các <em>halfspaces</em> và <em>hyperplanes</em> được gọi là <strong>polyhedra</strong>.</p>
+
+<p>Giả sử có \(m\) <em>halfspaces</em> và \(p\) <em>hyperplanes</em>. Mỗi một <em>haflspace</em>, theo như đã trình bày phía trên, có thể viết dưới dạng \(\mathbf{a}_i^T\mathbf{x} \leq b_i, ~\forall i = 1, 2, \dots, m\). Mỗi một <em>hyperplane</em> có thể viết dưới dạng: \(\mathbf{c}_i^T\mathbf{x} = d_i, ~\forall i = 1, 2, \dots, p\).</p>
+
+<p>Vậy nếu đặt \(\mathbf{A} = [\mathbf{a}_1, \mathbf{a}_2, \dots, \mathbf{a}_m]\), \(\mathbf{b} = [b_1, b_2, \dots, b_m]^T, \mathbf{C} = [\mathbf{c}_1, \mathbf{c}_2, \dots, \mathbf{c}_p]\) và \(\mathbf{d} = [d_1, d_2, \dots, d_p]^T\), ta có thể viết polyhedra dưới dạng tập hợp các điểm \(\mathbf{x}\) thỏa mãn:
+ \[
+ \mathbf{A}^T\mathbf{x} \preceq \mathbf{b}, ~~~~  \mathbf{C}^T\mathbf{x} = \mathbf{d}
+ \]
+trong đó \(\preceq\) là <em>element-wise</em>, tức mỗi phần tử trong vế trái nhỏ hơn hoặc bằng phần tử tương ứng trong vế phải.</p>
+
+<p><a name="-convex-combination-va-convex-hulls"></a></p>
+
+<h3 id="24-convex-combination-và-convex-hulls">2.4. Convex combination và Convex hulls</h3>
+<p>Một điểm được gọi là <strong>convex combination</strong> (<em>tổ hợp lồi</em>) của các điểm \(\mathbf{x}_1, \mathbf{x}_2, \dots, \mathbf{x}_k\) nếu nó có thể viết dưới dạng:
+\[
+\mathbf{x} = \theta_1 \mathbf{x}_1 + \theta_2 \mathbf{x}_2 + \dots  + \theta_k \mathbf{x}_k, ~~ \text{with} ~~ \theta_1 + \theta_2 + \dots + \theta_k = 1
+\]</p>
+
+<p><strong>Convex hull</strong> của một <strong>tập hợp bất kỳ</strong> là tập hợp tất cả các điểm là <em>convex combination</em> của tập hợp đó. <em>Convex hull</em> là một <em>convex set</em>. <em>Convexhull</em> của một <em>convex set</em> là chính nó. Một cách dễ nhớ, <em>convex hull</em> của một tập hợp là một <em>convex set</em> <strong>nhỏ nhất</strong> chứa tập hợp đó. Khái niệm <strong>nhỏ nhất</strong> rất khó định nghĩa, nhưng nó cũng là một cách nhớ trực quan.</p>
+
+<p>Hai tập hợp được gọi là <em>linearly separable</em> nếu các <em>convex hulls</em> của chúng không có điểm chung.</p>
+<hr />
+
+<div class="imgcap">
+ <img src="/assets/16_convexity/convex_hull.png" align="center" width="800" />
+ <div class="thecap">Hình 5. Convex hull và Định lý separating hyperplane.</div>
+</div>
+<hr />
+
+<p>Trong hình trên, convex hull của các điểm màu xanh là vùng màu xám bao với các đa giác lồi. Ở hình bên phải thì vùng màu xám nằm dưới vùng màu xanh.</p>
+
+<hr />
+
+<p><strong>Separating hyperplane theorem:</strong> Định lý này nói rằng nếu hai <em>tập lồi không rỗng</em> \(\mathcal{C}, \mathcal{D}\) là <em>disjoint</em> (không giao nhau), thì tồn tại vector \(\mathbf{a}\) và số \(b\) sao cho:
+\[
+\mathbf{a}^T\mathbf{x} \leq b, \forall \mathbf{x} \in \mathcal{C}, ~~ \text{and}~~ \mathbf{a}^T\mathbf{x} \geq b, \forall \mathbf{x} \in \mathcal{D}
+\]
+Tập hợp tất cả các điểm \(\mathbf{x}\) thỏa mãn \(\mathbf{a}^T\mathbf{x} = b\) chính là một hyperplane. Hyperplan này được gọi là <em>separating hyperplane</em>.</p>
+<hr />
+
+<p>Ngoài ra còn nhiều tính chất thú vị của các tập lồi và các phép toán bảo toàn chính chất <em>lồi</em> của một tập hợp, các bạn được khuyến khích đọc thêm Chương 2 của cuốn Convex Optimization trong phần tài liệu tham khảo.</p>
+
+<p><a name="-convex-functions"></a></p>
+
+<h2 id="3-convex-functions">3. Convex functions</h2>
+
+<p>Hẳn các bạn đã nghe tới khái niệm này khi ôn thi đại học môn toán. Khái niệm hàm lồi có quan hệ tới đạo hàm bậc hai và <a href="https://vi.wikipedia.org/wiki/Bất_đẳng_thức_Jensen">Bất đẳng thức Jensen</a> (<em>nếu bạn chưa nghe tới phần này, không sao, bây giờ bạn sẽ biết</em>).</p>
+
+<p><a name="-dinh-nghia-1"></a></p>
+
+<h3 id="31-định-nghĩa">3.1. Định nghĩa</h3>
+<p>Để trực quan, trước hết ta xem xét các hàm 1 biến, đồ thị của nó là một đường trong một mặt phẳng. Một hàm số được gọi là <em>lồi</em> nếu <strong>tập xác định của nó là một tập lồi</strong> và nếu ta nối hai điểm bất kỳ trên đồ thị hàm số đó, ta được một đoạn thẳng nằm về phía trên hoặc nằm trên đồ thị (xem Hình 6).</p>
+
+<p>Tập xác định (domain) của một hàm số \(f(.)\) thường được ký hiệu là \(\text{dom} f\).</p>
+
+<p>Định nghĩa theo toán học:</p>
+<hr />
+
+<p><strong>Định nghĩa convex function:</strong> Một hàm số \(f: \mathbb{R}^n \rightarrow \mathbb{R} \) được gọi là một <em>hàm lồi</em> (convex function) nếu \(\text{dom} f\) là một <em>tập lồi</em>, và:
+\[
+f(\theta\mathbf{x} + (1 - \theta) \mathbf{y}) \leq \theta f(\mathbf{x}) + (1 - \theta)f(\mathbf{y})
+\]
+với mọi \(\mathbf{x, y} \in \text{dom}f, 0 \leq \theta \leq 1\).</p>
+<hr />
+
+<p>Điều kiện \(\text{dom} f\) là một <em>tập lồi</em> là rất quan trọng, vì nếu không có nó, ta không định nghĩa được \(f(\theta\mathbf{x} + (1 - \theta) \mathbf{y}) \).</p>
+
+<hr />
+
+<div class="imgcap">
+ <img src="/assets/16_convexity/convexf_def.png" align="center" width="500" />
+ <div class="thecap">Hình 6. Convex function.</div>
+</div>
+<hr />
+
+<p><a name="concave-function"></a>
+Một hàm số \(f\) được gọi là <strong>concave</strong> (nếu bạn muốn dịch là <em>lõm</em> cũng được, tôi không thích cách dịch này) nếu \(-f\) là <strong>convex</strong>. Một hàm số có thể không thuộc hai loại trên. Các hàm tuyến tính vừa <em>convex</em>, vừa <em>concave</em>.</p>
+<hr />
+
+<p><strong>Định nghĩa strictly convex function:</strong> (tiếng Việt có một số tài liệu gọi là <em>hàm lồi mạnh</em>, <em>hàm lồi chặt</em>) Một hàm số \(f: \mathbb{R}^n \rightarrow \mathbb{R} \) được gọi là <em>strictly convex</em>  nếu \(\text{dom} f\) là một <em>tập lồi</em>, và:
+\[
+f(\theta\mathbf{x} + (1 - \theta) \mathbf{y}) &lt; \theta f(\mathbf{x}) + (1 - \theta)f(\mathbf{y})
+\]
+với mọi \(\mathbf{x, y} \in \text{dom}f, \mathbf{x} \neq \mathbf{y},  0 &lt; \theta &lt; 1\).</p>
+<hr />
+
+<p>Tương tự với định nghĩa <strong>strictly concave</strong>.</p>
+
+<p>Đây là một điểm quan trọng: <strong>Nếu một hàm số là <em>strictly convex</em> và có điểm cực trị, thì điểm cực trị đó là duy nhất và cũng là <em>global minimum</em></strong>.</p>
+
+<p><a name="-cac-tinh-chat-co-ban"></a></p>
+
+<h3 id="32-các-tính-chất-cơ-bản">3.2. Các tính chất cơ bản</h3>
+
+<ul>
+  <li>
+    <p>Nếu \(f(\mathbf{x})\) là <em>convex</em> thì \(af(\mathbf{x})\) là <em>convex</em> nếu \(a &gt; 0\) và là <em>concave</em> nếu \(a &lt; 0\). Điều này có thể suy ra trực tiếp từ định nghĩa.</p>
+  </li>
+  <li>
+    <p>Tổng của hai <em>hàm lồi</em> là một <em>hàm lồi</em>, với tập xác định là giao của hai tập xác định kia (nhắc lại rằng giao của hai tập lồi là một tập lồi)</p>
+  </li>
+  <li>
+    <p><strong>Pointwise maximum and supremum:</strong> Nếu các hàm số \(f_1, f_2, \dots, f_m\) là <em>convex</em> thì:
+\[
+f(\mathbf{x}) = \max\{f_1(\mathbf{x}), f_2(\mathbf{x}), \dots, f_m(\mathbf{x})\}
+\]
+cũng là <em>convex</em> trên tập xác định là giao của tất cả các tập xác định của các hàm số trên. Hàm \(\max\) phía trên cũng có thể thay thế bằng <a href="https://en.wikipedia.org/wiki/Infimum_and_supremum">hàm \(\text{sup}\)</a>. Tính chất này có thể chứng minh được theo Định nghĩa. Bạn cũng có thể nhận ra dựa vào hình ví dụ dưới đây. Mọi đoạn thẳng nối hai điểm bất kì trên đường màu xanh đều <em>không nằm dưới</em> đường màu xanh.</p>
+  </li>
+</ul>
+
+<hr />
+
+<div class="imgcap">
+ <img src="/assets/16_convexity/max_point.png" align="center" width="400" />
+ <div class="thecap">Hình 7. Ví dụ về Pointwise maximum.</div>
+</div>
+<hr />
+
+<p><a name="-vi-du-1"></a></p>
+
+<h3 id="33-ví-dụ">3.3. Ví dụ</h3>
+<p><a name="-cac-ham-mot-bien"></a></p>
+
+<h4 id="331-các-hàm-một-biến">3.3.1. Các hàm một biến</h4>
+<p><strong>Các ví dụ về các <em>convex functions</em> một biến:</strong></p>
+
+<ul>
+  <li>
+    <p>Hàm \( y = ax + b\) là một <em>hàm lồi</em> vì đường nối hai điểm bất kỳ nằm trên chính đồ thị đó.</p>
+  </li>
+  <li>
+    <p>Hàm \(y = e^{ax}\) với \(a \in \mathbb{R}\) bất kỳ.</p>
+  </li>
+  <li>
+    <p>Hàm \(y = x^a\) trên tập các số thực dương và \(a \geq 1\) hoặc \(a \leq 0\).</p>
+  </li>
+  <li>
+    <p>Hàm <em>negative entropy</em> \(y = x \log x\) trên tập các số thực dương.</p>
+  </li>
+</ul>
+
+<p>Dưới đây là đồ thị của một vài <em>convex functions</em>:</p>
+<hr />
+
+<div class="imgcap">
+ <img src="/assets/16_convexity/convexfunctions.png" align="center" width="800" />
+ <div class="thecap">Hình 8. Ví dụ về các convex functions một biến.</div>
+</div>
+<hr />
+
+<p><strong>Các ví dụ về các <em>concave functions</em> một biến:</strong></p>
+
+<ul>
+  <li>
+    <p>Hàm \(y = ax + b\) là một <em>concave function</em> vì \(-y\) là một <em>convex function</em>.</p>
+  </li>
+  <li>
+    <p>Hàm \(y = x^a\) trên tập số dương và \(0 \leq a \leq 1\).</p>
+  </li>
+  <li>
+    <p>Hàm logarithm \(y = \log(x)\) trên tập các số dương.</p>
+  </li>
+</ul>
+
+<p>Dưới đây là đồ thị của một vài <em>concave functions</em>:</p>
+<hr />
+
+<div class="imgcap">
+ <img src="/assets/16_convexity/concavefunctions.png" align="center" width="800" />
+ <div class="thecap">Hình 9. Ví dụ về các concave functions một biến.</div>
+</div>
+<hr />
+
+<p><a name="-affine-functions"></a></p>
+
+<h4 id="333-affine-functions">3.3.3. Affine functions</h4>
+<p>Các hàm số dạng \(f(\mathbf{x}) = \mathbf{a}^T\mathbf{x} + b \) vừa là convex, vừa là concave.</p>
+
+<p>Khi biến là một ma trận \(\mathbf{X}\), các hàm affine được định nghĩa có dạng:
+\[
+f(\mathbf{X}) = \text{trace}(\mathbf{A}^T\mathbf{X}) + b
+\]
+trong đó \(\text{trace}\) là hàm số tính tổng các giá trị trên đường chéo của một ma trận vuông, \(\mathbf{A}\) là một ma trận có cùng chiều với \(\mathbf{X}\) (để đảm bảo phép nhân ma trận thực hiện được và kết quả là một ma trận vuông).</p>
+
+<p><a name="-quadratic-forms"></a></p>
+
+<h4 id="333-quadratic-forms">3.3.3. Quadratic forms</h4>
+<p>Hàm bậc hai một biến có dạng \(f(x) = a x^2 + bx + c\) là convex nếu \(a &gt; 0\), là concave nếu \(a &lt; 0\).</p>
+
+<p>Với biến là một vector \(\mathbf{x} = [x_1, x_2, \dots, x_n]\), một quadratic form là một hàm số có dạng:
+\[
+f(\mathbf{x}) = \mathbf{x}^T\mathbf{A}\mathbf{x} + \mathbf{b}^T\mathbf{x} + c
+\]
+Với \(\mathbf{A}\) thường là một ma trận đối xứng, tức \(a_{ij} = a_{ji}, \forall i, j\), có số hàng bằng số phẩn tử của \(\mathbf{x}\), \(\mathbf{b}\) là một ma trận bất kỳ cùng chiều với \(\mathbf{x}\) và \(c\) là một hằng số bất kỳ.</p>
+
+<p>Nếu \(\mathbf{A}\) là một ma trận (nửa) xác định dương thì \(f(\mathbf{x})\) là một <em>convex function</em>.</p>
+
+<p>Nếu \(\mathbf{A}\) là một ma trận (nửa) xác định âm, tức \(\mathbf{x}^T\mathbf{A}\mathbf{x} \leq 0, \forall \mathbf{x}\), thì \(f(\mathbf{x})\) là một <em>concave function</em>.</p>
+
+<p><em>Các bạn có thể tìm đọc về ma trận xác định dương và các tính chất của nó trong sách Đại số tuyến tính bất kỳ. Nếu bạn gặp nhiều khó khăn trong phần này, hãy đọc lại kiến thức về Đại số tuyến tính, rất rất quan trọng trong Tối Ưu và Machine Learning.</em></p>
+
+<p><a href="/2016/12/28/linearregression/#ham-mat-mat">Hàm mất mát trong Linear Regression</a> có dạng:
+\[
+\begin{eqnarray}
+\mathcal{L}(\mathbf{w}) &amp;=&amp; \frac{1}{2} ||\mathbf{y} - \mathbf{X}\mathbf{w}||_2^2 = \frac{1}{2} (\mathbf{y} - \mathbf{X}\mathbf{w})^T(\mathbf{y} - \mathbf{X}\mathbf{w})  \<br />
+&amp;=&amp; \frac{1}{2} \mathbf{w}^T\mathbf{X}^T\mathbf{Xw} - \mathbf{y}^T\mathbf{Xw} + \frac{1}{2}\mathbf{y}^T\mathbf{y}
+\end{eqnarray}
+\]
+vì \(\mathbf{X}^T\mathbf{X}\) là một ma trận xác định dương, hàm mất mát của Linear Regression chính là một convex function.</p>
+
+<p><a name="-norms"></a></p>
+
+<h4 id="334-norms">3.3.4. Norms</h4>
+<p>Vâng, lại là norms. Một hàm số bất kỳ thỏa mãn <a href="/math/#-norms-chuan">ba điều kiện của norm</a> đều là một <em>convex function</em>. Bạn đọc có thể chứng minh điều này bằng định nghĩa.</p>
+
+<p>Dưới đây là hai ví dụ về norm 1 (trái) và norm 2 (phải) với số chiều là 2 (chiều thứ ba trong hình dưới đây là giá trị của hàm số).</p>
+<hr />
+
+<div>
+<table width="100%" style="border: 0px solid white">
+   <tr>
+        <td width="40%" style="border: 0px solid white">
+        <img style="display:block;" width="100%" src="/assets/16_convexity/norm1_surf.png" />
+         </td>
+        <td width="40%" style="border: 0px solid white">
+        <img style="display:block;" width="100%" src="/assets/16_convexity/norm2_surf.png" />
+        </td>
+    </tr>
+</table>
+<div class="thecap"> Hình 10: Ví dụ về mặt của các norm hai biến.
+</div>
+</div>
+<hr />
+
+<p>Nhận thấy rằng các bề mặt này đều có <em>một đáy duy nhất</em> tương ứng với gốc tọa độ (đây chính là điều kiện đầu tiên của norm). Các hàm <em>strictly convex</em> khác cũng có dạng tương tự, tức có một <em>đáy</em> duy nhất. Điều này cho thấy nếu ta <em>thả một hòn bi</em> ở vị trí bất kỳ trên các bề mặt này, cuối cùng nó sễ <em>lăn</em> về đáy. Nếu liên tưởng tới thuật toán <a href="/2017/01/12/gradientdescent/">Gradient Descent</a> thì việc áp dụng thuật toán này vào các bài toán không ràng buộc với <em>hàm mục tiêu</em> là <em>strictly convex</em> (và giả sửa là khả vi, tức có đạo hàm) sẽ cho kết quả rất tốt nếu <em>learning rate</em> không quá lớn. Đây chính là một trong các lý do vì sao các <em>convex functions</em> là quan trọng, cũng là lý do vì sao tôi dành bài viết này chỉ để nói về <em>convexity</em>. (Bạn đọc được khuyến khích đọc hai bài về <a href="/2017/01/12/gradientdescent/">Gradient Descent</a> trong blog này).</p>
+
+<p>Tiện đây, tôi cũng lấy thêm hai ví dụ về các hàm không phải convex (cũng không phải concave). Hàm thứ nhất \(f(x, y) = x^2 - y^2\) là một hyperbolic, hàm thứ hai \(f(x,y) = \frac{1}{10}(x^2 + 2y^2 - 2\sin(xy)) \).</p>
+
+<hr />
+
+<div>
+<table width="100%" style="border: 0px solid white">
+   <tr>
+        <td width="40%" style="border: 0px solid white">
+        <img style="display:block;" width="100%" src="/assets/16_convexity/hyperbol.png" />
+         </td>
+        <td width="40%" style="border: 0px solid white">
+        <img style="display:block;" width="100%" src="/assets/16_convexity/nonconvex_surface.png" />
+        </td>
+    </tr>
+</table>
+<div class="thecap">Hình 11: Ví dụ về các hàm hai biến không convex.
+</div>
+</div>
+<hr />
+
+<p><strong>Contours - level sets</strong>
+Với các hàm số phức tạp hơn, khi vẽ các mặt trong không gian ba chiều sẽ khó tưởng tượng hơn, tức khó nhìn được tính <em>convexity</em> của nó. Một phương pháp thường được sử dụng là dùng <em>contours</em> hay <em>level sets</em>. Tôi cũng đã đề cập đến khái niệm này trong Bài Gradient Descent, phần <a href="/2017/01/12/gradientdescent/#duong-dong-muc-level-sets">đường đồng mức</a>.</p>
+
+<p>Contours là cách mô tả các mặt trong không gian ba chiều bằng cách chiều nó xuống không gian hai chiều. Trong không gian hai chiều, các điểm thuộc cùng một <em>đường</em> tương ứng với các điểm làm cho hàm số có giá trị bằng nhau. Mỗi <em>đường</em> đó còn được gọi là một <em>level set</em>. Trong Hình 9 và Hình 10, các đường của các mặt lên mặt phẳng \(0xy\) chính là các <em>level sets</em>. Một cách hiểu khác, mỗi đường <em>level set</em> là một <em>vết cắt</em> nếu ta cắt các bề mặt bởi một mặt phẳng song song với mặt phẳng \(0xy\).</p>
+
+<p>Khi thể hiện một hàm số hai biến để kiểm tra tính convexity của nó, hoặc để tìm điểm cực trị của nó, người ta thường vẽ <em>contours</em> thay vì vẽ các mặt trong không gian ba chiều. Dưới đây là một vài ví dụ về contours:</p>
+
+<hr />
+
+<div>
+<table width="100%" style="border: 0px solid white">
+   <tr>
+
+        <td width="30%" style="border: 0px solid white">
+        <img style="display:block;" width="100%" src="/assets/16_convexity/abs_2d.png" />
+        </td>
+
+        <td width="30%" style="border: 0px solid white">
+        <img style="display:block;" width="100%" src="/assets/16_convexity/norm_2d.png" />
+        </td>
+
+        <td width="30%" style="border: 0px solid white">
+        <img style="display:block;" width="100%" src="/assets/16_convexity/max_2d.png" />
+         </td>
+    </tr>
+
+      <tr>
+      <td width="30%" style="border: 0px solid white">
+      <img style="display:block;" width="100%" src="/assets/16_convexity/linear_2d.png" />
+       </td>
+
+         <td width="30%" style="border: 0px solid white">
+         <img style="display:block;" width="100%" src="/assets/16_convexity/NE.png" />
+         </td>
+
+         <td width="30%" style="border: 0px solid white">
+         <img style="display:block;" width="100%" src="/assets/16_convexity/hyper_2d.png" />
+         </td>
+     </tr>
+</table>
+<div class="thecap"> Hình 12: Ví dụ về Countours.
+</div>
+</div>
+<hr />
+
+<p>Các đường màu càng xanh đậm thì tương ứng với các giá trị càng nhỏ, các đường màu càng đỏ đậm thì tương ứng các giá trị càng lớn.</p>
+
+<p>Ở hàng trên, các đường <em>level sets</em> là các đường khép kín (closed). Khi các đường kín này tập trung nhỏ dần ở một điểm thì các điểm đó là các điểm cực trị. Với các <em>convex functions</em> như trong ba ví dụ này, chỉ có 1 điểm cực trị và đó cũng là điểm làm cho hàm số đạt giá trị nhỏ nhất (global optimal). Nếu để ý, bạn sẽ thấy các đường khép kín này tạo thành một <em>vùng lồi</em>!</p>
+
+<p>Ở hàng dưới, các đường không phải khép kín. Hình bên trái tương ứng với một hàm tuyến tính \(f(x, y) = x + y\) và đó là một <em>convex function</em>. Hình ở giữa cũng là một <em>convex function</em> (bạn có thể chứng minh điều này sau khi tính đạo hàm bậc hai, tôi sẽ nói ở phía dưới) nhưng các level sets là các <em>đường không kín</em>. Hàm này có \(\log\) nên tập xác định là góc phần tư thứ nhất tương ứng với các tọa độ dương (chú ý rằng tập hợp các điểm có tọa độ dương cũng là một <em>tập lồi</em>). Các <em>đường không kín</em> này nếu kết hợp với trục \(Ox, Oy\) sẽ tạo thành biên của các <em>tập lồi</em>. Hình cuối cùng là contours của một hàm hyperbolic, hàm này không phải là <em>hàm lồi</em>.</p>
+
+<p><a name="-\\\alpha-\\-sublevel-sets"></a></p>
+
+<h3 id="34-alpha--sublevel-sets">3.4. \(\alpha-\) sublevel sets</h3>
+<hr />
+
+<p><strong>Định nghĩa:</strong> \(\alpha-\)<strong>sublevel set</strong> của một hàm số \(f : \mathbb{R}^n \rightarrow \mathbb{R}\) được định nghĩa là:
+\[
+\mathcal{C}_{\alpha} = \{\mathbf{x} \in \text{dom} f ~\big|~ f(\mathbf{x}) \leq \alpha \}
+\]</p>
+<hr />
+
+<p>Tức tập hợp các điểm trong tập xác định của \(f\) mà tại đó, \(f\) đạt giá trị nhỏ hơn hoặc bằng \(\alpha\).</p>
+
+<p>Quay lại với Hình 12, hàng trên, các \(\alpha-\) sublevel sets chính là phần bị bao bởi các level sets.</p>
+
+<p>Ở hàng dưới, bên trái, các \(\alpha-\) sublevel sets chính là phần nửa mặt phẳng phía dưới xác định bởi các đường thẳng level sets. Ở hình giữa, các \(\alpha-\) sublevel sets chính là các vùng bị giới hạn bởi các trục tọa độ và các level sets.</p>
+
+<p>Hàng dưới, bên phải, các \(\alpha-\) sublevel sets hơi khó tưởng tượng chút. Với \(\alpha &gt; 0\), các level sets là các đường màu vàng hoặc đỏ. Các \(\alpha-\) sublevel sets tương ứng là phần <em>bị bóp vào trong</em>, giới hạn bởi các đường đỏ cùng màu. Các vùng này, có thể dễ nhận thấy, là <em>không lồi</em>.</p>
+
+<hr />
+
+<p><strong>Định lý:</strong> Nếu một hàm số là lồi thì <em>mọi</em> \(\alpha-\) sublevel sets của nó là lồi. Ngược lại chưa chắc đã đúng, tức nếu các \(\alpha-\) sublevel sets của một hàm số là <em>lồi</em> thì hàm số đó chưa chắc đã <em>lồi</em>.</p>
+<hr />
+
+<p>Điều này chỉ ra rằng nếu tồn tại một giá trị \(\alpha\) sao cho một \(\alpha-\) sublevel set của một hàm số là <em>không lồi</em>, thì hàm số đó là <em>không lồi</em> (không lồi nhưng không có nghĩa là <em>concave</em>, chú ý). Vậy nên Hyperbolic không phải là hàm lồi.</p>
+
+<p>Các ví dụ ở hình 12, trừ hình cuối cùng, đều tương ứng với các hàm lồi.</p>
+
+<p>Một ví dụ về việc một hàm số không <em>convex</em> nhưng mọi \(\alpha-\) sublevel sets là <em>convex</em> là hàm \(f(x, y) = -e^{x+y}\). Hàm này có mọi \(\alpha-\) sublevel sets là nửa mặt phẳng - là <em>convex</em>, nhưng nó không phải là <em>convex</em> (trong trường hợp này nó là <em>concave</em>).</p>
+
+<p>Dưới đây là một ví dụ khác về việc một hàm số có mọi \(\alpha-\) sublevel sets là <em>lồi</em> nhưng không phải <em>hàm lồi</em>.</p>
+<hr />
+
+<div class="imgcap">
+ <img src="/assets/16_convexity/sin_surf2.png" align="center" width="800" />
+ <div class="thecap">Hình 13. Mọi alpha-sublevel sets là convex sets nhưng hàm số là nonconvex.</div>
+</div>
+<hr />
+
+<p>Mọi \(\alpha-\) sublevel sets của hàm số này đều là các hình tròn - <em>convex</em> nhưng hàm số đó không phải là <em>lồi</em>. Vì có thể tìm được hai điểm trên mặt này sao cho đoạn thẳng nối hai điểm nằm hoàn toàn phía dưới của mặt (một điểm ở <em>cánh</em> và 1 điểm ở <em>đáy</em> chẳng hạn).</p>
+
+<p>Những hàm số có tập xác định là một <em>tập lồi</em> và có mọi có \(\alpha-\) sublevel sets là <em>lồi</em> được gọi chung là <em>quasiconvex</em>. Mọi <em>convex function</em> đều là <em>quasiconvex</em> nhưng ngược lại không đúng. Định nghĩa chính thức của <em>quasiconvex function</em> được phát biểu như sau: 
+<a name="quasiconvex"></a></p>
+<hr />
+
+<p><strong>Quasiconvex function:</strong>
+Một hàm số \(f: \mathcal{C} \rightarrow \mathbb{R}\) với \(\mathcal{C}\) là một tập con <em>lồi</em> của \(\mathbb{R}^n\) được gọi là <em>quasiconvex</em> nếu với mọi \(\mathbf{x}, \mathbf{y}) \in \mathcal{C}\) và mọi \(\theta \in [0, 1]\), ta có: 
+\[
+f(\theta\mathbf{x} + (1 - \theta)\mathbf{y}) \leq \max\{f(\mathbf{x}), f(\mathbf{y})\}
+\]</p>
+<hr />
+
+<p>Định nghĩa này khác với định nghĩa về <em>convex function</em> một chút.</p>
+
+<p><a name="-kiem-tra-tinh-chat-loi-dua-vao-dao-ham"></a></p>
+
+<h3 id="35-kiểm-tra-tính-chất-lồi-dựa-vào-đạo-hàm">3.5. Kiểm tra tính chất lồi dựa vào đạo hàm.</h3>
+<p>Có một cách để nhận biết một hàm số khả vi có là hàm lồi hay không dựa vào các đạo hàm bậc nhất hoặc đạo hàm bậc hai của nó.
+<a name="-first-order-condition"></a></p>
+
+<h4 id="351-first-order-condition">3.5.1. First-order condition</h4>
+<p>Trước hết chúng ta định nghĩa phương trình đường (mặt) tiếp tuyến của một hàm số \(f\) khả vi tại một điểm nằm trên đồ thị (mặt) của hàm số đó \((\mathbf{x}_0, f(\mathbf{x}_0)\). Với hàm một biến, bạn đọc đã quen thuộc:
+\[
+y = f’(x_0)(x - x_0) + f(x_0)
+\]
+Với hàm nhiều biến, đặt \(\nabla f(\mathbf{x}_0)\) là gradient của hàm số \(f\) tại điểm \(\mathbf{x}_0\), phương trình mặt tiếp tuyến được cho bởi:
+\[
+y = \nabla f(\mathbf{x}_0)^T (\mathbf{x} - \mathbf{x}_0) + f(\mathbf{x}_0)
+\]</p>
+<hr />
+
+<p><strong>First-order condition</strong> nói rằng: Giả sử hàm số \(f\) có tập xác định là một tập lồi, có đạo hàm tại mọi điểm trên tập xác định đó. Khi đó, hàm số \(f\) là <em>lồi</em> <strong>nếu và chỉ nếu</strong> với mọi \(\mathbf{x}, \mathbf{x}_0\) trên tập xác định của hàm số đó, ta có:
+\[
+f(\mathbf{x}) \geq f(\mathbf{x}_0) + \nabla f(\mathbf{x}_0)^T(\mathbf{x} - \mathbf{x}_0) ~~ (6)
+\]</p>
+<hr />
+
+<p>Tương tự như thế, một hàm số là <em>stricly convex</em> nếu dấu bằng trong \((6)\) xảy ra khi và chỉ khi \(\mathbf{x} = \mathbf{x}_0\).</p>
+
+<p>Nói một cách trực quan hơn, một hàm số là lồi nếu đường (mặt) tiếp tuyến tại một điểm bất kỳ trên đồ thị (mặt) của hàm số đó <strong>nằm dưới</strong> đồ thị (mặt) đó.
+(Đừng quên điều kiện về tập xác định là lồi)
+Dưới đây là ví dụ về <em>hàm lồi</em> và <em>hàm không lồi</em>.</p>
+<hr />
+
+<div class="imgcap">
+ <img src="/assets/16_convexity/first_order.png" align="center" width="800" />
+ <div class="thecap">Hình 13. Kiểm tra tính convexity dựa vào đạo hàm bậc nhất. Trái: hàm lồi, phải: hàm không lồi.</div>
+</div>
+<hr />
+
+<p>Hàm bên trái là một hàm lồi. Hàm bên phải không phải là hàm lồi vì đồ thị của nó vừa nằm trên, vừa nằm dưới tiếp tuyến.</p>
+
+<p>(<em>iff</em> là viết tắt của <em>if and only if</em>)</p>
+
+<p><strong>Ví dụ:</strong> Nếu ma trận đối xứng \(\mathbf{A}\) là <em>xác định dương</em> thì hàm số \(f(\mathbf{x}) = \mathbf{x}^T\mathbf{A}\mathbf{x}\) là <em>hàm lồi</em>.</p>
+
+<p><em>Chứng minh:</em> Đạo hàm bậc nhất của hàm số trên là:</p>
+
+<p>\[
+\nabla f(\mathbf{x}) = 2\mathbf{A} \mathbf{x}
+\]
+Vậy <em>first-order condition</em> có thể viết dưới dạng (chú ý rằng \(\mathbf{A}\) là một ma trận đối xứng):
+\[
+\begin{eqnarray}
+\mathbf{x}^T\mathbf{Ax} &amp;\geq&amp; 2(\mathbf{A}\mathbf{x}_0)^T (\mathbf{x} - \mathbf{x}_0) + \mathbf{x}_0^T\mathbf{A}\mathbf{x}_0 \<br />
+⇔ \mathbf{x}^T\mathbf{Ax} &amp;\geq&amp; 2\mathbf{x}_0^T\mathbf{A}\mathbf{x} -\mathbf{x}_0^T\mathbf{A}\mathbf{x}_0  \<br />
+⇔(\mathbf{x} - \mathbf{x}_0)^T\mathbf{A}(\mathbf{x} - \mathbf{x}_0) &amp;\geq&amp; 0
+\end{eqnarray}
+\]</p>
+
+<p>Bất đẳng thức cuối cùng là đúng dựa trên định nghĩa của một ma trận <em>xác định dương</em>. Vậy hàm số \(f(\mathbf{x}) = \mathbf{x}^T\mathbf{A}\mathbf{x}\) là <em>hàm lồi</em>.</p>
+
+<p><em>First-order condition</em> ít được sử dụng để tìm tính chất lồi của một hàm số, thay vào đó, người ta thường dùng <em>Second-order condition</em> với các hàm có đạo hàm tới bậc hai.
+<a name="-second-order-condition"></a></p>
+
+<h4 id="352-second-order-condition">3.5.2. Second-order condition</h4>
+<p>Với hàm nhiều biến, tức biến là một vector, giả sử có chiều là \(d\), đạo hàm bậc nhất của nó là một vector cũng có chiều là \(d\). Đạo hàm bậc hai của nó là một ma trận vuông có chiều là \(d\times d\). Đạo hàm bậc hai của hàm số \(f(\mathbf{x})\) được ký hiệu là \(\nabla^2 f(\mathbf{x})\). Đạo hàm bậc hai còn được gọi là <em>Hessian</em>.</p>
+
+<hr />
+
+<p><strong>Second-order condition:</strong> Một hàm số có đạo hàm bậc hai là <em>convex</em> nếu <strong>dom</strong>\(f\) là <em>convex</em> và Hessian của nó là một ma trận <em>nửa xác định dương</em> với mọi \(\mathbf{x}\) trong tập xác định:
+\[
+\nabla^2 f(\mathbf{x}) \succeq 0.
+\]</p>
+<hr />
+
+<p>Nếu Hessian là một ma trận <em>xác định dương</em> thì hàm số đó <em>strictly convex</em>.
+Tương tự, nếu Hessian là một ma trận <em>xác định âm</em> thì hàm số đó là <em>strictly concave</em>.</p>
+
+<p>Với hàm số một biến \(f(x)\), điều kiện này tương đương với \(f”(x) \geq 0\) với mọi \(x\) thuộc tập xác định (và tập xác định là <em>lồi</em>).</p>
+
+<p><strong>Ví dụ:</strong></p>
+
+<ul>
+  <li>
+    <p>Hàm <em>negative entropy</em> \(f(x) = x\log(x)\) là <em>stricly convex</em> vì tập xác định là \(x &gt; 0\) là một tập lồi và \(f”(x) = 1/x\) là một số dương với mọi \(x\) thuộc tập xác định.</p>
+  </li>
+  <li>
+    <p>Hàm \(f(x) = x^2 + 5\sin(x)\) không là hàm lồi vì đạo hàm bậc hai \(f”(x) = 2 - 5\sin(x)\) có thể nhận giá trị âm.</p>
+  </li>
+  <li>
+    <p>Hàm <em>cross entropy</em> là một hàm <em>strictly convex</em>. Xét ví dụ đơn giản với chỉ hai xác suất \(x\) và \(1 - x\) với \(a\) là một hằng số thuộc đoạn \([0, 1]\) và \(0 &lt; x &lt; 1\): \(f(x) = -(a \log(x) + (1 - a) \log(1 - x))\) có đạo hàm bậc hai là \(\frac{a}{x^2} + \frac{1 - a}{(1-x)^2}\) là một số dương.</p>
+  </li>
+  <li>
+    <p>Nếu \(\mathbf{A}\) là một ma trận xác định dương thì \(f(\mathbf{x}) = \frac{1}{2}\mathbf{x}^T\mathbf{Ax}\) là lồi vì Hessian của nó chính là \(\mathbf{A}\) là một ma trận xác định dương.</p>
+  </li>
+  <li>
+    <p>Xét hàm số <em>negative entropy</em> với hai biến: \(f(x, y) = x \log(x) + y \log(y)
+\) trên tập các giá trị dương của \(x\) và \(y\). Hàm số này có đạo hàm bậc nhất là \([\log(x) + 1, \log(y) + 1]^T\) và Hessian là:
+\[
+\left[
+\begin{matrix}
+1/x &amp; 0 \<br />
+0 &amp; 1/y
+\end{matrix}
+\right]
+\]
+là một ma trận đường chéo với các thành phần trên đường chéo là dương nên là một ma trận xác định dương. Vậy <em>negative entropy</em> là một hàm <em>strictly convex</em>.(<em>Chú ý rằng một ma trận là xác định dương nếu các trị riêng của nó đều dương. Với một ma trận là ma trận đường chéo thì các trị riêng của nó chính là các thành phần trên đường chéo</em>.)</p>
+  </li>
+</ul>
+
+<p>Ngoài ra còn nhiều tính chất thú vị của các <em>hàm lồi</em>, các bạn được khuyến khích đọc thêm Chương 3 của cuốn Convex Optimization trong phần tài liệu tham khảo.</p>
+
+<p><a name="-tom-tat"></a></p>
+
+<h2 id="4-tóm-tắt">4. Tóm tắt</h2>
+
+<ul>
+  <li>
+    <p>Machine Learning và Optimization có quan hệ mật thiết với nhau. Trong Optimization, Convex Optimization là quan trọng nhất. Một bài toán là convex optimization nếu <em>hàm mục tiêu</em> là convex và tập hợp các điểm thỏa mãn các điều kiện ràng buộc là một <em>convex set</em>.</p>
+  </li>
+  <li>
+    <p>Trong <em>convex set</em>, mọi đoạn thẳng nối hai điểm bất kỳ trong tập đó sẽ nằm hoàn toàn trong tập đó. Tập hợp các giao điểm của các <em>convex sets</em> là một <em>convex set</em>.</p>
+  </li>
+  <li>
+    <p>Một hàm số là <em>convex</em> nếu đoạn thẳng nối hai điểm bất kỳ trên đồ thì hàm số đó không nằm dưới đồ thị đó.</p>
+  </li>
+  <li>
+    <p>Một hàm số khả vi là <em>convex</em> nếu tập xác định của nó là <em>convex</em> và đường (mặt) tiếp tuyến <em>không nằm phía trên</em> đồ thị (bề mặt) của hàm số đó.</p>
+  </li>
+  <li>
+    <p>Các norms là các hàm lồi, được sử dụng nhiều trong tối ưu.</p>
+  </li>
+</ul>
+
+<p><a name="-tai-lieu-tham-khao"></a></p>
+
+<h2 id="5-tài-liệu-tham-khảo">5. Tài liệu tham khảo</h2>
+
+<p>[1] <a href="http://stanford.edu/~boyd/cvxbook/">Convex Optimization</a> – Boyd and Vandenberghe, Cambridge University Press, 2004.</p>
+
+:ET

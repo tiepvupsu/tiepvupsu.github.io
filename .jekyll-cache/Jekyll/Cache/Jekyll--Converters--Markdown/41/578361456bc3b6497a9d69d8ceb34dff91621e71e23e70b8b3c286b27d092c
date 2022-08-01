@@ -1,0 +1,63 @@
+I"�%<p>Trước Deep Learning, bài toán phân loại ảnh (các loại dữ liệu khác cũng tương tự) thường được chia thành 2 bước: Feature Engineering và Train a Classifier. Hai bước này thường được tách rời nhau. Với Feature Engineering, các phương pháp thường được sử dụng cho ảnh là <a href="http://docs.opencv.org/3.1.0/da/df5/tutorial_py_sift_intro.html">SIFT</a> (Scale Invariant Feature Transform), <a href="http://docs.opencv.org/3.0-beta/doc/py_tutorials/py_feature2d/py_surf_intro/py_surf_intro.html">SURF</a> (Speeded-Up Robust Features), <a href="http://www.learnopencv.com/histogram-of-oriented-gradients/">HOG</a> (Histogram of Oriented Gradients), LBP (Local Binary Pattern), etc. Các Classifier thường được sử dụng là <a href="/2017/04/28/multiclasssmv/">multi-class SVM</a>, <a href="/2017/02/17/softmax/">Softmax Regression</a>, Discriminative Dictionary Learning, Random Forest, etc.</p>
+
+<p>Các phương pháp Feature Engineering nêu trên thường được gọi là các <em>hand-crafted features</em> (feature được tạo thủ công) vì nó chủ yếu dựa trên các quan sát về đặc tính riêng của ảnh. Các phương pháp này cho kết quả khá ấn tượng trong một số trường hợp. Tuy nhiên, chúng vẫn còn nhiều hạn chế vì quá trình tìm ra các features và các classifier phù hợp vẫn là riêng biệt.</p>
+
+<p>(Tôi đã từng đề cập tới vấn đề này trong <a href="/2017/04/28/multiclasssmv/#-mo-hinh-end-to-end">các mô hình end-to-end</a>)</p>
+
+<p>Những năm gần đây, Deep Learning phát triển cực nhanh dựa trên lượng dữ liệu training khổng lồ và khả năng tính toán ngày càng được cải tiến của các máy tính. Các kết quả cho bài toán phân loại ảnh ngày càng được nâng cao. Bộ cơ sở dữ liệu thường được dùng nhất là <a href="https://www.image-net.org">ImageNet</a> với 1.2M ảnh cho 1000 classes khác nhau. Rất nhiều các mô hình Deep Learning đã giành chiến thắng trong các cuộc thi <a href="https://www.google.com/search?client=opera&amp;q=imagenet+results&amp;sourceid=opera&amp;ie=UTF-8&amp;oe=UTF-8#q=ILSVRC+">ILSVRC</a> (ImageNet Large Scale Visual Recognition Challenge). Có thể kể ra một vài: <a href="https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf">AlexNet</a>, <a href="https://www.cs.nyu.edu/~fergus/papers/zeilerECCV2014.pdf">ZFNet</a>, <a href="https://arxiv.org/abs/1409.4842v1">GoogLeNet</a>, <a href="https://arxiv.org/pdf/1502.01852.pdf">ResNet</a>, <a href="https://www.robots.ox.ac.uk/~vgg/research/very_deep/">VGG</a>.</p>
+
+<hr />
+
+<div class="imgcap">
+<img src="/assets/q2_tl/multi_layers.png" align="center" width="500" />
+</div>
+
+<div class="thecap" style="text-align: justify">Hình 1: Mô hình chung cho các bài toán classification sử dụng Deep Learning. Layer cuối cùng thường là một Fully Connected Layer và thường là một Softmax Regression.</div>
+<hr />
+
+<p>Nhìn chung, các mô hình này đều bao gồm rất nhiều layers. Các layers phía trước thường là các Convolutional layers kết hợp với các nonlinear <a href="/2017/02/24/mlp/#-activation-functions">activation functions</a> và pooling layers (và được gọi chung là ConvNet). Layer cuối cùng là một Fully Connected Layer và thường là một Softmax Regression (Xem Hình 1). Số lượng units ở layer cuối cùng bằng với số lượng classes (với ImageNet là 1000). Vì vậy output ở layer gần cuối cùng (second to last layer) có thể được coi là feature vectors và Softmax Regression chính là Classifier được sử dụng.</p>
+
+<p>Chính nhờ việc features và classifier được trained cùng nhau qua deep networks khiến cho các mô hình này đạt kết quả tốt. Tuy nhiên, những mô hình này đều là các Deep Networks với rất nhiều layers. Việc training dựa trên 1.2M bức ảnh của ImageNet cũng tốn rất nhiều thời gian (2-3 tuần).</p>
+
+<p>Với các bài toàn dựa trên tập dữ liệu khác, rất ít khi người ta xây dựng và train lại toàn bộ Network từ đầu, bởi vì có rất ít các cơ sở dữ liệu có kích thước lớn. Thay vào đó, phương pháp thường được dùng là sử dụng các mô hình (nêu phía trên) đã được trained từ trước, và sử dụng một vài kỹ thuật khác để giải quyết bài toán. Phương pháp sử dụng các mô hình có sẵn như thế này được gọi là <em>Transfer Learning</em>.</p>
+
+<p>Như đã đề cập, toàn bộ các layer trừ output layer có thể được coi là một bộ Feature Extractor. Dựa trên nhận xét rằng các bức ảnh đều có những đặc tính giống nhau nào đó, với cơ sở dữ liệu khác, ta cũng có thể sử dụng phần Feature Extractor này để tạo ra các feature vectors. Sau đó, ta thay output layer cũng bằng một Softmax Regression (hoặc multi-class SVM) nhưng với số lượng units bằng với số lượng class ở bộ cơ sở dữ liệu mới. Ta chỉ cần train layer cuối cùng này. Kinh nghiệm thực tế của tôi cho thấy, việc làm này đã tăng kết quả phân lớp lên rất nhiều so với việc sử dụng các <em>hand-crafted features</em>.</p>
+
+<p>Cách làm như trên được gọi là <strong>ConvNet as fixed feature extractor</strong>, tức ta sử dụng trực tiếp vector ở <em>second to last layer</em> làm feature vector. Nếu tiếp tục tinh chỉnh (Fine-tuning) một chút nữa, kết quả sẽ có thể tốt hơn.</p>
+
+<p><strong>Fine-tuning the ConvNet</strong>. Hướng tiếp cận thứ hai là sử dụng các weights đã được trained từ một trong các mô hình ConvNet như là khởi tạo cho mô hình mới với dữ liệu mới và sử dụng <a href="/2017/02/24/mlp/#-backpropagation">Back Propagation</a> để train lại toàn bộ mô hình mới hoặc train lại một số layer cuối (cũng là để tránh <a href="/2017/03/04/overfitting/">overfitting</a> khi mà mô hình quá phức tạp khi dữ liệu không đủ lớn). <em>Việc này được dựa trên quan sát rằng những layers đầu trong ConvNet thường giúp extract những đặc tính chung của ảnh (các cạnh - edges, còn được gọi là low-level features), các layers cuối thường mang những đặc trưng riêng của cơ sở dữ liệu (CSDL) (và được gọi là high-level features). Vì vậy, việc train các layer cuối mang nhiều giá trị hơn.</em></p>
+
+<p>Dựa trên kích thước và độ tương quan giữa CSDL mới và CSDL gốc (chủ yếu là ImageNet) để train các mô hình có sẵn, <a href="http://cs231n.github.io/transfer-learning/#tf">CS231n đưa ra một vài lời khuyên</a>:</p>
+
+<ul>
+  <li>
+    <p><em>CSDL mới là nhỏ và tương tự như CSDL gốc.</em> Vì CSDL mới nhỏ, việc tiếp tục train model dễ dẫn đến hiện tượng overfitting. Cũng vì hai CSDL là tương tự nhau, ta dự đoán rằng các high-level features là tương tự nhau. Vậy nên ta không cần train lại model mà chỉ cần train một classifer dựa trên feature vectors ở đầu ra ở layer gần cuối.</p>
+  </li>
+  <li>
+    <p><em>CSDL mới là lớn và tương tự như CSDL gốc.</em> Vì CSDL này lớn, overfitting ít có khả năng xảy ra hơn, ta có thể train mô hình thêm một chút nữa (toàn bộ hoặc chỉ một vài layers cuối).</p>
+  </li>
+  <li>
+    <p><em>CSDL mới là nhỏ và rất khác với CSDL gốc.</em> Vì CSDL này nhỏ, tốt hơn hết là dùng các classifier đơn giản (các linear classifiers) để tránh overfitting). Nếu muốn train thêm, ta cũng chỉ nên train các layer cuối. Hoặc có một kỹ thuật khác là coi đầu ra của một layer xa layer cuối hơn làm các feature vectors.</p>
+  </li>
+  <li>
+    <p><em>CSDL mới là lớn và rất khác CSDL gốc.</em> Trong trường hợp này, ta vẫn có thể sử dụng mô hình đã train như là điểm khởi tạo cho mô hình mới, không nên train lại từ đầu.</p>
+  </li>
+</ul>
+
+<p>Có một điểm đáng chú ý nữa là khi tiếp tục train các mô hình này, ta chỉ nên chọn <em>learning rate</em> nhỏ để các weights mới không đi quá xa so với các weights đã được trained ở các mô hình trước.</p>
+
+<p><a name="tai-lieu-tham-khao"></a></p>
+
+<h2 id="đọc-thêm">Đọc thêm</h2>
+<p>[1] <a href="http://docs.opencv.org/3.1.0/da/df5/tutorial_py_sift_intro.html">Introduction to SIFT (Scale-Invariant Feature Transform) - OpenCV</a></p>
+
+<p>[2] <a href="Introduction to SURF (Speeded-Up Robust Features)">Introduction to SURF (Speeded-Up Robust Features) - OpenCV</a></p>
+
+<p>[3] <a href="http://www.learnopencv.com/histogram-of-oriented-gradients/">Histogram of Oriented Gradients - OpenCV</a></p>
+
+<p>[4] <a href="http://cs231n.github.io/transfer-learning/#tf">Transfer Learning</a></p>
+
+<p>[5] <a href="http://sebastianruder.com/transfer-learning/">Transfer Learning - Machine Learning’s Next Frontier</a></p>
+
+<p>[6] <a href="https://www.analyticsvidhya.com/blog/2017/06/transfer-learning-the-art-of-fine-tuning-a-pre-trained-model/">Transfer learning &amp; The art of using Pre-trained Models in Deep Learning</a></p>
+:ET

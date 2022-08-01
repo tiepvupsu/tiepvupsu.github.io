@@ -1,0 +1,590 @@
+I"��<p><strong>Trong trang này:</strong></p>
+
+<!-- MarkdownTOC -->
+
+<ul>
+  <li>
+    <ol>
+      <li>Naive Bayes Classifier</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Các phân phối thường dùng cho \(p(x_i | c)\)
+        <ul>
+          <li>2.1 Gaussian Naive Bayes</li>
+          <li>2.2. Multinomial Naive Bayes</li>
+          <li>2.3. Bernoulli Naive Bayes</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Ví dụ
+        <ul>
+          <li>3.1. Bắc hay Nam</li>
+          <li>3.2. Bắc hay Nam với sklearn</li>
+          <li>3.3. Naive Bayes Classifier cho bài toán Spam Filtering</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Tóm tắt</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Tài liệu tham khảo</li>
+    </ol>
+  </li>
+</ul>
+
+<!-- /MarkdownTOC -->
+
+<p><em>Bạn được khuyến khích đọc <a href="/2017/07/17/mlemap/">Bài 31: Maximum Likelihood và Maximum A Posteriori estimation</a> trước khi đọc bài này</em>
+<a name="-naive-bayes-classifier"></a></p>
+
+<h2 id="1-naive-bayes-classifier">1. Naive Bayes Classifier</h2>
+
+<p>Xét bài toán classification với \(C\) classes \(1, 2, \dots, C\). Giả sử có một điểm dữ liệu \(\mathbf{x} \in \mathbb{R}^d\). Hãy tính xác suất để điểm dữ liệu này rơi vào class \(c\). Nói cách khác, hãy tính:</p>
+
+<p>\[
+p(y = c |\mathbf{x}) ~~~ (1)
+\]
+hoặc viết gọn thành \(p(c|\mathbf{x})\).</p>
+
+<p>Tức tính xác suất để đầu ra là class \(c\) biết rằng đầu vào là vector \(\mathbf{x}\).</p>
+
+<p>Biểu thức này, nếu tính được, sẽ giúp chúng ta xác định được xác suất để điểm dữ liệu rơi vào mỗi class. Từ đó có thể giúp xác định class của điểm dữ liệu đó bằng cách chọn ra class có xác suất cao nhất:</p>
+
+<p>\[
+c = \arg\max_{c \in \{1, \dots, C\}} p(c | \mathbf{x}) ~~~~ (2)
+\]</p>
+
+<p>Biểu thức \((2)\) thường khó được tính trực tiếp. Thay vào đó, quy tắc Bayes thường được sử dụng:</p>
+
+<p>\[
+\begin{eqnarray}
+  c &amp; = &amp; \arg\max_c p(c | \mathbf{x}) &amp; (3) \<br />
+      &amp; = &amp; \arg\max_c \frac{p(\mathbf{x} | c) p(c)}{p(\mathbf{x})} ~~~&amp; 4)\<br />
+      &amp; = &amp; \arg\max_c p(\mathbf{x} | c) p(c) &amp; (5)\<br />
+\end{eqnarray}
+\]</p>
+
+<p>Từ \((3)\) sang \((4)\) là vì quy tắc Bayes. Từ \((4)\) sang \((5)\) là vì mẫu số \(p(\mathbf{x})\) không phụ thuộc vào \(c\).</p>
+
+<p>Tiếp tục xét biểu thức \((5)\), \(p(c)\) có thể được hiểu là xác suất để một điểm rơi vào class \(c\). Giá trị này có thể được tính bằng <a href="/2017/07/17/mlemap/#-maximum-likelihood-estimation">MLE</a>, tức tỉ lệ số điểm dữ liệu trong tập training rơi vào class này chia cho tổng số lượng dữ liệu trong tập training; hoặc cũng có thể được đánh giá bằng <a href="/2017/07/17/mlemap/#-maximum-a-posteriori">MAP estimation</a>. Trường hợp thứ nhất thường được sử dụng nhiều hơn.</p>
+
+<p>Thành phần còn lại \(p(\mathbf{x} | c)\), tức phân phối của các điểm dữ liệu trong class \(c\), thường rất khó tính toán vì \(\mathbf{x}\) là một biến ngẫu nhiên nhiều chiều, cần rất rất nhiều dữ liệu training để có thể xây dựng được phân phối đó. Để giúp cho việc tính toán được đơn giản, người ta thường giả sử một cách đơn giản nhất rằng các thành phần của biến ngẫu nhiên \(\mathbf{x}\) là <a href="/2017/07/09/prob/#-independence">độc lập với nhau</a>, nếu biết \(c\) (given \(c\)). Tức là:</p>
+
+<p>\[
+p(\mathbf{x} | c) = p(x_1, x_2, \dots, x_d | c) =  \prod_{i = 1}^d p(x_i | c) ~~~~~ (6)
+\]</p>
+
+<p>Giả thiết các chiều của dữ liệu độc lập với nhau, nếu biết \(c\), là quá chặt và ít khi tìm được dữ liệu mà các thành phần hoàn toàn độc lập với nhau. Tuy nhiên, giả thiết <em>ngây ngô</em> này lại mang lại những kết quả tốt bất ngờ. Giả thiết về sự độc lập của các chiều dữ liệu này được gọi là <em>Naive Bayes</em> (xin không dịch). Cách xác định class của dữ liệu dựa trên giả thiết này có tên là <em>Naive Bayes Classifier (NBC)</em>.</p>
+
+<p>NBC, nhờ vào tính đơn giản một cách <em>ngây thơ</em>, có tốc độ training và test rất nhanh. Việc này giúp nó mang lại hiệu quả cao trong các bài toán large-scale.</p>
+
+<p>Ở bước <strong>training</strong>, các phân phối \(p(c)\) và \(p(x_i | c), i = 1, \dots, d\) sẽ được xác định dựa vào training data. Việc xác định các giá trị này có thể dựa vào <a href="/2017/07/17/mlemap/">Maximum Likelihood Estimation hoặc Maximum A Posteriori</a>.</p>
+
+<p>Ở bước <strong>test</strong>, với một điểm dữ liệu mới \(\mathbf{x}\), class của nó sẽ được xác đinh bởi:</p>
+
+<p>\[
+c = \arg\max_{c \in \{1, \dots, C\}} p(c) \prod_{i=1}^d p(x_i | c) ~~~~~ (7)
+\]</p>
+
+<p>Khi \(d\) lớn và các xác suất nhỏ, biểu thức ở vế phải của \((7)\) sẽ là một số rất nhỏ, khi tính toán có thể gặp sai số. Để giải quyết việc này, \((7)\) thường được viết lại dưới dạng tương đương bằng cách lấy \(\log\) của vế phải: 
+\[
+c = \arg\max_{c \in \{1, \dots, C\}} = \log(p(c)) + \sum_{i=1}^d \log(p(x_i | c)) ~~~~ (7.1)
+\]</p>
+
+<p>Việc này không ảnh hưởng tới kết quả vì \(\log\) là một hàm đồng biến trên tập các số dương.</p>
+
+<!-- Lý thuyết về Naive Bayes Classifier có thể dừng lại ở đây (_thật là naive_). Chúng ta sẽ hiểu rõ hơn phương pháp này thông qua các ví dụ.  -->
+<p>Mặc dù giả thiết mà Naive Bayes Classifiers sử dụng là quá phi thực tế, chúng vẫn hoạt động khá hiệu quả trong nhiều bài toán thực tế, đặc biệt là trong các bài toán phân loại văn bản, ví dụ như lọc tin nhắn rác hay lọc email spam. Trong phần sau của bài viết, chúng ta cùng xây dựng một bộ lọc email spam tiếng Anh đơn giản.</p>
+
+<p>Cả việc training và test của NBC là cực kỳ nhanh khi so với các phương pháp classification phức tạp khác. Việc giả sử các thành phần trong dữ liệu là độc lập với nhau, nếu biết class, khiến cho việc tính toán mỗi phân phối \(p(\mathbf{x}_i|c)\) trở nên cực kỳ nhanh.</p>
+
+<p>Mỗi giá trị \(p(c), c = 1, 2, \dots, C\) có thể được xác định như là tần suất xuất hiện của class \(c\) trong training data.</p>
+
+<p>Việc tính toán \(p(\mathbf{x_i} | c) \) phụ thuộc vào loại dữ liệu. <a href="http://scikit-learn.org/dev/modules/classes.html#module-sklearn.naive_bayes">Có ba loại được sử dụng phổ biến</a> là: Gaussian Naive Bayes, Multinomial Naive Bayes, và Bernoulli Naive .</p>
+
+<p><a name="-cac-phan-phoi-thuong-dung-cho-\\pxi-\|-c\\"></a></p>
+
+<h2 id="2-các-phân-phối-thường-dùng-cho-px_i--c">2. Các phân phối thường dùng cho \(p(x_i | c)\)</h2>
+
+<p><em>Mục này chủ yếu được dịch từ <a href="http://scikit-learn.org/dev/modules/naive_bayes.html#naive-bayes">tài liệu của thư viện sklearn</a>.</em>
+<a name="-gaussian-naive-bayes"></a></p>
+
+<h3 id="21-gaussian-naive-bayes">2.1 Gaussian Naive Bayes</h3>
+
+<p>Mô hình này được sử dụng chủ yếu trong loại dữ liệu mà các thành phần là các biến liên tục.</p>
+
+<p>Với mỗi chiều dữ liệu \(i\) và một class \(c\), \(x_i\) tuân theo một phân phối chuẩn có kỳ vọng \(\mu_{ci}\) và phương sai \(\sigma_{ci}^2\):</p>
+
+<p>\[
+p(x_i|c) = p(x_i | \mu_{ci}, \sigma_{ci}^2) =  \frac{1}{\sqrt{2\pi \sigma_{ci}^2}} \exp\left(- \frac{(x_i - \mu_{ci})^2}{2 \sigma_{ci}^2}\right) ~~~~ (8)
+\]</p>
+
+<p>Trong đó, bộ tham số \(\theta = \{\mu_{ci}, \sigma_{ci}^2\}\) được xác định bằng Maximum Likelihood:</p>
+
+<p>\[
+(\mu_{ci}, \sigma_{ci}^2) = \arg\max_{\mu_{ci}, \sigma_{ci}^2} \prod_{n = 1}^N p(x_i^{(n)} | \mu_{ci}, \sigma_{ci}^2) ~~~~ (9)
+\]</p>
+
+<p><em>Đây là cách tính của thư viện sklearn. Chúng ta cũng có thể đánh giá các tham số bằng MAP nếu biết trước priors của \(\mu_{ci}\) và \(\sigma^2_{ci}\)</em></p>
+
+<p><a name="-multinomial-naive-bayes"></a></p>
+
+<h3 id="22-multinomial-naive-bayes">2.2. Multinomial Naive Bayes</h3>
+<p>Mô hình này chủ yếu được sử dụng trong phân loại văn bản mà feature vectors được tính bằng <a href="https://machinelearningcoban.com/general/2017/02/06/featureengineering/#bag-of-words">Bags of Words</a>. Lúc này, mỗi văn bản được biểu diễn bởi một vector có độ dài \(d\) chính là số từ trong từ điển. Giá trị của thành phần thứ \(i\) trong mỗi vector chính là số lần từ thứ \(i\) xuất hiện trong văn bản đó.</p>
+
+<p>Khi đó, \(p(x_i |c) \) tỉ lệ với tần suất từ thứ \(i\) (hay feature thứ \(i\) cho trường hợp tổng quát) xuất hiện trong các văn bản của class \(c\). Giá trị này có thể được tính bằng cách: 
+\[
+\lambda_{ci} = p(x_i | c) = \frac{N_{ci}}{N_c} ~~~~ (10)
+\]
+Trong đó:</p>
+
+<ul>
+  <li>
+    <p>\(N_{ci}\) là tổng số lần từ thứ \(i\) xuất hiện trong các văn bản của class \(c\), nó được tính là tổng của tất cả các thành phần thứ \(i\) của các feature vectors ứng với class \(c\).</p>
+  </li>
+  <li>
+    <p>\(N_c\) là tổng số từ (kể cả lặp) xuất hiện trong class \(c\). Nói cách khác, nó bằng tổng độ dài của toàn bộ các văn bản thuộc vào class \(c\). Có thể suy ra rằng \(N_c = \sum_{i = 1}^d N_{ci}\), từ đó \(\sum_{i=1}^d \lambda_{ci} = 1\).</p>
+  </li>
+</ul>
+
+<p>Cách tính này có một hạn chế là nếu có một từ mới chưa bao giờ xuất hiện trong class \(c\) thì biểu thức \((10)\) sẽ bằng 0, điều này dẫn đến vế phải của \((7)\) bằng 0 bất kể các giá trị còn lại có lớn thế nào. Việc này sẽ dẫn đến kết quả không chính xác (xem thêm ví dụ ở mục sau).</p>
+
+<p>Để giải quyết việc này, một kỹ thuật được gọi là <em>Laplace smoothing</em> được áp dụng:</p>
+
+<p>\[
+\hat{\lambda}_{ci} = \frac{N_{ci} + \alpha}{N_{c} + d\alpha} ~~~~~~ (11)
+\]</p>
+
+<p>Với \(\alpha\) là một số dương, thường bằng 1, để tránh trường hợp tử số bằng 0. Mẫu số được cộng với \(d\alpha\) để đảm bảo tổng xác suất \(\sum_{i=1}^d \hat{\lambda}_{ci} = 1\).</p>
+
+<p>Như vậy, mỗi class \(c\) sẽ được mô tả bởi bộ các số dương có tổng bằng 1: \(\hat{\lambda}_c = \{\hat{\lambda}_{c1}, \dots, \hat{\lambda}_{cd}\}\).</p>
+
+<p><a name="-bernoulli-naive-bayes"></a></p>
+
+<h3 id="23-bernoulli-naive-bayes">2.3. Bernoulli Naive Bayes</h3>
+
+<p>Mô hình này được áp dụng cho các loại dữ liệu mà mỗi thành phần là một giá trị binary - bẳng 0 hoặc 1. Ví dụ: cũng với loại văn bản nhưng thay vì đếm tổng số lần xuất hiện của 1 từ trong văn bản, ta chỉ cần quan tâm từ đó có xuất hiện hay không.</p>
+
+<p>Khi đó, \(p(x_i | c) \) được tính bằng: 
+\[
+p(x_i | c) = p(i | c)^{x_i} (1 - p(i | c) ^{1 - x_i}
+\]
+với \(p(i | c)\) có thể được hiểu là xác suất từ thứ \(i\) xuất hiện trong các văn bản của class \(c\).</p>
+
+<p><a name="-vi-du"></a></p>
+
+<h2 id="3-ví-dụ">3. Ví dụ</h2>
+
+<p><a name="-bac-hay-nam"></a></p>
+
+<h3 id="31-bắc-hay-nam">3.1. Bắc hay Nam</h3>
+<p>Giả sử trong tập training có các văn bản \(\text{d1, d2, d3, d4}\) như trong bảng dưới đây. Mỗi văn bản này thuộc vào 1 trong 2 classes: \(\text{B}\) (<em>Bắc</em>) hoặc \(\text{N}\) (<em>Nam</em>). Hãy xác định class của văn bản \(\text{d5}\).</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th style="text-align: center">Document</th>
+      <th>Content</th>
+      <th style="text-align: center">Class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Training</strong></td>
+      <td style="text-align: center">\(\text{d1}\)</td>
+      <td>\(\text{hanoi pho chaolong hanoi}\)</td>
+      <td style="text-align: center">\(\text{B}\)</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td style="text-align: center">\(\text{d2}\)</td>
+      <td>\(\text{hanoi buncha pho omai}\)</td>
+      <td style="text-align: center">\(\text{B}\)</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td style="text-align: center">\(\text{d3}\)</td>
+      <td>\(\text{pho banhgio omai}\)</td>
+      <td style="text-align: center">\(\text{B}\)</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td style="text-align: center">\(\text{d4}\)</td>
+      <td>\(\text{saigon hutiu banhbo pho}\)</td>
+      <td style="text-align: center">\(\text{N}\)</td>
+    </tr>
+    <tr>
+      <td><strong>Test</strong></td>
+      <td style="text-align: center">\(\text{d5}\)</td>
+      <td>\(\text{hanoi hanoi buncha hutiu}\)</td>
+      <td style="text-align: center">?</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br />
+Ta có thể dự đoán rằng \(\text{d5}\) thuộc class <em>Bắc</em>.</p>
+
+<p>Bài toán này có thể được giải quyết bởi hai mô hình: Multinomial Naive Bayes và Bernoulli Naive Bayes. Tôi sẽ làm ví dụ minh hoạ với mô hình thứ nhất và thực hiện code cho cả hai mô hình. Việc mô hình nào tốt hơn phụ thuộc vào mỗi bài toán. Chúng ta có thể thử cả hai để chọn ra mô hình tốt hơn.</p>
+
+<p>Nhận thấy rằng ở đây có 2 class \(\text{B}\) và \(\text{N}\), ta cần đi tìm \(p(\text{B})\) và \(p(\text{N})\). à dựa trên tần số xuất hiện của mỗi class trong tập training. Ta sẽ có:</p>
+
+<p>\[
+p(\text{B}) = \frac{3}{4}, ~~~~~ p(\text{N}) = \frac{1}{4} ~~~~~~ (8)
+\]</p>
+
+<p>Tập hợp toàn bộ các từ trong văn bản, hay còn gọi là từ điển, là: \(V = \{\text{hanoi, pho, chaolong, buncha, omai, banhgio, saigon, hutiu, banhbo}\}\). Tổng cộng số phần tử trong từ điển là \(|V| = 9\).</p>
+
+<p>Hình dưới đây minh hoạ quá trình Training và Test cho bài toán này khi sử dụng Multinomial Naive Bayes, trong đó có sử dụng Laplace smoothing với \(\alpha = 1\).</p>
+
+<hr />
+
+<div class="imgcap">
+<img src="/assets/32_nbc/nbc.png" align="center" width="100%" />
+</div>
+
+<div class="thecap" style="text-align: center">Hình 1: Minh hoạ Multinomial Naive Bayes.</div>
+<hr />
+
+<p>Chú ý, hai giá trị tìm được \(1.5\times 10^{-4}\) và \(1.75\times 10^{-5}\) không phải là hai xác suất cần tìm mà chỉ là hai đại lượng <strong>tỉ lệ thuận</strong> với hai xác suất đó. Để tính cụ thể, ta có thể làm như sau:</p>
+
+<p>\[
+p(\text{B} | \text{d5}) = \frac{1.5\times 10^{-4}}{1.5\times 10^{-4} + 1.75\times 10^{-5}} \approx 0.8955, ~~~~ p(\text{N} | \text{d5}) = 1 - p(\text{B} | \text{d5}) \approx 0.1045
+\]</p>
+
+<p>Bạn đọc có thể tự tính với ví dụ khác: \(\text{d6 = pho hutiu banhbo}\). Nếu bạn và tôi tính ra kết quả giống nhau, chúng ta sẽ thu được:
+\[
+p(\text{B} | \text{d6}) \approx 0.29, ~~~~ p(\text{N} | \text{d6}) \approx 0.71
+\]</p>
+
+<p>và suy ra \(\text{d6}\) thuộc vào class <em>Nam</em>.
+<a name="-bac-hay-nam-voi-sklearn"></a></p>
+
+<h3 id="32-bắc-hay-nam-với-sklearn">3.2. Bắc hay Nam với sklearn</h3>
+
+<p>Để kiểm tra lại các phép tính toán phía trên, chúng ta cùng giải quyết bài toán này với <a href="http://scikit-learn.org/dev/modules/generated/sklearn.naive_bayes.MultinomialNB.html#sklearn.naive_bayes.MultinomialNB">sklearn</a>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">MultinomialNB</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span> 
+
+<span class="c1"># train data
+</span><span class="n">d1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">d2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">d3</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">d4</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="n">train_data</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">,</span> <span class="n">d3</span><span class="p">,</span> <span class="n">d4</span><span class="p">])</span>
+<span class="n">label</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="s">'B'</span><span class="p">,</span> <span class="s">'B'</span><span class="p">,</span> <span class="s">'B'</span><span class="p">,</span> <span class="s">'N'</span><span class="p">])</span> 
+
+<span class="c1"># test data
+</span><span class="n">d5</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+<span class="n">d6</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+
+<span class="c1">## call MultinomialNB
+</span><span class="n">clf</span> <span class="o">=</span> <span class="n">MultinomialNB</span><span class="p">()</span>
+<span class="c1"># training 
+</span><span class="n">clf</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+
+<span class="c1"># test
+</span><span class="k">print</span><span class="p">(</span><span class="s">'Predicting class of d5:'</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">clf</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">d5</span><span class="p">)[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Probability of d6 in each class:'</span><span class="p">,</span> <span class="n">clf</span><span class="p">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">d6</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>Kết quả:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Predicting class of d5: B
+Probability of d6 in each class: [[ 0.29175335  0.70824665]]
+</code></pre></div></div>
+
+<p>Nếu sử dụng mô hình Bernoulli Naive Bayes, chúng ta cần thay đổi một chút về feature vectors. Lúc này, các giá trị khác không sẽ đều được đưa về 1 vì ta chỉ quan tâm đến việc từ đó có xuất hiện trong văn bản không.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">BernoulliNB</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span> 
+
+<span class="c1"># train data
+</span><span class="n">d1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">d2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">d3</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">d4</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="n">train_data</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">,</span> <span class="n">d3</span><span class="p">,</span> <span class="n">d4</span><span class="p">])</span>
+<span class="n">label</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="s">'B'</span><span class="p">,</span> <span class="s">'B'</span><span class="p">,</span> <span class="s">'B'</span><span class="p">,</span> <span class="s">'N'</span><span class="p">])</span> <span class="c1"># 0 - B, 1 - N 
+</span>
+<span class="c1"># test data
+</span><span class="n">d5</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+<span class="n">d6</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+
+<span class="c1">## call MultinomialNB
+</span><span class="n">clf</span> <span class="o">=</span> <span class="n">BernoulliNB</span><span class="p">()</span>
+<span class="c1"># training 
+</span><span class="n">clf</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+
+<span class="c1"># test
+</span><span class="k">print</span><span class="p">(</span><span class="s">'Predicting class of d5:'</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">clf</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">d5</span><span class="p">)[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Probability of d6 in each class:'</span><span class="p">,</span> <span class="n">clf</span><span class="p">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">d6</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>Kết quả:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Predicting class of d5: B
+Probability of d6 in each class: [[ 0.16948581  0.83051419]]
+</code></pre></div></div>
+
+<p>Ta thấy rằng, với bài toán nhỏ này, cả hai mô hình đều cho kết quả giống nhau (xác suất tìm được khác nhau nhưng không ảnh hưởng tới quyết định cuối cùng).</p>
+
+<p><a name="-naive-bayes-classifier-cho-bai-toan-spam-filtering"></a></p>
+
+<h3 id="33-naive-bayes-classifier-cho-bài-toán-spam-filtering">3.3. Naive Bayes Classifier cho bài toán Spam Filtering</h3>
+
+<p>Dữ liệu trong ví dụ này được lấy trong <a href="http://openclassroom.stanford.edu/MainFolder/DocumentPage.php?course=MachineLearning&amp;doc=exercises/ex6/ex6.html">Exercise 6: Naive Bayes - Machine Learning - Andrew Ng</a>.</p>
+
+<p>Trong ví dụ này, dữ liệu đã được xử lý, và là một tập con của cơ sở dữ liệu <a href="http://csmining.org/index.php/ling-spam-datasets.html">Ling-Spam Dataset</a>.</p>
+
+<p><strong>Mô tả dữ liệu:</strong></p>
+
+<p>Tập dữ liệu này bao gồm tổng cộng 960 emails tiếng Anh, được tách thành tập training và test theo tỉ lệ 700:260, 50% trong mỗi tập là các spam emails.</p>
+
+<p>Dữ liệu trong cơ sở dữ liệu này đã được xử lý khá đẹp. Các quy tắc xử lý như sau:</p>
+
+<ol>
+  <li>
+    <p><strong>Loại bỏ <em>stop words</em></strong>: Những từ xuất hiện thường xuyên như ‘and’, ‘the’, ‘of’, … được loại bỏ.</p>
+  </li>
+  <li>
+    <p><strong>Lemmatization</strong>: Những từ có cùng ‘gốc’ được đưa về cùng loại. Ví dụ, ‘include’, ‘includes’, ‘included’ đều được đưa chung về ‘include’. Tất cả các từ cũng đã được đưa về dạng ký tự thường (không phải HOA).</p>
+  </li>
+  <li>
+    <p><strong>Loại bỏ <em>non-words</em></strong>: Số, dấu câu, ký tự ‘tabs’, ký tự ‘xuống dòng’ đã được loại bỏ.</p>
+  </li>
+</ol>
+
+<p>Dưới đây là một ví dụ của 1 email không phải spam, <strong>trước khi được xử lý</strong>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Subject: Re: 5.1344 Native speaker intuitions
+  
+The discussion on native speaker intuitions has been extremely interesting, 
+but I worry that my brief intervention may have muddied the waters. I take 
+it that there are a number of separable issues. The first is the extent to
+which a native speaker is likely to judge a lexical string as grammatical 
+or ungrammatical per se. The second is concerned with the relationships 
+between syntax and interpretation (although even here the distinction may 
+not be entirely clear cut). 
+</code></pre></div></div>
+
+<p>và <strong>sau khi được xử lý</strong>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>re native speaker intuition discussion native speaker intuition extremely 
+interest worry brief intervention muddy waters number separable issue first 
+extent native speaker likely judge lexical string grammatical ungrammatical 
+per se second concern relationship between syntax interpretation although 
+even here distinction entirely clear cut 
+</code></pre></div></div>
+
+<p>Và đây là một ví dụ về <strong>spam email sau khi được xử lý</strong>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>financial freedom follow financial freedom work ethic extraordinary desire 
+earn least per month work home special skills experience required train 
+personal support need ensure success legitimate homebased income 
+opportunity put back control finance life ve try opportunity past 
+fail live promise 
+</code></pre></div></div>
+
+<p>Chúng ta thấy rằng trong đoạn này có các từ như: <em>financial, extraordinary, earn, opportunity, …</em> là những từ thường thấy trong các email spam.</p>
+
+<p>Trong ví dụ này, chúng ta sẽ sử dụng Multinomial Naive Bayes.</p>
+
+<p>Để cho bài toán được đơn giản hơn, tôi tiếp tục sử dụng dữ liệu đã được xử lý, có thể được download ở đây: <a href="http://openclassroom.stanford.edu/MainFolder/courses/MachineLearning/exercises/ex6materials/ex6DataPrepared.zip">ex6DataPrepared.zip</a>. Trong folder sau khi giải nén, chúng ta sẽ thấy các files:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>test-features.txt
+test-labels.txt
+train-features-50.txt
+train-features-100.txt
+train-features-400.txt
+train-features.txt
+train-labels-50.txt
+train-labels-100.txt
+train-labels-400.txt
+train-labels.txt
+</code></pre></div></div>
+
+<p>tương ứng với các file chứa dữ liệu của tập training và tập test. File <code class="language-plaintext highlighter-rouge">train-features-50.txt</code> chứa dữ liệu của tập training thu gọn với chỉ có tổng cộng 50 training emails.</p>
+
+<p>Mỗi file <code class="language-plaintext highlighter-rouge">*labels*.txt</code> chứa nhiều dòng, mỗi dòng là một ký tự 0 hoặc 1 thể hiện email là <em>non-spam</em> hoặc <em>spam</em>.</p>
+
+<p>Mỗi file <code class="language-plaintext highlighter-rouge">*features*.txt</code> chứa nhiều dòng, mỗi dòng có 3 số, ví dụ:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1 564 1
+1 19 2
+</code></pre></div></div>
+
+<p>trong đó số đầu tiên là chỉ số của email, bắt đầu từ 1; số thứ hai là thứ tự của từ trong từ điển (tổng cộng 2500 từ); số thứ ba là số lượng của từ đó trong email đang xét. Dòng đầu tiên nói rằng trong email thứ nhất, từ thứ 564 trong từ điển xuất hiện 1 lần. Cách lưu dữ liệu như thế này giúp tiết kiệm bộ nhớ vì 1 email thường không chứa hết tất cả các từ trong từ điển mà chỉ chứa một lượng nhỏ, ta chỉ cần lưu các giá trị khác không.</p>
+
+<p>Nếu ta biểu diễn feature vector của mỗi email là một vector hàng có độ dài bằng độ dài từ điển (2500) thì dòng thứ nhất nói rằng thành phần thứ 564 của vector này bằng 1. Tương tự, thành phần thứ 19 của vector này bằng 1. Nếu không xuất hiện, các thành phần khác được mặc định bằng 0.</p>
+
+<p>Dựa trên các thông tin này, chúng ta có thể tiến hành lập trình với thư viện sklearn.</p>
+
+<p><strong>Khai báo thư viện và đường dẫn tới files:</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">## packages 
+</span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">unicode_literals</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">coo_matrix</span> <span class="c1"># for sparse matrix
+</span><span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">MultinomialNB</span><span class="p">,</span> <span class="n">BernoulliNB</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span> <span class="c1"># for evaluating results
+</span>
+<span class="c1"># data path and file name 
+</span><span class="n">path</span> <span class="o">=</span> <span class="s">'ex6DataPrepared/'</span>
+<span class="n">train_data_fn</span> <span class="o">=</span> <span class="s">'train-features.txt'</span>
+<span class="n">test_data_fn</span> <span class="o">=</span> <span class="s">'test-features.txt'</span>
+<span class="n">train_label_fn</span> <span class="o">=</span> <span class="s">'train-labels.txt'</span>
+<span class="n">test_label_fn</span> <span class="o">=</span> <span class="s">'test-labels.txt'</span>
+</code></pre></div></div>
+
+<p>Hàm số đọc dữ liệu từ file <code class="language-plaintext highlighter-rouge">data_fn</code> với labels tương ứng <code class="language-plaintext highlighter-rouge">label_fn</code>. Chú ý rằng <a href="http://openclassroom.stanford.edu/MainFolder/DocumentPage.php?course=MachineLearning&amp;doc=exercises/ex6/ex6.html">số lượng từ trong từ điển là 2500</a>.</p>
+
+<p>Dữ liệu sẽ được lưu trong một ma trận mà mỗi hàng thể hiện một email. Ma trận này là một ma trận sparse nên chúng ta sẽ sử dụng hàm <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.coo_matrix.html"><code class="language-plaintext highlighter-rouge">scipy.sparse.coo_matrix</code></a>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nwords</span> <span class="o">=</span> <span class="mi">2500</span> 
+
+<span class="k">def</span> <span class="nf">read_data</span><span class="p">(</span><span class="n">data_fn</span><span class="p">,</span> <span class="n">label_fn</span><span class="p">):</span>
+    <span class="c1">## read label_fn
+</span>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="n">label_fn</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="n">f</span><span class="p">.</span><span class="n">readlines</span><span class="p">()</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">strip</span><span class="p">())</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">content</span><span class="p">]</span>
+
+    <span class="c1">## read data_fn
+</span>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="n">data_fn</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="n">f</span><span class="p">.</span><span class="n">readlines</span><span class="p">()</span>
+    <span class="c1"># remove '\n' at the end of each line
+</span>    <span class="n">content</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">content</span><span class="p">]</span> 
+
+    <span class="n">dat</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">content</span><span class="p">),</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">content</span><span class="p">):</span> 
+        <span class="n">a</span> <span class="o">=</span> <span class="n">line</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">' '</span><span class="p">)</span>
+        <span class="n">dat</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">])])</span>
+    
+    <span class="c1"># remember to -1 at coordinate since we're in Python
+</span>    <span class="c1"># check this: https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.coo_matrix.html
+</span>    <span class="c1"># for more information about coo_matrix function 
+</span>    <span class="n">data</span> <span class="o">=</span> <span class="n">coo_matrix</span><span class="p">((</span><span class="n">dat</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">(</span><span class="n">dat</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dat</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)),</span>\
+             <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">label</span><span class="p">),</span> <span class="n">nwords</span><span class="p">))</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Đọc training data và test data, sử dụng class <code class="language-plaintext highlighter-rouge">MultinomialNB</code> trong sklearn để xây dựng mô hình và dự đoán đầu ra cho test data.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">train_label</span><span class="p">)</span>  <span class="o">=</span> <span class="n">read_data</span><span class="p">(</span><span class="n">train_data_fn</span><span class="p">,</span> <span class="n">train_label_fn</span><span class="p">)</span>
+<span class="p">(</span><span class="n">test_data</span><span class="p">,</span> <span class="n">test_label</span><span class="p">)</span>  <span class="o">=</span> <span class="n">read_data</span><span class="p">(</span><span class="n">test_data_fn</span><span class="p">,</span> <span class="n">test_label_fn</span><span class="p">)</span>
+
+<span class="n">clf</span> <span class="o">=</span> <span class="n">MultinomialNB</span><span class="p">()</span>
+<span class="n">clf</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">train_label</span><span class="p">)</span>
+
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_data</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Training size = %d, accuracy = %.2f%%'</span> <span class="o">%</span> \
+      <span class="p">(</span><span class="n">train_data</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">test_label</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Training size = 700, accuracy = 98.08%
+</code></pre></div></div>
+
+<p>Vậy là có tới 98.08% các email được phân loại đúng. Chúng ta tiếp tục thử với các bộ dữ liệu training nhỏ hơn:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">train_data_fn</span> <span class="o">=</span> <span class="s">'train-features-100.txt'</span>
+<span class="n">train_label_fn</span> <span class="o">=</span> <span class="s">'train-labels-100.txt'</span>
+<span class="n">test_data_fn</span> <span class="o">=</span> <span class="s">'test-features.txt'</span>
+<span class="n">test_label_fn</span> <span class="o">=</span> <span class="s">'test-labels.txt'</span>
+
+<span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">train_label</span><span class="p">)</span>  <span class="o">=</span> <span class="n">read_data</span><span class="p">(</span><span class="n">train_data_fn</span><span class="p">,</span> <span class="n">train_label_fn</span><span class="p">)</span>
+<span class="p">(</span><span class="n">test_data</span><span class="p">,</span> <span class="n">test_label</span><span class="p">)</span>  <span class="o">=</span> <span class="n">read_data</span><span class="p">(</span><span class="n">test_data_fn</span><span class="p">,</span> <span class="n">test_label_fn</span><span class="p">)</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">MultinomialNB</span><span class="p">()</span>
+<span class="n">clf</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">train_label</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_data</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Training size = %d, accuracy = %.2f%%'</span> <span class="o">%</span> \
+      <span class="p">(</span><span class="n">train_data</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">test_label</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Training size = 100, accuracy = 97.69%
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">train_data_fn</span> <span class="o">=</span> <span class="s">'train-features-50.txt'</span>
+<span class="n">train_label_fn</span> <span class="o">=</span> <span class="s">'train-labels-50.txt'</span>
+<span class="n">test_data_fn</span> <span class="o">=</span> <span class="s">'test-features.txt'</span>
+<span class="n">test_label_fn</span> <span class="o">=</span> <span class="s">'test-labels.txt'</span>
+
+<span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">train_label</span><span class="p">)</span>  <span class="o">=</span> <span class="n">read_data</span><span class="p">(</span><span class="n">train_data_fn</span><span class="p">,</span> <span class="n">train_label_fn</span><span class="p">)</span>
+<span class="p">(</span><span class="n">test_data</span><span class="p">,</span> <span class="n">test_label</span><span class="p">)</span>  <span class="o">=</span> <span class="n">read_data</span><span class="p">(</span><span class="n">test_data_fn</span><span class="p">,</span> <span class="n">test_label_fn</span><span class="p">)</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">MultinomialNB</span><span class="p">()</span>
+<span class="n">clf</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">train_label</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_data</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Training size = %d, accuracy = %.2f%%'</span> <span class="o">%</span> \
+      <span class="p">(</span><span class="n">train_data</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">test_label</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Training size = 50, accuracy = 97.31%
+</code></pre></div></div>
+
+<p>Ta thấy rằng thậm chí khi tập training là rất nhỏ, 50 emails tổng cộng, kết quả đạt được đã rất ấn tượng.</p>
+
+<p>Nếu bạn muốn tiếp tục thử mô hình <code class="language-plaintext highlighter-rouge">BernoulliNB</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">clf</span> <span class="o">=</span> <span class="n">BernoulliNB</span><span class="p">(</span><span class="n">binarize</span> <span class="o">=</span> <span class="p">.</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">clf</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">train_label</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_data</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Training size = %d, accuracy = %.2f%%'</span> <span class="o">%</span> \
+      <span class="p">(</span><span class="n">train_data</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">test_label</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Training size = 50, accuracy = 69.62%
+</code></pre></div></div>
+
+<p>Ta thấy rằng trong bài toán này, <code class="language-plaintext highlighter-rouge">MultinomialNB</code> hoạt động hiệu quả hơn.</p>
+
+<p><a name="-tom-tat"></a></p>
+
+<h2 id="4-tóm-tắt">4. Tóm tắt</h2>
+
+<ul>
+  <li>
+    <p>Naive Bayes Classifiers (NBC) thường được sử dụng trong các bài toán Text Classification.</p>
+  </li>
+  <li>
+    <p>NBC có thời gian training và test rất nhanh. Điều này có được là do giả sử về tính độc lập giữa các thành phần, nếu biết class.</p>
+  </li>
+  <li>
+    <p>Nếu giả sử về tính độc lập được thoả mãn (dựa vào bản chất của dữ liệu), NBC được cho là cho kết quả tốt hơn so với SVM và logistic regression khi có ít dữ liệu training.</p>
+  </li>
+  <li>
+    <p>NBC có thể hoạt động với các feature vector mà một phần là liên tục (sử dụng Gaussian Naive Bayes), phần còn lại ở dạng rời rạc (sử dụng Multinomial hoặc Bernoulli).</p>
+  </li>
+  <li>
+    <p>Khi sử dụng Multinomial Naive Bayes, Laplace smoothing thường được sử dụng để tránh trường hợp 1 thành phần trong test data chưa xuất hiện ở training data.</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/32_nbc/python/Spam%20filtering.ipynb">Source code</a>.</p>
+  </li>
+</ul>
+
+<p><a name="-tai-lieu-tham-khao"></a></p>
+
+<h2 id="5-tài-liệu-tham-khảo">5. Tài liệu tham khảo</h2>
+
+<p>[1] <a href="https://web.stanford.edu/class/cs124/lec/naivebayes.pdf">Text Classification and Naive Bayes - Stanford</a></p>
+
+<p>[2] <a href="http://openclassroom.stanford.edu/MainFolder/DocumentPage.php?course=MachineLearning&amp;doc=exercises/ex6/ex6.html">Exercise 6: Naive Bayes - Machine Learning - Andrew Ng</a></p>
+
+<p>[3] <a href="http://scikit-learn.org/dev/modules/classes.html#module-sklearn.naive_bayes"><code class="language-plaintext highlighter-rouge">sklearn.naive_bayes</code></a></p>
+
+<p>[4] <a href="https://www.analyticsvidhya.com/blog/2015/09/naive-bayes-explained/">6 Easy Steps to Learn Naive Bayes Algorithm (with code in Python)</a></p>
+:ET

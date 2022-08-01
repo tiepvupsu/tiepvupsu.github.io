@@ -1,0 +1,997 @@
+I"U�<p><strong>Tất cả các bài tập trong bài viết này có thể được thực hiện trực tiếp trên trình duyệt qua trang web <a href="https://fundaml.com">FundaML</a></strong></p>
+
+<!-- MarkdownTOC -->
+
+<ul>
+  <li><a href="#-mang-nhieu-chieu">2.0. Mảng nhiều chiều</a></li>
+  <li><a href="#-khoi-tao-mot-ma-tran">2.1. Khởi tạo một ma trận</a>
+    <ul>
+      <li><a href="#-khoi-tao-mot-ma-tran-1">2.1.1. Khởi tạo một ma trận</a></li>
+    </ul>
+  </li>
+  <li><a href="#-ma-tran-don-vi-va-ma-tran-duong-cheo">2.2. Ma trận đơn vị và ma trận đường chéo</a>
+    <ul>
+      <li><a href="#-ma-tran-don-vi">2.2.1. Ma trận đơn vị</a></li>
+      <li><a href="#-ma-tran-duong-cheo">2.2.2. Ma trận đường chéo</a></li>
+    </ul>
+  </li>
+  <li><a href="#-kich-thuoc-cua-ma-tran">2.3. Kích thước của ma trận</a></li>
+  <li><a href="#-truy-cap-vao-tung-phan-tu-cua-ma-tran">2.4. Truy cập vào từng phần tử của ma trận</a>
+    <ul>
+      <li><a href="#-truy-cap-vao-tung-phan-tu">2.4.1. Truy cập vào từng phần tử</a>
+        <ul>
+          <li><a href="#-cach--giong-voi-list">2.4.1.1. Cách 1: giống với list</a></li>
+          <li><a href="#-cach--giong-nhu-matlab">2.4.1.2. Cách 2: giống như Matlab</a></li>
+        </ul>
+      </li>
+      <li><a href="#-truy-cap-vao-hangcot">2.4.2. Truy cập vào hàng/cột</a></li>
+    </ul>
+  </li>
+  <li><a href="#-truy-cap-vao-nhieu-phan-tu-cua-ma-tran">2.5. Truy cập vào nhiều phần tử của ma trận</a>
+    <ul>
+      <li><a href="#-nhieu-phan-tu-trong-cung-mot-hang">2.5.1. Nhiều phần tử trong cùng một hàng</a></li>
+      <li><a href="#-nhieu-phan-tu-trong-cung-mot-cot">2.5.2. Nhiều phần tử trong cùng một cột</a></li>
+      <li><a href="#-nhieu-hang-nhieu-cot">2.5.3. Nhiều hàng, nhiều cột</a></li>
+      <li><a href="#-cap-cac-toa-do">2.5.4. Cặp các toạ độ</a></li>
+    </ul>
+  </li>
+  <li><a href="#-npsum-npmin-npmax-npmean-cho-mang-nhieu-chieu">2.6. np.sum, np.min, np.max, np.mean cho mảng nhiều chiều</a>
+    <ul>
+      <li><a href="#keepdims--true"><code class="language-plaintext highlighter-rouge">keepdims = True</code></a></li>
+    </ul>
+  </li>
+  <li><a href="#-cac-phep-toan-tac-dong-den-moi-phan-tu-cua-ma-tran">2.7. Các phép toán tác động đến mọi phần tử của ma trận</a>
+    <ul>
+      <li><a href="#-tinh-toan-giua-mot-mang-hai-chieu-va-mot-so-vo-huong">2.7.1. Tính toán giữa một mảng hai chiều và một số vô hướng</a></li>
+      <li><a href="#-npabs-npsin-npexp-">2.7.2. np.abs, np.sin, np.exp, …</a></li>
+    </ul>
+  </li>
+  <li><a href="#-cac-phep-toan-giua-hai-ma-tran-i">2.8. Các phép toán giữa hai ma trận I</a></li>
+  <li><a href="#-chuyen-vi-ma-tran-reshape-ma-tran">2.9. Chuyện vị ma trận, Reshape ma trận</a>
+    <ul>
+      <li><a href="#-chuyen-vi-ma-tran">2.9.1 Chuyển vị ma trận</a></li>
+      <li><a href="#-reshape">2.9.2. Reshape</a></li>
+      <li><a href="#-thu-tu-cua-phep-toan-reshape">2.9.3. Thứ tự của phép toán reshape</a></li>
+    </ul>
+  </li>
+  <li><a href="#-cac-phep-toan-giua-ma-tran-va-vector">2.10. Các phép toán giữa ma trận và vector</a></li>
+  <li><a href="#-tich-giua-hai-ma-tran-tich-giua-ma-tran-va-vector">2.11. Tích giữa hai ma trận, tích giữa ma trận và vector</a>
+    <ul>
+      <li><a href="#-tich-giua-hai-ma-tran">2.11.1. Tích giữa hai ma trận</a></li>
+      <li><a href="#-tich-giua-mot-ma-tran-va-mot-vector">2.11.2. Tích giữa một ma trận và một vector</a></li>
+    </ul>
+  </li>
+  <li><a href="#-softmax-iii---phien-ban-tong-quat">2.12. Softmax III - Phiên bản tổng quát</a></li>
+</ul>
+
+<!-- /MarkdownTOC -->
+
+<p><a name="-mang-nhieu-chieu"></a></p>
+
+<h2 id="20-mảng-nhiều-chiều">2.0. Mảng nhiều chiều</h2>
+<p>Trong Numpy, người ta thường dùng mảng numpy hai chiều để thể hiện một ma trận. Mảng hai chiều có thể coi là một mảng của các mảng một chiều. Trong đó, mỗi <em>mảng nhỏ một chiều</em> tương ứng với một hàng của ma trận.</p>
+
+<p>Nói cách khác, ma trận có thể được coi là mảng của các vector hàng - mỗi vector hàng được biểu diễn bằng một mảng numpy một chiều.</p>
+
+<hr />
+
+<div class="imgcap">
+<img src="/assets/fundaml/matrix.png" align="center" width="400" />
+</div>
+<hr />
+
+<p>Ví dụ, nếu một mảng numpy hai chiều <code class="language-plaintext highlighter-rouge">a</code> mô tả ma trận:
+\(\left[
+\begin{matrix} 1 &amp; 2 \\ 3 &amp; 4 \end{matrix} \right]
+\), khi được in ra nó sẽ có dạng:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+</code></pre></div></div>
+
+<p>Ở đây chúng ta có thể nhìn thấy ba mảng, mỗi mảng được thể hiện bằng một cặp 
+đóng mở ngoặc vuông <code class="language-plaintext highlighter-rouge">[]</code>:</p>
+
+<ul>
+  <li>
+    <p>hai mảng <code class="language-plaintext highlighter-rouge">[1, 2]</code> và <code class="language-plaintext highlighter-rouge">[3, 4]</code> thể hiện các hàng của ma trận. Chúng là các 
+mảng một chiều.</p>
+  </li>
+  <li>
+    <p>mảng <code class="language-plaintext highlighter-rouge">[[1, 2], [3, 4]]</code> có hai phân tử, mỗi phần tử là một hàng của ma trận.</p>
+  </li>
+</ul>
+
+<p>Theo quy ước của Numpy, chúng ta cần đi từ mảng ngoài cùng tới các mảng trong:</p>
+
+<ul>
+  <li>
+    <p>mảng lớn nhất là <code class="language-plaintext highlighter-rouge">[[1, 2], [3, 4]]</code> được coi là mảng ứng với <code class="language-plaintext highlighter-rouge">axis = 0</code>. 
+Trong mảng này, thành phần thứ nhất là <code class="language-plaintext highlighter-rouge">[1, 2]</code>, thành phần thứ hai là <code class="language-plaintext highlighter-rouge">[3, 4]</code>.</p>
+  </li>
+  <li>
+    <p>hai mảng lớn thứ hai là <code class="language-plaintext highlighter-rouge">[1, 2]</code> và <code class="language-plaintext highlighter-rouge">[3, 4]</code> được coi là các mảng ứng với <code class="language-plaintext highlighter-rouge">axis = 1</code>.</p>
+  </li>
+</ul>
+
+<p>(Xem thêm hình vẽ bên.)</p>
+
+<p><strong>Chú ý:</strong></p>
+
+<ol>
+  <li>
+    <p>Một mảng numpy hoàn toàn có thể có nhiều hơn hai chiều. Khi đó ta vẫn đi từ 
+cặp ngoặc vuông ngoài cùng vào tới trong cùng, <code class="language-plaintext highlighter-rouge">axis</code> cũng đi từ <code class="language-plaintext highlighter-rouge">0, 1, ...</code> 
+theo thứ tự đó.</p>
+  </li>
+  <li>
+    <p>Mỗi <em>mảng con</em> phải có số phần tử bằng nhau, thể hiện cho việc mỗi hàng của 
+ma trận phải có số chiều như nhau, không có hàng nào <em>thò ra thụt vào</em>.</p>
+  </li>
+  <li>
+    <p>Khi làm việc với các thư viện cho Machine Learning, mỗi điểm dữ liệu thường 
+được coi là một mảng một chiều. Tập hợp các điểm dữ liệu thường được lưu trong 
+một ma trận - tức mảng của các mảng một chiều. Trong ma trận này, mỗi <strong>hàng</strong> 
+tương ứng với một điểm dữ liệu.</p>
+  </li>
+</ol>
+
+<p>Việc này hơi ngược với cách xây dựng toán học của các thuật toán, nơi mà mỗi 
+điểm dữ liệu thường được coi là một vector cột - tức mỗi <strong>cột</strong> của ma trận là 
+một điểm dữ liệu. Khi đọc các tài liệu và làm việc với các thư viện, bạn đọc cần 
+chú ý.</p>
+
+<p>Giống như bài “Cơ bản về vector”, trong bài học này, chúng ta sẽ cùng làm quen 
+với các cách xử lý ma trận trong Numpy: Khởi tạo, truy cập, thay đổi, ma trận 
+đặc biệt, …</p>
+
+<p><a name="-khoi-tao-mot-ma-tran"></a></p>
+
+<h2 id="21-khởi-tạo-một-ma-trận">2.1. Khởi tạo một ma trận</h2>
+<p><a name="-khoi-tao-mot-ma-tran-1"></a></p>
+
+<h3 id="211-khởi-tạo-một-ma-trận">2.1.1. Khởi tạo một ma trận</h3>
+<p>Cách đơn giản nhất để khởi tạo một ma trận là nhập vào từng phần tử của ma trận 
+đó. Cách làm này, tất nhiên, chỉ phù hợp với các ma trận nhỏ.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">A</span>
+<span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+</code></pre></div></div>
+<p><em>Nếu bạn mới chuyển từ Matlab qua Python, bạn sẽ thấy cách khai báo của Matlab <strong>dễ chịu</strong> hơn rất nhiều. Chúng ta sẽ phải quen dần thôi :).</em></p>
+
+<p>Khi khai báo một mảng numpy nói chung, nếu <em>ít nhất một</em> phần tử của mảng là 
+<code class="language-plaintext highlighter-rouge">float</code>, <code class="language-plaintext highlighter-rouge">type</code> của mọi phần tử trong mảng sẽ được coi là <code class="language-plaintext highlighter-rouge">'numpy.float64'</code> 
+(số thực 64 bit).</p>
+
+<p>Ngược lại, nếu toàn bộ các phần tử là số nguyên (không có dấu <code class="language-plaintext highlighter-rouge">.</code> xuất hiện),
+<code class="language-plaintext highlighter-rouge">type</code> của mọi phần tử trong mảng sẽ được coi là <code class="language-plaintext highlighter-rouge">'numpy.int64'</code> (số nguyên 64 bit).</p>
+
+<p>Nếu muốn chỉ định <code class="language-plaintext highlighter-rouge">type</code> của các phần tử trong mảng, ta cần đặt giá trị cho <code class="language-plaintext highlighter-rouge">dtype</code>. 
+Ví dụ:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]],</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nb">float</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="o">&lt;</span><span class="nb">type</span> <span class="s">'numpy.float64'</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong>Bài tập:</strong></p>
+
+<p>Khai báo một mảng numpy hai chiều <code class="language-plaintext highlighter-rouge">A</code> mô tả ma trận:</p>
+
+<p>\[\mathbf{A} = \left[
+\begin{matrix}
+1 &amp; 2 &amp; 3 \\ 4 &amp; 5 &amp; 6 \\ 7 &amp; 8 &amp; 9
+\end{matrix}
+\right]
+\]</p>
+
+<hr />
+
+<p><a name="-ma-tran-don-vi-va-ma-tran-duong-cheo"></a></p>
+
+<h2 id="22-ma-trận-đơn-vị-và-ma-trận-đường-chéo">2.2. Ma trận đơn vị và ma trận đường chéo</h2>
+<p><a name="-ma-tran-don-vi"></a></p>
+
+<h3 id="221-ma-trận-đơn-vị">2.2.1. Ma trận đơn vị</h3>
+
+<p>Để tạo một ma trận đơn vị có số chiều bằng <code class="language-plaintext highlighter-rouge">n</code> (ma trận đơn vị là một ma trận vuông có tất cả các phần tử trên đường chéo bằng 1), chúng ta sử dụng hàm <a href="https://docs.scipy.org/doc/numpy-1.13.0/reference/generated/numpy.eye.html"><code class="language-plaintext highlighter-rouge">np.eye()</code></a>:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">np</span><span class="p">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">array</span><span class="p">([[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">]])</span>
+</code></pre></div></div>
+
+<p>Hàm <code class="language-plaintext highlighter-rouge">np.eye()</code> cũng được dùng để tạo các ma trận toàn 1 ở một đường chéo phụ nào đó, các thành phần còn lại bằng 0. Ví dụ:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">np</span><span class="p">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">array</span><span class="p">([[</span> <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">]])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">np</span><span class="p">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">array</span><span class="p">([[</span> <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">]])</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">k = 1</code> sẽ tương ứng với đường chéo phụ ngay <em>trên</em> đường chéo chíh. <code class="language-plaintext highlighter-rouge">k = -2</code> sẽ tương ứng với đường chéo phụ thứ hai <em>bên dưới</em> đường chéo chính.</p>
+
+<p>Bạn đọc có thể đọc thêm về cách sử dụng hàm ‘np.eye()’ <a href="https://docs.scipy.org/doc/numpy-1.13.0/reference/generated/numpy.eye.html">tại đây</a>.</p>
+
+<p><em>Xin nhắc lại rằng bạn đọc luôn có thể xem cách sử dụng một hàm trên terminal bằng cách gõ <code class="language-plaintext highlighter-rouge">help(func)</code> trong đó <code class="language-plaintext highlighter-rouge">func</code> là tên hàm bạn muốn tra cứu. Ví dụ, <code class="language-plaintext highlighter-rouge">help(np.eye)</code>.</em></p>
+
+<p><a name="-ma-tran-duong-cheo"></a></p>
+
+<h3 id="222-ma-trận-đường-chéo">2.2.2. Ma trận đường chéo</h3>
+<p>Để khai báo một ma trận đường chéo, hoặc muốn trích xuất đường chéo của một ma trận, ta dùng hàm <code class="language-plaintext highlighter-rouge">np.diag</code>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">np</span><span class="p">.</span><span class="n">diag</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">np</span><span class="p">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">diag</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]))</span>
+<span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>Nếu đầu vào là một mảng một chiều, trả về một mảng hai chiều thể hiện ma trận có đường chéo là các phần tử thuộc mảng đó.</p>
+  </li>
+  <li>
+    <p>Nếu đầu vào là một mảng hai chiều (có thể không vuông), trả về mảng một chiều chứa các giá trị ở hàng thứ <code class="language-plaintext highlighter-rouge">i</code>, 
+cột thứ <code class="language-plaintext highlighter-rouge">i</code> với <code class="language-plaintext highlighter-rouge">0 &lt;= i &lt;= min(m, n)</code>. Trong đó <code class="language-plaintext highlighter-rouge">m</code>, <code class="language-plaintext highlighter-rouge">n</code> lần lượt là số hàng và số cột của ma trận được biểu diễn bằng mảng hai chiều ban đầu.</p>
+  </li>
+</ul>
+
+<p><em>Đường chéo phụ</em> của một ma trận cũng có thể được lấy bằng cách sử dụng hàm này và chỉ ra giá trị của <code class="language-plaintext highlighter-rouge">k</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>
+<span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">np</span><span class="p">.</span><span class="n">diag</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong>Bài tập:</strong></p>
+
+<p>Với một số tự nhiên <code class="language-plaintext highlighter-rouge">n</code>, hãy viết hàm trả về ma trận có dạng: 
+\[
+\left[
+\begin{matrix}
+0 &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 \\ 1 &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 \\ 0 &amp; 2 &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 \\ \dots &amp; \dots &amp; \dots &amp; \dots &amp; \ddots &amp; \dots \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; n &amp; 0 
+\end{matrix}
+\right]
+\]
+tức đường chéo phụ ngay dưới đường chéo chính nhận các giá trị từ 1 đến \(n\). Các thành phần là kiểu số nguyên.</p>
+
+<hr />
+
+<p><a name="-kich-thuoc-cua-ma-tran"></a></p>
+
+<h2 id="23-kích-thước-của-ma-trận">2.3. Kích thước của ma trận</h2>
+
+<p>Giống như cách tìm kích thước của mảng một chiểu, để tìm kích thước của mảng hai chiều, ta cũng sử dụng thuộc tính <code class="language-plaintext highlighter-rouge">shape</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">A</span>
+<span class="n">array</span><span class="p">([[</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span>  <span class="mi">4</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mi">5</span><span class="p">,</span>  <span class="mi">6</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span>  <span class="mi">8</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">A</span><span class="p">.</span><span class="n">shape</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Ở đây, kết quả trả về là một <code class="language-plaintext highlighter-rouge">tuple</code>. Số phần tử của tuple này chính là số 
+chiều của mảng. Nếu coi mảng hai chiều như ma trận, số hàng và số cột của ma 
+trận có thể được tính bằng:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">A</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="mi">3</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">A</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="mi">4</span>
+</code></pre></div></div>
+
+<p>Với mảng numpy nhiều chiều, ta cũng dùng thuộc tính <code class="language-plaintext highlighter-rouge">shape</code> để tìm kích thước 
+của mỗi chiều.</p>
+
+<p><a name="-truy-cap-vao-tung-phan-tu-cua-ma-tran"></a></p>
+
+<h2 id="24-truy-cập-vào-từng-phần-tử-của-ma-trận">2.4. Truy cập vào từng phần tử của ma trận</h2>
+
+<p><a name="-truy-cap-vao-tung-phan-tu"></a></p>
+
+<h3 id="241-truy-cập-vào-từng-phần-tử">2.4.1. Truy cập vào từng phần tử</h3>
+<p>Có hai cách để truy cập vào mỗi phần tử của mảng hai chiều:
+<a name="-cach--giong-voi-list"></a></p>
+
+<h4 id="2411-cách-1-giống-với-list">2.4.1.1. Cách 1: giống với list</h4>
+<p>Để truy cập vào phần tử ở hàng thứ <code class="language-plaintext highlighter-rouge">i</code>, cột thứ <code class="language-plaintext highlighter-rouge">j</code> của ma trận (chỉ số bắt đầu 
+từ 0), ta có thể coi phần tử đó là phần tử thứ <code class="language-plaintext highlighter-rouge">j</code> của mảng <code class="language-plaintext highlighter-rouge">i</code> trong mảng hai 
+chiều ban đầu.</p>
+
+<p>Ví dụ:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
+<span class="mi">6</span>
+</code></pre></div></div>
+<p>ở đây <code class="language-plaintext highlighter-rouge">A[1]</code> chính lả mảng một chiều <code class="language-plaintext highlighter-rouge">[4, 5, 6]</code>, trong mảng này, ta lấy phần 
+tử có chỉ số là <code class="language-plaintext highlighter-rouge">2</code>, phần tử đó có giá trị là <code class="language-plaintext highlighter-rouge">6</code>. Vậy <code class="language-plaintext highlighter-rouge">A[1][2]</code> = 6.</p>
+
+<p><a name="-cach--giong-nhu-matlab"></a></p>
+
+<h4 id="2412-cách-2-giống-như-matlab">2.4.1.2. Cách 2: giống như Matlab</h4>
+<p>Trong Matlab, để truy cập vào phần tử ở hàng đầu tiên, cột đầu tiên của một ma 
+trận <code class="language-plaintext highlighter-rouge">A</code>, ta sử dụng <code class="language-plaintext highlighter-rouge">A(1, 1)</code>. Trong Numpy, có một chút thay đổi:</p>
+
+<ol>
+  <li>Chỉ số bắt đầu từ 0.</li>
+  <li>Bộ chỉ số được đặt trong dấu ngoặc vuông <code class="language-plaintext highlighter-rouge">[]</code>.</li>
+</ol>
+
+<p>Ví dụ</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">A</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="mi">8</span>
+</code></pre></div></div>
+
+<p><a name="-truy-cap-vao-hangcot"></a></p>
+
+<h3 id="242-truy-cập-vào-hàngcột">2.4.2. Truy cập vào hàng/cột</h3>
+
+<p>Để truy cập vào hàng có chỉ số <code class="language-plaintext highlighter-rouge">i</code> của một ma trận <code class="language-plaintext highlighter-rouge">A</code>, ta chỉ cần dùng <code class="language-plaintext highlighter-rouge">A[i]</code> 
+hoặc <code class="language-plaintext highlighter-rouge">A[i,:]</code> hoặc <code class="language-plaintext highlighter-rouge">A[i][:]</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">A</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">array</span><span class="p">([</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span>
+<span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+</code></pre></div></div>
+
+<p>Để truy cập vào cột có chỉ số <code class="language-plaintext highlighter-rouge">j</code>, ta dùng <code class="language-plaintext highlighter-rouge">A[:,j]</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">A</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span>
+</code></pre></div></div>
+
+<p><strong>Chú ý:</strong></p>
+
+<ul>
+  <li>
+    <p>Trong Numpy, kết quả trả về của một cột hay hàng đều là một mảng một chiều, 
+không phải là một vector cột như trong Matlab. Tuy nhiên, khi lấy một ma trận 
+nhân với nó, nó vẫn được coi là một vector cột. Thông tin chi tiết sẽ có trong 
+các bài sau.</p>
+  </li>
+  <li>
+    <p>Nếu sử dụng <code class="language-plaintext highlighter-rouge">A[:][1]</code>, kết quả trả về là <strong>hàng</strong> có chỉ số <code class="language-plaintext highlighter-rouge">1</code> chứ không 
+phải cột có chỉ số <code class="language-plaintext highlighter-rouge">1</code>. Trong trường hợp này, <code class="language-plaintext highlighter-rouge">A[:]</code> vẫn được hiểu là cả ma 
+trận <code class="language-plaintext highlighter-rouge">A</code>, vì vậy nên <code class="language-plaintext highlighter-rouge">A[:][1]</code> tương đương với <code class="language-plaintext highlighter-rouge">A[1]</code>.</p>
+  </li>
+  <li>
+    <p>Có sự khác nhau căn bản giữa <code class="language-plaintext highlighter-rouge">A</code> và <code class="language-plaintext highlighter-rouge">A[:]</code>, chúng ta sẽ quay lại trong một 
+bài nào đó ở sau.</p>
+  </li>
+</ul>
+
+<hr />
+
+<p><strong>Bài tập:</strong></p>
+
+<p>Cho một ma trận <code class="language-plaintext highlighter-rouge">A</code>, viết hàm <code class="language-plaintext highlighter-rouge">myfunc</code> tính tổng các phần tử trên các <strong>cột</strong> 
+có chỉ số chẵn (<code class="language-plaintext highlighter-rouge">0, 2, 4, ...</code>) của ma trận đó. 
+Ví dụ:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">myfunc</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="mi">4</span>
+</code></pre></div></div>
+<p>Giải thích: cột có chỉ số <code class="language-plaintext highlighter-rouge">0</code> của ma trận là mảng <code class="language-plaintext highlighter-rouge">[1, 3]</code>, tổng các phần tử 
+của mảng này là 4.</p>
+
+<hr />
+
+<p><a name="-truy-cap-vao-nhieu-phan-tu-cua-ma-tran"></a></p>
+
+<h2 id="25-truy-cập-vào-nhiều-phần-tử-của-ma-trận">2.5. Truy cập vào nhiều phần tử của ma trận</h2>
+<p><a name="-nhieu-phan-tu-trong-cung-mot-hang"></a></p>
+
+<h3 id="251-nhiều-phần-tử-trong-cùng-một-hàng">2.5.1. Nhiều phần tử trong cùng một hàng</h3>
+<p>Việc truy cập vào nhiều phần tử trong một hàng tương tự như với mảng một chiều:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">A</span>
+<span class="n">array</span><span class="p">([[</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span>  <span class="mi">4</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mi">5</span><span class="p">,</span>  <span class="mi">6</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span>  <span class="mi">8</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">:]</span>
+<span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">A</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">)]</span>
+<span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span>
+</code></pre></div></div>
+
+<p>trong đó, <code class="language-plaintext highlighter-rouge">range(0, A.shape[1], 2)</code> tạo ra một <code class="language-plaintext highlighter-rouge">list</code> các phần tử là cấp số cộng với công sai là <code class="language-plaintext highlighter-rouge">2</code>, 
+bắt đầu từ <code class="language-plaintext highlighter-rouge">0</code> và kết thúc tại số lớn nhất có thể không vượt quá số cột của <code class="language-plaintext highlighter-rouge">A</code>. Số cột của <code class="language-plaintext highlighter-rouge">A</code> chính là <code class="language-plaintext highlighter-rouge">A.shape[1]</code>.</p>
+
+<p><a name="-nhieu-phan-tu-trong-cung-mot-cot"></a></p>
+
+<h3 id="252-nhiều-phần-tử-trong-cùng-một-cột">2.5.2. Nhiều phần tử trong cùng một cột</h3>
+<p>Tương tự với nhiều phần tử trong cùng một cột:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; A[[0, 2], -1] # the first and the third elements in the last column
+array([ 4, 12])
+</code></pre></div></div>
+
+<p><a name="-nhieu-hang-nhieu-cot"></a></p>
+
+<h3 id="253-nhiều-hàng-nhiều-cột">2.5.3. Nhiều hàng, nhiều cột</h3>
+<p>Nếu muốn <em>trích</em> một ma trận con từ ma trận ban đầu, giả sử lấy ma trận được 
+tạo bởi hàng có chỉ số <code class="language-plaintext highlighter-rouge">1</code> và <code class="language-plaintext highlighter-rouge">2</code>, cột có chỉ số <code class="language-plaintext highlighter-rouge">0</code> và <code class="language-plaintext highlighter-rouge">3</code>, ta làm như sau:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">A</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]][:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">]]</span>
+<span class="n">array</span><span class="p">([[</span> <span class="mi">5</span><span class="p">,</span>  <span class="mi">8</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">12</span><span class="p">]])</span>
+</code></pre></div></div>
+
+<p><strong>Chú ý:</strong> Một cách tự nhiên, bạn đọc có thể suy ra rằng câu lệnh nên là <code class="language-plaintext highlighter-rouge">A[[1, 
+2], [0, 3]]</code> (giống như cách làm trong Matlab). Tuy nhiên, câu lệnh này sẽ cho 
+ra một kết quả khác (xem mục 4).</p>
+
+<p><code class="language-plaintext highlighter-rouge">A[[1, 2]][:, [0,3]]</code> có thể hiểu được là: đầu tiên lấy hai hàng có chỉ số <code class="language-plaintext highlighter-rouge">1</code> 
+và <code class="language-plaintext highlighter-rouge">2</code> bằng <code class="language-plaintext highlighter-rouge">A[[1, 2]]</code>, ta được một ma trận, sau đó lấy hai cột có chỉ số <code class="language-plaintext highlighter-rouge">0</code> 
+và <code class="language-plaintext highlighter-rouge">3</code> của ma trận mới này.
+<a name="-cap-cac-toa-do"></a></p>
+
+<h3 id="254-cặp-các-toạ-độ">2.5.4. Cặp các toạ độ</h3>
+
+<p>Xét câu lệnh:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">A</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>
+<span class="n">array</span><span class="p">([</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">])</span>
+</code></pre></div></div>
+
+<p>Câu lệnh này sẽ trả về một mảng một chiều gồm các phần tử: <code class="language-plaintext highlighter-rouge">A[1][0]</code> và <code class="language-plaintext highlighter-rouge">A[2][3]
+</code>, tức <code class="language-plaintext highlighter-rouge">[1, 2]</code> và <code class="language-plaintext highlighter-rouge">[0, 3]</code> là <code class="language-plaintext highlighter-rouge">list</code> các toạ độ theo mỗi chiều. Hai <code class="language-plaintext highlighter-rouge">list</code> này 
+phải có độ dài bằng nhau hoặc một <code class="language-plaintext highlighter-rouge">list</code> có độ dài bằng 1. 
+Khi một <code class="language-plaintext highlighter-rouge">list</code> có độ dài bằng 1, nó sẽ được <em>cặp</em> với mọi phần tử của <code class="language-plaintext highlighter-rouge">list</code> 
+còn lại. Ví dụ:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">A</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="c1"># equivalent to A[[1, 2], [0, 0]]
+</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong>Bài tập:</strong> 
+Viết hàm <code class="language-plaintext highlighter-rouge">myfunc</code> tính tổng tất cả các phần tử có cả hai chỉ số đều chẵn của 
+một ma trận <code class="language-plaintext highlighter-rouge">A</code> bất kỳ. Ví dụ:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">A</span>
+<span class="n">array</span><span class="p">([[</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span>  <span class="mi">4</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mi">5</span><span class="p">,</span>  <span class="mi">6</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span>  <span class="mi">8</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">myfunc</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="c1"># = 1 + 3 + 9 + 11
+</span><span class="mi">24</span>
+</code></pre></div></div>
+
+<p>Gợi ý: bạn đọc tìm đọc trước cách sử dụng <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.sum.html"><code class="language-plaintext highlighter-rouge">np.sum</code></a> cho mảng nhiều chiều.</p>
+
+<hr />
+
+<p><a name="-npsum-npmin-npmax-npmean-cho-mang-nhieu-chieu"></a></p>
+
+<h2 id="26-npsum-npmin-npmax-npmean-cho-mảng-nhiều-chiều">2.6. np.sum, np.min, np.max, np.mean cho mảng nhiều chiều</h2>
+
+<p>Xin nhắc lại về cách quy ước <code class="language-plaintext highlighter-rouge">axis</code> của ma trận. <code class="language-plaintext highlighter-rouge">axis = 0</code> là tính theo chiều 
+từ trên xuống dưới, nghĩa là phương của nó cùng với phương của các cột. Tương 
+tự <code class="language-plaintext highlighter-rouge">axis = 1</code> sẽ có phương cùng với phương của các hàng. Hãy quan sát hình dưới 
+đây và ghi nhớ cách quy ước quan trọng này.</p>
+
+<hr />
+
+<div class="imgcap">
+<img src="/assets/fundaml/matrix.png" align="center" width="400" />
+</div>
+<hr />
+
+<p>Xét một ma trận:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">A</span>
+<span class="n">array</span><span class="p">([[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">2.</span><span class="p">,</span>  <span class="mf">3.</span><span class="p">,</span>  <span class="mf">2.</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">4.</span><span class="p">,</span>  <span class="mf">3.</span><span class="p">,</span>  <span class="mf">7.</span><span class="p">,</span>  <span class="mf">4.</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">4.</span><span class="p">,</span>  <span class="mf">2.</span><span class="p">,</span>  <span class="mf">3.</span><span class="p">]])</span>
+</code></pre></div></div>
+
+<p>Và các hàm <code class="language-plaintext highlighter-rouge">np.sum(), np.min(), np.max(), np.mean()</code> tác động lên <code class="language-plaintext highlighter-rouge">A</code> theo <code class="language-plaintext highlighter-rouge">axis = 0</code> (tức các cột của <code class="language-plaintext highlighter-rouge">A</code>), kết quả sẽ là:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">array</span><span class="p">([</span>  <span class="mf">6.</span><span class="p">,</span>   <span class="mf">9.</span><span class="p">,</span>  <span class="mf">12.</span><span class="p">,</span>   <span class="mf">9.</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">np</span><span class="p">.</span><span class="nb">min</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">array</span><span class="p">([</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">2.</span><span class="p">,</span>  <span class="mf">2.</span><span class="p">,</span>  <span class="mf">2.</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">np</span><span class="p">.</span><span class="nb">max</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">array</span><span class="p">([</span> <span class="mf">4.</span><span class="p">,</span>  <span class="mf">4.</span><span class="p">,</span>  <span class="mf">7.</span><span class="p">,</span>  <span class="mf">4.</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">array</span><span class="p">([</span> <span class="mf">2.</span><span class="p">,</span>  <span class="mf">3.</span><span class="p">,</span>  <span class="mf">4.</span><span class="p">,</span>  <span class="mf">3.</span><span class="p">])</span>
+</code></pre></div></div>
+<p>Các giá trị theo các hàm trê lần lượt là <em>tổng, giá trị nhỏ nhất, giá trị lớn nhất, trung bình</em> theo mỗi <strong>cột</strong>. Kết quả trả về là các mảng một chiều có số phần tử bằng số cột của <code class="language-plaintext highlighter-rouge">A</code>.</p>
+
+<p>Tương tự như thế khi thay <code class="language-plaintext highlighter-rouge">axis = 1</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">array</span><span class="p">([</span>  <span class="mf">8.</span><span class="p">,</span>  <span class="mf">18.</span><span class="p">,</span>  <span class="mf">10.</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">np</span><span class="p">.</span><span class="nb">min</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">array</span><span class="p">([</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">3.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">np</span><span class="p">.</span><span class="nb">max</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">array</span><span class="p">([</span> <span class="mf">3.</span><span class="p">,</span>  <span class="mf">7.</span><span class="p">,</span>  <span class="mf">4.</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">array</span><span class="p">([</span> <span class="mf">2.</span> <span class="p">,</span>  <span class="mf">4.5</span><span class="p">,</span>  <span class="mf">2.5</span><span class="p">])</span>
+</code></pre></div></div>
+
+<p>Kết quả trả về được tính theo <strong>hàng</strong>. Kết quả trả về cũng là các mảng một 
+chiều có số phần tử bằng với số hàng của A.</p>
+
+<p>Khi không đề cập tới <code class="language-plaintext highlighter-rouge">axis</code>, kết quả được tính trên toàn bộ ma trận:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="mf">36.0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">np</span><span class="p">.</span><span class="nb">min</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="mf">1.0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">np</span><span class="p">.</span><span class="nb">max</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="mf">7.0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="mf">3.0</span>
+</code></pre></div></div>
+
+<p><a name="keepdims--true"></a></p>
+
+<h3 id="keepdims--true"><code class="language-plaintext highlighter-rouge">keepdims = True</code></h3>
+
+<p>Đôi khi, để thuận tiện cho việc tính toán về sau, chúng ta muốn kết quả trả về khi <code class="language-plaintext highlighter-rouge">axis = 0</code> là các vector hàng <strong>thực sự</strong>, khi <code class="language-plaintext highlighter-rouge">axis = 1</code> là các vector cột <strong>thực sự</strong>.
+Để làm được việc đó, Numpy cung cấp thuộc tính <code class="language-plaintext highlighter-rouge">keepdims = True</code> (mặc định là <code class="language-plaintext highlighter-rouge">False</code>). Khi <code class="language-plaintext highlighter-rouge">keepdims = True</code>, nếu sử dụng <code class="language-plaintext highlighter-rouge">axis = 0</code>, kết quả sẽ là một mảng hai chiều có chiều thứ nhất bằng 1 (coi như ma trận một hàng). 
+Tương tự, nếu sử dụng <code class="language-plaintext highlighter-rouge">axis = 1</code>, kết quả sẽ là một mảng hai chiều có chiều thứ hai bằng 1 (một ma trận có số cột bằng 1). Việc này, về sau chúng ta sẽ thấy, quan trọng trong nhiều trường hợp đặc biệt:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">keepdims</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+<span class="n">array</span><span class="p">([[</span>  <span class="mf">6.</span><span class="p">,</span>   <span class="mf">9.</span><span class="p">,</span>  <span class="mf">12.</span><span class="p">,</span>   <span class="mf">9.</span><span class="p">]])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+<span class="n">array</span><span class="p">([[</span> <span class="mf">2.</span> <span class="p">],</span>
+       <span class="p">[</span> <span class="mf">4.5</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">2.5</span><span class="p">]])</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong>Bài tập:</strong>
+Cho một ma trận <code class="language-plaintext highlighter-rouge">A</code> bất kỳ. Trong mỗi hàng, ta định nghĩa <em>độ biến động</em> của nó 
+là sự khác nhau giữa giá trị lớn nhất và nhỏ nhất của các phần tử trong hàng 
+đó. Hãy viết hàm <code class="language-plaintext highlighter-rouge">myfunc</code> trả về tổng <em>độ biến động</em> của tất cả các hàng trong 
+ma trận đó.</p>
+
+<p>Ví dụ với ma trận <code class="language-plaintext highlighter-rouge">A</code> trong bài học, <em>độ biến động</em> của mỗi hàng lần lượt là 
+<code class="language-plaintext highlighter-rouge">2.0, 4.0, 3.0</code>. Vậy <code class="language-plaintext highlighter-rouge">myfunc(A) = 9.0</code>.</p>
+
+<hr />
+
+<p><a name="-cac-phep-toan-tac-dong-den-moi-phan-tu-cua-ma-tran"></a></p>
+
+<h2 id="27-các-phép-toán-tác-động-đến-mọi-phần-tử-của-ma-trận">2.7. Các phép toán tác động đến mọi phần tử của ma trận</h2>
+
+<p><a name="-tinh-toan-giua-mot-mang-hai-chieu-va-mot-so-vo-huong"></a></p>
+
+<h3 id="271-tính-toán-giữa-một-mảng-hai-chiều-và-một-số-vô-hướng">2.7.1. Tính toán giữa một mảng hai chiều và một số vô hướng</h3>
+<p>Khi tính toán giữa một số vô hướng và một mảng hai chiều, ví dụ:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">A</span>
+<span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">A</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">]])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">A</span><span class="o">*</span><span class="mi">2</span>
+<span class="n">array</span><span class="p">([[</span> <span class="mi">2</span><span class="p">,</span>  <span class="mi">6</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">]])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">2</span><span class="o">**</span><span class="n">A</span>
+<span class="n">array</span><span class="p">([[</span> <span class="mi">2</span><span class="p">,</span>  <span class="mi">8</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">32</span><span class="p">]])</span>
+</code></pre></div></div>
+<p>Ta nhận thấy rằng từng phần tử của mảng sẽ được kết hợp với số vô hướng bằng 
+các phép toán tương ứng để tạo ra một mảng mới cùng kích thước. Việc này, như 
+cũng đã trình bày trong khi làm việc với mảng một chiều,
+đúng với các mảng numpy với số chiều bất kỳ.</p>
+
+<p><a name="-npabs-npsin-npexp-"></a></p>
+
+<h3 id="272-npabs-npsin-npexp-">2.7.2. np.abs, np.sin, np.exp, …</h3>
+<p>Bạn đọc cũng có thể dự đoán được rằng các hàm số này cũng tác động lên từng 
+phần tử của mảng và trả về một mảng cùng kích thước với mảng ban đầu.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c1"># create a random numpy array with shape = (2, 3)
+</span><span class="o">&gt;&gt;&gt;</span> <span class="n">A</span>
+<span class="n">array</span><span class="p">([[</span> <span class="mf">0.66079861</span><span class="p">,</span>  <span class="mf">2.11481663</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.42221111</span><span class="p">],</span>
+       <span class="p">[</span><span class="o">-</span><span class="mf">1.13931439</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.31866767</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.37294795</span><span class="p">]])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">np</span><span class="p">.</span><span class="nb">abs</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">array</span><span class="p">([[</span> <span class="mf">0.66079861</span><span class="p">,</span>  <span class="mf">2.11481663</span><span class="p">,</span>  <span class="mf">1.42221111</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">1.13931439</span><span class="p">,</span>  <span class="mf">0.31866767</span><span class="p">,</span>  <span class="mf">0.37294795</span><span class="p">]])</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong>Bài tập: Frobenious norm</strong></p>
+
+<p><a href="https://en.wikipedia.org/wiki/Matrix_norm#Frobenius_norm">Frobenius norm</a> của 
+một ma trận được định nghĩa là căn bậc hai của tổng bình phương các phần tử của 
+ma trận. 
+Frobenius norm được sử dụng rất nhiều trong các thuật toán Machine Learning vì 
+các tính chất toán học đẹp của nó, trong đó quan trọng nhất là việc đạo hàm của 
+bình phương của nó rất đơn giản. 
+Frobenius norm của một ma trận \(\mathbf{A}\)
+được ký hiệu là \(||\mathbf{A}||_F\)</p>
+
+<p>Numpy có sẵn hàm tính toán norm này, tuy nhiên, chúng ta nên học cách tự tính 
+nó trước. 
+Viết hàm <code class="language-plaintext highlighter-rouge">norm_fro(A)</code> tính Frobenius norm của một ma trận bất kỳ.</p>
+
+<p>Ví dụ:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">A</span>
+<span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>
+</code></pre></div></div>
+<p>thì <code class="language-plaintext highlighter-rouge">norm_fro(A) = 6.2449979983983983</code> \(= \sqrt{1^2 + 3^2 + 2^2 + 5^2}\).</p>
+
+<p><strong>Gợi ý:</strong> Sử dụng hàm <a href="https://docs.scipy.org/doc/numpy-1.13.0/reference/generated/numpy.sqrt.html"><code class="language-plaintext highlighter-rouge">np.sqrt</code></a>.</p>
+
+<hr />
+
+<p><a name="-cac-phep-toan-giua-hai-ma-tran-i"></a></p>
+
+<h2 id="28-các-phép-toán-giữa-hai-ma-trận-i">2.8. Các phép toán giữa hai ma trận I</h2>
+<p>Các phép toán cộng, trừ, nhân, chia, luỹ thừa (<code class="language-plaintext highlighter-rouge">+, -, *, /, **</code>) giữa hai mảng 
+<strong>cùng kích thước</strong> cũng được thực hiện dựa trên từng cặp phần tử. Kết quả trả 
+về là một mảng cùng chiều với hai mảng đã cho:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">5.</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">A</span><span class="o">*</span><span class="n">B</span>
+<span class="n">array</span><span class="p">([[</span>  <span class="mf">5.</span><span class="p">,</span>  <span class="mf">40.</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">14.</span><span class="p">,</span>   <span class="mf">9.</span><span class="p">]])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">A</span><span class="o">**</span><span class="n">B</span>
+<span class="n">array</span><span class="p">([[</span>  <span class="mf">1.00000000e+00</span><span class="p">,</span>   <span class="mf">3.90625000e+05</span><span class="p">],</span>
+       <span class="p">[</span>  <span class="mf">1.28000000e+02</span><span class="p">,</span>   <span class="mf">2.70000000e+01</span><span class="p">]])</span>
+</code></pre></div></div>
+
+<p><strong>Chú ý:</strong> tích của hai ma trận như định nghĩa trong Đại số tuyến tính được thực hiện dựa trên hàm số khác. Cách viết <code class="language-plaintext highlighter-rouge">A*B</code> được thực hiện trên từng cặp phần tử của <code class="language-plaintext highlighter-rouge">A</code> và <code class="language-plaintext highlighter-rouge">B</code></p>
+
+<hr />
+
+<p><strong>Bài tập:</strong></p>
+
+<p>Trong khi làm việc với Machine Learning, chúng ta thường xuyên phải <em>so sánh</em> hai ma trận. Xem xem liệu chúng có gần giống nhau không. Một cách phổ biến để làm việc này là tính bình phương của Frobineous norm
+của hiệu hai ma trận đó. Cụ thể, để xem ma trận \(\mathbf{A}\) có gần ma trận \(\mathbf{B}\) hay không, người ta thường tính \(||\mathbf{A} - \mathbf{B}||_F^2\).</p>
+
+<p>Cho hai mảng hai chiều có cùng kích thước <code class="language-plaintext highlighter-rouge">A</code> và <code class="language-plaintext highlighter-rouge">B</code>. Viết hàm <code class="language-plaintext highlighter-rouge">dist_fro</code> tính bình phương Frobenious norm của hiệu hai ma trận được mô tả bởi hai mảng đó.</p>
+
+<hr />
+
+<p><a name="-chuyen-vi-ma-tran-reshape-ma-tran"></a></p>
+
+<h2 id="29-chuyện-vị-ma-trận-reshape-ma-trận">2.9. Chuyện vị ma trận, Reshape ma trận</h2>
+<p><a name="-chuyen-vi-ma-tran"></a></p>
+
+<h3 id="291-chuyển-vị-ma-trận">2.9.1 Chuyển vị ma trận</h3>
+
+<p>Có hai cách để lấy chuyển vị của một ma trận: dùng thuộc tính <code class="language-plaintext highlighter-rouge">.T</code> hoặc dùng hàm <code class="language-plaintext highlighter-rouge">np.transpose</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">A</span>
+<span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">A</span><span class="p">.</span><span class="n">T</span> 
+<span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">np</span><span class="p">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+</code></pre></div></div>
+
+<p><a name="-reshape"></a></p>
+
+<h3 id="292-reshape">2.9.2. Reshape</h3>
+
+<p>Khi làm việc với ma trận, chúng ta sẽ phải thường xuyên làm việc với các phép biến đổi kích thước của ma trận. Phép biến đổi kích thước có thể coi là việc sắp xếp lại các phần tử của một 
+ma trận vào một ma trận khác có tổng số phần tử như nhau.</p>
+
+<p>Trong numpy, để làm được việc này chúng ta dùng phương thức <code class="language-plaintext highlighter-rouge">.reshape</code> hoặc hàm <code class="language-plaintext highlighter-rouge">np.reshape</code>. Cùng xem ví dụ:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">np</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">A</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+</code></pre></div></div>
+
+<p>Số chiều của mảng mới không nhất thiết phải bằng 2, nó có thể bằng bất kỳ giá trị nào (lớn hơn hoặc bằng 1) nhưng phải đảm bảo tổng số phần tử của hai mảng là như nhau. Khi biến thành mảng 
+một chiều, ta không dùng tuple (như <code class="language-plaintext highlighter-rouge">(3,2)</code>) nữa mà chỉ dùng một số tự nhiên:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">np</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span> <span class="c1"># to a 1d numpy array
+</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">A</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># to a 3d numpy array 
+</span><span class="n">array</span><span class="p">([[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]],</span>
+
+       <span class="p">[[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]],</span>
+
+       <span class="p">[[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]]])</span>
+</code></pre></div></div>
+
+<p>Ta có thể nhận thấy rằng nếu biến thành một mảng hai chiều mới, ta không nhất thiết phải biết kích thước của mỗi chiều mà chỉ cần kích thước của một chiều. Kích thước còn lại được suy ra
+từ việc tổng số phần tử của hai mảng là như nhau. Tương tự, nếu biến thành một mảng ba chiều mới, ta chỉ cần biết hai trong ba kích thước. Kích thước còn lại sẽ được python tự tính ra, và ta
+chỉ cần gán nó bằng <code class="language-plaintext highlighter-rouge">-1</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">A</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># to 1d array, its size must be 6
+</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">np</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="c1"># ~ a 2d array of shape 6x1
+</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">3</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">4</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">5</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">6</span><span class="p">]])</span>
+</code></pre></div></div>
+
+<p><a name="-thu-tu-cua-phep-toan-reshape"></a></p>
+
+<h3 id="293-thứ-tự-của-phép-toán-reshape">2.9.3. Thứ tự của phép toán reshape</h3>
+<p>Có một điểm quan trọng cần nhớ là thứ tự của phép toán reshape: các phần tử trong mảng mới được sắp xếp như thế nào. Có hai cách sắp xếp chúng ta cần lưu ý: mặc định là <code class="language-plaintext highlighter-rouge">'C'-order</code>, và một cách khác là <code class="language-plaintext highlighter-rouge">'F'-order</code> (xem hình).</p>
+
+<hr />
+
+<div class="imgcap">
+<img src="assets/fundaml/reshape.png" align="center" width="400" />
+</div>
+<hr />
+
+<p>Trong <code class="language-plaintext highlighter-rouge">'C'-order</code>, các thành phần của mảng nguồn được quét từ <code class="language-plaintext highlighter-rouge">axis</code> <em>trong ra ngoài</em> (<code class="language-plaintext highlighter-rouge">axis = 1</code> rồi mới tới <code class="language-plaintext highlighter-rouge">axis = 0</code> trong mảng hai chiều, tức từng hàng một), sau đó chúng được xếp vào mảng đích cũng theo thứ tự đó.</p>
+
+<p>Trong <code class="language-plaintext highlighter-rouge">'F'-oder</code> (Fortran) các thành phần của mảng nguồn được quét từ <code class="language-plaintext highlighter-rouge">axis</code> <em>ngoài vào trong</em> (trong mảng hai chiều là từng cột một), sau đó chúng được sắp xếp vào mảng đích cũng theo thứ tự đó - từng cột một.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">A</span>
+<span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">A</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="s">'F'</span><span class="p">)</span>
+<span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+<span class="o">&gt;&gt;&gt;</span> 
+
+</code></pre></div></div>
+
+<p>(Đọc thêm <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.reshape.html"><code class="language-plaintext highlighter-rouge">numpy.reshape</code></a>.)</p>
+
+<hr />
+
+<p><strong>Bài tập:</strong> 
+Hãy tạo ma trận <code class="language-plaintext highlighter-rouge">A</code> sau một cách nhanh nhất, không dùng cách thủ công ghi từng phần tử ra.</p>
+
+<p>\[
+\left[
+\begin{matrix}
+1 &amp;5&amp;9&amp;2\\6&amp;10&amp;3&amp;7 \\11&amp;4&amp;8&amp;12
+\end{matrix}
+\right]
+\]
+Gợi ý:</p>
+<ul>
+  <li>sử dụng <code class="language-plaintext highlighter-rouge">np.arange()</code></li>
+  <li>Để ý vị trí của 9, 10, 11 và 2, 3, 4</li>
+  <li>Lời giải không quá hai dòng</li>
+</ul>
+
+<p>Bạn có thể nhận được phản hồi ‘Kết quả thành công’ nhưng hãy thử cố nghĩ quy luật của ma trận này rồi dùng các phép <code class="language-plaintext highlighter-rouge">transpose, reshape</code> thích hợp.</p>
+
+<hr />
+
+<p><a name="-cac-phep-toan-giua-ma-tran-va-vector"></a></p>
+
+<h2 id="210-các-phép-toán-giữa-ma-trận-và-vector">2.10. Các phép toán giữa ma trận và vector</h2>
+
+<!-- *Phần tích giữa ma trận và vector trong Đại Số Tuyến Tính sẽ được đề cập ở bài tập sau*. -->
+
+<p>Chúng ta đã qua các bài về phép toán giữa một mảng hai chiều và một số vô hướng, giữa hai mảng hai chiều cùng kích thước. Trong bài này, chúng ta cùng làm quen với các phép toán giữa một mảng hai chiều 
+và một mảng một chiều. Trước tiên, hãy thử vài ví dụ:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">).</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">A</span>
+<span class="n">array</span><span class="p">([[</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">3</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mi">4</span><span class="p">,</span>  <span class="mi">5</span><span class="p">,</span>  <span class="mi">6</span><span class="p">,</span>  <span class="mi">7</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mi">8</span><span class="p">,</span>  <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">]])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">A</span> <span class="o">+</span> <span class="n">b</span>
+<span class="n">array</span><span class="p">([[</span>  <span class="mf">1.</span><span class="p">,</span>   <span class="mf">3.</span><span class="p">,</span>   <span class="mf">5.</span><span class="p">,</span>   <span class="mf">8.</span><span class="p">],</span>
+       <span class="p">[</span>  <span class="mf">5.</span><span class="p">,</span>   <span class="mf">7.</span><span class="p">,</span>   <span class="mf">9.</span><span class="p">,</span>  <span class="mf">12.</span><span class="p">],</span>
+       <span class="p">[</span>  <span class="mf">9.</span><span class="p">,</span>  <span class="mf">11.</span><span class="p">,</span>  <span class="mf">13.</span><span class="p">,</span>  <span class="mf">16.</span><span class="p">]])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">A</span><span class="o">*</span><span class="n">b</span> 
+<span class="n">array</span><span class="p">([[</span>  <span class="mf">0.</span><span class="p">,</span>   <span class="mf">2.</span><span class="p">,</span>   <span class="mf">6.</span><span class="p">,</span>  <span class="mf">15.</span><span class="p">],</span>
+       <span class="p">[</span>  <span class="mf">4.</span><span class="p">,</span>  <span class="mf">10.</span><span class="p">,</span>  <span class="mf">18.</span><span class="p">,</span>  <span class="mf">35.</span><span class="p">],</span>
+       <span class="p">[</span>  <span class="mf">8.</span><span class="p">,</span>  <span class="mf">18.</span><span class="p">,</span>  <span class="mf">30.</span><span class="p">,</span>  <span class="mf">55.</span><span class="p">]])</span>
+</code></pre></div></div>
+
+<p>Nhận thấy rằng kết quả của phép toán <code class="language-plaintext highlighter-rouge">A + b</code> thu được bằng cách lấy từng <em>hàng</em> của <code class="language-plaintext highlighter-rouge">A</code> cộng với <code class="language-plaintext highlighter-rouge">b</code>. Kết quả của <code class="language-plaintext highlighter-rouge">A*b</code> thu được bằng cách lấy tích của từng hàng của <code class="language-plaintext highlighter-rouge">A</code> và <code class="language-plaintext highlighter-rouge">b</code> - tích ở đây là tích theo từng phần tử 
+của hai mảng một chiều, không phải tích vô hướng của hai vector. Nói cách khác, kết quả của <code class="language-plaintext highlighter-rouge">A*b</code> thu được bằng cách lấy từng <em>cột</em> của <code class="language-plaintext highlighter-rouge">A</code> nhân với phần tử tương ứng của <code class="language-plaintext highlighter-rouge">b</code>. Quy luật tương tự xảy ra 
+với cả phép <code class="language-plaintext highlighter-rouge">-</code>, <code class="language-plaintext highlighter-rouge">/</code> và <code class="language-plaintext highlighter-rouge">**</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">A</span><span class="o">**</span><span class="n">c</span>
+<span class="n">array</span><span class="p">([[</span>  <span class="mi">0</span><span class="p">,</span>   <span class="mi">1</span><span class="p">,</span>   <span class="mi">2</span><span class="p">,</span>   <span class="mi">9</span><span class="p">],</span>
+       <span class="p">[</span>  <span class="mi">4</span><span class="p">,</span>  <span class="mi">25</span><span class="p">,</span>   <span class="mi">6</span><span class="p">,</span>  <span class="mi">49</span><span class="p">],</span>
+       <span class="p">[</span>  <span class="mi">8</span><span class="p">,</span>  <span class="mi">81</span><span class="p">,</span>  <span class="mi">10</span><span class="p">,</span> <span class="mi">121</span><span class="p">]])</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong>Bài tập</strong></p>
+
+<p>Giả sử tập dữ liệu bao gồm nhiều điểm dữ liệu có cùng chiều, được sắp xếp thành một mảng hai chiều mô tả một ma trận - được gọi là ma trận dữ liệu. Mỗi hàng của ma trận này là một điểm dữ liệu. 
+Một trong các kỹ thuật quan trọng trước khi áp dụng các thuật toán Machine Learning lên dữ liệu là <a href="https://machinelearningcoban.com/general/2017/02/06/featureengineering/#feature-scaling-and-normalization"><strong>chuẩn hoá dữ liệu</strong></a>.
+Trong các phương pháp chuẩn hoá dữ liệu, một phương pháp thường được sử dụng là đưa dữ liệu về dạng <em>zero-mean</em>, tức trung bình cộng của toàn bộ dữ liệu là một vector có toàn bộ các thành phần bằng 0.</p>
+
+<p>Cách chuẩn hoá này có thể được thực hiện bằng cách trước tiên tính vector trung bình của toàn bộ dữ liệu (ở đây là vector trung bình của toàn bộ các hàng), 
+sau đó lấy từng điểm dữ liệu trừ đi vector trung bình. Khi đó, ma trận mới sẽ có trung bình cộng các hàng bằng vector 0, và ta nói rằng ma trận dữ liệu mới này là <em>zero-mean</em>.</p>
+
+<p>Cho một mảng hai chiều <code class="language-plaintext highlighter-rouge">X</code> mô tả dữ liệu, trong đó <code class="language-plaintext highlighter-rouge">X[i]</code> là một mảng một chiều mô tả dữ liệu có chỉ số <code class="language-plaintext highlighter-rouge">i</code>. Hãy viết hàm <code class="language-plaintext highlighter-rouge">zero_mean</code> trả về ma trận dữ liệu đã chuẩn hoá theo <em>zero-mean</em>.</p>
+
+<hr />
+
+<p><a name="-tich-giua-hai-ma-tran-tich-giua-ma-tran-va-vector"></a></p>
+
+<h2 id="211-tích-giữa-hai-ma-trận-tích-giữa-ma-trận-và-vector">2.11. Tích giữa hai ma trận, tích giữa ma trận và vector</h2>
+
+<p><a name="-tich-giua-hai-ma-tran"></a></p>
+
+<h3 id="2111-tích-giữa-hai-ma-trận">2.11.1. Tích giữa hai ma trận</h3>
+<p>Trong Đại Số Tuyến Tính (ĐSTT), tích của hai ma trận \(\mathbf{A} \in \mathbb{R}^{m\times n}\) và \(\mathbf{B} \in \mathbb{R}^{n \times p}\) được ký hiệu là \(\mathbf{C = AB} \in \mathbb{R}^{m \times p}\) 
+trong đó phần tử ở hàng thứ \(i\) cột thứ \(j\) (tính từ \(0\)) của \(\mathbf{C}\) được tính theo công thức: 
+\[
+c_{ij} = \sum_{k=0}^{n-1}a_{ik}b_{kj}
+\]</p>
+
+<p>Chú ý rằng để phép nhân thực hiện được, số cột của ma trận thứ nhất phải bằng với số hàng của ma trận thứ hai (ở đây đều bằng \(n\)). Và phép nhân ma trận không có tính chất giao hoán, nhưng <strong>có tính chất kết hợp</strong>, tức: 
+\[
+\mathbf{ABC} = \mathbf{(AB)C} = \mathbf{A}(\mathbf{BC})
+\]</p>
+
+<p>Trong numpy, ký hiệu <code class="language-plaintext highlighter-rouge">*</code> không thực sự để chỉ tích hai ma trận theo nghĩa này mà là tích theo từng cặp phần tử (element-wise). Phép toán <code class="language-plaintext highlighter-rouge">*</code> trong numpy yêu cầu hai mảng phải có cùng kích thước, và phép toán này có tính chất giao hoán vì phép nhân
+của hai số vô hướng có tính chất giao hoán.</p>
+
+<p>Cho hai mảng numpy hai chiều <code class="language-plaintext highlighter-rouge">A, B</code> trong đó <code class="language-plaintext highlighter-rouge">A.shape[1] == B.shape[0]</code> (đừng quên điều kiện này). Nếu hai mảng này mô tả hai ma trận thì tích của hai ma trận (theo ĐSTT) có thể được thực hiện bằng thuộc tính 
+<code class="language-plaintext highlighter-rouge">.dot</code> hoặc hàm <code class="language-plaintext highlighter-rouge">np.dot</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">).</span><span class="n">reshape</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">A</span>
+<span class="n">array</span><span class="p">([[</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">2</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mi">3</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span>  <span class="mi">5</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mi">6</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span>  <span class="mi">8</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">]])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">).</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">B</span>
+<span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span>
+       <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">2</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mi">3</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span>  <span class="mi">5</span><span class="p">,</span>  <span class="mi">6</span><span class="p">]])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">A</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+<span class="n">array</span><span class="p">([[</span>  <span class="mi">5</span><span class="p">,</span>   <span class="mi">8</span><span class="p">,</span>  <span class="mi">11</span><span class="p">,</span>  <span class="mi">14</span><span class="p">],</span>
+       <span class="p">[</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span>   <span class="mi">8</span><span class="p">,</span>  <span class="mi">20</span><span class="p">,</span>  <span class="mi">32</span><span class="p">],</span>
+       <span class="p">[</span><span class="o">-</span><span class="mi">13</span><span class="p">,</span>   <span class="mi">8</span><span class="p">,</span>  <span class="mi">29</span><span class="p">,</span>  <span class="mi">50</span><span class="p">],</span>
+       <span class="p">[</span><span class="o">-</span><span class="mi">22</span><span class="p">,</span>   <span class="mi">8</span><span class="p">,</span>  <span class="mi">38</span><span class="p">,</span>  <span class="mi">68</span><span class="p">]])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">np</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<span class="n">array</span><span class="p">([[</span>  <span class="mi">5</span><span class="p">,</span>   <span class="mi">8</span><span class="p">,</span>  <span class="mi">11</span><span class="p">,</span>  <span class="mi">14</span><span class="p">],</span>
+       <span class="p">[</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span>   <span class="mi">8</span><span class="p">,</span>  <span class="mi">20</span><span class="p">,</span>  <span class="mi">32</span><span class="p">],</span>
+       <span class="p">[</span><span class="o">-</span><span class="mi">13</span><span class="p">,</span>   <span class="mi">8</span><span class="p">,</span>  <span class="mi">29</span><span class="p">,</span>  <span class="mi">50</span><span class="p">],</span>
+       <span class="p">[</span><span class="o">-</span><span class="mi">22</span><span class="p">,</span>   <span class="mi">8</span><span class="p">,</span>  <span class="mi">38</span><span class="p">,</span>  <span class="mi">68</span><span class="p">]])</span>
+</code></pre></div></div>
+
+<p><a name="-tich-giua-mot-ma-tran-va-mot-vector"></a></p>
+
+<h3 id="2112-tích-giữa-một-ma-trận-và-một-vector">2.11.2. Tích giữa một ma trận và một vector</h3>
+
+<p>Trong ĐSTT, tích giữa một ma trận và một vector cột được coi là một trường hợp đặc biệt của tích giữa một ma trận và một ma trận có số cột bằng một. Khi làm việc với numpy, ma trận được mô tả bởi
+mảng hai chiều, vector được mô tả bởi các mảng một chiều.</p>
+
+<p>Xem ví dụ dưới đây:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">A</span>
+<span class="n">array</span><span class="p">([[</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">2</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mi">3</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span>  <span class="mi">5</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mi">6</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span>  <span class="mi">8</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">]])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">A</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="n">array</span><span class="p">([</span><span class="mi">11</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">83</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">A</span><span class="o">*</span><span class="n">b</span>
+<span class="n">array</span><span class="p">([[</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span>  <span class="mi">8</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">32</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">44</span><span class="p">]])</span>
+</code></pre></div></div>
+<p>Tích của mảng hai chiều <code class="language-plaintext highlighter-rouge">A</code> và mảng một chiều <code class="language-plaintext highlighter-rouge">b</code> với <code class="language-plaintext highlighter-rouge">A.shape[1] == b.shape[0]</code> theo ĐSTT được thực hiện bằng phương thức <code class="language-plaintext highlighter-rouge">.dot()</code> của mảng numpy <code class="language-plaintext highlighter-rouge">A</code>. Kết quả trả về là một mảng một chiều có <code class="language-plaintext highlighter-rouge">shape[0] == 4</code>. 
+Chúng ta cần chú ý một chút ở đây là kết quả trả về là một mảng một chiều chứ không phải một vector cột (được biểu diễn bởi một mảng hai chiều có <code class="language-plaintext highlighter-rouge">shape[1] = 1</code>) như trên lý thuyết. Kết quả
+của <code class="language-plaintext highlighter-rouge">A*b</code> cũng được chỉ ra để nhắc các bạn phân biệt hai phép nhân này.</p>
+
+<p>Tiếp tục quan sát:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">b</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="nb">ValueError</span><span class="p">:</span> <span class="n">shapes</span> <span class="p">(</span><span class="mi">3</span><span class="p">,)</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="ow">not</span> <span class="n">aligned</span><span class="p">:</span> <span class="mi">3</span> <span class="p">(</span><span class="n">dim</span> <span class="mi">0</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">4</span> <span class="p">(</span><span class="n">dim</span> <span class="mi">0</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">array</span><span class="p">([</span><span class="mi">60</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">80</span><span class="p">])</span>
+</code></pre></div></div>
+<p>ta thấy rằng nếu đặt <code class="language-plaintext highlighter-rouge">b</code> lên trước <code class="language-plaintext highlighter-rouge">A</code> thì có lỗi xảy ra vì xung đột chiều. Tuy nhiên nếu mảng một chiều <code class="language-plaintext highlighter-rouge">c</code> có kích thước bằng <code class="language-plaintext highlighter-rouge">4</code> thì lại có thể nhân với mảng hai chiều <code class="language-plaintext highlighter-rouge">A</code> được. 
+Kết quả thu được chính là vector hàng <code class="language-plaintext highlighter-rouge">c</code> nhân với ma trận <code class="language-plaintext highlighter-rouge">A</code>. (Bạn có thể tự kiểm tra lại).</p>
+
+<p>Có một chút cần lưu ý ở đây: Nếu mảng một chiều được nhân vào sau một mảng hai chiều, nó được coi như một vector cột. Nếu nó được nhân vào trước một mảng hai chiều, nó lại được coi là một vector hàng. 
+Dù sao thì nó vẫn là một vector, và vẫn được lưu bởi một mảng một chiều :). Đây cũng chính là một trong những lý o mà những người ban đầu làm quen với numpy gặp nhiều khó khăn.</p>
+
+<hr />
+
+<p><strong>Bài tập:</strong> Quay lại với Frobineus norm. Có một cách khác để tính bình phương của Frobineus norm của một ma trận dựa trên công thức: 
+\[
+||\mathbf{A}||_F^2 = \text{trace}(\mathbf{AA}^T) = \text{trace}(\mathbf{A}^T\mathbf{A})
+\]</p>
+
+<p>trong đó \(\text{trace}()\) là hàm tính tổng các phần tử trên đường chéo của một ma trận vuông.</p>
+
+<p>Cho một mảng hai chiều <code class="language-plaintext highlighter-rouge">A</code>, hãy viết hàm <code class="language-plaintext highlighter-rouge">fro_trace</code> tính bình phương của Frobineus norm của ma trận này dựa vào công thức trên.</p>
+
+<p>Gợi ý:</p>
+<ul>
+  <li>sử dụng hàm <code class="language-plaintext highlighter-rouge">np.diag</code>, hoặc</li>
+  <li>sử dụng <code class="language-plaintext highlighter-rouge">np.trace</code> (gõ <code class="language-plaintext highlighter-rouge">help(np.trace)</code> trên Terminal hoặc google để biết thêm chi tiết).</li>
+</ul>
+
+<p>Hy vọng các bạn gặp khó khăn chút với Compiler và nhận ra lý do của việc đó ;).</p>
+
+<hr />
+
+<p><a name="-softmax-iii---phien-ban-tong-quat"></a></p>
+
+<h2 id="212-softmax-iii---phiên-bản-tổng-quát">2.12. Softmax III - Phiên bản tổng quát</h2>
+<p>Chúng ta đã làm quen với <a href="https://fundaml.com/course/5990a766cdc6e32b3b4d0666/lesson/5990aa22cdc6e32b3b4d0667/5991da2ecdc6e32b3b4d066e">Phiên bản ổn định của hàm Softmax</a>
+với một một mảng một chiều \(\mathbf{z}\):</p>
+
+\[\frac{\exp(z_i)}{\sum_{j=0}^{C-1} \exp(z_j)} = 
+\frac{\exp(-b)\exp(z_i)}{\exp(-b)\sum_{j=0}^{C-1} \exp(z_j)}
+= \frac{\exp(z_i-b)}{\sum_{j=0}^{C-1} \exp(z_j-b)}\]
+
+<p>Bây giờ, chúng ta tiếp tục tổng quát hàm số này để áp dụng cho nhiều phần tử 
+cùng lúc. Giả sử ma trận \(\mathbf{Z}\) là ma trận <em>scores</em> của \(N\) điểm dữ 
+liệu, mỗi hàng \(\mathbf{z}_i\) của ma trận này ứng với score của một điểm dữ liệu. 
+Hãy viết một hàm số trên python để tính softmax cho từng hàng của \(\mathbf{Z}\). 
+Kết quả thu được là một ma trận \(\mathbf{A}\) cùng chiều với \(\mathbf{Z}\) mà 
+mỗi hàng của \(\mathbf{A}\) là kết quả khi áp dụng hàm Softmax lên một hàng tương 
+ứng của \(\mathbf{Z}\).</p>
+
+<p>Bạn đọc cần viết hàm dưới dạng <em>vectorization</em>, tức không sử dụng vòng <code class="language-plaintext highlighter-rouge">for</code>.</p>
+
+<p><strong>Gợi ý:</strong> Lời giải có thể không vượt quá 2 dòng lệnh.</p>
+:ET

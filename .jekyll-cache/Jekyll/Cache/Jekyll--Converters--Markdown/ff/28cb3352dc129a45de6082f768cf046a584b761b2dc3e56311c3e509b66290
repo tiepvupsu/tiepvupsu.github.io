@@ -1,0 +1,487 @@
+I"��<p>Cho tới bây giờ, ngoài <em>thuật toán lười</em> <a href="/2017/01/08/knn/">K-nearest neighbors</a>, tôi đã giới thiệu với bạn đọc hai thuật toán cho các bài toán Classification: <a href="/2017/01/21/perceptron/">Perceptron Learning Algorithm</a> và <a href="/2017/01/27/logisticregression/">Logistic Regression</a>. Hai thuật toán này được xếp vào loại Binary Classifiers vì chúng được xây dựng dựa trên ý tưởng về các bài toán classification với chỉ hai classes. Trong bài viết này, tôi sẽ cùng các bạn làm một vài ví dụ nhỏ về ứng dụng đơn giản (nhưng thú vị) của các binary classifiers, và cách mở rộng chúng để áp dụng cho các bài toán với nhiều classes (multi-class classification problems).</p>
+
+<p>Vì Logistic Regression chỉ yêu cầu các classes là <a href="/2017/01/21/perceptron/#bai-toan-perceptron"><em>nearly linearly separable</em></a> (tức có thể có vài điểm làm phá vỡ tính linear separability), tôi sẽ sử dụng Logistic Regression để đại diện cho các binary classifiers. <em>Chú ý rằng, có rất nhiều các thuật toán cho binary classification nữa mà tôi chưa giới thiệu. Tạm thời, với những gì đã viết, tôi chỉ sử dụng Logistic Regression cho các ví dụ với code mẫu. Các kỹ thuật trong bài viết này hoàn toàn có thể áp dụng cho các binary classifiers khác.</em></p>
+
+<p><strong>Trong trang này:</strong> 
+<!-- MarkdownTOC --></p>
+
+<ul>
+  <li><a href="#-bai-toan-phan-biet-gioi-tinh-dua-tren-anh-khuon-mat">1. Bài toán phân biệt giới tính dựa trên ảnh khuôn mặt</a>
+    <ul>
+      <li><a href="#lam-viec-voi-python">Làm việc với Python</a></li>
+    </ul>
+  </li>
+  <li><a href="#-bai-toan-phan-biet-hai-chu-so-viet-tay">2. Bài toán phân biệt hai chữ số viết tay</a></li>
+  <li><a href="#-binary-classifiers-cho-multi-class-classification-problems">3. Binary Classifiers cho Multi-class Classification problems</a>
+    <ul>
+      <li><a href="#one-vs-one">One-vs-one</a></li>
+      <li><a href="#hierarchical-phan-tang">Hierarchical (phân tầng)</a></li>
+      <li><a href="#binary-coding">Binary coding</a></li>
+      <li><a href="#one-vs-rest-hay-one-hot-coding">one-vs-rest hay one-hot coding</a></li>
+    </ul>
+  </li>
+  <li><a href="#-thao-luan">4. Thảo luận</a>
+    <ul>
+      <li><a href="#ket-hop-cac-phuong-phap-tren">Kết hợp các phương pháp trên</a></li>
+      <li><a href="#bieu-dien-duoi-dang-neural-networks">Biểu diễn dưới dạng Neural Networks</a></li>
+      <li><a href="#han-che-cua-one-vs-rest">Hạn chế của one-vs-rest</a></li>
+    </ul>
+  </li>
+  <li><a href="#-tai-lieu-tham-khao">5. Tài liệu tham khảo</a></li>
+</ul>
+
+<!-- /MarkdownTOC -->
+
+<p><a name="-bai-toan-phan-biet-gioi-tinh-dua-tren-anh-khuon-mat"></a></p>
+
+<h2 id="1-bài-toán-phân-biệt-giới-tính-dựa-trên-ảnh-khuôn-mặt">1. Bài toán phân biệt giới tính dựa trên ảnh khuôn mặt</h2>
+<p>Chúng ta cùng bắt đầu với bài toán phân biệt giới tính dựa trên ảnh khuôn mặt. Về ảnh khuôn mặt, bộ cơ sở dữ liệu <a href="http://www2.ece.ohio-state.edu/~aleix/ARdatabase.html">AR Face Database</a> được sử dụng rộng rãi.</p>
+
+<p>Bộ cơ sở dữ liệu này bao gồm hơn 4000 ảnh màu tương ứng với khuôn mặt của 126 người (70 nam, 56 nữ). Với mỗi người, 26 bức ảnh được chụp ở các điều kiện ánh sáng khác nhau, sắc thái biểu cảm khuôn mặt khác nhau, và bị che mắt (bởi kính râm) hoặc miệng (bởi khăn); và được chụp tại hai thời điểm khác nhau cách nhau 2 tuần.</p>
+
+<p>Để cho đơn giản, tôi sử dụng bộ cơ sử AR Face thu gọn (có thể tìm thấy trong cùng trang web phía trên, mục <em>Other (relevant) downloads</em>). Bộ cơ sở dữ liệu thu gọn này bao gồm 2600 bức ảnh từ 50 nam và 50 nữ. Hơn nữa, các khuôn mặt cũng đã được xác định chính xác và được <em>cropped</em> với kích thước 165 x 120 (pixel) bằng phương pháp được mô tả trong bài báo <a href="http://lectures.molgen.mpg.de/networkanalysis13/PCAversusLDA_eigenfaces.pdf">PCA veus LDA</a>. Tôi xin bỏ qua phần xử lý này và trực tiếp sử dụng ảnh đã cropped như một số ví dụ dưới đây:</p>
+
+<div class="imgcap">
+<img src="\assets\LogReg2\ARgender.png" align="center" width="800" />
+<div class="thecap">Hình 1: Các ví dụ mẫu trong AR Face database thu gọn.</div>
+</div>
+
+<p><strong>Lưu ý:</strong></p>
+
+<ul>
+  <li>
+    <p><em>Vì lý do bản quyền, tôi không được phép chia sẻ với các bạn bộ dữ liệu này. Các bạn muốn sở hữu có thể liên lạc với tác giả như hướng dẫn ở trong website <a href="http://www2.ece.ohio-state.edu/~aleix/ARdatabase.html">AR Face Database</a>. Một khi các bạn đã có tài khoản để download, tôi mong các bạn tôn trọng tác giả và không chia sẻ trực tiếp với bạn bè.</em></p>
+  </li>
+  <li>
+    <p><em>Có một cách đơn giản và nhanh hơn để lấy được các feature vector (sau bước <a href="/general/2017/02/06/featureengineering/">Feature Engineering</a>)  của cơ sở dữ liệu này mà không cần liên lạc với tác giả. Các bạn có thể tìm  <a href="https://www.umiacs.umd.edu/~zhuolin/projectlcksvd.html">tại đây</a>, phần <strong>Downloads</strong>, mục <strong>Random face features for AR database</strong>.</em></p>
+  </li>
+</ul>
+
+<p>Mỗi bức ảnh trong AR Face thu gọn được đặt tên dưới dạng <code class="language-plaintext highlighter-rouge">G-xxx-yy.bmp</code> Trong đó: <code class="language-plaintext highlighter-rouge">G</code> nhận một trong hai giá trị <code class="language-plaintext highlighter-rouge">M</code> (man) hoặc <code class="language-plaintext highlighter-rouge">W</code> (woman); <code class="language-plaintext highlighter-rouge">xxx</code> là id của người, nhận gía trị từ <code class="language-plaintext highlighter-rouge">001</code> đến <code class="language-plaintext highlighter-rouge">050</code>; <code class="language-plaintext highlighter-rouge">yy</code> là điều kiện chụp, nhận giá trị từ <code class="language-plaintext highlighter-rouge">01</code> đến <code class="language-plaintext highlighter-rouge">26</code>, trong đó các điều kiện có số thứ tự từ <code class="language-plaintext highlighter-rouge">01</code> đến <code class="language-plaintext highlighter-rouge">07</code> và từ <code class="language-plaintext highlighter-rouge">14</code> đến <code class="language-plaintext highlighter-rouge">20</code> là các khuôn mặt không bị che bởi kính hoặc khăn. Tôi tạm gọi mỗi <em>điều kiện</em> này là một <em>view</em>.</p>
+
+<p>Để làm ví dụ cho thuật toán Logistic Regression, tôi lấy ảnh của 25 nam và 25 nữ đầu tiên làm tập training set; 25 nam và 25 nữ còn lại làm test set. Với mỗi người, tôi chỉ lấy các khuôn mặt không bị che bởi kính và khăn.</p>
+
+<p><strong>Feature Extraction</strong>: vì mỗi bức ảnh có kích thước <code class="language-plaintext highlighter-rouge">3x165x120</code> (số channels <code class="language-plaintext highlighter-rouge">3</code>, chiều cao <code class="language-plaintext highlighter-rouge">165</code>, chiều rộng <code class="language-plaintext highlighter-rouge">120</code>) là một số khá lớn nên ta sẽ làm thực hiện Feature Extraction bằng hai bước đơn giản sau (<em>bạn đọc được khuyến khích đọc bài <a href="/general/2017/02/06/featureengineering/">Giới thiệu về Feature Engineering</a></em>):</p>
+
+<ul>
+  <li>
+    <p>Chuyển ảnh màu về ảnh xám theo công thức <code class="language-plaintext highlighter-rouge">Y' = 0.299 R + 0.587 G + 0.114 B </code> (Xem thêm tại <a href="https://en.wikipedia.org/wiki/Grayscale#Luma_coding_in_video_systems">Grayscale - wiki</a>).</p>
+  </li>
+  <li>
+    <p><em>Kéo dài</em> ảnh xám thu được thành 1 vector hàng có số chiều <code class="language-plaintext highlighter-rouge">165x120</code>, sau đó sử dụng một <em>random projection matrix</em> để giảm số chiều về <code class="language-plaintext highlighter-rouge">500</code>. Bạn đọc có thể thay giá trị này bằng các số khác nhỏ hơn <code class="language-plaintext highlighter-rouge">1000</code>.</p>
+  </li>
+</ul>
+
+<p>Chúng ta có thể bắt đầu làm việc với Python ngay bây giờ. Tôi sẽ sử dụng hàm <a href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html">sklearn.linear_model.LogisticRegression</a> trong thư viện <code class="language-plaintext highlighter-rouge">sklearn</code> cho các ví dụ trong bài này. Nếu không muốn đọc phần này, bạn có thể lấy <a href="/assets/LogReg2/ARGender.ipynb">source code ở dây</a>.</p>
+
+<p><strong>Chú ý:</strong> Hàm <a href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html">sklearn.linear_model.LogisticRegression</a> nhận dữ liệu ở dạng vector hàng.</p>
+
+<p><a name="lam-viec-voi-python"></a></p>
+
+<h3 id="làm-việc-với-python">Làm việc với Python</h3>
+
+<p>Khai báo thư viện</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span> 
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">linear_model</span>           <span class="c1"># for logistic regression
+</span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span> <span class="c1"># for evaluation
+</span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">misc</span>                     <span class="c1"># for loading image
+</span><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>                          <span class="c1"># for fixing random values
+</span></code></pre></div></div>
+
+<p>Phân chia training set và test set, lựa chọn các <em>views</em>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">path</span> <span class="o">=</span> <span class="s">'../data/AR/'</span> <span class="c1"># path to the database 
+</span><span class="n">train_ids</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">26</span><span class="p">)</span>
+<span class="n">test_ids</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">26</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">view_ids</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">21</span><span class="p">)))</span>
+</code></pre></div></div>
+
+<p>Tạo <em>random projection matrix</em>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">D</span> <span class="o">=</span> <span class="mi">165</span><span class="o">*</span><span class="mi">120</span> <span class="c1"># original dimension 
+</span><span class="n">d</span> <span class="o">=</span> <span class="mi">500</span> <span class="c1"># new dimension 
+</span>
+<span class="c1"># generate the projection matrix 
+</span><span class="n">ProjectionMatrix</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span> 
+</code></pre></div></div>
+
+<p>Xây dựng danh sách các tên files.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">build_list_fn</span><span class="p">(</span><span class="n">pre</span><span class="p">,</span> <span class="n">img_ids</span><span class="p">,</span> <span class="n">view_ids</span><span class="p">):</span>
+    <span class="s">"""
+    INPUT:
+        pre = 'M-' or 'W-'
+        img_ids: indexes of images
+        view_ids: indexes of views
+    OUTPUT:
+        a list of filenames 
+    """</span>
+    <span class="n">list_fn</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">im_id</span> <span class="ow">in</span> <span class="n">img_ids</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">v_id</span> <span class="ow">in</span> <span class="n">view_ids</span><span class="p">:</span>
+            <span class="n">fn</span> <span class="o">=</span> <span class="n">path</span> <span class="o">+</span> <span class="n">pre</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">im_id</span><span class="p">).</span><span class="n">zfill</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="s">'-'</span> <span class="o">+</span> \
+                <span class="nb">str</span><span class="p">(</span><span class="n">v_id</span><span class="p">).</span><span class="n">zfill</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="s">'.bmp'</span>
+            <span class="n">list_fn</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">list_fn</span> 
+</code></pre></div></div>
+
+<p><strong>Feature Extraction:</strong> Xây dựng dữ liệu cho training set và test set.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">rgb2gray</span><span class="p">(</span><span class="n">rgb</span><span class="p">):</span>
+<span class="c1">#     Y' = 0.299 R + 0.587 G + 0.114 B 
+</span>    <span class="k">return</span> <span class="n">rgb</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">.</span><span class="mi">299</span> <span class="o">+</span> <span class="n">rgb</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="p">.</span><span class="mi">587</span> <span class="o">+</span> <span class="n">rgb</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="p">.</span><span class="mi">114</span>
+
+<span class="c1"># feature extraction 
+</span><span class="k">def</span> <span class="nf">vectorize_img</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>    
+    <span class="c1"># load image 
+</span>    <span class="n">rgb</span> <span class="o">=</span> <span class="n">misc</span><span class="p">.</span><span class="n">imread</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+    <span class="c1"># convert to gray scale 
+</span>    <span class="n">gray</span> <span class="o">=</span> <span class="n">rgb2gray</span><span class="p">(</span><span class="n">rgb</span><span class="p">)</span>
+    <span class="c1"># vectorization each row is a data point 
+</span>    <span class="n">im_vec</span> <span class="o">=</span> <span class="n">gray</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">im_vec</span> 
+
+<span class="k">def</span> <span class="nf">build_data_matrix</span><span class="p">(</span><span class="n">img_ids</span><span class="p">,</span> <span class="n">view_ids</span><span class="p">):</span>
+    <span class="n">total_imgs</span> <span class="o">=</span> <span class="n">img_ids</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">view_ids</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span> 
+        
+    <span class="n">X_full</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">total_imgs</span><span class="p">,</span> <span class="n">D</span><span class="p">))</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">total_imgs</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="p">)),</span> <span class="n">np</span><span class="p">.</span><span class="n">ones</span><span class="p">((</span><span class="n">total_imgs</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="p">))))</span>
+    
+    <span class="n">list_fn_m</span> <span class="o">=</span> <span class="n">build_list_fn</span><span class="p">(</span><span class="s">'M-'</span><span class="p">,</span> <span class="n">img_ids</span><span class="p">,</span> <span class="n">view_ids</span><span class="p">)</span>
+    <span class="n">list_fn_w</span> <span class="o">=</span> <span class="n">build_list_fn</span><span class="p">(</span><span class="s">'W-'</span><span class="p">,</span> <span class="n">img_ids</span><span class="p">,</span> <span class="n">view_ids</span><span class="p">)</span>
+    <span class="n">list_fn</span> <span class="o">=</span> <span class="n">list_fn_m</span> <span class="o">+</span> <span class="n">list_fn_w</span> 
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">list_fn</span><span class="p">)):</span>
+        <span class="n">X_full</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">vectorize_img</span><span class="p">(</span><span class="n">list_fn</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X_full</span><span class="p">,</span> <span class="n">ProjectionMatrix</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="p">(</span><span class="n">X_train_full</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span> <span class="o">=</span> <span class="n">build_data_matrix</span><span class="p">(</span><span class="n">train_ids</span><span class="p">,</span> <span class="n">view_ids</span><span class="p">)</span>
+<span class="n">x_mean</span> <span class="o">=</span> <span class="n">X_train_full</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">x_var</span>  <span class="o">=</span> <span class="n">X_train_full</span><span class="p">.</span><span class="n">var</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">feature_extraction</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">X</span> <span class="o">-</span> <span class="n">x_mean</span><span class="p">)</span><span class="o">/</span><span class="n">x_var</span>     
+
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">feature_extraction</span><span class="p">(</span><span class="n">X_train_full</span><span class="p">)</span>
+<span class="n">X_train_full</span> <span class="o">=</span> <span class="bp">None</span> <span class="c1">## free this variable 
+</span>
+<span class="p">(</span><span class="n">X_test_full</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">build_data_matrix</span><span class="p">(</span><span class="n">test_ids</span><span class="p">,</span> <span class="n">view_ids</span><span class="p">)</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">feature_extraction</span><span class="p">(</span><span class="n">X_test_full</span><span class="p">)</span>
+<span class="n">X_test_full</span> <span class="o">=</span> <span class="bp">None</span> 
+</code></pre></div></div>
+
+<p><strong>Chú ý:</strong> Trong đoạn code trên tôi có sử dụng phương pháp chuẩn hóa dữ liệu <a href="/general/2017/02/06/featureengineering/#standardization">Standardization</a>. Trong đó <code class="language-plaintext highlighter-rouge">x_mean</code> và <code class="language-plaintext highlighter-rouge">x_var</code> lần lượt là vector kỳ vọng và phương sai của toàn bộ dữ liệu training. <code class="language-plaintext highlighter-rouge">X_train_full</code>, <code class="language-plaintext highlighter-rouge">X_test_full</code> là các ma trận dữ liệu đã được giảm số chiều nhưng chưa được chuẩn hóa. Hàm <code class="language-plaintext highlighter-rouge">feature_extraction</code> giúp chuẩn hóa dữ liệu dựa vào <code class="language-plaintext highlighter-rouge">x_mean</code> và <code class="language-plaintext highlighter-rouge">x_var</code> của <code class="language-plaintext highlighter-rouge">X_train_full</code>.</p>
+
+<p>Đoạn code dưới đây thực hiện thuật toán Logistic Regression, dự đoán output của test data và đánh giá kết quả. Một chú ý nhỏ, hàm Logistic Regression trong thư viện sklearn có nhiều biến thể khác nhau. Để sử dụng thuật toán Logistic Regression <em>thuần</em> mà tôi đã giới thiệu trong bài <a href="/2017/01/27/logisticregression/">Logistic Regression</a>, chúng ta cần đặt giá trị cho <code class="language-plaintext highlighter-rouge">C</code> là một số lớn (để nghịch đảo của nó gần với 0. Tạm thời các bạn chưa cần quan tâm tới điều này, chỉ cần chọn <code class="language-plaintext highlighter-rouge">C</code> lớn là được).</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">logreg</span> <span class="o">=</span> <span class="n">linear_model</span><span class="p">.</span><span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mf">1e5</span><span class="p">)</span> <span class="c1"># just a big number 
+</span><span class="n">logreg</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">logreg</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">"Accuracy: %.2f %%"</span> <span class="o">%</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Accuracy: 90.33 %
+</code></pre></div></div>
+
+<p>90.33%, tức là cứ 10 bức ảnh trong test set thì có trung bình hơn 9 bức được nhận dạng đúng. Không tệ, nhất là khi chúng ta vẫn chưa phải làm gì nhiều!</p>
+
+<p>Để xác định <em>nhãn</em> của một ảnh, đầu ra của hàm <a href="/2017/01/27/logisticregression/#sigmoid-function">sigmoid</a> được so sánh với 0.5. Nếu giá trị đó lớn hơn 0.5, ta kết luận đó là ảnh của nam, ngược lại, đó là ảnh của nữ. Để xem giá trị sau hàm sigmoid (tức xác suất để ảnh đó là nam), chúng ta sử dụng hàm <code class="language-plaintext highlighter-rouge">predict_proba</code> như sau:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">feature_extraction_fn</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
+    <span class="s">"""
+    extract feature from filename
+    """</span>
+    <span class="c1"># vectorize
+</span>    <span class="n">im</span> <span class="o">=</span> <span class="n">vectorize_img</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
+    <span class="c1"># project
+</span>    <span class="n">im1</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ProjectionMatrix</span><span class="p">)</span>
+    <span class="c1"># standardization 
+</span>    <span class="k">return</span> <span class="n">feature_extraction</span><span class="p">(</span><span class="n">im1</span><span class="p">)</span>
+
+<span class="n">fn1</span> <span class="o">=</span> <span class="n">path</span> <span class="o">+</span> <span class="s">'M-036-18.bmp'</span>
+<span class="n">fn2</span> <span class="o">=</span> <span class="n">path</span> <span class="o">+</span> <span class="s">'W-045-01.bmp'</span>
+<span class="n">fn3</span> <span class="o">=</span> <span class="n">path</span> <span class="o">+</span> <span class="s">'M-048-01.bmp'</span>
+<span class="n">fn4</span> <span class="o">=</span> <span class="n">path</span> <span class="o">+</span> <span class="s">'W-027-02.bmp'</span>
+
+<span class="n">x1</span> <span class="o">=</span> <span class="n">feature_extraction_fn</span><span class="p">(</span><span class="n">fn1</span><span class="p">)</span>
+<span class="n">p1</span> <span class="o">=</span> <span class="n">logreg</span><span class="p">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">p1</span><span class="p">)</span>
+
+<span class="n">x2</span> <span class="o">=</span> <span class="n">feature_extraction_fn</span><span class="p">(</span><span class="n">fn2</span><span class="p">)</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">logreg</span><span class="p">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">p2</span><span class="p">)</span>
+
+<span class="n">x3</span> <span class="o">=</span> <span class="n">feature_extraction_fn</span><span class="p">(</span><span class="n">fn3</span><span class="p">)</span>
+<span class="n">p3</span> <span class="o">=</span> <span class="n">logreg</span><span class="p">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">x3</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">p3</span><span class="p">)</span>
+
+<span class="n">x4</span> <span class="o">=</span> <span class="n">feature_extraction_fn</span><span class="p">(</span><span class="n">fn4</span><span class="p">)</span>
+<span class="n">p4</span> <span class="o">=</span> <span class="n">logreg</span><span class="p">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">x4</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">p4</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[[ 0.87940218  0.12059782]]
+[[ 0.0172217  0.9827783]]
+[[ 0.30458761  0.69541239]]
+[[ 0.83989242  0.16010758]]
+</code></pre></div></div>
+
+<p>Kết quả thu được là xác suất để bức ảnh đó là ảnh của nam (cột thứ nhất) và của nữ (cột thứ hai). Dưới đây là hình minh họa:</p>
+
+<div class="imgcap">
+<img src="\assets\LogReg2\ARgenderResult.png" align="center" width="800" />
+<div class="thecap">Hình 2: Ví dụ về kết quả tìm được bằng Logistic Regression</div>
+</div>
+
+<p>Hàng trên gồm các hình được phân loại đúng, hàng dưới gồm các hình bị phân loại sai. Có một vài nhận xét về hàng dưới. Từ hai bức ảnh hàng dưới, chúng ta có thể đoán rằng Logistic Regression quan tâm đến tóc phía sau gáy nhiều hơn là râu! Việc thuật toán dựa trên những đặc trưng nào của mỗi class phụ thuộc rất nhiều vào training data. Nếu trong training data, hầu hết nam không có râu và hầu hết nữ có tóc dài thì kết quả này là có thể lý giải được.</p>
+
+<p><strong>Trong Machine Learning, thuật toán là quan trọng, nhưng thuật toán tốt mà dữ liệu không tốt thì sẽ dẫn đến những tác dụng ngược!</strong></p>
+
+<p>(Source code cho ví dụ này có thể tìm thấy <a href="https://github.com/tiepvupsu/tiepvupsu.github.io/blob/master/assets/LogReg2/ARGender.ipynb">ở dây</a>.)
+<a name="-bai-toan-phan-biet-hai-chu-so-viet-tay"></a></p>
+
+<h2 id="2-bài-toán-phân-biệt-hai-chữ-số-viết-tay">2. Bài toán phân biệt hai chữ số viết tay</h2>
+<p>Chúng ta cùng sang ví dụ thứ hai về phân biệt hai chữ số trong <a href="/2017/01/04/kmeans2/#bo-co-so-du-lieu-mnist">bộ cơ sở dữ liệu MNIST</a>. Cụ thể, tôi sẽ làm việc với hai chữ số 0 và 1. Bạn đọc hoàn toàn có thể thử với các chữ số khác bằng cách thay đổi một dòng lệnh. Khác với AR Face, bộ dữ liệu này có thể dễ dàng được download về từ <a href="http://yann.lecun.com/exdb/mnist/">trang chủ</a> của nó.</p>
+
+<p>Chúng ta có thể bắt tay vào làm luôn.</p>
+
+<p>Khai báo thư viện:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># %reset
+</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span> 
+<span class="kn">from</span> <span class="nn">mnist</span> <span class="kn">import</span> <span class="n">MNIST</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">linear_model</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+<span class="kn">from</span> <span class="nn">display_network</span> <span class="kn">import</span> <span class="o">*</span>
+</code></pre></div></div>
+
+<p>Load toàn bộ dữ liệu:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mntrain</span> <span class="o">=</span> <span class="n">MNIST</span><span class="p">(</span><span class="s">'../MNIST/'</span><span class="p">)</span>
+<span class="n">mntrain</span><span class="p">.</span><span class="n">load_training</span><span class="p">()</span>
+<span class="n">Xtrain_all</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">mntrain</span><span class="p">.</span><span class="n">train_images</span><span class="p">)</span>
+<span class="n">ytrain_all</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">mntrain</span><span class="p">.</span><span class="n">train_labels</span><span class="p">.</span><span class="n">tolist</span><span class="p">())</span>
+
+<span class="n">mntest</span> <span class="o">=</span> <span class="n">MNIST</span><span class="p">(</span><span class="s">'../MNIST/'</span><span class="p">)</span>
+<span class="n">mntest</span><span class="p">.</span><span class="n">load_testing</span><span class="p">()</span>
+<span class="n">Xtest_all</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">mntest</span><span class="p">.</span><span class="n">test_images</span><span class="p">)</span>
+<span class="n">ytest_all</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">mntest</span><span class="p">.</span><span class="n">test_labels</span><span class="p">.</span><span class="n">tolist</span><span class="p">())</span>
+</code></pre></div></div>
+
+<p>Sau bưóc này, toàn bộ dữ liệu training data và test data được lưu ở hai ma trận <code class="language-plaintext highlighter-rouge">X_train_all</code> và <code class="language-plaintext highlighter-rouge">X_test_all</code>, mỗi hàng của các ma trận này chứa một điểm dữ liệu, tức một bức ảnh đã được <em>vector hóa</em>.</p>
+
+<p>Để lấy các hàng tương ứng với chữ số 0 và chữ số 1, ta khai báo biến sau:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cls</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+</code></pre></div></div>
+
+<p>Nếu bạn muốn thử với cặp <code class="language-plaintext highlighter-rouge">3</code> và <code class="language-plaintext highlighter-rouge">4</code>, chỉ cần thay dòng này bằng <code class="language-plaintext highlighter-rouge">cls = [[3], [4]]</code>. Nếu bạn muốn phân loại <code class="language-plaintext highlighter-rouge">(4, 7)</code> và <code class="language-plaintext highlighter-rouge">(5, 6)</code>, chỉ cần thay dòng này bằng <code class="language-plaintext highlighter-rouge">cls = [[4, 7], [5, 6]]</code>. Các cặp bất kỳ khác đều có thể thực hiện bằng cách thay chỉ một dòng này.</p>
+
+<p>Đoạn code dưới đây thực hiện việc <em>extract</em> toàn bộ dữ liệu cho các chữ số <code class="language-plaintext highlighter-rouge">0</code> và <code class="language-plaintext highlighter-rouge">1</code> trong tập training data và test data.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">extract_data</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">classes</span><span class="p">):</span>
+    <span class="s">"""
+    X: numpy array, matrix of size (N, d), d is data dim
+    y: numpy array, size (N, )
+    cls: two lists of labels. For example: 
+        cls = [[1, 4, 7], [5, 6, 8]]
+    return:
+        X: extracted data
+        y: extracted label 
+            (0 and 1, corresponding to two lists in cls)
+    """</span>
+    <span class="n">y_res_id</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([])</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">cls</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+        <span class="n">y_res_id</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">y_res_id</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">where</span><span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="n">i</span><span class="p">)[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="n">n0</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_res_id</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">cls</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="n">y_res_id</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">y_res_id</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">where</span><span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="n">i</span><span class="p">)[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="n">n1</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_res_id</span><span class="p">)</span> <span class="o">-</span> <span class="n">n0</span> 
+
+    <span class="n">y_res_id</span> <span class="o">=</span> <span class="n">y_res_id</span><span class="p">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">X_res</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">y_res_id</span><span class="p">,</span> <span class="p">:]</span><span class="o">/</span><span class="mf">255.0</span>
+    <span class="n">y_res</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">asarray</span><span class="p">([</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">n0</span> <span class="o">+</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">n1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">X_res</span><span class="p">,</span> <span class="n">y_res</span><span class="p">)</span>
+
+
+<span class="c1"># extract data for training 
+</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span> <span class="o">=</span> <span class="n">extract_data</span><span class="p">(</span><span class="n">Xtrain_all</span><span class="p">,</span> <span class="n">ytrain_all</span><span class="p">,</span> <span class="n">cls</span><span class="p">)</span>
+
+<span class="c1"># extract data for test 
+</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">extract_data</span><span class="p">(</span><span class="n">Xtest_all</span><span class="p">,</span> <span class="n">ytest_all</span><span class="p">,</span> <span class="n">cls</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Vì mỗi điểm dữ liệu có số phần tử là 784 (28x28), là một số khá nhỏ, nên ta không cần thêm bước giảm số chiều dữ liệu nữa. Tuy nhiên, tôi có thực hiện thêm một bước chuẩn hóa để đưa dữ liệu về đoạn <code class="language-plaintext highlighter-rouge">[0, 1]</code> bằng cách chia toàn bộ hai ma trận dữ liệu cho <code class="language-plaintext highlighter-rouge">255.0</code>.</p>
+
+<p>Tới đây ta có thể <em>train</em> mô hình Logistic Regression và đánh giá mô hình này.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># train the logistic regression model 
+</span><span class="n">logreg</span> <span class="o">=</span> <span class="n">linear_model</span><span class="p">.</span><span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mf">1e5</span><span class="p">)</span> <span class="c1"># just a big number 
+</span><span class="n">logreg</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># predict 
+</span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">logreg</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">"Accuracy: %.2f %%"</span> <span class="o">%</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">.</span><span class="n">tolist</span><span class="p">()))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Accuracy: 99.95 %
+</code></pre></div></div>
+
+<p>Tuyệt vời, gần như 100% được phân loại chính xác. Điều này là dễ hiểu vì hai chữ số 0 và 1 khác nhau quá nhiều. Bộ cơ sở dữ liệu này với toàn bộ 10 classes hiện nay đã được phân loại với độ chính xác trên 99.7%.</p>
+
+<p>Chúng ta cùng đi tìm những ảnh bị phân loại sai:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># display misclassified image(s)
+</span><span class="n">mis</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">where</span><span class="p">((</span><span class="n">y_pred</span> <span class="o">-</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">Xmis</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">[</span><span class="n">mis</span><span class="p">,</span> <span class="p">:]</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">axis</span><span class="p">(</span><span class="s">'off'</span><span class="p">)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">display_network</span><span class="p">(</span><span class="n">Xmis</span><span class="p">.</span><span class="n">T</span><span class="p">)</span>
+<span class="n">f2</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s">'nearest'</span> <span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">gray</span><span class="p">()</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="imgcap">
+<img src="\assets\LogReg2\0.png" align="center" width="100" />
+<div class="thecap">Hình 3: Chữ số bị phân loại sai trong bài toán phân loại ảnh chữ số 0 và 1</div>
+</div>
+
+<p>Như vậy là chỉ có một ảnh bị phân loại sai. Ảnh này là chữ số 0 nhưng bị misclassified thành chữ số 1, có thể vì nét đậm nhất của nó rất giống với chữ số 1.</p>
+
+<p>Source code cho ví dụ này có thể được tìm thấy <a href="/assets/LogReg2/LogReg2.ipynb">ở đây</a>.</p>
+
+<p><a name="-binary-classifiers-cho-multi-class-classification-problems"></a></p>
+
+<h2 id="3-binary-classifiers-cho-multi-class-classification-problems">3. Binary Classifiers cho Multi-class Classification problems</h2>
+
+<p>Có lẽ nhiều bạn đang đặt câu hỏi: Các ví dụ trên đây đều làm với bài toán có hai classes. Vậy nếu có nhiều hơn hai classes, ví dụ như 10 classes của MNIST, thì làm thế nào?</p>
+
+<p>Có nhiều thuật toán khác được xây dựng riêng cho các bài toán với nhiều classes (multi-class classification problems), tôi sẽ giới thiệu sau. Còn bây giờ, chúng ta vẫn có thể sử dụng các <em>binary classifiers</em> để thực hiện công việc này, với một chút thay đổi. 
+<!-- Để tiện cho việc diễn giải, tôi sử dụng MNIST làm ví dụ. Các cơ sở dữ liệu khác được suy ra một cách tương tự. --></p>
+
+<p>Có <em>ít nhất</em> bốn cách để áp dụng <em>binary classifiers</em> vào các bài toán multi-class classification:</p>
+
+<p><a name="one-vs-one"></a></p>
+
+<h3 id="one-vs-one">One-vs-one</h3>
+
+<p>Xây dựng rất nhiều bộ binary classifiers cho từng cặp classes. Bộ thứ nhất phân biệt class 1 và class 2, bộ thứ hai phân biệt class 1 và class 3, … Khi có một dữ liệu mới vào, đưa nó vào toàn bộ các bộ binary classifiers trên. Kết quả cuối cùng có thể được xác định bằng cách xem class nào mà điểm dữ liệu đó được phân vào nhiều nhất (major voting). Hoặc với Logistic Regression thì ta có thể tính <em>tổng các xác suất</em> tìm được sau mỗi bộ binary classifier.</p>
+
+<p>Như vậy, nếu có \(C\) classes thì tổng số binary classifiers phải dùng là \(\frac{n(n-1)}{2}\). Đây là một con số lớn, cách làm này không lợi về tính toán. Hơn nữa, nếu một chữ số thực ra là chữ số <code class="language-plaintext highlighter-rouge">1</code>, nhưng lại được đưa vào bộ phân lớp giữa các chữ số <code class="language-plaintext highlighter-rouge">5</code> và <code class="language-plaintext highlighter-rouge">6</code>, thì cả hai khả năng tìm được (là <code class="language-plaintext highlighter-rouge">5</code> hoặc <code class="language-plaintext highlighter-rouge">6</code>) đều không hợp lý!</p>
+
+<p><a name="hierarchical-phan-tang"></a></p>
+
+<h3 id="hierarchical-phân-tầng">Hierarchical (phân tầng)</h3>
+<p>Các làm như <strong>one-vs-one</strong> sẽ mất rất nhiều thời gian training vì có quá nhiều bộ phân lớp cần được xây dựng. Một cách khác giúp <em>tiết kiệm</em> số binary classifiers hơn đó là <strong>hierarchical</strong>. Ý tưởng như sau:</p>
+
+<p>Ví dụ với MNIST với 4 chữ số <code class="language-plaintext highlighter-rouge">4, 5, 6, 7</code>. Vì ta thấy chữ số <code class="language-plaintext highlighter-rouge">4</code> và <code class="language-plaintext highlighter-rouge">7</code> khá giống nhau, chữ số <code class="language-plaintext highlighter-rouge">5</code> và <code class="language-plaintext highlighter-rouge">6</code> khá giống nhau nên trước tiên chúng ta xây dựng bộ phân lớp <code class="language-plaintext highlighter-rouge">[4, 7] vs [5, 6]</code>. Sau đó xây dựng thêm hai bộ <code class="language-plaintext highlighter-rouge">4 vs  7</code> và <code class="language-plaintext highlighter-rouge">5 vs 6</code> nữa. Tổng cộng, ta cần 3 bộ binary classifiers. Chú ý rằng có nhiều cách chia khác nhau, ví dụ <code class="language-plaintext highlighter-rouge">[4, 5, 6] vs 7</code>, <code class="language-plaintext highlighter-rouge">[4, 5] vs 6</code>, rồi <code class="language-plaintext highlighter-rouge">4 vs 5</code>.</p>
+
+<p>Ưu điểm của phương pháp này là sử dụng ít bộ binary classifiers hơn <strong>one-vs-one</strong>. 
+Hạn chế lớn nhất của nó là việc nếu chỉ một binary classifier cho kết quả sai thì kết quả cuối cùng chắc chắn sẽ sai. Ví dụ, nếu 1 ảnh chứa chữ số <code class="language-plaintext highlighter-rouge">5</code>, nhưng ngay bước đầu tiên đã bị misclassifed sang nhánh <code class="language-plaintext highlighter-rouge">[4, 7]</code> thì kết quả cuối cùng sẽ là <code class="language-plaintext highlighter-rouge">4</code> hoặc <code class="language-plaintext highlighter-rouge">7</code>, cả hai đều sai.</p>
+
+<p><a name="binary-coding"></a></p>
+
+<h3 id="binary-coding">Binary coding</h3>
+<p>Có một cách giảm số binary classifiers hơn nữa là <strong>binary coding</strong>, tức <em>mã hóa</em> output của mỗi class bằng một số nhị phân. Ví dụ, nếu có 4 classes thì class thứ nhất được mã hóa là <code class="language-plaintext highlighter-rouge">00</code>, ba class kia được mã hóa lần lượt là <code class="language-plaintext highlighter-rouge">01, 10</code> và <code class="language-plaintext highlighter-rouge">11</code>. Với cách làm này, số bộ binary classifiers phải thực hiện chỉ là \(m = \left\lceil\log_2(C)\right\rceil\) trong đó \(C\) là số lượng class, \(\left\lceil a \right\rceil\) là <em>số nguyên nhỏ nhất không nhỏ hơn</em> \(a\). Class thứ nhất sẽ đi tìm bit đầu tiên của output (đã được mã hóa nhị phân), class thứ hai sẽ đi tìm bit thứ hai, …</p>
+
+<p>Cách làm này sử dụng một số lượng nhỏ nhất các bộ <em>binary classifiers</em>. Nhưng nó có một hạn chế rất lớn là chỉ cần một bit bị phân loại sai sẽ dẫn đến dữ liệu bị phân loại sai. Hơn nữa, nếu số classes không phải là lũy thừa của hai, mã nhị phân nhận được có thể là một giá trị không tương ứng với class nào!</p>
+
+<p><a name="one-vs-rest-hay-one-hot-coding"></a></p>
+
+<h3 id="one-vs-rest-hay-one-hot-coding">one-vs-rest hay one-hot coding</h3>
+<p>Phương pháp được sử dụng nhiều nhất là <strong>one-vs-rest</strong> (một số tài liệu gọi là <strong>ove-vs-all</strong>, <strong>one-against-rest</strong>, hoặc <strong>one-against-all</strong>) . Cụ thể, nếu có \(C\) classes thì ta sẽ xây dựng \(C\) classifiers, mỗi classifier tương ứng với một class. Classifier thứ nhất giúp phân biệt <code class="language-plaintext highlighter-rouge">class 1</code> vs <code class="language-plaintext highlighter-rouge">not class 1</code>, tức xem một điểm có thuộc class 1 hay không, hoặc xác suất để một điểm rơi vào class 1 là bao nhiêu. Tương tự như thế, classifier thứ hai sẽ phân biệt <code class="language-plaintext highlighter-rouge">class 2</code> vs <code class="language-plaintext highlighter-rouge">not class 2</code>, … Kết quả cuối cùng có thể được xác định bằng cách xác định class mà một điểm rơi vào với xác suất cao nhất.</p>
+
+<p>Phương pháp này còn được gọi là <strong>one-hot coding</strong> (được sử dụng nhiều nên có rất nhiều tên) vì với cách mã hóa trên, giả sử có 4 classes, class 1, 2, 3, 4 sẽ lần lượt được mã hóa dưới dạng nhị phân bởi <code class="language-plaintext highlighter-rouge">1000, 0100, 0010</code> hoặc <code class="language-plaintext highlighter-rouge">0001</code>. One-hot vì chỉ có <em>one</em> bit là <em>hot</em> (bằng <code class="language-plaintext highlighter-rouge">1</code>).</p>
+
+<p>Hàm Logistic Regression trong thư viện sklearn có thể được dùng trực tiếp để áp dụng vào các bài toán multi-class classification với phương pháp <strong>one-vs-rest</strong>. Với bài toán MNIST như nêu ở phần 2, ta có thể thêm ba dòng lệnh sau để chạy trên toàn bộ 10 classes:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>logreg.fit(Xtrain_all, ytrain_all)
+y_pred = logreg.predict(Xtest_all)
+print "Accuracy: %.2f %%" %(100*accuracy_score(ytest_all, y_pred.tolist()))
+</code></pre></div></div>
+
+<p>Kết quả thu được khoảng 91% sau hơn 20 phút chạy (tùy thuộc vào máy). Đây vẫn là một kết quả quá thấp so với con số 99.7%. Thậm chí phương pháp học máy <em>không học gì</em> như <a href="/2017/01/08/knn/#try-this-yourself">K-neareast neighbors cũng đã đạt hơn 96%</a> với thời gian chạy ngắn hơn một chút.</p>
+
+<p>Một chú ý nhỏ: phương pháp mặc định cho các bài toán multi-class của hàm này được xác định bởi biến <code class="language-plaintext highlighter-rouge">multi_class</code>. Có hai lựa chọn cho biến này, trong đó lựa chọn mặc định là <code class="language-plaintext highlighter-rouge">ovr</code> tức <strong>one-vs-rest</strong>, lựa chọn còn lại sẽ được tôi đề cập trong một bài gần đây. Lựa chọn thứ hai không phải cho binary classifiers nên tôi không đề cập trong bài này, có thể sau một vài bài nữa (Xem thêm <a href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html"><code class="language-plaintext highlighter-rouge">sklearn.linear_model.LogisticRegression</code></a>)</p>
+
+<p><a name="-thao-luan"></a></p>
+
+<h2 id="4-thảo-luận">4. Thảo luận</h2>
+<p><a name="ket-hop-cac-phuong-phap-tren"></a></p>
+
+<h3 id="kết-hợp-các-phương-pháp-trên">Kết hợp các phương pháp trên</h3>
+
+<p>Nhắc lại rằng các linear binary classifiers tôi đã trình bày yêu cầu dữ liệu là <em>linearly separable</em> hoặc <em>nearly linearly separable</em>. Ta cũng có thể mở rộng định nghĩa này cho các bài toán multi-class. Nếu hai class bất kỳ là <em>linearly separable</em> thì ta coi dữ liệu đó là <em>linearly separable</em>.</p>
+
+<p>Thế nhưng, có những loại dữ liệu <em>linearly separable</em> mà chỉ một số trong 4 phương pháp trên đây là phù hợp, hoặc có những loại dữ liệu yêu cầu phải kết hợp nhiều phương pháp mới thực hiện được. Xét ba ví dụ sau:</p>
+
+<div class="imgcap">
+<img src="\assets\LogReg2\dist.png" align="center" width="800" />
+<div class="thecap">Hình 4: Một số ví dụ về phân phối của các classes trong bài toàn multi-class</div>
+</div>
+
+<ul>
+  <li>
+    <p>Hình 4a): cả 4 phương pháp trên đây đều có thể áp dụng được.</p>
+  </li>
+  <li>
+    <p>Hình 4b): one-vs-rest không phù hợp vì class màu xanh lục và class <em>rest</em> (hợp của xanh lam và đỏ) là không <em>linearly separable</em>. Lúc này, one-vs-one hoặc hierarchical phù hợp hơn.</p>
+  </li>
+  <li>
+    <p>Hình 4c): Tương tự như trên, ba class lam, lục, đỏ thẳng hàng nên sẽ không dùng được one-vs-rét. one-vs-one vẫn làm việc vì từng đôi class một là <em>linearly separable</em>. Tương tự hierarchical cũng làm việc nếu ta phân chia các nhóm một cách hợp lý. Hoặc chúng ta có thể kết hợp nhiều phương pháp. Ví dụ: dùng one-vs-rest để tìm <em>đỏ</em> vs <em>không đỏ</em>. Nếu một điểm dữ liệu là <em>không đỏ</em>, với 3 class còn lại, chúng ta lại quay lại trường hợp Hình 4a) và có thể dùng các phương pháp khác. Nhưng khó khăn vẫn nằm ở việc phân nhóm như thế nào, liệu rằng những class nào có thể cho vào cùng một nhóm? Với những dữ liệu đơn giản, <a href="/2017/01/01/kmeans/">K-means clustering</a> có thể là một giải pháp!</p>
+  </li>
+</ul>
+
+<p>Bạn đọc có thể xem thêm ví dụ áp dụng Logistic Regression cho cơ sở dữ liệu <a href="/2017/01/08/knn/#bo-co-so-du-lieu-iris-iris-flower-dataset">Iris</a> trong <a href="http://scikit-learn.org/stable/auto_examples/linear_model/plot_iris_logistic.html">link này</a>
+<a name="-thao-luan"></a></p>
+
+<div class="imgcap">
+<img src="http://scikit-learn.org/stable/_images/sphx_glr_plot_iris_logistic_001.png" align="center" width="500" />
+<div class="thecap">Hình 5: Logistic Regression với Iris database. (Nguồn: <a href="http://scikit-learn.org/stable/auto_examples/linear_model/plot_iris_logistic.html">Logistic Regression 3-class Classifier</a>)</div>
+</div>
+
+<p><a name="bieu-dien-duoi-dang-neural-networks"></a></p>
+
+<h3 id="biểu-diễn-dưới-dạng-neural-networks">Biểu diễn dưới dạng Neural Networks</h3>
+<p>Lấy ví dụ với bài toán có 4 classes 1, 2, 3, 4; ta có thể biểu diễn các mô hình được đề cập trong phần 3 dưới dạng sau đây (giả sử input có số chiều là 7 và node output màu đỏ biểu diễn chung cho cả PLA, Logistic Regression và các networks với activation function khác):</p>
+
+<div class="imgcap">
+<img src="\assets\LogReg2\binaryclassifiers.png" align="center" width="800" />
+<div class="thecap">Hình 6: Mô hình neural networks cho các phương pháp đề cập trong bài</div>
+</div>
+
+<p>Lúc này, thay vì chỉ có 1 node output như <a href="/2017/01/27/logisticregression/#-thao-luan">các phương pháp tôi đề cập trước đây</a> (Linear Regression, Perceptron Learning Algorithm, Logistic Regression), chúng ta thấy rằng các networks này đều có nhiều outputs. Và một vector trọng số \(\mathbf{w}\) bây giờ đã trở thành <em>ma trận trọng số</em> \(\mathbf{W}\) mà mỗi cột của nó tương ứng với vector trọng số của một node output. Việc tối ưu đồng thời các binary classifiers trong mỗi network cũng được tổng quát lên nhớ các phép tính với ma trận.</p>
+
+<p>Lấy ví dụ với công thức cập nhật của <a href="/2017/01/27/logisticregression/#cong-thuc-cap-nhat-cho-logistic-sigmoid-regression">logistic sigmoid regression </a>:</p>
+
+<p>\[
+\mathbf{w} = \mathbf{w} + \eta(y_i - z_i)\mathbf{x}_i
+\]</p>
+
+<p>Có thể tổng quát thành:
+\[
+\mathbf{W} = \mathbf{W} + \eta\mathbf{x}_i(\mathbf{y}_i - \mathbf{z}_i)^T
+\]</p>
+
+<p>Với \(\mathbf{W}, \mathbf{y}_i, \mathbf{z}_i\) lần lượt là ma trận trọng số, vector (cột) output <em>thật</em> với toàn bộ các binary classifiers tương ứng với điểm dữ liệu \(\mathbf{x}_i\), và vector output tìm được của networks tại thời điểm đang xét nếu đầu vào mỗi network là \(\mathbf{x}_i\). Chú ý rằng với Logistic Regression, vector \(\mathbf{y}_i\) là một binary vector, vector \(\mathbf{z}_i\) gồm các phần tử nằm trong khoảng \((0, 1)\).</p>
+
+<p><a name="han-che-cua-one-vs-rest"></a></p>
+
+<h3 id="hạn-chế-của-one-vs-rest">Hạn chế của one-vs-rest</h3>
+<p>Xem xét lại phương pháp one-vs-rest theo góc nhìn xác suất, một điểm dữ liệu có thể được dự đoán thuộc vào class \(1, 2, \dots, C\) với xác suất lần lượt là \(p_1, p_2, \dots, p_C\). Tuy nhiên, tổng các xác suất này có thể không bằng 1! Có một phương pháp có thể làm cho nó <em>hợp lý hơn</em>, tức <em>ép</em> tổng các xác suất này bằng 1. Khi đó, với 1 điểm dữ liệu ta có thể nói xác suất nó rơi vào mỗi class là bao nhiêu. Phương pháp hấp dẫn này sẽ được đề cập trong bài <a href="/2017/02/16/softmax/">Softmax Regression</a>. Mời bạn đón đọc.</p>
+
+<p><a name="-tai-lieu-tham-khao"></a></p>
+
+<h2 id="5-tài-liệu-tham-khảo">5. Tài liệu tham khảo</h2>
+
+<p>[1] <a href="https://en.wikipedia.org/wiki/Multiclass_classification">Multiclass classification - wiki</a></p>
+
+<p>[2] <a href="http://scikit-learn.org/stable/auto_examples/linear_model/plot_iris_logistic.html">Logistic Regression 3-class Classifier</a></p>
+:ET
