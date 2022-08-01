@@ -236,10 +236,10 @@ Quay trở lại với ví dụ trong hình 2, _feature matrix_ cho các _items_
 \mathbf{X} = 
 \left[
 \begin{matrix}
-0.99 & 0.02 \\\
-0.91 & 0.11 \\\
-0.95 & 0.05 \\\
-0.01 & 0.99 \\\
+0.99 & 0.02 \newline
+0.91 & 0.11 \newline
+0.95 & 0.05 \newline
+0.01 & 0.99 \newline
 0.03 & 0.98
 \end{matrix}
 \right]
@@ -250,19 +250,19 @@ Xét trường hợp của _user E_ với \\(n = 5\\), \\(\mathbf{y}\_5 = [1, ?,
 \hat{\mathbf{X}}_5 = 
 \left[
 \begin{matrix}
-0.99 & 0.02 \\\
+0.99 & 0.02 \newline
 0.01 & 0.99
 \end{matrix}
 \right],
 \hat{\mathbf{y}}_5 = \left[
 \begin{matrix}
-1 \\\
+1 \newline
 4 
 \end{matrix}
 \right], ~
 \mathbf{e}_5 = \left[
 \begin{matrix}
-1 \\\
+1 \newline
 1 
 \end{matrix}
 \right]
@@ -272,18 +272,18 @@ Khi đó, hàm mất mát cho hệ số tương ứng với _user E_ là:
 \\[
 \mathcal{L}_5 = \frac{1}{4} \|\|\left[
 \begin{matrix}
-0.99 & 0.02 \\\
+0.99 & 0.02 \newline
 0.01 & 0.99
 \end{matrix}
 \right]\mathbf{w}_5  + b_5\left[
 \begin{matrix}
-1 \\\
+1 \newline
 1
 \end{matrix}
 \right] -
 \left[
 \begin{matrix}
-1 \\\
+1 \newline
 4
 \end{matrix}
 \right]\|\|_2^2 + \frac{\lambda}{4} \|\|\mathbf{w}_5\|\|_2^2

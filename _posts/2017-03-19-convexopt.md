@@ -99,14 +99,14 @@ Vậy ta cần giải bài toán tối ưu sau đây:
 <hr>
 **Bài toán NXB:**
 \\[
-\begin{eqnarray}
-    (x, y, z, t) =& \arg\min_{x, y, z, t} 5x + 10y + 15z + 4t ~~~~ (1)\\\
-    \text{subject to:}~ & x + z = 600 ~~~~ (2)\\\
-                        & y + t = 400 ~~~~ (3) \\\
-                        & x + y \leq 800 ~~~(4) \\\
-                        & z + t \leq 700 ~~~ (5)\\\
+\begin{align}
+    (x, y, z, t) =& \arg\min_{x, y, z, t} 5x + 10y + 15z + 4t ~~~~ (1)\newline
+    \text{subject to:}~ & x + z = 600 ~~~~ (2)\newline
+                        & y + t = 400 ~~~~ (3) \newline
+                        & x + y \leq 800 ~~~(4) \newline
+                        & z + t \leq 700 ~~~ (5)\newline
                         & x, y, z, t \geq 0 ~~~ (6)
-\end{eqnarray}
+\end{align}
 \\]
 <hr>
 Nhận thấy rằng hàm mục tiêu (objective function) là một hàm tuyến tính của các biến \\(x, y, z, t\\). Các điều kiện ràng buộc đều có dạng _hyperplanes_ hoặc _haflspaces_, đều là các ràng buộc tuyến tính (linear constraints). Bài toán tối ưu với cả _objective function_ và _constraints_ đều là _linear_ được gọi là **Linear Programming (LP)**. Dạng tổng quát và cách thức lập trình để giải một bài toán thuộc loại này sẽ được cho trong phần sau của bài viết này.
@@ -141,10 +141,10 @@ Vậy ta có bài toán tối ưu sau đây:
 **Bài toán canh tác:**
 \\[
 \begin{eqnarray}
-    (x, y) =& \arg\max_{x, y} 5x + 3y ~~~~ (7)\\\
-    \text{subject to:}~ & x + y \leq 10 ~~~~ (8)\\\
-                        & 2x + y \leq 16 ~~~(9) \\\
-                        & x + 4y \leq 32 ~~~ (10)\\\
+    (x, y) =& \arg\max_{x, y} 5x + 3y ~~~~ (7)\newline
+    \text{subject to:}~ & x + y \leq 10 ~~~~ (8)\newline
+                        & 2x + y \leq 16 ~~~(9) \newline
+                        & x + 4y \leq 32 ~~~ (10)\newline
                         & x, y \geq 0 ~~~ (11)
 \end{eqnarray}
 \\]
@@ -187,8 +187,8 @@ Tổng toàn bộ chi phí là \\(f(x, y, z) = 40x^{-1}y^{-1}z^{-1} + 2(xy + yz 
 **Bài toán vận chuyển:**
 \\[
 \begin{eqnarray}
-    (x, y) =& \arg\min_{x, y, z} 40x^{-1}y^{-1}z^{-1} + 2(xy + yz + zx) ~~~~ (13)\\\
-    \text{subject to:}~ & x, y, z > 0 ~~~~ (14)\\\
+    (x, y) =& \arg\min_{x, y, z} 40x^{-1}y^{-1}z^{-1} + 2(xy + yz + zx) ~~~~ (13)\newline
+    \text{subject to:}~ & x, y, z > 0 ~~~~ (14)\newline
 \end{eqnarray}
 \\]
 <hr>
@@ -199,7 +199,7 @@ _Nhận thấy rằng bài này hoàn toàn có thể dùng bất đẳng thức
 (Lời giải:
 \\[
 \begin{eqnarray}
-    f(x, y, z) &=& \frac{20}{xyz} + \frac{20}{xyz} + 2xy + 2yz + 2zx \\\
+    f(x, y, z) &=& \frac{20}{xyz} + \frac{20}{xyz} + 2xy + 2yz + 2zx \newline
                &\geq & 5\sqrt[5]{3200}
 \end{eqnarray}
 \\]
@@ -221,8 +221,8 @@ Trước hết, chúng ta cần hiểu các khái niệm về _convex optimizati
 Tôi xin nhắc lại bài toán tối ưu ở dạng tổng quát:
 \\[
 \begin{eqnarray}
-\mathbf{x}^* &=& \arg\min_{\mathbf{x}} f_0(\mathbf{x}) \\\
-\text{subject to:}~ && f_i(\mathbf{x}) \leq 0, ~~ i = 1, 2, \dots, m ~~~(15)\\\
+\mathbf{x}^* &=& \arg\min_{\mathbf{x}} f_0(\mathbf{x}) \newline
+\text{subject to:}~ && f_i(\mathbf{x}) \leq 0, ~~ i = 1, 2, \dots, m ~~~(15)\newline
 && h_j(\mathbf{x}) = 0, ~~ j = 1, 2, \dots, p
 \end{eqnarray}
 \\]
@@ -270,7 +270,7 @@ Với hàm một biến, một điểm là _cực tiểu_ của một hàm số 
 Trong toán tối ưu (thường là không gian nhiều chiều), ta gọi một điểm \\(\mathbf{x}\\) là __locally optimal__ (cực tiểu) nếu tồn tại một giá trị (thường được gọi là bán kinh) \\(R\\) sao cho:
 \\[
 \begin{eqnarray}
-    f_0(\mathbf{x}) = &\text{inf}\\{f_0(\mathbf{z}) | f_i(\mathbf{z}) \leq 0, i = 1, \dots, m, \\\
+    f_0(\mathbf{x}) = &\text{inf}\\{f_0(\mathbf{z}) | f_i(\mathbf{z}) \leq 0, i = 1, \dots, m, \newline
                  & h_j(\mathbf{z}) = 0, j = 1, \dots, p, \|\|\mathbf{z} - \mathbf{x}\|\|_2 \leq R\\}
 \end{eqnarray}
 \\]
@@ -303,8 +303,8 @@ Trong toán tối ưu, chúng ta đặc biệt quan tâm tới những bài toá
 Một _bài toán tối ưu lồi_ (_convex optimization problem_) là một bài toán tối ưu có dạng:
 \\[
 \begin{eqnarray}
-\mathbf{x}^* &=& \arg\min_{\mathbf{x}} f_0(\mathbf{x}) \\\
-\text{subject to:}~ && f_i(\mathbf{x}) \leq 0, ~~ i = 1, 2, \dots, m ~~~(16)\\\
+\mathbf{x}^* &=& \arg\min_{\mathbf{x}} f_0(\mathbf{x}) \newline
+\text{subject to:}~ && f_i(\mathbf{x}) \leq 0, ~~ i = 1, 2, \dots, m ~~~(16)\newline
 && \mathbf{a}_j^T\mathbf{x} - b_j = 0, j = 1, \dots,
 \end{eqnarray}
 \\]
@@ -343,9 +343,9 @@ với \\(R > 0\\) nào đó. Giả sử \\(\mathbf{x}\_0\\) không phải là _g
 
 \\[
 \begin{eqnarray}
-    f\_0(\mathbf{z}) &=& f\_0((1 - \theta)\mathbf{x}\_0 + \theta \mathbf{y})  \\\
-                    &\leq& (1 - \theta)f\_0(\mathbf{x}\_0) + \theta f\_0(\mathbf{y})\\\
-                    & < & (1 - \theta)f\_0(\mathbf{x}\_0) + \theta f\_0(\mathbf{x}\_0) \\\
+    f\_0(\mathbf{z}) &=& f\_0((1 - \theta)\mathbf{x}\_0 + \theta \mathbf{y})  \newline
+                    &\leq& (1 - \theta)f\_0(\mathbf{x}\_0) + \theta f\_0(\mathbf{y})\newline
+                    & < & (1 - \theta)f\_0(\mathbf{x}\_0) + \theta f\_0(\mathbf{x}\_0) \newline
                     &=& f\_0(\mathbf{x}\_0)
 \end{eqnarray}
 \\]
@@ -402,8 +402,8 @@ Chúng ta cùng bắt đầu với lớp các bài toán đơn giản nhất tro
 **A general LP:**
 \\[
 \begin{eqnarray}
-\mathbf{x} &=& \arg\min_{\mathbf{x}} \mathbf{c}^T\mathbf{x} + d \\\
-\text{subject to:}~ && \mathbf{Gx} \preceq \mathbf{h} ~~~~~~~~~~~~~~~~~~~~(19)\\\
+\mathbf{x} &=& \arg\min_{\mathbf{x}} \mathbf{c}^T\mathbf{x} + d \newline
+\text{subject to:}~ && \mathbf{Gx} \preceq \mathbf{h} ~~~~~~~~~~~~~~~~~~~~(19)\newline
 && \mathbf{Ax} = \mathbf{b}
 \end{eqnarray}
 \\]
@@ -420,8 +420,8 @@ Trong dạng tiêu chuẩn (_standard form_) LP, các bất đẳng thức ràng
 **A standard form LP:**
 \\[
 \begin{eqnarray}
-\mathbf{x} &=& \arg\min_{\mathbf{x}} \mathbf{c}^T\mathbf{x} \\\
-\text{subject to:}~ && \mathbf{Ax} = \mathbf{b} ~~~~~~~~~~~~~~~~~~~~(20)\\\
+\mathbf{x} &=& \arg\min_{\mathbf{x}} \mathbf{c}^T\mathbf{x} \newline
+\text{subject to:}~ && \mathbf{Ax} = \mathbf{b} ~~~~~~~~~~~~~~~~~~~~(20)\newline
 && \mathbf{x} \succeq \mathbf{0}
 \end{eqnarray}
 \\]
@@ -431,9 +431,9 @@ Bài toán \\((19)\\) có thể đưa về bài toán \\((20)\\) bằng cách đ
 <hr>
 \\[
 \begin{eqnarray}
-\mathbf{x} &=& \arg\min_{\mathbf{x}, \mathbf{s}} \mathbf{c}^T\mathbf{x} \\\
-\text{subject to:}~ && \mathbf{Ax} = \mathbf{b} ~~~~~~~~~~~~~~~~~~~~(21)\\\
-&& \mathbf{Gx} + \mathbf{s} = \mathbf{h} \\\
+\mathbf{x} &=& \arg\min_{\mathbf{x}, \mathbf{s}} \mathbf{c}^T\mathbf{x} \newline
+\text{subject to:}~ && \mathbf{Ax} = \mathbf{b} ~~~~~~~~~~~~~~~~~~~~(21)\newline
+&& \mathbf{Gx} + \mathbf{s} = \mathbf{h} \newline
 && \mathbf{s} \succeq \mathbf{0}
 \end{eqnarray}
 \\]
@@ -442,9 +442,9 @@ Tiếp theo, nếu ta biểu diễn \\(\mathbf{x}\\) dưới dạng hiệu của
 <hr>
 \\[
 \begin{eqnarray}
-\mathbf{x} &=& \arg\min_{\mathbf{x}^+,\mathbf{x}^-, \mathbf{s}} \mathbf{c}^T\mathbf{x}^+ - \mathbf{c}^T\mathbf{x}^- \\\
-\text{subject to:}~ && \mathbf{Ax}^+ - \mathbf{Ax}^- = \mathbf{b} ~~~~~~~~~~~~~~~~~~~~(22)\\\
-&& \mathbf{Gx}^+ - \mathbf{Gx}^- + \mathbf{s} = \mathbf{h} \\\
+\mathbf{x} &=& \arg\min_{\mathbf{x}^+,\mathbf{x}^-, \mathbf{s}} \mathbf{c}^T\mathbf{x}^+ - \mathbf{c}^T\mathbf{x}^- \newline
+\text{subject to:}~ && \mathbf{Ax}^+ - \mathbf{Ax}^- = \mathbf{b} ~~~~~~~~~~~~~~~~~~~~(22)\newline
+&& \mathbf{Gx}^+ - \mathbf{Gx}^- + \mathbf{s} = \mathbf{h} \newline
 && \mathbf{x}^+ \succeq 0, \mathbf{x}^- \succeq 0, \mathbf{s} \succeq \mathbf{0}
 \end{eqnarray}
 \\]
@@ -480,10 +480,10 @@ Tôi sẽ dùng thư viện CVPOPT để giải Bài toán canh tác ở phía t
 **Bài toán canh tác:**
 \\[
 \begin{eqnarray}
-(x, y) =& \arg\max_{x, y} 5x + 3y \\\
-\text{subject to:}~ & x + y \leq 10 \\\
-                    & 2x + y \leq 16  \\\
-                    & x + 4y \leq 32 \\\
+(x, y) =& \arg\max_{x, y} 5x + 3y \newline
+\text{subject to:}~ & x + y \leq 10 \newline
+                    & 2x + y \leq 16  \newline
+                    & x + 4y \leq 32 \newline
                     & x, y \geq 0
 \end{eqnarray}
 \\]
@@ -493,17 +493,17 @@ Các điều kiện ràng buộc có thể viết lại dưới dạng \\( \math
 
 \\[
 \mathbf{G} = \left\[\begin{matrix}
-1 & 1 \\\
-2 & 1 \\\
-1 & 4 \\\
--1 & 0 \\\
+1 & 1 \newline
+2 & 1 \newline
+1 & 4 \newline
+-1 & 0 \newline
 0 & -1
 \end{matrix}\right\], ~~~~
 \mathbf{h} = \left\[\begin{matrix}
-10\\\
-16 \\\
-32 \\\
-0 \\\
+10\newline
+16 \newline
+32 \newline
+0 \newline
 0
 \end{matrix}\right\]
 \\]
@@ -556,8 +556,8 @@ Một dạng Convex Optimization mà các bạn sẽ gặp rất nhiều trong c
 <hr>
 \\[
 \begin{eqnarray}
-\mathbf{x} &=& \arg\min_{\mathbf{x}} \frac{1}{2} \mathbf{x}^T\mathbf{P}\mathbf{x} + \mathbf{q}^T\mathbf{x} + \mathbf{r} \\\
-\text{subject to:} &&\mathbf{Gx} \preceq \mathbf{h} ~~~~~~~~~~~~~(23)\\\
+\mathbf{x} &=& \arg\min_{\mathbf{x}} \frac{1}{2} \mathbf{x}^T\mathbf{P}\mathbf{x} + \mathbf{q}^T\mathbf{x} + \mathbf{r} \newline
+\text{subject to:} &&\mathbf{Gx} \preceq \mathbf{h} ~~~~~~~~~~~~~(23)\newline
 && \mathbf{Ax} = \mathbf{b}
 \end{eqnarray}
 \\]
@@ -588,8 +588,8 @@ Cho một polyhedron được biểu diễn bởi \\(\mathbf{Ax} \preceq \mathbf
 Bài toán này có thể phát biểu như sau:
 \\[
 \begin{eqnarray}
-\mathbf{x} &=& \arg\min_{\mathbf{x}} \frac{1}{2}\|\|\mathbf{x} - \mathbf{u}\|\|\_2^2 \\\
-\text{subject to:} &&\mathbf{Gx} \preceq \mathbf{h}\\\
+\mathbf{x} &=& \arg\min_{\mathbf{x}} \frac{1}{2}\|\|\mathbf{x} - \mathbf{u}\|\|\_2^2 \newline
+\text{subject to:} &&\mathbf{Gx} \preceq \mathbf{h}\newline
 \end{eqnarray}
 \\]
 Hàm mục tiêu đạt giá trị nhỏ nhất bằng 0 nếu \\(\mathbf{u}\\) nằm trong polyheron đó và _optimal point_ chính là \\(\mathbf{x} = \mathbf{u}\\). Khi \\(\mathbf{u}\\) không nằm trong polyhedron, ta viết:
@@ -607,27 +607,27 @@ Xét bài toán sau đây:
 
 \\[
 \begin{eqnarray}
-(x, y) &=& \arg\min_{x, y} (x - 10)^2 + (y - 10)^2 \\\
+(x, y) &=& \arg\min_{x, y} (x - 10)^2 + (y - 10)^2 \newline
 \text{subject to:}~&&
 \left\[\begin{matrix}
-1 & 1 \\\
-2 & 1 \\\
-1 & 4 \\\
--1 & 0 \\\
+1 & 1 \newline
+2 & 1 \newline
+1 & 4 \newline
+-1 & 0 \newline
 0 & -1
 \end{matrix}\right\]
 \left\[
 \begin{matrix}
-x \\\
+x \newline
 y
 \end{matrix}
 \right\]
 \preceq
 \left\[\begin{matrix}
-10\\\
-16 \\\
-32 \\\
-0 \\\
+10\newline
+16 \newline
+32 \newline
+0 \newline
 0
 \end{matrix}\right\]
 \end{eqnarray}
@@ -697,8 +697,8 @@ Một bài toán tối ưu có dạng:
 <hr>
 \\[
 \begin{eqnarray}
-\mathbf{x}   &=& \arg\min_{\mathbf{x}} f_0(\mathbf{x}) \\\
-\text{subject to:}~ && f_i(x) \leq 1,  ~~ i = 1, 2, \dots, m ~~~~~~~~~~~(25)\\\
+\mathbf{x}   &=& \arg\min_{\mathbf{x}} f_0(\mathbf{x}) \newline
+\text{subject to:}~ && f_i(x) \leq 1,  ~~ i = 1, 2, \dots, m ~~~~~~~~~~~(25)\newline
                     && h_j(x) = 1, ~~ j = 1, 2, \dots, p
 \end{eqnarray}
 \\]
@@ -711,19 +711,19 @@ Chú ý rằng nếu \\(f\\) là một _posynomial_, \\(h\\) là một _monomial
 **Ví dụ:**
 \\[
 \begin{eqnarray}
-    (x, y, z)    &=& \arg\min_{x, y, z} x/y                          \\\
-\text{subject to:}~ && 1 \leq x \leq 2 \\\
- && x^3 + 2y/z \leq \sqrt{y} \\\
+    (x, y, z)    &=& \arg\min_{x, y, z} x/y                          \newline
+\text{subject to:}~ && 1 \leq x \leq 2 \newline
+ && x^3 + 2y/z \leq \sqrt{y} \newline
  && x/y = z
 \end{eqnarray}
 \\]
 Có thể được viết lại dưới dạng GP:
 \\[
 \begin{eqnarray}
-    (x, y, z)    &=& \arg\min_{x, y, z} xy ^{-1}                        \\\
-\text{subject to:}~ && x^{-1} \leq 1 \\\
-&& (1/2)x \leq 1 \\\
-&& x^3y^{-1/2} + 2y^{1/2}z^{-1} \leq 1 \\\
+    (x, y, z)    &=& \arg\min_{x, y, z} xy ^{-1}                        \newline
+\text{subject to:}~ && x^{-1} \leq 1 \newline
+&& (1/2)x \leq 1 \newline
+&& x^3y^{-1/2} + 2y^{1/2}z^{-1} \leq 1 \newline
 && xy^{-1}z^{-1} = 1
 \end{eqnarray}
 \\]
@@ -749,8 +749,8 @@ trong đó \\(\mathbf{a}\_k = [a_{1k}, \dots, a_{nk}]^T\\) và \\(b_k = \log(c_k
 Bài toán GP \\((25)\\) được viết lại dưới dạng:
 \\[
 \begin{eqnarray}
-    \mathbf{y}    &=& \arg\min_{\mathbf{y}} \sum_{k=1}^{K_0} \exp(\mathbf{a}\_{0k}^T\mathbf{y} + b\_{0k})                      \\\
-\text{subject to:}~ && \sum_{k=1}^{K_i} \exp(\mathbf{a}\_{ik}^T\mathbf{y} + b_{ik}) \leq 1, ~~, i = 1, \dots, m ~~~~~~(26)\\\
+    \mathbf{y}    &=& \arg\min_{\mathbf{y}} \sum_{k=1}^{K_0} \exp(\mathbf{a}\_{0k}^T\mathbf{y} + b\_{0k})                      \newline
+\text{subject to:}~ && \sum_{k=1}^{K_i} \exp(\mathbf{a}\_{ik}^T\mathbf{y} + b_{ik}) \leq 1, ~~, i = 1, \dots, m ~~~~~~(26)\newline
 && \exp(\mathbf{g}_j^T\mathbf{y} + h_j) = 1, ~ j= 1, \dots, p
 \end{eqnarray}
 \\]
@@ -762,8 +762,8 @@ Với chú ý rằng hàm số \\(\log \sum_{i=1}^m \exp(g_i(\mathbf{x}))\\) là
 GP in convex form:
 \\[
 \begin{eqnarray}
-    \text{minimize}\_{\mathbf{y}} \tilde{f}\_0(\mathbf{y}) &=& \log\left\(\sum_{k=1}^{K_0} \exp(\mathbf{a}\_{0k}^T \mathbf{y} + b_{i0})\right\)                          \\\
-\text{subject to:}~ \tilde{f}\_i(\mathbf{y}) &=& \log \left\(\sum_{k=1}^{K_i} \exp(\mathbf{a}\_{ik}^T \mathbf{y} + b\_{ik})\right\) \leq 0, ~~ i = 1, \dots, m ~~~~ (27)\\\
+    \text{minimize}\_{\mathbf{y}} \tilde{f}\_0(\mathbf{y}) &=& \log\left\(\sum_{k=1}^{K_0} \exp(\mathbf{a}\_{0k}^T \mathbf{y} + b_{i0})\right\)                          \newline
+\text{subject to:}~ \tilde{f}\_i(\mathbf{y}) &=& \log \left\(\sum_{k=1}^{K_i} \exp(\mathbf{a}\_{ik}^T \mathbf{y} + b\_{ik})\right\) \leq 0, ~~ i = 1, \dots, m ~~~~ (27)\newline
 \tilde{h}_j(\mathbf{y}) &=& \mathbf{g}_j^T\mathbf{y} + h_j = 0,~~ j = 1, \dots, p
 \end{eqnarray}
 \\]

@@ -115,8 +115,8 @@ Trong Mục 2 dưới đây, chúng ta cùng tìm hiểu cơ sở toán học c�
 Tôi xin nhắc lại bài toán đối ngẫu trong Soft Margin SVM cho dữ liệu _gần phân biệt tuyến tính_:
 
  \begin{eqnarray}
-     \lambda &=& \arg \max_{\lambda} \sum_{n=1}^N \lambda_n - \frac{1}{2} \sum_{n=1}^N\sum_{m=1}^N \lambda_n \lambda_m y_n y_m \mathbf{x}\_n^T \mathbf{x}\_m &&\\\
-     \text{subject to:}~ && \sum_{n=1}^N \lambda_ny_n = 0 &&\quad\quad\quad\quad(1)\\\
+     \lambda &=& \arg \max_{\lambda} \sum_{n=1}^N \lambda_n - \frac{1}{2} \sum_{n=1}^N\sum_{m=1}^N \lambda_n \lambda_m y_n y_m \mathbf{x}\_n^T \mathbf{x}\_m &&\newline
+     \text{subject to:}~ && \sum_{n=1}^N \lambda_ny_n = 0 &&\quad\quad\quad\quad(1)\newline
      && 0 \leq \lambda_n \leq C, ~\forall n= 1, 2, \dots, N 
  \end{eqnarray}
  
@@ -150,8 +150,8 @@ Với dữ liệu thực tế, rất khó để có dữ liệu _gần phân bi�
 
 Trong không gian mới, bài toán \\((1)\\) trở thành: 
  \begin{eqnarray}
-     \lambda &=& \arg \max_{\lambda} \sum_{n=1}^N \lambda_n - \frac{1}{2} \sum_{n=1}^N\sum_{m=1}^N \lambda_n \lambda_m y_n y_m \Phi(\mathbf{x}\_n)^T \Phi(\mathbf{x}\_m) &&\\\
-     \text{subject to:}~ && \sum_{n=1}^N \lambda_ny_n = 0 &&\quad\quad\quad\quad(3)\\\
+     \lambda &=& \arg \max_{\lambda} \sum_{n=1}^N \lambda_n - \frac{1}{2} \sum_{n=1}^N\sum_{m=1}^N \lambda_n \lambda_m y_n y_m \Phi(\mathbf{x}\_n)^T \Phi(\mathbf{x}\_m) &&\newline
+     \text{subject to:}~ && \sum_{n=1}^N \lambda_ny_n = 0 &&\quad\quad\quad\quad(3)\newline
      && 0 \leq \lambda_n \leq C, ~\forall n= 1, 2, \dots, N 
  \end{eqnarray}
 
@@ -168,8 +168,8 @@ Trong bài toán \\((3)\\) và biểu thức \\((4)\\), chúng ta không cần t
 Lúc này, bằng cách định nghĩa _hàm kernel_ \\(k(\mathbf{x}, \mathbf{z}) = \Phi(\mathbf{x})^T\Phi(\mathbf{z}) \\), ta có thể viết lại bài toán \\((3)\\) và biểu thức \\((4)\\) như sau: 
 
 \begin{eqnarray}
-    \lambda &=& \arg \max_{\lambda} \sum_{n=1}^N \lambda_n - \frac{1}{2} \sum_{n=1}^N\sum_{m=1}^N \lambda_n \lambda_m y_n y_m k(\mathbf{x}\_n,\mathbf{x}\_m) &&\\\
-    \text{subject to:}~ && \sum_{n=1}^N \lambda_ny_n = 0 &&\quad\quad\quad\quad(5)\\\
+    \lambda &=& \arg \max_{\lambda} \sum_{n=1}^N \lambda_n - \frac{1}{2} \sum_{n=1}^N\sum_{m=1}^N \lambda_n \lambda_m y_n y_m k(\mathbf{x}\_n,\mathbf{x}\_m) &&\newline
+    \text{subject to:}~ && \sum_{n=1}^N \lambda_ny_n = 0 &&\quad\quad\quad\quad(5)\newline
     && 0 \leq \lambda_n \leq C, ~\forall n= 1, 2, \dots, N &&
 \end{eqnarray}
 và:
@@ -181,8 +181,8 @@ và:
 **Ví dụ:** Xét phép biến đổi 1 điểm dữ liệu trong không gian hai chiều \\(\mathbf{x} = [x_1, x_2]^T\\) thành một điểm trong không gian 5 chiều \\(\Phi(\mathbf{x}) = [1, \sqrt{2} x\_1, \sqrt{2} x\_2, x\_1^2, \sqrt{2} x\_1x\_2, x\_2^2]^T\\). Ta có: 
 
 \begin{eqnarray}
-\Phi(\mathbf{x})^T\Phi(\mathbf{z}) &=& [1, \sqrt{2} x\_1, \sqrt{2} x\_2, x\_1^2, \sqrt{2} x\_1x\_2, x\_2^2] [1, \sqrt{2} z\_1, \sqrt{2} z\_2, z\_1^2, \sqrt{2} z\_1z\_2, z\_2^2]^T \\\
-&=& 1 + 2x_1z_1 + 2x_2z_2 + x_1^2x_2^2 + 2x_1z_1x_2z_2 + x_2^2z_2^2 \\\
+\Phi(\mathbf{x})^T\Phi(\mathbf{z}) &=& [1, \sqrt{2} x\_1, \sqrt{2} x\_2, x\_1^2, \sqrt{2} x\_1x\_2, x\_2^2] [1, \sqrt{2} z\_1, \sqrt{2} z\_2, z\_1^2, \sqrt{2} z\_1z\_2, z\_2^2]^T \newline
+&=& 1 + 2x_1z_1 + 2x_2z_2 + x_1^2x_2^2 + 2x_1z_1x_2z_2 + x_2^2z_2^2 \newline
 &=& (1 + x_1z_1 + x_2z_2)^2 = (1 + \mathbf{x}^T\mathbf{z})^2 = k(\mathbf{x}, \mathbf{z})
 \end{eqnarray}
 

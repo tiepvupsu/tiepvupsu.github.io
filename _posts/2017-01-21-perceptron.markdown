@@ -88,7 +88,7 @@ Giả sử thêm các nhãn tương ứng với từng điểm dữ liệu đư�
 Tại một thời điểm, giả sử ta tìm được boundary là đường phẳng có phương trình:
 \\[
 \begin{eqnarray}
-f_{\mathbf{w}}(\mathbf{x}) &=& w_1x_1 + \dots + w_dx_d + w_0 \\\ 
+f_{\mathbf{w}}(\mathbf{x}) &=& w_1x_1 + \dots + w_dx_d + w_0 \newline 
 &=&\mathbf{w}^T\mathbf{\bar{x}} = 0
 \end{eqnarray}
 \\]
@@ -163,7 +163,7 @@ với \\(\eta\\) là learning rate được chọn bằng 1. Ta có một quy t�
 
 Ta có một quan sát nhỏ ở đây:
 \\[
-\mathbf{w}\_{t+1}^T\mathbf{x}\_i = (\mathbf{w}\_{t} + y_i\mathbf{x}\_i)^T\mathbf{x}\_{i} \\\
+\mathbf{w}\_{t+1}^T\mathbf{x}\_i = (\mathbf{w}\_{t} + y_i\mathbf{x}\_i)^T\mathbf{x}\_{i} \newline
 = \mathbf{w}\_{t}^T\mathbf{x}\_i + y\_i \|\|\mathbf{x}\_i\|\|_2^2
 \\]
 
@@ -282,9 +282,9 @@ Giả sử rằng \\(\mathbf{w}^\*\\) là một nghiệm của bài toán (ta c�
 
 \\[
 \begin{eqnarray}
-&&u\_{\alpha}(t+1) = \|\|\mathbf{w}\_{t+1} - \alpha \mathbf{w}^\*\|\|\_2^2 \\\
-&=& \|\|\mathbf{w}\_{t} + y\_i\mathbf{x}\_i - \alpha\mathbf{w}^\*\|\|\_2^2 \\\
-&=& \|\|\mathbf{w}\_{t} -\alpha\mathbf{w}^\*\|\|\_2^2 + y\_i^2\|\|\mathbf{x}\_i\|\|\_2^2 + 2y\_i\mathbf{x}\_i^T(\mathbf{w} - \alpha\mathbf{w}^*) \\\
+&&u\_{\alpha}(t+1) = \|\|\mathbf{w}\_{t+1} - \alpha \mathbf{w}^\*\|\|\_2^2 \newline
+&=& \|\|\mathbf{w}\_{t} + y\_i\mathbf{x}\_i - \alpha\mathbf{w}^\*\|\|\_2^2 \newline
+&=& \|\|\mathbf{w}\_{t} -\alpha\mathbf{w}^\*\|\|\_2^2 + y\_i^2\|\|\mathbf{x}\_i\|\|\_2^2 + 2y\_i\mathbf{x}\_i^T(\mathbf{w} - \alpha\mathbf{w}^*) \newline
 &<& u\_{\alpha}(t) \ + \|\|\mathbf{x}\_i\|\|\_2^2 - 2\alpha y\_i\mathbf{x}\_i^T \mathbf{w}^\*
 \end{eqnarray}
 \\]
@@ -294,7 +294,7 @@ Dấu nhỏ hơn ở dòng cuối là vì \\(y\_i^2 = 1\\) và \\(2y\_i\mathbf{x
 
 \\[
 \begin{eqnarray}
-\beta^2 &=& \max\_{i=1, 2, \dots, N}\|\|\mathbf{x}\_i\|\|_2^2 \\\
+\beta^2 &=& \max\_{i=1, 2, \dots, N}\|\|\mathbf{x}\_i\|\|_2^2 \newline
 \gamma &=& \min\_{i=1, 2, \dots, N} y\_i\mathbf{x}\_i^T\mathbf{w}^\*
 \end{eqnarray}
 \\]

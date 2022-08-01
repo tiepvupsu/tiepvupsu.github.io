@@ -160,7 +160,7 @@ Khi một trong các \\(z\_i\\) quá lớn, việc tính toán \\(\exp(z\_i)\\) 
 
 \\[
 \begin{eqnarray}
-\frac{\exp(z\_i)}{\sum\_{j=1}^C \exp(z\_j)} &=& \frac{\exp(-c)\exp(z\_i)}{\exp(-c)\sum\_{j=1}^C \exp(z\_j)}\\\
+\frac{\exp(z\_i)}{\sum\_{j=1}^C \exp(z\_j)} &=& \frac{\exp(-c)\exp(z\_i)}{\exp(-c)\sum\_{j=1}^C \exp(z\_j)}\newline
 &=& \frac{\exp(z\_i-c)}{\sum\_{j=1}^C \exp(z\_j-c)}
 \end{eqnarray}
 \\]
@@ -268,7 +268,7 @@ Kết hợp tất cả các cặp dữ liệu \\(\mathbf{x}\_i, \mathbf{y}\_i, i
 
 \\[
 \begin{eqnarray}
-J(\mathbf{W}; \mathbf{X}, \mathbf{Y}) = -\sum\_{i = 1}^N \sum_{j = 1}^C y\_{ji}\log(a\_{ji}) \\\
+J(\mathbf{W}; \mathbf{X}, \mathbf{Y}) = -\sum\_{i = 1}^N \sum_{j = 1}^C y\_{ji}\log(a\_{ji}) \newline
 = -\sum\_{i = 1}^N \sum_{j = 1}^C y\_{ji}\log\left(\frac{\exp(\mathbf{w}\_j^T\mathbf{x}\_i)}{\sum\_{k=1}^C \exp(\mathbf{w}\_k^T\mathbf{x}\_i)}\right)
 \end{eqnarray}
 \\]
@@ -287,8 +287,8 @@ J_i(\mathbf{W}) \triangleq J(\mathbf{W}; \mathbf{x}\_i, \mathbf{y}\_i) =
 \\]
 \\[
 \begin{eqnarray}
-&=& -\sum_{j = 1}^C y\_{ji}\log\left(\frac{\exp(\mathbf{w}\_j^T\mathbf{x}\_i)}{\sum\_{k=1}^C \exp(\mathbf{w}\_k^T\mathbf{x}\_i)}\right) \\\
-&=& -\sum\_{j=1}^C\left(y\_{ji} \mathbf{w}\_j^T\mathbf{x}\_i - y\_{ji}\log\left(\sum\_{k=1}^C \exp(\mathbf{w}\_k^T\mathbf{x}\_i)\right)\right) \\\
+&=& -\sum_{j = 1}^C y\_{ji}\log\left(\frac{\exp(\mathbf{w}\_j^T\mathbf{x}\_i)}{\sum\_{k=1}^C \exp(\mathbf{w}\_k^T\mathbf{x}\_i)}\right) \newline
+&=& -\sum\_{j=1}^C\left(y\_{ji} \mathbf{w}\_j^T\mathbf{x}\_i - y\_{ji}\log\left(\sum\_{k=1}^C \exp(\mathbf{w}\_k^T\mathbf{x}\_i)\right)\right) \newline
 &=& -\sum\_{j=1}^C y\_{ji} \mathbf{w}\_j^T\mathbf{x}\_i + \log\left(\sum\_{k=1}^C \exp(\mathbf{w}\_k^T\mathbf{x}\_i)\right) ~~ (3)
 \end{eqnarray}
 \\] 
@@ -305,8 +305,8 @@ Trong đó, gradient theo từng cột có thể tính được dựa theo \\((3
 \\[
 \begin{eqnarray}
 \frac{\partial J\_i(\mathbf{W})}{\partial \mathbf{w}\_j} &=& -y\_{ji}\mathbf{x}\_i + 
-\frac{\exp(\mathbf{w}\_j^T\mathbf{x}\_i)}{\sum\_{k = 1}^C \exp(\mathbf{w}\_k^T\mathbf{x}\_i)}\mathbf{x}\_i \\\
-&=& \-y\_{ji}\mathbf{x}\_i + a\_{ji} \mathbf{x}\_i = \mathbf{x}\_i (a\_{ji} - y\_{ji}) \\\
+\frac{\exp(\mathbf{w}\_j^T\mathbf{x}\_i)}{\sum\_{k = 1}^C \exp(\mathbf{w}\_k^T\mathbf{x}\_i)}\mathbf{x}\_i \newline
+&=& \-y\_{ji}\mathbf{x}\_i + a\_{ji} \mathbf{x}\_i = \mathbf{x}\_i (a\_{ji} - y\_{ji}) \newline
 &=& e\_{ji}\mathbf{x}\_{i} ~(\text{where}~ e\_{ji} = a\_{ji} - y\_{ji}) ~~(5)
 \end{eqnarray}
 \\]
@@ -341,7 +341,7 @@ Thực ra:
 Khi \\(C = 2\\), Softmax Regression và Logistic Regression là giống nhau. Thật vậy, đầu ra dự đoán của Softmax Regression với \\(C= 2\\) có thể được viết dưới dạng: 
 \\[
 \begin{eqnarray}
-a\_1 &=& \frac{\exp(\mathbf{w}\_1^T\mathbf{x})} {\exp(\mathbf{w}\_1^T\mathbf{x}) + \exp(\mathbf{w}\_2^T\mathbf{x})} \\\
+a\_1 &=& \frac{\exp(\mathbf{w}\_1^T\mathbf{x})} {\exp(\mathbf{w}\_1^T\mathbf{x}) + \exp(\mathbf{w}\_2^T\mathbf{x})} \newline
 &=& \frac{1}{1 + \exp((\mathbf{w}\_2 - \mathbf{w}\_1)^T\mathbf{x})}
 \end{eqnarray}
 \\]
@@ -615,7 +615,7 @@ So với kết quả hơn 91% của one-vs-rest Logistic Regression thì Softmax
 ### 6.1 Boundary tạo bởi Softmax Regression là linear
 Thật vậy, dựa vào hàm softmax thì một điểm dữ liệu \\(\mathbf{x}\\) được dự đoán là rơi vào class \\(j\\) nếu \\(a\_{j} \geq a\_{k}, ~\forall k \neq j\\). Bạn đọc có thể chứng minh được rằng \\(a\_{j} \geq a\_{k} \Leftrightarrow z\_{j} \geq z\_{k}\\), hay nói cách khác: 
 \\[
-\mathbf{w}_j^T \mathbf{x} \geq \mathbf{w}\_k^T\mathbf{x}\\\
+\mathbf{w}_j^T \mathbf{x} \geq \mathbf{w}\_k^T\mathbf{x} \\\
 \Leftrightarrow (\mathbf{w}\_j - \mathbf{w}\_k)^T\mathbf{x} \geq 0
 \\]
 Đây chính là một biểu thức tuyến tính. Vậy boundary tạo bởi Softmax Regression có dạng tuyến tính. (Xem thêm [boundary tạo bởi Logistic Regression](/2017/01/27/logisticregression/#boundary-tao-boi-logistic-regression-co-dang-tuyen-tinh))

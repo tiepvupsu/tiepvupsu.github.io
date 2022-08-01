@@ -354,14 +354,14 @@ Về cách tính _gradient_ cho phần _data loss_, mặc dù [hàm \\(\max\\) l
 \frac{\partial }{\partial \mathbf{w}\_{y_n}}\max(0, 1 - \mathbf{w}\_{y_n}^T \mathbf{x}\_n + \mathbf{w}\_j^T\mathbf{x}\_n) &=& 
 \left\\{
 \begin{matrix}
-0 & \text{if}& 1 - \mathbf{w}\_{y_n}^T \mathbf{x}\_n + \mathbf{w}\_j^T\mathbf{x}\_n < 0 \\\
+0 & \text{if}& 1 - \mathbf{w}\_{y_n}^T \mathbf{x}\_n + \mathbf{w}\_j^T\mathbf{x}\_n < 0 \newline
 -\mathbf{x}\_n & \text{if} &1 - \mathbf{w}\_{y_n}^T \mathbf{x}\_n + \mathbf{w}\_j^T\mathbf{x}\_n > 0
 \end{matrix}
-\right. && ~~~~(5)\\\
+\right. && ~~~~(5)\newline
 \frac{\partial }{\partial \mathbf{w}\_{j}}\max(0, 1 - \mathbf{w}_{y_n}^T \mathbf{x}_n + \mathbf{w}_j^T\mathbf{x}_n) &=& 
 \left\\{
 \begin{matrix}
-0 & \text{if}& 1 - \mathbf{w}\_{y_n}^T \mathbf{x}\_n + \mathbf{w}\_j^T\mathbf{x}\_n < 0 \\\
+0 & \text{if}& 1 - \mathbf{w}\_{y_n}^T \mathbf{x}\_n + \mathbf{w}\_j^T\mathbf{x}\_n < 0 \newline
 \mathbf{x}\_n & \text{if} &1 - \mathbf{w}\_{y_n}^T \mathbf{x}\_n + \mathbf{w}\_j^T\mathbf{x}\_n > 0
 \end{matrix}
 \right. && ~~~~(6)

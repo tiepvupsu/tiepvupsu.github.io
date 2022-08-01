@@ -50,16 +50,16 @@ Với cách làm trên, [_Utility Matrix_](/2017/05/17/contentbasedrecommendersy
 
 \\[
 \mathbf{Y} \approx \left[ \begin{matrix}
-\mathbf{x}_1\mathbf{w}_1 & \mathbf{x}_1\mathbf{w}_2 & \dots & \mathbf{x}\_1 \mathbf{w}_N \\
-\mathbf{x}_2\mathbf{w}_1 & \mathbf{x}_2\mathbf{w}_2 & \dots & \mathbf{x}\_2 \mathbf{w}_N \\
-\dots & \dots & \ddots & \dots \\\
-\mathbf{x}_M\mathbf{w}_1 & \mathbf{x}_M\mathbf{w}_2 & \dots & \mathbf{x}\_M \mathbf{w}_N \\
+\mathbf{x}_1\mathbf{w}_1 & \mathbf{x}_1\mathbf{w}_2 & \dots & \mathbf{x}\_1 \mathbf{w}_N \newline
+\mathbf{x}_2\mathbf{w}_1 & \mathbf{x}_2\mathbf{w}_2 & \dots & \mathbf{x}\_2 \mathbf{w}_N \newline
+\dots & \dots & \ddots & \dots \newline
+\mathbf{x}_M\mathbf{w}_1 & \mathbf{x}_M\mathbf{w}_2 & \dots & \mathbf{x}\_M \mathbf{w}_N \newline
 \end{matrix} \right]
  = \left[ \begin{matrix}
-\mathbf{x}_1 \\\
-\mathbf{x}_2 \\\
-\dots \\\
-\mathbf{x}_M \\\
+\mathbf{x}_1 \newline
+\mathbf{x}_2 \newline
+\dots \newline
+\mathbf{x}_M \newline
 \end{matrix} \right]
 \left[ \begin{matrix}
 \mathbf{w}_1 & \mathbf{w}_2 & \dots & \mathbf{w}\_N
@@ -535,7 +535,7 @@ với \\(b_m, d_n, \mu\\) lần lượt là bias của _item_ \\(m\\), _user_ \\
 Lúc này, hàm mất mát có thể được thay đổi thành: 
 \\[
 \begin{eqnarray}
-\mathcal{L}(\mathbf{X}, \mathbf{W}, \mathbf{b}, \mathbf{d}) &=& \frac{1}{2s} \sum_{n=1}^N \sum_{m:r_{mn} = 1} (\mathbf{x}\_m\mathbf{w}\_n + b_m + d_n +\mu - y\_{mn})^2 + \\\ 
+\mathcal{L}(\mathbf{X}, \mathbf{W}, \mathbf{b}, \mathbf{d}) &=& \frac{1}{2s} \sum_{n=1}^N \sum_{m:r_{mn} = 1} (\mathbf{x}\_m\mathbf{w}\_n + b_m + d_n +\mu - y\_{mn})^2 + \newline 
 && + \frac{\lambda}{2} (\|\|\mathbf{X}\|\|_F^2 + \|\|\mathbf{W}\|\|_F^2 + \|\|\mathbf{b}\|\|_2^2  + \|\|\mathbf{d}\|\|_2^2)
 \end{eqnarray}
 \\]

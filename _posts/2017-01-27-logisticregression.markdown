@@ -141,8 +141,8 @@ f(s) = \frac{1}{1 + e^{-s}} \triangleq \sigma(s)
 Đặc biệt hơn nữa:
 \\[
 \begin{eqnarray}
-\sigma'(s) &=& \frac{e^{-s}}{(1 + e^{-s})^2} \\\
-&=& \frac{1}{1 + e^{-s}} \frac{e^{-s}}{1 + e^{-s}} \\\
+\sigma'(s) &=& \frac{e^{-s}}{(1 + e^{-s})^2} \newline
+&=& \frac{1}{1 + e^{-s}} \frac{e^{-s}}{1 + e^{-s}} \newline
 &=& \sigma(s)(1 - \sigma(s))
 \end{eqnarray}
 \\]
@@ -172,8 +172,8 @@ Với mô hình như trên (các activation màu xanh lam và lục), ta có th�
 
 \\[
 \begin{eqnarray}
-P(y\_i = 1 | \mathbf{x}\_i; \mathbf{w}) &=& &f(\mathbf{w}^T\mathbf{x}\_i)  ~~(1) \\\
-P(y\_i = 0 | \mathbf{x}\_i; \mathbf{w}) &=& 1 - &f(\mathbf{w}^T\mathbf{x}\_i)  ~~(2) \\\
+P(y\_i = 1 | \mathbf{x}\_i; \mathbf{w}) &=& &f(\mathbf{w}^T\mathbf{x}\_i)  ~~(1) \newline
+P(y\_i = 0 | \mathbf{x}\_i; \mathbf{w}) &=& 1 - &f(\mathbf{w}^T\mathbf{x}\_i)  ~~(2) \newline
 \end{eqnarray}
 \\]
 trong đó \\( P(y\_i = 1 | \mathbf{x}\_i; \mathbf{w})\\) được hiểu là xác suất xảy ra sự kiện đầu ra \\(y_i = 1\\) khi biết tham số mô hình \\(\mathbf{w}\\) và dữ liệu đầu vào \\(\mathbf{x}_i\\). Bạn đọc có thể đọc thêm [Xác suất có điều kiện](https://vi.wikipedia.org/wiki/Xác_suất_có_điều_kiện). Mục đích của chúng ta là tìm các hệ số \\(\mathbf{w}\\) sao cho \\(f(\mathbf{w}^T\mathbf{x}\_i)\\) càng gần với 1 càng tốt với các điểm dữ liệu thuộc class 1 và càng gần với 0 càng tốt với những điểm thuộc class 0.
@@ -201,7 +201,7 @@ Bài toán tìm tham số để mô hình gần với dữ liệu nhất trên �
 Giả sử thêm rằng các điểm dữ liệu được sinh ra một cách ngẫu nhiên độc lập với nhau (independent), ta có thể viết:
 \\[
 \begin{eqnarray}
-P(\mathbf{y}|\mathbf{X}; \mathbf{w}) &=& \prod_{i=1}^N P(y\_i| \mathbf{x}\_i; \mathbf{w}) \\\
+P(\mathbf{y}|\mathbf{X}; \mathbf{w}) &=& \prod_{i=1}^N P(y\_i| \mathbf{x}\_i; \mathbf{w}) \newline
 &=& \prod_{i=1}^N z\_i^{y\_i}(1 - z\_i)^{1- y\_i}
 \end{eqnarray}
 \\]
@@ -210,7 +210,7 @@ với \\(\prod\\) là ký hiệu của tích. Bạn đọc có thể muốn đ�
 Trực tiếp tối ưu hàm số này theo \\(\mathbf{w}\\) nhìn qua không đơn giản! Hơn nữa, khi \\(N\\) lớn, tích của \\(N\\) số nhỏ hơn 1 có thể dẫn tới sai số trong tính toán (numerial error) vì tích là một số quá nhỏ. Một phương pháp thường được sử dụng đó là lấy logarit tự nhiên (cơ số \\(e\\)) của  _likelihood function_ biến phép nhân thành phép cộng và để tránh việc số quá nhỏ. Sau đó lấy ngược dấu để được một hàm và coi nó là hàm mất mát. Lúc này bài toán tìm giá trị lớn nhất (maximum likelihood) trở thành bài toán tìm giá trị nhỏ nhất của hàm mất mát (hàm này còn được gọi là negative log likelihood):
 \\[
 \begin{eqnarray}
-J(\mathbf{w}) = -\log P(\mathbf{y}|\mathbf{X}; \mathbf{w}) \\\
+J(\mathbf{w}) = -\log P(\mathbf{y}|\mathbf{X}; \mathbf{w}) \newline
 = -\sum\_{i=1}^N(y\_i \log {z}\_i + (1-y\_i) \log (1 - {z}\_i))
 \end{eqnarray}
 \\]
@@ -248,7 +248,7 @@ J(\mathbf{w}; \mathbf{x}\_i, y\_i) = -(y\_i \log {z}\_i + (1-y\_i) \log (1 - {z}
 Với đạo hàm:
 \\[
 \begin{eqnarray}
-\frac{\partial J(\mathbf{w}; \mathbf{x}\_i, y\_i)}{\partial \mathbf{w}} &=& -(\frac{y\_i}{z\_i} - \frac{1- y\_i}{1 - z\_i} ) \frac{\partial z\_i}{\partial \mathbf{w}} \\\
+\frac{\partial J(\mathbf{w}; \mathbf{x}\_i, y\_i)}{\partial \mathbf{w}} &=& -(\frac{y\_i}{z\_i} - \frac{1- y\_i}{1 - z\_i} ) \frac{\partial z\_i}{\partial \mathbf{w}} \newline
 &=& \frac{z\_i - y\_i}{z\_i(1 - z\_i)} \frac{\partial z\_i}{\partial \mathbf{w}} ~~~~~~ (3)
 \end{eqnarray}
 \\]
@@ -265,12 +265,12 @@ Một cách trực quan nhất, ta sẽ tìm hàm số \\(z = f(s)\\) sao cho:
 để triệt tiêu mẫu số trong biểu thức \\((3)\\). Chúng ta cùng khởi động một chút với phương trình vi phân đơn giản này. Phương trình \\((4)\\) tương đương với:
 \\[
 \begin{eqnarray}
-&\frac{\partial z}{z(1-z)} &=& \partial s \\\
-\Leftrightarrow & (\frac{1}{z} + \frac{1}{1 - z})\partial z &=&\partial s \\\
-\Leftrightarrow & \log z - \log(1 - z) &=& s \\\
-\Leftrightarrow & \log \frac{z}{1 - z} &=& s \\\
-\Leftrightarrow & \frac{z}{1 - z} &=& e^s \\\
-\Leftrightarrow & z &=& e^s (1 - z) \\\
+&\frac{\partial z}{z(1-z)} &=& \partial s \newline
+\Leftrightarrow & (\frac{1}{z} + \frac{1}{1 - z})\partial z &=&\partial s \newline
+\Leftrightarrow & \log z - \log(1 - z) &=& s \newline
+\Leftrightarrow & \log \frac{z}{1 - z} &=& s \newline
+\Leftrightarrow & \frac{z}{1 - z} &=& e^s \newline
+\Leftrightarrow & z &=& e^s (1 - z) \newline
 \Leftrightarrow & z = \frac{e^s}{1 +e^s} &=&\frac{1}{1 + e^{-s}} = \sigma(s)
 \end{eqnarray}
 \\]
@@ -457,9 +457,9 @@ Thật vậy, theo lập luận ở phần trên thì chúng ta cần kiểm tra
 
 \\[
 \begin{eqnarray}
-P(y = 1| \mathbf{x}; \mathbf{w}) &>& 0.5 \\\
-\Leftrightarrow \frac{1}{1 + e^{-\mathbf{w}^T\mathbf{x}}} &>& 0.5 \\\
-\Leftrightarrow e^{-\mathbf{w}^T\mathbf{x}} &<& 1 \\\
+P(y = 1| \mathbf{x}; \mathbf{w}) &>& 0.5 \newline
+\Leftrightarrow \frac{1}{1 + e^{-\mathbf{w}^T\mathbf{x}}} &>& 0.5 \newline
+\Leftrightarrow e^{-\mathbf{w}^T\mathbf{x}} &<& 1 \newline
 \Leftrightarrow \mathbf{w}^T\mathbf{x} &>& 0
 \end{eqnarray}
 \\]

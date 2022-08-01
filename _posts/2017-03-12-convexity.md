@@ -63,8 +63,8 @@ Trong Tối Ưu, một bài toán có ràng buộc thường được viết dư
 
 \\[
 \begin{eqnarray}
-\mathbf{x}^* &=& \arg\min_{\mathbf{x}} f_0(\mathbf{x})\\\
-\text{subject to:}~ && f_i(\mathbf{x}) \leq 0, ~~ i = 1, 2, \dots, m \\\
+\mathbf{x}^* &=& \arg\min_{\mathbf{x}} f_0(\mathbf{x})\newline
+\text{subject to:}~ && f_i(\mathbf{x}) \leq 0, ~~ i = 1, 2, \dots, m \newline
 && h_j(\mathbf{x}) = 0, ~~ j = 1, 2, \dots, p
 \end{eqnarray}
 \\]
@@ -175,8 +175,8 @@ B(\mathbf{x}_c, r) = \\{\mathbf{x} ~\big|~ \|\|\mathbf{x} - \mathbf{x}_c\|\|_2 \
 Theo Định nghĩa 1, chúng ta có thể _thấy_ Euclidean balls là các tập lồi, nếu phải chứng minh, ta dùng Định nghĩa 2 và [các tính chất của norms](/math/#-norms-chuan). Với \\(\mathbf{x}_1, \mathbf{x}_2\\) bất kỳ thuộc \\(B(\mathbf{x}_c, r)\\) và \\(0 \leq \theta \leq 1\\) bất kỳ:
 \\[
 \begin{eqnarray}
-\|\|\mathbf{x}\_{\theta} - \mathbf{x}_c\|\|_2 &=& \|\|\theta(\mathbf{x}_1 - \mathbf{x}_c)  + (1 - \theta) (\mathbf{x}_2 - \mathbf{x}_c)\|\|_2 \\\
-&\leq& \theta \|\|\mathbf{x}_1 - \mathbf{x}_c\|\|_2 + (1 - \theta)\|\|\mathbf{x}_2 - \mathbf{x}_c\|\|_2 \\\
+\|\|\mathbf{x}\_{\theta} - \mathbf{x}_c\|\|_2 &=& \|\|\theta(\mathbf{x}_1 - \mathbf{x}_c)  + (1 - \theta) (\mathbf{x}_2 - \mathbf{x}_c)\|\|_2 \newline
+&\leq& \theta \|\|\mathbf{x}_1 - \mathbf{x}_c\|\|_2 + (1 - \theta)\|\|\mathbf{x}_2 - \mathbf{x}_c\|\|_2 \newline
 &\leq& \theta r + ( 1 - \theta) r = r
 \end{eqnarray}
 \\]
@@ -421,7 +421,7 @@ _Các bạn có thể tìm đọc về ma trận xác định dương và các t
 [Hàm mất mát trong Linear Regression](/2016/12/28/linearregression/#ham-mat-mat) có dạng:
 \\[
 \begin{eqnarray}
-\mathcal{L}(\mathbf{w}) &=& \frac{1}{2} \|\|\mathbf{y} - \mathbf{X}\mathbf{w}\|\|_2^2 = \frac{1}{2} (\mathbf{y} - \mathbf{X}\mathbf{w})^T(\mathbf{y} - \mathbf{X}\mathbf{w})  \\\
+\mathcal{L}(\mathbf{w}) &=& \frac{1}{2} \|\|\mathbf{y} - \mathbf{X}\mathbf{w}\|\|_2^2 = \frac{1}{2} (\mathbf{y} - \mathbf{X}\mathbf{w})^T(\mathbf{y} - \mathbf{X}\mathbf{w})  \newline
 &=& \frac{1}{2} \mathbf{w}^T\mathbf{X}^T\mathbf{Xw} - \mathbf{y}^T\mathbf{Xw} + \frac{1}{2}\mathbf{y}^T\mathbf{y}
 \end{eqnarray}
 \\]
@@ -619,8 +619,8 @@ Hàm bên trái là một hàm lồi. Hàm bên phải không phải là hàm l�
 Vậy _first-order condition_ có thể viết dưới dạng (chú ý rằng \\(\mathbf{A}\\) là một ma trận đối xứng):
 \\[
 \begin{eqnarray}
-\mathbf{x}^T\mathbf{Ax} &\geq& 2(\mathbf{A}\mathbf{x}_0)^T (\mathbf{x} - \mathbf{x}_0) + \mathbf{x}_0^T\mathbf{A}\mathbf{x}_0 \\\
-⇔ \mathbf{x}^T\mathbf{Ax} &\geq& 2\mathbf{x}_0^T\mathbf{A}\mathbf{x} -\mathbf{x}_0^T\mathbf{A}\mathbf{x}_0  \\\
+\mathbf{x}^T\mathbf{Ax} &\geq& 2(\mathbf{A}\mathbf{x}_0)^T (\mathbf{x} - \mathbf{x}_0) + \mathbf{x}_0^T\mathbf{A}\mathbf{x}_0 \newline
+⇔ \mathbf{x}^T\mathbf{Ax} &\geq& 2\mathbf{x}_0^T\mathbf{A}\mathbf{x} -\mathbf{x}_0^T\mathbf{A}\mathbf{x}_0  \newline
 ⇔(\mathbf{x} - \mathbf{x}_0)^T\mathbf{A}(\mathbf{x} - \mathbf{x}_0) &\geq& 0
 \end{eqnarray}
 \\]
@@ -659,7 +659,7 @@ Với hàm số một biến \\(f(x)\\), điều kiện này tương đương v�
 \\[
 \left[
 \begin{matrix}
-1/x & 0 \\\
+1/x & 0 \newline
 0 & 1/y
 \end{matrix}
 \right]
