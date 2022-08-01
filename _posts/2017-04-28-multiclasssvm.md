@@ -38,7 +38,7 @@ Bạn sẽ hiểu rõ hơn nếu đã đọc các bài:
     - [2.1. Nhắc lại Softmax Regression.](#-nhac-lai-softmax-regression)
     - [2.3. Hinge losss tổng quát cho Multi-class SVM](#-hinge-losss-tong-quat-cho-multi-class-svm)
     - [2.4. Regularization](#-regularization)
-    - [2.5. Chọn giá trị \newline(\Delta\newline)](#-chon-gia-tri-\newlinedelta\\)
+    - [2.5. Chọn giá trị \\\(\Delta\\\)](#-chon-gia-tri-\\\delta\\)
     - [2.6. Soft Margin SVM là một trường hợp đặc biệt của Multi-class SVM](#-soft-margin-svm-la-mot-truong-hop-dac-biet-cua-multi-class-svm)
 - [3. Tinh toán hàm mất mát và đạo hàm của nó](#-tinh-toan-ham-mat-mat-va-dao-ham-cua-no)
     - [3.1. Tính hàm mất mát và đạo hàm của nó bằng cách _naive_](#-tinh-ham-mat-mat-va-dao-ham-cua-no-bang-cach-naive)
