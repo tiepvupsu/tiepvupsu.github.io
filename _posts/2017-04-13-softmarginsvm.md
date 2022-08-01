@@ -35,7 +35,7 @@ summary:
         - [5.1.2. Giải bài toán bằng thư viện sklearn](#-giai-bai-toan-bang-thu-vien-sklearn)
         - [5.1.3. Tìm nghiệm bằng giải bài toán đối ngẫu](#-tim-nghiem-bang-giai-bai-toan-doi-ngau)
         - [5.1.4. Tìm nghiệm bằng giải bài toán không ràng buộc](#-tim-nghiem-bang-giai-bai-toan-khong-rang-buoc)
-    - [5.2. Ảnh hưởng của \newline(C\newline) lên nghiệm](#-anh-huong-cua-\\c\\-len-nghiem)
+    - [5.2. Ảnh hưởng của \\\(C\\\) lên nghiệm](#-anh-huong-cua-\\c\\-len-nghiem)
 - [6. Tóm tắt và thảo luận](#-tom-tat-va-thao-luan)
 - [7. Tài liệu tham khảo](#-tai-lieu-tham-khao)
 
