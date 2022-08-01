@@ -38,7 +38,7 @@ Bạn đọc có thể xem bản pdf [tại đây](https://github.com/tiepvupsu/
         - [3.3.3. Affine functions](#-affine-functions)
         - [3.3.3. Quadratic forms](#-quadratic-forms)
         - [3.3.4. Norms](#-norms)
-    - [3.4. \newline(\alpha-\newline) sublevel sets](#-\newlinealpha-\\-sublevel-sets)
+    - [3.4. \\\(\alpha-\\\) sublevel sets](#-\\\alpha-\\-sublevel-sets)
     - [3.5. Kiểm tra tính chất lồi dựa vào đạo hàm.](#-kiem-tra-tinh-chat-loi-dua-vao-dao-ham)
         - [3.5.1. First-order condition](#-first-order-condition)
         - [3.5.2. Second-order condition](#-second-order-condition)
