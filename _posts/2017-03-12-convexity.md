@@ -523,7 +523,7 @@ Các đường màu càng xanh đậm thì tương ứng với các giá trị c
 
 Ở hàng dưới, các đường không phải khép kín. Hình bên trái tương ứng với một hàm tuyến tính \\(f(x, y) = x + y\\) và đó là một _convex function_. Hình ở giữa cũng là một _convex function_ (bạn có thể chứng minh điều này sau khi tính đạo hàm bậc hai, tôi sẽ nói ở phía dưới) nhưng các level sets là các _đường không kín_. Hàm này có \\(\log\\) nên tập xác định là góc phần tư thứ nhất tương ứng với các tọa độ dương (chú ý rằng tập hợp các điểm có tọa độ dương cũng là một _tập lồi_). Các _đường không kín_ này nếu kết hợp với trục \\(Ox, Oy\\) sẽ tạo thành biên của các _tập lồi_. Hình cuối cùng là contours của một hàm hyperbolic, hàm này không phải là _hàm lồi_.
 
-<a name="-\newlinealpha-\\-sublevel-sets"></a>
+<a name="-\\\alpha-\\-sublevel-sets"></a>
 
 ### 3.4. \\(\alpha-\\) sublevel sets
 <hr>
