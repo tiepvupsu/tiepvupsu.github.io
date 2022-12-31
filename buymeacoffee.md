@@ -19,12 +19,11 @@ Tôi luôn mong muốn blog đến được với nhiều độc giả và luôn
 
 Nội dung trên blog này là hoàn toàn miễn phí. Tôi cũng không sử dụng dịch vụ quảng cáo nào vì không muốn gây mất tập trung các bạn trong khi đọc. Tuy nhiên, nếu bạn thấy nội dung hữu ích và muốn đóng góp cho blog, bạn có thể ủng hộ blog qua một trong ba cách:
 
-#### 1. Ngân hàng Vietcombank, chi nhánh Vũng Tàu. 
-<!-- (Khi chuyển các bạn vui lòng kèm trong ghi chú/mục đích chuyển từ khóa: **machinelearning**) -->
+#### 1. Ngân hàng MB Bank
 
-Chủ tài khoản: **VU HUU LONG**
+Chủ tài khoản: **VU HUU TIEP**
 
-Số tài khoản: **0081001280321**
+Số tài khoản: **2829212031989**
 
 #### 2. Paypal 
 Bạn cũng có thể Paypal qua [https://www.paypal.me/TiepVu](https://www.paypal.me/TiepVu).
