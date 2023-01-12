@@ -137,7 +137,7 @@ Với khái niệm mới này, ta tìm mô hình sao cho cả _train error_ và 
 
 Thông thường, ta bắt đầu từ mô hình đơn giản, sau đó tăng dần độ phức tạp của mô hình. Tới khi nào _validation error_ có chiều hướng tăng lên thì chọn mô hình ngay trước đó. Chú ý rằng mô hình càng phức tạp, _train error_ có xu hướng càng nhỏ đi.
 
-Hính dưới đây mô tả ví dụ phía trên với bậc của đa thức tăng từ 1 đến 8. Tập validation bao gồm 10 điểm được lấy ra từ tập training ban đầu.
+Hình dưới đây mô tả ví dụ phía trên với bậc của đa thức tăng từ 1 đến 8. Tập validation bao gồm 10 điểm được lấy ra từ tập training ban đầu.
 
 <div class="imgcap">
 <img src ="\assets\15_overfitting\linreg_val.png" align = "center" width = "500">
