@@ -101,7 +101,7 @@ Giả sử có \\(N\\) điểm dữ liệu là \\( \mathbf{X} = [\mathbf{x}_1, \
 **Lưu ý về ký hiệu toán học:** *trong các bài viết của tôi, các số vô hướng được biểu diễn bởi các chữ cái viết ở dạng không in đậm, có thể viết hoa, ví dụ \\(x_1, N, y, k\\). Các vector được biểu diễn bằng các chữ cái thường in đậm, ví dụ \\(\mathbf{m}, \mathbf{x}_1 \\). Các ma trận được biểu diễn bởi các chữ viết hoa in đậm, ví dụ \\(\mathbf{X, M, Y} \\). Lưu ý này đã được nêu ở bài <a href = "/2016/12/28/linearregression/">Linear Regression</a>. Tôi xin được không nhắc lại trong các bài tiếp theo.*
 
 <a name="one-hot"></a>
-Với mỗi điểm dữ liệu \\( \mathbf{x}\_i \\) đặt \\(\mathbf{y}\_i = [y\_{i1}, y\_{i2}, \dots, y\_{iK}]\\) là label vector của nó, trong đó nếu \\( \mathbf{x}\_i \\) được phân vào cluster \\(k\\) thì  \\(y\_{ik} = 1\\) và \\(y\_{ij} = 0, \forall j \neq k \\). Điều này có nghĩa là có đúng một phần tử của vector \\(\mathbf{y}\_i\\) là bằng 1 (tương ứng với cluster của \\(\mathbf{x}\_i \\)), các phần tử còn lại bằng 0. Ví dụ: nếu một điểm dữ liệu có label vector là \\([1,0,0,\dots,0]\\) thì nó thuộc vào cluster 1, là \\([0,1,0,\dots,0]\\) thì nó thuộc vào cluster 2, \\(\dots\\). Cách mã hóa label của dữ liệu như thế này được goi là biểu diễn [_one-hot_](https://en.wikipedia.org/wiki/One-hot). Chúng ta sẽ thấy cách biểu diễn one-hot này rất phổ biến trong Machine Learning ở các bài tiếp theo. 
+Với mỗi điểm dữ liệu \\( \mathbf{x}\_i \\) đặt \\(\mathbf{y}\_i = [y\_{i1}, y\_{i2}, \dots, y\_{iK}]\\) là label vector của nó, trong đó nếu \\( \mathbf{x}\_i \\) được phân vào cluster \\(k\\) thì  \\(y\_{ik} = 1\\) và \\(y\_{ij} = 0, \forall j \neq k \\). Điều này có nghĩa là có đúng một phần tử của vector \\(\mathbf{y}\_i\\) là bằng 1 (tương ứng với cluster của \\(\mathbf{x}\_i \\)), các phần tử còn lại bằng 0. Ví dụ: nếu một điểm dữ liệu có label vector là \\([1,0,0,\dots,0]\\) thì nó thuộc vào cluster 1, là \\([0,1,0,\dots,0]\\) thì nó thuộc vào cluster 2, \\(\dots\\). Cách mã hóa label của dữ liệu như thế này được gọi là biểu diễn [_one-hot_](https://en.wikipedia.org/wiki/One-hot). Chúng ta sẽ thấy cách biểu diễn one-hot này rất phổ biến trong Machine Learning ở các bài tiếp theo. 
 
 Ràng buộc của \\(\mathbf{y}\_i \\) có thể viết dưới dạng toán học như sau:
 \\[
@@ -390,7 +390,7 @@ kmeans_display(X, labels[-1])
 <!-- ![png](output_11_1.png) -->
 
 
-Từ kết quả này chúng ta thấy rằng thuật toán K-means clustering làm việc khá thành công, các centers tìm được khá gần với kỳ vọng ban đầu. Các điểm thuộc cùng một cluster hầu như được phân vào cùng một cluster (trừ một số diểm màu đỏ ban đầu đã bị phân nhầm vào cluster màu xanh da trời, nhưng tỉ lệ là nhỏ và có thể chấp nhận được).
+Từ kết quả này chúng ta thấy rằng thuật toán K-means clustering làm việc khá thành công, các centers tìm được khá gần với kỳ vọng ban đầu. Các điểm thuộc cùng một cluster hầu như được phân vào cùng một cluster (trừ một số điểm màu đỏ ban đầu đã bị phân nhầm vào cluster màu xanh da trời, nhưng tỉ lệ là nhỏ và có thể chấp nhận được).
 
 Dưới đây là hình ảnh động minh họa thuật toán qua từng vòng lặp, chúng ta thấy rằng thuật toán trên hội tụ rất nhanh, chỉ cần 6 vòng lặp để có được kết quả cuối cùng:
 <div class="imgcap">
@@ -500,7 +500,7 @@ Dưới đây là 1 ví dụ khi 1 cluster có dạng hình dẹt.
 <a name="khi-mot-cluster-nam-phia-trong--cluster-khac"></a>
 
 #### Khi một cluster nằm phía trong 1 cluster khác
- Đây là ví dụ kinh điển về việc K-means clustering không thể phân cụm dữ liệu. Một cách tự nhiên, chúng ta sẽ phân ra thành 4 cụm: mắt trái, mắt phải, miệng, xunh quanh mặt. Nhưng vì mắt và miệng nằm trong khuôn mặt nên K-means clustering không thực hiện được:
+ Đây là ví dụ kinh điển về việc K-means clustering không thể phân cụm dữ liệu. Một cách tự nhiên, chúng ta sẽ phân ra thành 4 cụm: mắt trái, mắt phải, miệng, xung quanh mặt. Nhưng vì mắt và miệng nằm trong khuôn mặt nên K-means clustering không thực hiện được:
 
  <div class="imgcap">
 <img src ="/assets/kmeans/smile_face.png" align = "center">
