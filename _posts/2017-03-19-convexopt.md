@@ -69,7 +69,7 @@ Tôi xin bắt đầu bài viết này bằng ba bài toán khá gần với th�
 <a name="bai-toan"></a>
 
 #### Bài toán
-Một nhà xuấn bản (NXB) nhận được đơn hàng 600 bản của cuốn "Machine Learning cơ bản" tới Thái Bình và 400 bản tới Hải Phòng. NXB đó có 800 cuốn ở kho Nam Định và 700 cuốn ở kho Hải Dương. Giá chuyển phát một cuốn sách từ Nam Định tới Thái Bình là 50,000 VND (50k), tới Hải Phòng là 100k. Giá chuyển phát một cuốn từ Hải Dương  tới Thái Bình là 150k, trong khi tới Hải Phòng chỉ là 40k. Hỏi để tốn ít chi phí chuyển phát nhất, công ty đó nên phân phối mỗi kho chuyển bao nhiêu cuốn tới mỗi địa điểm?
+Một nhà xuất bản (NXB) nhận được đơn hàng 600 bản của cuốn "Machine Learning cơ bản" tới Thái Bình và 400 bản tới Hải Phòng. NXB đó có 800 cuốn ở kho Nam Định và 700 cuốn ở kho Hải Dương. Giá chuyển phát một cuốn sách từ Nam Định tới Thái Bình là 50,000 VND (50k), tới Hải Phòng là 100k. Giá chuyển phát một cuốn từ Hải Dương  tới Thái Bình là 150k, trong khi tới Hải Phòng chỉ là 40k. Hỏi để tốn ít chi phí chuyển phát nhất, công ty đó nên phân phối mỗi kho chuyển bao nhiêu cuốn tới mỗi địa điểm?
 
 <a name="phan-tich"></a>
 
@@ -109,7 +109,7 @@ Vậy ta cần giải bài toán tối ưu sau đây:
 \end{align}
 \\]
 <hr>
-Nhận thấy rằng hàm mục tiêu (objective function) là một hàm tuyến tính của các biến \\(x, y, z, t\\). Các điều kiện ràng buộc đều có dạng _hyperplanes_ hoặc _haflspaces_, đều là các ràng buộc tuyến tính (linear constraints). Bài toán tối ưu với cả _objective function_ và _constraints_ đều là _linear_ được gọi là **Linear Programming (LP)**. Dạng tổng quát và cách thức lập trình để giải một bài toán thuộc loại này sẽ được cho trong phần sau của bài viết này.
+Nhận thấy rằng hàm mục tiêu (objective function) là một hàm tuyến tính của các biến \\(x, y, z, t\\). Các điều kiện ràng buộc đều có dạng _hyperplanes_ hoặc _halfspaces_, đều là các ràng buộc tuyến tính (linear constraints). Bài toán tối ưu với cả _objective function_ và _constraints_ đều là _linear_ được gọi là **Linear Programming (LP)**. Dạng tổng quát và cách thức lập trình để giải một bài toán thuộc loại này sẽ được cho trong phần sau của bài viết này.
 
 _Nghiệm cho bài toán này có thể nhận thấy ngay là \\(x = 600, y = 0, z = 0, t = 400\\). Nếu ràng buộc nhiều hơn và số biến nhiều hơn, chúng ta cần một lời giải có thể tính được bằng cách lập trình._
 
@@ -119,7 +119,7 @@ _Nghiệm cho bài toán này có thể nhận thấy ngay là \\(x = 600, y = 0
 <a name="bai-toan-1"></a>
 
 #### Bài toán
-Một anh nông dân có tổng cộng 10ha (10 hecta) đất canh tác. Anh dự tính trồng cà phê và hồ tiêu trên số đất này với tổng chi phí cho việc trồng này là không quá 16T (triệu đồng). Chi phí để trồng cà phê là 2T cho 1ha, để trồng hồ tiêu là 1T/ha/. Thời gian trồng cà phê là 1 ngày/ha và hồ tiêu là 4 ngày/ha; trong khi anh chỉ có thời gian tổng cộng là 32 ngày. Sau khi trừ tất cả các chi phí (bao gồm chi phí trồng cây), mỗi ha cà phê mang lại lợi nhuận 5T, mỗi ha hồ tiêu mang lại lợi nhuận 3T. Hỏi anh phải trồng như thế nào để tối đa lợi nhuận? (_Các số liệu có thể vô lý vì chúng đã được chọn để bài toán ra nghiệm đẹp_)
+Một anh nông dân có tổng cộng 10ha (10 hecta) đất canh tác. Anh dự tính trồng cà phê và hồ tiêu trên số đất này với tổng chi phí cho việc trồng này là không quá 16T (triệu đồng). Chi phí để trồng cà phê là 2T cho 1ha, để trồng hồ tiêu là 1T/ha. Thời gian trồng cà phê là 1 ngày/ha và hồ tiêu là 4 ngày/ha; trong khi anh chỉ có thời gian tổng cộng là 32 ngày. Sau khi trừ tất cả các chi phí (bao gồm chi phí trồng cây), mỗi ha cà phê mang lại lợi nhuận 5T, mỗi ha hồ tiêu mang lại lợi nhuận 3T. Hỏi anh phải trồng như thế nào để tối đa lợi nhuận? (_Các số liệu có thể vô lý vì chúng đã được chọn để bài toán ra nghiệm đẹp_)
 
 <a name="phan-tich-1"></a>
 
@@ -227,7 +227,7 @@ Tôi xin nhắc lại bài toán tối ưu ở dạng tổng quát:
 \end{eqnarray}
 \\]
 
-Phát biểu bằng lời: Tìm giá trị của biến \\(\mathbf{x}\\) để tối thiểu hàm \\(f_0(\mathbf{x})\\) trong số các giá trị của \\(\mathbf{x}\\) thoả mãn các điệu hiện ràng buộc. Ta có bảng các tên gọi tiếng Anh và tiếng Việt như sau:
+Phát biểu bằng lời: Tìm giá trị của biến \\(\mathbf{x}\\) để tối thiểu hàm \\(f_0(\mathbf{x})\\) trong số các giá trị của \\(\mathbf{x}\\) thoả mãn các điều kiện ràng buộc. Ta có bảng các tên gọi tiếng Anh và tiếng Việt như sau:
 
 <hr>
 | Ký hiệu                                  | Tiếng Anh                       | Tiếng Việt              |
@@ -238,7 +238,7 @@ Phát biểu bằng lời: Tìm giá trị của biến \\(\mathbf{x}\\) để t
 | \\(f_i: \mathbb{R}^n \rightarrow \mathbb{R}\\) | inequality constraint functions | -                       |
 | \\(h_j(\mathbf{x}) = 0 \\)               | equality constraints            | đẳng thức ràng buộc     |
 | \\(h_j: \mathbb{R}^n \rightarrow \mathbb{R}\\) | equality constraint functions   | -                       |
-| \\(\mathcal{D} = \bigcap_{i=0}^m \text{dom}f_i \cap \bigcap_{pj=1}^p \text{dom}h_i \\) | domain                          | tập xác định            |
+| \\(\mathcal{D} = \bigcap_{i=0}^m \text{dom}f_i \cap \bigcap_{j=1}^p \text{dom}h_j \\) | domain                          | tập xác định            |
 
 <hr>
 Ngoài ra:
@@ -259,7 +259,7 @@ Ngoài ra:
 ### 2.2. Optimal and locally optimal points
 <!-- _Một vài khái niệm trong này các bạn có thể đã gặp trong chương trình toán cấp ba ở Việt Nam_. -->
 
-Một điểm \\(\mathbf{x}^\*\\) được gọi là một điểm _optimal point_ (_điểm tối ưu_), hoặc là _nghiệm_ của bài toán \\((15)\\) nếu \\(\mathbf{x}^\*\\) là _feasible_ và \\(f_0(\mathbf{x}^*) = p^\*\\). Tất hợp tất cả các _optimal points_ được gọi là _optimal set_.
+Một điểm \\(\mathbf{x}^\*\\) được gọi là một điểm _optimal point_ (_điểm tối ưu_), hoặc là _nghiệm_ của bài toán \\((15)\\) nếu \\(\mathbf{x}^\*\\) là _feasible_ và \\(f_0(\mathbf{x}^*) = p^\*\\). Tập hợp tất cả các _optimal points_ được gọi là _optimal set_.
 
 Nếu _optimal set_ là một tập _không_ rỗng, ta nói bài toán \\((15)\\) là _solvable_ (_giải được_). Ngược lại, nếu _optimal set_ là một tập rỗng, ta nói _optimal value_ là _không thể đạt được_ (_not attained/ not achieved_).
 
@@ -305,7 +305,7 @@ Một _bài toán tối ưu lồi_ (_convex optimization problem_) là một bà
 \begin{eqnarray}
 \mathbf{x}^* &=& \arg\min_{\mathbf{x}} f_0(\mathbf{x}) \newline
 \text{subject to:}~ && f_i(\mathbf{x}) \leq 0, ~~ i = 1, 2, \dots, m ~~~(16)\newline
-&& \mathbf{a}_j^T\mathbf{x} - b_j = 0, j = 1, \dots,
+&& h_j(\mathbf{z}) = \mathbf{a}_j^T\mathbf{x} - b_j = 0, j = 1, \dots, p
 \end{eqnarray}
 \\]
 trong đó \\(f_0, f_1, \dots, f_m\\) là các hàm lồi.
@@ -316,7 +316,7 @@ So với bài toán tối ưu \\((15)\\), bài toán tối ưu lồi \\((16)\\) 
 
 * Các hàm bất đẳng thức ràng buộc \\(f_i\\) là các hàm lồi.
 
-* Hàm đẳng thức ràng buộc \\(h_j\\) là _affine_ (hàm _linear_ cộng với một hẳng số nữa được gọi là _affine_).
+* Hàm đẳng thức ràng buộc \\(h_j\\) là _affine_ (hàm _linear_ cộng với một hằng số nữa được gọi là _affine_).
 
 Một vài nhận xét:
 
@@ -331,7 +331,7 @@ Một vài nhận xét:
 <a name="-cuc-tieu-cua-bai-toan-toi-uu-loi-chinh-la-diem-toi-uu"></a>
 
 ### 3.2. Cực tiểu của bài toán tối ưu lồi chính là điểm tối ưu.
-TÍnh chất quan trọng nhất của bài toán tối ưu lồi chính là bất kỳ _locally optimal point_ chính là một điểm _(globally) optimal point_.
+Tính chất quan trọng nhất của bài toán tối ưu lồi chính là bất kỳ _locally optimal point_ chính là một điểm _(globally) optimal point_.
 
 Tính chất quan trọng này có thể chứng minh bằng phản chứng như sau. Gọi  \\(\mathbf{x}\_0\\) là một điểm _locally optimal_, tức:
 
